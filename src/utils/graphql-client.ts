@@ -25,11 +25,4 @@ if (isDevelopment) {
   console.log('GraphQL Client initialized with endpoint:', endpoint);
 }
 
-const token = import.meta.env.JWT_SECRET_KEY;
-console.log('GraphQL Client: Token exists:', !!token);
-
-export const graphqlClient = new GraphQLClient(endpoint, {
-  headers: {
-    authorization: `Bearer ${token}`,
-  },
-});
+export const graphqlClient = new GraphQLClient(endpoint);
