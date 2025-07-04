@@ -9,12 +9,20 @@ export default function PortfolioTestPosts() {
   
   useEffect(() => {
     const loadCompanies = async () => {
-      console.log('PortfolioTestPosts: Loading companies...');
+      console.log('PortfolioTestPosts: Starting to load companies...');
+      console.log('PortfolioTestPosts: Environment check - DEV:', import.meta.env.DEV);
+      console.log('PortfolioTestPosts: DEV_NEXT_PUBLIC_APP_BACKEND_URL:', import.meta.env.DEV_NEXT_PUBLIC_APP_BACKEND_URL);
+      console.log('PortfolioTestPosts: PROD_NEXT_PUBLIC_APP_BACKEND_URL:', import.meta.env.PROD_NEXT_PUBLIC_APP_BACKEND_URL);
+      console.log('PortfolioTestPosts: GRAPHQL_TOKEN exists:', !!import.meta.env.GRAPHQL_TOKEN);
+      
       try {
+        console.log('PortfolioTestPosts: Calling fetchCompanies...');
         const companiesData = await fetchCompanies();
+        console.log('PortfolioTestPosts: Companies data received:', companiesData);
         setCompanies(companiesData);
         setLoading(false);
       } catch (err) {
+        console.error('PortfolioTestPosts: Error details:', err);
         setError(err instanceof Error ? err.message : 'An error occurred');
         setLoading(false);
       }
