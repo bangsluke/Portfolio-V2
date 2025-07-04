@@ -37,3 +37,28 @@ To quickly get started in production mode, do the following steps:
 <!-- TODO: Update list -->
 
 > [Back to Table of Contents](#table-of-contents)
+
+## How it Works
+
+### GraphQL Connection
+
+The GraphQL client (`src/utils/graphql-client.ts`) automatically detects the environment:
+
+- **Development**: Uses `DEV_NEXT_PUBLIC_APP_BACKEND_URL`
+- **Production**: Uses `PROD_NEXT_PUBLIC_APP_BACKEND_URL`
+
+### Example Usage
+
+```typescript
+import { graphqlClient } from '../utils/graphql-client';
+import { fetchCompanies } from '../utils/companies';
+
+// Make GraphQL requests
+const companies = await fetchCompanies({ limit: 10, offset: 0 });
+```
+
+### Error Handling
+
+If the environment variables are not set, the client will throw a descriptive error indicating which variable is missing.
+
+> [Back to Table of Contents](#table-of-contents)

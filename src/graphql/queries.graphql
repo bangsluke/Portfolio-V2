@@ -1,0 +1,561 @@
+# All queries
+
+query GetCompanies($limit: Int, $offset: Int) {
+    companies(limit: $limit, offset: $offset) {
+      nodeId
+      name
+      dateStart
+      dateEnd
+    }
+}
+
+# TODO: Delete. All below is the old queries copied from Travel Journal
+
+query GetCardCounts {
+	holidays {
+		name
+		nodeId
+	}
+	continents {
+		name
+		nodeId
+		placesLocatedIn {
+			name
+			nodeId
+			__typename
+			placesLocatedIn {
+				name
+				nodeId
+				__typename
+				linkedHolidays {
+					nodeId
+					name
+					dateMonth
+					dateYear
+					sortDateValue
+				}
+			}
+		}
+	}
+	countries {
+		name
+		nodeId
+		placesLocatedIn {
+			name
+			nodeId
+			__typename
+			linkedHolidays {
+				nodeId
+				name
+				sortDateValue
+			}
+		}
+	}
+	cities {
+		name
+		nodeId
+		capital
+		linkedHolidays {
+			nodeId
+		}
+	}
+	towns {
+		name
+		nodeId
+		linkedHolidays {
+			nodeId
+		}
+	}
+	islands {
+		name
+		nodeId
+		linkedHolidays {
+			nodeId
+		}
+	}
+	people {
+		name
+		nodeId
+		attendedHolidays {
+			nodeId
+		}
+	}
+}
+
+# Continents
+
+query GetContinents {
+	continents {
+		name
+		nodeId
+	}
+}
+
+query GetContinentById($nodeId: String) {
+	continents(where: { nodeId: $nodeId }) {
+		name
+		nodeId
+		placesLocatedIn {
+			name
+			nodeId
+			__typename
+			placesLocatedIn {
+				name
+				nodeId
+				__typename
+				linkedHolidays {
+					nodeId
+					name
+					dateMonth
+					dateYear
+					sortDateValue
+				}
+			}
+		}
+	}
+}
+
+# Query for the Continents list page
+query GetContinentsList {
+	continents {
+		name
+		nodeId
+		placesLocatedIn {
+			name
+			nodeId
+			__typename
+			placesLocatedIn {
+				name
+				nodeId
+				__typename
+				linkedHolidays {
+					nodeId
+					name
+					dateMonth
+					dateYear
+					sortDateValue
+				}
+			}
+		}
+	}
+}
+
+# Countries
+
+query GetCountries {
+	countries {
+		name
+		nodeId
+	}
+}
+
+# Simple query for a single country by Id
+query GetCountryById($nodeId: String) {
+	countries(where: { nodeId: $nodeId }) {
+		name
+		nodeId
+		locatedIn {
+			nodeId
+			name
+		}
+		placesLocatedIn {
+			name
+			nodeId
+			__typename
+			linkedHolidays {
+				nodeId
+				name
+				dateMonth
+				dateYear
+				sortDateValue
+			}
+		}
+	}
+}
+
+# Complex query for a single country by Id to return the linked holidays
+query GetCountryAndLinkedHolidaysById($nodeId: String) {
+	countries(where: { nodeId: $nodeId }) {
+		name
+		nodeId
+		locatedIn {
+			nodeId
+			name
+		}
+		placesLocatedIn {
+			name
+			nodeId
+			__typename
+			linkedHolidays {
+				nodeId
+				name
+				dateMonth
+				dateYear
+				sortDateValue
+			}
+		}
+	}
+}
+
+# Query for the Countries list page
+query GetCountriesList {
+	countries {
+		name
+		nodeId
+		placesLocatedIn {
+			name
+			nodeId
+			__typename
+			linkedHolidays {
+				nodeId
+				name
+				dateMonth
+				dateYear
+				sortDateValue
+			}
+		}
+	}
+}
+
+# Cities
+
+query GetCities {
+	cities {
+		name
+		nodeId
+		capital
+		linkedHolidays {
+			nodeId
+		}
+	}
+}
+
+query GetCityById($nodeId: String) {
+	cities(where: { nodeId: $nodeId }) {
+		name
+		nodeId
+		capital
+		locatedIn {
+			nodeId
+			name
+		}
+		linkedHolidays {
+			nodeId
+			name
+			dateMonth
+			dateYear
+			sortDateValue
+		}
+	}
+}
+
+# Query for the Cities list page
+query GetCitiesList {
+	cities {
+		name
+		nodeId
+		capital
+		linkedHolidays {
+			nodeId
+			name
+			dateMonth
+			dateYear
+			sortDateValue
+		}
+	}
+}
+
+# Capitals
+
+query GetCapitals($capitalCheck: Boolean) {
+	cities(where: { capital: $capitalCheck }) {
+		name
+		nodeId
+		capital
+		linkedHolidays {
+			nodeId
+		}
+	}
+}
+
+# Query for the Capital list page
+query GetCapitalsList($capitalCheck: Boolean) {
+	cities(where: { capital: $capitalCheck }) {
+		name
+		nodeId
+		capital
+		linkedHolidays {
+			nodeId
+		}
+	}
+}
+
+# Locations
+
+query GetLocationsList {
+	towns {
+		name
+		nodeId
+		linkedHolidays {
+			nodeId
+			name
+			dateMonth
+			dateYear
+			sortDateValue
+		}
+	}
+	islands {
+		name
+		nodeId
+		linkedHolidays {
+			nodeId
+			name
+			dateMonth
+			dateYear
+			sortDateValue
+		}
+	}
+	states {
+		name
+		nodeId
+		linkedHolidays {
+			nodeId
+			name
+			dateMonth
+			dateYear
+			sortDateValue
+		}
+	}
+	counties {
+		name
+		nodeId
+		linkedHolidays {
+			nodeId
+			name
+			dateMonth
+			dateYear
+			sortDateValue
+		}
+	}
+}
+
+query GetLocationById($nodeId: String) {
+	locations(where: { nodeId: $nodeId }) {
+		name
+		nodeId
+		locatedIn {
+			nodeId
+			name
+		}
+		linkedHolidays {
+			nodeId
+			name
+			dateMonth
+			dateYear
+			sortDateValue
+		}
+	}
+}
+
+# Towns
+
+query GetTowns {
+	towns {
+		name
+		nodeId
+		linkedHolidays {
+			nodeId
+		}
+	}
+}
+
+query GetTownById($nodeId: String) {
+	towns(where: { nodeId: $nodeId }) {
+		name
+		nodeId
+		locatedIn {
+			nodeId
+			name
+		}
+		linkedHolidays {
+			nodeId
+		}
+	}
+}
+
+# Query for the Town list page
+query GetTownsList {
+	towns {
+		name
+		nodeId
+		linkedHolidays {
+			nodeId
+		}
+	}
+}
+
+# Islands
+
+query GetIslands {
+	islands {
+		name
+		nodeId
+		linkedHolidays {
+			nodeId
+		}
+	}
+}
+
+# Query for the Islands list page
+query GetIslandsList {
+	islands {
+		name
+		nodeId
+		linkedHolidays {
+			nodeId
+		}
+	}
+}
+
+# People
+
+query GetPeople {
+	people {
+		name
+		nodeId
+		aliases
+		attendedHolidays {
+			nodeId
+		}
+	}
+}
+
+query GetPersonById($nodeId: String) {
+	people(where: { nodeId: $nodeId }) {
+		name
+		nodeId
+		aliases
+		attendedHolidays {
+			name
+			holidayTitle
+			nodeId
+			sortDateValue
+		}
+	}
+}
+
+# Query for the People list page
+query GetPeopleList {
+	people {
+		name
+		nodeId
+		aliases
+		attendedHolidays {
+			nodeId
+			name
+			holidayTitle
+			dateMonth
+			dateYear
+			sortDateValue
+		}
+	}
+}
+
+# Holidays
+
+# Query for all holidays data
+query GetHolidays {
+	holidays {
+		nodeId
+		name
+		holidayTitle
+		tags
+		dateMonth
+		dateYear
+		sortDateValue
+		fullText
+		readableText
+		locations
+		travelled_to {
+			nodeId
+		}
+		departingAirport
+		coverPhoto
+		photoAlbum
+		attendees
+		# attended
+	}
+}
+
+query GetHolidayById($nodeId: String) {
+	holidays(where: { nodeId: $nodeId }) {
+		nodeId
+		name
+		holidayTitle
+		tags
+		dateMonth
+		dateYear
+		sortDateValue
+		fullText
+		readableText
+		locations
+		travelled_to {
+			nodeId
+		}
+		departingAirport
+		coverPhoto
+		photoAlbum
+		attendees
+		# attended
+	}
+}
+
+# Query for the Holidays list page
+query GetHolidaysList {
+	holidays {
+		name
+		nodeId
+		tags
+		dateMonth
+		dateYear
+		sortDateValue
+		holidayTitle
+		locations
+		coverPhoto
+		photoAlbum
+		attendees
+		departingAirport
+	}
+}
+
+# High level query for Holiday page to find possible hyperlinks to around the site
+query GetPossibleHyperlinks {
+	holidays {
+		name
+		nodeId
+	}
+	continents {
+		name
+		nodeId
+	}
+	countries {
+		name
+		nodeId
+	}
+	cities {
+		name
+		nodeId
+	}
+	towns {
+		name
+		nodeId
+	}
+	islands {
+		name
+		nodeId
+	}
+	people {
+		name
+		nodeId
+	}
+}
