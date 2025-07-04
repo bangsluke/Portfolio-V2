@@ -9,8 +9,9 @@ export default function PortfolioTestPosts() {
   
   useEffect(() => {
     const loadCompanies = async () => {
+      console.log('PortfolioTestPosts: Loading companies...');
       try {
-        const companiesData = await fetchCompanies({ limit: 10, offset: 0 });
+        const companiesData = await fetchCompanies();
         setCompanies(companiesData);
         setLoading(false);
       } catch (err) {

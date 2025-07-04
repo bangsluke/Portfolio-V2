@@ -1,7 +1,7 @@
 # All queries
 
-query GetCompanies($limit: Int, $offset: Int) {
-    companies(limit: $limit, offset: $offset) {
+query GetCompanies {
+    companies {
       nodeId
       name
       dateStart

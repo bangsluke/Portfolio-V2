@@ -7,18 +7,13 @@ export interface Company {
   dateEnd: string | null;
 }
 
-export interface GetCompaniesVariables {
-  limit?: number;
-  offset?: number;
-}
-
 export interface GetCompaniesResponse {
   companies: Company[];
 }
 
 const GET_COMPANIES_QUERY = `
-  query GetCompanies($limit: Int, $offset: Int) {
-    companies(limit: $limit, offset: $offset) {
+  query GetCompanies {
+    companies {
       nodeId
       name
       dateStart
@@ -27,11 +22,10 @@ const GET_COMPANIES_QUERY = `
   }
 `;
 
-export async function fetchCompanies(variables: GetCompaniesVariables = {}): Promise<Company[]> {
+export async function fetchCompanies(): Promise<Company[]> {
   try {
     const response = await graphqlClient.request<GetCompaniesResponse>(
-      GET_COMPANIES_QUERY,
-      variables
+      GET_COMPANIES_QUERY
     );
     return response.companies;
   } catch (error) {
