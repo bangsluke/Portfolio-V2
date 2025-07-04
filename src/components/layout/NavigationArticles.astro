@@ -1,18 +1,18 @@
 ---
-const allPosts = await Astro.glob("../../pages/blog/posts/*.md");
-
+const allPosts = await import.meta.glob("../../pages/blog/posts/*.md", { eager: true });
+const posts = Object.values(allPosts);
 
 // Ensure posts have a date before sorting them
-const sortedPosts = allPosts
-  .filter(post => post.frontmatter.pubDate)
-  .sort((a, b) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime());
+const sortedPosts = posts
+  .filter((post: any) => post.frontmatter.pubDate)
+  .sort((a: any, b: any) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime());
 
 const currentSlug = Astro.url.pathname.split("/").filter(Boolean).pop();
-const currentIndex = sortedPosts.findIndex((post) =>
+const currentIndex = sortedPosts.findIndex((post: any) =>
   post.url && post.url.includes(currentSlug || "")
 );
-const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
-const prevPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
+const nextPost: any = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
+const prevPost: any = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
 
 console.log({ prevPost, nextPost });
 ---

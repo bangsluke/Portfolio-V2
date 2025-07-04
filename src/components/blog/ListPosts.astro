@@ -11,20 +11,21 @@ export interface Props {
 
 const { excludeLatest = false, currentPostUrl = "", all = false } = Astro.props;
 
-const allPosts = await Astro.glob("../../pages/blog/posts/*.md");
+const allPosts = await import.meta.glob("../../pages/blog/posts/*.md", { eager: true });
+const posts = Object.values(allPosts);
 // Sort by date in descending order (newest first)
-allPosts.sort((a, b) => {
+posts.sort((a: any, b: any) => {
   const dateA = new Date(a.frontmatter.pubDate).getTime();
   const dateB = new Date(b.frontmatter.pubDate).getTime();
   return dateB - dateA;
 });
 
 // Filter posts according to props
-let postsToShow = allPosts;
+let postsToShow = posts;
 
 if (currentPostUrl) {
   // Exclude current post if its URL is provided
-  postsToShow = postsToShow.filter((post) => {
+  postsToShow = postsToShow.filter((post: any) => {
     if (!post.url) return false; // If no URL, keep the post
     // Normalize URLs for comparison
     const normalizedPostUrl = post.url.replace(/\/$/, ""); // Remove trailing slash if exists
@@ -55,7 +56,7 @@ if (!all) {
 
   <div class="flex flex-col gap-8 w-full mx-auto">
     {
-      postsToShow.map((post) => (
+      postsToShow.map((post: any) => (
         <BlogPost
           url={post.url}
           title={post.frontmatter.title}

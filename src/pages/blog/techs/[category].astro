@@ -12,14 +12,15 @@ interface Frontmatter {
   image: string;
 }
 export async function getStaticPaths(): Promise<Array<{params: {category: string}, props: {posts: MarkdownInstance<Frontmatter>[]}}>>{
-  const allPosts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>("../posts/*.md");
+  const allPosts = await import.meta.glob<MarkdownInstance<Frontmatter>>("../posts/*.md", { eager: true });
+  const posts = Object.values(allPosts);
 
   const uniqueTags: string[] = [
-    ...new Set(allPosts.map((post: MarkdownInstance<Frontmatter>) => post.frontmatter.languages).flat()),
+    ...new Set(posts.map((post: MarkdownInstance<Frontmatter>) => post.frontmatter.languages).flat()),
   ];
 
   return uniqueTags.map((category) => {
-    const filteredPosts = allPosts.filter((post) =>
+    const filteredPosts = posts.filter((post: MarkdownInstance<Frontmatter>) =>
       post.frontmatter.languages.includes(category)
     );
     return {

@@ -1,5 +1,6 @@
 ---
-const allPosts = await Astro.glob("../../pages/blog/posts/*.md");
+const allPosts = await import.meta.glob("../../pages/blog/posts/*.md", { eager: true });
+const posts = Object.values(allPosts);
 
 import Tag from "../ui/Tag.astro";
 import ReadMore from "../ui/ReadMore.astro";
@@ -7,7 +8,7 @@ import Capsule from "../ui/Capsule.astro";
 import DatePub from "./DatePub.astro";
 
 // Get the latest post using reduce
-const latestPost = allPosts.reduce((latest, current) => {
+const latestPost: any = posts.reduce((latest: any, current: any) => {
   const latestDate = new Date(latest.frontmatter.pubDate).getTime();
   const currentDate = new Date(current.frontmatter.pubDate).getTime();
   return currentDate > latestDate ? current : latest;
