@@ -29,7 +29,7 @@ try {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://neonmint.efeele.dev",
+  site: "https://bangsluke-portfolio.netlify.app/",
   integrations: [preact(), icon(), sitemap({
     filter: (page) =>
       !page.includes("/blog/tags") &&
