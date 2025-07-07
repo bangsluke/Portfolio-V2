@@ -1,6 +1,6 @@
 // src/components/BackendTest.tsx
 import { useState, useEffect } from 'preact/hooks';
-import { graphqlClient } from '../utils/graphql-client';
+import { graphqlClient, graphqlRequest } from '../utils/graphql-client';
 
 export default function BackendTest() {
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -18,8 +18,8 @@ export default function BackendTest() {
         // Get the endpoint being used
         const isDev = import.meta.env.DEV;
         const currentEndpoint = isDev 
-          ? import.meta.env.DEV_NEXT_PUBLIC_APP_BACKEND_URL 
-          : import.meta.env.PROD_NEXT_PUBLIC_APP_BACKEND_URL;
+          ? import.meta.env.PUBLIC_APP_BACKEND_URL_DEV 
+          : import.meta.env.PUBLIC_APP_BACKEND_URL_PROD;
         
         setEndpoint(currentEndpoint || 'Not configured');
         addDebugInfo(`Environment: ${isDev ? 'Development' : 'Production'}`);

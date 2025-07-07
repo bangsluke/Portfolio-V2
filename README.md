@@ -44,8 +44,8 @@ To quickly get started in production mode, do the following steps:
 
 The GraphQL client (`src/utils/graphql-client.ts`) automatically detects the environment:
 
-- **Development**: Uses `DEV_NEXT_PUBLIC_APP_BACKEND_URL`
-- **Production**: Uses `PROD_NEXT_PUBLIC_APP_BACKEND_URL`
+- **Development**: Uses `PUBLIC_APP_BACKEND_URL_DEV`
+- **Production**: Uses `PUBLIC_APP_BACKEND_URL_PROD`
 
 ### Example Usage
 
@@ -60,5 +60,13 @@ const companies = await fetchCompanies({ limit: 10, offset: 0 });
 ### Error Handling
 
 If the environment variables are not set, the client will throw a descriptive error indicating which variable is missing.
+
+> [Back to Table of Contents](#table-of-contents)
+
+## Debugging Problems
+
+### Connection Problems
+
+If the problem is a connection issue between the backend server and front end website, navigate to `http://localhost:4321/debug` to see a connection test
 
 > [Back to Table of Contents](#table-of-contents)

@@ -12,8 +12,8 @@ export default function PortfolioTestPosts() {
     const loadCompanies = async () => {
       console.log('PortfolioTestPosts: Starting to load companies...');
       console.log('PortfolioTestPosts: Environment check - DEV:', import.meta.env.DEV);
-      console.log('PortfolioTestPosts: DEV_NEXT_PUBLIC_APP_BACKEND_URL:', import.meta.env.DEV_NEXT_PUBLIC_APP_BACKEND_URL);
-      console.log('PortfolioTestPosts: PROD_NEXT_PUBLIC_APP_BACKEND_URL:', import.meta.env.PROD_NEXT_PUBLIC_APP_BACKEND_URL);
+      console.log('PortfolioTestPosts: PUBLIC_APP_BACKEND_URL_DEV:', import.meta.env.PUBLIC_APP_BACKEND_URL_DEV);
+      console.log('PortfolioTestPosts: PUBLIC_APP_BACKEND_URL_PROD:', import.meta.env.PUBLIC_APP_BACKEND_URL_PROD);
       
       try {
         console.log('PortfolioTestPosts: Calling fetchCompanies...');
