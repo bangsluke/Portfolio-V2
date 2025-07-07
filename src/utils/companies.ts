@@ -16,8 +16,6 @@ const GET_COMPANIES_QUERY = `
     companies {
       nodeId
       name
-      dateStart
-      dateEnd
     }
   }
 `;
@@ -27,14 +25,7 @@ export async function fetchCompanies(): Promise<Company[]> {
     console.log('fetchCompanies: Starting GraphQL request...');
     console.log('fetchCompanies: Using query:', GET_COMPANIES_QUERY);
     
-    // Add timeout to prevent infinite loading
-    const timeoutPromise = new Promise<never>((_, reject) => {
-      setTimeout(() => reject(new Error('Request timeout after 10 seconds')), 10000);
-    });
-    
-    const requestPromise = graphqlClient.request<GetCompaniesResponse>(GET_COMPANIES_QUERY);
-    
-    const response = await Promise.race([requestPromise, timeoutPromise]);
+    const response = await graphqlClient.request<GetCompaniesResponse>(GET_COMPANIES_QUERY);
     
     console.log('fetchCompanies: GraphQL response received:', response);
     console.log('fetchCompanies: Companies array:', response.companies);

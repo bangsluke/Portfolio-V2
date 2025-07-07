@@ -38,16 +38,6 @@ if (isDevelopment) {
 export const graphqlClient = new GraphQLClient(endpoint, {
   headers: {
     'Content-Type': 'application/json',
-  },
-  // Add request interceptor for debugging
-  requestMiddleware: (request) => {
-    console.log('GraphQL Client: Sending request:', {
-      url: request.url,
-      method: request.method,
-      headers: request.headers,
-      body: request.body
-    });
-    return request;
   }
 });
 
