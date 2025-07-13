@@ -1,8 +1,12 @@
+<p align="center">
+  <img src="https://i.imgur.com/QL72TPw.png" alt="bangsluke Logo" width="200"/>
+</p>
+
 # Portfolio Site V2
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/267ef8c1-6dae-4fae-bc37-680c3f02ebfd/deploy-status)](https://app.netlify.com/sites/bangsluke-mytraveljournal/deploys)
+> A personal portfolio website for displaying my skills and past projects.
 
-<!-- TODO - Update above -->
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d9ed7eb9-789c-4a7c-b069-b9aebb73c553/deploy-status)](https://app.netlify.com/projects/bangsluke-portfolio/deploys)
 
 > Also see the backend server repo <https://github.com/bangsluke/bangsluke-backend-server> for more details and instructions
 
