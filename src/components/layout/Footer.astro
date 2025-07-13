@@ -1,5 +1,6 @@
 ---
 import Social from "../ui/Social.astro";
+import Logo from "../ui/Logo.astro";
 import { Icon } from "astro-icon/components";
 import { AstroError } from "astro/errors";
 import { getCollection} from "astro:content";
@@ -25,7 +26,7 @@ if (!staticData) {
     >
       <a href="/" aria-label="Return to homepage">
         <!-- This icon represents the logo -->
-        <Icon name="logo" aria-hidden="true" />
+        <Logo />
       </a>
     </div>
     <div class="text-center">

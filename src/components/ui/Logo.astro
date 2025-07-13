@@ -1,0 +1,15 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<Icon
+  name="logo"
+  class={`${className} dark:invert dark:brightness-0 dark:contrast-200`}
+  aria-hidden="true"
+/> 
