@@ -9,6 +9,9 @@ query GetRoles {
       dateStart
       dateEnd
       roleDescription
+      linkedCompany {
+        name
+      }
     }
 }
 `;
@@ -19,6 +22,9 @@ export interface Role {
   dateStart: string;
   dateEnd: string | null;
   roleDescription: string;
+  linkedCompany: {
+    name: string;
+  };
 }
 
 export interface GetRolesResponse {

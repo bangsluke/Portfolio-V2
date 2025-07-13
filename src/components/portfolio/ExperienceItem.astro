@@ -1,12 +1,16 @@
 ---
 interface Props {
   name: string;
+  company: string;
   roleDescription: string;
   link?: string;
   date: string;
 }
 
-const { name, roleDescription, link, date } = Astro.props;
+const { name, company, roleDescription, link, date } = Astro.props;
+
+console.log(company);
+
 ---
 
 <div
@@ -25,7 +29,7 @@ const { name, roleDescription, link, date } = Astro.props;
         {name}
       </h3>
       <h4 class="text-xl font-semibold text-zinc-600 dark:text-white">
-        TBC Company
+        {company}
       </h4>
       <time datetime={date} class="text-sm text-zinc-600/80 dark:text-white/80">
         {date}

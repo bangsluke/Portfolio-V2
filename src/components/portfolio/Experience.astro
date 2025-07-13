@@ -3,14 +3,18 @@ import ExperienceItem from "./ExperienceItem.astro";
 import Heading from "../ui/Heading.astro";
 import { Icon } from "astro-icon/components";
 import { fetchRoles } from "../../utils/roles";
+import { formatDateToMMMYYYY } from "../../utils/date-formatter";
 
 // Fetch roles from GraphQL backend
 const roles = await fetchRoles();
 
 // Transform the data to match the expected format
 const EXPERIENCE = roles.map(role => ({
-  date: role.dateEnd ? `${role.dateStart} - ${role.dateEnd}` : `${role.dateStart} - Present`,
+  date: role.dateEnd 
+    ? `${formatDateToMMMYYYY(role.dateStart)} - ${formatDateToMMMYYYY(role.dateEnd)}` 
+    : `${formatDateToMMMYYYY(role.dateStart)} - Present`,
   name: role.name,
+  company: role.linkedCompany?.name || 'TBC Company',
   roleDescription: role.roleDescription,
 }));
 ---
