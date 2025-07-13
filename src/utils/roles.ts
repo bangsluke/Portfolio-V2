@@ -24,7 +24,7 @@ export interface Role {
   roleDescription: string;
   linkedCompany: {
     name: string;
-  };
+  } | null;
 }
 
 export interface GetRolesResponse {

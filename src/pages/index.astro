@@ -16,10 +16,10 @@ import Heading from "../components/ui/Heading.astro";
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
-  <CompaniesList client:load />
+  
   <HeroIndex />
   <Experience />
   <ListProjects />
   <Contact />
-  
+  <CompaniesList client:load />
 </Layout>

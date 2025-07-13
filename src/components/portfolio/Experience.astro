@@ -8,15 +8,20 @@ import { formatDateToMMMYYYY } from "../../utils/date-formatter";
 // Fetch roles from GraphQL backend
 const roles = await fetchRoles();
 
-// Transform the data to match the expected format
-const EXPERIENCE = roles.map(role => ({
-  date: role.dateEnd 
-    ? `${formatDateToMMMYYYY(role.dateStart)} - ${formatDateToMMMYYYY(role.dateEnd)}` 
-    : `${formatDateToMMMYYYY(role.dateStart)} - Present`,
-  name: role.name,
-  company: role.linkedCompany?.name || 'TBC Company',
-  roleDescription: role.roleDescription,
-}));
+// Sort roles by dateStart (most recent first) and transform the data
+const EXPERIENCE = roles
+  .sort((a, b) => new Date(b.dateStart).getTime() - new Date(a.dateStart).getTime())
+  .map(role => {
+    console.log('Role:', role.name, 'linkedCompany:', role.linkedCompany);
+    return {
+      date: role.dateEnd 
+        ? `${formatDateToMMMYYYY(role.dateStart)} - ${formatDateToMMMYYYY(role.dateEnd)}` 
+        : `${formatDateToMMMYYYY(role.dateStart)} - Present`,
+      name: role.name,
+      company: role.linkedCompany?.name || 'TBC Company',
+      roleDescription: role.roleDescription,
+    };
+  });
 ---
 
 <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="experience">
