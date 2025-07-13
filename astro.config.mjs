@@ -37,7 +37,9 @@ export default defineConfig({
   }),],
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss()
+    ],
     define: {
       // Make environment variables available to the client
       'import.meta.env.PUBLIC_APP_BACKEND_URL_DEV': JSON.stringify(process.env.PUBLIC_APP_BACKEND_URL_DEV),
