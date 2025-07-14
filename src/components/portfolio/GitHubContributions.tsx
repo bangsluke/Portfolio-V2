@@ -37,4 +37,4 @@ export default function GitHubContributions() {
       `}</style>
     </section>
   );
-} 
+}

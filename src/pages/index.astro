@@ -7,6 +7,7 @@ import ListProjects from "../components/portfolio/ListProjects.astro";
 import CompaniesList from "../components/CompaniesList";
 import GitHubContributions from "../components/portfolio/GitHubContributions.tsx";
 import { Icon } from "astro-icon/components";
+import CustomerCarousel from "../components/portfolio/CustomerCarousel.tsx";
 const pageTitle = "bangsluke Portfolio";
 const description = "My portfolio site";
 const ogimage = {
@@ -17,10 +18,11 @@ import Heading from "../components/ui/Heading.astro";
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
-  
+  <CustomerCarousel client:only="react" />
   <HeroIndex />
   <Experience />
   <GitHubContributions client:only="preact" />
+  
   <ListProjects />
   <Contact />
   <CompaniesList client:load />
