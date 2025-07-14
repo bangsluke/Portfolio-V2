@@ -4,6 +4,9 @@ import { graphqlClient } from '../utils/graphql-client';
 interface Company {
   nodeId: string;
   name: string;
+  dateStart: string;
+  dateEnd: string;
+  logoURL: string;
 }
 
 export default function CompaniesList() {
@@ -19,6 +22,9 @@ export default function CompaniesList() {
             companies {
               nodeId
               name
+              dateStart
+              dateEnd
+              logoURL
             }
           }
         `;
@@ -85,6 +91,8 @@ export default function CompaniesList() {
                   </h3>
                   <div className="text-sm text-gray-500 dark:text-gray-400">
                     ID: {company.nodeId}
+                    {company.dateStart} - {company.dateEnd}
+                    {company.logoURL}
                   </div>
                 </div>
               </div>
