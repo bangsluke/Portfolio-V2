@@ -5,6 +5,7 @@ import HeroIndex from "../components/portfolio/HeroIndex.astro";
 import Contact from "../components/portfolio/Contact.astro";
 import ListProjects from "../components/portfolio/ListProjects.astro";
 import CompaniesList from "../components/CompaniesList";
+import GitHubContributions from "../components/portfolio/GitHubContributions.tsx";
 import { Icon } from "astro-icon/components";
 const pageTitle = "bangsluke Portfolio";
 const description = "My portfolio site";
@@ -19,6 +20,7 @@ import Heading from "../components/ui/Heading.astro";
   
   <HeroIndex />
   <Experience />
+  <GitHubContributions client:only="preact" />
   <ListProjects />
   <Contact />
   <CompaniesList client:load />
