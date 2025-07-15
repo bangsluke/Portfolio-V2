@@ -18,6 +18,7 @@ import Heading from "../components/ui/Heading.astro";
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
+  <CompaniesList />
   <CustomerCarousel client:only="react" />
   <HeroIndex />
   <Experience />
@@ -25,5 +26,4 @@ import Heading from "../components/ui/Heading.astro";
   
   <ListProjects />
   <Contact />
-  <CompaniesList client:load />
 </Layout>

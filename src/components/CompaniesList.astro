@@ -1,0 +1,111 @@
+---
+import { getCollection } from 'astro:content';
+
+// Get all companies and sort by date
+const companies = await getCollection('companies');
+const sortedCompanies = companies
+  .filter(company => company.data.published !== false)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+{sortedCompanies.length > 0 && (
+  <section class="companies-section bg-gradient-to-r from-blue-50 to-indigo-50 py-12">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Companies I've Worked With</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          A collection of companies and organizations I've had the privilege to collaborate with.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {sortedCompanies.map((company) => (
+          <article class="company-card bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 overflow-hidden group">
+            <div class="p-6">
+              <header class="mb-4">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                  <a href={`/companies/${company.slug}`} class="block">
+                    {company.data.title}
+                  </a>
+                </h3>
+                <div class="flex items-center gap-4 text-sm text-gray-500">
+                  <time datetime={company.data.date.toISOString()}>
+                    {company.data.date.toLocaleDateString()}
+                  </time>
+                  {company.data.tags && company.data.tags.length > 0 && (
+                    <div class="flex gap-1">
+                      {company.data.tags.slice(0, 2).map((tag) => (
+                        <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-xs font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                      {company.data.tags.length > 2 && (
+                        <span class="text-xs text-gray-400">+{company.data.tags.length - 2}</span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </header>
+              
+              {company.data.description && (
+                <p class="text-gray-600 text-sm line-clamp-3 mb-4">
+                  {company.data.description}
+                </p>
+              )}
+              
+              <footer class="flex justify-between items-center">
+                <a 
+                  href={`/companies/${company.slug}`}
+                  class="text-blue-600 hover:text-blue-800 text-sm font-medium group-hover:underline"
+                >
+                  View Details →
+                </a>
+              </footer>
+            </div>
+          </article>
+        ))}
+      </div>
+      
+      {sortedCompanies.length > 8 && (
+        <div class="text-center mt-8">
+          <a 
+            href="/companies" 
+            class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            View All Companies
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .company-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .companies-section {
+    position: relative;
+  }
+  
+  .companies-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+  }
+</style> 

@@ -4,7 +4,7 @@
 
 # Portfolio Site V2
 
-> A personal portfolio website for displaying my skills and past projects.
+> A personal portfolio website for displaying my skills and past projects, with integrated Obsidian note syncing.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d9ed7eb9-789c-4a7c-b069-b9aebb73c553/deploy-status)](https://app.netlify.com/projects/bangsluke-portfolio/deploys)
 
@@ -12,14 +12,42 @@
 
 ## Table of Contents
 
-- Introduction
-- Quick Start
-  - Development Start
-  - Production Start
+- [Introduction](#introduction)
+- [Quick Start](#quick-start)
+  - [Development Start](#development-start)
+  - [Production Start](#production-start)
+- [Obsidian Sync System](#obsidian-sync-system)
+  - [Features](#features)
+  - [Quick Sync Commands](#quick-sync-commands)
+  - [Configuration](#configuration)
+  - [Usage Examples](#usage-examples)
+  - [Mobile Sync](#mobile-sync)
+  - [GitHub Actions Integration](#github-actions-integration)
+  - [File Organization](#file-organization)
+  - [Troubleshooting](#troubleshooting)
+- [How it Works](#how-it-works)
+  - [GraphQL Connection](#graphql-connection)
+  - [Example Usage](#example-usage)
+  - [Error Handling](#error-handling)
+- [GraphQL Setup](#graphql-setup)
+  - [Schema and Updates](#schema-and-updates)
+  - [Current Schema Structure](#current-schema-structure)
+  - [Adding New Fields](#adding-new-fields)
+  - [Schema Validation](#schema-validation)
+  - [Extending the Schema](#extending-the-schema)
+  - [Best Practices](#best-practices)
+  - [Debugging Schema Changes](#debugging-schema-changes)
+- [Debugging Problems](#debugging-problems)
+  - [Connection Problems](#connection-problems)
 
 ## Introduction
 
-The front end Next.js repository for MyTravelJournal
+A modern portfolio website built with Astro, featuring:
+- **Obsidian Integration**: Sync selected notes from your Obsidian vault
+- **GraphQL Backend**: Dynamic content from Neo4j database
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Auto-Deployment**: GitHub Actions for continuous deployment
+- **Email Notifications**: Automated sync reports via Gmail
 
 > [Back to Table of Contents](#table-of-contents)
 
@@ -27,18 +55,393 @@ The front end Next.js repository for MyTravelJournal
 
 ### Development Start
 
-- Use `npm run dev` to start the development server
-- Open `localhost:4321` to see the development site
+```bash
+# Install dependencies
+npm install
 
-<!-- TODO: Update list -->
+# Start the development server
+npm run dev
+
+# Open http://localhost:4321 to see the development site
+```
 
 > [Back to Table of Contents](#table-of-contents)
 
 ### Production Start
 
-To quickly get started in production mode, do the following steps:
+```bash
+# Build for production
+npm run build
 
-<!-- TODO: Update list -->
+# Preview production build
+npm run preview
+```
+
+> [Back to Table of Contents](#table-of-contents)
+
+## Obsidian Sync System
+
+### Features
+
+- 🔄 **Selective Sync**: Copy only Obsidian notes with `#portfolio` tag
+- 📱 **Mobile Support**: Sync from different devices and platforms
+- 🚀 **Auto-Deploy**: Automatically deploy changes to production
+- 🏷️ **Tag Filtering**: Filter notes by tags on the website
+- 🔍 **Search**: Search through your notes
+- 📝 **Markdown Processing**: Convert Obsidian-specific syntax to standard markdown
+- 🤖 **CI/CD Integration**: GitHub Actions for automated deployment
+- 🎯 **Smart Filtering**: Only sync notes you want to make public
+- 📝 **Error Logging**: Comprehensive error tracking and JSON logging
+- 📧 **Email Notifications**: Automated email reports via Gmail
+- ✅ **File Verification**: Ensures copied files exist and have content
+
+### Quick Sync Commands
+
+```bash
+# Basic sync (copies files without deploying)
+npm run sync-obsidian
+
+# Sync and automatically deploy
+npm run sync-obsidian:deploy
+
+# Sync with email notifications
+npm run sync-obsidian:email
+
+# Sync, deploy, and send email notification
+npm run sync-obsidian:deploy-email
+
+# Use custom tag (e.g., "public" instead of "portfolio")
+npm run sync-obsidian:custom -- "public"
+
+# Mobile-friendly interactive sync
+node scripts/sync-mobile.js
+```
+
+### Configuration
+
+#### Environment Variables
+
+Set these environment variables to customize the sync behavior:
+
+```bash
+# Path to your Obsidian vault
+export OBSIDIAN_PATH="/path/to/your/obsidian/vault"
+
+# Tag to filter for portfolio notes (default: portfolio)
+export PORTFOLIO_TAG="portfolio"
+
+# Auto-deploy after sync
+export AUTO_DEPLOY="true"
+
+# For mobile detection
+export MOBILE="true"
+
+# Email notifications
+export EMAIL_NOTIFICATIONS="true"
+export EMAIL_RECIPIENT="your-email@gmail.com"
+export BACKEND_URL="https://bangsluke-backend-server.herokuapp.com"
+```
+
+#### Default Paths
+
+The script automatically detects common Obsidian vault locations:
+
+- **Windows**: `C:\Users\bangs\Documents\Obsidian Personal Notes\Personal Notes`
+- **Android**: `/storage/emulated/0/Download/Obsidian Personal Notes/Personal Notes`
+- **iOS**: Various paths in the app sandbox
+
+### Usage Examples
+
+#### Local Development
+
+```bash
+# Sync without deploying
+npm run sync-obsidian
+
+# Start development server
+npm run dev
+
+# Visit http://localhost:4321/notes to see your notes
+```
+
+#### Production Deployment
+
+```bash
+# Sync and deploy to production
+npm run sync-obsidian:deploy
+```
+
+#### Custom Path
+
+```bash
+# Specify a custom Obsidian vault path
+OBSIDIAN_PATH="/custom/path/to/vault" npm run sync-obsidian
+```
+
+#### Custom Tag
+
+```bash
+# Use a different tag for filtering
+PORTFOLIO_TAG="public" npm run sync-obsidian
+# or
+npm run sync-obsidian:custom -- "showcase"
+```
+
+#### Email Notifications
+
+```bash
+# Enable email notifications
+EMAIL_NOTIFICATIONS="true" npm run sync-obsidian
+
+# Custom email recipient
+EMAIL_NOTIFICATIONS="true" EMAIL_RECIPIENT="custom@email.com" npm run sync-obsidian
+```
+
+### Mobile Sync
+
+#### Android
+
+1. Install Termux or similar terminal app
+2. Clone your repository
+3. Run the mobile sync script:
+
+```bash
+cd Portfolio-V2
+node scripts/sync-mobile.js
+```
+
+#### iOS
+
+**Important**: Obsidian mobile files are not stored in iCloud by default and are sandboxed within the app.
+
+**Recommended Method**: Export and transfer files
+1. In Obsidian mobile: **Settings** → **About** → **Export vault** → **Export as plain text**
+2. Save to Files app
+3. Transfer to computer via AirDrop, iCloud Drive, or USB
+4. Run sync script on computer
+
+**Alternative Methods**:
+- Use **Working Copy** app for Git-based sync
+- Create **iOS Shortcuts** automation
+- Use **GitHub Actions** for automated deployment
+
+See the [iOS Sync Guide](scripts/ios-sync-guide.md) for detailed instructions.
+
+### GitHub Actions Integration
+
+#### Manual Trigger
+
+1. Go to your GitHub repository
+2. Navigate to Actions → "Obsidian Sync & Deploy"
+3. Click "Run workflow"
+4. Optionally specify:
+   - Obsidian vault path
+   - Auto-deploy setting
+
+#### Automated Deployment
+
+The workflow can be triggered by:
+
+- **Manual**: Using the workflow dispatch
+- **Scheduled**: Daily at 2 AM UTC
+- **Push**: When changes are made to `src/content/obsidian/` or `scripts/`
+
+#### Setup GitHub Secrets
+
+Add these secrets to your GitHub repository:
+
+```bash
+# For Netlify deployment
+NETLIFY_AUTH_TOKEN=your_netlify_token
+NETLIFY_SITE_ID=your_site_id
+
+# For Vercel deployment (alternative)
+VERCEL_TOKEN=your_vercel_token
+
+# For notifications (optional)
+SLACK_WEBHOOK_URL=your_slack_webhook
+DISCORD_WEBHOOK_URL=your_discord_webhook
+```
+
+### File Organization
+
+After sync, notes with the portfolio tag will be organized into specific folders based on their tags:
+
+```
+src/content/
+├── obsidian/          # Notes without specific category tags
+├── projects/          # Notes with #project tag
+├── clients/           # Notes with #client tag
+├── companies/         # Notes with #company tag
+├── educations/        # Notes with #education tag
+├── references/        # Notes with #reference tag
+├── roles/            # Notes with #role tag
+└── skills/           # Notes with #skill tag
+```
+
+#### Tag to Folder Mapping
+
+| Tag | Folder | Description |
+|-----|--------|-------------|
+| `#project` | `projects/` | Project showcases and case studies |
+| `#client` | `clients/` | Client work and relationships |
+| `#company` | `companies/` | Company experiences and collaborations |
+| `#education` | `educations/` | Educational background and certifications |
+| `#reference` | `references/` | Reference materials and resources |
+| `#role` | `roles/` | Job roles and positions |
+| `#skill` | `skills/` | Skills and competencies |
+
+Notes without these specific tags will be placed in the `obsidian/` folder.
+
+### Portfolio Tag Filtering
+
+The sync system only copies notes that contain the `#portfolio` tag. You can add this tag to your Obsidian notes in several ways:
+
+#### In Frontmatter
+```yaml
+---
+title: "My Project"
+date: 2024-01-01
+tags: ["portfolio", "project", "web-development"]
+---
+```
+
+#### In Content (Obsidian Style)
+```markdown
+# My Project
+
+This is a project I want to showcase on my portfolio.
+
+#portfolio #project #web-development
+```
+
+#### Multiple Tags for Organization
+```markdown
+# Company Experience
+
+Working with this amazing company.
+
+#portfolio #company #tech #leadership
+```
+
+This note would be placed in the `companies/` folder due to the `#company` tag.
+
+### Error Logging & Email Notifications
+
+#### Error Log File
+The sync script creates a detailed error log at `sync-errors.json` containing:
+- Sync start/end times
+- Source path information
+- Processing and verification errors
+- Summary statistics
+- Success/failure status
+
+#### Email Notifications
+When enabled, the script sends detailed HTML email reports including:
+- Sync status (success/failure)
+- File processing summary
+- Error details in formatted tables
+- Timestamps and source information
+
+#### File Verification
+The script verifies each copied file by:
+- Checking if the target file exists
+- Ensuring the file has content (not empty)
+- Logging verification errors separately
+- Providing detailed error information
+
+### Troubleshooting
+
+#### Common Issues
+
+**1. "Could not find Obsidian vault path"**
+
+Solution: Set the `OBSIDIAN_PATH` environment variable:
+
+```bash
+export OBSIDIAN_PATH="/path/to/your/vault"
+npm run sync-obsidian
+```
+
+**2. "No files copied - all files skipped"**
+
+Solution: Add the `#portfolio` tag to your notes:
+
+```yaml
+---
+title: "My Note"
+tags: ["portfolio"]
+---
+```
+
+Or add `#portfolio` anywhere in your note content.
+
+**3. Permission denied errors**
+
+Solution: Check file permissions and ensure the script has read access to your Obsidian vault.
+
+**4. Git authentication errors**
+
+Solution: Ensure your Git credentials are properly configured:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+**5. Build errors**
+
+Solution: Check that all markdown files have valid frontmatter:
+
+```yaml
+---
+title: "Note Title"
+date: 2024-01-01
+tags: ["portfolio"]
+---
+```
+
+#### Debug Mode
+
+Run with verbose logging:
+
+```bash
+DEBUG=true npm run sync-obsidian
+```
+
+#### Manual File Processing
+
+If automatic sync fails, you can manually copy files:
+
+```bash
+# Create the target directory
+mkdir -p src/content/obsidian
+
+# Copy files manually
+cp -r "/path/to/obsidian/vault"/* src/content/obsidian/
+
+# Build the project
+npm run build
+```
+
+### Obsidian Syntax Conversion
+
+The sync script automatically converts Obsidian-specific syntax:
+
+| Obsidian | Standard Markdown |
+|----------|-------------------|
+| `[[Internal Link]]` | `[Internal Link](Internal Link)` |
+| `> [!NOTE] Text` | `> **NOTE:** Text` |
+| `aliases: [alias1, alias2]` | *(removed)* |
+| `tags: [tag1, tag2]` | *(preserved, portfolio tag added)* |
+| `#portfolio` | *(detected for filtering)* |
+
+### Security Considerations
+
+- **Public Notes**: Only sync notes you want to make public
+- **Sensitive Data**: Never sync notes containing passwords, API keys, or personal information
+- **Git History**: Consider using `.gitignore` to exclude sensitive files
+- **Access Control**: Use proper authentication for your deployment platform
 
 > [Back to Table of Contents](#table-of-contents)
 
@@ -301,8 +704,7 @@ If you encounter issues after schema changes:
 3. **Use the Debug Page**: Navigate to `/debug` to test the connection and see detailed error information
 4. **Check Console Logs**: Look for GraphQL errors in the browser console
 
-
-
+> [Back to Table of Contents](#table-of-contents)
 
 ## Debugging Problems
 

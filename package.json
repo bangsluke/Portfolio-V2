@@ -6,7 +6,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "sync-obsidian": "node scripts/sync-obsidian.js",
+    "sync-obsidian:deploy": "AUTO_DEPLOY=true node scripts/sync-obsidian.js",
+    "sync-obsidian:custom": "node scripts/sync-obsidian.js --tag",
+    "sync-obsidian:email": "EMAIL_NOTIFICATIONS=true node scripts/sync-obsidian.js",
+    "sync-obsidian:deploy-email": "AUTO_DEPLOY=true EMAIL_NOTIFICATIONS=true node scripts/sync-obsidian.js"
   },
   "dependencies": {
     "@astrojs/preact": "^4.0.8",

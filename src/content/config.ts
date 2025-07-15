@@ -29,6 +29,102 @@ const jsonDataCollection = defineCollection({
   }),
 });
 
+const obsidianCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    tags: z.array(z.string()).default([]),
+    description: z.string().optional(),
+    published: z.boolean().default(true),
+  }).passthrough(), // Allow additional properties
+});
+
+const projectsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    tags: z.array(z.string()).default([]),
+    description: z.string().optional(),
+    published: z.boolean().default(true),
+  }).passthrough(),
+});
+
+const clientsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    tags: z.array(z.string()).default([]),
+    description: z.string().optional(),
+    published: z.boolean().default(true),
+  }).passthrough(),
+});
+
+const companiesCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    tags: z.array(z.string()).default([]),
+    description: z.string().optional(),
+    published: z.boolean().default(true),
+  }).passthrough(),
+});
+
+const educationsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    tags: z.array(z.string()).default([]),
+    description: z.string().optional(),
+    published: z.boolean().default(true),
+  }).passthrough(),
+});
+
+const referencesCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    tags: z.array(z.string()).default([]),
+    description: z.string().optional(),
+    published: z.boolean().default(true),
+  }).passthrough(),
+});
+
+const rolesCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    tags: z.array(z.string()).default([]),
+    description: z.string().optional(),
+    published: z.boolean().default(true),
+  }).passthrough(),
+});
+
+const skillsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    tags: z.array(z.string()).default([]),
+    description: z.string().optional(),
+    published: z.boolean().default(true),
+  }).passthrough(),
+});
+
 export const collections = {
   staticData: jsonDataCollection,
+  obsidian: obsidianCollection,
+  projects: projectsCollection,
+  clients: clientsCollection,
+  companies: companiesCollection,
+  educations: educationsCollection,
+  references: referencesCollection,
+  roles: rolesCollection,
+  skills: skillsCollection,
 };
