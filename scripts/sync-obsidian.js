@@ -8,16 +8,24 @@ import { execSync } from 'child_process';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+console.log("SYNC SCRIPT STARTED");
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection:', reason);
+});
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+}); 
+
 // Configuration
 const CONFIG = {
   // Default Obsidian vault paths (will be overridden by environment variables)
   OBSIDIAN_PATHS: {
-    windows: 'C:\\Users\\bangs\\Documents\\Obsidian Personal Notes\\Personal Notes',
-    mobile: '/storage/emulated/0/Download/Obsidian Personal Notes/Personal Notes', // Android
+    windows: 'C:\\Users\\bangs\\Documents\\Obsidian Personal Notes',
+    mobile: '/storage/emulated/0/Download/Obsidian Personal Notes', // Android
     // Add more paths as needed
   },
   // Astro content directory
-  ASTRO_CONTENT_DIR: path.join(__dirname, '../src/content/obsidian'),
+  ASTRO_CONTENT_DIR: path.join(__dirname, '../src/content'),
   // Files/folders to exclude from sync
   EXCLUDE_PATTERNS: [
     '.obsidian',
@@ -116,7 +124,7 @@ class ObsidianSync {
     return CONFIG.INCLUDE_EXTENSIONS.includes(ext);
   }
 
-  async processMarkdownFile(sourcePath, targetPath) {
+  async processMarkdownFile(sourcePath) {
     try {
       let content = await fs.readFile(sourcePath, 'utf-8');
       
@@ -133,7 +141,7 @@ class ObsidianSync {
       // Determine target folder based on tags
       const targetFolder = this.getTargetFolder(content);
       const fileName = path.basename(sourcePath, path.extname(sourcePath));
-      const finalTargetPath = path.join(path.dirname(targetPath), targetFolder, path.basename(targetPath));
+      const finalTargetPath = path.join(CONFIG.ASTRO_CONTENT_DIR, targetFolder, path.basename(sourcePath));
       
       // Ensure target folder exists
       await fs.mkdir(path.dirname(finalTargetPath), { recursive: true });
@@ -200,19 +208,43 @@ tags: ["${CONFIG.PORTFOLIO_TAG}"]
   }
 
   getTargetFolder(content) {
+    console.log("DEBUG: Determining target folder...");
+    
     // Extract tags from frontmatter
     const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---/);
     if (frontmatterMatch) {
       const frontmatter = frontmatterMatch[1];
+      console.log("DEBUG: Found frontmatter for folder mapping");
       
-      // Check for tags array
-      const tagsMatch = frontmatter.match(/tags:\s*\[(.*?)\]/i);
-      if (tagsMatch) {
-        const tags = tagsMatch[1].split(',').map(tag => tag.trim().replace(/['"]/g, '').toLowerCase());
+      // Check for YAML tags format (tags: - tag1 - tag2)
+      const yamlTagsMatch = frontmatter.match(/tags:\s*\n((?:\s*-\s*[^\n]+\n?)*)/i);
+      if (yamlTagsMatch) {
+        const yamlTags = yamlTagsMatch[1]
+          .split('\n')
+          .filter(line => line.trim().startsWith('-'))
+          .map(line => line.trim().substring(1).trim().replace(/['"]/g, '').toLowerCase());
+        
+        console.log("DEBUG: Found YAML tags:", yamlTags);
+        
+        // Find the first matching tag for folder mapping
+        for (const tag of yamlTags) {
+          if (CONFIG.FOLDER_MAPPING[tag]) {
+            console.log(`DEBUG: Found matching tag '${tag}' -> folder '${CONFIG.FOLDER_MAPPING[tag]}'`);
+            return CONFIG.FOLDER_MAPPING[tag];
+          }
+        }
+      }
+      
+      // Check for bracket notation tags (tags: [tag1, tag2])
+      const bracketTagsMatch = frontmatter.match(/tags:\s*\[(.*?)\]/i);
+      if (bracketTagsMatch) {
+        const tags = bracketTagsMatch[1].split(',').map(tag => tag.trim().replace(/['"]/g, '').toLowerCase());
+        console.log("DEBUG: Found bracket tags:", tags);
         
         // Find the first matching tag for folder mapping
         for (const tag of tags) {
           if (CONFIG.FOLDER_MAPPING[tag]) {
+            console.log(`DEBUG: Found matching tag '${tag}' -> folder '${CONFIG.FOLDER_MAPPING[tag]}'`);
             return CONFIG.FOLDER_MAPPING[tag];
           }
         }
@@ -221,6 +253,7 @@ tags: ["${CONFIG.PORTFOLIO_TAG}"]
       // Check for single tag
       for (const [tag, folder] of Object.entries(CONFIG.FOLDER_MAPPING)) {
         if (frontmatter.includes(`tag: ${tag}`) || frontmatter.includes(`tags: ${tag}`)) {
+          console.log(`DEBUG: Found single tag '${tag}' -> folder '${folder}'`);
           return folder;
         }
       }
@@ -230,31 +263,67 @@ tags: ["${CONFIG.PORTFOLIO_TAG}"]
     for (const [tag, folder] of Object.entries(CONFIG.FOLDER_MAPPING)) {
       const inlineTagPattern = new RegExp(`#${tag}\\b`, 'i');
       if (inlineTagPattern.test(content)) {
+        console.log(`DEBUG: Found inline tag '#${tag}' -> folder '${folder}'`);
         return folder;
       }
     }
     
+    console.log("DEBUG: No matching tags found, defaulting to 'obsidian' folder");
     // Default to obsidian folder if no specific tag found
     return 'obsidian';
   }
 
   hasPortfolioTag(content) {
-    // Check for portfolio tag in frontmatter
+    // Only check for portfolio tag in frontmatter (between --- markers)
     const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---/);
     if (frontmatterMatch) {
       const frontmatter = frontmatterMatch[1];
-      // Check for tags array or single tag
-      const tagPatterns = [
-        new RegExp(`tags:\\s*\\[.*${CONFIG.PORTFOLIO_TAG}.*\\]`, 'i'),
-        new RegExp(`tags:\\s*${CONFIG.PORTFOLIO_TAG}`, 'i'),
-        new RegExp(`tag:\\s*${CONFIG.PORTFOLIO_TAG}`, 'i')
-      ];
-      return tagPatterns.some(pattern => pattern.test(frontmatter));
+      console.log("DEBUG: Found frontmatter, checking for portfolio tag...");
+      console.log("DEBUG: Frontmatter preview:", frontmatter.substring(0, 300) + "...");
+      
+      // Check for YAML list format tags (e.g., tags: [portfolio, project])
+      const yamlListMatch = frontmatter.match(/tags:\s*\[(.*?)\]/i);
+      if (yamlListMatch) {
+        const tags = yamlListMatch[1].split(',').map(tag => tag.trim().replace(/['"]/g, '').toLowerCase());
+        const hasTag = tags.includes(CONFIG.PORTFOLIO_TAG.toLowerCase());
+        console.log(`DEBUG: YAML list tags: [${tags.join(', ')}], has portfolio: ${hasTag}`);
+        if (hasTag) {
+          console.log("DEBUG: Found portfolio tag in YAML list!");
+          return true;
+        }
+      }
+      
+      // Check for YAML dash format tags (e.g., tags: - portfolio - project)
+      const yamlDashMatch = frontmatter.match(/tags:\s*((?:- [^\n]+\n?)+)/i);
+      if (yamlDashMatch) {
+        const tags = yamlDashMatch[1].split('\n')
+          .map(line => line.trim())
+          .filter(line => line.startsWith('- '))
+          .map(line => line.substring(2).trim().toLowerCase());
+        const hasTag = tags.includes(CONFIG.PORTFOLIO_TAG.toLowerCase());
+        console.log(`DEBUG: YAML dash tags: [${tags.join(', ')}], has portfolio: ${hasTag}`);
+        if (hasTag) {
+          console.log("DEBUG: Found portfolio tag in YAML dash format!");
+          return true;
+        }
+      }
+      
+      // Check for single tag format
+      const singleTagPattern = new RegExp(`tags?:\\s*${CONFIG.PORTFOLIO_TAG}\\b`, 'i');
+      const hasSingleTag = singleTagPattern.test(frontmatter);
+      console.log(`DEBUG: Single tag check: ${hasSingleTag}`);
+      if (hasSingleTag) {
+        console.log("DEBUG: Found portfolio tag as single tag!");
+        return true;
+      }
+      
+      console.log("DEBUG: No portfolio tag found in frontmatter");
+    } else {
+      console.log("DEBUG: No frontmatter found");
     }
     
-    // Check for inline tags in content (Obsidian style)
-    const inlineTagPattern = new RegExp(`#${CONFIG.PORTFOLIO_TAG}\\b`, 'i');
-    return inlineTagPattern.test(content);
+    // Only check frontmatter, not inline content
+    return false;
   }
 
   ensurePortfolioTag(content) {
@@ -308,25 +377,20 @@ tags: ["${CONFIG.PORTFOLIO_TAG}"]
   }
 
   async copyDirectory(sourceDir, targetDir) {
-    try {
-      await fs.mkdir(targetDir, { recursive: true });
-    } catch (error) {
-      // Directory might already exist
-    }
-
     const entries = await fs.readdir(sourceDir, { withFileTypes: true });
 
     for (const entry of entries) {
       const sourcePath = path.join(sourceDir, entry.name);
-      const targetPath = path.join(targetDir, entry.name);
 
       if (entry.isDirectory()) {
+        // Recursively process subdirectories, but don't create them in target
         if (!this.shouldExclude(sourcePath)) {
-          await this.copyDirectory(sourcePath, targetPath);
+          await this.copyDirectory(sourcePath, targetDir);
         }
       } else if (entry.isFile() && this.shouldInclude(sourcePath)) {
         if (!this.shouldExclude(sourcePath)) {
-          await this.processMarkdownFile(sourcePath, targetPath);
+          console.log(`DEBUG: Processing file: ${path.relative(this.sourcePath, sourcePath)}`);
+          await this.processMarkdownFile(sourcePath);
         } else {
           this.stats.filesSkipped++;
           console.log(`- Skipped: ${path.relative(this.sourcePath, sourcePath)}`);
@@ -563,6 +627,8 @@ tags: ["${CONFIG.PORTFOLIO_TAG}"]
 
 // CLI interface
 async function main() {
+  console.log("Main function started");
+  
   const args = process.argv.slice(2);
   
   if (args.includes('--help') || args.includes('-h')) {
@@ -608,13 +674,28 @@ Examples:
     process.env.PORTFOLIO_TAG = args[tagIndex + 1];
   }
 
+  console.log("Creating ObsidianSync instance...");
   const sync = new ObsidianSync();
+  console.log("Starting sync...");
   await sync.sync();
 }
 
-// Run if called directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+// DEBUG: Show both values
+console.log("import.meta.url:", import.meta.url);
+console.log("process.argv[1]:", process.argv[1]);
+
+// Normalize both paths for Windows compatibility
+const isMain =
+  process.argv[1] &&
+  fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
+
+console.log("isMain:", isMain);
+
+if (isMain) {
+  console.log("Calling main()");
   main().catch(console.error);
+} else {
+  console.log("Not calling main()");
 }
 
 export default ObsidianSync; 

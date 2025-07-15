@@ -90,8 +90,8 @@ export BACKEND_URL="https://bangsluke-backend-server.herokuapp.com"
 
 The script automatically detects common Obsidian vault locations:
 
-- **Windows**: `C:\Users\bangs\Documents\Obsidian Personal Notes\Personal Notes`
-- **Android**: `/storage/emulated/0/Download/Obsidian Personal Notes/Personal Notes`
+- **Windows**: `C:\Users\bangs\Documents\Obsidian Personal Notes`
+- **Android**: `/storage/emulated/0/Download/Obsidian Personal Notes`
 - **iOS**: Various paths in the app sandbox
 
 ### Custom Configuration

@@ -1,0 +1,19 @@
+{
+  "syncStartTime": "2025-07-15T12:28:42.328Z",
+  "syncEndTime": "2025-07-15T12:28:51.272Z",
+  "sourcePath": "C:\\Users\\bangs\\Documents\\Obsidian Personal Notes",
+  "stats": {
+    "filesCopied": 5,
+    "filesSkipped": 2061,
+    "errors": [],
+    "verificationErrors": []
+  },
+  "summary": {
+    "totalFiles": 2066,
+    "filesCopied": 5,
+    "filesSkipped": 2061,
+    "processingErrors": 0,
+    "verificationErrors": 0,
+    "success": true
+  }
+}
