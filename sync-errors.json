@@ -1,19 +1,13 @@
 {
-  "syncStartTime": "2025-07-15T12:42:30.170Z",
-  "syncEndTime": "2025-07-15T12:42:44.942Z",
-  "sourcePath": "C:\\Users\\bangs\\Documents\\Obsidian Personal Notes",
-  "stats": {
-    "filesCopied": 107,
-    "filesSkipped": 1959,
-    "errors": [],
-    "verificationErrors": []
-  },
+  "timestamp": "2025-07-15T13:43:10.500Z",
+  "source": "C:/Users/bangs/Documents/Coding Projects/Obsidian-Backups/Obsidian-Personal-Notes/Personal Notes",
+  "errors": [],
   "summary": {
-    "totalFiles": 2066,
-    "filesCopied": 107,
-    "filesSkipped": 1959,
-    "processingErrors": 0,
-    "verificationErrors": 0,
-    "success": true
-  }
+    "totalFiles": 1135,
+    "processedFiles": 1135,
+    "copiedFiles": 0,
+    "skippedFiles": 1135,
+    "errors": 0
+  },
+  "success": false
 }
