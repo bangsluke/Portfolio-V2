@@ -232,6 +232,11 @@ tags: ["${CONFIG.PORTFOLIO_TAG}"]
             console.log(`DEBUG: Found matching tag '${tag}' -> folder '${CONFIG.FOLDER_MAPPING[tag]}'`);
             return CONFIG.FOLDER_MAPPING[tag];
           }
+          // If tag starts with 'project/', treat as project
+          if (tag.startsWith('project/')) {
+            console.log(`DEBUG: Tag '${tag}' starts with 'project/', storing in 'projects' folder`);
+            return 'projects';
+          }
         }
       }
       
@@ -246,6 +251,11 @@ tags: ["${CONFIG.PORTFOLIO_TAG}"]
           if (CONFIG.FOLDER_MAPPING[tag]) {
             console.log(`DEBUG: Found matching tag '${tag}' -> folder '${CONFIG.FOLDER_MAPPING[tag]}'`);
             return CONFIG.FOLDER_MAPPING[tag];
+          }
+          // If tag starts with 'project/', treat as project
+          if (tag.startsWith('project/')) {
+            console.log(`DEBUG: Tag '${tag}' starts with 'project/', storing in 'projects' folder`);
+            return 'projects';
           }
         }
       }
@@ -281,6 +291,12 @@ tags: ["${CONFIG.PORTFOLIO_TAG}"]
       console.log("DEBUG: Found frontmatter, checking for portfolio tag...");
       console.log("DEBUG: Frontmatter preview:", frontmatter.substring(0, 300) + "...");
       
+      // Special debug for Backend Server file
+      if (frontmatter.includes('Backend Server') || frontmatter.includes('projectURL: https://bangsluke-backend-server')) {
+        console.log("DEBUG: *** BACKEND SERVER FILE DETECTED ***");
+        console.log("DEBUG: Full frontmatter:", frontmatter);
+      }
+      
       // Check for YAML list format tags (e.g., tags: [portfolio, project])
       const yamlListMatch = frontmatter.match(/tags:\s*\[(.*?)\]/i);
       if (yamlListMatch) {
@@ -294,7 +310,7 @@ tags: ["${CONFIG.PORTFOLIO_TAG}"]
       }
       
       // Check for YAML dash format tags (e.g., tags: - portfolio - project)
-      const yamlDashMatch = frontmatter.match(/tags:\s*((?:- [^\n]+\n?)+)/i);
+      const yamlDashMatch = frontmatter.match(/tags:\s*\n((?:\s*-\s*[^\n]+\n?)+)/i);
       if (yamlDashMatch) {
         const tags = yamlDashMatch[1].split('\n')
           .map(line => line.trim())
@@ -302,6 +318,16 @@ tags: ["${CONFIG.PORTFOLIO_TAG}"]
           .map(line => line.substring(2).trim().toLowerCase());
         const hasTag = tags.includes(CONFIG.PORTFOLIO_TAG.toLowerCase());
         console.log(`DEBUG: YAML dash tags: [${tags.join(', ')}], has portfolio: ${hasTag}`);
+        
+        // Special debug for Backend Server file
+        if (frontmatter.includes('projectURL: https://bangsluke-backend-server')) {
+          console.log("DEBUG: *** BACKEND SERVER YAML DASH DEBUG ***");
+          console.log("DEBUG: yamlDashMatch[1]:", yamlDashMatch[1]);
+          console.log("DEBUG: Parsed tags:", tags);
+          console.log("DEBUG: Looking for tag:", CONFIG.PORTFOLIO_TAG.toLowerCase());
+          console.log("DEBUG: hasTag result:", hasTag);
+        }
+        
         if (hasTag) {
           console.log("DEBUG: Found portfolio tag in YAML dash format!");
           return true;
@@ -389,7 +415,15 @@ tags: ["${CONFIG.PORTFOLIO_TAG}"]
         }
       } else if (entry.isFile() && this.shouldInclude(sourcePath)) {
         if (!this.shouldExclude(sourcePath)) {
-          console.log(`DEBUG: Processing file: ${path.relative(this.sourcePath, sourcePath)}`);
+          const relativePath = path.relative(this.sourcePath, sourcePath);
+          console.log(`DEBUG: Processing file: ${relativePath}`);
+          
+          // Special debug for Backend Server file
+          if (relativePath.includes('Backend Server')) {
+            console.log(`DEBUG: Found Backend Server file! Path: ${relativePath}`);
+            console.log(`DEBUG: Full path: ${sourcePath}`);
+          }
+          
           await this.processMarkdownFile(sourcePath);
         } else {
           this.stats.filesSkipped++;
