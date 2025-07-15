@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import CustomerCarouselComponent from './CustomerCarousel';
+
+// Get all companies from the local content folder
+const companies = await getCollection('companies');
+
+// Sort companies by creation date (newest first) and filter for portfolio tag
+const sortedCompanies = companies
+  .filter(company => {
+    // Filter out companies that don't have portfolio tag
+    return company.data.tags && company.data.tags.includes('portfolio');
+  })
+  .sort((a, b) => {
+    // Sort by creation date, fallback to modification date, then alphabetically
+    const dateA = a.data.created || a.data.modified || new Date(0);
+    const dateB = b.data.created || b.data.modified || new Date(0);
+    
+    if (dateA instanceof Date && dateB instanceof Date) {
+      return dateB.getTime() - dateA.getTime();
+    }
+    
+    // Fallback to alphabetical sorting by slug
+    return a.slug.localeCompare(b.slug);
+  });
+
+// Debug: Log the data being passed
+console.log('CustomerCarousel.astro - Total companies:', companies.length);
+console.log('CustomerCarousel.astro - Filtered companies:', sortedCompanies.length);
+console.log('CustomerCarousel.astro - First company:', sortedCompanies[0]);
+---
+
+<CustomerCarouselComponent companies={JSON.stringify(sortedCompanies)} /> 
