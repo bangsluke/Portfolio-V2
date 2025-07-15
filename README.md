@@ -70,6 +70,20 @@
       - [Debugging Schema Changes](#debugging-schema-changes)
   - [Debugging Problems](#debugging-problems)
     - [Connection Problems](#connection-problems)
+  - [Email Service Setup](#email-service-setup)
+    - [Overview](#overview)
+    - [Prerequisites](#prerequisites)
+    - [Step 1: Install Dependencies](#step-1-install-dependencies)
+    - [Step 2: Set Up Gmail App Password](#step-2-set-up-gmail-app-password)
+    - [Step 3: Configure Environment Variables](#step-3-configure-environment-variables)
+    - [Step 4: Test the Email Service](#step-4-test-the-email-service)
+    - [Step 5: Troubleshooting](#step-5-troubleshooting)
+    - [Step 6: Security Best Practices](#step-6-security-best-practices)
+    - [Step 7: Production Deployment](#step-7-production-deployment)
+    - [Step 8: Email Templates](#step-8-email-templates)
+    - [Step 9: Monitoring and Maintenance](#step-9-monitoring-and-maintenance)
+    - [Support](#support)
+    - [Example .env Configuration](#example-env-configuration)
 
 ## Introduction
 
@@ -742,5 +756,240 @@ If you encounter issues after schema changes:
 ### Connection Problems
 
 If the problem is a connection issue between the backend server and front end website, navigate to `http://localhost:4321/debug` to see a connection test
+
+> [Back to Table of Contents](#table-of-contents)
+
+## Email Service Setup
+
+This guide will help you set up a self-contained email service for your Obsidian sync notifications using Gmail SMTP.
+
+### Overview
+
+The email service has been updated to use Nodemailer with Gmail SMTP instead of relying on your backend server. This makes it completely self-contained within your Portfolio-V2 project.
+
+### Prerequisites
+
+1. A Gmail account
+2. Node.js and npm installed
+3. Access to your Portfolio-V2 project
+
+### Step 1: Install Dependencies
+
+First, install the required Nodemailer package:
+
+```bash
+npm install nodemailer
+```
+
+### Step 2: Set Up Gmail App Password
+
+**Important**: You cannot use your regular Gmail password. You need to create an "App Password" for security.
+
+#### 2.1 Enable 2-Factor Authentication
+
+1. Go to your [Google Account settings](https://myaccount.google.com/)
+2. Navigate to "Security"
+3. Enable "2-Step Verification" if not already enabled
+
+#### 2.2 Generate App Password
+
+1. In your Google Account settings, go to "Security"
+2. Find "2-Step Verification" and click on it
+3. Scroll down to "App passwords"
+4. Click "Create new app password"
+5. Select "Mail" as the app type
+6. Choose "Other (Custom name)" and enter "Portfolio Sync"
+7. Click "Generate"
+8. **Copy the 16-character password** (it will look like: `abcd efgh ijkl mnop`)
+
+**Important**: Save this password securely. You won't be able to see it again.
+
+### Step 3: Configure Environment Variables
+
+Add the following variables to your `.env` file:
+
+```env
+# Email Configuration
+EMAIL_NOTIFICATIONS=true
+EMAIL_RECIPIENT=your-email@gmail.com
+EMAIL_SENDER=your-email@gmail.com
+GMAIL_USER=your-email@gmail.com
+GMAIL_APP_PASSWORD=your-16-character-app-password
+```
+
+#### Environment Variable Details:
+
+- `EMAIL_NOTIFICATIONS`: Set to `true` to enable email notifications
+- `EMAIL_RECIPIENT`: The email address that will receive sync notifications
+- `EMAIL_SENDER`: The email address that will send notifications (usually same as GMAIL_USER)
+- `GMAIL_USER`: Your Gmail address
+- `GMAIL_APP_PASSWORD`: The 16-character app password you generated
+
+### Step 4: Test the Email Service
+
+#### 4.1 Test Email Configuration
+
+Use the provided test script to verify your email setup:
+
+```bash
+npm run test-email
+```
+
+#### 4.2 Test with Sync Script
+
+You can also test email notifications with your sync scripts:
+
+```bash
+# Test with basic sync
+npm run sync-obsidian:email
+
+# Test with production sync
+npm run sync-production:email
+```
+
+### Step 5: Troubleshooting
+
+#### Common Issues and Solutions
+
+##### 1. "Invalid login" Error
+
+**Problem**: `535-5.7.8 Username and Password not accepted`
+
+**Solution**: 
+- Make sure you're using an App Password, not your regular Gmail password
+- Verify 2-Factor Authentication is enabled
+- Check that the GMAIL_USER matches the account where you generated the App Password
+
+##### 2. "Less secure app access" Error
+
+**Problem**: Gmail blocks the connection
+
+**Solution**: 
+- This shouldn't happen with App Passwords, but if it does, make sure you're using the App Password correctly
+- Double-check that you copied the entire 16-character password
+
+##### 3. "Connection timeout" Error
+
+**Problem**: Network connectivity issues
+
+**Solution**:
+- Check your internet connection
+- Verify firewall settings aren't blocking SMTP (port 587)
+- Try again in a few minutes
+
+##### 4. "Authentication failed" Error
+
+**Problem**: Incorrect credentials
+
+**Solution**:
+- Verify all environment variables are set correctly
+- Make sure there are no extra spaces in your .env file
+- Regenerate the App Password if needed
+
+#### Debug Mode
+
+To see more detailed error information, you can add debug logging:
+
+```javascript
+// In your sync script, add this before emailService.initialize():
+process.env.DEBUG = 'true';
+```
+
+### Step 6: Security Best Practices
+
+#### 1. Environment Variables
+- Never commit your `.env` file to version control
+- Use different App Passwords for different environments
+- Rotate App Passwords periodically
+
+#### 2. Email Content
+- The email service sends HTML emails with detailed sync reports
+- Sensitive information is not included in emails
+- All sync data is logged locally in `sync-errors.json`
+
+#### 3. Access Control
+- Only authorized email addresses should receive notifications
+- Consider using a dedicated email address for notifications
+
+### Step 7: Production Deployment
+
+#### For Netlify/Vercel Deployment
+
+When deploying to production platforms, you'll need to set the environment variables in your deployment platform:
+
+##### Netlify
+1. Go to your site settings in Netlify
+2. Navigate to "Environment variables"
+3. Add all the email-related environment variables
+
+##### Vercel
+1. Go to your project settings in Vercel
+2. Navigate to "Environment Variables"
+3. Add all the email-related environment variables
+
+#### For Local Development
+
+Make sure your `.env` file is in the root of your project and contains all necessary variables.
+
+### Step 8: Email Templates
+
+The email service automatically generates beautiful HTML emails with:
+
+- Sync status (success/failure)
+- Detailed timing information
+- File processing statistics
+- Error reports (if any)
+- Professional styling
+
+You can customize the email templates by modifying the `generateSyncReport` method in `scripts/email-service.js`.
+
+### Step 9: Monitoring and Maintenance
+
+#### Regular Tasks
+1. **Monthly**: Check that emails are being received
+2. **Quarterly**: Rotate your Gmail App Password
+3. **As needed**: Update email templates or recipient lists
+
+#### Logs
+- Email service logs are included in your sync script output
+- Failed email attempts are logged to the console
+- Sync errors are saved to `sync-errors.json`
+
+### Support
+
+If you encounter issues:
+
+1. Check the troubleshooting section above
+2. Verify your Gmail App Password is correct
+3. Test with the provided test script
+4. Check your `.env` file configuration
+5. Review the console output for detailed error messages
+
+### Example .env Configuration
+
+Here's a complete example of what your `.env` file should look like:
+
+```env
+# Obsidian Configuration
+OBSIDIAN_PATH=C:/Users/bangs/Documents/Coding Projects/Obsidian-Backups/Obsidian-Personal-Notes/Personal Notes
+PORTFOLIO_TAG=portfolio
+
+# Email Configuration
+EMAIL_NOTIFICATIONS=true
+EMAIL_RECIPIENT=bangsluke@gmail.com
+EMAIL_SENDER=bangsluke@gmail.com
+GMAIL_USER=bangsluke@gmail.com
+GMAIL_APP_PASSWORD=abcd efgh ijkl mnop
+
+# Deployment Configuration
+AUTO_DEPLOY=true
+NETLIFY_SITE_ID=your-netlify-site-id
+NETLIFY_AUTH_TOKEN=your-netlify-token
+
+# Optional: Debug mode
+DEBUG=false
+```
+
+Remember to replace the placeholder values with your actual configuration!
 
 > [Back to Table of Contents](#table-of-contents)

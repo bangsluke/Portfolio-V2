@@ -1,8 +1,13 @@
 #!/usr/bin/env node
 
+import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { emailService } from './email-service.js';
+
+// Load environment variables from .env file (one level up from scripts folder)
+dotenv.config({ path: '../.env' });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -214,24 +219,79 @@ function verifyProtectedItems() {
 }
 
 // Main function
-function main() {
-  console.log('Ensuring directories exist...');
-  ensureDirectories();
+async function main() {
+  const startTime = new Date();
+  const syncStats = {
+    filesCopied: 0,
+    filesSkipped: 0,
+    errors: []
+  };
   
-  console.log('Processing Obsidian vault...');
-  processDirectory(OBSIDIAN_VAULT_PATH);
-  
-  console.log('Cleaning up old files...');
-  cleanupOldFiles();
-  
-  console.log('Verifying protected items...');
-  if (!verifyProtectedItems()) {
-    console.error('CRITICAL ERROR: Protected items are missing!');
-    process.exit(1);
+  try {
+    // Initialize email service
+    await emailService.initialize();
+    
+    console.log('Ensuring directories exist...');
+    ensureDirectories();
+    
+    console.log('Processing Obsidian vault...');
+    processDirectory(OBSIDIAN_VAULT_PATH);
+    
+    console.log('Cleaning up old files...');
+    cleanupOldFiles();
+    
+    console.log('Verifying protected items...');
+    if (!verifyProtectedItems()) {
+      console.error('CRITICAL ERROR: Protected items are missing!');
+      process.exit(1);
+    }
+    
+    console.log('Sync completed successfully!');
+    
+    // Send email notification if enabled
+    if (process.env.EMAIL_NOTIFICATIONS === 'true') {
+      const syncData = {
+        success: true,
+        startTime: startTime.toISOString(),
+        endTime: new Date().toISOString(),
+        sourcePath: OBSIDIAN_VAULT_PATH,
+        summary: {
+          totalFiles: syncStats.filesCopied + syncStats.filesSkipped,
+          copiedFiles: syncStats.filesCopied,
+          skippedFiles: syncStats.filesSkipped,
+          errors: syncStats.errors.length,
+          duration: Date.now() - startTime.getTime()
+        },
+        errors: syncStats.errors
+      };
+      
+      await emailService.sendSyncNotification(syncData);
+    }
+    
+  } catch (error) {
+    console.error('Sync failed:', error.message);
+    
+    // Send error notification if enabled
+    if (process.env.EMAIL_NOTIFICATIONS === 'true') {
+      const syncData = {
+        success: false,
+        startTime: startTime.toISOString(),
+        endTime: new Date().toISOString(),
+        sourcePath: OBSIDIAN_VAULT_PATH,
+        summary: {
+          totalFiles: syncStats.filesCopied + syncStats.filesSkipped,
+          copiedFiles: syncStats.filesCopied,
+          skippedFiles: syncStats.filesSkipped,
+          errors: syncStats.errors.length + 1,
+          duration: Date.now() - startTime.getTime()
+        },
+        errors: [...syncStats.errors, { type: 'main', error: error.message, timestamp: new Date().toISOString() }]
+      };
+      
+      await emailService.sendSyncNotification(syncData);
+    }
   }
-  
-  console.log('Sync completed successfully!');
 }
 
 // Run the script
-main(); 
+main().catch(console.error); 

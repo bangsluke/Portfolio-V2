@@ -1,10 +1,15 @@
 #!/usr/bin/env node
 
+import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { processDirectory as processMarkdownFiles } from './process-obsidian-markdown.js';
+import { emailService } from './email-service.js';
+
+// Load environment variables from .env file (one level up from scripts folder)
+dotenv.config({ path: '../.env' });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -283,18 +288,16 @@ function saveErrorLog() {
 
 // Send email notification
 async function sendEmailNotification() {
-  if (process.env.EMAIL_NOTIFICATIONS !== 'true') return;
+  const syncData = {
+    success: syncErrors.success,
+    startTime: syncErrors.timestamp,
+    endTime: new Date().toISOString(),
+    sourcePath: OBSIDIAN_VAULT_PATH,
+    summary: syncErrors.summary,
+    errors: syncErrors.errors
+  };
   
-  try {
-    console.log('📧 Sending email notification...');
-    
-    // This would integrate with your email service
-    // For now, we'll just log the notification
-    console.log(`📧 Email notification would be sent to: ${process.env.EMAIL_RECIPIENT}`);
-    
-  } catch (error) {
-    console.error('❌ Failed to send email notification:', error.message);
-  }
+  return await emailService.sendSyncNotification(syncData);
 }
 
 // Main sync function
@@ -302,6 +305,9 @@ async function main() {
   const startTime = Date.now();
   
   try {
+    // Step 0: Initialize email service
+    await emailService.initialize();
+    
     // Step 1: Ensure directories exist
     ensureDirectories();
     
