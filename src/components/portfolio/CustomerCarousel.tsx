@@ -33,15 +33,23 @@ function formatCompanyName(slug: string): string {
 
 export default function CustomerCarouselComponent({ companies }: CustomerCarouselProps) {
   const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
+  const [debugInfo, setDebugInfo] = useState<any>({});
 
   useEffect(() => {
+    console.log('=== CUSTOMER CAROUSEL TSX DEBUG ===');
+    console.log('CustomerCarousel.tsx - Component mounted');
+    console.log('CustomerCarousel.tsx - Companies prop received:', companies ? 'YES' : 'NO');
+    console.log('CustomerCarousel.tsx - Companies prop type:', typeof companies);
+    console.log('CustomerCarousel.tsx - Companies prop length:', companies?.length || 0);
+    
     try {
       // Parse the JSON string back to an array
       const companiesArray: Company[] = JSON.parse(companies);
       
-      // Debug: Log the data received
-      console.log('CustomerCarousel.tsx - Companies received:', companiesArray);
-      console.log('CustomerCarousel.tsx - Companies length:', companiesArray?.length);
+      // Enhanced debug logging
+      console.log('CustomerCarousel.tsx - Companies parsed successfully');
+      console.log('CustomerCarousel.tsx - Companies array length:', companiesArray?.length);
+      console.log('CustomerCarousel.tsx - Companies array:', companiesArray);
       
       // Create carousel items from companies
       const items = companiesArray?.map(company => {
@@ -66,11 +74,36 @@ export default function CustomerCarouselComponent({ companies }: CustomerCarouse
       }) || [];
       
       console.log('CustomerCarousel.tsx - Carousel items created:', items);
+      console.log('CustomerCarousel.tsx - Number of carousel items:', items.length);
+      
       setCarouselItems(items);
+      
+      // Set debug info for visual display
+      setDebugInfo({
+        propReceived: !!companies,
+        propType: typeof companies,
+        propLength: companies?.length || 0,
+        parsedSuccessfully: true,
+        companiesArrayLength: companiesArray?.length || 0,
+        carouselItemsLength: items.length,
+        firstCompany: companiesArray?.[0]?.slug || 'none'
+      });
+      
     } catch (error) {
       console.error('CustomerCarousel.tsx - Error parsing companies data:', error);
+      console.error('CustomerCarousel.tsx - Error details:', error instanceof Error ? error.message : 'Unknown error');
       setCarouselItems([]);
+      
+      setDebugInfo({
+        propReceived: !!companies,
+        propType: typeof companies,
+        propLength: companies?.length || 0,
+        parsedSuccessfully: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
     }
+    
+    console.log('=== END TSX DEBUG ===');
   }, [companies]);
 
   const plugins = [new AutoPlay({ duration: 1000, direction: "NEXT", stopOnHover: true })];
@@ -86,10 +119,26 @@ export default function CustomerCarouselComponent({ companies }: CustomerCarouse
             <p className="text-lg text-blacktext dark:text-gray-200">
               No companies data available at the moment.
             </p>
-            <div className="mt-4 text-sm text-gray-500">
-              <p>Debug info:</p>
-              <p>Companies prop: {companies ? 'Received' : 'Not received'}</p>
-              <p>Carousel items: {carouselItems.length}</p>
+            
+            {/* Enhanced debug info */}
+            <div className="mt-4 text-sm text-gray-500 bg-gray-100 p-4 rounded border">
+              <h4 className="font-bold mb-2">Debug Info (TSX Component):</h4>
+              <div className="text-left font-mono text-xs">
+                <p>Prop received: {debugInfo.propReceived ? 'YES' : 'NO'}</p>
+                <p>Prop type: {debugInfo.propType}</p>
+                <p>Prop length: {debugInfo.propLength}</p>
+                <p>Parsed successfully: {debugInfo.parsedSuccessfully ? 'YES' : 'NO'}</p>
+                {debugInfo.companiesArrayLength !== undefined && (
+                  <p>Companies array length: {debugInfo.companiesArrayLength}</p>
+                )}
+                <p>Carousel items: {carouselItems.length}</p>
+                {debugInfo.firstCompany && (
+                  <p>First company: {debugInfo.firstCompany}</p>
+                )}
+                {debugInfo.error && (
+                  <p className="text-red-600">Error: {debugInfo.error}</p>
+                )}
+              </div>
             </div>
           </div>
         </div>

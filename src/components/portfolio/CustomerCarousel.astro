@@ -24,10 +24,34 @@ const sortedCompanies = companies
     return a.slug.localeCompare(b.slug);
   });
 
-// Debug: Log the data being passed
-console.log('CustomerCarousel.astro - Total companies:', companies.length);
-console.log('CustomerCarousel.astro - Filtered companies:', sortedCompanies.length);
-console.log('CustomerCarousel.astro - First company:', sortedCompanies[0]);
+// Enhanced debug logging
+console.log('=== CUSTOMER CAROUSEL DEBUG ===');
+console.log('CustomerCarousel.astro - Total companies found:', companies.length);
+console.log('CustomerCarousel.astro - Companies with portfolio tag:', sortedCompanies.length);
+console.log('CustomerCarousel.astro - All company slugs:', companies.map(c => c.slug));
+console.log('CustomerCarousel.astro - Filtered company slugs:', sortedCompanies.map(c => c.slug));
+console.log('CustomerCarousel.astro - First company data:', sortedCompanies[0]);
+console.log('CustomerCarousel.astro - Companies JSON length:', JSON.stringify(sortedCompanies).length);
+console.log('=== END DEBUG ===');
+
+// Create debug info for visual display
+const debugInfo = {
+  totalCompanies: companies.length,
+  filteredCompanies: sortedCompanies.length,
+  companySlugs: sortedCompanies.map(c => c.slug),
+  hasData: sortedCompanies.length > 0,
+  jsonLength: JSON.stringify(sortedCompanies).length
+};
 ---
+
+<!-- Visual debug info -->
+<div style="background: #f0f0f0; padding: 10px; margin: 10px 0; border: 1px solid #ccc; font-family: monospace; font-size: 12px;">
+  <strong>DEBUG INFO (Astro Component):</strong><br>
+  Total companies: {debugInfo.totalCompanies}<br>
+  Filtered companies: {debugInfo.filteredCompanies}<br>
+  Company slugs: {debugInfo.companySlugs.join(', ')}<br>
+  Has data: {debugInfo.hasData ? 'YES' : 'NO'}<br>
+  JSON length: {debugInfo.jsonLength}
+</div>
 
 <CustomerCarouselComponent companies={JSON.stringify(sortedCompanies)} /> 
