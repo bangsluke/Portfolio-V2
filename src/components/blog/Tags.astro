@@ -1,15 +1,15 @@
 ---
 const allPosts = await import.meta.glob('../../pages/blog/posts/*.md', {
-  eager: true,
+	eager: true,
 });
 const posts = Object.values(allPosts);
 import Tag from '../ui/Tag.astro';
 
 // Extract tags from posts with proper error handling
 const allTags = posts
-  .map((post: any) => post.frontmatter?.tags || [])
-  .flat()
-  .filter((tag: any) => tag && typeof tag === 'string'); // Filter out undefined/null tags
+	.map((post: any) => post.frontmatter?.tags || [])
+	.flat()
+	.filter((tag: any) => tag && typeof tag === 'string'); // Filter out undefined/null tags
 const tags = [...new Set(allTags)];
 
 type VariantType = 'default' | 'vertical' | 'compact';
@@ -20,10 +20,10 @@ const baseClasses = 'max-w-7xl';
 
 // Variant-specific classes
 const variantClasses: Record<VariantType, string> = {
-  default:
-    'max-lg:px-8 py-8 max-md:py-4 flex-wrap mx-auto gap-4 max-sm:gap-3 justify-center items-center flex flex-row',
-  vertical: 'gap-6 justify-start items-start flex flex-col',
-  compact: 'flex-wrap mx-auto gap-2 max-sm:gap-3 justify-start flex flex-row',
+	default:
+		'max-lg:px-8 py-8 max-md:py-4 flex-wrap mx-auto gap-4 max-sm:gap-3 justify-center items-center flex flex-row',
+	vertical: 'gap-6 justify-start items-start flex flex-col',
+	compact: 'flex-wrap mx-auto gap-2 max-sm:gap-3 justify-start flex flex-row',
 };
 
 // Combine base classes with variant-specific classes
@@ -31,5 +31,5 @@ const classes = `${baseClasses} ${variantClasses[variant]}`;
 ---
 
 <div id="tags" class={classes}>
-  {tags.map((tag: string) => <Tag tag={tag} />)}
+	{tags.map((tag: string) => <Tag tag={tag} />)}
 </div>

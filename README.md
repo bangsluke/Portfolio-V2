@@ -714,24 +714,24 @@ const GET_COMPANIES_BY_DATE_RANGE_QUERY = `
 `;
 
 export async function fetchCompaniesByDateRange(
-  startDate: string,
-  endDate: string
+	startDate: string,
+	endDate: string
 ): Promise<Company[]> {
-  try {
-    const response = await graphqlClient.request<GetCompaniesResponse>(
-      GET_COMPANIES_BY_DATE_RANGE_QUERY,
-      { startDate, endDate }
-    );
+	try {
+		const response = await graphqlClient.request<GetCompaniesResponse>(
+			GET_COMPANIES_BY_DATE_RANGE_QUERY,
+			{ startDate, endDate }
+		);
 
-    if (!response.companies) {
-      throw new Error('Invalid response format: missing companies array');
-    }
+		if (!response.companies) {
+			throw new Error('Invalid response format: missing companies array');
+		}
 
-    return response.companies;
-  } catch (error) {
-    console.error('Error fetching companies by date range:', error);
-    throw error;
-  }
+		return response.companies;
+	} catch (error) {
+		console.error('Error fetching companies by date range:', error);
+		throw error;
+	}
 }
 ```
 
@@ -760,24 +760,24 @@ const GET_COMPANIES_PAGINATED_QUERY = `
 
 // Updated fetch function
 export async function fetchCompanies(
-  options: { limit?: number; offset?: number } = {}
+	options: { limit?: number; offset?: number } = {}
 ): Promise<Company[]> {
-  try {
-    const { limit, offset } = options;
-    const response = await graphqlClient.request<GetCompaniesResponse>(
-      GET_COMPANIES_PAGINATED_QUERY,
-      { limit, offset }
-    );
+	try {
+		const { limit, offset } = options;
+		const response = await graphqlClient.request<GetCompaniesResponse>(
+			GET_COMPANIES_PAGINATED_QUERY,
+			{ limit, offset }
+		);
 
-    if (!response.companies) {
-      throw new Error('Invalid response format: missing companies array');
-    }
+		if (!response.companies) {
+			throw new Error('Invalid response format: missing companies array');
+		}
 
-    return response.companies;
-  } catch (error) {
-    console.error('Error fetching companies:', error);
-    throw error;
-  }
+		return response.companies;
+	} catch (error) {
+		console.error('Error fetching companies:', error);
+		throw error;
+	}
 }
 ```
 

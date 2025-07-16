@@ -1,35 +1,35 @@
 ---
 import {
-  processMarkdownContent,
-  processObsidianLink,
+	processMarkdownContent,
+	processObsidianLink,
 } from '../../utils/content-processor';
 
 interface Props {
-  name: string;
-  tags?: string[];
-  dateStart?: string | Date | null;
-  dateEnd?: string | Date | null;
-  imageURL?: string | null;
-  linkedCompany?: string;
-  clientDescription?: string;
-  keyAchievement?: string;
+	name: string;
+	tags?: string[];
+	dateStart?: string | Date | null;
+	dateEnd?: string | Date | null;
+	imageURL?: string | null;
+	linkedCompany?: string;
+	clientDescription?: string;
+	keyAchievement?: string;
 }
 
 const {
-  name,
-  tags,
-  dateStart,
-  dateEnd,
-  imageURL,
-  linkedCompany,
-  clientDescription,
-  keyAchievement,
+	name,
+	tags,
+	dateStart,
+	dateEnd,
+	imageURL,
+	linkedCompany,
+	clientDescription,
+	keyAchievement,
 } = Astro.props;
 
 // Process content to handle Obsidian links and markdown
 const processedLinkedCompany = processObsidianLink(linkedCompany);
 const processedClientDescription = processMarkdownContent(
-  clientDescription || ''
+	clientDescription || ''
 );
 const processedKeyAchievement = processMarkdownContent(keyAchievement || '');
 
@@ -37,11 +37,11 @@ console.log(name);
 ---
 
 <div>
-  <h3 class="text-xl font-bold text-mint-400">
-    {name}
-  </h3>
+	<h3 class="text-xl font-bold text-mint-400">
+		{name}
+	</h3>
 
-  <!-- <div class="pb-12 md:col-span-2">
+	<!-- <div class="pb-12 md:col-span-2">
     <div class="sticky top-0">
       <span
         class="absolute -left-[42px] text-5xl text-mint-400 rounded-full drop-shadow-[0px_0px_8px_rgba(0,255,94,1)]"
@@ -77,4 +77,3 @@ console.log(name);
     )}
   </div> -->
 </div>
-

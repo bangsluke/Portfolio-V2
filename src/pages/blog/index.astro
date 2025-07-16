@@ -5,17 +5,17 @@ import Layout from '../../layouts/Layout.astro';
 import ListPosts from '../../components/blog/ListPosts.astro';
 const pageTitle = 'Luke Bangs Portfolio | bangsluke';
 const description =
-  'Welcome to my blog, where I share my passion for frontend development, web design, and the latest technology trends.';
+	'Welcome to my blog, where I share my passion for frontend development, web design, and the latest technology trends.';
 const ogimage = {
-  url: '/images/blogimage.webp',
-  alt: "bangsluke logo with green background and light effect. Text: 'Luke Bangs Portfolio'.",
+	url: '/images/blogimage.webp',
+	alt: "bangsluke logo with green background and light effect. Text: 'Luke Bangs Portfolio'.",
 };
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
-  <!-- <Hero /> -->
-  <!-- <Tags /> -->
-  <div class="px-8 max-sm:px-4">
-    <ListPosts />
-  </div>
+	<!-- <Hero /> -->
+	<!-- <Tags /> -->
+	<div class="px-8 max-sm:px-4">
+		<ListPosts />
+	</div>
 </Layout>

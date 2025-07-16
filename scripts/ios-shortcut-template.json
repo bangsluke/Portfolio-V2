@@ -1,76 +1,76 @@
 {
-  "WFWorkflow": {
-    "WFWorkflowClientVersion": "1050.1",
-    "WFWorkflowClientRelease": "1050.1",
-    "WFWorkflowIcon": {
-      "WFWorkflowIconStartColor": 4282601983,
-      "WFWorkflowIconImageData": {
-        "WFSerializationType": "WFBase64EncodedString",
-        "Value": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF0WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78i iglkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNy4yLWMwMDAgNzkuMWI2NWE3OWI0LCAyMDIyLzA2LzEzLTIyOjAxOjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpypmY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjQuMCAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjQtMDEtMjBUMTQ6NDc6NDcrMDA6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMjQtMDEtMjBUMTQ6NDc6NDcrMDA6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDI0LTAxLTIwVDE0OjQ3OjQ3KzAwOjAwIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjY5ZDM4YmM1LTM4ZTAtNDI0Ny1hMzA0LTNmYjM5NzM3NzM3NyIgeG1wTU06RG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOjY5ZDM4YmM1LTM4ZTAtNDI0Ny1hMzA0LTNmYjM5NzM3NzM3NyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjY5ZDM4YmM1LTM4ZTAtNDI0Ny1hMzA0LTNmYjM5NzM3NzM3NyIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjY5ZDM4YmM1LTM4ZTAtNDI0Ny1hMzA0LTNmYjM5NzM3NzM3NyIgc3RFdnQ6d2hlbj0iMjAyNC0wMS0yMFQxNDo0Nzo0NyswMDowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDI0LjAgKE1hY2ludG9zaCkiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+"
-      }
-    },
-    "WFWorkflowTypes": ["WatchKit", "NCWidget"],
-    "WFWorkflowInputContentItemClasses": [
-      "WFAppStoreAppContentItem",
-      "WFArticleContentItem",
-      "WFAVAssetContentItem",
-      "WFContactContentItem",
-      "WFDateContentItem",
-      "WFEmailAddressContentItem",
-      "WFGenericFileContentItem",
-      "WFImageContentItem",
-      "WFiTunesProductContentItem",
-      "WFLocationContentItem",
-      "WFDCMapsLinkContentItem",
-      "WFDCMapsLinkContentItem",
-      "WFAVAssetContentItem",
-      "WFStringContentItem",
-      "WFURLContentItem"
-    ],
-    "WFWorkflowActions": [
-      {
-        "WFWorkflowActionIdentifier": "is.workflow.actions.getfile",
-        "WFWorkflowActionParameters": {
-          "WFGetFileActionMode": "GetFile",
-          "WFGetFileActionFile": {
-            "WFSerializationType": "WFTextTokenString",
-            "Value": "Obsidian Export"
-          },
-          "WFGetFileActionPath": {
-            "WFSerializationType": "WFTextTokenString",
-            "Value": "On My iPhone/Obsidian"
-          }
-        }
-      },
-      {
-        "WFWorkflowActionIdentifier": "is.workflow.actions.getcontentsofurl",
-        "WFWorkflowActionParameters": {
-          "WFURLActionURL": {
-            "WFSerializationType": "WFTextTokenString",
-            "Value": "https://your-webhook-url.com/sync"
-          },
-          "WFURLActionHTTPMethod": "POST",
-          "WFURLActionHTTPHeaders": {
-            "WFSerializationType": "WFDictionaryFieldValue",
-            "Value": {
-              "Content-Type": "application/json"
-            }
-          }
-        }
-      },
-      {
-        "WFWorkflowActionIdentifier": "is.workflow.actions.showresult",
-        "WFWorkflowActionParameters": {
-          "Text": {
-            "WFSerializationType": "WFTextTokenString",
-            "Value": "✅ Obsidian sync completed!"
-          }
-        }
-      }
-    ],
-    "WFWorkflowClientVersion": "1050.1",
-    "WFWorkflowClientRelease": "1050.1",
-    "WFWorkflowImportQuestions": [],
-    "WFWorkflowTypes": ["WatchKit", "NCWidget"]
-  }
+	"WFWorkflow": {
+		"WFWorkflowClientVersion": "1050.1",
+		"WFWorkflowClientRelease": "1050.1",
+		"WFWorkflowIcon": {
+			"WFWorkflowIconStartColor": 4282601983,
+			"WFWorkflowIconImageData": {
+				"WFSerializationType": "WFBase64EncodedString",
+				"Value": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF0WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78i iglkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNy4yLWMwMDAgNzkuMWI2NWE3OWI0LCAyMDIyLzA2LzEzLTIyOjAxOjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpypmY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjQuMCAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjQtMDEtMjBUMTQ6NDc6NDcrMDA6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMjQtMDEtMjBUMTQ6NDc6NDcrMDA6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDI0LTAxLTIwVDE0OjQ3OjQ3KzAwOjAwIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjY5ZDM4YmM1LTM4ZTAtNDI0Ny1hMzA0LTNmYjM5NzM3NzM3NyIgeG1wTU06RG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOjY5ZDM4YmM1LTM4ZTAtNDI0Ny1hMzA0LTNmYjM5NzM3NzM3NyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjY5ZDM4YmM1LTM4ZTAtNDI0Ny1hMzA0LTNmYjM5NzM3NzM3NyIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjY5ZDM4YmM1LTM4ZTAtNDI0Ny1hMzA0LTNmYjM5NzM3NzM3NyIgc3RFdnQ6d2hlbj0iMjAyNC0wMS0yMFQxNDo0Nzo0NyswMDowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDI0LjAgKE1hY2ludG9zaCkiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+"
+			}
+		},
+		"WFWorkflowTypes": ["WatchKit", "NCWidget"],
+		"WFWorkflowInputContentItemClasses": [
+			"WFAppStoreAppContentItem",
+			"WFArticleContentItem",
+			"WFAVAssetContentItem",
+			"WFContactContentItem",
+			"WFDateContentItem",
+			"WFEmailAddressContentItem",
+			"WFGenericFileContentItem",
+			"WFImageContentItem",
+			"WFiTunesProductContentItem",
+			"WFLocationContentItem",
+			"WFDCMapsLinkContentItem",
+			"WFDCMapsLinkContentItem",
+			"WFAVAssetContentItem",
+			"WFStringContentItem",
+			"WFURLContentItem"
+		],
+		"WFWorkflowActions": [
+			{
+				"WFWorkflowActionIdentifier": "is.workflow.actions.getfile",
+				"WFWorkflowActionParameters": {
+					"WFGetFileActionMode": "GetFile",
+					"WFGetFileActionFile": {
+						"WFSerializationType": "WFTextTokenString",
+						"Value": "Obsidian Export"
+					},
+					"WFGetFileActionPath": {
+						"WFSerializationType": "WFTextTokenString",
+						"Value": "On My iPhone/Obsidian"
+					}
+				}
+			},
+			{
+				"WFWorkflowActionIdentifier": "is.workflow.actions.getcontentsofurl",
+				"WFWorkflowActionParameters": {
+					"WFURLActionURL": {
+						"WFSerializationType": "WFTextTokenString",
+						"Value": "https://your-webhook-url.com/sync"
+					},
+					"WFURLActionHTTPMethod": "POST",
+					"WFURLActionHTTPHeaders": {
+						"WFSerializationType": "WFDictionaryFieldValue",
+						"Value": {
+							"Content-Type": "application/json"
+						}
+					}
+				}
+			},
+			{
+				"WFWorkflowActionIdentifier": "is.workflow.actions.showresult",
+				"WFWorkflowActionParameters": {
+					"Text": {
+						"WFSerializationType": "WFTextTokenString",
+						"Value": "✅ Obsidian sync completed!"
+					}
+				}
+			}
+		],
+		"WFWorkflowClientVersion": "1050.1",
+		"WFWorkflowClientRelease": "1050.1",
+		"WFWorkflowImportQuestions": [],
+		"WFWorkflowTypes": ["WatchKit", "NCWidget"]
+	}
 }
