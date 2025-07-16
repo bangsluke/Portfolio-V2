@@ -1,0 +1,43 @@
+# Auto Changes Log
+
+## Example Log
+
+### 2024-06-09 08:47 [main] - Tailwind CSS v4 Compatibility Fixes
+- Fixed @apply directives in notes/[...slug].astro
+  - Replaced all `@apply` directives with direct CSS properties
+  - Converted Tailwind utility classes to raw CSS values
+  - Fixed font-bold, text-gray-900, mt-8, mb-4, and other utility classes
+- Fixed @apply bg-blue-100 in companies/index.astro  
+  - Replaced `@apply bg-blue-100 border-blue-300 text-blue-700` with direct CSS color values
+- Removed @apply prose from notes/[...slug].astro
+  - Removed `@apply prose prose-lg max-w-none` from CSS
+- Removed @apply prose from companies/[...slug].astro
+  - Removed `@apply prose prose-lg max-w-none` from CSS
+- Created tailwind.config.js
+  - Added Tailwind CSS v4 configuration with typography plugin
+
+## Auto Log
+
+## 2024-06-09 08:51 [main] - Fixed @apply directives in global.css
+- Replaced all `@apply` directives with direct CSS properties
+- Converted Tailwind utility classes to raw CSS values
+- Fixed text-white, bg-mint-500, text-sm, font-bold, text-3xl, text-2xl, text-xl, text-lg, text-base, tracking-normal, font-montserrat, text-pretty, max-md:text-lg, text-blacktext, dark:text-white, dark:text-gray-200, mb-8, leading-8, font-semibold, dark:text-riptide-300, text-mint-500, underline, hover:text-riptide-400, transition-all, list-decimal, list-disc, pl-4, pb-0, py-1, dark:text-mint-300/50, text-blacktext/30, py-4, border-l-4, border-mint-500, pl-4, italic, bg-mint-50, dark:bg-mint-900/20, backdrop-blur-lg, mb-0, px-2, py-0.5, w-full, h-full, px-8, py-12, font-bold, rounded-lg, h-auto, overflow-hidden, my-8, size-5, absolute, text-slate-400, text-xs, cursor-pointer, bg-slate-600/50, border, hover:bg-transparent, border-slate-500, p-2.5, rounded-md, top-4, right-4, flex, transition-all, duration-300, max-md:opacity-100, md:opacity-0, group-hover:opacity-100, items-center, justify-center, space-y-2, flex, items-center, gap-4, w-5, h-5, accent-mint-300, line-through, text-mint-600, text-gray-800, transition-all, duration-700, flex!, flex-col!, left-0, top-full, mt-4, absolute, shadow-xl, dark:text-zinc-300, bg-linear-to-t, from-white, to-white/90, dark:from-zinc-950, dark:to-zinc-950/80, bg-clip-padding, backdrop-filter, backdrop-blur, backdrop-saturate-100, backdrop-contrast-100, and many other utility classes
+
+## 2024-06-09 08:50 [main] - Fixed @apply directives in companies/[...slug].astro
+- Replaced all `@apply` directives with direct CSS properties
+- Converted Tailwind utility classes to raw CSS values
+- Fixed font-bold, text-gray-900, mt-8, mb-4, and other utility classes
+
+## 2024-06-09 08:47 [main] - Tailwind CSS v4 Compatibility Fixes
+- Fixed @apply directives in notes/[...slug].astro
+  - Replaced all `@apply` directives with direct CSS properties
+  - Converted Tailwind utility classes to raw CSS values
+  - Fixed font-bold, text-gray-900, mt-8, mb-4, and other utility classes
+- Fixed @apply bg-blue-100 in companies/index.astro  
+  - Replaced `@apply bg-blue-100 border-blue-300 text-blue-700` with direct CSS color values
+- Removed @apply prose from notes/[...slug].astro
+  - Removed `@apply prose prose-lg max-w-none` from CSS
+- Removed @apply prose from companies/[...slug].astro
+  - Removed `@apply prose prose-lg max-w-none` from CSS
+- Created tailwind.config.js
+  - Added Tailwind CSS v4 configuration with typography plugin
