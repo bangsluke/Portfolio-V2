@@ -18,6 +18,15 @@
 
 ## Auto Log
 
+## 2024-12-19 09:24 [main] - Fixed Tags component build error
+- Fixed "i is not defined" error in Tags.astro component
+- Added proper error handling for posts without tags in frontmatter
+- Added optional chaining (?.) to safely access post.frontmatter.tags
+- Added filtering to remove undefined/null tags before processing
+- Added explicit type annotation for tag parameter in map function
+- Fixed similar issues in MarkdownPostLayout.astro for both tags and languages
+- Added optional chaining and fallback arrays for frontmatter.tags and frontmatter.languages
+
 ## 2024-06-09 09:00 [main] - Fixed GraphQL build error in Netlify
 - Updated Experience component to handle GraphQL unavailability during build
 - Added fallback data for when backend is not available

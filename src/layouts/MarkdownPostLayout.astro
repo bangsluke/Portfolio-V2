@@ -77,13 +77,13 @@ import Heading from "../components/ui/Heading.astro";
       <header class="flex flex-col gap-4" id="start">
         <div class="flex gap-2 flex-wrap">
           {
-            frontmatter.languages.map((language: string) => (
+            frontmatter.languages?.map((language: string) => (
               <Capsule lang={language} />
-            ))
+            )) || []
           }
         </div>
         <div class="gap-3 flex flex-wrap justify-start items-center">
-          {frontmatter.tags.map((tag: string) => <Tag tag={tag}>{tag}</Tag>)}
+          {frontmatter.tags?.map((tag: string) => <Tag tag={tag}>{tag}</Tag>) || []}
         </div>
         <DatePub date={frontmatter.pubDate} />
 

@@ -3,7 +3,13 @@ const allPosts = await import.meta.glob("../../pages/blog/posts/*.md", { eager: 
 const posts = Object.values(allPosts);
 import Tag from "../ui/Tag.astro";
 
-const tags = [...new Set(posts.map((post: any) => post.frontmatter.tags).flat())];
+// Extract tags from posts with proper error handling
+const allTags = posts
+  .map((post: any) => post.frontmatter?.tags || [])
+  .flat()
+  .filter((tag: any) => tag && typeof tag === 'string'); // Filter out undefined/null tags
+const tags = [...new Set(allTags)];
+
 type VariantType = "default" | "vertical" | "compact";
 const { variant = "default" } = Astro.props as { variant?: VariantType };
 
@@ -22,7 +28,7 @@ const classes = `${baseClasses} ${variantClasses[variant]}`;
 ---
 
 <div id="tags" class={classes}>
-    {tags.map((tag) => <Tag tag={tag}></Tag>)}
+    {tags.map((tag: string) => <Tag tag={tag}></Tag>)}
 </div>
 
 
