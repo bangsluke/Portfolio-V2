@@ -14,17 +14,19 @@ const { items = [] }: { items: (keyof typeof menu)[] } = Astro.props as {
 };
 
 const menu = {
+  
+  // blog: { 
+  //   name: "Blog", 
+  //   path: "/blog/",
+  //   dropdown: [
+  //     { name: "All Posts", path: "/blog/posts/" },
+  //   ]
+  // },
+  home: { name: "Home", path: "/site/#home" },
+  projects: { name: "Projects", path: "/site/#projects" },
+  coding: { name: "Coding", path: "/site/#coding" },
+  experience: { name: "Experience", path: "/site/#experience" },
   about: { name: "About Me", path: "/about-me" },
-  blog: { 
-    name: "Blog", 
-    path: "/blog/",
-    dropdown: [
-      { name: "All Posts", path: "/blog/posts/" },
-    ]
-  },
-  home: { name: "Home", path: "/#home" },
-  experience: { name: "Experience", path: "/#experience" },
-  projects: { name: "Projects", path: "/#projects" },
 };
 
 // Common base classes
