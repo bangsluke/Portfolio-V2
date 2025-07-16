@@ -75,13 +75,33 @@
     - [Prerequisites](#prerequisites)
     - [Step 1: Install Dependencies](#step-1-install-dependencies)
     - [Step 2: Set Up Gmail App Password](#step-2-set-up-gmail-app-password)
+      - [2.1 Enable 2-Factor Authentication](#21-enable-2-factor-authentication)
+      - [2.2 Generate App Password](#22-generate-app-password)
     - [Step 3: Configure Environment Variables](#step-3-configure-environment-variables)
+      - [Environment Variable Details:](#environment-variable-details)
     - [Step 4: Test the Email Service](#step-4-test-the-email-service)
+      - [4.1 Test Email Configuration](#41-test-email-configuration)
+      - [4.2 Test with Sync Script](#42-test-with-sync-script)
     - [Step 5: Troubleshooting](#step-5-troubleshooting)
+      - [Common Issues and Solutions](#common-issues-and-solutions)
+        - [1. "Invalid login" Error](#1-invalid-login-error)
+        - [2. "Less secure app access" Error](#2-less-secure-app-access-error)
+        - [3. "Connection timeout" Error](#3-connection-timeout-error)
+        - [4. "Authentication failed" Error](#4-authentication-failed-error)
+      - [Debug Mode](#debug-mode-1)
     - [Step 6: Security Best Practices](#step-6-security-best-practices)
+      - [1. Environment Variables](#1-environment-variables)
+      - [2. Email Content](#2-email-content)
+      - [3. Access Control](#3-access-control)
     - [Step 7: Production Deployment](#step-7-production-deployment)
+      - [For Netlify/Vercel Deployment](#for-netlifyvercel-deployment)
+        - [Netlify](#netlify)
+        - [Vercel](#vercel)
+      - [For Local Development](#for-local-development)
     - [Step 8: Email Templates](#step-8-email-templates)
     - [Step 9: Monitoring and Maintenance](#step-9-monitoring-and-maintenance)
+      - [Regular Tasks](#regular-tasks)
+      - [Logs](#logs)
     - [Support](#support)
     - [Example .env Configuration](#example-env-configuration)
 
@@ -140,6 +160,8 @@ npm run preview
 - 📧 **Email Notifications**: Automated email reports via Gmail
 - ✅ **File Verification**: Ensures copied files exist and have content
 
+> [Back to Table of Contents](#table-of-contents)
+
 ### Quick Sync Commands
 
 ```bash
@@ -161,6 +183,8 @@ npm run sync-obsidian:custom -- "public"
 # Mobile-friendly interactive sync
 node scripts/sync-mobile.js
 ```
+
+> [Back to Table of Contents](#table-of-contents)
 
 ### Configuration
 
@@ -187,6 +211,8 @@ export EMAIL_RECIPIENT="your-email@gmail.com"
 export BACKEND_URL="https://bangsluke-backend-server.herokuapp.com"
 ```
 
+> [Back to Table of Contents](#table-of-contents)
+
 #### Default Paths
 
 The script automatically detects common Obsidian vault locations:
@@ -194,6 +220,8 @@ The script automatically detects common Obsidian vault locations:
 - **Windows**: `C:\Users\bangs\Documents\Obsidian Personal Notes`
 - **Android**: `/storage/emulated/0/Download/Obsidian Personal Notes`
 - **iOS**: Various paths in the app sandbox
+
+> [Back to Table of Contents](#table-of-contents)
 
 ### Usage Examples
 
@@ -209,6 +237,8 @@ npm run dev
 # Visit http://localhost:4321/notes to see your notes
 ```
 
+> [Back to Table of Contents](#table-of-contents)
+
 #### Production Deployment
 
 ```bash
@@ -216,12 +246,16 @@ npm run dev
 npm run sync-obsidian:deploy
 ```
 
+> [Back to Table of Contents](#table-of-contents)
+
 #### Custom Path
 
 ```bash
 # Specify a custom Obsidian vault path
 OBSIDIAN_PATH="/custom/path/to/vault" npm run sync-obsidian
 ```
+
+> [Back to Table of Contents](#table-of-contents)
 
 #### Custom Tag
 
@@ -232,6 +266,8 @@ PORTFOLIO_TAG="public" npm run sync-obsidian
 npm run sync-obsidian:custom -- "showcase"
 ```
 
+> [Back to Table of Contents](#table-of-contents)
+
 #### Email Notifications
 
 ```bash
@@ -241,6 +277,8 @@ EMAIL_NOTIFICATIONS="true" npm run sync-obsidian
 # Custom email recipient
 EMAIL_NOTIFICATIONS="true" EMAIL_RECIPIENT="custom@email.com" npm run sync-obsidian
 ```
+
+> [Back to Table of Contents](#table-of-contents)
 
 ### Mobile Sync
 
