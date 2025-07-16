@@ -1,32 +1,28 @@
 ---
 tags:
   - tag
-  - entertainment
-  - sport
-  - football
+  - work
+  - company
+  - OEM
   - client
   - portfolio
-  - club
-modified: 2025-07-07T20:59:02+01:00
-viewCount: 17
+modified: 2025-07-16T22:12:32+01:00
+viewCount: 3
 aliases:
-  - Dorkinians
-dateStart: 2015-09-05
-dateEnd: TBD
-logoURL: https://i.imgur.com/wMPmx9P.png
-linkedCompany:
-  - n/a
+  - AML
+  - Aston Martin Limited
+dateStart: 
+dateEnd: 
+logoURL: https://i.imgur.com/ImIdiJo.jpeg
 ---
-# Dorkinians FC
+# Aston Martin
 
-> [!back] Link back to [[Sport]]
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
 >```dataview
 TABLE WITHOUT ID elink("https://en.wikipedia.org/wiki/"+replace(this.file.name, " ", "_"), this.file.name + " Wiki") as "Wikipedia Link"
 WHERE file = this.file
-
-> The best amateur [[Football|football]] team in the world
 
 ## Table of Contents
 ```table-of-contents
@@ -35,14 +31,7 @@ WHERE file = this.file
 ## Details
 
 >[!details]  `=this.file.name`
->`=choice(this.dateStart = null | this.dateStart = "","","<br>Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Playing duration: " + (date(this.dateEnd) - date(this.dateStart)))`
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Key Links
-
-- [Google Drive link](https://drive.google.com/drive/folders/1GU8jzw2HPEfEE-u540vNUl0DXPMoS6-j)
-- [Todoist link](https://todoist.com/app/project/Dorkinians-6QmW4w5xpMhW9gPh)
+>`=choice(this.dateStart = null | this.dateStart = "","","<br>Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + (date(this.dateEnd) - date(this.dateStart)))`
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -52,7 +41,8 @@ WHERE file = this.file
 
 ```dataview
 TABLE WITHOUT ID
-	file.link as "Person"
+	file.link as "Person",
+	length(file.inlinks) as "Note Mentions", 	referenceRole as "Reference Role"
 FROM
 	#person
 WHERE

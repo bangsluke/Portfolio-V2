@@ -78,7 +78,7 @@ const companiesCollection = defineCollection({
 		tags: z.array(z.string()).optional(),
 		dateStart: z.union([z.string(), z.date(), z.null()]).optional(),
 		dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
-		logoURL: z.string().optional(),
+		logoURL: z.union([z.string(), z.null()]).optional(),
 		imageURL: z.union([z.string(), z.null()]).optional(),
 		// Extracted section content
 		companyDescription: z.string().optional(),
@@ -95,7 +95,8 @@ const clientsCollection = defineCollection({
 		dateStart: z.union([z.string(), z.date(), z.null()]).optional(),
 		dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
 		imageURL: z.union([z.string(), z.null()]).optional(),
-		linkedCompany: z.string().optional(),
+		logoURL: z.union([z.string(), z.null()]).optional(),
+		linkedCompany: z.union([z.string(), z.array(z.string()), z.null()]).optional(),
 		// Extracted section content
 		clientDescription: z.string().optional(),
 		keyAchievement: z.string().optional(),

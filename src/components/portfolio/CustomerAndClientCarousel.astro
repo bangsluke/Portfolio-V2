@@ -4,8 +4,9 @@ import ClientAndCustomerCarousel from './CustomerAndClientCarousel.tsx';
 import Heading from '../ui/Heading.astro';
 import { Icon } from 'astro-icon/components';
 
-// Get all companies from the local content folder
+// Get all companies and clients from the local content folders
 const companies = await getCollection('companies');
+const clients = await getCollection('clients');
 
 // Sort companies by dateStart date (newest first)
 const sortedCompanies = companies.sort((a, b) => {
@@ -21,15 +22,35 @@ const sortedCompanies = companies.sort((a, b) => {
 	return a.slug.localeCompare(b.slug);
 });
 
+// Sort clients by dateStart date (newest first)
+const sortedClients = clients.sort((a, b) => {
+	// Sort by dateStart
+	const dateA = a.data.dateStart || new Date(0);
+	const dateB = b.data.dateStart || new Date(0);
+
+	if (dateA instanceof Date && dateB instanceof Date) {
+		return dateB.getTime() - dateA.getTime();
+	}
+
+	// Fallback to alphabetical sorting by name
+	return (a.data.name || a.slug).localeCompare(b.data.name || b.slug);
+});
+
 // Filter companies with logos
 const companiesWithLogos = sortedCompanies.filter(company => 
 	company.data.logoURL && company.data.logoURL.trim() !== ''
 );
 
-// Clean the data to only include necessary fields
+// Filter clients with images
+const clientsWithImages = sortedClients.filter(client => 
+	client.data.imageURL && client.data.imageURL.trim() !== ''
+);
+
+// Clean the company data to only include necessary fields
 const cleanedCompanies = companiesWithLogos.map(company => ({
 	id: company.id,
 	slug: company.slug,
+	type: 'company' as const,
 	data: {
 		logoURL: company.data.logoURL,
 		dateStart: company.data.dateStart,
@@ -39,8 +60,39 @@ const cleanedCompanies = companiesWithLogos.map(company => ({
 	}
 }));
 
+// Clean the client data to only include necessary fields
+const cleanedClients = clientsWithImages.map(client => ({
+	id: client.id,
+	slug: client.slug,
+	type: 'client' as const,
+	data: {
+		name: client.data.name,
+		imageURL: client.data.imageURL,
+		dateStart: client.data.dateStart,
+		dateEnd: client.data.dateEnd,
+		linkedCompany: client.data.linkedCompany,
+		clientDescription: client.data.clientDescription,
+		keyAchievement: client.data.keyAchievement,
+	}
+}));
+
+// Combine companies and clients, sorted by date
+const allItems = [...cleanedCompanies, ...cleanedClients].sort((a, b) => {
+	const dateA = a.data.dateStart || new Date(0);
+	const dateB = b.data.dateStart || new Date(0);
+
+	if (dateA instanceof Date && dateB instanceof Date) {
+		return dateB.getTime() - dateA.getTime();
+	}
+
+	// Fallback to alphabetical sorting
+	const nameA = a.type === 'company' ? a.slug : (a.data.name || a.slug);
+	const nameB = b.type === 'company' ? b.slug : (b.data.name || b.slug);
+	return nameA.localeCompare(nameB);
+});
+
 // Convert to JSON for the TypeScript component
-const companiesJson = JSON.stringify(cleanedCompanies);
+const itemsJson = JSON.stringify(allItems);
 ---
 
 <section
@@ -53,7 +105,7 @@ const companiesJson = JSON.stringify(cleanedCompanies);
 		</div>
 
 		<div class="relative">
-			<ClientAndCustomerCarousel companies={companiesJson} client:load />
+			<ClientAndCustomerCarousel companies={itemsJson} client:load />
 		</div>
 	</div>
 </section>

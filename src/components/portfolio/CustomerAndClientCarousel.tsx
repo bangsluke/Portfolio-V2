@@ -4,22 +4,35 @@ import { AutoPlay } from '@egjs/flicking-plugins';
 import '@egjs/flicking/dist/flicking.css';
 
 interface Company {
-	id: string; // This is the filename like "Test Company.md"
+	id: string;
 	slug: string;
+	type: 'company';
 	data: {
-		created?: string | Date;
-		modified?: string | Date;
-		tags?: string[];
 		logoURL?: string;
 		dateStart?: string | Date;
 		dateEnd?: string | Date;
 		companyDescription?: string;
 		keyAchievement?: string;
 	};
-	body?: string;
-	filePath?: string;
-	collection?: string;
 }
+
+interface Client {
+	id: string;
+	slug: string;
+	type: 'client';
+	data: {
+		name?: string;
+		imageURL?: string;
+		logoURL?: string;
+		dateStart?: string | Date;
+		dateEnd?: string | Date;
+		linkedCompany?: string | string[];
+		clientDescription?: string;
+		keyAchievement?: string;
+	};
+}
+
+type CarouselItemData = Company | Client;
 
 interface CarouselItem {
 	id: string;
@@ -27,8 +40,10 @@ interface CarouselItem {
 	dateString: string;
 	type: 'company' | 'client';
 	logoURL?: string;
+	imageURL?: string;
 	description?: string;
 	slug: string;
+	linkedCompany?: string;
 }
 
 interface CustomerCarouselProps {
@@ -38,8 +53,16 @@ interface CustomerCarouselProps {
 // Company Card Component
 function CompanyCard({ item }: { item: CarouselItem }) {
 	const [showModal, setShowModal] = useState(false);
+	
+	// Handle both companies (logoURL) and clients (imageURL or logoURL)
 	const hasLogo = item.logoURL && item.logoURL.trim() !== '';
-	const fallbackColor = 'bg-gradient-to-br from-blue-500 to-purple-600';
+	const hasImage = item.imageURL && item.imageURL.trim() !== '';
+	const backgroundImage = item.logoURL || item.imageURL;
+	const hasBackground = hasLogo || hasImage;
+	
+	const fallbackColor = item.type === 'client' 
+		? 'bg-gradient-to-br from-green-500 to-teal-600' 
+		: 'bg-gradient-to-br from-blue-500 to-purple-600';
 
 	const showCompanyModal = () => {
 		setShowModal(true);
@@ -55,11 +78,11 @@ function CompanyCard({ item }: { item: CarouselItem }) {
 		<>
 			<div 
 				className="relative w-full h-full rounded-lg overflow-hidden group cursor-pointer transition-all duration-300 transform hover:scale-105"
-				style={hasLogo ? `background-image: url('${item.logoURL}'); background-size: cover; background-position: center;` : ''}
+				style={hasBackground ? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center;` : ''}
 			>
 				{/* Darkened overlay that lightens on hover */}
 				<div className={`absolute inset-0 transition-all duration-300 ${
-					hasLogo 
+					hasBackground 
 						? 'bg-black/70 group-hover:bg-black/30' 
 						: fallbackColor + ' group-hover:opacity-80'
 				}`} />
@@ -74,6 +97,11 @@ function CompanyCard({ item }: { item: CarouselItem }) {
 						{item.dateString && (
 							<div className="text-sm text-white/80 group-hover:text-white transition-colors duration-300">
 								{item.dateString}
+							</div>
+						)}
+						{item.linkedCompany && item.linkedCompany !== 'n/a' && (
+							<div className="text-xs text-white/60 group-hover:text-white/80 transition-colors duration-300">
+								Linked: {item.linkedCompany}
 							</div>
 						)}
 					</div>
@@ -94,7 +122,7 @@ function CompanyCard({ item }: { item: CarouselItem }) {
 				</div>
 			</div>
 
-			{/* Modal for company details */}
+			{/* Modal for company/client details */}
 			{showModal && (
 				<div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" onClick={closeCompanyModal}>
 					<div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full max-h-[80vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
@@ -112,8 +140,8 @@ function CompanyCard({ item }: { item: CarouselItem }) {
 							</div>
 							
 							<div className="mb-4">
-								{item.logoURL && (
-									<img src={item.logoURL} alt={`${item.title} logo`} className="w-16 h-16 object-contain rounded" />
+								{backgroundImage && (
+									<img src={backgroundImage} alt={`${item.title} ${item.type === 'client' ? 'image' : 'logo'}`} className="w-16 h-16 object-contain rounded" />
 								)}
 							</div>
 							{item.dateString && (
@@ -121,6 +149,11 @@ function CompanyCard({ item }: { item: CarouselItem }) {
 							)}
 							{item.description && (
 								<div className="text-gray-700 dark:text-gray-300 mb-4">{item.description}</div>
+							)}
+							{item.linkedCompany && item.linkedCompany !== 'n/a' && (
+								<div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+									<strong>Linked Company:</strong> {item.linkedCompany}
+								</div>
 							)}
 						</div>
 					</div>
@@ -138,7 +171,7 @@ export default function ClientAndCustomerCarousel({
 
 	useEffect(() => {
 		try {
-			const companiesArray: Company[] = JSON.parse(companies);
+			const companiesArray: CarouselItemData[] = JSON.parse(companies);
 			
 			if (!companiesArray || companiesArray.length === 0) {
 				setCarouselItems([]);
@@ -147,30 +180,84 @@ export default function ClientAndCustomerCarousel({
 
 			// Create carousel items from companies
 			const items = companiesArray.map((company) => {
-				const companyName = company.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-				const displayDate = company.data.dateStart || company.data.dateEnd;
-				let dateString = '';
+				let item: CarouselItem;
+				if (company.type === 'company') {
+					const companyName = company.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+					const dateStart = company.data.dateStart;
+					const dateEnd = company.data.dateEnd;
+					let dateString = '';
 
-				if (displayDate) {
-					if (displayDate instanceof Date) {
-						dateString = displayDate.toLocaleDateString();
-					} else if (typeof displayDate === 'string' && displayDate.trim() !== '') {
-						dateString = new Date(displayDate).toLocaleDateString();
+					// Process date range
+					if (dateStart) {
+						const startDate = dateStart instanceof Date ? dateStart : new Date(dateStart);
+						const startFormatted = startDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+						
+						if (dateEnd && dateEnd !== 'TBD' && dateEnd !== '') {
+							const endDate = dateEnd instanceof Date ? dateEnd : new Date(dateEnd);
+							const endFormatted = endDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+							dateString = `${startFormatted} - ${endFormatted}`;
+						} else {
+							dateString = `${startFormatted} - Current`;
+						}
 					}
-				}
 
-				const item: CarouselItem = {
-					id: company.id || company.slug,
-					title: companyName,
-					dateString: dateString,
-					type: 'company',
-					logoURL: company.data.logoURL,
-					description: company.data.companyDescription,
-					slug: company.slug,
-				};
+					item = {
+						id: company.id || company.slug,
+						title: companyName,
+						dateString: dateString,
+						type: 'company',
+						logoURL: company.data.logoURL,
+						description: company.data.companyDescription,
+						slug: company.slug,
+					};
+				} else if (company.type === 'client') {
+					const clientName = company.data.name || company.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+					const dateStart = company.data.dateStart;
+					const dateEnd = company.data.dateEnd;
+					let dateString = '';
+
+					// Process date range
+					if (dateStart) {
+						const startDate = dateStart instanceof Date ? dateStart : new Date(dateStart);
+						const startFormatted = startDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+						
+						if (dateEnd && dateEnd !== 'TBD' && dateEnd !== '') {
+							const endDate = dateEnd instanceof Date ? dateEnd : new Date(dateEnd);
+							const endFormatted = endDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+							dateString = `${startFormatted} - ${endFormatted}`;
+						} else {
+							dateString = `${startFormatted} - Current`;
+						}
+					}
+
+					// Handle linkedCompany as either string or array
+					let linkedCompany = '';
+					if (company.data.linkedCompany) {
+						if (Array.isArray(company.data.linkedCompany)) {
+							linkedCompany = company.data.linkedCompany.join(', ');
+						} else {
+							linkedCompany = company.data.linkedCompany;
+						}
+					}
+
+					item = {
+						id: company.id || company.slug,
+						title: clientName,
+						dateString: dateString,
+						type: 'client',
+						imageURL: company.data.imageURL,
+						logoURL: company.data.logoURL,
+						description: company.data.clientDescription,
+						slug: company.slug,
+						linkedCompany: linkedCompany,
+					};
+				} else {
+					// Handle other types if necessary
+					return null;
+				}
 				
 				return item;
-			});
+			}).filter(item => item !== null) as CarouselItem[]; // Filter out null items
 
 			setCarouselItems(items);
 			setError(null);

@@ -502,6 +502,138 @@
 - Fixed @apply bg-blue-100 in companies/index.astro  
   - Replaced `@apply bg-blue-100 border-blue-300 text-blue-700`
 
+## 2024-12-19 16:15 - Carousel UI Improvements
+
+### Problems Fixed:
+- **CustomerAndClientCarousel.tsx**: Removed type indicator badges ("Company"/"Client") from carousel items
+- **CustomerAndClientCarousel.tsx**: Improved date formatting to show date ranges in MMM YYYY format
+- **CustomerAndClientCarousel.tsx**: Enhanced date logic to show "Current" for ongoing relationships
+
+### Changes Made:
+- Removed type indicator badges from both carousel cards and modal popups
+- Updated date processing to show date ranges: "Jan 2024 - Dec 2024"
+- Added logic to show "Jan 2024 - Current" for ongoing relationships
+- Improved date formatting using `toLocaleDateString('en-US', { month: 'short', year: 'numeric' })`
+- Enhanced date validation to handle empty, null, and "TBD" values
+
+### Date Logic:
+- **With start and end dates**: Shows "Jan 2024 - Dec 2024"
+- **With start date only**: Shows "Jan 2024 - Current"
+- **No dates or invalid dates**: Shows nothing
+- **Handles "TBD" and empty strings**: Treated as no end date
+
+### Technical Details:
+- Date formatting uses MMM YYYY format (e.g., "Jan 2024", "Dec 2024")
+- Proper handling of Date objects vs string dates
+- Validation for empty, null, and "TBD" end dates
+- Cleaner UI without type badges cluttering the design
+
+### Result:
+- ✅ Cleaner carousel design without type badges
+- ✅ Professional date range display (MMM YYYY format)
+- ✅ Clear indication of ongoing relationships ("Current")
+- ✅ Better user experience with cleaner visual design
+- ✅ Consistent date formatting across all carousel items
+
+> [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 16:10 - Clients Content Schema Validation Fix
+
+### Problems Fixed:
+- **config.ts**: Fixed content schema validation error for clients with array linkedCompany values
+- **Dorkinians FC.md**: Client file with array linkedCompany and logoURL field was causing validation failure
+- **CustomerAndClientCarousel.tsx**: Updated to handle linkedCompany arrays and logoURL for clients
+
+### Root Cause:
+The clients collection schema expected `linkedCompany` to be a string, but some client files (like Dorkinians FC.md) have it as an array. Also, some client files use `logoURL` instead of `imageURL`.
+
+### Changes Made:
+- Updated clients collection schema to allow `linkedCompany` as string, array, or null
+- Added `logoURL` field to clients schema as alternative to `imageURL`
+- Updated TypeScript interfaces to handle linkedCompany arrays
+- Enhanced processing logic to convert linkedCompany arrays to comma-separated strings
+- Updated CompanyCard component to handle logoURL for clients
+
+### Technical Details:
+- `linkedCompany` can now be: `string`, `string[]`, or `null`
+- Array values are converted to comma-separated strings for display
+- Clients can use either `imageURL` or `logoURL` for background images
+- Processing logic handles both field variations seamlessly
+
+### Result:
+- ✅ Content validation errors resolved for clients
+- ✅ All client files can be processed successfully
+- ✅ Carousel handles both imageURL and logoURL for clients
+- ✅ Linked company arrays are properly displayed as comma-separated strings
+- ✅ No impact on existing functionality
+
+> [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 16:05 - Content Schema Validation Fix
+
+### Problems Fixed:
+- **config.ts**: Fixed content schema validation error for companies with null logoURL values
+- **P3.md**: Company file with empty logoURL field was causing validation failure
+
+### Root Cause:
+The companies collection schema expected `logoURL` to be a string, but some company files (like P3.md) have empty or null logoURL values, causing validation errors.
+
+### Changes Made:
+- Updated companies collection schema to allow `null` values for `logoURL` field
+- Changed from `z.string().optional()` to `z.union([z.string(), z.null()]).optional()`
+- This allows companies to have either a string logoURL or null/empty values
+
+### Technical Details:
+- Content collections in Astro validate frontmatter against defined schemas
+- Empty frontmatter fields are interpreted as null values
+- Schema must explicitly allow null values using `z.union([z.string(), z.null()])`
+- This fix ensures all company files can be processed regardless of logoURL values
+
+### Result:
+- ✅ Content validation errors resolved
+- ✅ All company files can be processed successfully
+- ✅ Carousel continues to filter companies with valid logoURL values
+- ✅ No impact on existing functionality
+
+> [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 16:00 - CustomerAndClientCarousel Enhanced with Clients
+
+### Problems Fixed:
+- **CustomerAndClientCarousel.astro**: Added support for both companies and clients in the carousel
+- **CustomerAndClientCarousel.tsx**: Updated to handle different data schemas for companies vs clients
+- **CustomerAndClientCarousel.tsx**: Added visual distinction between companies and clients with type badges
+- **CustomerAndClientCarousel.tsx**: Enhanced modal to show linked company information for clients
+
+### Key Differences Between Companies and Clients:
+- **Companies**: Use `logoURL` field, slug-based names, `companyDescription`
+- **Clients**: Use `imageURL` field, explicit `name` field, `clientDescription`, `linkedCompany`
+
+### Changes Made:
+- Updated Astro component to fetch both companies and clients collections
+- Combined and sorted both types by date (newest first)
+- Added type indicators (blue badge for companies, green badge for clients)
+- Enhanced modal to show linked company information for clients
+- Updated fallback colors (blue gradient for companies, green gradient for clients)
+- Added proper TypeScript interfaces for both data types
+
+### Technical Details:
+- Companies and clients are filtered to only include those with images/logos
+- Combined list is sorted by dateStart with alphabetical fallback
+- Type badges help users distinguish between companies and clients
+- Modal shows additional linked company information for clients
+- Different fallback gradients provide visual distinction
+
+### Result:
+Carousel now displays both companies and clients with:
+- ✅ Visual type indicators (Company/Client badges)
+- ✅ Different fallback colors for each type
+- ✅ Proper handling of different image field names
+- ✅ Linked company information for clients
+- ✅ Unified sorting and display logic
+
+> [Back to Table of Contents](#table-of-contents)
+
 ## 2024-12-19 15:45 - CustomerAndClientCarousel Fixed
 
 ### Problems Fixed:
