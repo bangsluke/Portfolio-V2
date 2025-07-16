@@ -49,6 +49,8 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       theme: 'github-dark',
+      // Suppress warnings for unknown languages (like Obsidian-specific syntaxes)
+      wrap: true,
     },
   },
 });

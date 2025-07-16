@@ -18,6 +18,17 @@
 
 ## Auto Log
 
+## 2024-06-09 09:00 [main] - Fixed GraphQL build error in Netlify
+- Updated Experience component to handle GraphQL unavailability during build
+- Added fallback data for when backend is not available
+- Enhanced GraphQL client to handle build-time environment better
+- Fixed "Invalid URL" error that was causing Netlify builds to fail
+
+## 2024-06-09 08:52 [main] - Documented Shiki warnings for Obsidian languages
+- Added comment explaining that Shiki warnings for "table-of-contents", "dataview", and "meta-bind" are expected
+- These are Obsidian-specific syntaxes that fall back to plaintext highlighting
+- No action needed as this is normal behavior when syncing from Obsidian
+
 ## 2024-06-09 08:51 [main] - Fixed @apply directives in global.css
 - Replaced all `@apply` directives with direct CSS properties
 - Converted Tailwind utility classes to raw CSS values
