@@ -6,37 +6,53 @@ tags:
   - project/completed/work
   - coding
   - work
-  - "[React](#react)"
-  - "[Docusaurus](#docusaurus)"
-  - "[Markdown](#markdown)"
-  - "[GitLab](#gitlab)"
-  - "[RLE International](#rle-international)"
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Alex Sheers](#alex-sheers)"
-  - "[Work](#work)"
-  - "[GPMO](#gpmo)"
+created: 2025-05-30 09:57
+modified: 2025-07-11T15:52:23+01:00
+viewCount: 9
+aliases: 
+projectURL: TBC
+codeURL: TBC
+codeMultipleRepos: false
+folderURL: n/a
+logoURL: n/a
+imageURL: 
+dateStart: ""
+dateEnd: ""
+technologies:
+  - "[[React]]"
+  - "[[Docusaurus]]"
+  - "[[Markdown]]"
+  - "[[GitLab]]"
+projectCategory: Work Project
+linkedCompany:
+  - "[[RLE International]]"
+toolOwner: "[[Haydn Baker]]"
+developers:
+  - "[[Luke Bangs]]"
+  - "[[Alex Sheers]]"
+topicTags:
+  - "[[Work]]"
+  - "[[GPMO]]"
+powerShellAlias: n/a
+version: 1
+shortDescription: "TBC"
+longDescription: "TBC"
+lessonsLearned: "TBC"
 ---
 # GPMO Documentation Site
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -45,9 +61,7 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -72,9 +86,9 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: [React](#react), [Docusaurus](#docusaurus)
-- Back end/Datasource: [Markdown](#markdown)
-- Hosting: [GitLab](#gitlab) (see [Repositories](#repositories)), TBC
+- Front end: [[React]], [[Docusaurus]]
+- Back end/Datasource: [[Markdown]]
+- Hosting: [[GitLab]] (see [Repositories](#repositories)), TBC
 - Security: TBC
 - Authentication: TBC
 
@@ -89,7 +103,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -103,7 +117,7 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 ## Other Links
 
-- [GPMO](#gpmo)
+- [[GPMO]]
 - TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -118,51 +132,39 @@ TBC
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

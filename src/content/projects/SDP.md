@@ -3,48 +3,64 @@ tags:
   - project
   - portfolio
   - notes
+created: 2025-06-27 10:45
+modified: 2025-07-11T15:53:56+01:00
+aliases:
   - Scalable Development Plan
-  - "[Java](#01-notes/02-areas/work-notes/skills-notes/languages/java)"
-  - "[React](#react)"
-  - "[Neo4j](#neo4j)"
-  - "[Cypher](#cypher)"
-  - "[GitLab](#gitlab)"
-  - "[GCP](#google-cloud)"
-  - "[SQL](#sql)"
-  - "[Excel](#excel)"
-  - "[VBA](#vba)"
-  - "[Google Sheets](#google-sheets)"
-  - "[Google Apps Script](#google-apps-script)"
-  - "[NeoDash](#neodash)"
-  - "[RLE International](#rle-international)"
-  - "[Adele Donaldson-Logan](#adele-donaldson-logan)"
-  - "[Elena Kohlwey](#elena-kohlwey)"
-  - "[Karsten Maylahn](#karsten-maylahn)"
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Work](#work)"
-  - "[Digital Engineering](#digital-engineering)"
+viewCount: 8
+projectURL: TBC
+codeURL: TBC
+codeMultipleRepos: false
+folderURL: n/a
+logoURL: n/a
+imageURL: 
+dateStart: ""
+dateEnd: ""
+technologies:
+  - "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]"
+  - "[[React]]"
+  - "[[Neo4j]]"
+  - "[[Cypher]]"
+  - "[[GitLab]]"
+  - "[[Google Cloud|GCP]]"
+  - "[[SQL]]"
+  - "[[Excel]]"
+  - "[[VBA]]"
+  - "[[Google Sheets]]"
+  - "[[Google Apps Script]]"
+  - "[[NeoDash]]"
+projectCategory: Work Project
+linkedCompany:
+  - "[[RLE International]]"
+toolOwner: "[[Uwe Kloss]]"
+developers:
+  - "[[Adele Donaldson-Logan]]"
+  - "[[Elena Kohlwey]]"
+  - "[[Karsten Maylahn]]"
+  - "[[Luke Bangs]]"
+topicTags:
+  - "[[Work]]"
+  - "[[Digital Engineering]]"
+powerShellAlias: n/a
+version: 3
+shortDescription: "TBC"
+longDescription: "TBC"
+lessonsLearned: "TBC\nI was fully in charge of the [[SQL]] backend database, meaning I had to learn how to write [[SQL]] queries. I optimised this by storing the data that we collected day to day in [[Excel]] and then writing a [[VBA]] script to automate creating the [[SQL]] queries to update the database quickly.\nThis lead to a complete rebuild when our company migrated from [[Microsoft]] to [[Google]], meaning I had to migrate the data and automations into [[Google Sheets]] and use [[Google Apps Script]].\nThere was a brief period where we began consider rebuilding the frontend in [[React]] and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.\nAs well as the main app, we also developed several [[NeoDash]] dashboards off of the [[Neo4j]] data for ongoing maintenance to check on the data."
 ---
 # SDP
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -53,9 +69,7 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -64,7 +78,7 @@ table-of-contents
 
 Scalable Development Plan to automatically building a full development timing plan based on a number of inputs.
 
-Worked on this project with [Elena Kohlwey](#elena-kohlwey), [Karsten Maylahn](#karsten-maylahn), [Uwe Kloss](#uwe-kloss) and [Adele Donaldson-Logan](#adele-donaldson-logan).
+Worked on this project with [[Elena Kohlwey]], [[Karsten Maylahn]], [[Uwe Kloss]] and [[Adele Donaldson-Logan]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -82,11 +96,11 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: [Java](#01-notes/02-areas/work-notes/skills-notes/languages/java)/[React](#react)
-- Back end/Datasource: [Neo4j](#neo4j), [Cypher](#cypher), [Java](#01-notes/02-areas/work-notes/skills-notes/languages/java), [SQL](#sql), [Excel](#excel), [VBA](#vba), [Google Sheets](#google-sheets), [Google Apps Script](#google-apps-script)
-- Hosting: [GitLab](#gitlab) (see [Repositories](#repositories))
+- Front end: [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]/[[React]]
+- Back end/Datasource: [[Neo4j]], [[Cypher]], [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]], [[SQL]], [[Excel]], [[VBA]], [[Google Sheets]], [[Google Apps Script]]
+- Hosting: [[GitLab]] (see [Repositories](#repositories))
 - Security: n/a
-- Authentication: [GCP](#google-cloud)
+- Authentication: [[Google Cloud|GCP]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -99,7 +113,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -113,8 +127,8 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 ## Other Links
 
-- [SDP Acronyms](#sdp-acronyms)
-- [SDP Encyclopaedia](#sdp-encyclopaedia)
+- [[SDP Acronyms]]
+- [[SDP Encyclopaedia]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -122,13 +136,13 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 TBC
 
-I was fully in charge of the [SQL](#sql) backend database, meaning I had to learn how to write [SQL](#sql) queries. I optimised this by storing the data that we collected day to day in [Excel](#excel) and then writing a [VBA](#vba) script to automate creating the [SQL](#sql) queries to update the database quickly.
+I was fully in charge of the [[SQL]] backend database, meaning I had to learn how to write [[SQL]] queries. I optimised this by storing the data that we collected day to day in [[Excel]] and then writing a [[VBA]] script to automate creating the [[SQL]] queries to update the database quickly.
 
-This lead to a complete rebuild when our company migrated from [Microsoft](#microsoft) to [Google](#google), meaning I had to migrate the data and automations into [Google Sheets](#google-sheets) and use [Google Apps Script](#google-apps-script).
+This lead to a complete rebuild when our company migrated from [[Microsoft]] to [[Google]], meaning I had to migrate the data and automations into [[Google Sheets]] and use [[Google Apps Script]].
 
-There was a brief period where we began consider rebuilding the frontend in [React](#react) and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
+There was a brief period where we began consider rebuilding the frontend in [[React]] and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
 
-As well as the main app, we also developed several [NeoDash](#neodash) dashboards off of the [Neo4j](#neo4j) data for ongoing maintenance to check on the data.
+As well as the main app, we also developed several [[NeoDash]] dashboards off of the [[Neo4j]] data for ongoing maintenance to check on the data.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -136,51 +150,39 @@ As well as the main app, we also developed several [NeoDash](#neodash) dashboard
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

@@ -6,21 +6,26 @@ tags:
   - tag
   - client
   - automotive
+created: 2025-06-02 17:46
+modified: 2025-07-07T20:56:06+01:00
+viewCount: 5
+dateStart: 2022-03-01
+dateEnd: 2022-03-31
+aliases: 
+imageURL: 
+linkedCompany: "[[RLE International]]"
 ---
 # Odin
 
-> **BACK:** Link back to [Company Notes](#company-notes)
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
->
-<!-- Dataview Query (hidden in production):
+>```dataview
 TABLE WITHOUT ID elink("https://en.wikipedia.org/wiki/"+replace(this.file.name, " ", "_"), this.file.name + " Wiki") as "Wikipedia Link"
 WHERE file = this.file
 
 ## Table of Contents
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 ## Details
@@ -34,8 +39,7 @@ table-of-contents
 
 ### Linked Personnel
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID
 	file.link as "Person",
 	length(file.inlinks) as "Note Mentions", 	referenceRole as "Reference Role"
@@ -45,16 +49,13 @@ WHERE
 	contains(linkedCompany, [[]])
 SORT
 	file.name ASC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Role Descriptions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID
 	file.link as "Role Name",
 	dateStart as "Start Date",
@@ -65,16 +66,13 @@ WHERE
 	contains(linkedCompany, [[]])
 SORT
 	file.name ASC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Linked Projects
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID
 	file.link as "Project Name",
 	dateStart as "Start",
@@ -86,48 +84,37 @@ WHERE
 	contains(file.outlinks, [[]])
 SORT
 	file.name ASC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

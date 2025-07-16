@@ -5,36 +5,50 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-  - "[Power BI](#power-bi)"
-  - "[Power Query](#power-query)"
-  - "[SharePoint](#sharepoint)"
-  - "[Alex Sheers](#alex-sheers)"
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Work](#work)"
-  - "[GPMO](#gpmo)"
-  - "[Finances](#finances)"
+modified: 2025-07-11T15:53:10+01:00
+viewCount: 3
+aliases: 
+projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/4800ac5b-36e5-4818-9c5a-38b19965e578/ReportSectiondd4069f533edc22c8a48?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
+codeURL: 
+codeMultipleRepos: false
+folderURL: 
+logoURL: https://i.imgur.com/SFb7UNB.png
+imageURL: 
+dateStart: 
+dateEnd: 
+technologies:
+  - "[[Power BI]]"
+  - "[[Power Query]]"
+  - "[[SharePoint]]"
+projectCategory: Work Project
+toolOwner: "[[Dominic Ede]]"
+developers:
+  - "[[Alex Sheers]]"
+  - "[[Luke Bangs]]"
+topicTags:
+  - "[[Work]]"
+  - "[[GPMO]]"
+  - "[[Finances]]"
+powerShellAlias: n/a
+version: 
+shortDescription: "The report section for the [[Financial Tracker]] showing global [[RLE International]] [[Project Pipeline]] data."
+longDescription: "TBC"
+lessonsLearned: "TBC"
 ---
 # Pipeline App User Report
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -43,9 +57,7 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -58,7 +70,7 @@ TBC
 
 ## Short Description
 
-The report section for the [Financial Tracker](#financial-tracker) showing global [RLE International](#rle-international) [Project Pipeline](#project-pipeline) data.
+The report section for the [[Financial Tracker]] showing global [[RLE International]] [[Project Pipeline]] data.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -72,7 +84,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: [GitLab](#gitlab) (see [Repositories](#repositories))
+- Hosting: [[GitLab]] (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -87,7 +99,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -115,51 +127,39 @@ TBC
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

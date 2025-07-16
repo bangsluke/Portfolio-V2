@@ -6,38 +6,53 @@ tags:
   - project/archived
   - sport
   - coding
+created: 2025-05-29 17:44
+modified: 2025-07-11T15:59:40+01:00
+aliases:
   - Dorkinians Mobile Stats
-  - "[React](#react)"
-  - "[Google Sheets](#google-sheets)"
-  - "[GitHub](#github)"
-  - "[Netlify](#netlify)"
-  - "[Synk](#synk)"
-  - "[Dorkinians FC](#dorkinians-fc)"
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Dorkinians FC](#dorkinians-fc)"
-  - "[Football](#football)"
+viewCount: 10
+projectURL: https://dorkinians-mobile-stats.netlify.app/main
+codeURL: https://github.com/bangsluke/mobile-stats-dorkinians
+codeMultipleRepos: false
+folderURL: n/a
+imageURL: 
+dateStart: 2022-12-07
+dateEnd: 2023-01-13
+technologies:
+  - "[[React]]"
+  - "[[Google Sheets]]"
+  - "[[GitHub]]"
+  - "[[Netlify]]"
+  - "[[Synk]]"
+projectCategory: Personal Design
+linkedCompany:
+  - "[[Dorkinians FC]]"
+toolOwner: "[[Luke Bangs]]"
+developers:
+  - "[[Luke Bangs]]"
+topicTags:
+  - "[[Dorkinians FC]]"
+  - "[[Football]]"
+powerShellAlias: n/a
+version: 1
+shortDescription: "A quick access filterable stats site for [[Dorkinians FC|Dorkinians]] players."
+longDescription: "After creating the initial [[Dorkinians Website]], I would regularly be asked by players “But how many goals were just in cup games/not friendlies/just league?” Etc etc.\nI therefore decided to play around with creating a filterable site so that players could answer these questions themselves."
+lessonsLearned: "This project let me design my first filter [[UI]] popup using [[React]] and taught me methods of filtering the data received from the back end.\nI also tried out a new [[API]] method of retrieving data to the front end from [[Google Sheets]], using their available method instead of parsing generated [[CSV]] data like I did on the [[Dorkinians Website]]."
 ---
 # Dorkinians Mobile Site
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -46,28 +61,26 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Introduction
 
-A note for storing details on an accessible mobile stats site for [Dorkinians FC](#dorkinians-fc).
+A note for storing details on an accessible mobile stats site for [[Dorkinians FC]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Short Description
 
-A quick access filterable stats site for [Dorkinians](#dorkinians-fc) players.
+A quick access filterable stats site for [[Dorkinians FC|Dorkinians]] players.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-After creating the initial [Dorkinians Website](#dorkinians-website), I would regularly be asked by players “But how many goals were just in cup games/not friendlies/just league?” Etc etc.
+After creating the initial [[Dorkinians Website]], I would regularly be asked by players “But how many goals were just in cup games/not friendlies/just league?” Etc etc.
 
 I therefore decided to play around with creating a filterable site so that players could answer these questions themselves.
 
@@ -75,10 +88,10 @@ I therefore decided to play around with creating a filterable site so that playe
 
 ## Architecture and Technologies
 
-- Front end: [React](#react)
-- Back end/Datasource: [Google Sheets](#google-sheets)
-- Hosting: [GitHub](#github) (see [Repositories](#repositories)), [Netlify](#netlify)
-- Security: [Synk](#synk)
+- Front end: [[React]]
+- Back end/Datasource: [[Google Sheets]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
+- Security: [[Synk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -92,7 +105,7 @@ I therefore decided to play around with creating a filterable site so that playe
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -109,18 +122,18 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 - https://dorkinians-mobile-stats.netlify.app/main
 - https://github.com/bangsluke/mobile-stats-dorkinians
-- [Dorkinians Website](#dorkinians-website)
-- [Dorkinians Website V2](#dorkinians-website-v2)
-- [Todoist](#todoist) Lists
+- [[Dorkinians Website]]
+- [[Dorkinians Website V2]]
+- [[Todoist]] Lists
 	- [Dorkinians Mobile Site](https://todoist.com/showTask?id=6496470356&sync_id=6506077820)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This project let me design my first filter [UI](#ui) popup using [React](#react) and taught me methods of filtering the data received from the back end.
+This project let me design my first filter [[UI]] popup using [[React]] and taught me methods of filtering the data received from the back end.
 
-I also tried out a new [API](#api) method of retrieving data to the front end from [Google Sheets](#google-sheets), using their available method instead of parsing generated [CSV](#csv) data like I did on the [Dorkinians Website](#dorkinians-website).
+I also tried out a new [[API]] method of retrieving data to the front end from [[Google Sheets]], using their available method instead of parsing generated [[CSV]] data like I did on the [[Dorkinians Website]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -128,36 +141,27 @@ I also tried out a new [API](#api) method of retrieving data to the front end fr
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

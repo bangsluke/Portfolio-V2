@@ -5,35 +5,50 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-  - "[RLE International](#rle-international)"
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Alex Sheers](#alex-sheers)"
-  - "[Excel](#excel)"
-  - "[Finances](#finances)"
-  - "[Work](#work)"
-  - "[GPMO](#gpmo)"
+modified: 2025-07-11T15:51:13+01:00
+viewCount: 5
+aliases: 
+projectURL: https://rleint.sharepoint.com/:x:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model/GPMO%20Cost%20Model%20V1.xlsx?d=w63d8777e305243178780a626d3abdf07&csf=1&web=1&e=hCf0X0
+codeURL: n/a
+codeMultipleRepos: 
+folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model?csf=1&web=1&e=CGmO2I
+logoURL: https://i.imgur.com/fmcxj4Y.png
+imageURL: 
+dateStart: 2023-11-15
+dateEnd: 2024-07-26
+projectCategory: Work Project
+linkedCompany:
+  - "[[RLE International]]"
+toolOwner: "[[Keith Higham]]"
+developers:
+  - "[[Luke Bangs]]"
+  - "[[Alex Sheers]]"
+technologies:
+  - "[[Excel]]"
+topicTags:
+  - "[[Finances]]"
+  - "[[Work]]"
+  - "[[GPMO]]"
+powerShellAlias: n/a
+version: 
+shortDescription: "A unified cost model template and approach for costing projects - feeds into the [[Financial Tracker|Finance Tracker]]."
+longDescription: "TBC"
+lessonsLearned: "TBC"
 ---
 # Cost Model
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -42,9 +57,7 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 ## Introduction
@@ -55,7 +68,7 @@ TBC
 
 ## Short Description
 
-A unified cost model template and approach for costing projects - feeds into the [Finance Tracker](#financial-tracker).
+A unified cost model template and approach for costing projects - feeds into the [[Financial Tracker|Finance Tracker]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -69,9 +82,9 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: n/a
-- Hosting: [Azure](#azure)
+- Hosting: [[Azure]]
 - Security: n/a
-- Authentication: [Azure](#azure)
+- Authentication: [[Azure]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -84,7 +97,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -117,7 +130,7 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 ## Other Links
 
-- [GPMO](#gpmo)
+- [[GPMO]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -131,51 +144,39 @@ TBC
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

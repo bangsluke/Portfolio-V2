@@ -5,36 +5,51 @@ tags:
   - tool
   - project/completed/work
   - portfolio
-  - "[Excel](#excel)"
-  - "[VBA](#vba)"
-  - "[RLE International](#rle-international)"
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Alex Sheers](#alex-sheers)"
-  - "[GPMO](#gpmo)"
-  - "[Work](#work)"
-  - "[Finances](#finances)"
+modified: 2025-07-11T15:51:21+01:00
+viewCount: 2
+aliases: 
+projectURL: TBC
+codeURL: n/a
+codeMultipleRepos: false
+folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model?csf=1&web=1&e=CGmO2I
+logoURL: n/a
+imageURL: 
+dateStart: 2024-01-31
+dateEnd: 2024-07-31
+technologies:
+  - "[[Excel]]"
+  - "[[VBA]]"
+projectCategory: Work Project
+linkedCompany:
+  - "[[RLE International]]"
+toolOwner: "[[Keith Higham]]"
+developers:
+  - "[[Luke Bangs]]"
+  - "[[Alex Sheers]]"
+topicTags:
+  - "[[GPMO]]"
+  - "[[Work]]"
+  - "[[Finances]]"
+powerShellAlias: n/a
+version: 
+shortDescription: "The automation file to convert the [[Cost Model]] into the data format required for the [[Financial Tracker|Finance Tracker]]."
+longDescription: "TBC"
+lessonsLearned: "TBC"
 ---
 # Cost Model Translation File
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -43,9 +58,7 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -58,7 +71,7 @@ TBC
 
 ## Short Description
 
-The automation file to convert the [Cost Model](#cost-model) into the data format required for the [Finance Tracker](#financial-tracker).
+The automation file to convert the [[Cost Model]] into the data format required for the [[Financial Tracker|Finance Tracker]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -72,7 +85,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: [GitLab](#gitlab) (see [Repositories](#repositories))
+- Hosting: [[GitLab]] (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -87,7 +100,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -115,51 +128,39 @@ TBC
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

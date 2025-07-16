@@ -5,40 +5,55 @@ tags:
   - tool
   - portfolio
   - project/completed/work
+modified: 2025-07-11T15:53:20+01:00
+viewCount: 4
+aliases:
   - PFDM
-  - "[Power Apps](#power-apps)"
-  - "[Power BI](#power-bi)"
-  - "[Power Query](#power-query)"
-  - "[SharePoint](#sharepoint)"
-  - "[SQL](#sql)"
-  - "[RLE International](#rle-international)"
-  - "[Alex Sheers](#alex-sheers)"
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Work](#work)"
-  - "[GPMO](#gpmo)"
-  - "[Finances](#finances)"
+projectURL: 
+codeURL: 
+codeMultipleRepos: false
+folderURL: 
+logoURL: https://i.imgur.com/Jsm73YL.png
+imageURL: 
+dateStart: 
+dateEnd: 
+technologies:
+  - "[[Power Apps]]"
+  - "[[Power BI]]"
+  - "[[Power Query]]"
+  - "[[SharePoint]]"
+  - "[[SQL]]"
+projectCategory: Work Project
+linkedCompany:
+  - "[[RLE International]]"
+toolOwner: "[[Dominic Ede]]"
+developers:
+  - "[[Alex Sheers]]"
+  - "[[Luke Bangs]]"
+topicTags:
+  - "[[Work]]"
+  - "[[GPMO]]"
+  - "[[Finances]]"
+powerShellAlias: n/a
+version: 
+shortDescription: "Data input for financial tracking of [[RLE International]] projects."
+longDescription: "TBC\nPulled in timesheet data and financial information from various [[RLE International]] region sources such as [[Paycor]], [[T-Sheet]] and [[Iplicit]]."
+lessonsLearned: "TBC"
 ---
 # Project Finance Data Manager
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -47,9 +62,7 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -62,7 +75,7 @@ TBC
 
 ## Short Description
 
-Data input for financial tracking of [RLE International](#rle-international) projects.
+Data input for financial tracking of [[RLE International]] projects.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -70,7 +83,7 @@ Data input for financial tracking of [RLE International](#rle-international) pro
 
 TBC
 
-Pulled in timesheet data and financial information from various [RLE International](#rle-international) region sources such as [Paycor](#paycor), [T-Sheet](#t-sheet) and [Iplicit](#iplicit).
+Pulled in timesheet data and financial information from various [[RLE International]] region sources such as [[Paycor]], [[T-Sheet]] and [[Iplicit]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -78,7 +91,7 @@ Pulled in timesheet data and financial information from various [RLE Internation
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: [GitLab](#gitlab) (see [Repositories](#repositories))
+- Hosting: [[GitLab]] (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -93,7 +106,7 @@ Pulled in timesheet data and financial information from various [RLE Internation
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -121,51 +134,39 @@ TBC
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

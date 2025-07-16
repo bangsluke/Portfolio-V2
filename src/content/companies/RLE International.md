@@ -4,40 +4,44 @@ tags:
   - notes
   - tag
   - portfolio
+created: 2025-05-30T09:49:00
+modified: 2025-07-11T14:55:12+01:00
+viewCount: 10
+aliases:
   - RLE
+dateStart: ""
+dateEnd: ""
+logoURL: https://i.imgur.com/WlMzHZX.png
 ---
 # RLE International
 
-> **BACK:** Link back to [Company Notes](#company-notes)
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
->
-<!-- Dataview Query (hidden in production):
+>```dataview
 TABLE WITHOUT ID elink("https://en.wikipedia.org/wiki/"+replace(this.file.name, " ", "_"), this.file.name + " Wiki") as "Wikipedia Link"
 WHERE file = this.file
 
 ## Table of Contents
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 ## Folder Contents
 
 %% Begin Waypoint %%
-- **[RLE International](#rle-international)**
-	- [Centre of Excellence](#centre-of-excellence)
-	- [Digital Engineering](#digital-engineering)
-	- [FutureMotiv](#futuremotiv)
-	- [GPMO](#gpmo)
-	- [Recotech](#recotech)
-	- [RLE China](#rle-china)
-	- [RLE Germany](#rle-germany)
-	- [RLE Iberia](#rle-iberia)
-	- [RLE India](#rle-india)
-	- [RLE UK](#rle-uk)
-	- [RLE USA](#rle-usa)
-	- [VESOFTx](#vesoftx)
+- **[[RLE International]]**
+	- [[Centre of Excellence]]
+	- [[Digital Engineering]]
+	- [[FutureMotiv]]
+	- [[GPMO]]
+	- [[Recotech]]
+	- [[RLE China]]
+	- [[RLE Germany]]
+	- [[RLE Iberia]]
+	- [[RLE India]]
+	- [[RLE UK]]
+	- [[RLE USA]]
+	- [[VESOFTx]]
 
 %% End Waypoint %%
 
@@ -52,8 +56,7 @@ table-of-contents
 
 ### Linked Personnel
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID
 	file.link as "Person",
 	length(file.inlinks) as "Note Mentions", 	referenceRole as "Reference Role"
@@ -63,16 +66,13 @@ WHERE
 	contains(linkedCompany, [[]])
 SORT
 	file.name ASC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Role Descriptions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID
 	file.link as "Role Name",
 	dateStart as "Start Date",
@@ -83,16 +83,13 @@ WHERE
 	contains(linkedCompany, [[]])
 SORT
 	file.name ASC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Linked Projects
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID
 	file.link as "Project Name",
 	dateStart as "Start",
@@ -104,48 +101,37 @@ WHERE
 	contains(file.outlinks, [[]])
 SORT
 	file.name ASC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

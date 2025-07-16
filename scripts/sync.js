@@ -21,6 +21,12 @@ const OBSIDIAN_VAULT_PATH = process.env.OBSIDIAN_PATH;
 const ASTRO_CONTENT_PATH = path.join(__dirname, '../src/content');
 const ERROR_LOG_PATH = path.join(__dirname, '../sync-errors.json');
 
+// Sync mode configuration
+const SYNC_MODE = process.env.SYNC_MODE || 'development'; // 'development', 'production', 'mobile'
+const EMAIL_NOTIFICATIONS = process.env.EMAIL_NOTIFICATIONS === 'true';
+const AUTO_DEPLOY = process.env.AUTO_DEPLOY === 'true';
+const DEBUG_MODE = process.env.DEBUG === 'true';
+
 // Validate OBSIDIAN_PATH
 if (!OBSIDIAN_VAULT_PATH) {
   console.error('❌ OBSIDIAN_PATH environment variable is not set!');
@@ -55,7 +61,137 @@ const PROTECTED_ITEMS = [
   'allStaticData.json'
 ];
 
-// Error tracking
+// Extract content between specific markdown sections
+function extractSectionContent(content, sectionName, endMarker) {
+  const sectionRegex = new RegExp(
+    `##\\s*${sectionName}\\s*\\n([\\s\\S]*?)(?=\\s*${endMarker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`,
+    'i'
+  );
+  
+  const match = content.match(sectionRegex);
+  if (match && match[1]) {
+    // Clean up the extracted content
+    return match[1]
+      .trim()
+      .replace(/\n{3,}/g, '\n\n') // Replace multiple newlines with double newlines
+      .replace(/\s+$/gm, ''); // Remove trailing whitespace from each line
+  }
+  return null;
+}
+
+// Extract sections and add to frontmatter based on content type
+function extractSectionsToFrontmatter(content, contentType) {
+  // Define sections to extract based on content type
+  const sectionsToExtract = [
+    // Role-specific sections
+    { name: 'Role Description', property: 'roleDescription', contentType: 'role' },
+    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'role' },
+    
+    // Project-specific sections
+    { name: 'Short Description', property: 'shortDescription', contentType: 'project' },
+    { name: 'Long Description', property: 'longDescription', contentType: 'project' },
+    { name: 'Lessons Learned', property: 'lessonsLearned', contentType: 'project' },
+    
+    // Education-specific sections
+    { name: 'Qualifications', property: 'qualifications', contentType: 'education' },
+    { name: 'Additional Details', property: 'additionalDetails', contentType: 'education' },
+    
+    // Company-specific sections
+    { name: 'Company Description', property: 'companyDescription', contentType: 'company' },
+    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'company' },
+    
+    // Skill-specific sections (excluding skillDescription - should come from YAML frontmatter)
+    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'skill' },
+    
+    // Client-specific sections
+    { name: 'Client Description', property: 'clientDescription', contentType: 'client' },
+    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'client' },
+    
+    // Reference-specific sections
+    { name: 'Reference Description', property: 'referenceDescription', contentType: 'reference' },
+    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'reference' }
+  ];
+
+  const extractedData = {};
+  const endMarker = '>[!top] [Back to top](#Table%20of%20Contents)';
+
+  // Extract content from each section that matches the content type
+  sectionsToExtract.forEach(({ name, property, contentType: sectionContentType }) => {
+    if (sectionContentType === contentType) {
+      const sectionContent = extractSectionContent(content, name, endMarker);
+      if (sectionContent) {
+        extractedData[property] = sectionContent;
+        if (DEBUG_MODE) {
+          console.log(`📝 Extracted ${property} for ${contentType}: ${sectionContent.substring(0, 50)}...`);
+        }
+      }
+    }
+  });
+
+  // If we found any sections, add them to frontmatter
+  if (Object.keys(extractedData).length > 0) {
+    // Find the frontmatter section
+    const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
+    
+    if (frontmatterMatch) {
+      const existingFrontmatter = frontmatterMatch[1];
+      const newFrontmatterLines = [];
+      
+      // Parse existing frontmatter to check for duplicates
+      const existingFields = new Set();
+      const existingLines = existingFrontmatter.split('\n');
+      
+      existingLines.forEach(line => {
+        const trimmedLine = line.trim();
+        if (trimmedLine && !trimmedLine.startsWith('#')) {
+          const colonIndex = trimmedLine.indexOf(':');
+          if (colonIndex > 0) {
+            const fieldName = trimmedLine.substring(0, colonIndex).trim();
+            existingFields.add(fieldName);
+          }
+        }
+        newFrontmatterLines.push(line);
+      });
+      
+      // Add extracted data as new frontmatter fields (only if they don't already exist)
+      Object.entries(extractedData).forEach(([property, value]) => {
+        if (!existingFields.has(property)) {
+          // Escape any quotes in the value and wrap in quotes
+          const escapedValue = value.replace(/"/g, '\\"').replace(/\n/g, '\\n');
+          newFrontmatterLines.push(`${property}: "${escapedValue}"`);
+          if (DEBUG_MODE) {
+            console.log(`✅ Added ${property} to frontmatter`);
+          }
+        } else {
+          if (DEBUG_MODE) {
+            console.log(`⚠️  Skipped ${property} - already exists in frontmatter`);
+          }
+        }
+      });
+      
+      // Replace the frontmatter section
+      const newFrontmatter = newFrontmatterLines.join('\n');
+      content = content.replace(
+        /^---\s*\n([\s\S]*?)\n---\s*\n/,
+        `---\n${newFrontmatter}\n---\n`
+      );
+    } else {
+      // No existing frontmatter, create new one
+      const frontmatterLines = [];
+      Object.entries(extractedData).forEach(([property, value]) => {
+        const escapedValue = value.replace(/"/g, '\\"').replace(/\n/g, '\\n');
+        frontmatterLines.push(`${property}: "${escapedValue}"`);
+      });
+      
+      const newFrontmatter = frontmatterLines.join('\n');
+      content = `---\n${newFrontmatter}\n---\n\n${content}`;
+    }
+  }
+
+  return content;
+}
+
+// Error tracking (only for production mode)
 let syncErrors = {
   timestamp: new Date().toISOString(),
   source: OBSIDIAN_VAULT_PATH,
@@ -70,9 +206,13 @@ let syncErrors = {
   success: false
 };
 
-console.log('🚀 Starting Production Obsidian Sync...');
+console.log(`🚀 Starting ${SYNC_MODE.toUpperCase()} Obsidian Sync...`);
 console.log('📁 Obsidian vault path:', OBSIDIAN_VAULT_PATH);
 console.log('🎯 Astro content path:', ASTRO_CONTENT_PATH);
+console.log('⚙️  Sync mode:', SYNC_MODE);
+console.log('📧 Email notifications:', EMAIL_NOTIFICATIONS ? 'enabled' : 'disabled');
+console.log('🚀 Auto deploy:', AUTO_DEPLOY ? 'enabled' : 'disabled');
+console.log('🐛 Debug mode:', DEBUG_MODE ? 'enabled' : 'disabled');
 
 // Ensure content directories exist
 function ensureDirectories() {
@@ -130,15 +270,31 @@ function getTargetFolder(tags) {
   return null;
 }
 
+// Determine content type based on target folder
+function getContentType(targetFolder) {
+  const folderToTypeMap = {
+    'roles': 'role',
+    'projects': 'project',
+    'educations': 'education',
+    'companies': 'company',
+    'skills': 'skill',
+    'clients': 'client',
+    'references': 'reference'
+  };
+  return folderToTypeMap[targetFolder] || null;
+}
+
 // Process a markdown file
 function processMarkdownFile(filePath, relativePath) {
   try {
-    syncErrors.summary.totalFiles++;
+    if (SYNC_MODE === 'production') {
+      syncErrors.summary.totalFiles++;
+    }
     
     let content = fs.readFileSync(filePath, 'utf8');
     const { tags } = parseFrontmatter(content);
     
-    if (process.env.DEBUG) {
+    if (DEBUG_MODE) {
       console.log(`📄 Processing: ${relativePath}`);
       console.log(`🏷️  Tags found: ${tags.join(', ')}`);
     }
@@ -146,8 +302,10 @@ function processMarkdownFile(filePath, relativePath) {
     // Check if file has portfolio tag
     const portfolioTag = process.env.PORTFOLIO_TAG || 'portfolio';
     if (!tags.includes(portfolioTag)) {
-      syncErrors.summary.skippedFiles++;
-      if (process.env.DEBUG) {
+      if (SYNC_MODE === 'production') {
+        syncErrors.summary.skippedFiles++;
+      }
+      if (DEBUG_MODE) {
         console.log(`⏭️  Skipping - no ${portfolioTag} tag`);
       }
       return;
@@ -155,8 +313,10 @@ function processMarkdownFile(filePath, relativePath) {
     
     const targetFolder = getTargetFolder(tags);
     if (!targetFolder) {
-      syncErrors.summary.skippedFiles++;
-      if (process.env.DEBUG) {
+      if (SYNC_MODE === 'production') {
+        syncErrors.summary.skippedFiles++;
+      }
+      if (DEBUG_MODE) {
         console.log(`⏭️  Skipping - no matching folder for tags: ${tags.join(', ')}`);
       }
       return;
@@ -167,11 +327,22 @@ function processMarkdownFile(filePath, relativePath) {
     
     // Check if target file is protected
     if (isProtected(fileName)) {
-      syncErrors.summary.skippedFiles++;
-      if (process.env.DEBUG) {
+      if (SYNC_MODE === 'production') {
+        syncErrors.summary.skippedFiles++;
+      }
+      if (DEBUG_MODE) {
         console.log(`🛡️  Skipping - file is protected: ${fileName}`);
       }
       return;
+    }
+    
+    // Extract sections based on content type
+    const contentType = getContentType(targetFolder);
+    if (contentType) {
+      content = extractSectionsToFrontmatter(content, contentType);
+      if (DEBUG_MODE) {
+        console.log(`🔍 Applied section extraction for content type: ${contentType}`);
+      }
     }
     
     // Filter out image references that could cause build errors
@@ -199,30 +370,27 @@ function processMarkdownFile(filePath, relativePath) {
       }
     );
     
-    // Additional filter for any remaining Obsidian-style image references
-    content = content.replace(
-      /!\[([^\]]*)\]\(#([^)]+)\)/g,
-      (match, altText, imageName) => {
-        return `<!-- Image removed during sync: ${altText} (${imageName}) -->`;
-      }
-    );
-    
     // Write the filtered content to target folder
     fs.writeFileSync(targetPath, content, 'utf8');
-    syncErrors.summary.copiedFiles++;
     
-    if (process.env.DEBUG) {
+    if (SYNC_MODE === 'production') {
+      syncErrors.summary.copiedFiles++;
+    }
+    
+    if (DEBUG_MODE) {
       console.log(`✅ Copied to: ${targetPath}`);
     }
     
   } catch (error) {
-    syncErrors.summary.errors++;
-    const errorInfo = {
-      file: filePath,
-      error: error.message,
-      timestamp: new Date().toISOString()
-    };
-    syncErrors.errors.push(errorInfo);
+    if (SYNC_MODE === 'production') {
+      syncErrors.summary.errors++;
+      const errorInfo = {
+        file: filePath,
+        error: error.message,
+        timestamp: new Date().toISOString()
+      };
+      syncErrors.errors.push(errorInfo);
+    }
     console.error(`❌ Error processing ${filePath}:`, error.message);
   }
 }
@@ -239,7 +407,7 @@ function processDirectory(dirPath, relativePath = '') {
       
       // Skip protected items
       if (isProtected(item)) {
-        if (process.env.DEBUG) {
+        if (DEBUG_MODE) {
           console.log(`🛡️ Skipping protected item: ${itemRelativePath}`);
         }
         continue;
@@ -252,13 +420,15 @@ function processDirectory(dirPath, relativePath = '') {
       }
     }
   } catch (error) {
-    syncErrors.summary.errors++;
-    const errorInfo = {
-      directory: dirPath,
-      error: error.message,
-      timestamp: new Date().toISOString()
-    };
-    syncErrors.errors.push(errorInfo);
+    if (SYNC_MODE === 'production') {
+      syncErrors.summary.errors++;
+      const errorInfo = {
+        directory: dirPath,
+        error: error.message,
+        timestamp: new Date().toISOString()
+      };
+      syncErrors.errors.push(errorInfo);
+    }
     console.error(`❌ Error processing directory ${dirPath}:`, error.message);
   }
 }
@@ -357,9 +527,13 @@ function deployToProduction() {
         }
       });
     }
+    // Generic deployment
     else {
-      console.log('⚠️  No deployment configuration found. Skipping deployment.');
-      return false;
+      console.log('📤 Running generic deployment...');
+      execSync('npm run deploy', {
+        cwd: path.join(__dirname, '..'),
+        stdio: 'inherit'
+      });
     }
     
     console.log('✅ Deployment completed successfully');
@@ -370,7 +544,7 @@ function deployToProduction() {
   }
 }
 
-// Save error log
+// Save error log to file
 function saveErrorLog() {
   try {
     fs.writeFileSync(ERROR_LOG_PATH, JSON.stringify(syncErrors, null, 2));
@@ -382,112 +556,111 @@ function saveErrorLog() {
 
 // Send email notification
 async function sendEmailNotification() {
-  console.log('📧 Preparing email notification...');
-  console.log('📧 Email notifications enabled:', process.env.EMAIL_NOTIFICATIONS === 'true');
-  
-  const syncData = {
-    success: syncErrors.success,
-    startTime: syncErrors.timestamp,
-    endTime: new Date().toISOString(),
-    sourcePath: OBSIDIAN_VAULT_PATH,
-    summary: syncErrors.summary,
-    errors: syncErrors.errors
-  };
-  
+  if (!EMAIL_NOTIFICATIONS) {
+    console.log('📧 Email notifications disabled, skipping...');
+    return;
+  }
+
   try {
-    const emailResult = await emailService.sendSyncNotification(syncData);
-    console.log('📧 Email notification result:', emailResult);
-    return emailResult;
+    console.log('📧 Sending email notification...');
+    
+    const subject = `Portfolio Sync ${syncErrors.success ? '✅ Success' : '❌ Failed'}`;
+    const body = `
+      <h2>Portfolio Sync Report</h2>
+      <p><strong>Mode:</strong> ${SYNC_MODE}</p>
+      <p><strong>Timestamp:</strong> ${syncErrors.timestamp}</p>
+      <p><strong>Source:</strong> ${syncErrors.source}</p>
+      
+      <h3>Summary</h3>
+      <ul>
+        <li>Total Files: ${syncErrors.summary.totalFiles}</li>
+        <li>Processed Files: ${syncErrors.summary.processedFiles}</li>
+        <li>Copied Files: ${syncErrors.summary.copiedFiles}</li>
+        <li>Skipped Files: ${syncErrors.summary.skippedFiles}</li>
+        <li>Errors: ${syncErrors.summary.errors}</li>
+      </ul>
+      
+      ${syncErrors.errors.length > 0 ? `
+        <h3>Errors</h3>
+        <ul>
+          ${syncErrors.errors.map(error => `
+            <li><strong>${error.file || error.directory}:</strong> ${error.error}</li>
+          `).join('')}
+        </ul>
+      ` : ''}
+    `;
+    
+    await emailService.sendEmail(subject, body);
+    console.log('✅ Email notification sent successfully');
   } catch (error) {
     console.error('❌ Failed to send email notification:', error.message);
-    return false;
   }
 }
 
 // Main sync function
 async function main() {
-  const startTime = Date.now();
-  
   try {
-    // Step 0: Initialize email service
-    console.log('📧 Initializing email service...');
-    const emailInitialized = await emailService.initialize();
-    console.log('📧 Email service initialized:', emailInitialized);
+    console.log('🔄 Starting sync process...');
     
-    // Step 1: Ensure directories exist
+    // Ensure directories exist
     ensureDirectories();
     
-    // Step 2: Process Obsidian files
-    console.log('🔄 Processing Obsidian files...');
+    // Process Obsidian vault
+    console.log('📁 Processing Obsidian vault...');
     processDirectory(OBSIDIAN_VAULT_PATH);
     
-    // Step 3: Process markdown syntax
-    console.log('📝 Processing markdown syntax...');
-    processMarkdownFiles(ASTRO_CONTENT_PATH);
-    console.log('🧹 Post-processing markdown files to remove image references...');
-    postProcessContentImages(ASTRO_CONTENT_PATH);
+    // Post-process content (only for production mode)
+    if (SYNC_MODE === 'production') {
+      console.log('🔧 Post-processing content...');
+      postProcessContentImages(ASTRO_CONTENT_PATH);
+    }
     
-    // Step 4: Build project
-    const buildSuccess = buildProject();
+    // Build project (only for production mode or when auto deploy is enabled)
+    let buildSuccess = true;
+    if (SYNC_MODE === 'production' || AUTO_DEPLOY) {
+      buildSuccess = buildProject();
+    }
     
-    // Step 5: Deploy if configured and build was successful
-    let deploySuccess = false;
-    const autoDeploy = process.env.AUTO_DEPLOY === 'true';
-    if (buildSuccess && autoDeploy) {
+    // Deploy to production (only when auto deploy is enabled)
+    let deploySuccess = true;
+    if (AUTO_DEPLOY) {
       deploySuccess = deployToProduction();
     }
     
-    // Step 6: Update sync status - consider it successful if files were processed, even if build failed
-    const filesProcessed = syncErrors.summary.copiedFiles > 0 || syncErrors.summary.processedFiles > 0;
-    syncErrors.success = filesProcessed && buildSuccess && (!autoDeploy || deploySuccess);
-    syncErrors.summary.processedFiles = syncErrors.summary.totalFiles;
-    
-    // Step 7: Save error log
-    saveErrorLog();
-    
-    // Step 8: Send email notification (always send if files were processed)
-    if (filesProcessed) {
-      await sendEmailNotification();
-    } else {
-      console.log('📧 Skipping email notification - no files were processed');
+    // Update sync status
+    if (SYNC_MODE === 'production') {
+      syncErrors.success = buildSuccess && deploySuccess && syncErrors.summary.errors === 0;
     }
     
-    // Step 9: Print summary
-    const duration = Date.now() - startTime;
-    console.log('\n📊 Sync Summary:');
-    console.log(`⏱️  Duration: ${duration}ms`);
-    console.log(`📄 Total files: ${syncErrors.summary.totalFiles}`);
-    console.log(`✅ Copied files: ${syncErrors.summary.copiedFiles}`);
-    console.log(`⏭️  Skipped files: ${syncErrors.summary.skippedFiles}`);
-    console.log(`❌ Errors: ${syncErrors.summary.errors}`);
-    console.log(`🎯 Success: ${syncErrors.success ? '✅' : '❌'}`);
-    console.log(`📧 Email sent: ${filesProcessed ? '✅' : '❌'}`);
+    // Save error log (only for production mode)
+    if (SYNC_MODE === 'production') {
+      saveErrorLog();
+    }
     
-    if (syncErrors.success) {
-      console.log('🎉 Sync completed successfully!');
-    } else {
-      console.log('⚠️  Sync completed with errors. Check the error log for details.');
+    // Send email notification (only for production mode or when explicitly enabled)
+    if (SYNC_MODE === 'production' || EMAIL_NOTIFICATIONS) {
+      await sendEmailNotification();
+    }
+    
+    console.log('✅ Sync process completed successfully!');
+    
+    // Exit with error code if there were issues in production mode
+    if (SYNC_MODE === 'production' && !syncErrors.success) {
+      process.exit(1);
     }
     
   } catch (error) {
-    syncErrors.success = false;
-    syncErrors.errors.push({
-      type: 'main',
-      error: error.message,
-      timestamp: new Date().toISOString()
-    });
+    console.error('❌ Sync process failed:', error.message);
     
-    console.error('❌ Sync failed:', error.message);
-    saveErrorLog();
-    
-    // Try to send error email
-    try {
+    if (SYNC_MODE === 'production') {
+      syncErrors.success = false;
+      saveErrorLog();
       await sendEmailNotification();
-    } catch (emailError) {
-      console.error('❌ Failed to send error email:', emailError.message);
     }
+    
+    process.exit(1);
   }
 }
 
-// Run the sync
-main().catch(console.error); 
+// Run the main function
+main(); 

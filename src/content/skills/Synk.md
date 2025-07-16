@@ -6,12 +6,18 @@ tags:
   - security
   - skill
   - portfolio
+modified: 2025-07-05T08:09:03+01:00
+viewCount: 3
+aliases: 
+skillRating: 0
+skillDescription: TBC
+imageURL: 
 ---
 # Synk
 
-> **BACK:** Link back to [Skills Notes](#skills-notes)
+> [!back] Link back to [[Skills Notes]]
 
-> Codebase security plugin for [GitHub](#github)
+> Codebase security plugin for [[GitHub]]
 
 ## Table of Contents
 
@@ -43,23 +49,19 @@ INPUT[progressBar(title(Skill Rating), minValue(0), maxValue(100)):skillRating]
 ### Linked Projects
 
 >[!projects] Linked Projects
->
-<!-- Dataview Query (hidden in production):
+>```dataview
 TABLE WITHOUT ID file.link as "Linked Project", file.mday as "Last Modified"
 FROM #project 
 WHERE contains(technologies, this.file.link)
 SORT length(file.inlinks) DESC
->
--->
-
+>```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Unread Links
 
 >[!reading] Unread Reading List
->
-<!-- Dataview Query (hidden in production):
+>```dataview
 TASK
 WHERE !completed AND !contains(file.path, "Template") AND text != "" AND contains(text, this.file.name)
 GROUP BY file.link
@@ -70,9 +72,7 @@ LIMIT 100
 ### Read Links
 
 >[!reading] Completed Reading List
->
--->
-dataview
+>```dataview
 TASK
 WHERE completed AND !contains(file.path, "Template") AND text != "" AND contains(text, this.file.name)
 GROUP BY file.link
@@ -82,40 +82,31 @@ LIMIT 100
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

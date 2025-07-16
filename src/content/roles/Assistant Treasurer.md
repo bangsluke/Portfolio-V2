@@ -3,11 +3,19 @@ tags:
   - notes
   - role
   - portfolio
-  - "[Dorkinians FC](#dorkinians-fc)"
+created: 2025-06-09 22:26
+modified: 2025-07-13T14:32:53+01:00
+viewCount: 2
+dateStart: 2025-06-10
+dateEnd: ""
+linkedCompany:
+  - "[[Dorkinians FC]]"
+roleDescription: "TBC"
+keyAchievement: "TBC"
 ---
 # Assistant Treasurer
 
-> **BACK:** Link back to [Role Notes](#role-notes)
+> [!back] Link back to [[Role Notes]]
 
 ## Table of Contents
 ```table-of-contents
@@ -29,40 +37,31 @@ TBC
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

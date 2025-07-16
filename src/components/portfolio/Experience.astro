@@ -11,11 +11,29 @@ let EXPERIENCE = [];
 try {
   const roles = await fetchRoles();
   
+  // Enhanced console logging for roles collection
+  console.log('=== EXPERIENCE COMPONENT - ROLES COLLECTION ===');
+  console.log('Total roles fetched from GraphQL:', roles.length);
+  console.log('All roles data:', roles);
+  console.log('Roles JSON length:', JSON.stringify(roles).length);
+  
+  // Log each role individually
+  roles.forEach((role, index) => {
+    console.log(`Role ${index + 1}:`, {
+      nodeId: role.nodeId,
+      name: role.name,
+      dateStart: role.dateStart,
+      dateEnd: role.dateEnd,
+      roleDescription: role.roleDescription,
+      linkedCompany: role.linkedCompany
+    });
+  });
+  
   // Sort roles by dateStart (most recent first) and transform the data
   EXPERIENCE = roles
     .sort((a, b) => new Date(b.dateStart).getTime() - new Date(a.dateStart).getTime())
     .map(role => {
-      console.log('Role:', role.name, 'linkedCompany:', role.linkedCompany);
+      console.log('Processing role:', role.name, 'linkedCompany:', role.linkedCompany);
       return {
         date: role.dateEnd 
           ? `${formatDateToMMMYYYY(role.dateStart)} - ${formatDateToMMMYYYY(role.dateEnd)}` 
@@ -25,6 +43,9 @@ try {
         roleDescription: role.roleDescription,
       };
     });
+    
+  console.log('Final EXPERIENCE array:', EXPERIENCE);
+  console.log('=== END EXPERIENCE COMPONENT DEBUG ===');
 } catch (error) {
   console.warn('Experience component: Could not fetch roles from GraphQL, using fallback data:', error);
   

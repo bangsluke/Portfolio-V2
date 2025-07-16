@@ -4,39 +4,55 @@ tags:
   - portfolio
   - notes
   - project/active
+created: 2025-06-23 13:36
+modified: 2025-07-13T09:46:29+01:00
+viewCount: 10
+aliases:
   - backend-server
-  - "[Neo4j](#neo4j)"
-  - "[Neo4j Aura](#neo4j-aura)"
-  - "[Heroku](#heroku)"
-  - "[Cypher](#cypher)"
-  - "[Python](#python)"
-  - "[Flask](#flask)"
+projectURL: https://bangsluke-backend-server-221df04e1ad6.herokuapp.com/
+codeURL: https://github.com/bangsluke/bangsluke-backend-server
+codeMultipleRepos: false
+folderURL: n/a
+logoURL: https://i.imgur.com/yqTK1TX.png
+imageURL: 
+dateStart: 2025-06-24
+dateEnd: ""
+technologies:
+  - "[[Neo4j]]"
+  - "[[Neo4j Aura]]"
+  - "[[Heroku]]"
+  - "[[Cypher]]"
+  - "[[Python]]"
+  - "[[Flask]]"
+projectCategory: Backend
+linkedCompany:
   - n/a
-  - "[Luke Bangs](#luke-bangs)"
+toolOwner: "[[Luke Bangs]]"
+developers:
+  - "[[Luke Bangs]]"
+topicTags:
   - Server
   - Backend
+powerShellAlias: backend
+version: 1
+shortDescription: "The backend source of data for several of my projects, allowing a singular point of management and maintenance."
+longDescription: "The source of data for several projects including my [[Travel Website]] and [[Portfolio Site V2]], providing a route for data retrieval from a [[Neo4j]] graph using [[GraphQL]] queries."
+lessonsLearned: "Taught me about setting up a [[Flask]] server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage [[Python]] code in a growing codebase given my past experience with [[Python]] had been for single script projects.\nTBC"
 ---
 # Backend Server
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -45,9 +61,7 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -66,16 +80,16 @@ The backend source of data for several of my projects, allowing a singular point
 
 ## Long Description
 
-The source of data for several projects including my [Travel Website](#travel-website) and [Portfolio Site V2](#portfolio-site-v2), providing a route for data retrieval from a [Neo4j](#neo4j) graph using [GraphQL](#graphql) queries.
+The source of data for several projects including my [[Travel Website]] and [[Portfolio Site V2]], providing a route for data retrieval from a [[Neo4j]] graph using [[GraphQL]] queries.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
 - Front end: n/a
-- Back end/Datasource: [Neo4j](#neo4j), [Neo4j Aura](#neo4j-aura), [Cypher](#cypher), [Python](#python), [Flask](#flask)
-- Hosting: [GitHub](#github) (see [Repositories](#repositories)), [Heroku](#heroku)
-- Security: [Synk](#synk)
+- Back end/Datasource: [[Neo4j]], [[Neo4j Aura]], [[Cypher]], [[Python]], [[Flask]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Heroku]]
+- Security: [[Synk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -89,7 +103,7 @@ The source of data for several projects including my [Travel Website](#travel-we
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -103,8 +117,8 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 ## Other Links
 
-- [Travel Website](#travel-website)
-- [Portfolio Site V2](#portfolio-site-v2)
+- [[Travel Website]]
+- [[Portfolio Site V2]]
 - [Heroku Test Scheduler](https://dashboard.heroku.com/apps/bangsluke-backend-server/scheduler)
 - TBC
 
@@ -112,7 +126,7 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 ## Lessons Learned
 
-Taught me about setting up a [Flask](#flask) server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage [Python](#python) code in a growing codebase given my past experience with [Python](#python) had been for single script projects.
+Taught me about setting up a [[Flask]] server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage [[Python]] code in a growing codebase given my past experience with [[Python]] had been for single script projects.
 
 TBC
 
@@ -122,51 +136,39 @@ TBC
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

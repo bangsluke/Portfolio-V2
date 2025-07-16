@@ -5,41 +5,57 @@ tags:
   - notes
   - coding
   - project/completed
+created: 2024-02-20T09:27:00
+modified: 2025-07-11T15:54:33+01:00
+aliases:
   - Documentation Site
   - bangsluke-documentation
-  - "[React](#react)"
-  - "[Docusaurus](#docusaurus)"
-  - "[Markdown](#markdown)"
-  - "[GitHub](#github)"
-  - "[Netlify](#netlify)"
-  - "[Synk](#synk)"
-  - "[Algolia](#algolia)"
+viewCount: 12
+projectURL: https://bangsluke-documentation.netlify.app/
+codeURL: https://github.com/bangsluke/bangsluke.github.io
+codeMultipleRepos: false
+folderURL: n/a
+logoURL: n/a
+imageURL: 
+dateStart: 2023-06-04
+dateEnd: 2024-07-14
+technologies:
+  - "[[React]]"
+  - "[[Docusaurus]]"
+  - "[[Markdown]]"
+  - "[[GitHub]]"
+  - "[[Netlify]]"
+  - "[[Synk]]"
+  - "[[Algolia]]"
+projectCategory: Documentation
+linkedCompany:
   - n/a
-  - "[Luke Bangs](#luke-bangs)"
+toolOwner: "[[Luke Bangs]]"
+developers:
+  - "[[Luke Bangs]]"
+topicTags:
   - Documentation
   - Coding
+powerShellAlias: bangsluke
+version: 1
+shortDescription: "A personal documentation site storing key links to the software I use, articles I find useful, and a section on [[Dorkinians FC]] stats."
+longDescription: "Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment.\nI regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing."
+lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of [[Markdown]] and led me to notice how many different softwares either use [[Docusaurus]] or a very similar type static site builder for their documentation."
 ---
 # bangsluke Documentation
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -48,24 +64,22 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Introduction
 
-A personal documentation site storing key links to the software I use, articles I find useful, and a section on [Dorkinians FC](#dorkinians-fc) stats.
+A personal documentation site storing key links to the software I use, articles I find useful, and a section on [[Dorkinians FC]] stats.
 
-The repo also contains my [Homepage](#homepage-website) and [New Tab](#new-tab-website) pages.
+The repo also contains my [[Homepage Website|Homepage]] and [[New Tab Website|New Tab]] pages.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Short Description
 
-A personal documentation site storing key links to the software I use, articles I find useful, and a section on [Dorkinians FC](#dorkinians-fc) stats.
+A personal documentation site storing key links to the software I use, articles I find useful, and a section on [[Dorkinians FC]] stats.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -79,10 +93,10 @@ I regularly keep it updated with new links and processes I find so that it remai
 
 ## Architecture and Technologies
 
-- Front end: [React](#react) using [Docusaurus](#docusaurus), [Algolia](#algolia)
-- Back end/Datasource: [Markdown](#markdown)
-- Hosting: [GitHub](#github) (see [Repositories](#repositories)), [Netlify](#netlify)
-- Security: [Synk](#synk)
+- Front end: [[React]] using [[Docusaurus]], [[Algolia]]
+- Back end/Datasource: [[Markdown]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
+- Security: [[Synk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -96,7 +110,7 @@ I regularly keep it updated with new links and processes I find so that it remai
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -104,7 +118,7 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 ## Planning and Design
 
-- All built and designed using [Docusaurus](#docusaurus) structures with minimal additional styling added.
+- All built and designed using [[Docusaurus]] structures with minimal additional styling added.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -116,7 +130,7 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 ## Lessons Learned
 
-This project introduced me to the concept of documentation sites, the ease and brilliance of [Markdown](#markdown) and led me to notice how many different softwares either use [Docusaurus](#docusaurus) or a very similar type static site builder for their documentation.
+This project introduced me to the concept of documentation sites, the ease and brilliance of [[Markdown]] and led me to notice how many different softwares either use [[Docusaurus]] or a very similar type static site builder for their documentation.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -124,51 +138,39 @@ This project introduced me to the concept of documentation sites, the ease and b
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

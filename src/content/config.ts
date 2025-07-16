@@ -51,6 +51,10 @@ const projectsCollection = defineCollection({
     topicTags: z.array(z.string()).optional(),
     powerShellAlias: z.union([z.string(), z.null()]).optional(),
     version: z.union([z.number(), z.null()]).optional(),
+    // Extracted section content
+    shortDescription: z.string().optional(),
+    longDescription: z.string().optional(),
+    lessonsLearned: z.string().optional(),
   }),
 });
 
@@ -65,6 +69,8 @@ const skillsCollection = defineCollection({
     skillRating: z.number().optional(),
     skillDescription: z.string().optional(),
     imageURL: z.union([z.string(), z.null()]).optional(),
+    // Extracted section content
+    keyAchievement: z.string().optional(),
   }),
 });
 
@@ -73,13 +79,17 @@ const companiesCollection = defineCollection({
   type: 'content',
   schema: z.object({
     tags: z.array(z.string()).optional(),
-    created: z.union([z.string(), z.date()]).optional(),
-    modified: z.union([z.string(), z.date()]).optional(),
+    created: z.union([z.string(), z.date(), z.null()]).optional(),
+    modified: z.union([z.string(), z.date(), z.null()]).optional(),
     viewCount: z.number().optional(),
     aliases: z.union([z.array(z.string()), z.null()]).optional(),
-    dateStart: z.union([z.string(), z.date()]).optional(),
-    dateEnd: z.union([z.string(), z.date()]).optional(),
+    dateStart: z.union([z.string(), z.date(), z.null()]).optional(),
+    dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
     logoURL: z.string().optional(),
+    imageURL: z.union([z.string(), z.null()]).optional(),
+    // Extracted section content
+    companyDescription: z.string().optional(),
+    keyAchievement: z.string().optional(),
   }),
 });
 
@@ -88,13 +98,16 @@ const clientsCollection = defineCollection({
   type: 'content',
   schema: z.object({
     tags: z.array(z.string()).optional(),
-    modified: z.union([z.string(), z.date()]).optional(),
+    modified: z.union([z.string(), z.date(), z.null()]).optional(),
     viewCount: z.number().optional(),
     aliases: z.union([z.array(z.string()), z.null()]).optional(),
-    dateStart: z.union([z.string(), z.date()]).optional(),
-    dateEnd: z.union([z.string(), z.date()]).optional(),
+    dateStart: z.union([z.string(), z.date(), z.null()]).optional(),
+    dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
     imageURL: z.union([z.string(), z.null()]).optional(),
     linkedCompany: z.string().optional(),
+    // Extracted section content
+    clientDescription: z.string().optional(),
+    keyAchievement: z.string().optional(),
   }),
 });
 
@@ -103,12 +116,15 @@ const rolesCollection = defineCollection({
   type: 'content',
   schema: z.object({
     tags: z.array(z.string()).optional(),
-    created: z.union([z.string(), z.date()]).optional(),
-    modified: z.union([z.string(), z.date()]).optional(),
+    created: z.union([z.string(), z.date(), z.null()]).optional(),
+    modified: z.union([z.string(), z.date(), z.null()]).optional(),
     viewCount: z.number().optional(),
-    dateStart: z.union([z.string(), z.date()]).optional(),
-    dateEnd: z.union([z.string(), z.date()]).optional(),
+    dateStart: z.union([z.string(), z.date(), z.null()]).optional(),
+    dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
     linkedCompany: z.array(z.string()).optional(),
+    // Extracted section content
+    roleDescription: z.string().optional(),
+    keyAchievement: z.string().optional(),
   }),
 });
 
@@ -117,12 +133,15 @@ const educationsCollection = defineCollection({
   type: 'content',
   schema: z.object({
     tags: z.array(z.string()).optional(),
-    created: z.union([z.string(), z.date()]).optional(),
-    modified: z.union([z.string(), z.date()]).optional(),
+    created: z.union([z.string(), z.date(), z.null()]).optional(),
+    modified: z.union([z.string(), z.date(), z.null()]).optional(),
     viewCount: z.number().optional(),
-    dateStart: z.union([z.string(), z.date()]).optional(),
-    dateEnd: z.union([z.string(), z.date()]).optional(),
+    dateStart: z.union([z.string(), z.date(), z.null()]).optional(),
+    dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
     imageURL: z.union([z.string(), z.null()]).optional(),
+    // Extracted section content
+    qualifications: z.string().optional(),
+    additionalDetails: z.string().optional(),
   }),
 });
 
@@ -131,13 +150,13 @@ const referencesCollection = defineCollection({
   type: 'content',
   schema: z.object({
     tags: z.array(z.string()).optional(),
-    modified: z.union([z.string(), z.date()]).optional(),
+    modified: z.union([z.string(), z.date(), z.null()]).optional(),
     viewCount: z.number().optional(),
     aliases: z.union([z.array(z.string()), z.null()]).optional(),
-    birthday: z.union([z.string(), z.date()]).optional(),
-    died: z.union([z.string(), z.date()]).optional(),
+    birthday: z.union([z.string(), z.date(), z.null()]).optional(),
+    died: z.union([z.string(), z.date(), z.null()]).optional(),
     partneredWith: z.union([z.string(), z.null()]).optional(),
-    marriageDate: z.union([z.string(), z.date()]).optional(),
+    marriageDate: z.union([z.string(), z.date(), z.null()]).optional(),
     relatedTo: z.union([z.string(), z.null()]).optional(),
     friendOf: z.union([z.array(z.string()), z.null()]).optional(),
     education: z.union([z.array(z.string()), z.null()]).optional(),
@@ -146,6 +165,9 @@ const referencesCollection = defineCollection({
     referenceEmail: z.string().optional(),
     referenceNumber: z.string().optional(),
     referenceAddress: z.string().optional(),
+    // Extracted section content
+    referenceDescription: z.string().optional(),
+    keyAchievement: z.string().optional(),
   }),
 });
 

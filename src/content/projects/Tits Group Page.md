@@ -5,36 +5,52 @@ tags:
   - notes
   - project/completed
   - coding
-  - "[HTML](#html)"
-  - "[CSS](#css)"
-  - "[JavaScript](#javascript)"
-  - "[Google Sheets](#google-sheets)"
-  - "[GitHub](#github)"
+created: 2025-05-29 18:03
+modified: 2025-07-11T15:56:15+01:00
+aliases: 
+viewCount: 9
+projectURL: https://group-page.netlify.app/
+codeURL: https://github.com/bangsluke/Group-Page
+codeMultipleRepos: false
+folderURL: https://drive.google.com/drive/folders/1wnM7858WTLTL7RqmvdoRSki5CHLn8V19?usp=drive_link
+logoURL: n/a
+imageURL: 
+dateStart: 2022-04-09
+dateEnd: 2023-10-30
+technologies:
+  - "[[HTML]]"
+  - "[[CSS]]"
+  - "[[JavaScript]]"
+  - "[[Google Sheets]]"
+  - "[[GitHub]]"
+projectCategory: Personal Design
+linkedCompany:
   - n/a
-  - "[Luke Bangs](#luke-bangs)"
+toolOwner: "[[Luke Bangs]]"
+developers:
+  - "[[Luke Bangs]]"
+topicTags:
   - Stats
+powerShellAlias: n/a
+version: 1
+shortDescription: "TBC"
+longDescription: "TBC"
+lessonsLearned: "TBC"
 ---
 # Tits Group Page
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -43,9 +59,7 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -70,9 +84,9 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: [HTML](#html), [CSS](#css), [JavaScript](#javascript)
-- Back end/Datasource: [Google Sheets](#google-sheets)
-- Hosting: [GitHub](#github) (see [Repositories](#repositories))
+- Front end: [[HTML]], [[CSS]], [[JavaScript]]
+- Back end/Datasource: [[Google Sheets]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: Manual
 
@@ -87,7 +101,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -115,51 +129,39 @@ TBC
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

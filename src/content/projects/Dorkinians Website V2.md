@@ -6,32 +6,48 @@ tags:
   - coding
   - sport
   - project/parked
-  - "[Dorkinians FC](#dorkinians-fc)"
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Dorkinians FC](#dorkinians-fc)"
-  - "[Football](#football)"
+created: 2025-05-30 09:40
+modified: 2025-07-11T15:50:46+01:00
+aliases: 
+viewCount: 9
+projectURL: TBC
+codeURL: TBC
+codeMultipleRepos: false
+folderURL: n/a
+logoURL: n/a
+imageURL: TBC
+dateStart: ""
+dateEnd: ""
+technologies: 
+projectCategory: Personal Design
+linkedCompany:
+  - "[[Dorkinians FC]]"
+toolOwner: "[[Luke Bangs]]"
+developers:
+  - "[[Luke Bangs]]"
+topicTags:
+  - "[[Dorkinians FC]]"
+  - "[[Football]]"
+powerShellAlias: TBC
+version: 2
+shortDescription: "TBC"
+longDescription: "TBC"
+lessonsLearned: "TBC"
 ---
 # Dorkinians Website V2
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -40,16 +56,14 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Introduction
 
-A note for storing ideas on building the next version of the [Dorkinians FC](#dorkinians-fc) website, following on from [Dorkinians Website](#dorkinians-website)
+A note for storing ideas on building the next version of the [[Dorkinians FC]] website, following on from [[Dorkinians Website]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -69,7 +83,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: [GitHub](#github) (see [Repositories](#repositories)), TBC
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), TBC
 - Security: TBC
 - Authentication: TBC
 
@@ -84,7 +98,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -121,8 +135,8 @@ Authentication: The site should be secure behind a single password.
 
 - How do I store the stats data ready for the website to quickly retrieve and display the information?
 	- Requirements 
-		- Keep using [Google Sheets](#google-sheets) for stat input 
-		- Automatically update the database daily from the [Google Sheets](#google-sheets)
+		- Keep using [[Google Sheets]] for stat input 
+		- Automatically update the database daily from the [[Google Sheets]]
 - How do I make the website easily packaged and customisable for other clubs?
 	- Config file
 	- Pick a club logo
@@ -144,7 +158,7 @@ Authentication: The site should be secure behind a single password.
 
 #### Player Stats
 
-<!-- Image removed during sync: 20241201 Player Stats Page Design.jpeg (20241201-player-stats-page-design.jpeg) -->
+![[20241201 Player Stats Page Design.jpeg]]
 
 - Two swipable tabs;
 	- This Season 
@@ -172,9 +186,9 @@ Authentication: The site should be secure behind a single password.
 
 #### Club Stats
 
-- Points per game - value between 0 and 3 <!-- Image removed during sync: 20241001 - PointsPerGame.jpeg (20241001---pointspergame.jpeg) -->
+- Points per game - value between 0 and 3 ![[20241001 - PointsPerGame.jpeg]]
 - Top 5 player appearances 
-- Have the below background behind the stats? <!-- Image removed during sync: 20241001 - Stats Background.png (20241001---stats-background.png) -->
+- Have the below background behind the stats? ![[20241001 - Stats Background.png]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -209,7 +223,7 @@ Authentication: The site should be secure behind a single password.
 		- If player selected, go to that players stats
 		- If no player selected, go to TOTW
 - For stats filtering, follow the guidance in [this article](https://uxmovement.medium.com/how-to-handle-a-massive-filter-with-over-100-options-dc8b1966d3c7) 
-	- <!-- Image removed during sync: 20241001 - Stats Filters.png (20241001---stats-filters.png) -->
+	- ![[20241001 - Stats Filters.png]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -223,15 +237,15 @@ Authentication: The site should be secure behind a single password.
 #### Crazy Ideas
 
 - Show the players that each player has played with most - likely needs a graph db
-- Add a chatbot to the site that allows a user to chat to the database. Write a statement such as "How many times has [Kieran Mackrell](#kieran-mackrell) played against Wandsworth?" and then the text is identified into a cypher query and sent to the database and returns the answer. Should display the generated cypher query for debugging purposes.
-	- Not sure this is possible unless I am able to find a way to use a [OpenAI](#openai) API call to create a [GraphQL](#graphql) query in the client
+- Add a chatbot to the site that allows a user to chat to the database. Write a statement such as "How many times has [[Kieran Mackrell]] played against Wandsworth?" and then the text is identified into a cypher query and sent to the database and returns the answer. Should display the generated cypher query for debugging purposes.
+	- Not sure this is possible unless I am able to find a way to use a [[OpenAI]] API call to create a [[GraphQL]] query in the client
 - Have a map component that looks up the locations that each player has played at (using the locations postcodes) to show where the player has played. Bigger circle on the map shows more times played
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- [Dorkinians Website Tasks](https://todoist.com/app/section/Dorkinians-Website-6C4XfJFRgpfFpJgC) - [Todoist](#todoist)
+- [Dorkinians Website Tasks](https://todoist.com/app/section/Dorkinians-Website-6C4XfJFRgpfFpJgC) - [[Todoist]]
 - [Medium Stories list](https://medium.com/@bangsluke/list/410a590e0a2b)
 - https://dribbble.com/
 - https://mobbin.com/browse/web/apps
@@ -250,51 +264,39 @@ TBC
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

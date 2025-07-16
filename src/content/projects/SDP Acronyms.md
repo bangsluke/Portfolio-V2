@@ -6,38 +6,54 @@ tags:
   - project/completed/work
   - coding
   - work
-  - "[HTML](#html)"
-  - "[CSS](#css)"
-  - "[JavaScript](#javascript)"
-  - "[GitLab](#gitlab)"
-  - "[Azure](#azure)"
-  - "[RLE International](#rle-international)"
-  - "[Luke Bangs](#luke-bangs)"
-  - "[SDP](#sdp)"
-  - "[Work](#work)"
-  - "[Digital Engineering](#digital-engineering)"
+created: 2025-06-02 17:16
+modified: 2025-07-11T15:54:05+01:00
+aliases: 
+viewCount: 12
+projectURL: https://sdp-dev-sites.netlify.app/pages/sdp-acronyms
+codeURL: TBC
+codeMultipleRepos: false
+folderURL: n/a
+logoURL: n/a
+imageURL: 
+dateStart: ""
+dateEnd: ""
+technologies:
+  - "[[HTML]]"
+  - "[[CSS]]"
+  - "[[JavaScript]]"
+  - "[[GitLab]]"
+  - "[[Azure]]"
+projectCategory: Work Project
+linkedCompany:
+  - "[[RLE International]]"
+toolOwner: "[[Uwe Kloss]]"
+developers:
+  - "[[Luke Bangs]]"
+topicTags:
+  - "[[SDP]]"
+  - "[[Work]]"
+  - "[[Digital Engineering]]"
+powerShellAlias: n/a
+version: 1
+shortDescription: "A basic site showing the acronyms and definitions used across the [[SDP]] tool."
+longDescription: "A full list of acronyms and definitions used across the [[SDP]] app, provided as support material to consultants using the tool for [[RLE International|RLE]] and also by clients."
+lessonsLearned: "Provided good learning for getting correct anchor points in [[HTML]] for jumping to the correct acronym letters."
 ---
 # SDP Acronyms
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -46,38 +62,36 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Introduction
 
-A basic site showing the acronyms and definitions used across the [SDP](#sdp) tool.
+A basic site showing the acronyms and definitions used across the [[SDP]] tool.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Short Description
 
-A basic site showing the acronyms and definitions used across the [SDP](#sdp) tool.
+A basic site showing the acronyms and definitions used across the [[SDP]] tool.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-A full list of acronyms and definitions used across the [SDP](#sdp) app, provided as support material to consultants using the tool for [RLE](#rle-international) and also by clients.
+A full list of acronyms and definitions used across the [[SDP]] app, provided as support material to consultants using the tool for [[RLE International|RLE]] and also by clients.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: [HTML](#html), [CSS](#css), [JavaScript](#javascript)
+- Front end: [[HTML]], [[CSS]], [[JavaScript]]
 - Back end/Datasource: n/a
-- Hosting: [GitLab](#gitlab) (see [Repositories](#repositories))
+- Hosting: [[GitLab]] (see [Repositories](#repositories))
 - Security: n/a
-- Authentication: [Azure](#azure)
+- Authentication: [[Azure]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -90,7 +104,7 @@ A full list of acronyms and definitions used across the [SDP](#sdp) app, provide
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -98,20 +112,20 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 ## Planning and Design
 
-- Designed to look like the [SDP](#sdp) site in terms of styling.
+- Designed to look like the [[SDP]] site in terms of styling.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- [SDP](#sdp)
-- [SDP Encyclopaedia](#sdp-encyclopaedia)
+- [[SDP|SDP]]
+- [[SDP Encyclopaedia]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-Provided good learning for getting correct anchor points in [HTML](#html) for jumping to the correct acronym letters.
+Provided good learning for getting correct anchor points in [[HTML]] for jumping to the correct acronym letters.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -119,51 +133,39 @@ Provided good learning for getting correct anchor points in [HTML](#html) for ju
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

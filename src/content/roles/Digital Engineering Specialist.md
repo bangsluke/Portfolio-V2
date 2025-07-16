@@ -3,11 +3,19 @@ tags:
   - notes
   - role
   - portfolio
-  - "[RLE International](#rle-international)"
+created: 2025-07-13T14:35:00
+modified: 2025-07-15T15:33:26+01:00
+viewCount: 4
+dateStart: 2022-07-01
+dateEnd: ""
+linkedCompany:
+  - "[[RLE International]]"
+roleDescription: "Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using [[Next.js]], [[Nest.js]], a [[Neo4j]] database and a [[Flask]] [[API]] to call a [[Python]] algorithm. The tool collects inputs from a user, calculates several optimal [[DVP]] plans and then presents the options in several ways to enable further user decisions."
+keyAchievement: "TBC"
 ---
 # Digital Engineering Specialist
 
-> **BACK:** Link back to [Role Notes](#role-notes)
+> [!back] Link back to [[Role Notes]]
 
 ## Table of Contents
 ```table-of-contents
@@ -15,7 +23,7 @@ tags:
 
 ## Role Description
 
-Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using [Next.js](#next.js), [Nest.js](#nest.js), a [Neo4j](#neo4j) database and a [Flask](#flask) [API](#api) to call a [Python](#python) algorithm. The tool collects inputs from a user, calculates several optimal [DVP](#dvp) plans and then presents the options in several ways to enable further user decisions.
+Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using [[Next.js]], [[Nest.js]], a [[Neo4j]] database and a [[Flask]] [[API]] to call a [[Python]] algorithm. The tool collects inputs from a user, calculates several optimal [[DVP]] plans and then presents the options in several ways to enable further user decisions.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -29,40 +37,31 @@ TBC
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

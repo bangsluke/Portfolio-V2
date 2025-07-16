@@ -5,36 +5,52 @@ tags:
   - notes
   - project/completed
   - coding
-  - "[Next.js](#next.js)"
-  - "[Google Sheets](#google-sheets)"
-  - "[GitHub](#github)"
-  - "[Netlify](#netlify)"
-  - "[Synk](#synk)"
+created: 2025-05-29 17:57
+modified: 2025-07-11T15:54:42+01:00
+aliases: 
+viewCount: 9
+projectURL: https://biglynn.netlify.app/info
+codeURL: https://github.com/bangsluke/BigLynn2023
+codeMultipleRepos: false
+folderURL: n/a
+logoURL: n/a
+imageURL: 
+dateStart: 2022-09-06
+dateEnd: 2023-07-26
+technologies:
+  - "[[Next.js]]"
+  - "[[Google Sheets]]"
+  - "[[GitHub]]"
+  - "[[Netlify]]"
+  - "[[Synk]]"
+projectCategory: Personal Design
+linkedCompany:
   - n/a
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Golf](#golf)"
+toolOwner: "[[Luke Bangs]]"
+developers:
+  - "[[Luke Bangs]]"
+topicTags:
+  - "[[Golf]]"
+powerShellAlias: n/a
+version: 1
+shortDescription: "A stats and information website about an annual [[Golf|golf]] competition that I am involved in."
+longDescription: "A site I developed for an annual [[Golf|golf]] competition that I play in, where I displayed details for the 2023 competition that I was in charge of organising and then I collected past years data and displayed this for each player as well as predictions for the upcoming year."
+lessonsLearned: "This project let me take an existing Berry Material [[UI]] template and extend and develop it into the site I required. It helped me integrate animations and stats components like graphs into the site using libraries like d3."
 ---
 # Big Lynn Website
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -43,9 +59,7 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -58,22 +72,22 @@ Stats and details on past Big Lynn competitions. Originally developed for the 20
 
 ## Short Description
 
-A stats and information website about an annual [golf](#golf) competition that I am involved in.
+A stats and information website about an annual [[Golf|golf]] competition that I am involved in.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-A site I developed for an annual [golf](#golf) competition that I play in, where I displayed details for the 2023 competition that I was in charge of organising and then I collected past years data and displayed this for each player as well as predictions for the upcoming year.
+A site I developed for an annual [[Golf|golf]] competition that I play in, where I displayed details for the 2023 competition that I was in charge of organising and then I collected past years data and displayed this for each player as well as predictions for the upcoming year.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: [Next.js](#next.js)
-- Back end/Datasource: [Google Sheets](#google-sheets)
-- Hosting: [GitHub](#github) (see [Repositories](#repositories)), [Netlify](#netlify)
-- Security: [Synk](#synk)
+- Front end: [[Next.js]]
+- Back end/Datasource: [[Google Sheets]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
+- Security: [[Synk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -87,7 +101,7 @@ A site I developed for an annual [golf](#golf) competition that I play in, where
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -95,21 +109,21 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 ## Planning and Design
 
-- The main template of the frontend was a Berry Material [UI](#ui) template
+- The main template of the frontend was a Berry Material [[UI]] template
 - Some designs sketched out on paper
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- [Big Lynn Website Tasks](https://todoist.com/app/section/Big-Lynn-6C4XgHCXxqhRx95j) - [Todoist](#todoist)
+- [Big Lynn Website Tasks](https://todoist.com/app/section/Big-Lynn-6C4XgHCXxqhRx95j) - [[Todoist]]
 - [Old website link](https://biglynn2023.netlify.app/info)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This project let me take an existing Berry Material [UI](#ui) template and extend and develop it into the site I required. It helped me integrate animations and stats components like graphs into the site using libraries like d3.
+This project let me take an existing Berry Material [[UI]] template and extend and develop it into the site I required. It helped me integrate animations and stats components like graphs into the site using libraries like d3.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -117,51 +131,39 @@ This project let me take an existing Berry Material [UI](#ui) template and exten
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

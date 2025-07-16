@@ -6,35 +6,51 @@ tags:
   - project/completed/work
   - coding
   - work
+created: 2025-05-30 09:57
+modified: 2025-07-11T15:53:01+01:00
+aliases:
   - interview-test Repo
-  - "[React](#react)"
-  - "[GitHub](#github)"
-  - "[Synk](#synk)"
-  - "[RLE International](#rle-international)"
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Work](#work)"
+viewCount: 11
+projectURL: TBC
+codeURL: https://github.com/bangsluke/interview-test
+codeMultipleRepos: false
+folderURL: n/a
+logoURL: n/a
+imageURL: 
+dateStart: ""
+dateEnd: ""
+technologies:
+  - "[[React]]"
+  - "[[GitHub]]"
+  - "[[Synk]]"
+projectCategory: Work Project
+linkedCompany:
+  - "[[RLE International]]"
+toolOwner: "[[Uwe Kloss]]"
+developers:
+  - "[[Luke Bangs]]"
+topicTags:
+  - "[[Work]]"
+powerShellAlias: n/a
+version: 1
+shortDescription: "TBC"
+longDescription: "TBC"
+lessonsLearned: "TBC"
 ---
 # Interview Test Repo
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -43,16 +59,14 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Introduction
 
-An interview test written for possibly hiring a [React](#react) developer when working for Digital Engineering at [RLE](#rle-international) with [Uwe Kloss](#uwe-kloss)
+An interview test written for possibly hiring a [[React]] developer when working for Digital Engineering at [[RLE International|RLE]] with [[Uwe Kloss]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -70,10 +84,10 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: [React](#react)
+- Front end: [[React]]
 - Back end/Datasource: TBC
-- Hosting: [GitHub](#github) (see [Repositories](#repositories)), TBC
-- Security: [Synk](#synk)
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), TBC
+- Security: [[Synk]]
 - Authentication: TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -87,7 +101,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -115,51 +129,39 @@ TBC
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

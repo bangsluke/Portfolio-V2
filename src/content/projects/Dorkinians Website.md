@@ -6,39 +6,55 @@ tags:
   - sport
   - portfolio
   - notes
-  - "[HTML](#html)"
-  - "[CSS](#css)"
-  - "[JavaScript](#javascript)"
-  - "[Google Sheets](#google-sheets)"
-  - "[GitHub](#github)"
-  - "[Netlify](#netlify)"
-  - "[Synk](#synk)"
-  - "[Dorkinians FC](#dorkinians-fc)"
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Dorkinians FC](#dorkinians-fc)"
-  - "[Football](#football)"
+created: 2022-04-10T09:28:00
+modified: 2025-07-11T15:54:53+01:00
+viewCount: 28
+aliases: 
+projectURL: https://www.dorkiniansfcstats.co.uk/
+codeURL: https://github.com/bangsluke/Dorkinians-Dev-Site
+codeMultipleRepos: false
+folderURL: n/a
+logoURL: n/a
+imageURL: https://i.imgur.com/yP3K7Rt_d.webp?maxwidth=760&fidelity=grand
+dateStart: 2022-04-10
+dateEnd: 2023-10-23
+technologies:
+  - "[[HTML]]"
+  - "[[CSS]]"
+  - "[[JavaScript]]"
+  - "[[Google Sheets]]"
+  - "[[GitHub]]"
+  - "[[Netlify]]"
+  - "[[Synk]]"
+projectCategory: Personal Design
+linkedCompany:
+  - "[[Dorkinians FC]]"
+toolOwner: "[[Luke Bangs]]"
+developers:
+  - "[[Luke Bangs]]"
+topicTags:
+  - "[[Dorkinians FC]]"
+  - "[[Football]]"
+powerShellAlias: dorkinians
+version: 1
+shortDescription: "A sport stats website for displaying performance data for [[Dorkinians FC|Dorkinians FC]] players and teams"
+longDescription: "A sports stats site for displaying performance data for [[Dorkinians FC|Dorkinians FC]] players and teams, my local [[Football|football]] club which I play for. What initially started as an [[Excel]] spreadsheet with stats posted on our club WhatsApp each week was the perfect opportunity for me to try and develop into my first real public website. I even wrote a [Dev article](https://dev.to/bangsluke/building-a-stats-website-for-a-sports-club-4g5m) explaining how I built the stats site."
+lessonsLearned: "This project taught me several things:\n- Retrospectively taught me the importance of components for reusability for long term maintainability. All of this project was built within a single [[HTML]] and [[JavaScript]] file (and [[CSS]]) before I knew how to work properly with components, meaning everything is copied out and manually edited over and over again, making maintenance a nightmare\n- Reviewing the speed of the website through analysis tools helped me learn I need to reduce the number of [[HTML]] elements in the future by being smarter and more efficient in components\n- Taught me that parsing a [[CSV]] using the method I used is too slow for large amounts of data, especially when the data continues growing. The project needs to be rebuilt faster with a new method\n- Allowed me to learn how to work with [[SVG]] files used as the images on the TOTW page\n- Helped me creatively come up with ideas to keep users engaged whilst data was loading, leading to the various random humorous quotes I have appearing on the main loading screen\nAll of the above led me to begin work on [[Dorkinians Website V2]] to overcome the problems listed above."
 ---
 # Dorkinians Website
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -47,37 +63,35 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Introduction
 
-A note for storing details on the first version of the [Dorkinians FC](#dorkinians-fc) website.
+A note for storing details on the first version of the [[Dorkinians FC]] website.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Short Description
 
-A sport stats website for displaying performance data for [Dorkinians FC](#dorkinians-fc) players and teams
+A sport stats website for displaying performance data for [[Dorkinians FC|Dorkinians FC]] players and teams
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-A sports stats site for displaying performance data for [Dorkinians FC](#dorkinians-fc) players and teams, my local [football](#football) club which I play for. What initially started as an [Excel](#excel) spreadsheet with stats posted on our club WhatsApp each week was the perfect opportunity for me to try and develop into my first real public website. I even wrote a [Dev article](https://dev.to/bangsluke/building-a-stats-website-for-a-sports-club-4g5m) explaining how I built the stats site.
+A sports stats site for displaying performance data for [[Dorkinians FC|Dorkinians FC]] players and teams, my local [[Football|football]] club which I play for. What initially started as an [[Excel]] spreadsheet with stats posted on our club WhatsApp each week was the perfect opportunity for me to try and develop into my first real public website. I even wrote a [Dev article](https://dev.to/bangsluke/building-a-stats-website-for-a-sports-club-4g5m) explaining how I built the stats site.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: Vanilla [HTML](#html), [CSS](#css) and [JavaScript](#javascript)
-- Back end/Datasource: [Google Sheets](#google-sheets)
-- Hosting: [GitHub](#github) (see [Repositories](#repositories)) and [Netlify](#netlify)
-- Security: [Synk](#synk)
+- Front end: Vanilla [[HTML]], [[CSS]] and [[JavaScript]]
+- Back end/Datasource: [[Google Sheets]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories)) and [[Netlify]]
+- Security: [[Synk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -91,7 +105,7 @@ A sports stats site for displaying performance data for [Dorkinians FC](#dorkini
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -105,20 +119,20 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 ## Other Links
 
-- [Dorkinians Website V2](#dorkinians-website-v2)
-- [Dorkinians Mobile Site](#dorkinians-mobile-site)
+- [[Dorkinians Website V2]]
+- [[Dorkinians Mobile Site]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
 This project taught me several things:
-- Retrospectively taught me the importance of components for reusability for long term maintainability. All of this project was built within a single [HTML](#html) and [JavaScript](#javascript) file (and [CSS](#css)) before I knew how to work properly with components, meaning everything is copied out and manually edited over and over again, making maintenance a nightmare
-- Reviewing the speed of the website through analysis tools helped me learn I need to reduce the number of [HTML](#html) elements in the future by being smarter and more efficient in components
-- Taught me that parsing a [CSV](#csv) using the method I used is too slow for large amounts of data, especially when the data continues growing. The project needs to be rebuilt faster with a new method
-- Allowed me to learn how to work with [SVG](#svg) files used as the images on the TOTW page
+- Retrospectively taught me the importance of components for reusability for long term maintainability. All of this project was built within a single [[HTML]] and [[JavaScript]] file (and [[CSS]]) before I knew how to work properly with components, meaning everything is copied out and manually edited over and over again, making maintenance a nightmare
+- Reviewing the speed of the website through analysis tools helped me learn I need to reduce the number of [[HTML]] elements in the future by being smarter and more efficient in components
+- Taught me that parsing a [[CSV]] using the method I used is too slow for large amounts of data, especially when the data continues growing. The project needs to be rebuilt faster with a new method
+- Allowed me to learn how to work with [[SVG]] files used as the images on the TOTW page
 - Helped me creatively come up with ideas to keep users engaged whilst data was loading, leading to the various random humorous quotes I have appearing on the main loading screen
-All of the above led me to begin work on [Dorkinians Website V2](#dorkinians-website-v2) to overcome the problems listed above.
+All of the above led me to begin work on [[Dorkinians Website V2]] to overcome the problems listed above.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -126,51 +140,39 @@ All of the above led me to begin work on [Dorkinians Website V2](#dorkinians-web
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

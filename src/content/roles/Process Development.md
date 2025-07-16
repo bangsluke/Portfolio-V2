@@ -3,11 +3,19 @@ tags:
   - notes
   - role
   - portfolio
-  - "[RLE International](#rle-international)"
+created: 2025-07-15T14:35:00
+modified: 2025-07-15T15:31:13+01:00
+viewCount: 2
+dateStart: 2015-07-01
+dateEnd: 2019-07-01
+linkedCompany:
+  - "[[RLE International]]"
+roleDescription: "Internally I have been responsible for the creation of numerous project\ntracking documents for the organisation and a range of customers through.\n[[Excel]] and [[VBA]] coding. Projects included timesheet & holiday\nmanagement, cost & resource estimating, warehouse storage tracking and\na technical documentation library."
+keyAchievement: "TBC"
 ---
 # Process Development
 
-> **BACK:** Link back to [Role Notes](#role-notes)
+> [!back] Link back to [[Role Notes]]
 
 ## Table of Contents
 ```table-of-contents
@@ -18,7 +26,7 @@ tags:
 Internally I have been responsible for the creation of numerous project
 tracking documents for the organisation and a range of customers through.
 
-[Excel](#excel) and [VBA](#vba) coding. Projects included timesheet & holiday
+[[Excel]] and [[VBA]] coding. Projects included timesheet & holiday
 management, cost & resource estimating, warehouse storage tracking and
 a technical documentation library.
 
@@ -34,40 +42,31 @@ TBC
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

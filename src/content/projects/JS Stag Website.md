@@ -5,36 +5,52 @@ tags:
   - notes
   - coding
   - project/completed
-  - "[Vite.js](#vite.js)"
-  - "[React](#react)"
-  - "[GitHub](#github)"
-  - "[Netlify](#netlify)"
-  - "[Synk](#synk)"
+created: 2025-05-30 10:00
+modified: 2025-07-11T15:55:16+01:00
+aliases: 
+viewCount: 7
+projectURL: https://js-stag.netlify.app/
+codeURL: https://github.com/bangsluke/JS-stag
+codeMultipleRepos: false
+folderURL: n/a
+logoURL: n/a
+imageURL: 
+dateStart: 2023-03-23
+dateEnd: 2023-05-11
+technologies:
+  - "[[Vite.js]]"
+  - "[[React]]"
+  - "[[GitHub]]"
+  - "[[Netlify]]"
+  - "[[Synk]]"
+projectCategory: Personal Design
+linkedCompany:
   - n/a
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Jonny Sourris](#jonny-sourris)"
+toolOwner: "[[Luke Bangs]]"
+developers:
+  - "[[Luke Bangs]]"
+topicTags:
+  - "[[Jonny Sourris]]"
+powerShellAlias: n/a
+version: 1
+shortDescription: "A website detailing the itinerary for [[Jonny Sourris]]'s stag do."
+longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and [[Google Maps]] links to each activity, designed for late attendees (or drunk attendees) to re-locate the group."
+lessonsLearned: "There were a few lessons learned from this project;\n- Learning how to use [[Vite.js]] for the first time\n- Writing a website using [[Typescript]] for the first time\n- Implementing a timeline component and targeting mobile screen size\n- Correctly setting up hyperlinks from the users location to the next activity in [[Google Maps]]"
 ---
 # JS Stag Website
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -43,37 +59,35 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Introduction
 
-A website detailing the itinerary for [Jonny Sourris](#jonny-sourris)'s stag do.
+A website detailing the itinerary for [[Jonny Sourris]]'s stag do.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Short Description
 
-A website detailing the itinerary for [Jonny Sourris](#jonny-sourris)'s stag do.
+A website detailing the itinerary for [[Jonny Sourris]]'s stag do.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-This site provided the stag attendees with the full itinerary of the stag, with timings and [Google Maps](#google-maps) links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
+This site provided the stag attendees with the full itinerary of the stag, with timings and [[Google Maps]] links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: [Vite.js](#vite.js), [React](#react)
+- Front end: [[Vite.js]], [[React]]
 - Back end/Datasource: n/a
-- Hosting: [GitHub](#github) (see [Repositories](#repositories)), [Netlify](#netlify)
-- Security: [Synk](#synk)
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
+- Security: [[Synk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -87,7 +101,7 @@ This site provided the stag attendees with the full itinerary of the stag, with 
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -101,17 +115,17 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 ## Other Links
 
-- [OG Stag Website](#og-stag-website)
+- [[OG Stag Website]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
 There were a few lessons learned from this project;
-- Learning how to use [Vite.js](#vite.js) for the first time
-- Writing a website using [Typescript](#typescript) for the first time
+- Learning how to use [[Vite.js]] for the first time
+- Writing a website using [[Typescript]] for the first time
 - Implementing a timeline component and targeting mobile screen size
-- Correctly setting up hyperlinks from the users location to the next activity in [Google Maps](#google-maps)
+- Correctly setting up hyperlinks from the users location to the next activity in [[Google Maps]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -119,51 +133,39 @@ There were a few lessons learned from this project;
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

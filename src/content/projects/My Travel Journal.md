@@ -6,37 +6,52 @@ tags:
   - travel
   - project/archived
   - coding
-  - "[React](#react)"
-  - "[Markdown](#markdown)"
-  - "[GitHub](#github)"
-  - "[Netlify](#netlify)"
-  - "[Synk](#synk)"
+created: 2025-05-29 18:06
+modified: 2025-07-11T16:00:34+01:00
+aliases: 
+viewCount: 9
+projectURL: https://bangsluke-my-travel-journal.netlify.app/
+codeURL: https://github.com/bangsluke/my-travel-journal
+codeMultipleRepos: false
+folderURL: n/a
+imageURL: 
+dateStart: 2022-06-09
+dateEnd: 2023-08-14
+technologies:
+  - "[[React]]"
+  - "[[Markdown]]"
+  - "[[GitHub]]"
+  - "[[Netlify]]"
+  - "[[Synk]]"
+projectCategory: Personal Design
+linkedCompany:
   - n/a
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Holidays & Travel](#holidays-&-travel)"
-  - "[Travel Notes](#travel-notes)"
+toolOwner: "[[Luke Bangs]]"
+developers:
+  - "[[Luke Bangs]]"
+topicTags:
+  - "[[Holidays & Travel]]"
+  - "[[Travel Notes]]"
+powerShellAlias: n/a
+version: 1
+shortDescription: "A website built to display the notes I had taken across various holidays I had been on."
+longDescription: "A site dedicated to my travel explorations, providing details on what my wife and I did whilst abroad for several holidays with a picture from each trip."
+lessonsLearned: "This site taught me a few extra skills such as working with [[Markdown]] data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the [[Travel Website]] which dynamically loads in data via a [[Neo4j]] graph."
 ---
 # My Travel Journal
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -45,9 +60,7 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -72,10 +85,10 @@ A site dedicated to my travel explorations, providing details on what my wife an
 
 ## Architecture and Technologies
 
-- Front end: [React](#react)
-- Back end/Datasource: [Markdown](#markdown)
-- Hosting: [GitHub](#github) (see [Repositories](#repositories)), [Netlify](#netlify)
-- Security: [Synk](#synk)
+- Front end: [[React]]
+- Back end/Datasource: [[Markdown]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
+- Security: [[Synk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -89,7 +102,7 @@ A site dedicated to my travel explorations, providing details on what my wife an
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -103,13 +116,13 @@ To launch the repo, use the [PowerShell](#powershell) alias
 
 ## Other Links
 
-- [Travel Website](#travel-website)
+- [[Travel Website]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This site taught me a few extra skills such as working with [Markdown](#markdown) data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the [Travel Website](#travel-website) which dynamically loads in data via a [Neo4j](#neo4j) graph.
+This site taught me a few extra skills such as working with [[Markdown]] data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the [[Travel Website]] which dynamically loads in data via a [[Neo4j]] graph.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -117,36 +130,27 @@ This site taught me a few extra skills such as working with [Markdown](#markdown
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

@@ -3,11 +3,19 @@ tags:
   - notes
   - role
   - portfolio
-  - "[Opus 2 International](#opus-2-international)"
+created: 2025-02-04 18:53
+modified: 2025-07-13T14:32:55+01:00
+viewCount: 9
+dateStart: 2014-03-03
+dateEnd: 2014-07-25
+linkedCompany:
+  - "[[Opus 2 International]]"
+roleDescription: "For the final few months at [[01 Notes/02 Areas/Work Notes/Company Notes/Opus 2 International|Opus 2]] I was involved in programme bug testing the software and reviewing the sites applications for users."
+keyAchievement: "Finding several front end bugs and developing a reporting structure for developers to understand easily"
 ---
 # Bug Tester
 
-> **BACK:** Link back to [Role Notes](#role-notes)
+> [!back] Link back to [[Role Notes]]
 
 ## Table of Contents
 ```table-of-contents
@@ -15,7 +23,7 @@ tags:
 
 ## Role Description
 
-For the final few months at [Opus 2](#01-notes/02-areas/work-notes/company-notes/opus-2-international) I was involved in programme bug testing the software and reviewing the sites applications for users.
+For the final few months at [[01 Notes/02 Areas/Work Notes/Company Notes/Opus 2 International|Opus 2]] I was involved in programme bug testing the software and reviewing the sites applications for users.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -29,40 +37,31 @@ Finding several front end bugs and developing a reporting structure for develope
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

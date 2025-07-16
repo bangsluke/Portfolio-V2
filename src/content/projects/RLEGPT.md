@@ -5,38 +5,53 @@ tags:
   - tool
   - portfolio
   - project/completed/work
+modified: 2025-07-11T15:53:47+01:00
+viewCount: 3
+aliases:
   - Sales Chatbot
-  - "[Vite.js](#vite.js)"
-  - "[OpenAI](#openai)"
-  - "[React](#react)"
-  - "[RLE International](#rle-international)"
-  - "[Luke Bangs](#luke-bangs)"
-  - "[Work](#work)"
-  - "[GPMO](#gpmo)"
-  - "[AI](#ai)"
-  - "[RFQ](#rfq)"
+projectURL: https://rle-sales-details.netlify.app/
+codeURL: TBC
+codeMultipleRepos: false
+folderURL: n/a
+logoURL: https://i.imgur.com/13pPwzp.png
+imageURL: 
+dateStart: 
+dateEnd: 
+technologies:
+  - "[[Vite.js]]"
+  - "[[OpenAI]]"
+  - "[[React]]"
+projectCategory: Work Project
+linkedCompany:
+  - "[[RLE International]]"
+toolOwner: "[[Dominic Ede]]"
+developers:
+  - "[[Luke Bangs]]"
+topicTags:
+  - "[[Work]]"
+  - "[[GPMO]]"
+  - "[[AI]]"
+  - "[[RFQ]]"
+powerShellAlias: n/a
+version: 1
+shortDescription: "A chat bot that takes on content such as an [[RFQ]] block of text and then allows the user to query the text via chat."
+longDescription: "TBC"
+lessonsLearned: "TBC"
 ---
 # RLEGPT
 
-> **BACK:** Link back to [Projects](#01-projects)
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
-> 
-<!-- Dataview Query (hidden in production):
+> ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->
--->
-
->
-<!-- Dataview Query (hidden in production):
+>```
+>```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
@@ -45,9 +60,7 @@ WHERE file = this.file
 
 ## Table of Contents
 
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -60,7 +73,7 @@ TBC
 
 ## Short Description
 
-A chat bot that takes on content such as an [RFQ](#rfq) block of text and then allows the user to query the text via chat.
+A chat bot that takes on content such as an [[RFQ]] block of text and then allows the user to query the text via chat.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -74,7 +87,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: [GitLab](#gitlab) (see [Repositories](#repositories))
+- Hosting: [[GitLab]] (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -89,7 +102,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](#powershell) alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -117,51 +130,39 @@ TBC
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
