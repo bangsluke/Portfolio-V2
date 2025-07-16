@@ -1,7 +1,7 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import Hero from "../../../components/blog/Hero.astro";
-import Tags from "../../../components/blog/Tags.astro";
+// import Tags from "../../../components/blog/Tags.astro";
 import ListPosts from "../../../components/blog/ListPosts.astro";
 const pageTitle = "Luke Bangs Portfolio | bangsluke";
 const description = "Welcome to my blog, where I share my passion for frontend development, web design, and the latest technology trends.";
@@ -14,7 +14,7 @@ const tweetText = encodeURIComponent(`"${pageTitle}"`);
 import Heading from "../../../components/ui/Heading.astro";
 import Share from "../../../components/ui/Share.astro";
 
-import Languages from "../../../components/blog/Languages.astro";
+// import Languages from "../../../components/blog/Languages.astro";
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
@@ -32,7 +32,7 @@ import Languages from "../../../components/blog/Languages.astro";
         >
           <div class="flex flex-col gap-4 pl-0">
             <Heading textGradient="Categories" />
-            <Tags variant="compact" />
+            <!-- <Tags variant="compact" /> -->
           </div>
         </div>
 
@@ -41,7 +41,7 @@ import Languages from "../../../components/blog/Languages.astro";
         >
           <div class="flex flex-col gap-4 pl-0">
             <Heading textGradient="Technologies" level={2} />
-            <Languages level={2} />
+            <!-- <Languages level={2} /> -->
           </div>
         </div>
         <div class="my-8 flex justify-end">

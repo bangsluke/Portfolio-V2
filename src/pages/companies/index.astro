@@ -5,11 +5,15 @@ import Layout from '../../layouts/Layout.astro';
 // Get all companies and sort by date
 const companies = await getCollection('companies');
 const sortedCompanies = companies
-  .filter(company => company.data.published !== false)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  .filter(company => company.data?.published !== false)
+  .sort((a, b) => {
+    const aDate = a.data?.date ? new Date(a.data.date).getTime() : 0;
+    const bDate = b.data?.date ? new Date(b.data.date).getTime() : 0;
+    return bDate - aDate;
+  });
 
 // Get unique tags
-const allTags = [...new Set(sortedCompanies.flatMap(company => company.data.tags || []))];
+const allTags = [...new Set(sortedCompanies.flatMap(company => company.data?.tags || []))];
 ---
 
 <Layout title="Companies">
@@ -58,21 +62,21 @@ const allTags = [...new Set(sortedCompanies.flatMap(company => company.data.tags
       {sortedCompanies.map((company) => (
         <article 
           class="company-card bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200 overflow-hidden"
-          data-tags={company.data.tags?.join(' ') || ''}
-          data-title={company.data.title.toLowerCase()}
+          data-tags={company.data?.tags?.join(' ') || ''}
+          data-title={company.data?.title?.toLowerCase() || ''}
         >
           <div class="p-6">
             <header class="mb-4">
               <h2 class="text-xl font-semibold mb-2">
                 <a href={`/companies/${company.slug}`} class="text-gray-900 hover:text-blue-600 transition-colors">
-                  {company.data.title}
+                  {company.data?.title || 'Untitled'}
                 </a>
               </h2>
               <div class="flex items-center gap-4 text-sm text-gray-500">
-                <time datetime={company.data.date.toISOString()}>
-                  {company.data.date.toLocaleDateString()}
+                <time datetime={company.data?.date ? company.data.date.toISOString() : ''}>
+                  {company.data?.date ? company.data.date.toLocaleDateString() : 'No date'}
                 </time>
-                {company.data.tags && company.data.tags.length > 0 && (
+                {company.data?.tags && company.data.tags.length > 0 && (
                   <div class="flex gap-1">
                     {company.data.tags.slice(0, 2).map((tag) => (
                       <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-xs font-medium">
@@ -87,7 +91,7 @@ const allTags = [...new Set(sortedCompanies.flatMap(company => company.data.tags
               </div>
             </header>
             
-            {company.data.description && (
+            {company.data?.description && (
               <p class="text-gray-600 text-sm line-clamp-3 mb-4">
                 {company.data.description}
               </p>

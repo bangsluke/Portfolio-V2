@@ -18,6 +18,15 @@
 
 ## Auto Log
 
+## 2024-12-19 09:31 [main] - Added ESLint configuration
+- Created eslint.config.js with comprehensive rules for Astro, TypeScript, React, and JavaScript
+- Added support for Astro-specific linting rules and accessibility checks
+- Configured TypeScript ESLint with strict rules and proper error handling
+- Added React/Preact component linting rules
+- Installed required dependencies: @eslint/js, globals, typescript-eslint
+- Added lint and lint:fix scripts to package.json
+- Configured proper file ignores for build artifacts and configuration files
+
 ## 2024-12-19 09:24 [main] - Fixed Tags component build error
 - Fixed "i is not defined" error in Tags.astro component
 - Added proper error handling for posts without tags in frontmatter

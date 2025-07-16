@@ -7,6 +7,8 @@
     "build": "node scripts/build-filtered.js",
     "preview": "astro preview",
     "astro": "astro",
+    "lint": "eslint . --ext .js,.ts,.jsx,.tsx,.astro",
+    "lint:fix": "eslint . --ext .js,.ts,.jsx,.tsx,.astro --fix",
     "sync-obsidian": "node scripts/sync-obsidian.js",
     "sync-obsidian:deploy": "set AUTO_DEPLOY=true && node scripts/sync-obsidian.js",
     "sync-obsidian:custom": "node scripts/sync-obsidian.js --tag",
@@ -45,12 +47,16 @@
     "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
+    "@eslint/js": "^9.31.0",
     "@types/graphql": "^14.2.3",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "cross-env": "^7.0.3",
     "eslint": "^9.22.0",
     "eslint-plugin-astro": "^1.3.1",
-    "tailwindcss-animated": "^2.0.0"
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.3.0",
+    "tailwindcss-animated": "^2.0.0",
+    "typescript-eslint": "^8.37.0"
   }
 }
