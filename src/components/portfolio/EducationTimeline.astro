@@ -1,5 +1,5 @@
 ---
-import EducationItem from "./EducationItem.astro";
+import EducationTimelineItem from "./EducationTimelineItem.astro";
 import Heading from "../ui/Heading.astro";
 import { Icon } from "astro-icon/components";
 import { getCollection } from 'astro:content';
@@ -43,7 +43,7 @@ const sortedEducation = education
                   class="flex flex-col gap-2  text-zinc-00 dark:text-zinc-300 md:col-span-3"
                   aria-describedby={`experience-title-${index}`}
                 >
-                  <EducationItem 
+                  <EducationTimelineItem 
                     {...education.data}
                     name={education.data.name || education.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
                   />

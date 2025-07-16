@@ -1,16 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Experience from "../components/portfolio/Experience.astro";
-import Education from "../components/portfolio/Education.astro";
-import Projects from "../components/portfolio/Projects.astro";
-import Skills from "../components/portfolio/Skills.astro";
-import Clients from "../components/portfolio/Clients.astro";
-import References from "../components/portfolio/References.astro";
+import WorkExperienceTimeline from "../components/portfolio/WorkExperienceTimeline.astro";
+import EducationTimeline from "../components/portfolio/EducationTimeline.astro";
+import ProjectsGallery from "../components/portfolio/ProjectsGallery.astro";
+import SkillsBubbles from "../components/portfolio/SkillsBubbles.astro";
+import ClientsCarousel from "../components/portfolio/ClientsCarousel.astro";
+import ReferencesCarousel from "../components/portfolio/ReferencesCarousel.astro";
 import HeroIndex from "../components/portfolio/HeroIndex.astro";
 import Contact from "../components/portfolio/Contact.astro";
 import CompaniesList from "../components/portfolio/CompaniesList.astro";
 import GitHubContributions from "../components/portfolio/GitHubContributions.tsx";
-import { Icon } from "astro-icon/components";
 import CustomerCarousel from "../components/portfolio/CustomerCarousel.astro";
 const pageTitle = "bangsluke Portfolio";
 const description = "My portfolio site";
@@ -18,20 +17,20 @@ const ogimage = {
   url: "/images/imagedefault.webp",
   alt: "bangsluke Portfolio"
 };
-import Heading from "../components/ui/Heading.astro";
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
   
   <HeroIndex />
-  <Projects />
-  <Skills />
+  <ProjectsGallery />
+  <SkillsBubbles />
   <GitHubContributions client:only="preact" />
-  <Experience />
+  <WorkExperienceTimeline />
+  <!-- TODO: Delete below Customer Carousel -->
   <CustomerCarousel />
-  <Clients />
+  <ClientsCarousel />
   <CompaniesList />
-  <Education />
-  <References />
+  <EducationTimeline />
+  <ReferencesCarousel />
   <Contact />
 </Layout>

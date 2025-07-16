@@ -3,13 +3,22 @@ import { processMarkdownContent } from '../../utils/content-processor';
 
 interface Props {
   name: string;
-  tags?: string[];
+  tags?: string[] | null;
   dateStart?: string | Date | null;
   dateEnd?: string | Date | null;
   logoURL?: string | null;
   projectURL?: string | null;
   codeURL?: string | null;
-  technologies?: string[];
+  codeMultipleRepos?: boolean | null;
+  folderURL?: string | null;
+  imageURL?: string | null;
+  technologies?: string[] | null;
+  projectCategory?: string | null;
+  linkedCompany?: string[] | null;
+  toolOwner?: string | null;
+  developers?: string[] | null;
+  topicTags?: string[] | null;
+  version?: number | null;
   shortDescription?: string;
   longDescription?: string;
   lessonsLearned?: string;

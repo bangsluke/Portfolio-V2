@@ -1,14 +1,15 @@
 ---
-import ProjectItem from "./ProjectItem.astro";
+import WorkExperienceItem from "./WorkExperienceItem.astro";
 import Heading from "../ui/Heading.astro";
 import { Icon } from "astro-icon/components";
 import { getCollection } from 'astro:content';
+import { formatDateToMMMYYYY } from "../../utils/date-formatter";
 
-// Get all projects from the local content folder
-const projects = await getCollection('projects');
+// Get all roles from the local content folder
+const roles = await getCollection('roles');
 
-// Sort projects by dateStart date (newest first)
-const sortedProjects = projects
+// Sort roles by dateStart date (newest first)
+const sortedRoles = roles
   .sort((a, b) => {
     // Sort by dateStart date, fallback to dateEnd date, then alphabetically
     const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
@@ -23,30 +24,28 @@ const sortedProjects = projects
   });
 ---
 
-<section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="projects">
+
+<section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="experience">
   <div class="flex flex-col pt-8 max-w-4xl mx-auto">
     <div class="flex gap-4 items-center justify-center">
-      <Icon class="text-3xl dark:text-white text-blacktext" name="code" />
-      <Heading text="" textGradient="Projects" level={2} />
+      <Icon class="text-3xl dark:text-white text-blacktext" name="briefcase" />
+      <Heading text="Work" textGradient="Experience" level={2} />
     </div>
 
-    <div class="relative max-md:mt-0 mt-8" aria-label="Projects">
+    <div class="relative max-md:mt-0 mt-8" aria-label="Professional experience">
       <ol class="relative mt-10">
         {
-          sortedProjects.map((project, index) => (
+          sortedRoles.map((role, index) => (
             <li>
               <article
                 role="article"
-                aria-labelledby={`project-title-${index}`}
+                aria-labelledby={`experience-title-${index}`}
               >
                 <div
-                  class="flex flex-col gap-2 text-zinc-00 dark:text-zinc-300 md:col-span-3"
-                  aria-describedby={`project-title-${index}`}
+                  class="flex flex-col gap-2  text-zinc-00 dark:text-zinc-300 md:col-span-3"
+                  aria-describedby={`experience-title-${index}`}
                 >
-                  <ProjectItem 
-                    {...project.data}
-                    name={project.data.name || project.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                  />
+                  <WorkExperienceItem {...role.data} name={role.data.name || role.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())} />
                 </div>
               </article>
             </li>
@@ -55,4 +54,4 @@ const sortedProjects = projects
       </ol>
     </div>
   </div>
-</section> 
+</section>
