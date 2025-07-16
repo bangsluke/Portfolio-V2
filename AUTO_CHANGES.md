@@ -18,6 +18,73 @@
 
 ## Auto Log
 
+## 2025-01-16 11:10 [main] - Fixed star icon error in SkillItem component
+- Replaced invalid "star-fill" and "star" icon names with HTML star characters
+  - Changed from Icon component with non-existent star icons to HTML ★ characters
+  - Maintains same visual appearance with filled and empty stars
+  - Resolves "Unable to locate star-fill icon" build error
+- Updated star rating display to use Unicode star symbols
+  - Uses ★ character for filled stars (yellow) and empty stars (gray)
+  - Maintains 5-star rating system functionality
+  - Preserves existing styling and layout
+
+## 2025-01-16 11:05 [main] - Added Clients and References components with schema updates
+- Created Clients.astro component to display clients collection
+  - Similar structure to other portfolio components
+  - Sorts clients by dateStart date (newest first)
+  - Uses users icon and "Clients" heading
+  - Derives client names from filenames when not in frontmatter
+- Created ClientItem.astro component for individual client display
+  - Displays client name, dates, linked company, and content
+  - Processes clientDescription and keyAchievement with content processor
+  - Uses processed-content class for mint-green link styling
+- Created References.astro component to display references collection
+  - Similar structure to other portfolio components
+  - Sorts references alphabetically by name
+  - Uses quote icon and "References" heading
+  - Derives reference names from filenames when not in frontmatter
+- Created ReferenceItem.astro component for individual reference display
+  - Displays reference name, role, company, contact info, and content
+  - Shows clickable email and phone links
+  - Processes referenceDescription and keyAchievement with content processor
+  - Uses processed-content class for mint-green link styling
+- Updated clients and references collection schemas to make name field optional
+  - Added name: z.string().optional() to both config.ts schemas
+  - Allows clients and references to work without explicit name in frontmatter
+  - Maintains backward compatibility with existing name fields
+- Added Clients and References components to main Site page
+  - Integrated into site.astro with proper imports and usage
+  - Positioned between Skills and Education sections
+  - Maintains consistent layout and styling with other portfolio sections
+- Implemented consistent content processing across all portfolio sections
+  - Clients and References now use the same Obsidian link processing as other components
+  - Mint-green styling for processed links
+  - HTML rendering for markdown links and content
+
+## 2025-01-16 11:00 [main] - Added Skills component with schema updates
+- Created Skills.astro component to display skills collection
+  - Similar structure to Education, Experience, and Projects components
+  - Sorts skills by skillRating (highest first), then alphabetically
+  - Uses star icon and "Skills" heading
+  - Derives skill names from filenames when not in frontmatter
+- Created SkillItem.astro component for individual skill display
+  - Displays skill name, rating with star visualization, and content
+  - Shows 5-star rating system with filled/empty stars
+  - Processes skillDescription and keyAchievement with content processor
+  - Uses processed-content class for mint-green link styling
+- Updated skills collection schema to make name field optional
+  - Added name: z.string().optional() to config.ts
+  - Allows skills to work without explicit name in frontmatter
+  - Maintains backward compatibility with existing name fields
+- Added Skills component to main Site page
+  - Integrated into site.astro with proper import and usage
+  - Positioned between Projects and Education sections
+  - Maintains consistent layout and styling with other portfolio sections
+- Implemented consistent content processing across all portfolio sections
+  - Skills now use the same Obsidian link processing as other components
+  - Mint-green styling for processed links
+  - HTML rendering for markdown links and content
+
 ## 2025-01-16 10:55 [main] - Added Projects component with schema updates
 - Created Projects.astro component to display projects collection
   - Similar structure to Education and Experience components

@@ -60,6 +60,7 @@ const projectsCollection = defineCollection({
 const skillsCollection = defineCollection({
   type: 'content',
   schema: z.object({
+    name: z.string().optional(),
     tags: z.array(z.string()).optional(),
     modified: z.union([z.string(), z.date()]).optional(),
     viewCount: z.number().optional(),
@@ -91,6 +92,7 @@ const companiesCollection = defineCollection({
 const clientsCollection = defineCollection({
   type: 'content',
   schema: z.object({
+    name: z.string().optional(),
     tags: z.array(z.string()).optional(),
     modified: z.union([z.string(), z.date(), z.null()]).optional(),
     viewCount: z.number().optional(),
@@ -139,6 +141,7 @@ const educationsCollection = defineCollection({
 const referencesCollection = defineCollection({
   type: 'content',
   schema: z.object({
+    name: z.string().optional(),
     tags: z.array(z.string()).optional(),
     modified: z.union([z.string(), z.date(), z.null()]).optional(),
     viewCount: z.number().optional(),

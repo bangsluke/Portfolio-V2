@@ -3,6 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Experience from "../components/portfolio/Experience.astro";
 import Education from "../components/portfolio/Education.astro";
 import Projects from "../components/portfolio/Projects.astro";
+import Skills from "../components/portfolio/Skills.astro";
+import Clients from "../components/portfolio/Clients.astro";
+import References from "../components/portfolio/References.astro";
 import HeroIndex from "../components/portfolio/HeroIndex.astro";
 import Contact from "../components/portfolio/Contact.astro";
 import CompaniesList from "../components/portfolio/CompaniesList.astro";
@@ -20,13 +23,15 @@ import Heading from "../components/ui/Heading.astro";
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
   
-  <CompaniesList />
-  <CustomerCarousel />
   <HeroIndex />
-  <Experience />
-  <GitHubContributions client:only="preact" />
-  
   <Projects />
+  <Skills />
+  <GitHubContributions client:only="preact" />
+  <Experience />
+  <CustomerCarousel />
+  <Clients />
+  <CompaniesList />
   <Education />
+  <References />
   <Contact />
 </Layout>
