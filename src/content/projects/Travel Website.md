@@ -46,7 +46,7 @@ powerShellAlias: travel
 version: 2
 shortDescription: "A website to show details of my travels across the world."
 longDescription: "A visualisation and analysis of the travelling I have done, providing descriptions of my trips and a level of analysis on top of this such as most visited places, most common travel companions and other stats."
-lessonsLearned: "The biggest challenge for this project was setting up the [[Apollo]] backend server and getting the connection to the front end.\nI also learned a lot about the page routing in [[Next.js]] to develop the various page types on the site."
+lessonsLearned: "The biggest challenge for this project was setting up the Apollo backend server and getting the connection to the front end.\nI also learned a lot about the page routing in Next.js to develop the various page types on the site."
 ---
 # Travel Website
 

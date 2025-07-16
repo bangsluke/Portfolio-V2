@@ -7,7 +7,7 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-07-16T11:02:51+01:00
+modified: 2025-07-16T12:49:27+01:00
 viewCount: 45
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
@@ -41,7 +41,7 @@ powerShellAlias: portfolio
 version: 2
 shortDescription: "A personal portfolio website for displaying my skills and past projects"
 longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills"
-lessonsLearned: "TBC\nInitially I set the project up with an [[Astro]] front end and started doing [[GraphQL]] calls to my [[Backend Server]] project to collect the portfolio data I had stored in the [[Neo4j]] graph. However I soon realized that I was undoing the speed of [[Astro]] and switched to a script that loads the required portfolio data (stored in [[Obsidian]] [[Markdown]] files) into the portfolio repo and used [[Astro]] collections to gather and display the data that way."
+lessonsLearned: "TBC\nInitially I set the project up with an Astro front end and started doing GraphQL calls to my Backend Server project to collect the portfolio data I had stored in the Neo4j graph. However I soon realized that I was undoing the speed of Astro and switched to a script that loads the required portfolio data (stored in Obsidian Markdown files) into the portfolio repo and used Astro collections to gather and display the data that way."
 ---
 # Portfolio Site V2
 
@@ -351,6 +351,7 @@ SORT dateStart ASC
     - Properties
         - dateStart
         - dateEnd
+        - logoURL
     - Sections
         - Qualifications
         - Additional Details

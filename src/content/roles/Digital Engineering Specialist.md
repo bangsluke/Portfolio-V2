@@ -10,7 +10,7 @@ dateStart: 2022-07-01
 dateEnd: ""
 linkedCompany:
   - "[[RLE International]]"
-roleDescription: "Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using [[Next.js]], [[Nest.js]], a [[Neo4j]] database and a [[Flask]] [[API]] to call a [[Python]] algorithm. The tool collects inputs from a user, calculates several optimal [[DVP]] plans and then presents the options in several ways to enable further user decisions."
+roleDescription: "Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using Next.js, Nest.js, a Neo4j database and a Flask API to call a Python algorithm. The tool collects inputs from a user, calculates several optimal DVP plans and then presents the options in several ways to enable further user decisions."
 keyAchievement: "TBC"
 ---
 # Digital Engineering Specialist

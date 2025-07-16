@@ -34,7 +34,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 
-shortDescription: "The report section for the [[Financial Tracker]] showing individual [[RLE International]] project data."
+shortDescription: "The report section for the Financial Tracker showing individual RLE International project data."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---

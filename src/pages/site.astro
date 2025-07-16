@@ -19,7 +19,7 @@ import Heading from "../components/ui/Heading.astro";
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
-  <Education />
+  
   <CompaniesList />
   <CustomerCarousel />
   <HeroIndex />
@@ -27,5 +27,6 @@ import Heading from "../components/ui/Heading.astro";
   <GitHubContributions client:only="preact" />
   
   <ListProjects />
+  <Education />
   <Contact />
 </Layout>

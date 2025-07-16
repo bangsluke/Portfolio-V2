@@ -10,9 +10,9 @@ modified: 2025-07-07T21:11:21+01:00
 viewCount: 9
 dateStart: 2011-09-05
 dateEnd: 2014-06-27
-imageURL: https://media.licdn.com/dms/image/v2/C561BAQEo3Ke2CIHRbA/company-background_10000/company-background_10000/0/1617176515173/loughborough_university_cover?e=2147483647&v=beta&t=TabCtm4ROKsS0ZXjH0ioh6D4bemFR556N8rzoabbFo8
+logoURL: https://media.licdn.com/dms/image/v2/C561BAQEo3Ke2CIHRbA/company-background_10000/company-background_10000/0/1617176515173/loughborough_university_cover?e=2147483647&v=beta&t=TabCtm4ROKsS0ZXjH0ioh6D4bemFR556N8rzoabbFo8
 qualifications: "BEng. Automotive Engineering. Second Class Honours, Upper Division (2:1)"
-additionalDetails: "Large range of engineering topics, exploring multiple engineering fundamentals from structures and materials to vehicle aerodynamics. Final year project conducted on the numerical analysis of CNG, LPG and Hydrogen turbulent premixed flames data from experiments conducted in [[Sydney]]"
+additionalDetails: "Large range of engineering topics, exploring multiple engineering fundamentals from structures and materials to vehicle aerodynamics. Final year project conducted on the numerical analysis of CNG, LPG and Hydrogen turbulent premixed flames data from experiments conducted in Sydney"
 ---
 # Loughborough University
 

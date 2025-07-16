@@ -35,9 +35,9 @@ topicTags:
   - "[[Football]]"
 powerShellAlias: n/a
 version: 1
-shortDescription: "A quick access filterable stats site for [[Dorkinians FC|Dorkinians]] players."
-longDescription: "After creating the initial [[Dorkinians Website]], I would regularly be asked by players “But how many goals were just in cup games/not friendlies/just league?” Etc etc.\nI therefore decided to play around with creating a filterable site so that players could answer these questions themselves."
-lessonsLearned: "This project let me design my first filter [[UI]] popup using [[React]] and taught me methods of filtering the data received from the back end.\nI also tried out a new [[API]] method of retrieving data to the front end from [[Google Sheets]], using their available method instead of parsing generated [[CSV]] data like I did on the [[Dorkinians Website]]."
+shortDescription: "A quick access filterable stats site for Dorkinians FC|Dorkinians players."
+longDescription: "After creating the initial Dorkinians Website, I would regularly be asked by players “But how many goals were just in cup games/not friendlies/just league?” Etc etc.\nI therefore decided to play around with creating a filterable site so that players could answer these questions themselves."
+lessonsLearned: "This project let me design my first filter UI popup using React and taught me methods of filtering the data received from the back end.\nI also tried out a new API method of retrieving data to the front end from Google Sheets, using their available method instead of parsing generated CSV data like I did on the Dorkinians Website."
 ---
 # Dorkinians Mobile Site
 

@@ -36,9 +36,9 @@ topicTags:
   - "[[Digital Engineering]]"
 powerShellAlias: n/a
 version: 1
-shortDescription: "A basic site showing the acronyms and definitions used across the [[SDP]] tool."
-longDescription: "A full list of acronyms and definitions used across the [[SDP]] app, provided as support material to consultants using the tool for [[RLE International|RLE]] and also by clients."
-lessonsLearned: "Provided good learning for getting correct anchor points in [[HTML]] for jumping to the correct acronym letters."
+shortDescription: "A basic site showing the acronyms and definitions used across the SDP tool."
+longDescription: "A full list of acronyms and definitions used across the SDP app, provided as support material to consultants using the tool for RLE International|RLE and also by clients."
+lessonsLearned: "Provided good learning for getting correct anchor points in HTML for jumping to the correct acronym letters."
 ---
 # SDP Acronyms
 

@@ -18,6 +18,16 @@
 
 ## Auto Log
 
+## 2025-01-16 10:40 [main] - Added Obsidian link syntax removal to section extraction
+- Updated extractSectionContent function to remove Obsidian-style links from extracted text
+  - Added regex replacement to convert [[text]] to text
+  - Removes double brackets while preserving the link text content
+  - Ensures clean text output for frontmatter without Obsidian-specific syntax
+- Improved text cleaning for section extraction
+  - Maintains existing whitespace and newline cleanup
+  - Adds link syntax removal to the processing pipeline
+  - Better integration with Astro content collection requirements
+
 ## 2025-01-16 10:35 [main] - Fixed education name handling to use filenames instead of frontmatter
 - Removed name field from Ashcombe School.md frontmatter
   - Education files should not have name property in frontmatter

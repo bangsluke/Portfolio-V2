@@ -36,9 +36,9 @@ topicTags:
   - "[[Digital Engineering]]"
 powerShellAlias: n/a
 version: 1
-shortDescription: "A basic site showing an expandable and collapsible list of the swimlanes and activities used in the [[SDP]] tool."
-longDescription: "An expandable and collapsible list of the swimlanes and activities referenced across the [[SDP]] app, provided as support material to consultants using the tool for [[RLE International|RLE]] and also by clients."
-lessonsLearned: "Provided good learning for the interactivity of expanding and collapsing boxes on click, however unfortunately the site remained incomplete as the requirements changed for [[SDP]]."
+shortDescription: "A basic site showing an expandable and collapsible list of the swimlanes and activities used in the SDP tool."
+longDescription: "An expandable and collapsible list of the swimlanes and activities referenced across the SDP app, provided as support material to consultants using the tool for RLE International|RLE and also by clients."
+lessonsLearned: "Provided good learning for the interactivity of expanding and collapsing boxes on click, however unfortunately the site remained incomplete as the requirements changed for SDP."
 ---
 # SDP Encyclopaedia
 

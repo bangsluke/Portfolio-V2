@@ -40,9 +40,9 @@ topicTags:
   - "[[DVP]]"
 powerShellAlias: n/a
 version: 1
-shortDescription: "The [[DVP]] project was a short demonstration of using [[Neo4j]] graphs for running optimisation calculations for the Automotive industry."
-longDescription: "[[RLE International|RLE]]’s [[DVP]] tool was a working demonstration tool for how problems such as automatically generating a vehicle [[DVP]] could be done from inputs and running optimisation algorithms to generate a Pareto curve of the importance of each input."
-lessonsLearned: "The lessons learned for me were mainly in data visualisation in the front end, as I received various data points from the backend [[Neo4j]] and [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]] calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.\nIt also taught me a lot about passing large objects of states from one page to the next."
+shortDescription: "The DVP project was a short demonstration of using Neo4j graphs for running optimisation calculations for the Automotive industry."
+longDescription: "RLE International|RLE’s DVP tool was a working demonstration tool for how problems such as automatically generating a vehicle DVP could be done from inputs and running optimisation algorithms to generate a Pareto curve of the importance of each input."
+lessonsLearned: "The lessons learned for me were mainly in data visualisation in the front end, as I received various data points from the backend Neo4j and 01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.\nIt also taught me a lot about passing large objects of states from one page to the next."
 ---
 # DVP Tool
 

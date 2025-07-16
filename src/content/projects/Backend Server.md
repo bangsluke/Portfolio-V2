@@ -36,8 +36,8 @@ topicTags:
 powerShellAlias: backend
 version: 1
 shortDescription: "The backend source of data for several of my projects, allowing a singular point of management and maintenance."
-longDescription: "The source of data for several projects including my [[Travel Website]] and [[Portfolio Site V2]], providing a route for data retrieval from a [[Neo4j]] graph using [[GraphQL]] queries."
-lessonsLearned: "Taught me about setting up a [[Flask]] server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage [[Python]] code in a growing codebase given my past experience with [[Python]] had been for single script projects.\nTBC"
+longDescription: "The source of data for several projects including my Travel Website and Portfolio Site V2, providing a route for data retrieval from a Neo4j graph using GraphQL queries."
+lessonsLearned: "Taught me about setting up a Flask server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage Python code in a growing codebase given my past experience with Python had been for single script projects.\nTBC"
 ---
 # Backend Server
 

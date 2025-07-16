@@ -74,7 +74,8 @@ function extractSectionContent(content, sectionName, endMarker) {
     return match[1]
       .trim()
       .replace(/\n{3,}/g, '\n\n') // Replace multiple newlines with double newlines
-      .replace(/\s+$/gm, ''); // Remove trailing whitespace from each line
+      .replace(/\s+$/gm, '') // Remove trailing whitespace from each line
+      .replace(/\[\[([^\]]+)\]\]/g, '$1'); // Remove Obsidian-style links [[text]] -> text
   }
   return null;
 }
