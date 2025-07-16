@@ -32,7 +32,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 
-shortDescription: "The automation file to convert the Cost Model into the data format required for the Financial Tracker|Finance Tracker."
+shortDescription: "The automation file to convert the Finance Tracker."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---

@@ -79,10 +79,6 @@ const companiesCollection = defineCollection({
   type: 'content',
   schema: z.object({
     tags: z.array(z.string()).optional(),
-    created: z.union([z.string(), z.date(), z.null()]).optional(),
-    modified: z.union([z.string(), z.date(), z.null()]).optional(),
-    viewCount: z.number().optional(),
-    aliases: z.union([z.array(z.string()), z.null()]).optional(),
     dateStart: z.union([z.string(), z.date(), z.null()]).optional(),
     dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
     logoURL: z.string().optional(),
@@ -115,10 +111,8 @@ const clientsCollection = defineCollection({
 const rolesCollection = defineCollection({
   type: 'content',
   schema: z.object({
+    name: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    created: z.union([z.string(), z.date(), z.null()]).optional(),
-    modified: z.union([z.string(), z.date(), z.null()]).optional(),
-    viewCount: z.number().optional(),
     dateStart: z.union([z.string(), z.date(), z.null()]).optional(),
     dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
     linkedCompany: z.array(z.string()).optional(),

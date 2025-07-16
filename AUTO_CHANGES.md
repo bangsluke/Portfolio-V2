@@ -18,6 +18,38 @@
 
 ## Auto Log
 
+## 2025-01-16 10:45 [main] - Enhanced section extraction with advanced link processing
+- Updated extractSectionContent function with comprehensive link processing
+  - Added priority processing for [[CompanyName|AltName]] format to extract AltName only
+  - Converts standard markdown links [Link Text](url) to HTML <a href="url">Link Text</a>
+  - Maintains existing [[text]] -> text conversion for simple Obsidian links
+  - Improved text cleaning pipeline with ordered processing
+- Enhanced section extraction for better content integration
+  - Better handling of mixed link formats in extracted content
+  - Cleaner output for frontmatter storage
+  - Maintains HTML link functionality in extracted sections
+
+## 2025-01-16 10:50 [main] - Added client-side content processing for Obsidian links
+- Created content-processor.ts utility for processing markdown content on the site
+  - processMarkdownContent function handles Obsidian links and markdown links when rendering
+  - processObsidianLink function for single values like linkedCompany
+  - Converts [[CompanyName|AltName]] to AltName and [[text]] to text
+  - Converts markdown links to styled HTML links
+- Updated ExperienceItem component to use content processing
+  - Imports and uses content-processor utilities
+  - Processes roleDescription and keyAchievement with HTML output
+  - Processes linkedCompany to remove Obsidian syntax
+  - Uses set:html directive to render processed HTML content
+- Added CSS styling for processed content links
+  - Added .processed-content a rules with mint-green color (#31d69a)
+  - Hover effects with lighter mint-green (#6ce9b7)
+  - Dark mode support for consistent styling
+  - Applied processed-content class to ExperienceItem divs
+- Improved content rendering with proper link handling
+  - Obsidian links are processed when content is displayed on the site
+  - Markdown links become clickable HTML links with mint-green styling
+  - Better user experience with functional, styled links in portfolio content
+
 ## 2025-01-16 10:40 [main] - Added Obsidian link syntax removal to section extraction
 - Updated extractSectionContent function to remove Obsidian-style links from extracted text
   - Added regex replacement to convert [[text]] to text

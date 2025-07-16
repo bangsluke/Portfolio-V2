@@ -75,7 +75,9 @@ function extractSectionContent(content, sectionName, endMarker) {
       .trim()
       .replace(/\n{3,}/g, '\n\n') // Replace multiple newlines with double newlines
       .replace(/\s+$/gm, '') // Remove trailing whitespace from each line
-      .replace(/\[\[([^\]]+)\]\]/g, '$1'); // Remove Obsidian-style links [[text]] -> text
+      .replace(/\[\[([^|]+)\|([^\]]+)\]\]/g, '$2') // Convert [[CompanyName|AltName]] to AltName
+      .replace(/\[\[([^\]]+)\]\]/g, '$1') // Remove remaining Obsidian-style links [[text]] -> text
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>'); // Convert markdown links to HTML
   }
   return null;
 }

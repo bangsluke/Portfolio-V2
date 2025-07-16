@@ -2,76 +2,28 @@
 import ExperienceItem from "./ExperienceItem.astro";
 import Heading from "../ui/Heading.astro";
 import { Icon } from "astro-icon/components";
-import { fetchRoles } from "../../utils/roles";
+import { getCollection } from 'astro:content';
 import { formatDateToMMMYYYY } from "../../utils/date-formatter";
 
-// Fetch roles from GraphQL backend with fallback for build time
-let EXPERIENCE = [];
+// Get all roles from the local content folder
+const roles = await getCollection('roles');
 
-try {
-  const roles = await fetchRoles();
-  
-  // Enhanced console logging for roles collection
-  console.log('=== EXPERIENCE COMPONENT - ROLES COLLECTION ===');
-  console.log('Total roles fetched from GraphQL:', roles.length);
-  console.log('All roles data:', roles);
-  console.log('Roles JSON length:', JSON.stringify(roles).length);
-  
-  // Log each role individually
-  roles.forEach((role, index) => {
-    console.log(`Role ${index + 1}:`, {
-      nodeId: role.nodeId,
-      name: role.name,
-      dateStart: role.dateStart,
-      dateEnd: role.dateEnd,
-      roleDescription: role.roleDescription,
-      linkedCompany: role.linkedCompany
-    });
-  });
-  
-  // Sort roles by dateStart (most recent first) and transform the data
-  EXPERIENCE = roles
-    .sort((a, b) => new Date(b.dateStart).getTime() - new Date(a.dateStart).getTime())
-    .map(role => {
-      console.log('Processing role:', role.name, 'linkedCompany:', role.linkedCompany);
-      return {
-        date: role.dateEnd 
-          ? `${formatDateToMMMYYYY(role.dateStart)} - ${formatDateToMMMYYYY(role.dateEnd)}` 
-          : `${formatDateToMMMYYYY(role.dateStart)} - Present`,
-        name: role.name,
-        company: role.linkedCompany?.name || 'TBC Company',
-        roleDescription: role.roleDescription,
-      };
-    });
+// Sort roles by dateStart date (newest first)
+const sortedRoles = roles
+  .sort((a, b) => {
+    // Sort by dateStart date, fallback to dateEnd date, then alphabetically
+    const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
+    const dateB = b.data.dateStart || b.data.dateEnd || new Date(0);
     
-  console.log('Final EXPERIENCE array:', EXPERIENCE);
-  console.log('=== END EXPERIENCE COMPONENT DEBUG ===');
-} catch (error) {
-  console.warn('Experience component: Could not fetch roles from GraphQL, using fallback data:', error);
-  
-  // Fallback data for when GraphQL is not available (e.g., during build)
-  EXPERIENCE = [
-    {
-      date: "2023 - Present",
-      name: "Software Development Coordinator",
-      company: "Municipality",
-      roleDescription: "Leading software development initiatives and coordinating technology projects for local government.",
-    },
-    {
-      date: "2021 - Present",
-      name: "Frontend Developer",
-      company: "Freelance",
-      roleDescription: "Creating responsive web applications and providing development services to various clients.",
-    },
-    {
-      date: "2017 - 2021",
-      name: "Web Developer",
-      company: "Various Companies",
-      roleDescription: "Developed websites and web applications using modern technologies and best practices.",
+    if (dateA instanceof Date && dateB instanceof Date) {
+      return dateB.getTime() - dateA.getTime();
     }
-  ];
-}
+    
+    // Fallback to alphabetical sorting by slug (filename)
+    return a.slug.localeCompare(b.slug);
+  });
 ---
+
 
 <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="experience">
   <div class="flex flex-col pt-8 max-w-4xl mx-auto">
@@ -83,7 +35,7 @@ try {
     <div class="relative max-md:mt-0 mt-8" aria-label="Professional experience">
       <ol class="relative mt-10">
         {
-          EXPERIENCE.map((experience, index) => (
+          sortedRoles.map((role, index) => (
             <li>
               <article
                 role="article"
@@ -93,7 +45,7 @@ try {
                   class="flex flex-col gap-2  text-zinc-00 dark:text-zinc-300 md:col-span-3"
                   aria-describedby={`experience-title-${index}`}
                 >
-                  <ExperienceItem {...experience} />
+                  <ExperienceItem {...role.data} name={role.data.name || role.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())} />
                 </div>
               </article>
             </li>
