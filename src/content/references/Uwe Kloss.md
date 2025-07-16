@@ -6,14 +6,29 @@ tags:
   - work
   - reference
   - portfolio
+modified: 2025-07-16T09:47:51+01:00
+viewCount: 6
+aliases:
   - Uwe
-  - "[Loughborough University](#loughborough-university)"
-  - "[RLE International](#rle-international)"
-  - "[RLE Germany](#rle-germany)"
+birthday: 
+died: 
+partneredWith: 
+marriageDate: 
+relatedTo: 
+friendOf: 
+education:
+  - "[[Loughborough University]]"
+linkedCompany:
+  - "[[RLE International]]"
+  - "[[RLE Germany]]"
+referenceRole: Head of Digital Engineering
+referenceEmail: uwe.kloss@rle.de
+referenceNumber: +49 (172) 3180-304
+referenceAddress: RLE International, Germany
 ---
 # Uwe Kloss
 
-> **BACK:** Link back to [People Notes](#people-notes)
+> [!back] Link back to [[People Notes]]
 
 ## Table of Contents 
 
@@ -31,51 +46,39 @@ tags:
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

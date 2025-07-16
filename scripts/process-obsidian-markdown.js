@@ -7,9 +7,117 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Extract content between specific markdown sections
+function extractSectionContent(content, sectionName, endMarker) {
+  const sectionRegex = new RegExp(
+    `##\\s*${sectionName}\\s*\\n([\\s\\S]*?)(?=\\s*${endMarker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`,
+    'i'
+  );
+  
+  const match = content.match(sectionRegex);
+  if (match && match[1]) {
+    // Clean up the extracted content
+    return match[1]
+      .trim()
+      .replace(/\n{3,}/g, '\n\n') // Replace multiple newlines with double newlines
+      .replace(/\s+$/gm, ''); // Remove trailing whitespace from each line
+  }
+  return null;
+}
+
+// Extract multiple sections and add to frontmatter
+function extractSectionsToFrontmatter(content) {
+  // Define sections to extract based on content type
+  // We'll determine content type from the file path or tags later
+  const sectionsToExtract = [
+    // Role-specific sections
+    { name: 'Role Description', property: 'roleDescription', contentType: 'role' },
+    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'role' },
+    
+    // Project-specific sections
+    { name: 'Short Description', property: 'shortDescription', contentType: 'project' },
+    { name: 'Long Description', property: 'longDescription', contentType: 'project' },
+    { name: 'Lessons Learned', property: 'lessonsLearned', contentType: 'project' },
+    
+    // Education-specific sections
+    { name: 'Qualifications', property: 'qualifications', contentType: 'education' },
+    { name: 'Additional Details', property: 'additionalDetails', contentType: 'education' },
+    
+    // Company-specific sections
+    { name: 'Company Description', property: 'companyDescription', contentType: 'company' },
+    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'company' },
+    
+    // Skill-specific sections
+    { name: 'Skill Description', property: 'skillDescription', contentType: 'skill' },
+    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'skill' },
+    
+    // Client-specific sections
+    { name: 'Client Description', property: 'clientDescription', contentType: 'client' },
+    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'client' },
+    
+    // Reference-specific sections
+    { name: 'Reference Description', property: 'referenceDescription', contentType: 'reference' },
+    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'reference' }
+  ];
+
+  const extractedData = {};
+  const endMarker = '>[!top] [Back to top](#Table%20of%20Contents)';
+
+  // Extract content from each section
+  sectionsToExtract.forEach(({ name, property, contentType }) => {
+    const sectionContent = extractSectionContent(content, name, endMarker);
+    if (sectionContent) {
+      extractedData[property] = sectionContent;
+    }
+  });
+
+  // If we found any sections, add them to frontmatter
+  if (Object.keys(extractedData).length > 0) {
+    // Find the frontmatter section
+    const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
+    
+    if (frontmatterMatch) {
+      const existingFrontmatter = frontmatterMatch[1];
+      const newFrontmatterLines = [];
+      
+      // Add existing frontmatter lines
+      newFrontmatterLines.push(existingFrontmatter);
+      
+      // Add extracted data as new frontmatter fields
+      Object.entries(extractedData).forEach(([property, value]) => {
+        // Escape any quotes in the value and wrap in quotes
+        const escapedValue = value.replace(/"/g, '\\"').replace(/\n/g, '\\n');
+        newFrontmatterLines.push(`${property}: "${escapedValue}"`);
+      });
+      
+      // Replace the frontmatter section
+      const newFrontmatter = newFrontmatterLines.join('\n');
+      content = content.replace(
+        /^---\s*\n([\s\S]*?)\n---\s*\n/,
+        `---\n${newFrontmatter}\n---\n`
+      );
+    } else {
+      // No existing frontmatter, create new one
+      const frontmatterLines = [];
+      Object.entries(extractedData).forEach(([property, value]) => {
+        const escapedValue = value.replace(/"/g, '\\"').replace(/\n/g, '\\n');
+        frontmatterLines.push(`${property}: "${escapedValue}"`);
+      });
+      
+      const newFrontmatter = frontmatterLines.join('\n');
+      content = `---\n${newFrontmatter}\n---\n\n${content}`;
+    }
+  }
+
+  return content;
+}
+
 // Process Obsidian-specific syntax to standard markdown
 function processObsidianSyntax(content) {
   let processedContent = content;
+
+  // Extract sections and add to frontmatter
+  processedContent = extractSectionsToFrontmatter(processedContent);
 
   // Remove or disable Obsidian image references that could cause build errors
   processedContent = processedContent.replace(

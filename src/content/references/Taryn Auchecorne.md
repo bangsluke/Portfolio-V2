@@ -5,11 +5,26 @@ tags:
   - reference
   - portfolio
   - tag
-  - "[Opus 2 International](#opus-2-international)"
+modified: 2025-07-07T19:31:31+01:00
+viewCount: 16
+aliases: 
+birthday: ""
+died: ""
+partneredWith: 
+marriageDate: ""
+relatedTo: 
+friendOf: 
+education: 
+linkedCompany:
+  - "[[Opus 2 International]]"
+referenceRole: Head of Client Services
+referenceEmail: tauchecorne@opus2.com
+referenceNumber: 07912 945265
+referenceAddress: London, EC4A 3BF
 ---
 # Taryn Auchecorne
 
-> **BACK:** Link back to [People Notes](#people-notes)
+> [!back] Link back to [[People Notes]]
 
 ## Table of Contents 
 
@@ -27,51 +42,39 @@ tags:
 
 ### Last Mentioned in Daily Notes
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)

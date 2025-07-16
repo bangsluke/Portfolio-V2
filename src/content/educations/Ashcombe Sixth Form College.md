@@ -4,21 +4,26 @@ tags:
   - education
   - notes
   - tag
+created: 2025-02-04 18:53
+modified: 2025-07-07T21:10:50+01:00
+viewCount: 12
+dateStart: 2009-09-01
+dateEnd: 2011-06-24
+imageURL: https://www.ashcombe.surrey.sch.uk/Admissions/23_07_13_Ashcombe_Facade___74A1923_WEB.jpg
+qualifications: "A Levels in Mathematics (A), Physics (A) and History (A), AS Level in Economics (A)"
+additionalDetails: "TBC - Add full details"
 ---
 # Ashcombe Sixth Form College
 
-> **BACK:** Link back to [Education Notes](#education-notes)
+> [!back] Link back to [[Education Notes]]
 
 >[!website-link] Links
->
-<!-- Dataview Query (hidden in production):
+>```dataview
 TABLE WITHOUT ID elink("https://en.wikipedia.org/wiki/"+replace(this.file.name, " ", "_"), this.file.name + " Wiki") as "Wikipedia Link"
 WHERE file = this.file
 
 ## Table of Contents
-
--->
-table-of-contents
+```table-of-contents
 ```
 
 ## Details
@@ -49,8 +54,7 @@ TBC - Add full details
 
 ### Students
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID
 	file.link as "Student",
 	length(file.inlinks) as "Note Mentions"
@@ -60,48 +64,37 @@ WHERE
 	contains(education, this.file.link)
 SORT
 	file.name ASC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Last Mentioned
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
-
-<!-- Dataview Query (hidden in production):
+```dataview
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-
--->
-
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
