@@ -7,14 +7,14 @@ export function processMarkdownContent(content: string): string {
 
 	return (
 		content
-			// First, handle [[CompanyName|AltName]] format to extract AltName
-			.replace(/\[\[([^|]+)\|([^\]]+)\]\]/g, '$2')
-			// Then handle simple Obsidian links [[text]] -> text
-			.replace(/\[\[([^\]]+)\]\]/g, '$1')
-			// Finally, convert markdown links to HTML
+			// First, handle [[CompanyName|AltName]] format to extract AltName and make it bold and mint green
+			.replace(/\[\[([^|]+)\|([^\]]+)\]\]/g, '<strong class="mint-link">$2</strong>')
+			// Then handle simple Obsidian links [[text]] -> bold and mint green text
+			.replace(/\[\[([^\]]+)\]\]/g, '<strong class="mint-link">$1</strong>')
+			// Finally, convert markdown links to HTML with mint green and underline styling
 			.replace(
 				/\[([^\]]+)\]\(([^)]+)\)/g,
-				'<a href="$2" class="text-blue-600 hover:text-blue-800 underline">$1</a>'
+				'<a href="$2" class="mint-link">$1</a>'
 			)
 	);
 }
