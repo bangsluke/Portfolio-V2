@@ -47,9 +47,9 @@ const imageAlt =
           role="list"
           aria-label="Programming languages"
         >
-          {languages.map((language: unknown) => (
+          {languages?.map((language: unknown) => (
             <Capsule lang={language?.toString() || ""} />
-          ))}
+          )) || []}
         </div>
 
         <a
@@ -74,9 +74,9 @@ const imageAlt =
           role="list"
           aria-label="Article tags"
         >
-          {tags.map((tag) => (
+          {tags?.map((tag) => (
             <Tag tag={tag} forceDark="true">{tag}</Tag>
-          ))}
+          )) || []}
         </div>
       </article>
     </div>
