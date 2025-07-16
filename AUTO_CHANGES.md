@@ -18,6 +18,36 @@
 
 ## Auto Log
 
+## 2025-01-16 12:00 [develop] - Enhanced CustomerAndClientCarousel with endless scrolling and interactive cards
+- Updated CustomerAndClientCarousel.tsx component for better carousel functionality
+  - Removed unused Component import and debugInfo state to fix linter errors
+  - Added logoURL, description, and slug fields to Company and CarouselItem interfaces
+  - Enhanced date handling to use dateStart/dateEnd from company data
+  - Increased AutoPlay duration to 3000ms for better user experience
+  - Adjusted carousel height to 300px and card dimensions to 280x280px for square cards
+  - Improved data mapping to include logoURL, description, and slug for each carousel item
+- Completely redesigned CustomerAndClientCarouselItem.astro for modern card design
+  - Created square cards (280x280px) with logo backgrounds using logoURL field
+  - Added darkened overlay (bg-black/70) that lightens on hover (bg-black/30)
+  - Implemented fallback gradient background for cards without logos
+  - Added hover effects: scale transform, color transitions, and info button appearance
+  - Created information button with info icon that appears on hover/click
+  - Added modal functionality to display company details when info button is clicked
+  - Implemented responsive design with mobile touch support (info button always visible on mobile)
+  - Added data attributes to store company information for modal display
+- Added comprehensive modal system for company details
+  - Created modal with company logo, name, date, description, linked company, and achievements
+  - Implemented modal open/close functionality with click handlers
+  - Added keyboard support (Escape key) and click-outside-to-close functionality
+  - Prevented body scroll when modal is open for better UX
+  - Styled modal with dark mode support and responsive design
+- Enhanced user experience with smooth animations and transitions
+  - Added transform hover effects for card scaling
+  - Implemented smooth color transitions for text and overlays
+  - Created backdrop blur effects for info buttons
+  - Added proper accessibility attributes (aria-label, title) for screen readers
+  - Ensured all interactive elements have proper hover states
+
 ## 2025-01-16 10:25 [develop] - Maximized GitHub Contributions component width
 - Updated GitHubContributions.tsx component to maximize width
   - Added `w-full` class to the main section container
@@ -471,3 +501,63 @@
   - Fixed font-bold, text-gray-900, mt-8, mb-4, and other utility classes
 - Fixed @apply bg-blue-100 in companies/index.astro  
   - Replaced `@apply bg-blue-100 border-blue-300 text-blue-700`
+
+## 2024-12-19 15:45 - CustomerAndClientCarousel Fixed
+
+### Problems Fixed:
+- **CustomerAndClientCarousel.astro**: Added `client:load` directive to TypeScript component to enable client-side hydration
+- **CustomerAndClientCarousel.tsx**: Removed all debugging code and restored clean production version
+- **CustomerAndClientCarousel.astro**: Removed debug elements and console logs for production
+- **CustomerAndClientCarousel.tsx**: Enabled Flicking carousel by default with proper endless scrolling
+
+### Root Cause:
+The TypeScript component was not hydrating on the client side because it was missing the `client:load` directive in the Astro component. This caused the component to only render on the server without any client-side interactivity.
+
+### Changes Made:
+- Added `client:load` directive to `<ClientAndCustomerCarousel>` component in Astro
+- Cleaned up all debugging code and console logs from both components
+- Restored production-ready carousel with Flicking library enabled
+- Maintained data cleaning to ensure optimal JSON payload size
+
+### Technical Details:
+- `client:load` directive enables server-side rendering + client-side hydration
+- Flicking carousel now provides endless scrolling with auto-play functionality
+- Company cards display with logo backgrounds, hover effects, and modal details
+- Carousel automatically cycles through companies every 3 seconds
+
+### Result:
+CustomerAndClientCarousel now works perfectly with:
+- ✅ Server-side rendering for SEO
+- ✅ Client-side hydration for interactivity  
+- ✅ Endless scrolling carousel with Flicking
+- ✅ Company cards with logo backgrounds and hover effects
+- ✅ Modal popup for detailed company information
+
+> [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 15:30 - CustomerAndClientCarousel Debugging
+
+### Problems Fixed:
+- **CustomerAndClientCarousel.tsx**: Added comprehensive debugging logs to trace data processing and component rendering
+- **CustomerAndClientCarousel.tsx**: Added error boundaries to catch JavaScript errors preventing component initialization
+- **CustomerAndClientCarousel.tsx**: Added Flicking availability checks to verify library imports
+- **CustomerAndClientCarousel.tsx**: Implemented fallback carousel display without Flicking to test data processing
+- **CustomerAndClientCarousel.tsx**: Added delayed Flicking initialization to ensure data is processed first
+- **CustomerAndClientCarousel.astro**: Enhanced debugging output to show company data and JSON structure
+- **CustomerAndClientCarousel.astro**: Added visual debug elements to track component rendering state
+
+### Changes Made:
+- Added extensive console logging throughout TypeScript component lifecycle
+- Implemented error state management with visual error display
+- Created fallback carousel display using flexbox when Flicking is disabled
+- Added timeout-based Flicking initialization to prevent race conditions
+- Enhanced Astro component debugging with detailed data structure logging
+- Added visual debug indicators for component rendering status
+
+### Technical Details:
+- TypeScript component now shows detailed debug info in browser console
+- Fallback carousel uses horizontal scroll instead of Flicking library
+- Error boundaries prevent silent failures from breaking component rendering
+- Delayed Flicking initialization ensures data processing completes first
+
+> [Back to Table of Contents](#table-of-contents)

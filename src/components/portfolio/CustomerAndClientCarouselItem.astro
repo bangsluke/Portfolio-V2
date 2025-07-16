@@ -13,6 +13,11 @@ interface Props {
 	linkedCompany?: string;
 	clientDescription?: string;
 	keyAchievement?: string;
+	logoURL?: string;
+	description?: string;
+	slug?: string;
+	dateString?: string;
+	type?: 'company' | 'client';
 }
 
 const {
@@ -24,6 +29,11 @@ const {
 	linkedCompany,
 	clientDescription,
 	keyAchievement,
+	logoURL,
+	description,
+	slug,
+	dateString,
+	type,
 } = Astro.props;
 
 // Process content to handle Obsidian links and markdown
@@ -32,48 +42,206 @@ const processedClientDescription = processMarkdownContent(
 	clientDescription || ''
 );
 const processedKeyAchievement = processMarkdownContent(keyAchievement || '');
+const processedDescription = processMarkdownContent(description || '');
 
-console.log(name);
+// Generate a fallback background color if no logo
+const fallbackColor = 'bg-gradient-to-br from-blue-500 to-purple-600';
+const hasLogo = logoURL && logoURL.trim() !== '';
+
+console.log('Carousel Item:', { name, logoURL, hasLogo });
 ---
 
-<div>
-	<h3 class="text-xl font-bold text-mint-400">
-		{name}
-	</h3>
-
-	<!-- <div class="pb-12 md:col-span-2">
-    <div class="sticky top-0">
-      <span
-        class="absolute -left-[42px] text-5xl text-mint-400 rounded-full drop-shadow-[0px_0px_8px_rgba(0,255,94,1)]"
-        >&bull;</span
-      >
-      <h3
-        class="text-xl font-bold text-mint-400"
-      >
-        {name}
-      </h3>
-      <div class="text-sm text-zinc-600/80 dark:text-white/80">
-        {dateStart?.toString()} - {dateEnd?.toString() || 'Present'}
-      </div>
-      {processedLinkedCompany && (
-        <div class="mt-2">
-          <span class="text-sm text-zinc-600 dark:text-white">Company: </span>
-          <span class="text-sm text-mint-400">{processedLinkedCompany}</span>
-        </div>
-      )}
-    </div>
-  </div>
-  <div
-    class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3"
-  >
-    {processedClientDescription && (
-      <div class="processed-content" set:html={processedClientDescription} />
-    )}
-    {processedKeyAchievement && (
-      <div class="mt-4">
-        <strong>Key Achievement:</strong>
-        <div class="processed-content mt-2" set:html={processedKeyAchievement} />
-      </div>
-    )}
-  </div> -->
+<div 
+	class="relative w-full h-full rounded-lg overflow-hidden group cursor-pointer transition-all duration-300 transform hover:scale-105"
+	style={hasLogo ? `background-image: url('${logoURL}'); background-size: cover; background-position: center;` : ''}
+	data-company-name={name}
+	data-company-description={processedDescription}
+	data-company-date={dateString}
+	data-company-linked={processedLinkedCompany}
+	data-company-achievement={processedKeyAchievement}
+	data-company-logo={logoURL}
+>
+	<!-- Darkened overlay that lightens on hover -->
+	<div class={`absolute inset-0 transition-all duration-300 ${
+		hasLogo 
+			? 'bg-black/70 group-hover:bg-black/30' 
+			: fallbackColor + ' group-hover:opacity-80'
+	}`}></div>
+	
+	<!-- Content container -->
+	<div class="relative z-10 flex flex-col justify-between h-full p-6 text-white">
+		<!-- Top section with title and date -->
+		<div class="flex-1">
+			<h3 class="text-xl font-bold text-white mb-2 group-hover:text-mint-400 transition-colors duration-300">
+				{name}
+			</h3>
+			{dateString && (
+				<div class="text-sm text-white/80 group-hover:text-white transition-colors duration-300">
+					{dateString}
+				</div>
+			)}
+		</div>
+		
+		<!-- Bottom section with info button -->
+		<div class="flex justify-end">
+			<button 
+				class="info-button opacity-0 group-hover:opacity-100 transition-all duration-300 bg-mint-400 hover:bg-mint-500 text-black rounded-full p-3 shadow-lg transform translate-y-2 group-hover:translate-y-0"
+				aria-label={`View details for ${name}`}
+				title={`View details for ${name}`}
+				onclick="showCompanyModal(this)"
+			>
+				<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
 </div>
+
+<!-- Modal for company details -->
+<div id="companyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+	<div class="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full max-h-[80vh] overflow-y-auto">
+		<div class="p-6">
+			<div class="flex justify-between items-start mb-4">
+				<h3 id="modalTitle" class="text-xl font-bold text-gray-900 dark:text-white"></h3>
+				<button 
+					onclick="closeCompanyModal()"
+					class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+				>
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+			
+			<div id="modalLogo" class="mb-4"></div>
+			<div id="modalDate" class="text-sm text-gray-600 dark:text-gray-400 mb-4"></div>
+			<div id="modalDescription" class="text-gray-700 dark:text-gray-300 mb-4"></div>
+			<div id="modalLinked" class="text-sm text-gray-600 dark:text-gray-400 mb-4"></div>
+			<div id="modalAchievement" class="text-gray-700 dark:text-gray-300"></div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.info-button {
+		backdrop-filter: blur(10px);
+	}
+	
+	/* Ensure smooth transitions */
+	.group:hover .info-button {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	
+	/* Mobile touch support */
+	@media (max-width: 768px) {
+		.info-button {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>
+
+<script>
+	function showCompanyModal(button: HTMLElement) {
+		const card = button.closest('[data-company-name]') as HTMLElement;
+		const modal = document.getElementById('companyModal');
+		const modalTitle = document.getElementById('modalTitle');
+		const modalLogo = document.getElementById('modalLogo');
+		const modalDate = document.getElementById('modalDate');
+		const modalDescription = document.getElementById('modalDescription');
+		const modalLinked = document.getElementById('modalLinked');
+		const modalAchievement = document.getElementById('modalAchievement');
+		
+		// Check if all required elements exist
+		if (!modal || !modalTitle || !modalLogo || !modalDate || !modalDescription || !modalLinked || !modalAchievement) {
+			console.error('Required modal elements not found');
+			return;
+		}
+		
+		// Get data from the card
+		const name = card.dataset.companyName;
+		const description = card.dataset.companyDescription;
+		const date = card.dataset.companyDate;
+		const linked = card.dataset.companyLinked;
+		const achievement = card.dataset.companyAchievement;
+		const logo = card.dataset.companyLogo;
+		
+		// Populate modal
+		modalTitle.textContent = name || '';
+		
+		if (logo) {
+			modalLogo.innerHTML = `<img src="${logo}" alt="${name} logo" class="w-16 h-16 object-contain rounded">`;
+		} else {
+			modalLogo.innerHTML = '';
+		}
+		
+		if (date) {
+			modalDate.textContent = date;
+		} else {
+			modalDate.innerHTML = '';
+		}
+		
+		if (description) {
+			modalDescription.innerHTML = description;
+		} else {
+			modalDescription.innerHTML = '';
+		}
+		
+		if (linked) {
+			modalLinked.innerHTML = linked;
+		} else {
+			modalLinked.innerHTML = '';
+		}
+		
+		if (achievement) {
+			modalAchievement.innerHTML = `<strong>Key Achievement:</strong><br>${achievement}`;
+		} else {
+			modalAchievement.innerHTML = '';
+		}
+		
+		// Show modal
+		modal.classList.remove('hidden');
+		modal.classList.add('flex');
+		
+		// Prevent body scroll
+		document.body.style.overflow = 'hidden';
+	}
+	
+	function closeCompanyModal() {
+		const modal = document.getElementById('companyModal');
+		if (!modal) {
+			console.error('Modal element not found');
+			return;
+		}
+		
+		modal.classList.add('hidden');
+		modal.classList.remove('flex');
+		
+		// Restore body scroll
+		document.body.style.overflow = '';
+	}
+	
+	// Close modal when clicking outside
+	document.addEventListener('DOMContentLoaded', function() {
+		const modal = document.getElementById('companyModal');
+		if (!modal) {
+			console.error('Modal element not found on DOMContentLoaded');
+			return;
+		}
+		
+		modal.addEventListener('click', function(e) {
+			if (e.target === modal) {
+				closeCompanyModal();
+			}
+		});
+		
+		// Close modal with Escape key
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+				closeCompanyModal();
+			}
+		});
+	});
+</script>

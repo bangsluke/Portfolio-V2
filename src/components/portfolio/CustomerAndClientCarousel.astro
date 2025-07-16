@@ -21,7 +21,26 @@ const sortedCompanies = companies.sort((a, b) => {
 	return a.slug.localeCompare(b.slug);
 });
 
-console.log('sortedCompanies.length', sortedCompanies.length);
+// Filter companies with logos
+const companiesWithLogos = sortedCompanies.filter(company => 
+	company.data.logoURL && company.data.logoURL.trim() !== ''
+);
+
+// Clean the data to only include necessary fields
+const cleanedCompanies = companiesWithLogos.map(company => ({
+	id: company.id,
+	slug: company.slug,
+	data: {
+		logoURL: company.data.logoURL,
+		dateStart: company.data.dateStart,
+		dateEnd: company.data.dateEnd,
+		companyDescription: company.data.companyDescription,
+		keyAchievement: company.data.keyAchievement,
+	}
+}));
+
+// Convert to JSON for the TypeScript component
+const companiesJson = JSON.stringify(cleanedCompanies);
 ---
 
 <section
@@ -34,7 +53,27 @@ console.log('sortedCompanies.length', sortedCompanies.length);
 		</div>
 
 		<div class="relative">
-			<ClientAndCustomerCarousel companies={JSON.stringify(sortedCompanies)} />
+			<ClientAndCustomerCarousel companies={companiesJson} client:load />
 		</div>
 	</div>
 </section>
+
+<style>
+	.info-button {
+		backdrop-filter: blur(10px);
+	}
+	
+	/* Ensure smooth transitions */
+	.group:hover .info-button {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	
+	/* Mobile touch support */
+	@media (max-width: 768px) {
+		.info-button {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>
