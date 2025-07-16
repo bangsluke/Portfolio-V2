@@ -1,29 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Experience from "../components/portfolio/Experience.astro";
-import HeroIndex from "../components/portfolio/HeroIndex.astro";
-import Contact from "../components/portfolio/Contact.astro";
-import ListProjects from "../components/portfolio/ListProjects.astro";
-import CompaniesList from "../components/portfolio/CompaniesList.astro";
-import GitHubContributions from "../components/portfolio/GitHubContributions.tsx";
-import { Icon } from "astro-icon/components";
-import CustomerCarousel from "../components/portfolio/CustomerCarousel.astro";
 const pageTitle = "bangsluke Portfolio";
 const description = "My portfolio site";
 const ogimage = {
   url: "/images/imagedefault.webp",
   alt: "bangsluke Portfolio"
 };
-import Heading from "../components/ui/Heading.astro";
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
-  <CompaniesList />
-  <CustomerCarousel />
-  <HeroIndex />
-  <Experience />
-  <GitHubContributions client:only="preact" />
-  
-  <ListProjects />
-  <Contact />
-</Layout>
+    <div class="flex flex-col items-center justify-center h-screen">
+      <h1 class="text-4xl font-bold dark:text-white">Coming soon...</h1>
+      <p class="text-gray-500 dark:text-gray-400">Just tidying up some things...</p>
+    </div>
+  </Layout>
