@@ -1,13 +1,13 @@
 {
-  "timestamp": "2025-07-15T13:43:10.500Z",
-  "source": "C:/Users/bangs/Documents/Coding Projects/Obsidian-Backups/Obsidian-Personal-Notes/Personal Notes",
+  "timestamp": "2025-07-16T09:38:15.040Z",
+  "source": "C:\\\\Users\\\\bangs\\\\Documents\\\\Obsidian Personal Notes",
   "errors": [],
   "summary": {
-    "totalFiles": 1135,
-    "processedFiles": 1135,
-    "copiedFiles": 0,
-    "skippedFiles": 1135,
+    "totalFiles": 2098,
+    "processedFiles": 2098,
+    "copiedFiles": 115,
+    "skippedFiles": 1983,
     "errors": 0
   },
-  "success": false
+  "success": true
 }

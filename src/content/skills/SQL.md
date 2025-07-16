@@ -7,17 +7,10 @@ tags:
   - skill
   - portfolio
   - notes
-created: 2023-10-13T07:42:00
-modified: 2025-07-02T14:21:35+01:00
-viewCount: 5
-aliases: 
-skillRating: 0
-skillDescription: TBC
-imageURL: 
 ---
 # SQL
 
-> **back:** Link back to [Skills Notes](Skills Notes)
+> **BACK:** Link back to [Skills Notes](#skills-notes)
 
 ## Table of Contents
 
@@ -28,7 +21,7 @@ imageURL:
 
 - [Link to Documentation site](https://bangsluke-documentation.netlify.app/docs/Project%20Set%20Up%20to%20Release/4Development#react)
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Skill
 
@@ -36,77 +29,92 @@ imageURL:
 INPUT[progressBar(title(Skill Rating), minValue(0), maxValue(100)):skillRating]  
 ```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Skill Description
 
 `=this.skillDescription`
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Analysis
 
 ### Linked Projects
 
-> **projects:** Linked Projects
->```dataview
+>[!projects] Linked Projects
+>
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID file.link as "Linked Project", file.mday as "Last Modified"
 FROM #project 
 WHERE contains(technologies, this.file.link)
 SORT length(file.inlinks) DESC
->```
+>
+-->
 
-> **top:** [Back to top](#Table%20of%20Contents)
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Unread Links
 
-> **reading:** Unread Reading List
->```dataview
+>[!reading] Unread Reading List
+>
+<!-- Dataview Query (hidden in production):
 TASK
 WHERE !completed AND !contains(file.path, "Template") AND text != "" AND contains(text, this.file.name)
 GROUP BY file.link
 LIMIT 100
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Read Links
 
-> **reading:** Completed Reading List
->```dataview
+>[!reading] Completed Reading List
+>
+-->
+dataview
 TASK
 WHERE completed AND !contains(file.path, "Template") AND text != "" AND contains(text, this.file.name)
 GROUP BY file.link
 LIMIT 100
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Last Mentioned
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)

@@ -6,162 +6,163 @@ tags:
   - project/completed/work
   - coding
   - work
-created: 2025-05-30 09:57
-modified: 2025-07-11T15:52:23+01:00
-viewCount: 9
-aliases: 
-projectURL: TBC
-codeURL: TBC
-codeMultipleRepos: false
-folderURL: n/a
-logoURL: n/a
-imageURL: 
-dateStart: ""
-dateEnd: ""
-technologies:
-  - "[React](React)"
-  - "[Docusaurus](Docusaurus)"
-  - "[Markdown](Markdown)"
-  - "[GitLab](GitLab)"
-projectCategory: Work Project
-linkedCompany:
-  - "[RLE International](RLE International)"
-toolOwner: "[Haydn Baker](Haydn Baker)"
-developers:
-  - "[Luke Bangs](Luke Bangs)"
-  - "[Alex Sheers](Alex Sheers)"
-topicTags:
-  - "[Work](Work)"
-  - "[GPMO](GPMO)"
-powerShellAlias: n/a
-version: 1
+  - "[React](#react)"
+  - "[Docusaurus](#docusaurus)"
+  - "[Markdown](#markdown)"
+  - "[GitLab](#gitlab)"
+  - "[RLE International](#rle-international)"
+  - "[Luke Bangs](#luke-bangs)"
+  - "[Alex Sheers](#alex-sheers)"
+  - "[Work](#work)"
+  - "[GPMO](#gpmo)"
 ---
 # GPMO Documentation Site
 
-> **back:** Link back to [01 Projects|Projects](01 Projects|Projects)
+> **BACK:** Link back to [Projects](#01-projects)
 
 >[!website-link] Links
-> ```dataview
+> 
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->```
->```dataview
+>
+-->
+
+>
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->```
->```dataview
+>
+-->
+
+>
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
-> **details:** `=this.file.name`
+>[!details]  `=this.file.name`
 >`=choice(this.folderURL = null | this.folderURL = "" | this.folderURL = "n/a","","<br>Folder URL: " + link(this.folderURL,"Link")) + choice(this.dateStart = null | this.dateStart = "","","<br>Date Start: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>Date End: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "", "", choice(this.dateEnd = "", "<br>Development Duration: " + string(date(today) - date(this.dateStart)), "<br>Development Duration: " + string(date(this.dateEnd) - date(this.dateStart)))) + choice(this.projectCategory = null | this.projectCategory = "","","<br>Category: " + this.projectCategory) + choice(this.linkedCompany = null | this.linkedCompany = "" | contains(this.linkedCompany, "n/a"),"","<br>Project for: " + this.linkedCompany) + choice(this.toolOwner = null | this.toolOwner = "","","<br>Tool Owner: " + this.toolOwner) + choice(this.developers = null | this.developers = "","","<br>Developers: " + this.developers) + choice(this.technologies = null | this.technologies = "","","<br>Technologies: " + this.technologies) + choice(this.topicTags = null | this.topicTags = "","","<br>Topics: " + this.topicTags) + choice(this.powerShellAlias = null | this.powerShellAlias = "" | this.powerShellAlias = "n/a","","<br>PowerShell Alias: " + this.powerShellAlias) + choice(this.version = null | this.version = "","","<br>Version: " + this.version)`
 
 ## Table of Contents
 
-```table-of-contents
+
+-->
+table-of-contents
 ```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Introduction
 
 TBC
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Short Description
 
 TBC
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
 TBC
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: [React](React), [Docusaurus](Docusaurus)
-- Back end/Datasource: [Markdown](Markdown)
-- Hosting: [GitLab](GitLab) (see [Repositories](#repositories)), TBC
+- Front end: [React](#react), [Docusaurus](#docusaurus)
+- Back end/Datasource: [Markdown](#markdown)
+- Hosting: [GitLab](#gitlab) (see [Repositories](#repositories)), TBC
 - Security: TBC
 - Authentication: TBC
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Repositories
 
 - Main repo: `=this.codeURL`
 - Secondary repo: n/a
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](PowerShell) alias 
+To launch the repo, use the [PowerShell](#powershell) alias 
 
 > `=this.powerShellAlias`
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Planning and Design
 
 - n/a
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- [GPMO](GPMO)
+- [GPMO](#gpmo)
 - TBC
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
 TBC
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Analysis
 
 ### Last Mentioned in Daily Notes
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-```
+
+-->
+
 
 ### Last Mentioned
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-```
+
+-->
+
 
 ### All Mentions
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)

@@ -11,6 +11,32 @@ const __dirname = path.dirname(__filename);
 function processObsidianSyntax(content) {
   let processedContent = content;
 
+  // Remove or disable Obsidian image references that could cause build errors
+  processedContent = processedContent.replace(
+    /!\[([^\]]*)\]\(#([^)]+)\)/g,
+    (match, altText, imageName) => {
+      // Convert to a comment that won't cause build errors
+      return `<!-- Image removed during sync: ${altText} (${imageName}) -->`;
+    }
+  );
+
+  // Also handle standard markdown images that might reference non-existent files
+  processedContent = processedContent.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
+    (match, altText, imagePath) => {
+      // If it's an Obsidian-style reference (starts with #), convert to comment
+      if (imagePath.startsWith('#')) {
+        return `<!-- Image removed during sync: ${altText} (${imagePath}) -->`;
+      }
+      // If it's a relative path that might not exist, also convert to comment
+      if (imagePath.startsWith('./') || imagePath.startsWith('../') || !imagePath.startsWith('http')) {
+        return `<!-- Image removed during sync: ${altText} (${imagePath}) -->`;
+      }
+      // Keep external URLs (http/https)
+      return match;
+    }
+  );
+
   // Convert Dataview code blocks to plain text or remove them
   processedContent = processedContent.replace(
     /```dataview\n([\s\S]*?)```/g,

@@ -114,7 +114,7 @@ export class EmailService {
 </head>
 <body>
   <div class="header">
-    <h1>Obsidian Sync Report</h1>
+    <h1>Portfolio Site V2 - Obsidian Sync Report</h1>
     <div class="status ${success ? 'success' : 'error'}">
       ${success ? '✅ Sync Completed Successfully' : '❌ Sync Failed'}
     </div>
