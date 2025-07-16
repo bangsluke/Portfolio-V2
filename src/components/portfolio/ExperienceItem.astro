@@ -1,13 +1,16 @@
 ---
 interface Props {
-  title: string;
+  name: string;
   company: string;
-  description: string;
+  roleDescription: string;
   link?: string;
   date: string;
 }
 
-const { title, company, description, link, date } = Astro.props;
+const { name, company, roleDescription, link, date } = Astro.props;
+
+console.log(company);
+
 ---
 
 <div
@@ -23,7 +26,7 @@ const { title, company, description, link, date } = Astro.props;
         
         class="text-xl font-bold text-mint-400"
       >
-        {title}
+        {name}
       </h3>
       <h4 class="text-xl font-semibold text-zinc-600 dark:text-white">
         {company}
@@ -36,6 +39,6 @@ const { title, company, description, link, date } = Astro.props;
   <div
     class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3"
   >
-    {description}
+    {roleDescription}
   </div>
 </div>

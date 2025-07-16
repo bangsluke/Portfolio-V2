@@ -1,7 +1,8 @@
 ---
-const allPosts = await Astro.glob("../../pages/blog/posts/*.md");
+const allPosts = await import.meta.glob("../../pages/blog/posts/*.md", { eager: true });
+const posts = Object.values(allPosts);
 const languages = [
-    ...new Set(allPosts.map((post) => post.frontmatter.languages).flat()),
+    ...new Set(posts.map((post: any) => post.frontmatter.languages).flat()),
 ];
 import Capsule from "../ui/Capsule.astro";
 

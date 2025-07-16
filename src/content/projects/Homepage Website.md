@@ -1,0 +1,165 @@
+---
+tags:
+  - project
+  - portfolio
+  - notes
+  - project/completed
+  - coding
+created: 2025-05-29 17:09
+modified: 2025-07-11T15:55:06+01:00
+aliases:
+  - Homepage
+viewCount: 13
+projectURL: https://bangsluke.github.io/Homepage.html
+codeURL: https://github.com/bangsluke/bangsluke.github.io
+codeMultipleRepos: false
+folderURL: n/a
+logoURL: n/a
+imageURL: 
+dateStart: 2021-01-15
+dateEnd: 2021-01-24
+technologies:
+  - "[HTML](HTML)"
+  - "[CSS](CSS)"
+  - "[JavaScript](JavaScript)"
+  - "[GitHub](GitHub)"
+  - "[Synk](Synk)"
+projectCategory: Personal Design
+linkedCompany:
+  - n/a
+toolOwner: "[Luke Bangs](Luke Bangs)"
+developers:
+  - "[Luke Bangs](Luke Bangs)"
+topicTags:
+  - Coding
+powerShellAlias: n/a
+version: 1
+---
+# Homepage Website
+
+> **back:** Link back to [01 Projects|Projects](01 Projects|Projects)
+
+>[!website-link] Links
+> ```dataview
+TABLE WITHOUT ID this.projectURL as "Project URL Link"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+
+> **details:** `=this.file.name`
+>`=choice(this.folderURL = null | this.folderURL = "" | this.folderURL = "n/a","","<br>Folder URL: " + link(this.folderURL,"Link")) + choice(this.dateStart = null | this.dateStart = "","","<br>Date Start: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>Date End: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "", "", choice(this.dateEnd = "", "<br>Development Duration: " + string(date(today) - date(this.dateStart)), "<br>Development Duration: " + string(date(this.dateEnd) - date(this.dateStart)))) + choice(this.projectCategory = null | this.projectCategory = "","","<br>Category: " + this.projectCategory) + choice(this.linkedCompany = null | this.linkedCompany = "" | contains(this.linkedCompany, "n/a"),"","<br>Project for: " + this.linkedCompany) + choice(this.toolOwner = null | this.toolOwner = "","","<br>Tool Owner: " + this.toolOwner) + choice(this.developers = null | this.developers = "","","<br>Developers: " + this.developers) + choice(this.technologies = null | this.technologies = "","","<br>Technologies: " + this.technologies) + choice(this.topicTags = null | this.topicTags = "","","<br>Topics: " + this.topicTags) + choice(this.powerShellAlias = null | this.powerShellAlias = "" | this.powerShellAlias = "n/a","","<br>PowerShell Alias: " + this.powerShellAlias) + choice(this.version = null | this.version = "","","<br>Version: " + this.version)`
+
+## Table of Contents
+
+```table-of-contents
+```
+
+> **top:** [Back to top](#Table%20of%20Contents)
+
+## Introduction
+
+A note about my Homepage site.
+
+> **top:** [Back to top](#Table%20of%20Contents)
+
+## Short Description
+
+An early site built as a homepage for storing links to all my projects and showing a widget with the weather in my area.
+
+> **top:** [Back to top](#Table%20of%20Contents)
+
+## Long Description
+
+A single point of focus for where the links to all my projects were stored, as well as a weather widget for my area.
+
+> **top:** [Back to top](#Table%20of%20Contents)
+
+## Architecture and Technologies
+
+- Front end: [HTML](HTML), [CSS](CSS) and [JavaScript](JavaScript)
+- Back end/Datasource: n/a
+- Hosting: [GitHub](GitHub) (see [Repositories](#repositories))
+- Security: [Synk](Synk)
+- Authentication: n/a
+
+> **top:** [Back to top](#Table%20of%20Contents)
+
+## Repositories
+
+- Main repo: `=this.codeURL`
+- Secondary repo: n/a
+
+> **top:** [Back to top](#Table%20of%20Contents)
+
+## PowerShell Query
+
+To launch the repo, use the [PowerShell](PowerShell) alias 
+
+> `=this.powerShellAlias`
+
+> **top:** [Back to top](#Table%20of%20Contents)
+
+## Planning and Design
+
+- n/a
+
+> **top:** [Back to top](#Table%20of%20Contents)
+
+## Other Links
+
+- [New Tab Website|New Tab](New Tab Website|New Tab)
+
+> **top:** [Back to top](#Table%20of%20Contents)
+
+## Lessons Learned
+
+Main lesson was understanding and adjusting an existing codebase and learning how to correctly modify an online widget to receive my location and correct styling.
+
+> **top:** [Back to top](#Table%20of%20Contents)
+
+## Analysis
+
+### Last Mentioned in Daily Notes
+
+```dataview
+TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
+FROM [[]]
+WHERE contains(tags, "daily")
+SORT file.ctime DESC
+LIMIT 1
+```
+
+> **top:** [Back to top](#Table%20of%20Contents)
+
+### Total Count
+
+```dataview
+TABLE WITHOUT ID length(this.file.inlinks) as "Links"
+FROM [[]]
+GROUP BY "Links"
+```
+
+### Last Mentioned
+
+```dataview
+TABLE file.mtime As ModifiedTime
+FROM [[]]
+SORT file.ctime DESC
+LIMIT 5
+```
+
+### All Mentions
+
+```dataview
+TABLE file.mtime As ModifiedTime
+FROM [[]]
+SORT file.ctime DESC
+```
+
+> **top:** [Back to top](#Table%20of%20Contents)

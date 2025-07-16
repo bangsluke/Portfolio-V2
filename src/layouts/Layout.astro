@@ -4,21 +4,21 @@ import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import  SpeedInsights  from "@vercel/speed-insights/astro"
 const {
-  pageTitle = "Portfolio",
-  description = "Portfolio Site",
+  pageTitle = "bangsluke Portfolio",
+  description = "Welcome to my portfolio site",
   ogimage = {
     url: "/images/imagedefault.webp",
-    alt: "Default image of EFEELE",
+    alt: "Default image of bangsluke",
   },
 } = Astro.props;
 
 const siteUrl = new URL(Astro.url).origin;
 const SEO = {
-  sitename: "NeonMint by EFEELE🚀",
+  sitename: "bangsluke Portfolio",
   url: siteUrl,
-  locale: "en_US",
-  author: "TBC",
-  twitter: "TBC",
+  locale: "en_UK",
+  author: "Luke Bangs | bangsluke",
+  twitter: "@bangsluke",
 };
 
 
@@ -42,6 +42,11 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 
     <!-- Web manifest -->
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <meta name="description" content={description} />
     <meta name="author" content={SEO.author} />

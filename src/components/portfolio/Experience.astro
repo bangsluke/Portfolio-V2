@@ -2,23 +2,26 @@
 import ExperienceItem from "./ExperienceItem.astro";
 import Heading from "../ui/Heading.astro";
 import { Icon } from "astro-icon/components";
+import { fetchRoles } from "../../utils/roles";
+import { formatDateToMMMYYYY } from "../../utils/date-formatter";
 
-const EXPERIENCE = [
-  {
-    date: "2021 - Present",
-    title: "Software Development Coordinator",
-    company: "EFEELE.DEV",
-    description:
-      "I lead the planning, development, and implementation of software projects to optimize administrative processes and improve digital services. I manage and provide support for technology platforms, coordinating development teams to deliver efficient solutions.",
-  },
-  {
-    date: "2019 - 2020",
-    title: "Software Development Coordinator",
-    company: "EFEELE.DEV",
-    description:
-      "I lead the planning, development, and implementation of software projects to optimize administrative processes and improve digital services. I manage and provide support for technology platforms, coordinating development teams to deliver efficient solutions.",
-  },
-];
+// Fetch roles from GraphQL backend
+const roles = await fetchRoles();
+
+// Sort roles by dateStart (most recent first) and transform the data
+const EXPERIENCE = roles
+  .sort((a, b) => new Date(b.dateStart).getTime() - new Date(a.dateStart).getTime())
+  .map(role => {
+    console.log('Role:', role.name, 'linkedCompany:', role.linkedCompany);
+    return {
+      date: role.dateEnd 
+        ? `${formatDateToMMMYYYY(role.dateStart)} - ${formatDateToMMMYYYY(role.dateEnd)}` 
+        : `${formatDateToMMMYYYY(role.dateStart)} - Present`,
+      name: role.name,
+      company: role.linkedCompany?.name || 'TBC Company',
+      roleDescription: role.roleDescription,
+    };
+  });
 ---
 
 <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="experience">

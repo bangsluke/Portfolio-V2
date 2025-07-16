@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+
+// Get all companies from the local content folder
+const companies = await getCollection('companies');
+
+// Sort companies by creation date (newest first)
+const sortedCompanies = companies
+  .filter(company => {
+    // Filter out companies that don't have portfolio tag
+    return company.data.tags && company.data.tags.includes('portfolio');
+  })
+  .sort((a, b) => {
+    // Sort by creation date, fallback to modification date, then alphabetically
+    const dateA = a.data.created || a.data.modified || new Date(0);
+    const dateB = b.data.created || b.data.modified || new Date(0);
+    
+    if (dateA instanceof Date && dateB instanceof Date) {
+      return dateB.getTime() - dateA.getTime();
+    }
+    
+    // Fallback to alphabetical sorting by slug
+    return a.slug.localeCompare(b.slug);
+  });
+---
+
+{sortedCompanies.length > 0 && (
+  <section class="companies-section bg-gradient-to-r from-blue-50 to-indigo-50 py-12">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Companies I've Worked With</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          A collection of companies and organizations I've had the privilege to collaborate with.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {sortedCompanies.map((company) => {
+          // Extract company name from the slug (convert kebab-case to Title Case)
+          const companyName = company.slug
+            .replace(/-/g, ' ')
+            .replace(/\b\w/g, l => l.toUpperCase());
+          
+          // Get date for display
+          const displayDate = company.data.created || company.data.modified;
+          const dateString = displayDate instanceof Date ? displayDate.toLocaleDateString() : '';
+          
+          // Get tags for display (filter out portfolio tag)
+          const displayTags = company.data.tags?.filter((tag: string) => tag !== 'portfolio') || [];
+          
+          return (
+            <article class="company-card bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 overflow-hidden group">
+              <div class="p-6">
+                <header class="mb-4">
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    
+                      {companyName}
+                    
+                  </h3>
+                  <div class="flex items-center gap-4 text-sm text-gray-500">
+                    {dateString && (
+                      <time datetime={displayDate instanceof Date ? displayDate.toISOString() : ''}>
+                        {dateString}
+                      </time>
+                    )}
+                    {displayTags.length > 0 && (
+                      <div class="flex gap-1">
+                        {displayTags.slice(0, 2).map((tag) => (
+                          <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-xs font-medium">
+                            {tag}
+                          </span>
+                        ))}
+                        {displayTags.length > 2 && (
+                          <span class="text-xs text-gray-400">+{displayTags.length - 2}</span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </header>
+
+              </div>
+            </article>
+          );
+        })}
+      </div>
+      
+      {sortedCompanies.length > 8 && (
+        <div class="text-center mt-8">
+          <a 
+            href="/companies" 
+            class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            View All Companies
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .company-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .companies-section {
+    position: relative;
+  }
+  
+  .companies-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+  }
+</style> 

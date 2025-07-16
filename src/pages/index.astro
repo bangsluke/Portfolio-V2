@@ -1,27 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Experience from "../components/portfolio/Experience.astro";
-import HeroIndex from "../components/portfolio/HeroIndex.astro";
-import Contact from "../components/portfolio/Contact.astro";
-import ListProjects from "../components/portfolio/ListProjects.astro";
-import { Icon } from "astro-icon/components";
-const pageTitle = "NeonMint by | Fernando Lopez | EFEELE ";
-const description = "Is a modern, minimalist template crafted for developers and digital creatives.";
+const pageTitle = "bangsluke Portfolio";
+const description = "My portfolio site";
 const ogimage = {
   url: "/images/imagedefault.webp",
-  alt: "Screenshot of a web portfolio with a modern and dark design. Featuring Fernando López, a Frontend Developer with 8 years of experience, highlighting his passion for development and technology. Includes contact sections, projects, and a technology stack with technologies like HTML5, JavaScript, TypeScript, Angular, Node.js, CSS, Tailwind, and more.",
+  alt: "bangsluke Portfolio"
 };
-import Heading from "../components/ui/Heading.astro";
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
-  <div class="flex flex-col items-center justify-center h-screen">
-    <h1 class="text-4xl font-bold dark:text-white">Coming soon...</h1>
-    <p class="text-gray-500 dark:text-gray-400">Just tidying up some things...</p>
-  </div>
-
-  <!-- <HeroIndex /> -->
-  <!-- <Experience /> -->
-  <!-- <ListProjects /> -->
-  <!-- <Contact /> -->
-</Layout>
+    <div class="flex flex-col items-center justify-center h-screen">
+      <h1 class="text-4xl font-bold dark:text-white">Coming soon...</h1>
+      <p class="text-gray-500 dark:text-gray-400">Just tidying up some things...</p>
+    </div>
+  </Layout>

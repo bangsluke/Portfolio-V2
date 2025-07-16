@@ -4,14 +4,15 @@ import BlogPost from '../../../components/blog/BlogPost.astro';
 import Heading from '../../../components/ui/Heading.astro';
 
 export async function getStaticPaths() {
-    const allPosts: any[] = await Astro.glob("../posts/*.md");
+    const allPosts = await import.meta.glob("../posts/*.md", { eager: true });
+    const posts = Object.values(allPosts);
 
     const uniqueTags: string[] = [
-        ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
+        ...new Set(posts.map((post: any) => post.frontmatter.tags).flat()),
     ];
 
     return uniqueTags.map((tag) => {
-        const filteredPosts = allPosts.filter((post) =>
+        const filteredPosts = posts.filter((post: any) =>
             post.frontmatter.tags.includes(tag),
         );
         return {
@@ -30,7 +31,7 @@ const { posts } = Astro.props;
         <div class="flex flex-col gap-8 max-w-4xl mx-auto">
             <Heading text="Posts about" textGradient={tag}/>
             {
-                posts.map((post) => (
+                posts.map((post: any) => (
                     <BlogPost url={post.url} title={post.frontmatter.title} date={post.frontmatter.pubDate } tags={post.frontmatter.tags }  languages={post.frontmatter.languages } image={post.frontmatter.image } />
                 ))
             }
