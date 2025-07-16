@@ -1,49 +1,51 @@
 ---
-import SkillItem from "./SkillItem.astro";
-import Heading from "../ui/Heading.astro";
-import { Icon } from "astro-icon/components";
+import SkillItem from './SkillItem.astro';
+import Heading from '../ui/Heading.astro';
+import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 
 // Get all skills from the local content folder
 const skills = await getCollection('skills');
 
 // Sort skills by skillRating (highest first), then alphabetically
-const sortedSkills = skills
-  .sort((a, b) => {
-    // Sort by skillRating (highest first)
-    const ratingA = a.data.skillRating || 0;
-    const ratingB = b.data.skillRating || 0;
-    
-    if (ratingA !== ratingB) {
-      return ratingB - ratingA;
-    }
-    
-    // Fallback to alphabetical sorting by slug (filename)
-    return a.slug.localeCompare(b.slug);
-  });
+const sortedSkills = skills.sort((a, b) => {
+  // Sort by skillRating (highest first)
+  const ratingA = a.data.skillRating || 0;
+  const ratingB = b.data.skillRating || 0;
+
+  if (ratingA !== ratingB) {
+    return ratingB - ratingA;
+  }
+
+  // Fallback to alphabetical sorting by slug (filename)
+  return a.slug.localeCompare(b.slug);
+});
 ---
 
 <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="skills">
-      <ol class="relative mt-10">
-        {
-          sortedSkills.map((skill, index) => (
-            <li>
-              <article
-                role="article"
-                aria-labelledby={`skill-title-${index}`}
-              >
-                <div
-                  class="flex flex-col gap-2 text-zinc-00 dark:text-zinc-300 md:col-span-3"
-                  aria-describedby={`skill-title-${index}`}
-                >
-                  <SkillItem 
-                    {...skill.data}
-                    name={skill.data.name || skill.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                  />
-                </div>
-              </article>
-            </li>
-          ))
-        }
-      </ol>
-</section> 
+  <ol class="relative mt-10">
+    {
+      sortedSkills.map((skill, index) => (
+        <li>
+          <article role="article" aria-labelledby={`skill-title-${index}`}>
+            <div
+              class="flex flex-col gap-2 text-zinc-00 dark:text-zinc-300 md:col-span-3"
+              aria-describedby={`skill-title-${index}`}
+            >
+              <SkillItem
+                {...skill.data}
+                name={
+                  skill.data.name ||
+                  skill.slug
+                    .replace(/-/g, ' ')
+                    .replace(/\b\w/g, l => l.toUpperCase())
+                }
+              />
+            </div>
+          </article>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+

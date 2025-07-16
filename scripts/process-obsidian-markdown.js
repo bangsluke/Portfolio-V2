@@ -13,7 +13,7 @@ function extractSectionContent(content, sectionName, endMarker) {
     `##\\s*${sectionName}\\s*\\n([\\s\\S]*?)(?=\\s*${endMarker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`,
     'i'
   );
-  
+
   const match = content.match(sectionRegex);
   if (match && match[1]) {
     // Clean up the extracted content
@@ -31,33 +31,93 @@ function extractSectionsToFrontmatter(content) {
   // We'll determine content type from the file path or tags later
   const sectionsToExtract = [
     // Role-specific sections
-    { name: 'Role Description', property: 'roleDescription', contentType: 'role' },
-    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'role' },
-    
+    {
+      name: 'Role Description',
+      property: 'roleDescription',
+      contentType: 'role',
+    },
+    {
+      name: 'Key Achievement',
+      property: 'keyAchievement',
+      contentType: 'role',
+    },
+
     // Project-specific sections
-    { name: 'Short Description', property: 'shortDescription', contentType: 'project' },
-    { name: 'Long Description', property: 'longDescription', contentType: 'project' },
-    { name: 'Lessons Learned', property: 'lessonsLearned', contentType: 'project' },
-    
+    {
+      name: 'Short Description',
+      property: 'shortDescription',
+      contentType: 'project',
+    },
+    {
+      name: 'Long Description',
+      property: 'longDescription',
+      contentType: 'project',
+    },
+    {
+      name: 'Lessons Learned',
+      property: 'lessonsLearned',
+      contentType: 'project',
+    },
+
     // Education-specific sections
-    { name: 'Qualifications', property: 'qualifications', contentType: 'education' },
-    { name: 'Additional Details', property: 'additionalDetails', contentType: 'education' },
-    
+    {
+      name: 'Qualifications',
+      property: 'qualifications',
+      contentType: 'education',
+    },
+    {
+      name: 'Additional Details',
+      property: 'additionalDetails',
+      contentType: 'education',
+    },
+
     // Company-specific sections
-    { name: 'Company Description', property: 'companyDescription', contentType: 'company' },
-    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'company' },
-    
+    {
+      name: 'Company Description',
+      property: 'companyDescription',
+      contentType: 'company',
+    },
+    {
+      name: 'Key Achievement',
+      property: 'keyAchievement',
+      contentType: 'company',
+    },
+
     // Skill-specific sections
-    { name: 'Skill Description', property: 'skillDescription', contentType: 'skill' },
-    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'skill' },
-    
+    {
+      name: 'Skill Description',
+      property: 'skillDescription',
+      contentType: 'skill',
+    },
+    {
+      name: 'Key Achievement',
+      property: 'keyAchievement',
+      contentType: 'skill',
+    },
+
     // Client-specific sections
-    { name: 'Client Description', property: 'clientDescription', contentType: 'client' },
-    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'client' },
-    
+    {
+      name: 'Client Description',
+      property: 'clientDescription',
+      contentType: 'client',
+    },
+    {
+      name: 'Key Achievement',
+      property: 'keyAchievement',
+      contentType: 'client',
+    },
+
     // Reference-specific sections
-    { name: 'Reference Description', property: 'referenceDescription', contentType: 'reference' },
-    { name: 'Key Achievement', property: 'keyAchievement', contentType: 'reference' }
+    {
+      name: 'Reference Description',
+      property: 'referenceDescription',
+      contentType: 'reference',
+    },
+    {
+      name: 'Key Achievement',
+      property: 'keyAchievement',
+      contentType: 'reference',
+    },
   ];
 
   const extractedData = {};
@@ -75,21 +135,21 @@ function extractSectionsToFrontmatter(content) {
   if (Object.keys(extractedData).length > 0) {
     // Find the frontmatter section
     const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
-    
+
     if (frontmatterMatch) {
       const existingFrontmatter = frontmatterMatch[1];
       const newFrontmatterLines = [];
-      
+
       // Add existing frontmatter lines
       newFrontmatterLines.push(existingFrontmatter);
-      
+
       // Add extracted data as new frontmatter fields
       Object.entries(extractedData).forEach(([property, value]) => {
         // Escape any quotes in the value and wrap in quotes
         const escapedValue = value.replace(/"/g, '\\"').replace(/\n/g, '\\n');
         newFrontmatterLines.push(`${property}: "${escapedValue}"`);
       });
-      
+
       // Replace the frontmatter section
       const newFrontmatter = newFrontmatterLines.join('\n');
       content = content.replace(
@@ -103,7 +163,7 @@ function extractSectionsToFrontmatter(content) {
         const escapedValue = value.replace(/"/g, '\\"').replace(/\n/g, '\\n');
         frontmatterLines.push(`${property}: "${escapedValue}"`);
       });
-      
+
       const newFrontmatter = frontmatterLines.join('\n');
       content = `---\n${newFrontmatter}\n---\n\n${content}`;
     }
@@ -137,7 +197,11 @@ function processObsidianSyntax(content) {
         return `<!-- Image removed during sync: ${altText} (${imagePath}) -->`;
       }
       // If it's a relative path that might not exist, also convert to comment
-      if (imagePath.startsWith('./') || imagePath.startsWith('../') || !imagePath.startsWith('http')) {
+      if (
+        imagePath.startsWith('./') ||
+        imagePath.startsWith('../') ||
+        !imagePath.startsWith('http')
+      ) {
         return `<!-- Image removed during sync: ${altText} (${imagePath}) -->`;
       }
       // Keep external URLs (http/https)
@@ -183,48 +247,52 @@ function processObsidianSyntax(content) {
       const filteredLines = lines.filter(line => {
         const trimmed = line.trim();
         // Keep standard frontmatter fields
-        if (trimmed.startsWith('title:') || 
-            trimmed.startsWith('date:') || 
-            trimmed.startsWith('tags:') ||
-            trimmed.startsWith('description:') ||
-            trimmed.startsWith('image:') ||
-            trimmed.startsWith('---')) {
+        if (
+          trimmed.startsWith('title:') ||
+          trimmed.startsWith('date:') ||
+          trimmed.startsWith('tags:') ||
+          trimmed.startsWith('description:') ||
+          trimmed.startsWith('image:') ||
+          trimmed.startsWith('---')
+        ) {
           return true;
         }
         // Remove Obsidian-specific fields
-        if (trimmed.startsWith('aliases:') ||
-            trimmed.startsWith('created:') ||
-            trimmed.startsWith('modified:') ||
-            trimmed.startsWith('viewCount:') ||
-            trimmed.startsWith('projectURL:') ||
-            trimmed.startsWith('codeURL:') ||
-            trimmed.startsWith('codeMultipleRepos:') ||
-            trimmed.startsWith('folderURL:') ||
-            trimmed.startsWith('logoURL:') ||
-            trimmed.startsWith('imageURL:') ||
-            trimmed.startsWith('dateStart:') ||
-            trimmed.startsWith('dateEnd:') ||
-            trimmed.startsWith('technologies:') ||
-            trimmed.startsWith('projectCategory:') ||
-            trimmed.startsWith('linkedCompany:') ||
-            trimmed.startsWith('toolOwner:') ||
-            trimmed.startsWith('developers:') ||
-            trimmed.startsWith('topicTags:') ||
-            trimmed.startsWith('powerShellAlias:') ||
-            trimmed.startsWith('version:') ||
-            trimmed.startsWith('skillRating:') ||
-            trimmed.startsWith('skillDescription:') ||
-            trimmed.startsWith('referenceRole:') ||
-            trimmed.startsWith('referenceEmail:') ||
-            trimmed.startsWith('referenceNumber:') ||
-            trimmed.startsWith('referenceAddress:') ||
-            trimmed.startsWith('birthday:') ||
-            trimmed.startsWith('died:') ||
-            trimmed.startsWith('partneredWith:') ||
-            trimmed.startsWith('marriageDate:') ||
-            trimmed.startsWith('relatedTo:') ||
-            trimmed.startsWith('friendOf:') ||
-            trimmed.startsWith('education:')) {
+        if (
+          trimmed.startsWith('aliases:') ||
+          trimmed.startsWith('created:') ||
+          trimmed.startsWith('modified:') ||
+          trimmed.startsWith('viewCount:') ||
+          trimmed.startsWith('projectURL:') ||
+          trimmed.startsWith('codeURL:') ||
+          trimmed.startsWith('codeMultipleRepos:') ||
+          trimmed.startsWith('folderURL:') ||
+          trimmed.startsWith('logoURL:') ||
+          trimmed.startsWith('imageURL:') ||
+          trimmed.startsWith('dateStart:') ||
+          trimmed.startsWith('dateEnd:') ||
+          trimmed.startsWith('technologies:') ||
+          trimmed.startsWith('projectCategory:') ||
+          trimmed.startsWith('linkedCompany:') ||
+          trimmed.startsWith('toolOwner:') ||
+          trimmed.startsWith('developers:') ||
+          trimmed.startsWith('topicTags:') ||
+          trimmed.startsWith('powerShellAlias:') ||
+          trimmed.startsWith('version:') ||
+          trimmed.startsWith('skillRating:') ||
+          trimmed.startsWith('skillDescription:') ||
+          trimmed.startsWith('referenceRole:') ||
+          trimmed.startsWith('referenceEmail:') ||
+          trimmed.startsWith('referenceNumber:') ||
+          trimmed.startsWith('referenceAddress:') ||
+          trimmed.startsWith('birthday:') ||
+          trimmed.startsWith('died:') ||
+          trimmed.startsWith('partneredWith:') ||
+          trimmed.startsWith('marriageDate:') ||
+          trimmed.startsWith('relatedTo:') ||
+          trimmed.startsWith('friendOf:') ||
+          trimmed.startsWith('education:')
+        ) {
           return false;
         }
         return true;
@@ -252,11 +320,11 @@ function processMarkdownFile(filePath) {
 function processDirectory(dirPath) {
   try {
     const items = fs.readdirSync(dirPath);
-    
+
     for (const item of items) {
       const fullPath = path.join(dirPath, item);
       const stat = fs.statSync(fullPath);
-      
+
       if (stat.isDirectory()) {
         processDirectory(fullPath);
       } else if (item.endsWith('.md')) {
@@ -271,15 +339,15 @@ function processDirectory(dirPath) {
 // Main function
 function main() {
   const contentPath = path.join(__dirname, '../src/content');
-  
+
   console.log('🔄 Processing Obsidian markdown files...');
   console.log('📁 Content path:', contentPath);
-  
+
   if (!fs.existsSync(contentPath)) {
     console.error('❌ Content directory not found:', contentPath);
     return;
   }
-  
+
   processDirectory(contentPath);
   console.log('✅ Markdown processing completed!');
 }
@@ -289,4 +357,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   main();
 }
 
-export { processObsidianSyntax, processMarkdownFile, processDirectory }; 
+export { processObsidianSyntax, processMarkdownFile, processDirectory };

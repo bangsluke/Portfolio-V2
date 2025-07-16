@@ -18,7 +18,34 @@
 
 ## Auto Log
 
-## 2025-01-16 11:20 [main] - Investigated missing header/footer issue on deployed site
+## 2025-01-16 11:30 [develop] - Corrected branch labels in AUTO_CHANGES.md
+- Fixed incorrect branch labeling in all timestamp entries
+  - Changed all "[main]" labels to "[develop]" to reflect actual current branch
+  - Corrected 5 timestamp entries from previous changes
+  - Ensures accurate branch tracking in change log
+
+## 2025-01-16 11:25 [develop] - Set up ESLint and Prettier for format on save
+- Installed Prettier and ESLint integration packages
+  - Added prettier, eslint-config-prettier, eslint-plugin-prettier as dev dependencies
+  - Enables Prettier formatting with ESLint rule enforcement
+- Created Prettier configuration files
+  - Added .prettierrc with settings optimized for the codebase
+  - Added .prettierignore to exclude build files and dependencies
+  - Configured Astro file parsing for proper formatting
+- Updated ESLint configuration for Prettier integration
+  - Added prettier plugin and config to all file type configurations
+  - Added 'prettier/prettier': 'error' rule to enforce formatting
+  - Integrated with existing Astro, TypeScript, and React configurations
+- Added format scripts to package.json
+  - npm run format: Formats all files with Prettier
+  - npm run format:check: Checks formatting without making changes
+- Created VS Code workspace settings for format on save
+  - Enabled formatOnSave with Prettier as default formatter
+  - Configured ESLint auto-fix on save for code quality
+  - Added Astro language support and file associations
+  - Set up import organization on save
+
+## 2025-01-16 11:20 [develop] - Investigated missing header/footer issue on deployed site
 - Confirmed header and footer are present in built HTML file
   - Header element with navigation, logo, and theme toggle is properly generated
   - Footer element with social links and branding is properly generated
@@ -31,7 +58,7 @@
   - All portfolio sections (Projects, Skills, Experience, etc.) are visible
   - Layout structure is intact, just missing header and footer visibility
 
-## 2025-01-16 11:15 [main] - Fixed build error from deleted Experience component
+## 2025-01-16 11:15 [develop] - Fixed build error from deleted Experience component
 - Replaced deleted Experience.astro import with WorkExperienceTimeline in MarkdownAbout.astro
   - Changed import from "../components/portfolio/Experience.astro" to "../components/portfolio/WorkExperienceTimeline.astro"
   - Updated component usage from <Experience /> to <WorkExperienceTimeline />
@@ -41,7 +68,7 @@
   - Maintains same layout and styling
   - No loss of functionality for about page
 
-## 2025-01-16 11:10 [main] - Fixed star icon error in SkillItem component
+## 2025-01-16 11:10 [develop] - Fixed star icon error in SkillItem component
 - Replaced invalid "star-fill" and "star" icon names with HTML star characters
   - Changed from Icon component with non-existent star icons to HTML ★ characters
   - Maintains same visual appearance with filled and empty stars
@@ -51,7 +78,7 @@
   - Maintains 5-star rating system functionality
   - Preserves existing styling and layout
 
-## 2025-01-16 11:05 [main] - Added Clients and References components with schema updates
+## 2025-01-16 11:05 [develop] - Added Clients and References components with schema updates
 - Created Clients.astro component to display clients collection
   - Similar structure to other portfolio components
   - Sorts clients by dateStart date (newest first)

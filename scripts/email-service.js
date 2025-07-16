@@ -17,20 +17,23 @@ export class EmailService {
       service: 'gmail',
       auth: {
         user: process.env.GMAIL_USER || this.sender,
-        pass: process.env.GMAIL_APP_PASSWORD
+        pass: process.env.GMAIL_APP_PASSWORD,
       },
       tls: {
-        rejectUnauthorized: false
-      }
+        rejectUnauthorized: false,
+      },
     };
   }
 
   async initialize() {
     // Set enabled status based on environment variables
-    this.enabled = this.config.enabled !== false && process.env.EMAIL_NOTIFICATIONS === 'true';
-    
+    this.enabled =
+      this.config.enabled !== false &&
+      process.env.EMAIL_NOTIFICATIONS === 'true';
+
     // Update recipient and sender from environment variables if available
-    this.recipient = this.config.recipient || process.env.EMAIL_RECIPIENT || this.recipient;
+    this.recipient =
+      this.config.recipient || process.env.EMAIL_RECIPIENT || this.recipient;
     this.sender = this.config.sender || process.env.EMAIL_SENDER || this.sender;
 
     if (!this.enabled) {
@@ -40,12 +43,14 @@ export class EmailService {
 
     try {
       if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-        console.error('❌ Gmail credentials not configured. Set GMAIL_USER and GMAIL_APP_PASSWORD environment variables.');
+        console.error(
+          '❌ Gmail credentials not configured. Set GMAIL_USER and GMAIL_APP_PASSWORD environment variables.'
+        );
         return false;
       }
 
       this.transporter = nodemailer.createTransport(this._getSmtpConfig());
-      
+
       // Verify connection
       await this.transporter.verify();
       console.log('📧 Email service initialized successfully');
@@ -64,12 +69,12 @@ export class EmailService {
 
     try {
       console.log('📧 Sending email notification...');
-      
+
       const mailOptions = {
         from: this.sender,
         to: this.recipient,
         subject: subject,
-        html: body
+        html: body,
       };
 
       const result = await this.transporter.sendMail(mailOptions);
@@ -88,11 +93,13 @@ export class EmailService {
       endTime,
       sourcePath,
       summary,
-      errors = []
+      errors = [],
     } = syncData;
 
-    const subject = success ? '✅ Obsidian Sync Successful' : '❌ Obsidian Sync Failed';
-    
+    const subject = success
+      ? '✅ Obsidian Sync Successful'
+      : '❌ Obsidian Sync Failed';
+
     let body = `
 <!DOCTYPE html>
 <html>
@@ -188,4 +195,4 @@ export class EmailService {
 }
 
 // Default email service instance
-export const emailService = new EmailService(); 
+export const emailService = new EmailService();

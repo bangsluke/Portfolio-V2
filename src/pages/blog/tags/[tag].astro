@@ -4,39 +4,44 @@ import BlogPost from '../../../components/blog/BlogPost.astro';
 import Heading from '../../../components/ui/Heading.astro';
 
 export async function getStaticPaths() {
-    const allPosts = await import.meta.glob("../posts/*.md", { eager: true });
-    const posts = Object.values(allPosts);
+  const allPosts = await import.meta.glob('../posts/*.md', { eager: true });
+  const posts = Object.values(allPosts);
 
-    const uniqueTags: string[] = [
-        ...new Set(posts.map((post: any) => post.frontmatter.tags).flat()),
-    ];
+  const uniqueTags: string[] = [
+    ...new Set(posts.map((post: any) => post.frontmatter.tags).flat()),
+  ];
 
-    return uniqueTags.map((tag) => {
-        const filteredPosts = posts.filter((post: any) =>
-            post.frontmatter.tags.includes(tag),
-        );
-        return {
-            params: { tag },
-            props: { posts: filteredPosts },
-        };
-    });
+  return uniqueTags.map(tag => {
+    const filteredPosts = posts.filter((post: any) =>
+      post.frontmatter.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
 }
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<Layout pageTitle={tag}  >
-    <section class="py-8">
-        <div class="flex flex-col gap-8 max-w-4xl mx-auto">
-            <Heading text="Posts about" textGradient={tag}/>
-            {
-                posts.map((post: any) => (
-                    <BlogPost url={post.url} title={post.frontmatter.title} date={post.frontmatter.pubDate } tags={post.frontmatter.tags }  languages={post.frontmatter.languages } image={post.frontmatter.image } />
-                ))
-            }
-        </div>
-    </section>
-
+<Layout pageTitle={tag}>
+  <section class="py-8">
+    <div class="flex flex-col gap-8 max-w-4xl mx-auto">
+      <Heading text="Posts about" textGradient={tag} />
+      {
+        posts.map((post: any) => (
+          <BlogPost
+            url={post.url}
+            title={post.frontmatter.title}
+            date={post.frontmatter.pubDate}
+            tags={post.frontmatter.tags}
+            languages={post.frontmatter.languages}
+            image={post.frontmatter.image}
+          />
+        ))
+      }
+    </div>
+  </section>
 </Layout>
-

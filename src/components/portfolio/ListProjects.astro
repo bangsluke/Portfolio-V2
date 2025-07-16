@@ -1,16 +1,18 @@
 ---
-import Project from "./Project.astro";
-import Heading from "../ui/Heading.astro";
-import { Icon } from "astro-icon/components";
+import Project from './Project.astro';
+import Heading from '../ui/Heading.astro';
+import { Icon } from 'astro-icon/components';
 
-const allPosts = await import.meta.glob("../../pages/portfolio/projects/*.md", { eager: true });
+const allPosts = await import.meta.glob('../../pages/portfolio/projects/*.md', {
+  eager: true,
+});
 const posts = Object.values(allPosts);
 
 // Sort by descending date (most recent first)
 posts.sort(
   (a: any, b: any) =>
     new Date(b.frontmatter.pubDate).getTime() -
-    new Date(a.frontmatter.pubDate).getTime(),
+    new Date(a.frontmatter.pubDate).getTime()
 );
 ---
 
@@ -74,18 +76,18 @@ posts.sort(
 </section>
 
 <script>
-  document.querySelector("#moreProjects")?.addEventListener("click", () => {
-    const container = document.querySelector("#containerProjects");
-    const moreProjectsBtn = document.querySelector("#moreProjects");
+  document.querySelector('#moreProjects')?.addEventListener('click', () => {
+    const container = document.querySelector('#containerProjects');
+    const moreProjectsBtn = document.querySelector('#moreProjects');
 
     if (container && moreProjectsBtn) {
       // Expand container to show all projects
-      container.classList.remove("h-[150vh]");
-      container.classList.remove("h-auto");
+      container.classList.remove('h-[150vh]');
+      container.classList.remove('h-auto');
       // Hide the "View More" button after animation completes
-      moreProjectsBtn.classList.add("hidden");
+      moreProjectsBtn.classList.add('hidden');
       setTimeout(() => {
-        moreProjectsBtn.classList.add("hidden");
+        moreProjectsBtn.classList.add('hidden');
       }, 500);
     }
   });

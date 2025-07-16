@@ -1,18 +1,17 @@
 ---
-import ReferenceItem from "./ReferenceItem.astro";
-import Heading from "../ui/Heading.astro";
-import { Icon } from "astro-icon/components";
+import ReferenceItem from './ReferenceItem.astro';
+import Heading from '../ui/Heading.astro';
+import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 
 // Get all references from the local content folder
 const references = await getCollection('references');
 
 // Sort references alphabetically by name
-const sortedReferences = references
-  .sort((a, b) => {
-    // Sort alphabetically by slug (filename)
-    return a.slug.localeCompare(b.slug);
-  });
+const sortedReferences = references.sort((a, b) => {
+  // Sort alphabetically by slug (filename)
+  return a.slug.localeCompare(b.slug);
+});
 ---
 
 <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="references">
@@ -35,9 +34,14 @@ const sortedReferences = references
                   class="flex flex-col gap-2 text-zinc-00 dark:text-zinc-300 md:col-span-3"
                   aria-describedby={`reference-title-${index}`}
                 >
-                  <ReferenceItem 
+                  <ReferenceItem
                     {...reference.data}
-                    name={reference.data.name || reference.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                    name={
+                      reference.data.name ||
+                      reference.slug
+                        .replace(/-/g, ' ')
+                        .replace(/\b\w/g, l => l.toUpperCase())
+                    }
                   />
                 </div>
               </article>
@@ -47,4 +51,5 @@ const sortedReferences = references
       </ol>
     </div>
   </div>
-</section> 
+</section>
+

@@ -1,6 +1,6 @@
 ---
 import { processMarkdownContent } from '../../utils/content-processor';
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   name: string;
@@ -11,10 +11,13 @@ interface Props {
   keyAchievement?: string;
 }
 
-const { name, tags, skillRating, skillDescription, imageURL, keyAchievement } = Astro.props;
+const { name, tags, skillRating, skillDescription, imageURL, keyAchievement } =
+  Astro.props;
 
 // Process content to handle Obsidian links and markdown
-const processedSkillDescription = processMarkdownContent(skillDescription || '');
+const processedSkillDescription = processMarkdownContent(
+  skillDescription || ''
+);
 const processedKeyAchievement = processMarkdownContent(keyAchievement || '');
 
 // console.log(name);
@@ -29,39 +32,49 @@ const processedKeyAchievement = processMarkdownContent(keyAchievement || '');
         class="absolute -left-[42px] text-5xl text-mint-400 rounded-full drop-shadow-[0px_0px_8px_rgba(0,255,94,1)]"
         >&bull;</span
       >
-      <h3
-        class="text-xl font-bold text-mint-400"
-      >
+      <h3 class="text-xl font-bold text-mint-400">
         {name}
       </h3>
-      {skillRating && (
-        <div class="mt-2">
-          <span class="text-sm text-zinc-600 dark:text-white">Rating: </span>
-          <div class="flex items-center mt-1">
-            {Array.from({ length: 5 }, (_, i) => (
-              <span 
-                class={`text-lg ${i < skillRating ? 'text-yellow-400' : 'text-gray-300'}`}
-              >
-                ★
+      {
+        skillRating && (
+          <div class="mt-2">
+            <span class="text-sm text-zinc-600 dark:text-white">Rating: </span>
+            <div class="flex items-center mt-1">
+              {Array.from({ length: 5 }, (_, i) => (
+                <span
+                  class={`text-lg ${i < skillRating ? 'text-yellow-400' : 'text-gray-300'}`}
+                >
+                  ★
+                </span>
+              ))}
+              <span class="ml-2 text-sm text-zinc-600 dark:text-white">
+                ({skillRating}/5)
               </span>
-            ))}
-            <span class="ml-2 text-sm text-zinc-600 dark:text-white">({skillRating}/5)</span>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
     </div>
   </div>
   <div
     class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3"
   >
-    {processedSkillDescription && (
-      <div class="processed-content" set:html={processedSkillDescription} />
-    )}
-    {processedKeyAchievement && (
-      <div class="mt-4">
-        <strong>Key Achievement:</strong>
-        <div class="processed-content mt-2" set:html={processedKeyAchievement} />
-      </div>
-    )}
+    {
+      processedSkillDescription && (
+        <div class="processed-content" set:html={processedSkillDescription} />
+      )
+    }
+    {
+      processedKeyAchievement && (
+        <div class="mt-4">
+          <strong>Key Achievement:</strong>
+          <div
+            class="processed-content mt-2"
+            set:html={processedKeyAchievement}
+          />
+        </div>
+      )
+    }
   </div>
-</div> 
+</div>
+

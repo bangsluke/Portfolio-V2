@@ -1,24 +1,23 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import WorkExperienceTimeline from "../components/portfolio/WorkExperienceTimeline.astro";
-import EducationTimeline from "../components/portfolio/EducationTimeline.astro";
-import ProjectsGallery from "../components/portfolio/ProjectsGallery.astro";
-import CustomerAndClientCarousel from "../components/portfolio/CustomerAndClientCarousel.astro";
-import ReferencesCarousel from "../components/portfolio/ReferencesCarousel.astro";
-import HeroIndex from "../components/portfolio/HeroIndex.astro";
-import Contact from "../components/portfolio/Contact.astro";
-import CompaniesList from "../components/portfolio/CompaniesList.astro";
-import CodingSection from "../components/portfolio/CodingSection.astro";
-const pageTitle = "bangsluke Portfolio";
-const description = "My portfolio site";
+import Layout from '../layouts/Layout.astro';
+import WorkExperienceTimeline from '../components/portfolio/WorkExperienceTimeline.astro';
+import EducationTimeline from '../components/portfolio/EducationTimeline.astro';
+import ProjectsGallery from '../components/portfolio/ProjectsGallery.astro';
+import CustomerAndClientCarousel from '../components/portfolio/CustomerAndClientCarousel.astro';
+import ReferencesCarousel from '../components/portfolio/ReferencesCarousel.astro';
+import HeroIndex from '../components/portfolio/HeroIndex.astro';
+import Contact from '../components/portfolio/Contact.astro';
+import CompaniesList from '../components/portfolio/CompaniesList.astro';
+import CodingSection from '../components/portfolio/CodingSection.astro';
+const pageTitle = 'bangsluke Portfolio';
+const description = 'My portfolio site';
 const ogimage = {
-  url: "/images/imagedefault.webp",
-  alt: "bangsluke Portfolio"
+  url: '/images/imagedefault.webp',
+  alt: 'bangsluke Portfolio',
 };
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
-  
   <HeroIndex />
   <ProjectsGallery />
   <CodingSection />

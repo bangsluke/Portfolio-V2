@@ -1,18 +1,18 @@
 ---
-import Layout from "./Layout.astro";
-import { Icon } from "astro-icon/components";
-import Heading from "../components/ui/Heading.astro";
-import WorkExperienceTimeline from "../components/portfolio/WorkExperienceTimeline.astro";
-import NavArticle from "../components/layout/NavArticle.astro";
-import Contact from "../components/portfolio/Contact.astro";
-import Tools from "../components/portfolio/Tools.astro";
+import Layout from './Layout.astro';
+import { Icon } from 'astro-icon/components';
+import Heading from '../components/ui/Heading.astro';
+import WorkExperienceTimeline from '../components/portfolio/WorkExperienceTimeline.astro';
+import NavArticle from '../components/layout/NavArticle.astro';
+import Contact from '../components/portfolio/Contact.astro';
+import Tools from '../components/portfolio/Tools.astro';
 const { frontmatter } = Astro.props;
 ---
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((header) => {
-      header.classList.add("scroll-m-28");
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(header => {
+      header.classList.add('scroll-m-28');
     });
   });
 </script>

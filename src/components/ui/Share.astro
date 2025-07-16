@@ -1,31 +1,35 @@
 ---
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
 
 const { tweetText, currentUrl } = Astro.props;
 
 const shareLinks = [
   {
-    name: "Twitter",
-    icon: "twitter",
+    name: 'Twitter',
+    icon: 'twitter',
     href: `https://twitter.com/intent/tweet?text=${tweetText}&url=${currentUrl}`,
   },
   {
-    name: "Facebook",
-    icon: "facebook",
+    name: 'Facebook',
+    icon: 'facebook',
     href: `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`,
   },
   {
-    name: "WhatsApp",
-    icon: "whatsapp",
+    name: 'WhatsApp',
+    icon: 'whatsapp',
     href: `https://api.whatsapp.com/send?text=${encodeURIComponent(`${currentUrl}`)}`,
   },
 ];
 ---
 
-<div class="flex items-center gap-5 text-lg" role="group" aria-label="Share on social media">
+<div
+  class="flex items-center gap-5 text-lg"
+  role="group"
+  aria-label="Share on social media"
+>
   <span class="text-base font-bold text-blacktext dark:text-white">Share </span>
   {
-    shareLinks.map((link) => (
+    shareLinks.map(link => (
       <a
         href={link.href}
         class="bg-blacktext rounded-full p-2"

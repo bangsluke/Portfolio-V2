@@ -1,11 +1,13 @@
 ---
-const allPosts = await import.meta.glob("../../pages/blog/posts/*.md", { eager: true });
+const allPosts = await import.meta.glob('../../pages/blog/posts/*.md', {
+  eager: true,
+});
 const posts = Object.values(allPosts);
 
-import Tag from "../ui/Tag.astro";
-import ReadMore from "../ui/ReadMore.astro";
-import Capsule from "../ui/Capsule.astro";
-import DatePub from "./DatePub.astro";
+import Tag from '../ui/Tag.astro';
+import ReadMore from '../ui/ReadMore.astro';
+import Capsule from '../ui/Capsule.astro';
+import DatePub from './DatePub.astro';
 
 // Get the latest post using reduce
 const latestPost: any = posts.reduce((latest: any, current: any) => {
@@ -48,7 +50,7 @@ const imageAlt =
           aria-label="Programming languages"
         >
           {languages?.map((language: unknown) => (
-            <Capsule lang={language?.toString() || ""} />
+            <Capsule lang={language?.toString() || ''} />
           )) || []}
         </div>
 
@@ -58,7 +60,10 @@ const imageAlt =
           aria-label={`Read article: ${latestPost.frontmatter.title}`}
         >
           <div class="gap-3 flex flex-col justify-end drop-shadow-[1px_6px_1px_rgba(0,0,0,0.3)]">
-            <DatePub date={latestPost.frontmatter.pubDate} class="text-mint-50" />
+            <DatePub
+              date={latestPost.frontmatter.pubDate}
+              class="text-mint-50"
+            />
             <h2
               id="post-title"
               class="text-4xl max-xl:text-3xl max-sm:text-2xl font-bold"
@@ -74,8 +79,10 @@ const imageAlt =
           role="list"
           aria-label="Article tags"
         >
-          {tags?.map((tag) => (
-            <Tag tag={tag} forceDark="true">{tag}</Tag>
+          {tags?.map(tag => (
+            <Tag tag={tag} forceDark="true">
+              {tag}
+            </Tag>
           )) || []}
         </div>
       </article>

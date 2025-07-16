@@ -8,16 +8,16 @@ dotenv.config();
 
 async function testEmail() {
   console.log('🧪 Testing email service...');
-  
+
   const initialized = await emailService.initialize();
   if (!initialized) {
     console.error('❌ Failed to initialize email service');
     console.log('💡 Check your .env file and Gmail App Password configuration');
     return;
   }
-  
+
   console.log('📧 Sending test email...');
-  
+
   const success = await emailService.sendEmail(
     '🧪 Test Email from Portfolio Sync',
     `
@@ -41,7 +41,7 @@ async function testEmail() {
     </div>
     `
   );
-  
+
   if (success) {
     console.log('✅ Test email sent successfully!');
     console.log('📬 Check your inbox for the test email');
@@ -54,4 +54,4 @@ async function testEmail() {
 testEmail().catch(error => {
   console.error('❌ Test failed with error:', error.message);
   process.exit(1);
-}); 
+});

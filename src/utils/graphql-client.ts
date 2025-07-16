@@ -3,18 +3,24 @@ import { GraphQLClient } from 'graphql-request';
 
 // Determine the environment and use the appropriate backend URL
 const isDevelopment = import.meta.env.DEV;
-const isBuildTime = typeof process !== 'undefined' && process.env.NODE_ENV === 'production';
-console.log('GraphQL Client: Environment check - isDevelopment:', isDevelopment, 'isBuildTime:', isBuildTime);
+const isBuildTime =
+  typeof process !== 'undefined' && process.env.NODE_ENV === 'production';
+console.log(
+  'GraphQL Client: Environment check - isDevelopment:',
+  isDevelopment,
+  'isBuildTime:',
+  isBuildTime
+);
 
 // Try multiple endpoint sources
-let endpoint = isDevelopment 
-  ? import.meta.env.PUBLIC_APP_BACKEND_URL_DEV 
+let endpoint = isDevelopment
+  ? import.meta.env.PUBLIC_APP_BACKEND_URL_DEV
   : import.meta.env.PUBLIC_APP_BACKEND_URL_PROD;
 
 // Fallback to local API proxy if direct backend URL is not available
 if (!endpoint) {
-  endpoint = isDevelopment 
-    ? '/api/graphql'  // Use local API proxy
+  endpoint = isDevelopment
+    ? '/api/graphql' // Use local API proxy
     : '/api/graphql';
   console.log('GraphQL Client: Using API proxy fallback:', endpoint);
 }
@@ -23,14 +29,18 @@ console.log('GraphQL Client: Endpoint resolved:', endpoint);
 
 // During build time, we might not have a valid endpoint, so we'll handle this gracefully
 if (!endpoint && isBuildTime) {
-  console.warn('GraphQL Client: No endpoint configured during build time - GraphQL requests will fail gracefully');
+  console.warn(
+    'GraphQL Client: No endpoint configured during build time - GraphQL requests will fail gracefully'
+  );
 }
 
 if (!endpoint && !isBuildTime) {
   console.error('GraphQL Client: No endpoint configured!');
   throw new Error(
     `GraphQL endpoint not configured. Please set ${
-      isDevelopment ? 'PUBLIC_APP_BACKEND_URL_DEV' : 'PUBLIC_APP_BACKEND_URL_PROD'
+      isDevelopment
+        ? 'PUBLIC_APP_BACKEND_URL_DEV'
+        : 'PUBLIC_APP_BACKEND_URL_PROD'
     } in your environment variables.`
   );
 }
@@ -41,20 +51,23 @@ if (isDevelopment) {
 }
 
 // Create GraphQL client with enhanced configuration
-export const graphqlClient = new GraphQLClient(endpoint || 'http://localhost:5001/graphql', {
-  headers: {
-    'Content-Type': 'application/json',
+export const graphqlClient = new GraphQLClient(
+  endpoint || 'http://localhost:5001/graphql',
+  {
+    headers: {
+      'Content-Type': 'application/json',
+    },
   }
-});
+);
 
 // Enhanced request function with retry logic
 export const graphqlRequest = async <T = any>(
-  query: string, 
+  query: string,
   variables?: Record<string, any>,
   retries = 3
 ): Promise<T> => {
   let lastError: Error | null = null;
-  
+
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       console.log(`GraphQL Client: Attempt ${attempt}/${retries}`);
@@ -63,8 +76,11 @@ export const graphqlRequest = async <T = any>(
       return result;
     } catch (error) {
       lastError = error instanceof Error ? error : new Error(String(error));
-      console.error(`GraphQL Client: Attempt ${attempt} failed:`, lastError.message);
-      
+      console.error(
+        `GraphQL Client: Attempt ${attempt} failed:`,
+        lastError.message
+      );
+
       if (attempt < retries) {
         const delay = Math.pow(2, attempt) * 1000; // Exponential backoff
         console.log(`GraphQL Client: Retrying in ${delay}ms...`);
@@ -72,6 +88,6 @@ export const graphqlRequest = async <T = any>(
       }
     }
   }
-  
+
   throw lastError || new Error('GraphQL request failed after all retries');
 };

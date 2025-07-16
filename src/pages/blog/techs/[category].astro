@@ -1,7 +1,7 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import BlogPost from "../../../components/blog/BlogPost.astro";
-import Heading from "../../../components/ui/Heading.astro";
+import Layout from '../../../layouts/Layout.astro';
+import BlogPost from '../../../components/blog/BlogPost.astro';
+import Heading from '../../../components/ui/Heading.astro';
 import type { MarkdownInstance } from 'astro';
 
 interface Frontmatter {
@@ -11,15 +11,29 @@ interface Frontmatter {
   tags: string[];
   image: string;
 }
-export async function getStaticPaths(): Promise<Array<{params: {category: string}, props: {posts: MarkdownInstance<Frontmatter>[]}}>>{
-  const allPosts = await import.meta.glob<MarkdownInstance<Frontmatter>>("../posts/*.md", { eager: true });
+export async function getStaticPaths(): Promise<
+  Array<{
+    params: { category: string };
+    props: { posts: MarkdownInstance<Frontmatter>[] };
+  }>
+> {
+  const allPosts = await import.meta.glob<MarkdownInstance<Frontmatter>>(
+    '../posts/*.md',
+    { eager: true }
+  );
   const posts = Object.values(allPosts);
 
   const uniqueTags: string[] = [
-    ...new Set(posts.map((post: MarkdownInstance<Frontmatter>) => post.frontmatter.languages).flat()),
+    ...new Set(
+      posts
+        .map(
+          (post: MarkdownInstance<Frontmatter>) => post.frontmatter.languages
+        )
+        .flat()
+    ),
   ];
 
-  return uniqueTags.map((category) => {
+  return uniqueTags.map(category => {
     const filteredPosts = posts.filter((post: MarkdownInstance<Frontmatter>) =>
       post.frontmatter.languages.includes(category)
     );
@@ -34,13 +48,13 @@ const { category } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<Layout pageTitle={category} >
+<Layout pageTitle={category}>
   <section class="py-8">
     <div class="flex flex-col gap-8 max-w-4xl mx-auto">
-      <Heading text="Posts about" textGradient={category}  />
+      <Heading text="Posts about" textGradient={category} />
 
       {
-        posts.map((post) => (
+        posts.map(post => (
           <BlogPost
             url={post.url}
             title={post.frontmatter.title}

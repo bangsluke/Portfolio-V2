@@ -108,6 +108,7 @@
 ## Introduction
 
 A modern portfolio website built with Astro, featuring:
+
 - **Obsidian Integration**: Sync selected notes from your Obsidian vault
 - **GraphQL Backend**: Dynamic content from Neo4j database
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
@@ -298,12 +299,14 @@ node scripts/sync-mobile.js
 **Important**: Obsidian mobile files are not stored in iCloud by default and are sandboxed within the app.
 
 **Recommended Method**: Export and transfer files
+
 1. In Obsidian mobile: **Settings** → **About** → **Export vault** → **Export as plain text**
 2. Save to Files app
 3. Transfer to computer via AirDrop, iCloud Drive, or USB
 4. Run sync script on computer
 
 **Alternative Methods**:
+
 - Use **Working Copy** app for Git-based sync
 - Create **iOS Shortcuts** automation
 - Use **GitHub Actions** for automated deployment
@@ -364,15 +367,15 @@ src/content/
 
 #### Tag to Folder Mapping
 
-| Tag | Folder | Description |
-|-----|--------|-------------|
-| `#project` | `projects/` | Project showcases and case studies |
-| `#client` | `clients/` | Client work and relationships |
-| `#company` | `companies/` | Company experiences and collaborations |
+| Tag          | Folder        | Description                               |
+| ------------ | ------------- | ----------------------------------------- |
+| `#project`   | `projects/`   | Project showcases and case studies        |
+| `#client`    | `clients/`    | Client work and relationships             |
+| `#company`   | `companies/`  | Company experiences and collaborations    |
 | `#education` | `educations/` | Educational background and certifications |
-| `#reference` | `references/` | Reference materials and resources |
-| `#role` | `roles/` | Job roles and positions |
-| `#skill` | `skills/` | Skills and competencies |
+| `#reference` | `references/` | Reference materials and resources         |
+| `#role`      | `roles/`      | Job roles and positions                   |
+| `#skill`     | `skills/`     | Skills and competencies                   |
 
 Notes without these specific tags will be placed in the `obsidian/` folder.
 
@@ -381,15 +384,17 @@ Notes without these specific tags will be placed in the `obsidian/` folder.
 The sync system only copies notes that contain the `#portfolio` tag. You can add this tag to your Obsidian notes in several ways:
 
 #### In Frontmatter
+
 ```yaml
 ---
-title: "My Project"
+title: 'My Project'
 date: 2024-01-01
-tags: ["portfolio", "project", "web-development"]
+tags: ['portfolio', 'project', 'web-development']
 ---
 ```
 
 #### In Content (Obsidian Style)
+
 ```markdown
 # My Project
 
@@ -399,6 +404,7 @@ This is a project I want to showcase on my portfolio.
 ```
 
 #### Multiple Tags for Organization
+
 ```markdown
 # Company Experience
 
@@ -412,7 +418,9 @@ This note would be placed in the `companies/` folder due to the `#company` tag.
 ### Error Logging & Email Notifications
 
 #### Error Log File
+
 The sync script creates a detailed error log at `sync-errors.json` containing:
+
 - Sync start/end times
 - Source path information
 - Processing and verification errors
@@ -420,14 +428,18 @@ The sync script creates a detailed error log at `sync-errors.json` containing:
 - Success/failure status
 
 #### Email Notifications
+
 When enabled, the script sends detailed HTML email reports including:
+
 - Sync status (success/failure)
 - File processing summary
 - Error details in formatted tables
 - Timestamps and source information
 
 #### File Verification
+
 The script verifies each copied file by:
+
 - Checking if the target file exists
 - Ensuring the file has content (not empty)
 - Logging verification errors separately
@@ -452,8 +464,8 @@ Solution: Add the `#portfolio` tag to your notes:
 
 ```yaml
 ---
-title: "My Note"
-tags: ["portfolio"]
+title: 'My Note'
+tags: ['portfolio']
 ---
 ```
 
@@ -478,9 +490,9 @@ Solution: Check that all markdown files have valid frontmatter:
 
 ```yaml
 ---
-title: "Note Title"
+title: 'Note Title'
 date: 2024-01-01
-tags: ["portfolio"]
+tags: ['portfolio']
 ---
 ```
 
@@ -511,13 +523,13 @@ npm run build
 
 The sync script automatically converts Obsidian-specific syntax:
 
-| Obsidian | Standard Markdown |
-|----------|-------------------|
-| `[[Internal Link]]` | `[Internal Link](Internal Link)` |
-| `> [!NOTE] Text` | `> **NOTE:** Text` |
-| `aliases: [alias1, alias2]` | *(removed)* |
-| `tags: [tag1, tag2]` | *(preserved, portfolio tag added)* |
-| `#portfolio` | *(detected for filtering)* |
+| Obsidian                    | Standard Markdown                  |
+| --------------------------- | ---------------------------------- |
+| `[[Internal Link]]`         | `[Internal Link](Internal Link)`   |
+| `> [!NOTE] Text`            | `> **NOTE:** Text`                 |
+| `aliases: [alias1, alias2]` | _(removed)_                        |
+| `tags: [tag1, tag2]`        | _(preserved, portfolio tag added)_ |
+| `#portfolio`                | _(detected for filtering)_         |
 
 ### Security Considerations
 
@@ -665,11 +677,11 @@ const GET_SKILLS_QUERY = `
 export async function fetchSkills(): Promise<Skill[]> {
   try {
     const response = await graphqlClient.request<GetSkillsResponse>(GET_SKILLS_QUERY);
-    
+
     if (!response.skills) {
       throw new Error('Invalid response format: missing skills array');
     }
-    
+
     return response.skills;
   } catch (error) {
     console.error('Error fetching skills:', error);
@@ -702,7 +714,7 @@ const GET_COMPANIES_BY_DATE_RANGE_QUERY = `
 `;
 
 export async function fetchCompaniesByDateRange(
-  startDate: string, 
+  startDate: string,
   endDate: string
 ): Promise<Company[]> {
   try {
@@ -710,11 +722,11 @@ export async function fetchCompaniesByDateRange(
       GET_COMPANIES_BY_DATE_RANGE_QUERY,
       { startDate, endDate }
     );
-    
+
     if (!response.companies) {
       throw new Error('Invalid response format: missing companies array');
     }
-    
+
     return response.companies;
   } catch (error) {
     console.error('Error fetching companies by date range:', error);
@@ -756,11 +768,11 @@ export async function fetchCompanies(
       GET_COMPANIES_PAGINATED_QUERY,
       { limit, offset }
     );
-    
+
     if (!response.companies) {
       throw new Error('Invalid response format: missing companies array');
     }
-    
+
     return response.companies;
   } catch (error) {
     console.error('Error fetching companies:', error);
@@ -893,7 +905,8 @@ npm run sync-production:email
 
 **Problem**: `535-5.7.8 Username and Password not accepted`
 
-**Solution**: 
+**Solution**:
+
 - Make sure you're using an App Password, not your regular Gmail password
 - Verify 2-Factor Authentication is enabled
 - Check that the GMAIL_USER matches the account where you generated the App Password
@@ -902,7 +915,8 @@ npm run sync-production:email
 
 **Problem**: Gmail blocks the connection
 
-**Solution**: 
+**Solution**:
+
 - This shouldn't happen with App Passwords, but if it does, make sure you're using the App Password correctly
 - Double-check that you copied the entire 16-character password
 
@@ -911,6 +925,7 @@ npm run sync-production:email
 **Problem**: Network connectivity issues
 
 **Solution**:
+
 - Check your internet connection
 - Verify firewall settings aren't blocking SMTP (port 587)
 - Try again in a few minutes
@@ -920,6 +935,7 @@ npm run sync-production:email
 **Problem**: Incorrect credentials
 
 **Solution**:
+
 - Verify all environment variables are set correctly
 - Make sure there are no extra spaces in your .env file
 - Regenerate the App Password if needed
@@ -936,16 +952,19 @@ process.env.DEBUG = 'true';
 ### Step 6: Security Best Practices
 
 #### 1. Environment Variables
+
 - Never commit your `.env` file to version control
 - Use different App Passwords for different environments
 - Rotate App Passwords periodically
 
 #### 2. Email Content
+
 - The email service sends HTML emails with detailed sync reports
 - Sensitive information is not included in emails
 - All sync data is logged locally in `sync-errors.json`
 
 #### 3. Access Control
+
 - Only authorized email addresses should receive notifications
 - Consider using a dedicated email address for notifications
 
@@ -956,11 +975,13 @@ process.env.DEBUG = 'true';
 When deploying to production platforms, you'll need to set the environment variables in your deployment platform:
 
 ##### Netlify
+
 1. Go to your site settings in Netlify
 2. Navigate to "Environment variables"
 3. Add all the email-related environment variables
 
 ##### Vercel
+
 1. Go to your project settings in Vercel
 2. Navigate to "Environment Variables"
 3. Add all the email-related environment variables
@@ -984,11 +1005,13 @@ You can customize the email templates by modifying the `generateSyncReport` meth
 ### Step 9: Monitoring and Maintenance
 
 #### Regular Tasks
+
 1. **Monthly**: Check that emails are being received
 2. **Quarterly**: Rotate your Gmail App Password
 3. **As needed**: Update email templates or recipient lists
 
 #### Logs
+
 - Email service logs are included in your sync script output
 - Failed email attempts are logged to the console
 - Sync errors are saved to `sync-errors.json`

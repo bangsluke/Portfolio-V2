@@ -3,7 +3,10 @@ import GitHubCalendar from 'preact-github-calendar';
 
 export default function GitHubContributions() {
   return (
-    <section id="github-contributions" class="flex justify-center overflow-y-auto">
+    <section
+      id="github-contributions"
+      class="flex justify-center overflow-y-auto"
+    >
       <GitHubCalendar username="bangsluke" />
       <style>{`
         #github-contributions * {

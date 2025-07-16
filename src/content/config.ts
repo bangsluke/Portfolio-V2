@@ -150,12 +150,12 @@ const referencesCollection = defineCollection({
 });
 
 export const collections = {
-  'staticData': staticDataCollection,
-  'projects': projectsCollection,
-  'skills': skillsCollection,
-  'companies': companiesCollection,
-  'clients': clientsCollection,
-  'roles': rolesCollection,
-  'educations': educationsCollection,
-  'references': referencesCollection,
-}; 
+  staticData: staticDataCollection,
+  projects: projectsCollection,
+  skills: skillsCollection,
+  companies: companiesCollection,
+  clients: clientsCollection,
+  roles: rolesCollection,
+  educations: educationsCollection,
+  references: referencesCollection,
+};

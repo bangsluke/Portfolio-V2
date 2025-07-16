@@ -1,38 +1,40 @@
 ---
 import { getCollection } from 'astro:content';
 import ClientAndCustomerCarousel from './CustomerAndClientCarousel.tsx';
-import Heading from "../ui/Heading.astro";
-import { Icon } from "astro-icon/components";
+import Heading from '../ui/Heading.astro';
+import { Icon } from 'astro-icon/components';
 
 // Get all companies from the local content folder
 const companies = await getCollection('companies');
 
 // Sort companies by dateStart date (newest first)
-const sortedCompanies = companies
-  .sort((a, b) => {
-    // Sort by dateStart
-    const dateA = a.data.dateStart || new Date(0);
-    const dateB = b.data.dateStart || new Date(0);
-    
-    if (dateA instanceof Date && dateB instanceof Date) {
-      return dateB.getTime() - dateA.getTime();
-    }
-    
-    // Fallback to alphabetical sorting by slug
-    return a.slug.localeCompare(b.slug);
-  });
+const sortedCompanies = companies.sort((a, b) => {
+  // Sort by dateStart
+  const dateA = a.data.dateStart || new Date(0);
+  const dateB = b.data.dateStart || new Date(0);
 
-console.log("sortedCompanies.length", sortedCompanies.length);
+  if (dateA instanceof Date && dateB instanceof Date) {
+    return dateB.getTime() - dateA.getTime();
+  }
+
+  // Fallback to alphabetical sorting by slug
+  return a.slug.localeCompare(b.slug);
+});
+
+console.log('sortedCompanies.length', sortedCompanies.length);
 ---
 
-<section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="customers-and-clients">
+<section
+  class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16"
+  id="customers-and-clients"
+>
   <div class="flex flex-col pt-8 max-w-4xl mx-auto">
     <div class="flex gap-4 items-center justify-center">
       <Icon class="text-3xl dark:text-white text-blacktext" name="briefcase" />
       <Heading text="Customers and " textGradient="Clients" level={2} />
     </div>
 
-    <div class="relative" >
+    <div class="relative">
       <ClientAndCustomerCarousel companies={JSON.stringify(sortedCompanies)} />
     </div>
   </div>

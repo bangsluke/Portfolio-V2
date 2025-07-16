@@ -1,18 +1,19 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import Hero from "../../../components/blog/Hero.astro";
+import Layout from '../../../layouts/Layout.astro';
+import Hero from '../../../components/blog/Hero.astro';
 // import Tags from "../../../components/blog/Tags.astro";
-import ListPosts from "../../../components/blog/ListPosts.astro";
-const pageTitle = "Luke Bangs Portfolio | bangsluke";
-const description = "Welcome to my blog, where I share my passion for frontend development, web design, and the latest technology trends.";
+import ListPosts from '../../../components/blog/ListPosts.astro';
+const pageTitle = 'Luke Bangs Portfolio | bangsluke';
+const description =
+  'Welcome to my blog, where I share my passion for frontend development, web design, and the latest technology trends.';
 const ogimage = {
-  url: "/images/blogimage.webp",
+  url: '/images/blogimage.webp',
   alt: "bangsluke logo with green background and light effect. Text: 'Luke Bangs Portfolio' and URL 'www.bangsluke.com'.",
 };
 const currentUrl = `${Astro.site}${Astro.url.pathname}`;
 const tweetText = encodeURIComponent(`"${pageTitle}"`);
-import Heading from "../../../components/ui/Heading.astro";
-import Share from "../../../components/ui/Share.astro";
+import Heading from '../../../components/ui/Heading.astro';
+import Share from '../../../components/ui/Share.astro';
 
 // import Languages from "../../../components/blog/Languages.astro";
 ---
@@ -49,6 +50,5 @@ import Share from "../../../components/ui/Share.astro";
         </div>
       </div>
     </div>
-</div>
-
+  </div>
 </Layout>

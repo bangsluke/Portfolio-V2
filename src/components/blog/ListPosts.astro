@@ -1,6 +1,6 @@
 ---
-import BlogPost from "./BlogPost.astro";
-import Heading from "../ui/Heading.astro";
+import BlogPost from './BlogPost.astro';
+import Heading from '../ui/Heading.astro';
 
 // Prop to determine whether to exclude the latest post or a specific post
 export interface Props {
@@ -9,9 +9,11 @@ export interface Props {
   all?: boolean;
 }
 
-const { excludeLatest = false, currentPostUrl = "", all = false } = Astro.props;
+const { excludeLatest = false, currentPostUrl = '', all = false } = Astro.props;
 
-const allPosts = await import.meta.glob("../../pages/blog/posts/*.md", { eager: true });
+const allPosts = await import.meta.glob('../../pages/blog/posts/*.md', {
+  eager: true,
+});
 const posts = Object.values(allPosts);
 // Sort by date in descending order (newest first)
 posts.sort((a: any, b: any) => {
@@ -28,8 +30,8 @@ if (currentPostUrl) {
   postsToShow = postsToShow.filter((post: any) => {
     if (!post.url) return false; // If no URL, keep the post
     // Normalize URLs for comparison
-    const normalizedPostUrl = post.url.replace(/\/$/, ""); // Remove trailing slash if exists
-    const normalizedCurrentUrl = currentPostUrl.replace(/\/$/, ""); // Remove trailing slash if exists
+    const normalizedPostUrl = post.url.replace(/\/$/, ''); // Remove trailing slash if exists
+    const normalizedCurrentUrl = currentPostUrl.replace(/\/$/, ''); // Remove trailing slash if exists
     return normalizedPostUrl !== normalizedCurrentUrl;
   });
 } else if (excludeLatest) {

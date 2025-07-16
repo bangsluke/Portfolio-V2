@@ -1,5 +1,8 @@
 ---
-import { processMarkdownContent, processObsidianLink } from '../../utils/content-processor';
+import {
+  processMarkdownContent,
+  processObsidianLink,
+} from '../../utils/content-processor';
 
 interface Props {
   name: string;
@@ -20,15 +23,30 @@ interface Props {
   keyAchievement?: string;
 }
 
-const { 
-  name, tags, birthday, died, partneredWith, marriageDate, relatedTo, friendOf, 
-  education, linkedCompany, referenceRole, referenceEmail, referenceNumber, 
-  referenceAddress, referenceDescription, keyAchievement 
+const {
+  name,
+  tags,
+  birthday,
+  died,
+  partneredWith,
+  marriageDate,
+  relatedTo,
+  friendOf,
+  education,
+  linkedCompany,
+  referenceRole,
+  referenceEmail,
+  referenceNumber,
+  referenceAddress,
+  referenceDescription,
+  keyAchievement,
 } = Astro.props;
 
 // Process content to handle Obsidian links and markdown
 const processedLinkedCompany = processObsidianLink(linkedCompany);
-const processedReferenceDescription = processMarkdownContent(referenceDescription || '');
+const processedReferenceDescription = processMarkdownContent(
+  referenceDescription || ''
+);
 const processedKeyAchievement = processMarkdownContent(keyAchievement || '');
 
 // console.log(name);
@@ -43,52 +61,75 @@ const processedKeyAchievement = processMarkdownContent(keyAchievement || '');
         class="absolute -left-[42px] text-5xl text-mint-400 rounded-full drop-shadow-[0px_0px_8px_rgba(0,255,94,1)]"
         >&bull;</span
       >
-      <h3
-        class="text-xl font-bold text-mint-400"
-      >
+      <h3 class="text-xl font-bold text-mint-400">
         {name}
       </h3>
-      {referenceRole && (
-        <div class="mt-2">
-          <span class="text-sm text-zinc-600 dark:text-white">Role: </span>
-          <span class="text-sm text-mint-400">{referenceRole}</span>
-        </div>
-      )}
-      {processedLinkedCompany && (
-        <div class="mt-2">
-          <span class="text-sm text-zinc-600 dark:text-white">Company: </span>
-          <span class="text-sm text-mint-400">{processedLinkedCompany}</span>
-        </div>
-      )}
-      {referenceEmail && (
-        <div class="mt-2">
-          <span class="text-sm text-zinc-600 dark:text-white">Email: </span>
-          <a href={`mailto:${referenceEmail}`} class="text-sm text-mint-400 hover:text-mint-300 underline">
-            {referenceEmail}
-          </a>
-        </div>
-      )}
-      {referenceNumber && (
-        <div class="mt-2">
-          <span class="text-sm text-zinc-600 dark:text-white">Phone: </span>
-          <a href={`tel:${referenceNumber}`} class="text-sm text-mint-400 hover:text-mint-300 underline">
-            {referenceNumber}
-          </a>
-        </div>
-      )}
+      {
+        referenceRole && (
+          <div class="mt-2">
+            <span class="text-sm text-zinc-600 dark:text-white">Role: </span>
+            <span class="text-sm text-mint-400">{referenceRole}</span>
+          </div>
+        )
+      }
+      {
+        processedLinkedCompany && (
+          <div class="mt-2">
+            <span class="text-sm text-zinc-600 dark:text-white">Company: </span>
+            <span class="text-sm text-mint-400">{processedLinkedCompany}</span>
+          </div>
+        )
+      }
+      {
+        referenceEmail && (
+          <div class="mt-2">
+            <span class="text-sm text-zinc-600 dark:text-white">Email: </span>
+            <a
+              href={`mailto:${referenceEmail}`}
+              class="text-sm text-mint-400 hover:text-mint-300 underline"
+            >
+              {referenceEmail}
+            </a>
+          </div>
+        )
+      }
+      {
+        referenceNumber && (
+          <div class="mt-2">
+            <span class="text-sm text-zinc-600 dark:text-white">Phone: </span>
+            <a
+              href={`tel:${referenceNumber}`}
+              class="text-sm text-mint-400 hover:text-mint-300 underline"
+            >
+              {referenceNumber}
+            </a>
+          </div>
+        )
+      }
     </div>
   </div>
   <div
     class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3"
   >
-    {processedReferenceDescription && (
-      <div class="processed-content" set:html={processedReferenceDescription} />
-    )}
-    {processedKeyAchievement && (
-      <div class="mt-4">
-        <strong>Key Achievement:</strong>
-        <div class="processed-content mt-2" set:html={processedKeyAchievement} />
-      </div>
-    )}
+    {
+      processedReferenceDescription && (
+        <div
+          class="processed-content"
+          set:html={processedReferenceDescription}
+        />
+      )
+    }
+    {
+      processedKeyAchievement && (
+        <div class="mt-4">
+          <strong>Key Achievement:</strong>
+          <div
+            class="processed-content mt-2"
+            set:html={processedKeyAchievement}
+          />
+        </div>
+      )
+    }
   </div>
-</div> 
+</div>
+

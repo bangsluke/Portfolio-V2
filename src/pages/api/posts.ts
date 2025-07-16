@@ -18,16 +18,19 @@ export const GET: APIRoute = async ({ url }) => {
   const searchParams = new URL(url).searchParams;
   const limit = parseInt(searchParams.get('limit') || '10');
   const offset = parseInt(searchParams.get('offset') || '0');
-  
+
   try {
-    const data = await graphqlClient.request(GET_POSTS_QUERY, { limit, offset });
+    const data = await graphqlClient.request(GET_POSTS_QUERY, {
+      limit,
+      offset,
+    });
     return new Response(JSON.stringify(data), {
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
     return new Response(JSON.stringify({ error: 'Failed to fetch posts' }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     });
   }
 };
