@@ -4,16 +4,12 @@ import { getCollection } from 'astro:content';
 // Get all companies from the local content folder
 const companies = await getCollection('companies');
 
-// Sort companies by creation date (newest first)
+// Sort companies by dateStart (newest first)
 const sortedCompanies = companies
-  .filter(company => {
-    // Filter out companies that don't have portfolio tag
-    return company.data.tags && company.data.tags.includes('portfolio');
-  })
   .sort((a, b) => {
-    // Sort by creation date, fallback to modification date, then alphabetically
-    const dateA = a.data.created || a.data.modified || new Date(0);
-    const dateB = b.data.created || b.data.modified || new Date(0);
+    // Sort by dateStart
+    const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
+    const dateB = b.data.dateStart || b.data.dateEnd || new Date(0);
     
     if (dateA instanceof Date && dateB instanceof Date) {
       return dateB.getTime() - dateA.getTime();
@@ -42,7 +38,7 @@ const sortedCompanies = companies
             .replace(/\b\w/g, l => l.toUpperCase());
           
           // Get date for display
-          const displayDate = company.data.created || company.data.modified;
+          const displayDate = company.data.dateStart || company.data.dateEnd;
           const dateString = displayDate instanceof Date ? displayDate.toLocaleDateString() : '';
           
           // Get tags for display (filter out portfolio tag)

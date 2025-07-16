@@ -17,6 +17,7 @@ const staticDataCollection = defineCollection({
     alias: z.string(),
     contactSectionTitle: z.string(),
     contactSectionSubtitle: z.string(),
+    contactSectionSubtitle2: z.string(),
     contactSectionButtonText: z.string(),
     contactSectionButtonIcon: z.string(),
     techsTitle: z.string(),

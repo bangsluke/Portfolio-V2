@@ -18,6 +18,19 @@
 
 ## Auto Log
 
+## 2025-01-16 11:20 [main] - Investigated missing header/footer issue on deployed site
+- Confirmed header and footer are present in built HTML file
+  - Header element with navigation, logo, and theme toggle is properly generated
+  - Footer element with social links and branding is properly generated
+  - Build process completes successfully without errors
+- Issue appears to be CSS/display related rather than build problem
+  - Header uses backdrop-blur-xs which may have browser compatibility issues
+  - Possible z-index or positioning conflicts on deployed environment
+  - JavaScript errors might be preventing proper rendering
+- Site content is displaying correctly, only navigation elements are affected
+  - All portfolio sections (Projects, Skills, Experience, etc.) are visible
+  - Layout structure is intact, just missing header and footer visibility
+
 ## 2025-01-16 11:15 [main] - Fixed build error from deleted Experience component
 - Replaced deleted Experience.astro import with WorkExperienceTimeline in MarkdownAbout.astro
   - Changed import from "../components/portfolio/Experience.astro" to "../components/portfolio/WorkExperienceTimeline.astro"
