@@ -1,13 +1,13 @@
 {
-  "timestamp": "2025-07-16T09:38:15.040Z",
-  "source": "C:\\\\Users\\\\bangs\\\\Documents\\\\Obsidian Personal Notes",
-  "errors": [],
-  "summary": {
-    "totalFiles": 2098,
-    "processedFiles": 2098,
-    "copiedFiles": 115,
-    "skippedFiles": 1983,
-    "errors": 0
-  },
-  "success": true
+	"timestamp": "2025-07-16T09:38:15.040Z",
+	"source": "C:\\\\Users\\\\bangs\\\\Documents\\\\Obsidian Personal Notes",
+	"errors": [],
+	"summary": {
+		"totalFiles": 2098,
+		"processedFiles": 2098,
+		"copiedFiles": 115,
+		"skippedFiles": 1983,
+		"errors": 0
+	},
+	"success": true
 }

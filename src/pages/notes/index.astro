@@ -5,189 +5,217 @@ import Layout from '../../layouts/Layout.astro';
 // Get all notes and sort by date
 const notes = await getCollection('obsidian');
 const sortedNotes = notes
-  .filter(note => note.data.published !== false)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+	.filter(note => note.data.published !== false)
+	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 // Get unique tags
 const allTags = [...new Set(sortedNotes.flatMap(note => note.data.tags || []))];
 ---
 
 <Layout title="Notes">
-  <main class="container mx-auto px-4 py-8 max-w-6xl">
-    <header class="mb-12 text-center">
-      <h1 class="text-5xl font-bold mb-4">Notes</h1>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-        A collection of thoughts, ideas, and knowledge from my Obsidian vault.
-      </p>
-    </header>
+	<main class="container mx-auto px-4 py-8 max-w-6xl">
+		<header class="mb-12 text-center">
+			<h1 class="text-5xl font-bold mb-4">Notes</h1>
+			<p class="text-xl text-gray-600 max-w-2xl mx-auto">
+				A collection of thoughts, ideas, and knowledge from my Obsidian vault.
+			</p>
+		</header>
 
-    <!-- Search and Filter -->
-    <div class="mb-8 flex flex-col sm:flex-row gap-4 items-center justify-between">
-      <div class="relative flex-1 max-w-md">
-        <input
-          type="text"
-          id="search"
-          placeholder="Search notes..."
-          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        />
-        <svg class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-        </svg>
-      </div>
-      
-      <div class="flex flex-wrap gap-2">
-        <button
-          class="tag-filter px-3 py-1 rounded-full text-sm border border-gray-300 hover:bg-gray-100 active"
-          data-tag="all"
-        >
-          All
-        </button>
-        {allTags.map(tag => (
-          <button
-            class="tag-filter px-3 py-1 rounded-full text-sm border border-gray-300 hover:bg-gray-100"
-            data-tag={tag}
-          >
-            {tag}
-          </button>
-        ))}
-      </div>
-    </div>
+		<!-- Search and Filter -->
+		<div
+			class="mb-8 flex flex-col sm:flex-row gap-4 items-center justify-between">
+			<div class="relative flex-1 max-w-md">
+				<input
+					type="text"
+					id="search"
+					placeholder="Search notes..."
+					class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+				/>
+				<svg
+					class="absolute right-3 top-2.5 h-5 w-5 text-gray-400"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+				</svg>
+			</div>
 
-    <!-- Notes Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="notes-grid">
-      {sortedNotes.map((note) => (
-        <article 
-          class="note-card bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200 overflow-hidden"
-          data-tags={note.data.tags?.join(' ') || ''}
-          data-title={note.data.title.toLowerCase()}
-        >
-          <div class="p-6">
-            <header class="mb-4">
-              <h2 class="text-xl font-semibold mb-2">
-                <a href={`/notes/${note.slug}`} class="text-gray-900 hover:text-blue-600 transition-colors">
-                  {note.data.title}
-                </a>
-              </h2>
-              <div class="flex items-center gap-4 text-sm text-gray-500">
-                <time datetime={note.data.date.toISOString()}>
-                  {note.data.date.toLocaleDateString()}
-                </time>
-                {note.data.tags && note.data.tags.length > 0 && (
-                  <div class="flex gap-1">
-                    {note.data.tags.slice(0, 2).map((tag) => (
-                      <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">
-                        {tag}
-                      </span>
-                    ))}
-                    {note.data.tags.length > 2 && (
-                      <span class="text-xs text-gray-400">+{note.data.tags.length - 2}</span>
-                    )}
-                  </div>
-                )}
-              </div>
-            </header>
-            
-            {note.data.description && (
-              <p class="text-gray-600 text-sm line-clamp-3 mb-4">
-                {note.data.description}
-              </p>
-            )}
-            
-            <footer class="flex justify-between items-center">
-              <a 
-                href={`/notes/${note.slug}`}
-                class="text-blue-600 hover:text-blue-800 text-sm font-medium"
-              >
-                Read more →
-              </a>
-            </footer>
-          </div>
-        </article>
-      ))}
-    </div>
+			<div class="flex flex-wrap gap-2">
+				<button
+					class="tag-filter px-3 py-1 rounded-full text-sm border border-gray-300 hover:bg-gray-100 active"
+					data-tag="all">
+					All
+				</button>
+				{
+					allTags.map(tag => (
+						<button
+							class="tag-filter px-3 py-1 rounded-full text-sm border border-gray-300 hover:bg-gray-100"
+							data-tag={tag}>
+							{tag}
+						</button>
+					))
+				}
+			</div>
+		</div>
 
-    <!-- Empty State -->
-    <div id="empty-state" class="hidden text-center py-12">
-      <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-      </svg>
-      <h3 class="mt-2 text-sm font-medium text-gray-900">No notes found</h3>
-      <p class="mt-1 text-sm text-gray-500">Try adjusting your search or filter criteria.</p>
-    </div>
-  </main>
+		<!-- Notes Grid -->
+		<div
+			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+			id="notes-grid">
+			{
+				sortedNotes.map(note => (
+					<article
+						class="note-card bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200 overflow-hidden"
+						data-tags={note.data.tags?.join(' ') || ''}
+						data-title={note.data.title.toLowerCase()}>
+						<div class="p-6">
+							<header class="mb-4">
+								<h2 class="text-xl font-semibold mb-2">
+									<a
+										href={`/notes/${note.slug}`}
+										class="text-gray-900 hover:text-blue-600 transition-colors">
+										{note.data.title}
+									</a>
+								</h2>
+								<div class="flex items-center gap-4 text-sm text-gray-500">
+									<time datetime={note.data.date.toISOString()}>
+										{note.data.date.toLocaleDateString()}
+									</time>
+									{note.data.tags && note.data.tags.length > 0 && (
+										<div class="flex gap-1">
+											{note.data.tags.slice(0, 2).map(tag => (
+												<span class="bg-gray-100 px-2 py-0.5 rounded text-xs">
+													{tag}
+												</span>
+											))}
+											{note.data.tags.length > 2 && (
+												<span class="text-xs text-gray-400">
+													+{note.data.tags.length - 2}
+												</span>
+											)}
+										</div>
+									)}
+								</div>
+							</header>
+
+							{note.data.description && (
+								<p class="text-gray-600 text-sm line-clamp-3 mb-4">
+									{note.data.description}
+								</p>
+							)}
+
+							<footer class="flex justify-between items-center">
+								<a
+									href={`/notes/${note.slug}`}
+									class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+									Read more →
+								</a>
+							</footer>
+						</div>
+					</article>
+				))
+			}
+		</div>
+
+		<!-- Empty State -->
+		<div id="empty-state" class="hidden text-center py-12">
+			<svg
+				class="mx-auto h-12 w-12 text-gray-400"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24">
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+				></path>
+			</svg>
+			<h3 class="mt-2 text-sm font-medium text-gray-900">No notes found</h3>
+			<p class="mt-1 text-sm text-gray-500">
+				Try adjusting your search or filter criteria.
+			</p>
+		</div>
+	</main>
 </Layout>
 
 <script>
-  // Search and filter functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('search');
-    const tagFilters = document.querySelectorAll('.tag-filter');
-    const notesGrid = document.getElementById('notes-grid');
-    const emptyState = document.getElementById('empty-state');
-    const noteCards = document.querySelectorAll('.note-card');
+	// Search and filter functionality
+	document.addEventListener('DOMContentLoaded', function () {
+		const searchInput = document.getElementById('search');
+		const tagFilters = document.querySelectorAll('.tag-filter');
+		const notesGrid = document.getElementById('notes-grid');
+		const emptyState = document.getElementById('empty-state');
+		const noteCards = document.querySelectorAll('.note-card');
 
-    let currentSearch = '';
-    let currentTag = 'all';
+		let currentSearch = '';
+		let currentTag = 'all';
 
-    function filterNotes() {
-      let visibleCount = 0;
+		function filterNotes() {
+			let visibleCount = 0;
 
-      noteCards.forEach(card => {
-        const title = card.dataset.title || '';
-        const tags = card.dataset.tags || '';
-        
-        const matchesSearch = title.includes(currentSearch.toLowerCase());
-        const matchesTag = currentTag === 'all' || tags.includes(currentTag);
-        
-        if (matchesSearch && matchesTag) {
-          card.style.display = 'block';
-          visibleCount++;
-        } else {
-          card.style.display = 'none';
-        }
-      });
+			noteCards.forEach(card => {
+				const title = card.dataset.title || '';
+				const tags = card.dataset.tags || '';
 
-      // Show/hide empty state
-      if (visibleCount === 0) {
-        emptyState.classList.remove('hidden');
-        notesGrid.classList.add('hidden');
-      } else {
-        emptyState.classList.add('hidden');
-        notesGrid.classList.remove('hidden');
-      }
-    }
+				const matchesSearch = title.includes(currentSearch.toLowerCase());
+				const matchesTag = currentTag === 'all' || tags.includes(currentTag);
 
-    // Search functionality
-    searchInput.addEventListener('input', function(e) {
-      currentSearch = e.target.value;
-      filterNotes();
-    });
+				if (matchesSearch && matchesTag) {
+					card.style.display = 'block';
+					visibleCount++;
+				} else {
+					card.style.display = 'none';
+				}
+			});
 
-    // Tag filter functionality
-    tagFilters.forEach(filter => {
-      filter.addEventListener('click', function() {
-        // Update active state
-        tagFilters.forEach(f => f.classList.remove('active', 'bg-blue-100', 'border-blue-300'));
-        this.classList.add('active', 'bg-blue-100', 'border-blue-300');
-        
-        currentTag = this.dataset.tag;
-        filterNotes();
-      });
-    });
-  });
+			// Show/hide empty state
+			if (visibleCount === 0) {
+				emptyState.classList.remove('hidden');
+				notesGrid.classList.add('hidden');
+			} else {
+				emptyState.classList.add('hidden');
+				notesGrid.classList.remove('hidden');
+			}
+		}
+
+		// Search functionality
+		searchInput.addEventListener('input', function (e) {
+			currentSearch = e.target.value;
+			filterNotes();
+		});
+
+		// Tag filter functionality
+		tagFilters.forEach(filter => {
+			filter.addEventListener('click', function () {
+				// Update active state
+				tagFilters.forEach(f =>
+					f.classList.remove('active', 'bg-blue-100', 'border-blue-300')
+				);
+				this.classList.add('active', 'bg-blue-100', 'border-blue-300');
+
+				currentTag = this.dataset.tag;
+				filterNotes();
+			});
+		});
+	});
 </script>
 
 <style>
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  
-  .tag-filter.active {
-    background-color: rgb(219 234 254);
-    border-color: rgb(147 197 253);
-    color: rgb(29 78 216);
-  }
-</style> 
+	.line-clamp-3 {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.tag-filter.active {
+		background-color: rgb(219 234 254);
+		border-color: rgb(147 197 253);
+		color: rgb(29 78 216);
+	}
+</style>

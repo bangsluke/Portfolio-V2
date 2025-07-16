@@ -5,48 +5,48 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-montserrat: 'Montserrat', sans-serif;
-  --font-roboto: 'Roboto', sans-serif;
-  --font-opensans: 'Open Sans', sans-serif;
-  --color-blacktext: #171717;
-  --color-mint-50: #ecfdf5;
-  --color-mint-100: #d0fbe5;
-  --color-mint-200: #a4f4cf;
-  --color-mint-300: #6ce9b7;
-  --color-mint-400: #31d69a;
-  --color-mint-500: #0dbc82;
-  --color-mint-600: #03986a;
-  --color-mint-700: #027a58;
-  --color-mint-800: #056047;
-  --color-mint-900: #054f3c;
-  --color-mint-950: #012d22;
+	--font-montserrat: 'Montserrat', sans-serif;
+	--font-roboto: 'Roboto', sans-serif;
+	--font-opensans: 'Open Sans', sans-serif;
+	--color-blacktext: #171717;
+	--color-mint-50: #ecfdf5;
+	--color-mint-100: #d0fbe5;
+	--color-mint-200: #a4f4cf;
+	--color-mint-300: #6ce9b7;
+	--color-mint-400: #31d69a;
+	--color-mint-500: #0dbc82;
+	--color-mint-600: #03986a;
+	--color-mint-700: #027a58;
+	--color-mint-800: #056047;
+	--color-mint-900: #054f3c;
+	--color-mint-950: #012d22;
 
-  --color-riptide-50: #f0fdfa;
-  --color-riptide-100: #cbfcf1;
-  --color-riptide-200: #96f7e4;
-  --color-riptide-300: #5cecd5;
-  --color-riptide-400: #2bd6c1;
-  --color-riptide-500: #12baa8;
-  --color-riptide-600: #0b9689;
-  --color-riptide-700: #0e776f;
-  --color-riptide-800: #105f5a;
-  --color-riptide-900: #124f4b;
-  --color-riptide-950: #03302f;
+	--color-riptide-50: #f0fdfa;
+	--color-riptide-100: #cbfcf1;
+	--color-riptide-200: #96f7e4;
+	--color-riptide-300: #5cecd5;
+	--color-riptide-400: #2bd6c1;
+	--color-riptide-500: #12baa8;
+	--color-riptide-600: #0b9689;
+	--color-riptide-700: #0e776f;
+	--color-riptide-800: #105f5a;
+	--color-riptide-900: #124f4b;
+	--color-riptide-950: #03302f;
 
-  --animate-rotate: rotate 10s linear infinite;
+	--animate-rotate: rotate 10s linear infinite;
 
-  --animate-rotate-border: border-rotate 3s linear infinite;
-  @keyframes border-rotate {
-    to {
-      --border-angle: 360deg;
-    }
-  }
+	--animate-rotate-border: border-rotate 3s linear infinite;
+	@keyframes border-rotate {
+		to {
+			--border-angle: 360deg;
+		}
+	}
 }
 
-@property --border-angle{
-	  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
+@property --border-angle {
+	syntax: '<angle>';
+	inherits: false;
+	initial-value: 0deg;
 }
 
 ::selection {
@@ -54,22 +54,23 @@
 	background-color: #0dbc82;
 }
 
-*::-webkit-scrollbar-thumb{
+*::-webkit-scrollbar-thumb {
 	border-radius: 20px;
 }
-.dark *{
+.dark * {
 	scrollbar-color: #6ce9b7 #012d22;
 	scrollbar-width: thin;
 }
- *{
+* {
 	scrollbar-color: #6ce9b7 #d0fbe5;
 	scrollbar-width: thin;
 	box-sizing: border-box;
 }
 
-pre, .dark pre {
+pre,
+.dark pre {
 	scrollbar-color: #686868 #424242;
-	scrollbar-width:initial;
+	scrollbar-width: initial;
 }
 
 @keyframes rotate {
@@ -82,20 +83,20 @@ pre, .dark pre {
 	}
 }
 
-a.inline-block.leading-5.pl-12{
+a.inline-block.leading-5.pl-12 {
 	font-size: 0.875rem;
 	line-height: 1.25rem;
 }
 
-#toc-list a[href="#"]{
+#toc-list a[href='#'] {
 	font-weight: 700;
 }
 
-.dark #toc-list a[href="#"] {
+.dark #toc-list a[href='#'] {
 	color: white;
 }
 
-#toc-list a[href="#"] {
+#toc-list a[href='#'] {
 	color: #171717;
 }
 
@@ -223,6 +224,25 @@ a.inline-block.leading-5.pl-12{
 	color: #6ce9b7 !important;
 }
 
+/* Styling for mint links (both links and strong tags) */
+.mint-link {
+	color: #31d69a !important;
+	text-decoration: underline;
+	transition: all 0.3s ease;
+}
+
+.mint-link:hover {
+	color: #6ce9b7 !important;
+}
+
+.dark .mint-link {
+	color: #31d69a !important;
+}
+
+.dark .mint-link:hover {
+	color: #6ce9b7 !important;
+}
+
 @media (max-width: 768px) {
 	.markdown a {
 		font-size: 1.125rem;
@@ -230,29 +250,32 @@ a.inline-block.leading-5.pl-12{
 	}
 }
 
-.markdown ol{
+.markdown ol {
 	list-style-type: decimal;
 	margin-bottom: 2rem;
 }
 
-.markdown ul{
+.markdown ul {
 	list-style-type: disc;
 	margin-bottom: 2rem;
 }
 
-.markdown ul, .markdown ol{
+.markdown ul,
+.markdown ol {
 	font-size: 1.25rem;
 	color: #171717;
 	padding-left: 1rem;
 	padding-bottom: 0;
 }
 
-.dark .markdown ul, .dark .markdown ol {
+.dark .markdown ul,
+.dark .markdown ol {
 	color: rgb(229 231 235);
 }
 
 @media (max-width: 768px) {
-	.markdown ul, .markdown ol {
+	.markdown ul,
+	.markdown ol {
 		font-size: 1.125rem;
 		line-height: 1.75rem;
 	}
@@ -306,7 +329,7 @@ a.inline-block.leading-5.pl-12{
 	margin-bottom: 0;
 }
 
-.markdown :not(pre)>code {
+.markdown :not(pre) > code {
 	padding: 0 0.5rem;
 	padding-top: 0.125rem;
 	padding-bottom: 0.125rem;
@@ -318,7 +341,7 @@ a.inline-block.leading-5.pl-12{
 	padding: 3rem;
 }
 
-.markdown strong{
+.markdown strong {
 	font-weight: 700;
 }
 
@@ -331,12 +354,12 @@ a.inline-block.leading-5.pl-12{
 	margin-bottom: 2rem;
 }
 
-.copy-code svg{
+.copy-code svg {
 	width: 1.25rem;
 	height: 1.25rem;
 }
 
-.copy-code{
+.copy-code {
 	position: absolute;
 	color: rgb(148 163 184);
 	font-size: 0.75rem;
@@ -383,13 +406,13 @@ a.inline-block.leading-5.pl-12{
 	gap: 1rem;
 }
 
-.task-list-item input[type="checkbox"] {
+.task-list-item input[type='checkbox'] {
 	width: 1.25rem;
 	height: 1.25rem;
 	accent-color: #6ce9b7;
 }
 
-.task-list-item input[type="checkbox"]:checked + span {
+.task-list-item input[type='checkbox']:checked + span {
 	text-decoration: line-through;
 	color: #03986a;
 }
@@ -407,7 +430,9 @@ a.inline-block.leading-5.pl-12{
 	top: 100%;
 	margin-top: 1rem;
 	position: absolute;
-	box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+	box-shadow:
+		0 20px 25px -5px rgb(0 0 0 / 0.1),
+		0 8px 10px -6px rgb(0 0 0 / 0.1);
 	color: rgb(212 212 212);
 	background: linear-gradient(to top, white, rgba(255, 255, 255, 0.9));
 	backdrop-filter: blur(8px);
@@ -425,15 +450,15 @@ a.inline-block.leading-5.pl-12{
 }
 
 .hamburger .bars-icon {
-	display: block;  /* Show 'bars' icon by default */
+	display: block; /* Show 'bars' icon by default */
 }
 
 .hamburger.active .bars-icon {
-	display: none;  /* Hide 'bars' icon when .active is present */
+	display: none; /* Hide 'bars' icon when .active is present */
 }
 
 .hamburger.active .xmark-icon {
-	display: block;  /* Show 'xmark' icon when .active is present */
+	display: block; /* Show 'xmark' icon when .active is present */
 }
 
 /* Navigation bar styles */
@@ -456,7 +481,7 @@ a.inline-block.leading-5.pl-12{
 }
 
 .blur-circle::after {
-	content: "";
+	content: '';
 	display: block;
 	width: 400px;
 	height: 400px;
@@ -483,7 +508,7 @@ a.inline-block.leading-5.pl-12{
 }
 
 .dark .blur-circle::after {
-	content: "";
+	content: '';
 	display: block;
 	width: 500px;
 	height: 500px;

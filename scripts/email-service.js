@@ -4,96 +4,103 @@ import nodemailer from 'nodemailer';
 
 // Email service for Obsidian sync notifications
 export class EmailService {
-  constructor(config = {}) {
-    this.config = config;
-    this.recipient = config.recipient || 'bangsluke@gmail.com';
-    this.sender = config.sender || 'bangsluke@gmail.com';
-    this.enabled = false; // Will be set during initialization
-    this.transporter = null;
-  }
+	constructor(config = {}) {
+		this.config = config;
+		this.recipient = config.recipient || 'bangsluke@gmail.com';
+		this.sender = config.sender || 'bangsluke@gmail.com';
+		this.enabled = false; // Will be set during initialization
+		this.transporter = null;
+	}
 
-  _getSmtpConfig() {
-    return {
-      service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_USER || this.sender,
-        pass: process.env.GMAIL_APP_PASSWORD
-      },
-      tls: {
-        rejectUnauthorized: false
-      }
-    };
-  }
+	_getSmtpConfig() {
+		return {
+			service: 'gmail',
+			auth: {
+				user: process.env.GMAIL_USER || this.sender,
+				pass: process.env.GMAIL_APP_PASSWORD,
+			},
+			tls: {
+				rejectUnauthorized: false,
+			},
+		};
+	}
 
-  async initialize() {
-    // Set enabled status based on environment variables
-    this.enabled = this.config.enabled !== false && process.env.EMAIL_NOTIFICATIONS === 'true';
-    
-    // Update recipient and sender from environment variables if available
-    this.recipient = this.config.recipient || process.env.EMAIL_RECIPIENT || this.recipient;
-    this.sender = this.config.sender || process.env.EMAIL_SENDER || this.sender;
+	async initialize() {
+		// Set enabled status based on environment variables
+		this.enabled =
+			this.config.enabled !== false &&
+			process.env.EMAIL_NOTIFICATIONS === 'true';
 
-    if (!this.enabled) {
-      console.log('📧 Email notifications disabled');
-      return false;
-    }
+		// Update recipient and sender from environment variables if available
+		this.recipient =
+			this.config.recipient || process.env.EMAIL_RECIPIENT || this.recipient;
+		this.sender = this.config.sender || process.env.EMAIL_SENDER || this.sender;
 
-    try {
-      if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-        console.error('❌ Gmail credentials not configured. Set GMAIL_USER and GMAIL_APP_PASSWORD environment variables.');
-        return false;
-      }
+		if (!this.enabled) {
+			console.log('📧 Email notifications disabled');
+			return false;
+		}
 
-      this.transporter = nodemailer.createTransport(this._getSmtpConfig());
-      
-      // Verify connection
-      await this.transporter.verify();
-      console.log('📧 Email service initialized successfully');
-      return true;
-    } catch (error) {
-      console.error('❌ Failed to initialize email service:', error.message);
-      return false;
-    }
-  }
+		try {
+			if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+				console.error(
+					'❌ Gmail credentials not configured. Set GMAIL_USER and GMAIL_APP_PASSWORD environment variables.'
+				);
+				return false;
+			}
 
-  async sendEmail(subject, body) {
-    if (!this.enabled || !this.transporter) {
-      console.log('📧 Email notifications disabled or not initialized');
-      return false;
-    }
+			this.transporter = nodemailer.createTransport(this._getSmtpConfig());
 
-    try {
-      console.log('📧 Sending email notification...');
-      
-      const mailOptions = {
-        from: this.sender,
-        to: this.recipient,
-        subject: subject,
-        html: body
-      };
+			// Verify connection
+			await this.transporter.verify();
+			console.log('📧 Email service initialized successfully');
+			return true;
+		} catch (error) {
+			console.error('❌ Failed to initialize email service:', error.message);
+			return false;
+		}
+	}
 
-      const result = await this.transporter.sendMail(mailOptions);
-      console.log('✅ Email notification sent successfully');
-      return true;
-    } catch (error) {
-      console.error('❌ Failed to send email notification:', error.message);
-      return false;
-    }
-  }
+	async sendEmail(subject, body) {
+		if (!this.enabled || !this.transporter) {
+			console.log('📧 Email notifications disabled or not initialized');
+			return false;
+		}
 
-  generateSyncReport(syncData) {
-    const {
-      success,
-      startTime,
-      endTime,
-      sourcePath,
-      summary,
-      errors = []
-    } = syncData;
+		try {
+			console.log('📧 Sending email notification...');
 
-    const subject = success ? '✅ Obsidian Sync Successful' : '❌ Obsidian Sync Failed';
-    
-    let body = `
+			const mailOptions = {
+				from: this.sender,
+				to: this.recipient,
+				subject: subject,
+				html: body,
+			};
+
+			const result = await this.transporter.sendMail(mailOptions);
+			console.log('✅ Email notification sent successfully');
+			return true;
+		} catch (error) {
+			console.error('❌ Failed to send email notification:', error.message);
+			return false;
+		}
+	}
+
+	generateSyncReport(syncData) {
+		const {
+			success,
+			startTime,
+			endTime,
+			sourcePath,
+			summary,
+			errors = [],
+		} = syncData;
+
+		const subject = success
+			? '✅ Obsidian Sync Successful'
+			: '❌ Obsidian Sync Failed';
+
+		let body = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -139,8 +146,8 @@ export class EmailService {
   </div>
 `;
 
-    if (errors.length > 0) {
-      body += `
+		if (errors.length > 0) {
+			body += `
   <h3>Errors</h3>
   <table class="error-table">
     <thead>
@@ -153,8 +160,8 @@ export class EmailService {
     </thead>
     <tbody>
 `;
-      errors.forEach(error => {
-        body += `
+			errors.forEach(error => {
+				body += `
       <tr>
         <td>${error.type || 'Unknown'}</td>
         <td>${error.file || error.directory || 'N/A'}</td>
@@ -162,14 +169,14 @@ export class EmailService {
         <td>${new Date(error.timestamp).toLocaleString()}</td>
       </tr>
 `;
-      });
-      body += `
+			});
+			body += `
     </tbody>
   </table>
 `;
-    }
+		}
 
-    body += `
+		body += `
   <div class="footer">
     <p><em>This is an automated notification from your Obsidian sync script.</em></p>
     <p><em>Generated on ${new Date().toLocaleString()}</em></p>
@@ -178,14 +185,14 @@ export class EmailService {
 </html>
 `;
 
-    return { subject, body };
-  }
+		return { subject, body };
+	}
 
-  async sendSyncNotification(syncData) {
-    const { subject, body } = this.generateSyncReport(syncData);
-    return await this.sendEmail(subject, body);
-  }
+	async sendSyncNotification(syncData) {
+		const { subject, body } = this.generateSyncReport(syncData);
+		return await this.sendEmail(subject, body);
+	}
 }
 
 // Default email service instance
-export const emailService = new EmailService(); 
+export const emailService = new EmailService();

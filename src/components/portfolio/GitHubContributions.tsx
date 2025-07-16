@@ -2,10 +2,12 @@
 import GitHubCalendar from 'preact-github-calendar';
 
 export default function GitHubContributions() {
-  return (
-    <section id="github-contributions" class="flex justify-center overflow-y-auto">
-      <GitHubCalendar username="bangsluke" />
-      <style>{`
+	return (
+		<section
+			id="github-contributions"
+			class="flex justify-center overflow-y-auto w-full">
+			<GitHubCalendar username="bangsluke" />
+			<style>{`
         #github-contributions * {
           color: #fff !important;
         }
@@ -21,11 +23,15 @@ export default function GitHubContributions() {
         }
         .github-calendar__graph {
           min-width: 100% !important;
+          width: 100% !important;
+        }
+        .github-calendar {
+          width: 100% !important;
         }
         .github-calendar__graph-label {
           fill: #fff !important;
         }
       `}</style>
-    </section>
-  );
+		</section>
+	);
 }

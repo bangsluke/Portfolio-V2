@@ -7,20 +7,20 @@ import { emailService } from './scripts/email-service.js';
 dotenv.config();
 
 async function testEmail() {
-  console.log('🧪 Testing email service...');
-  
-  const initialized = await emailService.initialize();
-  if (!initialized) {
-    console.error('❌ Failed to initialize email service');
-    console.log('💡 Check your .env file and Gmail App Password configuration');
-    return;
-  }
-  
-  console.log('📧 Sending test email...');
-  
-  const success = await emailService.sendEmail(
-    '🧪 Test Email from Portfolio Sync',
-    `
+	console.log('🧪 Testing email service...');
+
+	const initialized = await emailService.initialize();
+	if (!initialized) {
+		console.error('❌ Failed to initialize email service');
+		console.log('💡 Check your .env file and Gmail App Password configuration');
+		return;
+	}
+
+	console.log('📧 Sending test email...');
+
+	const success = await emailService.sendEmail(
+		'🧪 Test Email from Portfolio Sync',
+		`
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
       <h1 style="color: #333;">✅ Email Service Test</h1>
       <p>If you receive this email, your Portfolio-V2 email service is working correctly!</p>
@@ -40,18 +40,18 @@ async function testEmail() {
       </p>
     </div>
     `
-  );
-  
-  if (success) {
-    console.log('✅ Test email sent successfully!');
-    console.log('📬 Check your inbox for the test email');
-  } else {
-    console.log('❌ Test email failed');
-  }
+	);
+
+	if (success) {
+		console.log('✅ Test email sent successfully!');
+		console.log('📬 Check your inbox for the test email');
+	} else {
+		console.log('❌ Test email failed');
+	}
 }
 
 // Run the test
 testEmail().catch(error => {
-  console.error('❌ Test failed with error:', error.message);
-  process.exit(1);
-}); 
+	console.error('❌ Test failed with error:', error.message);
+	process.exit(1);
+});

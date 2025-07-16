@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EducationTimelineItem from '../components/portfolio/EducationTimelineItem.astro';
+import Heading from '../components/ui/Heading.astro';
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+
+// Get all education from the local content folder
+const education = await getCollection('educations');
+
+// Sort education by dateStart date (newest first)
+const sortedEducation = education.sort((a, b) => {
+	// Sort by dateStart date, fallback to dateEnd date, then alphabetically
+	const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
+	const dateB = b.data.dateStart || b.data.dateEnd || new Date(0);
+
+	if (dateA instanceof Date && dateB instanceof Date) {
+		return dateB.getTime() - dateA.getTime();
+	}
+
+	// Fallback to alphabetical sorting by slug (filename)
+	return a.slug.localeCompare(b.slug);
+});
+
+const pageTitle = 'Education - bangsluke Portfolio';
+const description = 'Complete education timeline';
+const ogimage = {
+	url: '/images/imagedefault.webp',
+	alt: 'Education Timeline',
+};
+---
+
+<Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
+	<div class="min-h-screen bg-white dark:bg-gray-900">
+		<!-- Header -->
+		<div class="bg-gradient-to-r from-mint-400 to-mint-500 py-16">
+			<div class="max-w-4xl mx-auto px-8 text-center">
+				<div class="flex gap-4 items-center justify-center mb-4">
+					<Icon class="text-4xl text-white" name="briefcase" />
+					<Heading text="" textGradient="Education" level={1} />
+				</div>
+				<p class="text-white/90 text-lg max-w-2xl mx-auto">
+					Complete timeline of my educational background and academic achievements
+				</p>
+				<div class="mt-6">
+					<a 
+						href="/site" 
+						class="inline-flex items-center px-4 py-2 bg-white/20 hover:bg-white/30 text-white font-medium rounded-lg transition-colors duration-300"
+					>
+						<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+						</svg>
+						Back to Portfolio
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Timeline -->
+		<section class="py-16 px-8">
+			<div class="max-w-4xl mx-auto">
+				<div class="relative" aria-label="Complete education experience">
+					<ol class="relative mt-10">
+						{
+							sortedEducation.map((education, index) => (
+								<li>
+									<article
+										role="article"
+										aria-labelledby={`education-title-${index}`}>
+										<div
+											class="flex flex-col gap-2 text-zinc-700 dark:text-zinc-300 md:col-span-3"
+											aria-describedby={`education-title-${index}`}>
+											<EducationTimelineItem
+												{...education.data}
+												name={
+													education.data.name ||
+													education.slug
+														.replace(/-/g, ' ')
+														.replace(/\b\w/g, l => l.toUpperCase())
+												}
+											/>
+										</div>
+									</article>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+				<!-- Bottom Back to Portfolio Button -->
+				<div class="flex justify-center mt-16">
+					<a 
+						href="/site" 
+						class="inline-flex items-center px-4 py-2 bg-white/20 hover:bg-white/30 text-mint-500 dark:text-mint-400 font-medium rounded-lg transition-colors duration-300 border border-mint-400 dark:border-mint-500"
+					>
+						<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+						</svg>
+						Back to Portfolio
+					</a>
+				</div>
+			</div>
+		</section>
+	</div>
+</Layout> 

@@ -13,8 +13,9 @@ aliases:
   - Dorkinians
 dateStart: 2015-09-05
 dateEnd: TBD
-imageURL: 
-linkedCompany: n/a
+logoURL: https://i.imgur.com/wMPmx9P.png
+linkedCompany:
+  - n/a
 ---
 # Dorkinians FC
 

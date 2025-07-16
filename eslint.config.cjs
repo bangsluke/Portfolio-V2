@@ -14,7 +14,8 @@ module.exports = [
       '*.config.mjs',
       'eslint.config.cjs',
       'scripts/**',
-      'public/**'
+      'public/**',
+      '**/*.astro'
     ]
   },
 
@@ -22,62 +23,7 @@ module.exports = [
   js.configs.recommended,
   ...tseslint.configs.recommended,
 
-  // Astro-specific configuration
-  {
-    files: ['**/*.astro'],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.es2021,
-        Astro: 'readonly'
-      },
-      parser: astro.parser,
-      parserOptions: {
-        parser: tseslint.parser,
-        extraFileExtensions: ['.astro'],
-        sourceType: 'module',
-        ecmaVersion: 'latest',
-        ecmaFeatures: {
-          jsx: true
-        }
-      }
-    },
-    plugins: {
-      astro: astro
-    },
-    rules: {
-      ...astro.configs.recommended.rules,
-      ...astro.configs['jsx-a11y-recommended'].rules,
-      'astro/no-conflict-set-directives': 'error',
-      'astro/no-unused-define-vars-in-style': 'error',
-      'astro/valid-compile': 'error',
-      'astro/no-deprecated-astro-canonicalurl': 'error',
-      'astro/no-deprecated-astro-resolve': 'error',
-      'astro/no-deprecated-getentrybyslug': 'error',
-      'astro/no-set-html-directive': 'error',
-      'astro/no-set-text-directive': 'error',
-      'astro/no-unused-css-selector': 'error',
-      'astro/prefer-class-list-directive': 'error',
-      'astro/prefer-object-class-list': 'error',
-      'astro/prefer-split-class-list': 'error',
-      'astro/jsx-a11y/alt-text': 'error',
-      'astro/jsx-a11y/anchor-has-content': 'error',
-      'astro/jsx-a11y/anchor-is-valid': 'error',
-      'astro/jsx-a11y/aria-props': 'error',
-      'astro/jsx-a11y/aria-proptypes': 'error',
-      'astro/jsx-a11y/aria-unsupported-elements': 'error',
-      'astro/jsx-a11y/heading-has-content': 'error',
-      'astro/jsx-a11y/iframe-has-title': 'error',
-      'astro/jsx-a11y/img-redundant-alt': 'error',
-      'astro/jsx-a11y/no-access-key': 'error',
-      'astro/jsx-a11y/no-distracting-elements': 'error',
-      'astro/jsx-a11y/no-redundant-roles': 'error',
-      'astro/jsx-a11y/role-has-required-aria-props': 'error',
-      'astro/jsx-a11y/role-supports-aria-props': 'error',
-      'astro/jsx-a11y/scope': 'error',
-      'astro/jsx-a11y/tabindex-no-positive': 'error'
-    }
-  },
+
 
   // TypeScript files
   {
@@ -159,7 +105,7 @@ module.exports = [
       }
     },
     plugins: {
-      react: require('eslint-plugin-react'),
+      react: require('eslint-plugin-react')
     },
     rules: {
       'react/jsx-uses-react': 'off', // Not needed in React 17+

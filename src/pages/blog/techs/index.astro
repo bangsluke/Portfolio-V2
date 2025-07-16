@@ -1,21 +1,22 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
+import Layout from '../../../layouts/Layout.astro';
 // import Languages from "../../../components/blog/Languages.astro";
-import Heading from "../../../components/ui/Heading.astro";
+import Heading from '../../../components/ui/Heading.astro';
 
-const pageTitle = "Technologies"; // Fixed: Title was "Languages" but heading shows "Technologies"
-const allPosts = await import.meta.glob("../posts/*.md", { eager: true });
+const pageTitle = 'Technologies'; // Fixed: Title was "Languages" but heading shows "Technologies"
+const allPosts = await import.meta.glob('../posts/*.md', { eager: true });
 const posts = Object.values(allPosts);
 const languages = [
-    ...new Set(posts.map((post: any) => post.frontmatter.languages).flat()),
+	...new Set(posts.map((post: any) => post.frontmatter.languages).flat()),
 ];
 ---
 
 <Layout pageTitle={pageTitle}>
-    <section class="py-8">
-        <div class="flex flex-col gap-8 max-w-3xl mx-auto">
-            <Heading text="Technologies" />
-            <!-- <Languages variant="vertical" languages={languages} /> --> <!-- Fixed: Missing languages prop -->
-        </div>
-    </section>
+	<section class="py-8">
+		<div class="flex flex-col gap-8 max-w-3xl mx-auto">
+			<Heading text="Technologies" />
+			<!-- <Languages variant="vertical" languages={languages} /> -->
+			<!-- Fixed: Missing languages prop -->
+		</div>
+	</section>
 </Layout>

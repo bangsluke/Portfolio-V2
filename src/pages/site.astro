@@ -1,35 +1,31 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import WorkExperienceTimeline from "../components/portfolio/WorkExperienceTimeline.astro";
-import EducationTimeline from "../components/portfolio/EducationTimeline.astro";
-import ProjectsGallery from "../components/portfolio/ProjectsGallery.astro";
-import SkillsBubbles from "../components/portfolio/SkillsBubbles.astro";
-import ClientsCarousel from "../components/portfolio/ClientsCarousel.astro";
-import ReferencesCarousel from "../components/portfolio/ReferencesCarousel.astro";
-import HeroIndex from "../components/portfolio/HeroIndex.astro";
-import Contact from "../components/portfolio/Contact.astro";
-import CompaniesList from "../components/portfolio/CompaniesList.astro";
-import CustomerCarousel from "../components/portfolio/CustomerCarousel.astro";
-import CodingSection from "../components/portfolio/CodingSection.astro";
-const pageTitle = "bangsluke Portfolio";
-const description = "My portfolio site";
+import Layout from '../layouts/Layout.astro';
+import WorkExperienceTimeline from '../components/portfolio/WorkExperienceTimeline.astro';
+import EducationTimeline from '../components/portfolio/EducationTimeline.astro';
+import ProjectsGallery from '../components/portfolio/ProjectsGallery.astro';
+import CustomerAndClientCarousel from '../components/portfolio/CustomerAndClientCarousel.astro';
+import ReferencesCarousel from '../components/portfolio/ReferencesCarousel.astro';
+import HeroIndex from '../components/portfolio/HeroIndex.astro';
+import Contact from '../components/portfolio/Contact.astro';
+import CompaniesList from '../components/portfolio/CompaniesList.astro';
+import CodingSection from '../components/portfolio/CodingSection.astro';
+const pageTitle = 'bangsluke Portfolio';
+const description = 'My portfolio site';
 const ogimage = {
-  url: "/images/imagedefault.webp",
-  alt: "bangsluke Portfolio"
+	url: '/images/imagedefault.webp',
+	alt: 'bangsluke Portfolio',
 };
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
-  
-  <HeroIndex />
-  <ProjectsGallery />
-  <CodingSection />
-  <WorkExperienceTimeline />
-  <!-- TODO: Delete below Customer Carousel -->
-  <CustomerCarousel />
-  <ClientsCarousel />
-  <!-- <CompaniesList /> -->
-  <EducationTimeline />
-  <ReferencesCarousel />
-  <Contact />
+	<HeroIndex />
+	<ProjectsGallery />
+	<CodingSection />
+	<WorkExperienceTimeline />
+	<!-- TODO: Delete below Customer Carousel -->
+	<CustomerAndClientCarousel />
+	<!-- <CompaniesList /> -->
+	<EducationTimeline />
+	<ReferencesCarousel />
+	<Contact />
 </Layout>
