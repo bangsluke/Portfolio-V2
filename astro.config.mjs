@@ -51,6 +51,9 @@ export default defineConfig({
       theme: 'github-dark',
       // Suppress warnings for unknown languages (like Obsidian-specific syntaxes)
       wrap: true,
+      // Note: Shiki warnings for "dataview", "table-of-contents", "meta-bind", and "chatgpt" 
+      // are expected when syncing from Obsidian. These are Obsidian-specific syntaxes that 
+      // fall back to plaintext highlighting. The warnings are harmless and can be ignored.
     },
   },
 });
