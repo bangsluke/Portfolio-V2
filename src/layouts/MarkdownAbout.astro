@@ -2,7 +2,7 @@
 import Layout from "./Layout.astro";
 import { Icon } from "astro-icon/components";
 import Heading from "../components/ui/Heading.astro";
-import Experience from "../components/portfolio/Experience.astro";
+import WorkExperienceTimeline from "../components/portfolio/WorkExperienceTimeline.astro";
 import NavArticle from "../components/layout/NavArticle.astro";
 import Contact from "../components/portfolio/Contact.astro";
 import Tools from "../components/portfolio/Tools.astro";
@@ -93,7 +93,7 @@ const { frontmatter } = Astro.props;
         <Heading text="Experience" textGradient="Work" level={2} />
       </div>
 
-      <Experience />
+      <WorkExperienceTimeline />
     </div>
   </section>
   <section class="py-8 px-8 max-md:py-4 mt-10 mb-20 scroll-m-16" id="sttack">

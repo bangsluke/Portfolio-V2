@@ -18,6 +18,16 @@
 
 ## Auto Log
 
+## 2025-01-16 11:15 [main] - Fixed build error from deleted Experience component
+- Replaced deleted Experience.astro import with WorkExperienceTimeline in MarkdownAbout.astro
+  - Changed import from "../components/portfolio/Experience.astro" to "../components/portfolio/WorkExperienceTimeline.astro"
+  - Updated component usage from <Experience /> to <WorkExperienceTimeline />
+  - Resolves build error "Could not resolve Experience.astro"
+- WorkExperienceTimeline provides same functionality as deleted Experience component
+  - Displays work experience from roles collection
+  - Maintains same layout and styling
+  - No loss of functionality for about page
+
 ## 2025-01-16 11:10 [main] - Fixed star icon error in SkillItem component
 - Replaced invalid "star-fill" and "star" icon names with HTML star characters
   - Changed from Icon component with non-existent star icons to HTML ★ characters
