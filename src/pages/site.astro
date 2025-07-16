@@ -2,9 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import Experience from "../components/portfolio/Experience.astro";
 import Education from "../components/portfolio/Education.astro";
+import Projects from "../components/portfolio/Projects.astro";
 import HeroIndex from "../components/portfolio/HeroIndex.astro";
 import Contact from "../components/portfolio/Contact.astro";
-import ListProjects from "../components/portfolio/ListProjects.astro";
 import CompaniesList from "../components/portfolio/CompaniesList.astro";
 import GitHubContributions from "../components/portfolio/GitHubContributions.tsx";
 import { Icon } from "astro-icon/components";
@@ -26,7 +26,7 @@ import Heading from "../components/ui/Heading.astro";
   <Experience />
   <GitHubContributions client:only="preact" />
   
-  <ListProjects />
+  <Projects />
   <Education />
   <Contact />
 </Layout>

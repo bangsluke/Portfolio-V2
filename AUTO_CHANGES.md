@@ -18,6 +18,33 @@
 
 ## Auto Log
 
+## 2025-01-16 10:55 [main] - Added Projects component with schema updates
+- Created Projects.astro component to display projects collection
+  - Similar structure to Education and Experience components
+  - Sorts projects by dateStart date (newest first)
+  - Uses code icon and "Projects" heading
+  - Derives project names from filenames when not in frontmatter
+- Fixed icon reference to use available "code" icon instead of missing "folder" icon
+  - Resolves build error about missing folder icon
+  - Maintains consistent icon usage across portfolio components
+- Created ProjectItem.astro component for individual project display
+  - Displays project name, dates, technologies, and links
+  - Shows Live Demo and Code links when available
+  - Processes shortDescription, longDescription, and lessonsLearned with content processor
+  - Uses processed-content class for mint-green link styling
+- Updated projects collection schema to make name field optional
+  - Added name: z.string().optional() to config.ts
+  - Allows projects to work without explicit name in frontmatter
+  - Maintains backward compatibility with existing name fields
+- Added Projects component to main Site page
+  - Replaced ListProjects component with new Projects component
+  - Integrated into site.astro with proper import and usage
+  - Maintains consistent layout and styling with other portfolio sections
+- Implemented consistent content processing across all portfolio sections
+  - Projects now use the same Obsidian link processing as Education and Experience
+  - Mint-green styling for processed links
+  - HTML rendering for markdown links and content
+
 ## 2025-01-16 10:45 [main] - Enhanced section extraction with advanced link processing
 - Updated extractSectionContent function with comprehensive link processing
   - Added priority processing for [[CompanyName|AltName]] format to extract AltName only

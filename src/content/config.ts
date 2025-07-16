@@ -32,9 +32,8 @@ const staticDataCollection = defineCollection({
 const projectsCollection = defineCollection({
   type: 'content',
   schema: z.object({
+    name: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    aliases: z.union([z.array(z.string()), z.null()]).optional(),
-    viewCount: z.number().optional(),
     projectURL: z.union([z.string(), z.null()]).optional(),
     codeURL: z.union([z.string(), z.null()]).optional(),
     codeMultipleRepos: z.union([z.boolean(), z.null()]).optional(),
@@ -49,7 +48,6 @@ const projectsCollection = defineCollection({
     toolOwner: z.union([z.string(), z.null()]).optional(),
     developers: z.array(z.string()).optional(),
     topicTags: z.array(z.string()).optional(),
-    powerShellAlias: z.union([z.string(), z.null()]).optional(),
     version: z.union([z.number(), z.null()]).optional(),
     // Extracted section content
     shortDescription: z.string().optional(),
