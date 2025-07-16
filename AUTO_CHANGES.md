@@ -18,6 +18,21 @@
 
 ## Auto Log
 
+## 2025-01-16 10:35 [main] - Fixed education name handling to use filenames instead of frontmatter
+- Removed name field from Ashcombe School.md frontmatter
+  - Education files should not have name property in frontmatter
+  - Filenames can be used to populate the name automatically
+- Updated education collection schema to make name field optional
+  - Changed from required string to optional string in config.ts
+  - Allows education files to work without explicit name in frontmatter
+- Updated Education component to derive name from filename
+  - Uses education.slug.replace(/-/g, ' ') to convert filename to readable name
+  - Falls back to filename-based name when frontmatter name is not provided
+  - Maintains backward compatibility with existing name fields
+- Fixed sorting logic to use slug instead of potentially undefined name field
+  - Prevents TypeScript errors when name field is missing
+  - Ensures consistent sorting behavior
+
 ## 2025-01-16 10:30 [main] - Modified skill description handling to use YAML frontmatter only
 - Updated extractSectionsToFrontmatter function to exclude skillDescription from section extraction
   - Removed "Skill Description" section from being extracted for skill content type

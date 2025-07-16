@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Experience from "../components/portfolio/Experience.astro";
+import Education from "../components/portfolio/Education.astro";
 import HeroIndex from "../components/portfolio/HeroIndex.astro";
 import Contact from "../components/portfolio/Contact.astro";
 import ListProjects from "../components/portfolio/ListProjects.astro";
@@ -18,6 +19,7 @@ import Heading from "../components/ui/Heading.astro";
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
+  <Education />
   <CompaniesList />
   <CustomerCarousel />
   <HeroIndex />

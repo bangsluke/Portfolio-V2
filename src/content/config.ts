@@ -132,13 +132,11 @@ const rolesCollection = defineCollection({
 const educationsCollection = defineCollection({
   type: 'content',
   schema: z.object({
+    name: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    created: z.union([z.string(), z.date(), z.null()]).optional(),
-    modified: z.union([z.string(), z.date(), z.null()]).optional(),
-    viewCount: z.number().optional(),
     dateStart: z.union([z.string(), z.date(), z.null()]).optional(),
     dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
-    imageURL: z.union([z.string(), z.null()]).optional(),
+    logoURL: z.union([z.string(), z.null()]).optional(),
     // Extracted section content
     qualifications: z.string().optional(),
     additionalDetails: z.string().optional(),
