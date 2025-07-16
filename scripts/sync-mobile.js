@@ -781,7 +781,7 @@ tags: ["${MOBILE_CONFIG.PORTFOLIO_TAG}"]
     const totalFiles = this.stats.filesCopied + this.stats.filesSkipped + this.stats.errors.length;
     
     let body = `
-<h2>Mobile Obsidian Sync Report</h2>
+<h2>Portfolio Site V2 - Mobile Obsidian Sync Report</h2>
 <p><strong>Status:</strong> ${isSuccess ? '✅ Successful' : '❌ Failed'}</p>
 <p><strong>Sync Time:</strong> ${this.syncStartTime.toLocaleString()} - ${new Date().toLocaleString()}</p>
 <p><strong>Source Path:</strong> ${this.sourcePath}</p>

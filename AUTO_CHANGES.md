@@ -18,6 +18,29 @@
 
 ## Auto Log
 
+## 2025-01-16 09:15 [main] - Fixed Obsidian vault path validation in sync scripts
+- Added proper validation for OBSIDIAN_PATH environment variable in sync-production.js
+- Added proper validation for OBSIDIAN_PATH environment variable in sync-obsidian.js
+- Added error handling to exit with clear error messages if OBSIDIAN_PATH is not set or invalid
+- Fixed SYNC_CONFIG.DEBUG reference to use process.env.DEBUG instead
+- Scripts now validate that the Obsidian vault path exists before attempting to sync
+- Fixed .env file loading to use absolute paths for better reliability
+- Added debugging output to show .env file location and available environment variables
+- Fixed build error by removing missing image references from Dorkinians Website V2.md
+- Removed references to non-existent image files: 20241201-player-stats-page-design.jpeg, 20241001-PointsPerGame.jpeg, 20241001-Stats Background.png, and 20241001-Stats Filters.png
+- Added automatic image filtering in markdown processing to prevent build errors
+- Enhanced email notification debugging and reliability
+- Modified success criteria to send emails even when build fails if files were processed
+- Added comprehensive email service debugging output
+- Fixed image filtering to occur during file copy process instead of after build
+- Image references are now filtered out before files are written to prevent build errors
+- Manually fixed remaining image references in Dorkinians Website V2.md that were causing build errors
+- Improved image filtering regex patterns to be more robust and handle edge cases
+- Fixed require/import issue in post-processing function to work with ES modules
+- Updated all package.json scripts to use cross-env instead of set for better cross-platform compatibility
+- Added post-processing image filtering to sync-obsidian.js for consistency
+- All sync scripts now use cross-env for reliable environment variable handling
+
 ## 2024-12-19 09:31 [main] - Added ESLint configuration
 - Created eslint.config.js with comprehensive rules for Astro, TypeScript, React, and JavaScript
 - Added support for Astro-specific linting rules and accessibility checks

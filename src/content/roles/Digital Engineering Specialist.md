@@ -3,17 +3,11 @@ tags:
   - notes
   - role
   - portfolio
-created: 2025-07-13T14:35:00
-modified: 2025-07-13T14:37:42+01:00
-viewCount: 2
-dateStart: 2022-07-01
-dateEnd: ""
-linkedCompany:
-  - "[RLE International](RLE International)"
+  - "[RLE International](#rle-international)"
 ---
 # Digital Engineering Specialist
 
-> **back:** Link back to [Role Notes](Role Notes)
+> **BACK:** Link back to [Role Notes](#role-notes)
 
 ## Table of Contents
 ```table-of-contents
@@ -21,50 +15,54 @@ linkedCompany:
 
 ## Role Description
 
-Development of online web-based applications for automotive problems.
-Following a couple of months of 1:1 mentoring with a senior developer, I
-have developed an MVP dashboard tool, built using Next.js, Nest.js, a
-Neo4j database and a Flask API to call a Python algorithm. The tool
-collects inputs from a user, calculates several optimal DVP plans and then
-presents the options in several ways to enable further user decisions.
+Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using [Next.js](#next.js), [Nest.js](#nest.js), a [Neo4j](#neo4j) database and a [Flask](#flask) [API](#api) to call a [Python](#python) algorithm. The tool collects inputs from a user, calculates several optimal [DVP](#dvp) plans and then presents the options in several ways to enable further user decisions.
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Key Achievement
 
 TBC
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Analysis
 
 ### Total Count
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Last Mentioned
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)

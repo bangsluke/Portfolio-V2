@@ -5,80 +5,69 @@ tags:
   - notes
   - coding
   - project/completed
-created: 2024-02-20T09:27:00
-modified: 2025-07-11T15:54:33+01:00
-aliases:
   - Documentation Site
   - bangsluke-documentation
-viewCount: 12
-projectURL: https://bangsluke-documentation.netlify.app/
-codeURL: https://github.com/bangsluke/bangsluke.github.io
-codeMultipleRepos: false
-folderURL: n/a
-logoURL: n/a
-imageURL: 
-dateStart: 2023-06-04
-dateEnd: 2024-07-14
-technologies:
-  - "[React](React)"
-  - "[Docusaurus](Docusaurus)"
-  - "[Markdown](Markdown)"
-  - "[GitHub](GitHub)"
-  - "[Netlify](Netlify)"
-  - "[Synk](Synk)"
-  - "[Algolia](Algolia)"
-projectCategory: Documentation
-linkedCompany:
+  - "[React](#react)"
+  - "[Docusaurus](#docusaurus)"
+  - "[Markdown](#markdown)"
+  - "[GitHub](#github)"
+  - "[Netlify](#netlify)"
+  - "[Synk](#synk)"
+  - "[Algolia](#algolia)"
   - n/a
-toolOwner: "[Luke Bangs](Luke Bangs)"
-developers:
-  - "[Luke Bangs](Luke Bangs)"
-topicTags:
+  - "[Luke Bangs](#luke-bangs)"
   - Documentation
   - Coding
-powerShellAlias: bangsluke
-version: 1
 ---
 # bangsluke Documentation
 
-> **back:** Link back to [01 Projects|Projects](01 Projects|Projects)
+> **BACK:** Link back to [Projects](#01-projects)
 
 >[!website-link] Links
-> ```dataview
+> 
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->```
->```dataview
+>
+-->
+
+>
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->```
->```dataview
+>
+-->
+
+>
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
-> **details:** `=this.file.name`
+>[!details]  `=this.file.name`
 >`=choice(this.folderURL = null | this.folderURL = "" | this.folderURL = "n/a","","<br>Folder URL: " + link(this.folderURL,"Link")) + choice(this.dateStart = null | this.dateStart = "","","<br>Date Start: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>Date End: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "", "", choice(this.dateEnd = "", "<br>Development Duration: " + string(date(today) - date(this.dateStart)), "<br>Development Duration: " + string(date(this.dateEnd) - date(this.dateStart)))) + choice(this.projectCategory = null | this.projectCategory = "","","<br>Category: " + this.projectCategory) + choice(this.linkedCompany = null | this.linkedCompany = "" | contains(this.linkedCompany, "n/a"),"","<br>Project for: " + this.linkedCompany) + choice(this.toolOwner = null | this.toolOwner = "","","<br>Tool Owner: " + this.toolOwner) + choice(this.developers = null | this.developers = "","","<br>Developers: " + this.developers) + choice(this.technologies = null | this.technologies = "","","<br>Technologies: " + this.technologies) + choice(this.topicTags = null | this.topicTags = "","","<br>Topics: " + this.topicTags) + choice(this.powerShellAlias = null | this.powerShellAlias = "" | this.powerShellAlias = "n/a","","<br>PowerShell Alias: " + this.powerShellAlias) + choice(this.version = null | this.version = "","","<br>Version: " + this.version)`
 
 ## Table of Contents
 
-```table-of-contents
+
+-->
+table-of-contents
 ```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Introduction
 
-A personal documentation site storing key links to the software I use, articles I find useful, and a section on [Dorkinians FC](Dorkinians FC) stats.
+A personal documentation site storing key links to the software I use, articles I find useful, and a section on [Dorkinians FC](#dorkinians-fc) stats.
 
-The repo also contains my [Homepage Website|Homepage](Homepage Website|Homepage) and [New Tab Website|New Tab](New Tab Website|New Tab) pages.
+The repo also contains my [Homepage](#homepage-website) and [New Tab](#new-tab-website) pages.
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Short Description
 
-A personal documentation site storing key links to the software I use, articles I find useful, and a section on [Dorkinians FC](Dorkinians FC) stats.
+A personal documentation site storing key links to the software I use, articles I find useful, and a section on [Dorkinians FC](#dorkinians-fc) stats.
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
@@ -86,88 +75,100 @@ Broken out into several sections, my documentation site provides me top level li
 
 I regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing.
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: [React](React) using [Docusaurus](Docusaurus), [Algolia](Algolia)
-- Back end/Datasource: [Markdown](Markdown)
-- Hosting: [GitHub](GitHub) (see [Repositories](#repositories)), [Netlify](Netlify)
-- Security: [Synk](Synk)
+- Front end: [React](#react) using [Docusaurus](#docusaurus), [Algolia](#algolia)
+- Back end/Datasource: [Markdown](#markdown)
+- Hosting: [GitHub](#github) (see [Repositories](#repositories)), [Netlify](#netlify)
+- Security: [Synk](#synk)
 - Authentication: n/a
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Repositories
 
 - Main repo: `=this.codeURL`
 - Secondary repo: n/a
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](PowerShell) alias 
+To launch the repo, use the [PowerShell](#powershell) alias 
 
 > `=this.powerShellAlias`
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Planning and Design
 
-- All built and designed using [Docusaurus](Docusaurus) structures with minimal additional styling added.
+- All built and designed using [Docusaurus](#docusaurus) structures with minimal additional styling added.
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
 - https://docusaurus.io/
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This project introduced me to the concept of documentation sites, the ease and brilliance of [Markdown](Markdown) and led me to notice how many different softwares either use [Docusaurus](Docusaurus) or a very similar type static site builder for their documentation.
+This project introduced me to the concept of documentation sites, the ease and brilliance of [Markdown](#markdown) and led me to notice how many different softwares either use [Docusaurus](#docusaurus) or a very similar type static site builder for their documentation.
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Analysis
 
 ### Last Mentioned in Daily Notes
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-```
+
+-->
+
 
 ### Last Mentioned
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-```
+
+-->
+
 
 ### All Mentions
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)

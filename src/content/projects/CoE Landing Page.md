@@ -6,161 +6,162 @@ tags:
   - project/completed/work
   - coding
   - work
-created: 2025-06-02 17:16
-modified: 2025-07-11T15:51:04+01:00
-aliases:
   - Stratamotiv Landing Page
-viewCount: 10
-projectURL: https://stratamotiv.netlify.app/
-codeURL: TBC
-codeMultipleRepos: false
-folderURL: n/a
-logoURL: n/a
-imageURL: TBC
-dateStart: ""
-dateEnd: ""
-technologies:
-  - "[React](React)"
-  - "[Netlify](Netlify)"
-  - "[GitLab](GitLab)"
-  - "[Azure](Azure)"
-projectCategory: Work Project
-linkedCompany:
-  - "[RLE International](RLE International)"
-toolOwner: "[Haydn Baker](Haydn Baker)"
-developers:
-  - "[Luke Bangs](Luke Bangs)"
-topicTags:
-  - "[Work](Work)"
-  - "[Centre of Excellence|CoE](Centre of Excellence|CoE)"
-powerShellAlias: n/a
-version: 1
+  - "[React](#react)"
+  - "[Netlify](#netlify)"
+  - "[GitLab](#gitlab)"
+  - "[Azure](#azure)"
+  - "[RLE International](#rle-international)"
+  - "[Luke Bangs](#luke-bangs)"
+  - "[Work](#work)"
+  - "[CoE](#centre-of-excellence)"
 ---
 # CoE Landing Page
 
-> **back:** Link back to [01 Projects|Projects](01 Projects|Projects)
+> **BACK:** Link back to [Projects](#01-projects)
 
 >[!website-link] Links
-> ```dataview
+> 
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->```
->```dataview
+>
+-->
+
+>
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->```
->```dataview
+>
+-->
+
+>
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
-> **details:** `=this.file.name`
+>[!details]  `=this.file.name`
 >`=choice(this.folderURL = null | this.folderURL = "" | this.folderURL = "n/a","","<br>Folder URL: " + link(this.folderURL,"Link")) + choice(this.dateStart = null | this.dateStart = "","","<br>Date Start: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>Date End: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "", "", choice(this.dateEnd = "", "<br>Development Duration: " + string(date(today) - date(this.dateStart)), "<br>Development Duration: " + string(date(this.dateEnd) - date(this.dateStart)))) + choice(this.projectCategory = null | this.projectCategory = "","","<br>Category: " + this.projectCategory) + choice(this.linkedCompany = null | this.linkedCompany = "" | contains(this.linkedCompany, "n/a"),"","<br>Project for: " + this.linkedCompany) + choice(this.toolOwner = null | this.toolOwner = "","","<br>Tool Owner: " + this.toolOwner) + choice(this.developers = null | this.developers = "","","<br>Developers: " + this.developers) + choice(this.technologies = null | this.technologies = "","","<br>Technologies: " + this.technologies) + choice(this.topicTags = null | this.topicTags = "","","<br>Topics: " + this.topicTags) + choice(this.powerShellAlias = null | this.powerShellAlias = "" | this.powerShellAlias = "n/a","","<br>PowerShell Alias: " + this.powerShellAlias) + choice(this.version = null | this.version = "","","<br>Version: " + this.version)`
 
 ## Table of Contents
 
-```table-of-contents
+
+-->
+table-of-contents
 ```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Introduction
 
-A landing page for showcasing a new Automotive Consultancy branch of [RLE International|RLE](RLE International|RLE), known as [Centre of Excellence](Centre of Excellence).
+A landing page for showcasing a new Automotive Consultancy branch of [RLE](#rle-international), known as [Centre of Excellence](#centre-of-excellence).
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Short Description
 
-A landing page for showcasing a new Automotive Consultancy branch of [RLE International|RLE](RLE International|RLE), known as [Centre of Excellence](Centre of Excellence).
+A landing page for showcasing a new Automotive Consultancy branch of [RLE](#rle-international), known as [Centre of Excellence](#centre-of-excellence).
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-A basic landing page for showcasing a new Automotive Consultancy branch of [RLE International|RLE](RLE International|RLE), known as [Centre of Excellence](Centre of Excellence) ready for prospective clients to view and see the services we provide.
+A basic landing page for showcasing a new Automotive Consultancy branch of [RLE](#rle-international), known as [Centre of Excellence](#centre-of-excellence) ready for prospective clients to view and see the services we provide.
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: [React](React)
+- Front end: [React](#react)
 - Back end/Datasource: n/a
-- Hosting: [GitLab](GitLab) (see [Repositories](#repositories)), [Netlify](Netlify)
+- Hosting: [GitLab](#gitlab) (see [Repositories](#repositories)), [Netlify](#netlify)
 - Security: n/a
-- Authentication: [Azure](Azure)
+- Authentication: [Azure](#azure)
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Repositories
 
 - Main repo: `=this.codeURL`
 - Secondary repo: n/a
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](PowerShell) alias 
+To launch the repo, use the [PowerShell](#powershell) alias 
 
 > `=this.powerShellAlias`
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Planning and Design
 
 - n/a
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- [Centre of Excellence](Centre of Excellence)
+- [Centre of Excellence](#centre-of-excellence)
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
 Main lesson was creating the automatic video background of the site along with a subtle purple filter across it which ended up looking pretty good. Sadly the site wasn’t finished as the requirements for the company changed.
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Analysis
 
 ### Last Mentioned in Daily Notes
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-```
+
+-->
+
 
 ### Last Mentioned
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-```
+
+-->
+
 
 ### All Mentions
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)

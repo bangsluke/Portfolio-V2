@@ -4,17 +4,36 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 import { emailService } from './email-service.js';
-
-// Load environment variables from .env file (one level up from scripts folder)
-dotenv.config({ path: '../.env' });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Load environment variables from .env file (absolute path to ensure it's found)
+const envPath = path.join(__dirname, '../.env');
+console.log('🔍 Looking for .env file at:', envPath);
+dotenv.config({ path: envPath });
+
 // Configuration
-const OBSIDIAN_VAULT_PATH = 'C:/Users/bangs/Documents/Coding Projects/Obsidian-Backups/Obsidian-Personal-Notes/Personal Notes';
+const OBSIDIAN_VAULT_PATH = process.env.OBSIDIAN_PATH;
 const ASTRO_CONTENT_PATH = path.join(__dirname, '../src/content');
+
+// Validate OBSIDIAN_PATH
+if (!OBSIDIAN_VAULT_PATH) {
+  console.error('❌ OBSIDIAN_PATH environment variable is not set!');
+  console.error('Please set OBSIDIAN_PATH in your .env file to the path of your Obsidian vault.');
+  console.error('Expected .env file location:', envPath);
+  console.error('Available environment variables:', Object.keys(process.env).filter(key => key.includes('OBSIDIAN') || key.includes('EMAIL') || key.includes('PORTFOLIO')));
+  process.exit(1);
+}
+
+// Check if the Obsidian vault path exists
+if (!fs.existsSync(OBSIDIAN_VAULT_PATH)) {
+  console.error('❌ Obsidian vault path does not exist:', OBSIDIAN_VAULT_PATH);
+  console.error('Please check your OBSIDIAN_PATH in the .env file.');
+  process.exit(1);
+}
 
 // Folder mapping based on tags
 const FOLDER_MAPPING = {
@@ -165,6 +184,49 @@ function isProtected(itemName) {
   return PROTECTED_ITEMS.includes(itemName);
 }
 
+// Post-process all markdown files in the content directory to remove image references
+function postProcessContentImages(contentDir) {
+  function processFile(filePath) {
+    let content = fs.readFileSync(filePath, 'utf8');
+    // Remove Obsidian-style image references
+    content = content.replace(
+      /!\[([^\]]*)\]\(#([^)]+)\)/g,
+      (match, altText, imageName) => `<!-- Image removed during sync: ${altText} (${imageName}) -->`
+    );
+    // Remove standard markdown images (relative, Obsidian-style, or non-http)
+    content = content.replace(
+      /!\[([^\]]*)\]\(([^)]+)\)/g,
+      (match, altText, imagePath) => {
+        if (imagePath.startsWith('#') || imagePath.startsWith('./') || imagePath.startsWith('../') || (!imagePath.startsWith('http') && !imagePath.startsWith('/') && !imagePath.startsWith('data:'))) {
+          return `<!-- Image removed during sync: ${altText} (${imagePath}) -->`;
+        }
+        return match;
+      }
+    );
+    // Extra pass for any remaining Obsidian-style
+    content = content.replace(
+      /!\[([^\]]*)\]\(#([^)]+)\)/g,
+      (match, altText, imageName) => `<!-- Image removed during sync: ${altText} (${imageName}) -->`
+    );
+    fs.writeFileSync(filePath, content, 'utf8');
+  }
+
+  function processDir(dir) {
+    const items = fs.readdirSync(dir);
+    for (const item of items) {
+      const fullPath = path.join(dir, item);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        processDir(fullPath);
+      } else if (item.endsWith('.md')) {
+        processFile(fullPath);
+      }
+    }
+  }
+
+  processDir(contentDir);
+}
+
 // Clean up old files while protecting important ones
 function cleanupOldFiles() {
   console.log('Cleaning up old files...');
@@ -236,6 +298,9 @@ async function main() {
     
     console.log('Processing Obsidian vault...');
     processDirectory(OBSIDIAN_VAULT_PATH);
+
+    console.log('Post-processing content images...');
+    postProcessContentImages(ASTRO_CONTENT_PATH);
     
     console.log('Cleaning up old files...');
     cleanupOldFiles();

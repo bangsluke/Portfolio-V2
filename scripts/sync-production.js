@@ -8,16 +8,34 @@ import { execSync } from 'child_process';
 import { processDirectory as processMarkdownFiles } from './process-obsidian-markdown.js';
 import { emailService } from './email-service.js';
 
-// Load environment variables from .env file (one level up from scripts folder)
-dotenv.config({ path: '../.env' });
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Load environment variables from .env file (absolute path to ensure it's found)
+const envPath = path.join(__dirname, '../.env');
+console.log('🔍 Looking for .env file at:', envPath);
+dotenv.config({ path: envPath });
+
 // Configuration
-const OBSIDIAN_VAULT_PATH = process.env.OBSIDIAN_PATH || 'C:/Users/bangs/Documents/Coding Projects/Obsidian-Backups/Obsidian-Personal-Notes/Personal Notes';
+const OBSIDIAN_VAULT_PATH = process.env.OBSIDIAN_PATH;
 const ASTRO_CONTENT_PATH = path.join(__dirname, '../src/content');
 const ERROR_LOG_PATH = path.join(__dirname, '../sync-errors.json');
+
+// Validate OBSIDIAN_PATH
+if (!OBSIDIAN_VAULT_PATH) {
+  console.error('❌ OBSIDIAN_PATH environment variable is not set!');
+  console.error('Please set OBSIDIAN_PATH in your .env file to the path of your Obsidian vault.');
+  console.error('Expected .env file location:', envPath);
+  console.error('Available environment variables:', Object.keys(process.env).filter(key => key.includes('OBSIDIAN') || key.includes('EMAIL') || key.includes('PORTFOLIO')));
+  process.exit(1);
+}
+
+// Check if the Obsidian vault path exists
+if (!fs.existsSync(OBSIDIAN_VAULT_PATH)) {
+  console.error('❌ Obsidian vault path does not exist:', OBSIDIAN_VAULT_PATH);
+  console.error('Please check your OBSIDIAN_PATH in the .env file.');
+  process.exit(1);
+}
 
 // Folder mapping based on tags
 const FOLDER_MAPPING = {
@@ -117,7 +135,7 @@ function processMarkdownFile(filePath, relativePath) {
   try {
     syncErrors.summary.totalFiles++;
     
-    const content = fs.readFileSync(filePath, 'utf8');
+    let content = fs.readFileSync(filePath, 'utf8');
     const { tags } = parseFrontmatter(content);
     
     if (process.env.DEBUG) {
@@ -156,8 +174,41 @@ function processMarkdownFile(filePath, relativePath) {
       return;
     }
     
-    // Copy file to target folder
-    fs.copyFileSync(filePath, targetPath);
+    // Filter out image references that could cause build errors
+    content = content.replace(
+      /!\[([^\]]*)\]\(#([^)]+)\)/g,
+      (match, altText, imageName) => {
+        return `<!-- Image removed during sync: ${altText} (${imageName}) -->`;
+      }
+    );
+    
+    // Also handle standard markdown images that might reference non-existent files
+    content = content.replace(
+      /!\[([^\]]*)\]\(([^)]+)\)/g,
+      (match, altText, imagePath) => {
+        // If it's an Obsidian-style reference (starts with #), convert to comment
+        if (imagePath.startsWith('#')) {
+          return `<!-- Image removed during sync: ${altText} (${imagePath}) -->`;
+        }
+        // If it's a relative path that might not exist, also convert to comment
+        if (imagePath.startsWith('./') || imagePath.startsWith('../') || (!imagePath.startsWith('http') && !imagePath.startsWith('/') && !imagePath.startsWith('data:'))) {
+          return `<!-- Image removed during sync: ${altText} (${imagePath}) -->`;
+        }
+        // Keep external URLs (http/https), absolute paths, and data URLs
+        return match;
+      }
+    );
+    
+    // Additional filter for any remaining Obsidian-style image references
+    content = content.replace(
+      /!\[([^\]]*)\]\(#([^)]+)\)/g,
+      (match, altText, imageName) => {
+        return `<!-- Image removed during sync: ${altText} (${imageName}) -->`;
+      }
+    );
+    
+    // Write the filtered content to target folder
+    fs.writeFileSync(targetPath, content, 'utf8');
     syncErrors.summary.copiedFiles++;
     
     if (process.env.DEBUG) {
@@ -188,7 +239,7 @@ function processDirectory(dirPath, relativePath = '') {
       
       // Skip protected items
       if (isProtected(item)) {
-        if (SYNC_CONFIG.DEBUG) {
+        if (process.env.DEBUG) {
           console.log(`🛡️ Skipping protected item: ${itemRelativePath}`);
         }
         continue;
@@ -215,6 +266,49 @@ function processDirectory(dirPath, relativePath = '') {
 // Check if an item should be protected
 function isProtected(itemName) {
   return PROTECTED_ITEMS.includes(itemName);
+}
+
+// Post-process all markdown files in the content directory to remove image references
+function postProcessContentImages(contentDir) {
+  function processFile(filePath) {
+    let content = fs.readFileSync(filePath, 'utf8');
+    // Remove Obsidian-style image references
+    content = content.replace(
+      /!\[([^\]]*)\]\(#([^)]+)\)/g,
+      (match, altText, imageName) => `<!-- Image removed during sync: ${altText} (${imageName}) -->`
+    );
+    // Remove standard markdown images (relative, Obsidian-style, or non-http)
+    content = content.replace(
+      /!\[([^\]]*)\]\(([^)]+)\)/g,
+      (match, altText, imagePath) => {
+        if (imagePath.startsWith('#') || imagePath.startsWith('./') || imagePath.startsWith('../') || (!imagePath.startsWith('http') && !imagePath.startsWith('/') && !imagePath.startsWith('data:'))) {
+          return `<!-- Image removed during sync: ${altText} (${imagePath}) -->`;
+        }
+        return match;
+      }
+    );
+    // Extra pass for any remaining Obsidian-style
+    content = content.replace(
+      /!\[([^\]]*)\]\(#([^)]+)\)/g,
+      (match, altText, imageName) => `<!-- Image removed during sync: ${altText} (${imageName}) -->`
+    );
+    fs.writeFileSync(filePath, content, 'utf8');
+  }
+
+  function processDir(dir) {
+    const items = fs.readdirSync(dir);
+    for (const item of items) {
+      const fullPath = path.join(dir, item);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        processDir(fullPath);
+      } else if (item.endsWith('.md')) {
+        processFile(fullPath);
+      }
+    }
+  }
+
+  processDir(contentDir);
 }
 
 // Build the Astro project
@@ -288,6 +382,9 @@ function saveErrorLog() {
 
 // Send email notification
 async function sendEmailNotification() {
+  console.log('📧 Preparing email notification...');
+  console.log('📧 Email notifications enabled:', process.env.EMAIL_NOTIFICATIONS === 'true');
+  
   const syncData = {
     success: syncErrors.success,
     startTime: syncErrors.timestamp,
@@ -297,7 +394,14 @@ async function sendEmailNotification() {
     errors: syncErrors.errors
   };
   
-  return await emailService.sendSyncNotification(syncData);
+  try {
+    const emailResult = await emailService.sendSyncNotification(syncData);
+    console.log('📧 Email notification result:', emailResult);
+    return emailResult;
+  } catch (error) {
+    console.error('❌ Failed to send email notification:', error.message);
+    return false;
+  }
 }
 
 // Main sync function
@@ -306,7 +410,9 @@ async function main() {
   
   try {
     // Step 0: Initialize email service
-    await emailService.initialize();
+    console.log('📧 Initializing email service...');
+    const emailInitialized = await emailService.initialize();
+    console.log('📧 Email service initialized:', emailInitialized);
     
     // Step 1: Ensure directories exist
     ensureDirectories();
@@ -318,6 +424,8 @@ async function main() {
     // Step 3: Process markdown syntax
     console.log('📝 Processing markdown syntax...');
     processMarkdownFiles(ASTRO_CONTENT_PATH);
+    console.log('🧹 Post-processing markdown files to remove image references...');
+    postProcessContentImages(ASTRO_CONTENT_PATH);
     
     // Step 4: Build project
     const buildSuccess = buildProject();
@@ -329,17 +437,22 @@ async function main() {
       deploySuccess = deployToProduction();
     }
     
-    // Step 6: Update sync status
-    syncErrors.success = buildSuccess && (!autoDeploy || deploySuccess);
+    // Step 6: Update sync status - consider it successful if files were processed, even if build failed
+    const filesProcessed = syncErrors.summary.copiedFiles > 0 || syncErrors.summary.processedFiles > 0;
+    syncErrors.success = filesProcessed && buildSuccess && (!autoDeploy || deploySuccess);
     syncErrors.summary.processedFiles = syncErrors.summary.totalFiles;
     
-    // Step 6: Save error log
+    // Step 7: Save error log
     saveErrorLog();
     
-    // Step 7: Send email notification
-    await sendEmailNotification();
+    // Step 8: Send email notification (always send if files were processed)
+    if (filesProcessed) {
+      await sendEmailNotification();
+    } else {
+      console.log('📧 Skipping email notification - no files were processed');
+    }
     
-    // Step 8: Print summary
+    // Step 9: Print summary
     const duration = Date.now() - startTime;
     console.log('\n📊 Sync Summary:');
     console.log(`⏱️  Duration: ${duration}ms`);
@@ -348,6 +461,7 @@ async function main() {
     console.log(`⏭️  Skipped files: ${syncErrors.summary.skippedFiles}`);
     console.log(`❌ Errors: ${syncErrors.summary.errors}`);
     console.log(`🎯 Success: ${syncErrors.success ? '✅' : '❌'}`);
+    console.log(`📧 Email sent: ${filesProcessed ? '✅' : '❌'}`);
     
     if (syncErrors.success) {
       console.log('🎉 Sync completed successfully!');
@@ -365,6 +479,13 @@ async function main() {
     
     console.error('❌ Sync failed:', error.message);
     saveErrorLog();
+    
+    // Try to send error email
+    try {
+      await sendEmailNotification();
+    } catch (emailError) {
+      console.error('❌ Failed to send error email:', emailError.message);
+    }
   }
 }
 

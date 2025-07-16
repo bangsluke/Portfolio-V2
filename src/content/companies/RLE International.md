@@ -4,59 +4,56 @@ tags:
   - notes
   - tag
   - portfolio
-created: 2025-05-30T09:49:00
-modified: 2025-07-11T14:55:12+01:00
-viewCount: 10
-aliases:
   - RLE
-dateStart: ""
-dateEnd: ""
-logoURL: https://i.imgur.com/WlMzHZX.png
 ---
 # RLE International
 
-> **back:** Link back to [Company Notes](Company Notes)
+> **BACK:** Link back to [Company Notes](#company-notes)
 
 >[!website-link] Links
->```dataview
+>
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID elink("https://en.wikipedia.org/wiki/"+replace(this.file.name, " ", "_"), this.file.name + " Wiki") as "Wikipedia Link"
 WHERE file = this.file
 
 ## Table of Contents
-```table-of-contents
+
+-->
+table-of-contents
 ```
 
 ## Folder Contents
 
 %% Begin Waypoint %%
-- **[RLE International](RLE International)**
-	- [Centre of Excellence](Centre of Excellence)
-	- [Digital Engineering](Digital Engineering)
-	- [FutureMotiv](FutureMotiv)
-	- [GPMO](GPMO)
-	- [Recotech](Recotech)
-	- [RLE China](RLE China)
-	- [RLE Germany](RLE Germany)
-	- [RLE Iberia](RLE Iberia)
-	- [RLE India](RLE India)
-	- [RLE UK](RLE UK)
-	- [RLE USA](RLE USA)
-	- [VESOFTx](VESOFTx)
+- **[RLE International](#rle-international)**
+	- [Centre of Excellence](#centre-of-excellence)
+	- [Digital Engineering](#digital-engineering)
+	- [FutureMotiv](#futuremotiv)
+	- [GPMO](#gpmo)
+	- [Recotech](#recotech)
+	- [RLE China](#rle-china)
+	- [RLE Germany](#rle-germany)
+	- [RLE Iberia](#rle-iberia)
+	- [RLE India](#rle-india)
+	- [RLE UK](#rle-uk)
+	- [RLE USA](#rle-usa)
+	- [VESOFTx](#vesoftx)
 
 %% End Waypoint %%
 
 ## Details
 
-> **details:** `=this.file.name`
+>[!details]  `=this.file.name`
 >`=choice(this.dateStart = null | this.dateStart = "","","<br>Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + (date(this.dateEnd) - date(this.dateStart)))`
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Analysis
 
 ### Linked Personnel
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID
 	file.link as "Person",
 	length(file.inlinks) as "Note Mentions", 	referenceRole as "Reference Role"
@@ -66,13 +63,16 @@ WHERE
 	contains(linkedCompany, [[]])
 SORT
 	file.name ASC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Role Descriptions
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID
 	file.link as "Role Name",
 	dateStart as "Start Date",
@@ -83,13 +83,16 @@ WHERE
 	contains(linkedCompany, [[]])
 SORT
 	file.name ASC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Linked Projects
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID
 	file.link as "Project Name",
 	dateStart as "Start",
@@ -101,37 +104,48 @@ WHERE
 	contains(file.outlinks, [[]])
 SORT
 	file.name ASC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Last Mentioned
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)

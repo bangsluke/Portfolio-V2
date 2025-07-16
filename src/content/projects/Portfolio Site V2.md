@@ -6,146 +6,135 @@ tags:
   - project/active
   - analysis
   - notes
-created: 2025-02-02T19:03:00
-modified: 2025-07-14T21:26:45+01:00
-viewCount: 45
-aliases: 
-projectURL: https://bangsluke-portfolio.netlify.app/
-codeURL: https://github.com/bangsluke/Portfolio-V2
-codeMultipleRepos: true
-folderURL: n/a
-logoURL: n/a
-imageURL: 
-dateStart: 2025-02-01
-dateEnd: ""
-technologies:
-  - "[React](React)"
-  - "[Neo4j](Neo4j)"
-  - "[GraphQL](GraphQL)"
-  - "[Obsidian](Obsidian)"
-  - "[Netlify](Netlify)"
-  - "[GitHub](GitHub)"
-  - "[Astro](Astro)"
-  - "[Tailwind CSS](Tailwind CSS)"
-  - "[Preact](Preact)"
-  - "[Neo4j Aura](Neo4j Aura)"
-projectCategory: Portfolio
-linkedCompany:
+  - "[React](#react)"
+  - "[Neo4j](#neo4j)"
+  - "[GraphQL](#graphql)"
+  - "[Obsidian](#obsidian)"
+  - "[Netlify](#netlify)"
+  - "[GitHub](#github)"
+  - "[Astro](#astro)"
+  - "[Tailwind CSS](#tailwind-css)"
+  - "[Preact](#preact)"
+  - "[Neo4j Aura](#neo4j-aura)"
   - n/a
-toolOwner: "[Luke Bangs](Luke Bangs)"
-developers:
-  - "[Luke Bangs](Luke Bangs)"
-topicTags:
-  - "[Work](Work)"
-powerShellAlias: portfolio
-version: 2
+  - "[Luke Bangs](#luke-bangs)"
+  - "[Work](#work)"
 ---
 # Portfolio Site V2
 
-> **back:** Link back to [01 Projects|Projects](01 Projects|Projects)
+> **BACK:** Link back to [Projects](#01-projects)
 
 >[!website-link] Links
-> ```dataview
+> 
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
->```
->```dataview
+>
+-->
+
+>
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
->```
->```dataview
+>
+-->
+
+>
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
 
-> **details:** `=this.file.name`
+>[!details]  `=this.file.name`
 >`=choice(this.folderURL = null | this.folderURL = "" | this.folderURL = "n/a","","<br>Folder URL: " + link(this.folderURL,"Link")) + choice(this.dateStart = null | this.dateStart = "","","<br>Date Start: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>Date End: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "", "", choice(this.dateEnd = "", "<br>Development Duration: " + string(date(today) - date(this.dateStart)), "<br>Development Duration: " + string(date(this.dateEnd) - date(this.dateStart)))) + choice(this.projectCategory = null | this.projectCategory = "","","<br>Category: " + this.projectCategory) + choice(this.linkedCompany = null | this.linkedCompany = "" | contains(this.linkedCompany, "n/a"),"","<br>Project for: " + this.linkedCompany) + choice(this.toolOwner = null | this.toolOwner = "","","<br>Tool Owner: " + this.toolOwner) + choice(this.developers = null | this.developers = "","","<br>Developers: " + this.developers) + choice(this.technologies = null | this.technologies = "","","<br>Technologies: " + this.technologies) + choice(this.topicTags = null | this.topicTags = "","","<br>Topics: " + this.topicTags) + choice(this.powerShellAlias = null | this.powerShellAlias = "" | this.powerShellAlias = "n/a","","<br>PowerShell Alias: " + this.powerShellAlias) + choice(this.version = null | this.version = "","","<br>Version: " + this.version)`
 
 ## Table of Contents
 
-```table-of-contents
+
+-->
+table-of-contents
 ```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Introduction
 
 A note for storing details on the updated version of my professional portfolio website.
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Short Description
 
 A personal portfolio website for displaying my skills and past projects
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
 An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: [Astro](Astro), [Preact](Preact), [React](React), [Tailwind CSS](Tailwind CSS)
-- Back end/Datasource: [Obsidian](Obsidian), [Neo4j](Neo4j), [Neo4j Aura](Neo4j Aura), [GraphQL](GraphQL)
-- Hosting: [GitHub](GitHub) and [Netlify](Netlify)
-- Security: [Synk](Synk)
+- Front end: [Astro](#astro), [Preact](#preact), [React](#react), [Tailwind CSS](#tailwind-css)
+- Back end/Datasource: [Obsidian](#obsidian), [Neo4j](#neo4j), [Neo4j Aura](#neo4j-aura), [GraphQL](#graphql)
+- Hosting: [GitHub](#github) and [Netlify](#netlify)
+- Security: [Synk](#synk)
 - Authentication: n/a
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Repositories
 
 - Main repo: `=this.codeURL`
 - Backend repo: https://github.com/bangsluke/bangsluke-backend-server
-- [Netlify](Netlify): https://app.netlify.com/projects/bangsluke-portfolio/overview
+- [Netlify](#netlify): https://app.netlify.com/projects/bangsluke-portfolio/overview
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## PowerShell Query
 
-To launch the repo, use the [PowerShell](PowerShell) alias 
+To launch the repo, use the [PowerShell](#powershell) alias 
 
 > `=this.powerShellAlias`
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Planning and Design
 
-Create an updated Portfolio Website, in a similar style to the previous [Portfolio Site](Portfolio Site), but use [Obsidian](Obsidian) as the data source and load all data into my existing [Neo4j](Neo4j) graph for retrieval by the site. This will allow dynamic and on the fly updates to things such as skills updates, roles updates etc whilst creating a single source of truth in [Obsidian](Obsidian).
+Create an updated Portfolio Website, in a similar style to the previous [Portfolio Site](#portfolio-site), but use [Obsidian](#obsidian) as the data source and load all data into my existing [Neo4j](#neo4j) graph for retrieval by the site. This will allow dynamic and on the fly updates to things such as skills updates, roles updates etc whilst creating a single source of truth in [Obsidian](#obsidian).
 
 Add portfolio tag to indicate which project, company and technology/skill should be displayed.
 
 Design initially started from a template project called [NeonMint](https://github.com/EFEELE/NeonMint).
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### ChatGPT Recommended Architecture 
 
-> See [ChatGPT](ChatGPT) thread “Portfolio Site V2 Stack”
+> See [ChatGPT](#chatgpt) thread “Portfolio Site V2 Stack”
 
-- Frontend: [Astro](Astro) or [React](React)
-- Backend/API: [Vercel](Vercel) Serverless Functions ([Node.js](Node.js))
-- Database: [Neo4j Aura](Neo4j Aura) (cloud-hosted graph DB)
-- Auth: Secured via [Vercel](Vercel)’s Environment Variables
+- Frontend: [Astro](#astro) or [React](#react)
+- Backend/API: [Vercel](#vercel) Serverless Functions ([Node.js](#node.js))
+- Database: [Neo4j Aura](#neo4j-aura) (cloud-hosted graph DB)
+- Auth: Secured via [Vercel](#vercel)’s Environment Variables
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Design
 
-- See [Portfolio Site V2 Canvas.canvas|Portfolio Site V2 Canvas](Portfolio Site V2 Canvas.canvas|Portfolio Site V2 Canvas) for the design
+- See [Portfolio Site V2 Canvas](#portfolio-site-v2-canvas.canvas) for the design
 - Also see “Portfolio V2” in Freeform for design ideas
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Node types
 
 #### Projects
 
-- [01 Projects|Project](01 Projects|Project)
-	- Example project: [Dorkinians Website](Dorkinians Website)
-	- Template: [Template Project](Template Project)
+- [Project](#01-projects)
+	- Example project: [Dorkinians Website](#dorkinians-website)
+	- Template: [Template Project](#template-project)
     - Properties
         - projectURL
         - codeURL
@@ -169,11 +158,12 @@ Design initially started from a template project called [NeonMint](https://githu
         - Long Description
         - Architecture and Technologies
         - Lessons Learned
-        - Analysis (using [Dataview](Dataview))
+        - Analysis (using [Dataview](#dataview))
 
 ##### Projects List
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID
 	file.link as "Project",
 	dateStart as "Start Date",
@@ -183,30 +173,33 @@ TABLE WITHOUT ID
 FROM #project AND #portfolio
 WHERE file.name != "Template Project"
 SORT dateStart ASC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 #### Skills
 
 If any note has a tag `skill` (and `portfolio`) then they will show up on the Portfolio page as a skill
 
-- [Skills Notes](Skills Notes)
-	- Example skill: [JavaScript](JavaScript)
-	- Template: [Template Skill](Template Skill)
+- [Skills Notes](#skills-notes)
+	- Example skill: [JavaScript](#javascript)
+	- Template: [Template Skill](#template-skill)
     - Properties
         - skillRating
         - skillDescription
         - logoURL
 	- Sections
 		- Analysis
-			- Unread Links (using [Dataview](Dataview))
-			- Read Links (using [Dataview](Dataview))
-			- Total Count, Last Mentioned, All Mentioned (using [Dataview](Dataview))
+			- Unread Links (using [Dataview](#dataview))
+			- Read Links (using [Dataview](#dataview))
+			- Total Count, Last Mentioned, All Mentioned (using [Dataview](#dataview))
 
 ##### Skills List
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID
 	file.link as "Skill",
 	skillRating as "Skill Rating",
@@ -214,28 +207,31 @@ TABLE WITHOUT ID
 FROM #skill AND #portfolio
 WHERE file.name != "Template Skill"
 SORT skillRating DESC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 #### Companies
 
-- Companies - see [Company Notes](Company Notes)
-	- Example company: [Opus 2 International](Opus 2 International)
-	- Template: [Template Company](Template Company)
+- Companies - see [Company Notes](#company-notes)
+	- Example company: [Opus 2 International](#opus-2-international)
+	- Template: [Template Company](#template-company)
     - Properties
         - dateStart
         - dateEnd
         - logoURL
     - Sections
-	    - Analysis (using [Dataview](Dataview))
-		    - Linked Personnel (using [Dataview](Dataview))
-		    - Role Descriptions (using [Dataview](Dataview))
-		    - Linked Projects (using [Dataview](Dataview))
+	    - Analysis (using [Dataview](#dataview))
+		    - Linked Personnel (using [Dataview](#dataview))
+		    - Role Descriptions (using [Dataview](#dataview))
+		    - Linked Projects (using [Dataview](#dataview))
 
 ##### Companies List
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID
 	file.link as "Company",
 	dateStart as "Start Date",
@@ -243,9 +239,11 @@ TABLE WITHOUT ID
 FROM #company AND #portfolio
 WHERE file.name != "Template Company"
 SORT dateStart ASC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 #### Clients
 
@@ -253,8 +251,8 @@ If a `company` or `club` note has tag `client` (and `portfolio`) then they will 
 
 > *Note: don’t use the `organisation` tag as that’s reserved for note structure
 
-- Clients - see [Company Notes](Company Notes)
-	- Example client: [Dorkinians FC](Dorkinians FC)
+- Clients - see [Company Notes](#company-notes)
+	- Example client: [Dorkinians FC](#dorkinians-fc)
 	- Template: 
     - Properties
 	    - dateStart
@@ -262,14 +260,15 @@ If a `company` or `club` note has tag `client` (and `portfolio`) then they will 
 	    - logoURL
 	    - linkedCompany - Connected to Company nodes
 	- Sections
-		- Analysis (using [Dataview](Dataview))
-		    - Linked Personnel (using [Dataview](Dataview))
-		    - Role Descriptions (using [Dataview](Dataview))
-		    - Linked Projects (using [Dataview](Dataview))
+		- Analysis (using [Dataview](#dataview))
+		    - Linked Personnel (using [Dataview](#dataview))
+		    - Role Descriptions (using [Dataview](#dataview))
+		    - Linked Projects (using [Dataview](#dataview))
 
 ##### Clients List
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID
 	file.link as "Client",
 	dateStart as "Start Date",
@@ -278,15 +277,17 @@ TABLE WITHOUT ID
 FROM #client AND #portfolio
 WHERE file.name != "Template Client"
 SORT dateStart ASC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 #### Roles
 
-- Roles - see [Role Notes](Role Notes)
-	- Example role: [Bug Tester](Bug Tester)
-	- Template: [Template Role](Template Role)
+- Roles - see [Role Notes](#role-notes)
+	- Example role: [Bug Tester](#bug-tester)
+	- Template: [Template Role](#template-role)
     - Properties
         - dateStart
         - dateEnd
@@ -294,11 +295,12 @@ SORT dateStart ASC
     - Sections
         - Role Description
         - Key Achievement
-        - Analysis (using [Dataview](Dataview))
+        - Analysis (using [Dataview](#dataview))
 
 ##### Roles List
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID
 	file.link as "Roles",
 	dateStart as "Start Date",
@@ -307,17 +309,19 @@ TABLE WITHOUT ID
 FROM #role AND #portfolio
 WHERE file.name != "Template Role"
 SORT dateStart ASC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 #### Reference
 
 If a `person` note has tags `colleague` and `reference`  (and `portfolio`) then they will show up on the Portfolio page as a reference
 
-- People - see [People Notes](People Notes)
-	- Example person: [Taryn Auchecorne](Taryn Auchecorne)
-	- Template: [Template Reference](Template Reference)
+- People - see [People Notes](#people-notes)
+	- Example person: [Taryn Auchecorne](#taryn-auchecorne)
+	- Template: [Template Reference](#template-reference)
     - Properties
         - linkedCompany - Connected to Company nodes
         - referenceRole (The role the person was as a reference (e.g. Line Manager))
@@ -325,26 +329,29 @@ If a `person` note has tags `colleague` and `reference`  (and `portfolio`) then 
         - referenceNumber
         - referenceAddress
     - Sections
-        - Analysis (using [Dataview](Dataview))
+        - Analysis (using [Dataview](#dataview))
 
 ##### Reference List
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID
 	file.link as "Reference",
 	linkedCompany as "Company"
 FROM #reference AND #portfolio
 WHERE file.name != "Template Reference"
 SORT dateStart ASC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 #### Education
 
-- Education - see [Education Notes](Education Notes)
-	- Example education: [Ashcombe School](Ashcombe School)
-	- Template: [Template Education](Template Education)
+- Education - see [Education Notes](#education-notes)
+	- Example education: [Ashcombe School](#ashcombe-school)
+	- Template: [Template Education](#template-education)
     - Properties
         - dateStart
         - dateEnd
@@ -352,11 +359,12 @@ SORT dateStart ASC
         - Qualifications
         - Additional Details
         - Key Memories
-        - Analysis (using [Dataview](Dataview))
+        - Analysis (using [Dataview](#dataview))
 
 ##### Education List
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID
 	file.link as "Education",
 	dateStart as "Start Date",
@@ -364,28 +372,32 @@ TABLE WITHOUT ID
 FROM #education AND #portfolio
 WHERE file.name != "Template Education"
 SORT dateStart ASC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Node Analysis & Maintenance
 
-> For node type analysis, see [#Portfolio Items Analysis](#Portfolio Items Analysis)
-> For node maintenance, see [Vault Maintenance#Portfolio Maintenance|Portfolio Maintenance](Vault Maintenance#Portfolio Maintenance|Portfolio Maintenance)
+> For node type analysis, see [#Portfolio Items Analysis](##portfolio-items-analysis)
+> For node maintenance, see [Portfolio Maintenance](#vault-maintenance#portfolio-maintenance)
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- [Portfolio Site](Portfolio Site)
+- [Portfolio Site](#portfolio-site)
 
-> **top:** [Back to top](#Table%20of%20Contents)
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
 TBC
 
-> **top:** [Back to top](#Table%20of%20Contents)
+Initially I set the project up with an [Astro](#astro) front end and started doing [GraphQL](#graphql) calls to my [Backend Server](#backend-server) project to collect the portfolio data I had stored in the [Neo4j](#neo4j) graph. However I soon realized that I was undoing the speed of [Astro](#astro) and switched to a script that loads the required portfolio data (stored in [Obsidian](#obsidian) [Markdown](#markdown) files) into the portfolio repo and used [Astro](#astro) collections to gather and display the data that way.
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Analysis
 
@@ -393,7 +405,8 @@ TBC
 
 #### Portfolio Items Count
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID
 	Category, length(rows) AS "Count"
 FROM #Portfolio
@@ -409,13 +422,16 @@ choice(contains(file.tags, "#company"), "Company",choice(
 contains(file.tags, "#role"), "Role","Error"))
 )))))) AS Category
 GROUP BY Category
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 #### All Portfolio Items
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID
 	file.link as "Item",
 	choice(contains(file.tags, "#project"),"Project",choice(contains(file.tags, "#company"),"Company",choice(contains(file.tags, "#client"),"Client",choice(contains(file.tags, "#person"),"Reference",choice(contains(file.tags, "#education"),"Education",choice(contains(file.tags, "#skill"),"Skill",choice(contains(file.tags, "#role"),"Role",""))))))) as "Category",
@@ -426,45 +442,59 @@ FROM #portfolio
 WHERE
 	!contains(file.path, "04 Templates") AND file.name != this.file.name
 SORT file.name ASC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Last Mentioned in Daily Notes
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID file.link as "Last Mentioned in Daily Note"
 FROM [[]]
 WHERE contains(tags, "daily")
 SORT file.ctime DESC
 LIMIT 1
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Total Count
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE WITHOUT ID length(this.file.inlinks) as "Links"
 FROM [[]]
 GROUP BY "Links"
-```
+
+-->
+
 
 ### Last Mentioned
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
-```
+
+-->
+
 
 ### All Mentions
 
-```dataview
+
+<!-- Dataview Query (hidden in production):
 TABLE file.mtime As ModifiedTime
 FROM [[]]
 SORT file.ctime DESC
-```
 
-> **top:** [Back to top](#Table%20of%20Contents)
+-->
+
+
+>[!top] [Back to top](#Table%20of%20Contents)
