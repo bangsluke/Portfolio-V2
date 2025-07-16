@@ -3,7 +3,8 @@ import { GraphQLClient } from 'graphql-request';
 
 // Determine the environment and use the appropriate backend URL
 const isDevelopment = import.meta.env.DEV;
-console.log('GraphQL Client: Environment check - isDevelopment:', isDevelopment);
+const isBuildTime = typeof process !== 'undefined' && process.env.NODE_ENV === 'production';
+console.log('GraphQL Client: Environment check - isDevelopment:', isDevelopment, 'isBuildTime:', isBuildTime);
 
 // Try multiple endpoint sources
 let endpoint = isDevelopment 
@@ -20,7 +21,12 @@ if (!endpoint) {
 
 console.log('GraphQL Client: Endpoint resolved:', endpoint);
 
-if (!endpoint) {
+// During build time, we might not have a valid endpoint, so we'll handle this gracefully
+if (!endpoint && isBuildTime) {
+  console.warn('GraphQL Client: No endpoint configured during build time - GraphQL requests will fail gracefully');
+}
+
+if (!endpoint && !isBuildTime) {
   console.error('GraphQL Client: No endpoint configured!');
   throw new Error(
     `GraphQL endpoint not configured. Please set ${
@@ -35,7 +41,7 @@ if (isDevelopment) {
 }
 
 // Create GraphQL client with enhanced configuration
-export const graphqlClient = new GraphQLClient(endpoint, {
+export const graphqlClient = new GraphQLClient(endpoint || 'http://localhost:5001/graphql', {
   headers: {
     'Content-Type': 'application/json',
   }

@@ -1,0 +1,184 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Generate static paths for all notes
+export async function getStaticPaths() {
+  const notes = await getCollection('obsidian');
+  return notes.map((note) => ({
+    params: { slug: note.slug },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await note.render();
+---
+
+<Layout title={note.data.title}>
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <article class="prose prose-lg max-w-none">
+      <!-- Breadcrumb -->
+      <nav class="mb-8">
+        <a href="/notes" class="text-blue-600 hover:text-blue-800">
+          ← Back to Notes
+        </a>
+      </nav>
+
+      <!-- Note Header -->
+      <header class="mb-8 border-b pb-4">
+        <h1 class="text-4xl font-bold mb-2">{note.data.title}</h1>
+        <div class="flex items-center gap-4 text-gray-600 text-sm">
+          <time datetime={note.data.date.toISOString()}>
+            {note.data.date.toLocaleDateString()}
+          </time>
+          {note.data.tags && note.data.tags.length > 0 && (
+            <div class="flex gap-2">
+              {note.data.tags.map((tag) => (
+                <span class="bg-gray-100 px-2 py-1 rounded text-xs">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+        {note.data.description && (
+          <p class="text-gray-600 mt-2">{note.data.description}</p>
+        )}
+      </header>
+
+      <!-- Note Content -->
+      <div class="markdown-content">
+        <Content />
+      </div>
+
+      <!-- Navigation -->
+      <nav class="mt-12 pt-8 border-t">
+        <div class="flex justify-between">
+          <a href="/notes" class="text-blue-600 hover:text-blue-800">
+            ← All Notes
+          </a>
+        </div>
+      </nav>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .markdown-content {
+  }
+  
+  .markdown-content h1,
+  .markdown-content h2,
+  .markdown-content h3,
+  .markdown-content h4,
+  .markdown-content h5,
+  .markdown-content h6 {
+    font-weight: 700;
+    color: rgb(17 24 39);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .markdown-content h1 { 
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  .markdown-content h2 { 
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  .markdown-content h3 { 
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  
+  .markdown-content p {
+    margin-bottom: 1rem;
+    color: rgb(55 65 81);
+    line-height: 1.625;
+  }
+  
+  .markdown-content ul,
+  .markdown-content ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  .markdown-content li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .markdown-content blockquote {
+    border-left-width: 4px;
+    border-left-color: rgb(59 130 246);
+    padding-left: 1rem;
+    font-style: italic;
+    color: rgb(75 85 99);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .markdown-content code {
+    background-color: rgb(243 244 246);
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  
+  .markdown-content pre {
+    background-color: rgb(17 24 39);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .markdown-content pre code {
+    background-color: transparent;
+    padding: 0;
+    color: white;
+  }
+  
+  .markdown-content a {
+    color: rgb(37 99 235);
+    text-decoration: underline;
+  }
+  
+  .markdown-content a:hover {
+    color: rgb(30 64 175);
+  }
+  
+  .markdown-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .markdown-content table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid rgb(209 213 219);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .markdown-content th,
+  .markdown-content td {
+    border: 1px solid rgb(209 213 219);
+    padding: 0.5rem 1rem;
+    text-align: left;
+  }
+  
+  .markdown-content th {
+    background-color: rgb(243 244 246);
+    font-weight: 600;
+  }
+</style> 

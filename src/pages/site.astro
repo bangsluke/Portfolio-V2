@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WorkExperienceTimeline from "../components/portfolio/WorkExperienceTimeline.astro";
+import EducationTimeline from "../components/portfolio/EducationTimeline.astro";
+import ProjectsGallery from "../components/portfolio/ProjectsGallery.astro";
+import SkillsBubbles from "../components/portfolio/SkillsBubbles.astro";
+import ClientsCarousel from "../components/portfolio/ClientsCarousel.astro";
+import ReferencesCarousel from "../components/portfolio/ReferencesCarousel.astro";
+import HeroIndex from "../components/portfolio/HeroIndex.astro";
+import Contact from "../components/portfolio/Contact.astro";
+import CompaniesList from "../components/portfolio/CompaniesList.astro";
+import GitHubContributions from "../components/portfolio/GitHubContributions.tsx";
+import CustomerCarousel from "../components/portfolio/CustomerCarousel.astro";
+const pageTitle = "bangsluke Portfolio";
+const description = "My portfolio site";
+const ogimage = {
+  url: "/images/imagedefault.webp",
+  alt: "bangsluke Portfolio"
+};
+---
+
+<Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
+  
+  <HeroIndex />
+  <ProjectsGallery />
+  <SkillsBubbles />
+  <GitHubContributions client:only="preact" />
+  <WorkExperienceTimeline />
+  <!-- TODO: Delete below Customer Carousel -->
+  <CustomerCarousel />
+  <ClientsCarousel />
+  <CompaniesList />
+  <EducationTimeline />
+  <ReferencesCarousel />
+  <Contact />
+</Layout>

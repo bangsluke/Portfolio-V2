@@ -1,0 +1,3 @@
+- When writing commands, always write to work with PowerShell
+- Whenever you make a change, add what the change was to the "AUTO_CHANGES.md" as a log list with a time stamp and the name of the branch. There is an example Log to explain the required layout and grouping of problems under a timestamp to the nearest minute
+- If the change made is a significant change to how the site is set up, or how a developer would need to set up the site themselves, also update the README.md file. And always ensure there is a `> [Back to Table of Contents](#table-of-contents)` at the end of each section. Do not update the README for minor fixes

@@ -1,28 +1,29 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro";
+import WorkExperienceItem from "./WorkExperienceItem.astro";
 import Heading from "../ui/Heading.astro";
 import { Icon } from "astro-icon/components";
-import { fetchRoles } from "../../utils/roles";
+import { getCollection } from 'astro:content';
 import { formatDateToMMMYYYY } from "../../utils/date-formatter";
 
-// Fetch roles from GraphQL backend
-const roles = await fetchRoles();
+// Get all roles from the local content folder
+const roles = await getCollection('roles');
 
-// Sort roles by dateStart (most recent first) and transform the data
-const EXPERIENCE = roles
-  .sort((a, b) => new Date(b.dateStart).getTime() - new Date(a.dateStart).getTime())
-  .map(role => {
-    console.log('Role:', role.name, 'linkedCompany:', role.linkedCompany);
-    return {
-      date: role.dateEnd 
-        ? `${formatDateToMMMYYYY(role.dateStart)} - ${formatDateToMMMYYYY(role.dateEnd)}` 
-        : `${formatDateToMMMYYYY(role.dateStart)} - Present`,
-      name: role.name,
-      company: role.linkedCompany?.name || 'TBC Company',
-      roleDescription: role.roleDescription,
-    };
+// Sort roles by dateStart date (newest first)
+const sortedRoles = roles
+  .sort((a, b) => {
+    // Sort by dateStart date, fallback to dateEnd date, then alphabetically
+    const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
+    const dateB = b.data.dateStart || b.data.dateEnd || new Date(0);
+    
+    if (dateA instanceof Date && dateB instanceof Date) {
+      return dateB.getTime() - dateA.getTime();
+    }
+    
+    // Fallback to alphabetical sorting by slug (filename)
+    return a.slug.localeCompare(b.slug);
   });
 ---
+
 
 <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="experience">
   <div class="flex flex-col pt-8 max-w-4xl mx-auto">
@@ -34,7 +35,7 @@ const EXPERIENCE = roles
     <div class="relative max-md:mt-0 mt-8" aria-label="Professional experience">
       <ol class="relative mt-10">
         {
-          EXPERIENCE.map((experience, index) => (
+          sortedRoles.map((role, index) => (
             <li>
               <article
                 role="article"
@@ -44,7 +45,7 @@ const EXPERIENCE = roles
                   class="flex flex-col gap-2  text-zinc-00 dark:text-zinc-300 md:col-span-3"
                   aria-describedby={`experience-title-${index}`}
                 >
-                  <ExperienceItem {...experience} />
+                  <WorkExperienceItem {...role.data} name={role.data.name || role.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())} />
                 </div>
               </article>
             </li>
