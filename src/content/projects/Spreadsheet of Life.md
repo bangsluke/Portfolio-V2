@@ -6,16 +6,17 @@ tags:
   - project/completed
   - finances
 created: 2024-03-02T09:21:00
-modified: 2025-07-11T15:56:03+01:00
+modified: 2025-07-17T19:33:55+01:00
 aliases:
   - SoL
-viewCount: 10
+viewCount: 12
 projectURL: https://docs.google.com/spreadsheets/d/114gu85xbOJppMf3JIuHzoWIVsWAcy3ALmdv0owwyCQ0/edit?usp=sharing
 codeURL: https://script.google.com/home/projects/1e_U-ujneCBoYpGoZVAPtSYR9wI2StLhy4gLbL6t946wAJVTjDdAhn9xs/edit
 codeMultipleRepos: false
+deploymentServiceURL: n/a
 folderURL: https://drive.google.com/drive/folders/1SQmATVMjxHXU8CsuSeGh_3suXXTxC_Nf?usp=drive_link
 logoURL: n/a
-imageURL: 
+imageURL: https://i.imgur.com/r0wyTKP.png
 dateStart: 2020-07-18
 dateEnd: 2025-06-20
 technologies:
@@ -32,6 +33,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 3.1
+portfolioOrder: 3
 shortDescription: "A Google Sheets file that I use to collate all my key details on which is mainly financial data but is also used as the data source for health data such as steps to produce my daily, weekly and monthly summary emails to myself using Google Apps Script."
 longDescription: "The Spreadsheet of Life (or SoL for short) is the backbone of my finances, holding data for helping me with all my financial decisions.\nIt is an ever expanding Google Sheets file that I use to take snapshots of my daily, weekly and monthly finances which is then summarised to me each day through automated emails, run through Google Apps Script.\nSoL also contains health data such as distance traveled, steps and fluid intake which I send each evening from my phone to the file via Apple Shortcuts."
 lessonsLearned: "The Spreadsheet of Life was my first real introduction to JavaScript, via Google Apps Script, allowing me to generate daily emails to myself. This also brought up several challenges such as storing snapshots of generated graphs within the file to be sent which I achieved using temporary storage in Google Drive.\nIt also taught me the full power of APIs from an early stage, allowing me to populate the sheet remotely from using Apple Shortcuts on my iPhone."
@@ -51,6 +53,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

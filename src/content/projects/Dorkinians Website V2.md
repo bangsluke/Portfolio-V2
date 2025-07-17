@@ -7,12 +7,13 @@ tags:
   - sport
   - project/parked
 created: 2025-05-30 09:40
-modified: 2025-07-11T15:50:46+01:00
+modified: 2025-07-17T19:28:19+01:00
 aliases: 
-viewCount: 9
+viewCount: 11
 projectURL: TBC
 codeURL: TBC
 codeMultipleRepos: false
+deploymentServiceURL: TBC
 folderURL: n/a
 logoURL: n/a
 imageURL: TBC
@@ -30,6 +31,7 @@ topicTags:
   - "[[Football]]"
 powerShellAlias: TBC
 version: 2
+portfolioOrder:
 shortDescription: "TBC"
 longDescription: "TBC"
 lessonsLearned: "TBC"
@@ -49,6 +51,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

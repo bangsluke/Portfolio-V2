@@ -5,13 +5,14 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-11T15:53:36+01:00
-viewCount: 3
+modified: 2025-07-17T19:31:41+01:00
+viewCount: 5
 aliases:
   - Pipeline
 projectURL: 
 codeURL: 
 codeMultipleRepos: false
+deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Project%20Pipeline?csf=1&web=1&e=nVEm7I
 logoURL: https://i.imgur.com/RoBXXlo.png
 imageURL: 
@@ -34,6 +35,7 @@ topicTags:
   - "[[GPMO]]"
 powerShellAlias: n/a
 version: 
+portfolioOrder: 4
 shortDescription: "A tool for identifying the progress of global RLE International projects from lead to in-play, through to completion."
 longDescription: "TBC"
 lessonsLearned: "TBC"
@@ -53,6 +55,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

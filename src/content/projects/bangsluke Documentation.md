@@ -10,13 +10,14 @@ modified: 2025-07-11T15:54:33+01:00
 aliases:
   - Documentation Site
   - bangsluke-documentation
-viewCount: 12
+viewCount: 14
 projectURL: https://bangsluke-documentation.netlify.app/
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
+deploymentServiceURL: https://app.netlify.com/projects/bangsluke-documentation/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: 
+imageURL: https://i.imgur.com/p74w0Rd.png
 dateStart: 2023-06-04
 dateEnd: 2024-07-14
 technologies:
@@ -38,6 +39,7 @@ topicTags:
   - Coding
 powerShellAlias: bangsluke
 version: 1
+portfolioOrder: 3
 shortDescription: "A personal documentation site storing key links to the software I use, articles I find useful, and a section on Dorkinians FC stats."
 longDescription: "Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment.\nI regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing."
 lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of Markdown and led me to notice how many different softwares either use Docusaurus or a very similar type static site builder for their documentation."
@@ -57,6 +59,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

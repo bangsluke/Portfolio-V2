@@ -6,7 +6,7 @@ tags:
   - portfolio
   - project/completed/work
 modified: 2025-07-11T15:51:39+01:00
-viewCount: 3
+viewCount: 5
 aliases:
   - Finance Tracker
   - Financial Tracking
@@ -14,6 +14,7 @@ aliases:
 projectURL: TBC
 codeURL: n/a
 codeMultipleRepos: false
+deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Financial%20Tracker?csf=1&web=1&e=7tWn8h
 logoURL: https://i.imgur.com/SFb7UNB.png
 imageURL: 
@@ -37,6 +38,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 
+portfolioOrder: 4
 shortDescription: "Full financial reporting on the progress of projects."
 longDescription: "TBC"
 lessonsLearned: "TBC"
@@ -56,6 +58,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

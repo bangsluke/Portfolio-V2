@@ -7,12 +7,13 @@ tags:
   - coding
   - work
 created: 2025-05-30 09:57
-modified: 2025-07-11T15:52:23+01:00
-viewCount: 9
+modified: 2025-07-17T20:12:20+01:00
+viewCount: 11
 aliases: 
 projectURL: TBC
 codeURL: TBC
 codeMultipleRepos: false
+deploymentServiceURL: TBC
 folderURL: n/a
 logoURL: n/a
 imageURL: 
@@ -23,6 +24,7 @@ technologies:
   - "[[Docusaurus]]"
   - "[[Markdown]]"
   - "[[GitLab]]"
+  - "[[Azure]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -35,6 +37,7 @@ topicTags:
   - "[[GPMO]]"
 powerShellAlias: n/a
 version: 1
+portfolioOrder: 2
 shortDescription: "TBC"
 longDescription: "TBC"
 lessonsLearned: "TBC"
@@ -54,6 +57,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`
@@ -88,7 +95,7 @@ TBC
 
 - Front end: [[React]], [[Docusaurus]]
 - Back end/Datasource: [[Markdown]]
-- Hosting: [[GitLab]] (see [Repositories](#repositories)), TBC
+- Hosting: [[GitLab]] (see [Repositories](#repositories)), [[Azure]] TBC
 - Security: TBC
 - Authentication: TBC
 

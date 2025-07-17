@@ -1,8 +1,6 @@
 ---
-import SkillItem from './SkillItem.astro';
-import Heading from '../ui/Heading.astro';
-import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
+import SkillItem from './SkillItem.astro';
 
 // Get all skills from the local content folder
 const skills = await getCollection('skills');
@@ -33,12 +31,7 @@ const sortedSkills = skills.sort((a, b) => {
 							aria-describedby={`skill-title-${index}`}>
 							<SkillItem
 								{...skill.data}
-								name={
-									skill.data.name ||
-									skill.slug
-										.replace(/-/g, ' ')
-										.replace(/\b\w/g, l => l.toUpperCase())
-								}
+								name={skill.data.name || skill.id.replace('.md', '')}
 							/>
 						</div>
 					</article>

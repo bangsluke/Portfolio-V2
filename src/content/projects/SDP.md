@@ -4,13 +4,14 @@ tags:
   - portfolio
   - notes
 created: 2025-06-27 10:45
-modified: 2025-07-11T15:53:56+01:00
+modified: 2025-07-17T19:31:58+01:00
 aliases:
   - Scalable Development Plan
-viewCount: 8
+viewCount: 10
 projectURL: TBC
 codeURL: TBC
 codeMultipleRepos: false
+deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: n/a
 imageURL: 
@@ -43,6 +44,7 @@ topicTags:
   - "[[Digital Engineering]]"
 powerShellAlias: n/a
 version: 3
+portfolioOrder: 3
 shortDescription: "TBC"
 longDescription: "TBC"
 lessonsLearned: "TBC\nI was fully in charge of the SQL backend database, meaning I had to learn how to write SQL queries. I optimised this by storing the data that we collected day to day in Excel and then writing a VBA script to automate creating the SQL queries to update the database quickly.\nThis lead to a complete rebuild when our company migrated from Microsoft to Google, meaning I had to migrate the data and automations into Google Sheets and use Google Apps Script.\nThere was a brief period where we began consider rebuilding the frontend in React and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.\nAs well as the main app, we also developed several NeoDash dashboards off of the Neo4j data for ongoing maintenance to check on the data."
@@ -62,6 +64,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`
@@ -127,7 +133,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- [[SDP Acronyms]]
+- [[SDP Consultant Pages]]
 - [[SDP Encyclopaedia]]
 
 >[!top] [Back to top](#Table%20of%20Contents)

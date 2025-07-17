@@ -23,7 +23,7 @@
 		"sync:mobile": "cross-env SYNC_MODE=mobile node scripts/sync.js",
 		"sync:mobile:debug": "cross-env SYNC_MODE=mobile DEBUG=true node scripts/sync.js",
 		"process-markdown": "node scripts/process-obsidian-markdown.js",
-		"test-email": "node test-email.js"
+		"test-email": "cross-env EMAIL_NOTIFICATIONS=true node test-email.js"
 	},
 	"dependencies": {
 		"@astrojs/preact": "^4.0.8",
@@ -38,8 +38,6 @@
 		"astro": "^5.6.1",
 		"astro-icon": "^1.1.5",
 		"dotenv": "^16.6.1",
-		"graphql": "^16.11.0",
-		"graphql-request": "^7.2.0",
 		"nodemailer": "^6.9.12",
 		"preact": "^10.26.2",
 		"preact-github-calendar": "^0.5.10",
@@ -51,7 +49,6 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.31.0",
-		"@types/graphql": "^14.2.3",
 		"@types/react": "^19.1.8",
 		"@types/react-dom": "^19.1.6",
 		"cross-env": "^7.0.3",

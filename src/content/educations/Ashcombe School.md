@@ -6,8 +6,8 @@ tags:
   - notes
   - tag
 created: 2025-02-04 18:53
-modified: 2025-07-07T21:07:43+01:00
-viewCount: 15
+modified: 2025-07-17T17:00:04+01:00
+viewCount: 1
 dateStart: 2003-09-01
 dateEnd: 2009-07-17
 imageURL: https://www.ashcombe.surrey.sch.uk/Admissions/23_07_13_Ashcombe_Facade___74A1923_WEB.jpg
@@ -66,6 +66,16 @@ WHERE
 	contains(education, this.file.link)
 SORT
 	file.name ASC
+```
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+### Linked Holidays
+
+```dataview
+TABLE file.mtime As ModifiedTime
+FROM [[]] AND #holiday 
+SORT file.ctime DESC
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)

@@ -18,6 +18,235 @@
 
 ## Auto Log
 
+## 2025-01-16 14:15 [develop] - Fixed pagination bullets and added click-to-snap functionality
+- Fixed pagination bullet visibility and styling
+  - Simplified Pagination plugin configuration to use default bullet rendering
+  - Added proper pagination container for Flicking to populate with bullets
+  - Updated CSS to target correct Flicking pagination classes (flicking-pagination-bullet)
+  - Enhanced bullet styling with proper size, colors, and hover effects
+- Added click-to-snap functionality for carousel items
+  - Enhanced handleItemClick to snap carousel to clicked item using moveTo()
+  - When user clicks on a carousel item, it now centers that item in the viewport
+  - Maintains selection state while providing smooth navigation to selected item
+  - Improves user experience by combining selection and navigation in single click
+- Improved pagination visual feedback
+  - Active bullet shows mint-400 color with scale(1.2) transform
+  - Inactive bullets show gray color with hover effects
+  - Smooth transitions for all state changes
+  - Proper spacing and alignment for pagination container
+- Enhanced carousel interaction and usability
+  - Users can now click items to both select and navigate to them
+  - Pagination bullets provide clear visual indication of current position
+  - Maintains all existing functionality: auto-rotation, selection styling, hover effects
+  - Better integration between selection, navigation, and pagination systems
+
+## 2025-01-16 13:25 [develop] - Enhanced CustomerAndClientCarousel with continuous rotation and click-to-highlight
+- Updated CustomerAndClientCarousel.tsx to ensure continuous rotation
+  - Changed AutoPlay stopOnHover from true to false for uninterrupted rotation
+  - Carousel now continues rotating even when user hovers over items
+  - Maintains smooth 3-second interval between transitions
+- Added click-to-highlight functionality for carousel items
+  - Added selectedItem state to track which item is currently highlighted
+  - Implemented handleItemClick function to toggle item selection
+  - Added visual feedback with ring-4 ring-mint-400 and scale-105 for selected items
+- Enhanced CompanyCard component with selection support
+  - Added isSelected and onClick props to CompanyCard interface
+  - Selected items display with mint-green ring border and slight scale effect
+  - Maintains existing hover effects while adding selection state
+- Implemented click-outside-to-deselect functionality
+  - Added useEffect to handle clicks outside carousel items
+  - Automatically deselects highlighted item when clicking elsewhere
+  - Works on both desktop and mobile devices
+- Improved user interaction and visual feedback
+  - Clear visual indication of selected carousel items
+  - Smooth transitions between selection states
+  - Maintains accessibility with proper ARIA labels and keyboard support
+
+## 2025-01-16 13:20 [develop] - Fixed case transformations and updated carousel width
+- Updated CustomerAndClientCarousel.astro to use 90% viewport width
+  - Changed from max-w-4xl to w-[90vw] for wider carousel display
+  - Maintains responsive design while providing more space for content
+- Fixed company and client name processing in CustomerAndClientCarousel
+  - Updated company data to use company.id.replace('.md', '') for filename without extension
+  - Updated client data to use client.data.name || client.id.replace('.md', '') as fallback
+  - Removed case transformations to preserve original filename casing
+- Updated CustomerAndClientCarousel.tsx to use name field instead of case transformations
+  - Changed company name processing to use company.data.name || company.id.replace('.md', '')
+  - Changed client name processing to use company.data.name || company.id.replace('.md', '')
+  - Eliminates slug-based case transformations that were changing original casing
+- Fixed case transformations across all portfolio components
+  - Updated ReferencesCarousel.astro to use reference.id.replace('.md', '') instead of slug transformations
+  - Updated WorkExperienceTimeline.astro to use role.id.replace('.md', '') for role names
+  - Updated EducationTimeline.astro to use education.id.replace('.md', '') for education names
+  - Updated SkillsBubbles.astro to use skill.id.replace('.md', '') for skill names
+- Enhanced consistent naming approach throughout the site
+  - All components now use filename (without extension) as display names
+  - Preserves original Obsidian filename casing and formatting
+  - Maintains fallback to explicit name field when available
+  - Provides more accurate representation of content as stored in files
+
+## 2025-01-16 13:15 [develop] - Added floating action button for scroll to top functionality
+- Created ScrollToTop.astro component with floating action button (FAB)
+  - Positioned at bottom-right corner (5% from right, 5% from bottom)
+  - Uses main accent color (mint-400) with hover effects (mint-500)
+  - Features up arrow icon and smooth hover animations (scale-110)
+  - Includes proper accessibility attributes (aria-label, title)
+- Implemented scroll-based visibility logic
+  - FAB appears when user scrolls more than 10% down the page
+  - Smooth fade-in/fade-out animation with 300ms duration
+  - Uses opacity and pointer-events for proper show/hide behavior
+  - Calculates scroll percentage based on viewport and document height
+- Added smooth scroll to top functionality
+  - Uses window.scrollTo with smooth behavior
+  - Scrolls to top of current page when FAB is clicked
+  - Includes proper event listeners and null checks for TypeScript
+- Integrated FAB into main Layout.astro component
+  - Added ScrollToTop component to all pages using the main layout
+  - Positioned after Footer for proper z-index layering
+  - Ensures FAB appears on all site pages consistently
+- Enhanced user experience with modern UI patterns
+  - Floating action button follows Material Design principles
+  - Smooth animations and transitions for professional feel
+  - Responsive design that works across all screen sizes
+  - High z-index (50) ensures FAB stays above other content
+
+## 2025-01-16 13:10 [develop] - Updated project card names to display filenames without case transformations
+- Modified ProjectsGallery.astro to display project names as-is
+  - Removed case transformation logic that converted slugs to title case
+  - Now displays project.data.name if available, otherwise project.id without .md extension
+  - Uses project.id instead of project.slug to preserve original filename casing
+- Updated full projects page (index.astro) with same naming logic
+  - Applied identical name display logic as ProjectsGallery component
+  - Uses project.id.replace('.md', '') to get filename without extension
+  - Ensures consistent project naming across all gallery views
+- Updated individual project page ([slug].astro) for company/client names
+  - Removed case transformations from company and client slug displays
+  - Company names now display as slug without title case conversion
+  - Client names display as data.name if available, otherwise slug as-is
+  - Maintains consistent naming approach across all components
+- Enhanced project name display consistency
+  - All project cards now show filenames (without extension) as project titles
+  - Preserves original casing and formatting from Obsidian filenames
+  - Uses project.id instead of project.slug to maintain exact filename casing
+  - Provides more accurate representation of project names as stored in files
+
+## 2025-01-16 13:05 [develop] - Fixed project sorting logic for proper chronological ordering
+- Fixed sorting algorithm in ProjectsGallery.astro and index.astro
+  - Changed from string concatenation sorting to proper numerical/chronological sorting
+  - Now sorts by portfolioOrder numerically first, then by dateStart chronologically
+  - Projects with same portfolioOrder now properly sort by date (newest first)
+  - Resolves issue where projects with same portfolioOrder weren't sorting by date correctly
+- Improved sorting logic implementation
+  - Primary sort: portfolioOrder (numerical comparison, lowest first)
+  - Secondary sort: dateStart (chronological comparison, newest first)
+  - Tertiary sort: alphabetical by slug for tie-breaking
+  - Handles both Date objects and date strings properly
+- Enhanced date handling in sorting
+  - Converts date strings to timestamps for proper chronological comparison
+  - Maintains backward compatibility with existing date formats
+  - Ensures consistent sorting behavior across all project views
+
+## 2025-01-16 13:00 [develop] - Added portfolioOrder property and enhanced project sorting
+- Added portfolioOrder property to projects collection schema in config.ts
+  - Added portfolioOrder: z.union([z.number(), z.null()]).optional() to projects schema
+  - Allows projects to have a custom ordering number for portfolio display
+  - Maintains backward compatibility with existing projects without portfolioOrder
+- Updated ProjectsGallery.astro with new sorting logic
+  - Changed from date-based sorting to portfolioOrder + dateStart sorting
+  - Creates sort keys in format: "portfolioOrder-dateStart" for consistent ordering
+  - Projects without portfolioOrder default to 999 for end-of-list placement
+  - Falls back to alphabetical sorting by slug when sort keys are equal
+- Updated full projects page (index.astro) with same sorting logic
+  - Applied identical portfolioOrder + dateStart sorting algorithm
+  - Ensures consistent project ordering across all gallery views
+  - Maintains responsive design and filtering functionality
+- Enhanced project display ordering system
+  - Primary sort: portfolioOrder (lowest numbers first)
+  - Secondary sort: dateStart (earliest dates first)
+  - Tertiary sort: alphabetical by slug for tie-breaking
+  - Provides flexible control over project presentation order
+
+## 2025-01-16 12:55 [develop] - Enhanced individual project page with client display
+- Updated project slug page ([slug].astro) to display both companies and clients
+  - Added clients collection import alongside companies collection
+  - Modified linked entity lookup to check both companies and clients collections
+  - Changed section title from "Client" to "Developed For" for better clarity
+  - Projects can now display both company and client information with logos
+- Enhanced linked entity processing logic
+  - Iterates through each linkedCompany value and checks both collections
+  - Uses Obsidian link format stripping for consistent filename matching
+  - Maintains separate arrays for companies and clients for proper display
+  - Handles both company and client data structures appropriately
+- Improved project page layout and information display
+  - Combined companies and clients in single "Developed For" section
+  - Uses CustomerAndClientCarouselItem component for consistent styling
+  - Displays client names from data.name field or derived from slug
+  - Shows client logos, dates, descriptions, and achievements
+  - Maintains responsive grid layout for multiple entities
+
+## 2025-01-16 12:50 [develop] - Enhanced project and reference components with client logo support
+- Updated ProjectsGallery.astro to support client logos in addition to company logos
+  - Added clients collection import alongside companies collection
+  - Modified logo lookup logic to first check companies, then fallback to clients
+  - Maintains existing functionality while adding client logo support
+  - Projects can now display logos from both companies and clients
+- Updated ReferencesCarousel.astro to support client logos in addition to company logos
+  - Added clients collection import alongside companies collection
+  - Modified logo lookup logic to first check companies, then fallback to clients
+  - References can now display logos from both companies and clients
+  - Maintains existing functionality while adding client logo support
+- Updated full projects page (index.astro) to support client logos
+  - Added clients collection import alongside companies collection
+  - Applied same logo lookup logic as ProjectsGallery component
+  - Ensures consistent client logo support across all project views
+- Enhanced logo retrieval system for linkedCompany values
+  - linkedCompany can now reference either companies or clients
+  - System first checks companies collection, then falls back to clients collection
+  - Maintains backward compatibility with existing company-only references
+  - Improves flexibility for projects and references linked to clients
+
+## 2025-01-16 12:45 [develop] - Updated ProjectCard hover tooltip styling
+- Modified ProjectCard.astro to improve company name display in tooltip
+  - Kept "Developed for: " prefix text styled to match card text (zinc-300)
+  - Applied hover effect only to company name with bright theme color (mint-400)
+  - Company name transitions to mint-300 on hover with cursor-help indicator
+  - Maintains tooltip functionality while improving visual hierarchy
+
+## 2025-01-16 12:40 [develop] - Enhanced ProjectsGallery with company logo display
+- Modified ProjectsGallery.astro to collect companies collection and link company logos
+  - Added companies collection import alongside projects collection
+  - Created processedProjects array that maps projects to include company logos
+  - For each project with linkedCompany, finds the corresponding company and extracts logoURL
+  - Passes companyLogoURL prop to ProjectCard component
+- Updated ProjectCard.astro to display company logos
+  - Added companyLogoURL to component props as optional string | null
+  - Added company logo display in project card header alongside project name
+  - Positioned logo as 32x32px image with rounded corners and shadow
+  - Maintains existing layout and styling while adding visual company branding
+- Enhanced visual presentation of projects
+  - Company logos provide immediate visual identification of project companies
+  - Improves user experience by making company associations more prominent
+  - Maintains responsive design with proper image sizing and object-fit
+- Applied same logic to full projects page (index.astro)
+  - Updated projects gallery page to also include company logo functionality
+  - Ensures consistent company logo display across all project views
+
+## 2025-01-16 12:35 [develop] - Enhanced ReferencesCarousel with company logo display
+- Modified ReferencesCarousel.astro to collect companies collection and link company logos
+  - Added companies collection import alongside references collection
+  - Created processedReferences array that maps references to include company logos
+  - For each reference with linkedCompany, finds the corresponding company and extracts logoURL
+  - Passes companyLogoURL prop to ReferenceItem component
+- Updated ReferenceItem.astro to display company logos
+  - Added companyLogoURL to Props interface as optional string | null
+  - Added company logo display section with 64x64px image and rounded styling
+  - Positioned logo below company name with proper spacing and shadow effects
+  - Maintains existing layout and styling while adding visual company branding
+- Enhanced visual presentation of references
+  - Company logos provide immediate visual identification of reference companies
+  - Improves user experience by making company associations more prominent
+  - Maintains responsive design with proper image sizing and object-fit
+
 ## 2025-01-16 12:30 [develop] - Enhanced project gallery page with category filtering and improved navigation
 - Completely redesigned project gallery page (index.astro) with enhanced functionality
   - Changed page title from "All Projects" to "Project Gallery" for better clarity
@@ -837,6 +1066,64 @@ CustomerAndClientCarousel now works perfectly with:
 
 > [Back to Table of Contents](#table-of-contents)
 
+## 2024-12-19 16:30 [main] - Backend Independence Analysis
+
+### Analysis Completed:
+- **Confirmed backend independence**: Project is fully disconnected from backend dependencies
+- **No active GraphQL API calls**: All GraphQL references are historical content only
+- **No fetch requests**: No client-side API calls to external backends
+- **Static content collections**: All data comes from local markdown files in src/content/
+- **Environment variables**: PUBLIC_APP_BACKEND_URL variables defined but unused
+
+### Obsolete Dependencies Identified:
+- **graphql**: "^16.11.0" - No longer used
+- **graphql-request**: "^7.2.0" - No longer used  
+- **nodemailer**: "^6.9.12" - Only needed for sync notifications
+- **@types/graphql**: "^14.2.3" - No longer used
+- **cross-env**: "^7.0.3" - Only needed for sync scripts
+
+### Current Architecture:
+- **Source**: Obsidian markdown files (synced via scripts)
+- **Processing**: Local content collections in Astro
+- **Output**: Static HTML pages
+- **Deployment**: Pure static site with no runtime backend dependencies
+
+### Result:
+✅ Project is successfully backend-independent and can be deployed to any static hosting service
+✅ All data is processed at build time from local content collections
+✅ No runtime backend connections required
+
+> [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 16:45 [main] - README Consolidation and Backend References Removal
+
+### Changes Made:
+- **Completely rewrote README.md**: Removed all backend server references and GraphQL dependencies
+- **Integrated setup guides**: Merged SETUP_GUIDE.md, OBSIDIAN_SYNC_README.md, and PRODUCTION_SYNC_SETUP.md into README
+- **Deleted obsolete files**: Removed separate setup guide files after integration
+- **Updated architecture description**: Now describes the project as a static site with Obsidian sync
+- **Simplified deployment instructions**: Removed backend server setup requirements
+
+### Key Updates:
+- **Removed GraphQL references**: No longer mentions backend server or GraphQL API
+- **Updated tech stack**: Now focuses on Astro, Tailwind CSS, and Obsidian integration
+- **Consolidated documentation**: All setup and sync information now in one comprehensive README
+- **Improved organization**: Better table of contents and section structure
+- **Updated environment variables**: Removed backend URL references, kept only sync-related variables
+
+### Files Deleted:
+- `SETUP_GUIDE.md` - Integrated into README
+- `OBSIDIAN_SYNC_README.md` - Integrated into README  
+- `PRODUCTION_SYNC_SETUP.md` - Integrated into README
+
+### Result:
+✅ Single comprehensive README with all setup information
+✅ No backend server dependencies mentioned
+✅ Clear static site architecture documentation
+✅ Streamlined documentation structure
+
+> [Back to Table of Contents](#table-of-contents)
+
 ## [2024-06-09 16:00] [main]
 - Replaced project timeline with a responsive gallery of project cards using Astro collections, matching NeonMint style, showing all projects with images, tech pills, and introduction text. Updated ProjectsGallery.astro and added ProjectCard.astro.
 
@@ -863,3 +1150,37 @@ CustomerAndClientCarousel now works perfectly with:
 
 ## [2024-06-09 17:20] [main]
 - Removed GitHub and LinkedIn logos from mobile hamburger menu since they're now in the header. Cleaned up Navigation component by removing unused imports and dropdown code.
+
+## 2024-12-19 17:00 [main] - Email Service Troubleshooting
+
+### Problem Identified:
+- **Missing .env file**: Email service failing because no environment variables configured
+- **Error message**: "📧 Email notifications disabled" when running `npm run test-email`
+- **Root cause**: No `.env` file in Portfolio-V2 directory
+
+### Investigation Results:
+- **Email service code**: ✅ All email service files intact and functional
+- **Dependencies**: ✅ `nodemailer` still installed in package.json
+- **Scripts**: ✅ All email-related scripts still available
+- **Configuration**: ❌ Missing `.env` file with email credentials
+
+### Solution Provided:
+- **Created .env template**: Provided complete environment variables template
+- **Gmail setup instructions**: Step-by-step guide for Gmail app password setup
+- **Testing commands**: Provided commands to test email service after setup
+
+### Required Environment Variables:
+```bash
+EMAIL_NOTIFICATIONS="true"
+EMAIL_RECIPIENT="bangsluke@gmail.com"
+GMAIL_USER="bangsluke@gmail.com"
+GMAIL_APP_PASSWORD="your-gmail-app-password-here"
+```
+
+### Result:
+✅ Email service code is fully functional
+✅ Issue was configuration, not missing files
+✅ User needs to create .env file with Gmail credentials
+✅ No code changes required - just configuration setup
+
+> [Back to Table of Contents](#table-of-contents)

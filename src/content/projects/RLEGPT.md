@@ -5,16 +5,17 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-11T15:53:47+01:00
-viewCount: 3
+modified: 2025-07-17T19:31:50+01:00
+viewCount: 5
 aliases:
   - Sales Chatbot
 projectURL: https://rle-sales-details.netlify.app/
 codeURL: TBC
 codeMultipleRepos: false
+deploymentServiceURL: https://app.netlify.com/projects/rle-sales-details/overview
 folderURL: n/a
 logoURL: https://i.imgur.com/13pPwzp.png
-imageURL: 
+imageURL: https://i.imgur.com/yJOei4e.png
 dateStart: 
 dateEnd: 
 technologies:
@@ -34,6 +35,7 @@ topicTags:
   - "[[RFQ]]"
 powerShellAlias: n/a
 version: 1
+portfolioOrder: 5
 shortDescription: "A chat bot that takes on content such as an RFQ block of text and then allows the user to query the text via chat."
 longDescription: "TBC"
 lessonsLearned: "TBC"
@@ -53,6 +55,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

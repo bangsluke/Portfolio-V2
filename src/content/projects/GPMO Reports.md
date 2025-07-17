@@ -5,12 +5,13 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-11T15:52:44+01:00
-viewCount: 4
+modified: 2025-07-17T19:30:16+01:00
+viewCount: 6
 aliases: 
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/efd30e67-8ed4-4807-95cb-11f46a62d7d2/ReportSectiona3c344f318d21cde0ced?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
 codeURL: 
 codeMultipleRepos: false
+deploymentServiceURL: n/a
 folderURL: 
 logoURL: https://i.imgur.com/SFb7UNB.png
 imageURL: 
@@ -34,6 +35,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 1
+portfolioOrder: 4
 shortDescription: "The report section for the Financial Tracker showing global RLE International data."
 longDescription: "TBC"
 lessonsLearned: "TBC"
@@ -53,6 +55,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

@@ -6,15 +6,16 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 17:57
-modified: 2025-07-11T15:54:42+01:00
+modified: 2025-07-17T19:32:39+01:00
 aliases: 
-viewCount: 9
+viewCount: 11
 projectURL: https://biglynn.netlify.app/info
 codeURL: https://github.com/bangsluke/BigLynn2023
 codeMultipleRepos: false
+deploymentServiceURL: https://app.netlify.com/projects/biglynn/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: 
+imageURL: https://i.imgur.com/a6FT0Ya.png
 dateStart: 2022-09-06
 dateEnd: 2023-07-26
 technologies:
@@ -33,6 +34,7 @@ topicTags:
   - "[[Golf]]"
 powerShellAlias: n/a
 version: 1
+portfolioOrder: 3
 shortDescription: "A stats and information website about an annual golf competition that I am involved in."
 longDescription: "A site I developed for an annual golf competition that I play in, where I displayed details for the 2023 competition that I was in charge of organising and then I collected past years data and displayed this for each player as well as predictions for the upcoming year."
 lessonsLearned: "This project let me take an existing Berry Material UI template and extend and develop it into the site I required. It helped me integrate animations and stats components like graphs into the site using libraries like d3."
@@ -52,6 +54,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

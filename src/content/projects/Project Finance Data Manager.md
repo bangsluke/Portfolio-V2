@@ -5,13 +5,14 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-11T15:53:20+01:00
-viewCount: 4
+modified: 2025-07-17T19:31:25+01:00
+viewCount: 6
 aliases:
   - PFDM
 projectURL: 
 codeURL: 
 codeMultipleRepos: false
+deploymentServiceURL: n/a
 folderURL: 
 logoURL: https://i.imgur.com/Jsm73YL.png
 imageURL: 
@@ -36,6 +37,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 
+portfolioOrder: 4
 shortDescription: "Data input for financial tracking of RLE International projects."
 longDescription: "TBC\nPulled in timesheet data and financial information from various RLE International region sources such as Paycor, T-Sheet and Iplicit."
 lessonsLearned: "TBC"
@@ -55,6 +57,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

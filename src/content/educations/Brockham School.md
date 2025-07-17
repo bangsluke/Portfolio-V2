@@ -6,7 +6,7 @@ tags:
   - notes
   - tag
 created: 2025-03-31T23:59:00
-modified: 2025-07-07T21:11:51+01:00
+modified: 2025-07-17T17:00:17+01:00
 viewCount: 9
 dateStart: 1996-09-01
 dateEnd: 2002-07-17
@@ -64,6 +64,16 @@ WHERE
 	contains(education, this.file.link)
 SORT
 	file.name ASC
+```
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+### Linked Holidays
+
+```dataview
+TABLE file.mtime As ModifiedTime
+FROM [[]] AND #holiday 
+SORT file.ctime DESC
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)

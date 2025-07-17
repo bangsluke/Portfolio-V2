@@ -5,25 +5,84 @@ import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 
-// Get all projects from the local content folder
+// Get all projects, companies, and clients from the local content folders
 const projects = await getCollection('projects');
+const companies = await getCollection('companies');
+const clients = await getCollection('clients');
 
-// Sort projects by dateStart date (newest first)
+// Sort projects by portfolioOrder first, then dateStart, then alphabetically
 const sortedProjects = projects.sort((a, b) => {
-	// Sort by dateStart date, fallback to dateEnd date, then alphabetically
-	const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
-	const dateB = b.data.dateStart || b.data.dateEnd || new Date(0);
+	// Get portfolioOrder values (default to 999 if not set)
+	const orderA = a.data.portfolioOrder || 999;
+	const orderB = b.data.portfolioOrder || 999;
 
-	if (dateA instanceof Date && dateB instanceof Date) {
-		return dateB.getTime() - dateA.getTime();
+	// First, sort by portfolioOrder (numerically)
+	if (orderA !== orderB) {
+		return orderA - orderB;
 	}
 
-	// Fallback to alphabetical sorting by slug (filename)
+	// If portfolioOrder is the same, sort by dateStart (chronologically)
+	const dateA = a.data.dateStart || new Date(0);
+	const dateB = b.data.dateStart || new Date(0);
+
+	const dateAValue =
+		dateA instanceof Date ? dateA.getTime() : new Date(dateA).getTime();
+	const dateBValue =
+		dateB instanceof Date ? dateB.getTime() : new Date(dateB).getTime();
+
+	if (dateAValue !== dateBValue) {
+		return dateBValue - dateAValue; // Newest dates first
+	}
+
+	// If dates are the same, fallback to alphabetical sorting by slug
 	return a.slug.localeCompare(b.slug);
 });
 
+// Process projects to include company/client logos
+const processedProjects = sortedProjects.map(project => {
+	let companyLogoURL = null;
+
+	// If project has linkedCompany, find the company or client and get its logoURL
+	if (project.data.linkedCompany && project.data.linkedCompany.length > 0) {
+		// Get the first linked company and strip Obsidian link format
+		const linkedCompanyRaw = project.data.linkedCompany[0];
+		const linkedCompanyName = linkedCompanyRaw.replace(/\[\[|\]\]/g, ''); // Remove [[ and ]]
+
+		// First try to find in companies collection
+		const company = companies.find(company => {
+			const companyName = company.id.replace('.md', ''); // Remove .md extension
+			return companyName === linkedCompanyName;
+		});
+
+		if (company && company.data.logoURL) {
+			companyLogoURL = company.data.logoURL;
+		} else {
+			// If not found in companies, try clients collection
+			const client = clients.find(client => {
+				const clientName = client.id.replace('.md', ''); // Remove .md extension
+				return clientName === linkedCompanyName;
+			});
+
+			if (client && client.data.logoURL) {
+				companyLogoURL = client.data.logoURL;
+			}
+		}
+	}
+
+	return {
+		...project,
+		companyLogoURL,
+	};
+});
+
 // Get unique project categories
-const projectCategories = [...new Set(sortedProjects.map(project => project.data.projectCategory).filter(Boolean))].sort();
+const projectCategories = [
+	...new Set(
+		processedProjects
+			.map(project => project.data.projectCategory)
+			.filter(Boolean)
+	),
+].sort();
 
 const pageTitle = 'Project Gallery - bangsluke Portfolio';
 const description = 'Explore all my projects and developments';
@@ -34,122 +93,159 @@ const ogimage = {
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
-    <div class="min-h-screen">
-      <!-- Header Section -->
-      <section class="py-8 px-8 max-md:py-4">
-        <div class="max-w-7xl mx-auto">
-          <!-- Top Back Button -->
-          <div class="mb-8">
-            <a href="/site#projects" class="inline-flex items-center text-mint-400 hover:text-mint-300 transition-colors">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-              Back to Projects
-            </a>
-          </div>
-          
-          <div class="flex gap-4 items-center justify-center mb-12">
-            <Icon class="text-4xl text-mint-400" name="code" />
-            <Heading text="" textGradient="Project Gallery" level={1} />
-          </div>
+	<div class="min-h-screen">
+		<!-- Header Section -->
+		<section class="py-8 px-8 max-md:py-4">
+			<div class="max-w-7xl mx-auto">
+				<!-- Top Back Button -->
+				<div class="mb-8">
+					<a
+						href="/site#projects"
+						class="inline-flex items-center text-mint-400 hover:text-mint-300 transition-colors">
+						<svg
+							class="w-5 h-5 mr-2"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M15 19l-7-7 7-7"></path>
+						</svg>
+						Back to Projects
+					</a>
+				</div>
 
-          <p class="text-center mx-auto text-lg max-xl:text-base max-w-2xl text-gray-300 mb-12 leading-6 font-medium">
-            Explore all my <b class="bg-linear-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text">projects and developments</b>.
-            Each one represents a unique challenge and learning experience.
-          </p>
+				<div class="flex gap-4 items-center justify-center mb-12">
+					<Icon class="text-4xl text-mint-400" name="code" />
+					<Heading text="" textGradient="Project Gallery" level={1} />
+				</div>
 
-          <!-- Filter Section -->
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 p-6 bg-gradient-to-r from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg">
-            <div class="flex items-center gap-4">
-              <label for="categoryFilter" class="text-mint-100 font-medium">Filter by Category:</label>
-              <select 
-                id="categoryFilter" 
-                class="bg-[#232b32] text-mint-100 px-4 py-2 rounded-lg border border-mint-400/30 focus:border-mint-400 focus:outline-none transition-colors"
-              >
-                <option value="">All Categories</option>
-                {projectCategories.map(category => (
-                  <option value={category}>{category}</option>
-                ))}
-              </select>
-            </div>
-            <div class="text-mint-100 font-medium">
-              <span id="projectCount">{sortedProjects.length}</span> projects
-            </div>
-          </div>
-        </div>
-      </section>
+				<p
+					class="text-center mx-auto text-lg max-xl:text-base max-w-2xl text-gray-300 mb-12 leading-6 font-medium">
+					Explore all my <b
+						class="bg-linear-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text"
+						>projects and developments</b
+					>. Each one represents a unique challenge and learning experience.
+				</p>
 
-      <!-- Projects Grid Section -->
-      <section class="py-8 px-8 max-md:py-4 mb-4">
-        <div class="max-w-7xl mx-auto">
-          <div id="projectsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sortedProjects.map((project) => (
-              <div 
-                class="project-card" 
-                data-category={project.data.projectCategory || ''}
-              >
-                <ProjectCard
-                  name={project.data.name ?? project.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                  imageURL={project.data.imageURL}
-                  technologies={project.data.technologies}
-                  shortDescription={project.data.shortDescription}
-                  slug={project.slug}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+				<!-- Filter Section -->
+				<div
+					class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 p-6 bg-gradient-to-r from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg">
+					<div class="flex items-center gap-4">
+						<label for="categoryFilter" class="text-mint-100 font-medium"
+							>Filter by Category:</label
+						>
+						<select
+							id="categoryFilter"
+							class="bg-[#232b32] text-mint-100 px-4 py-2 rounded-lg border border-mint-400/30 focus:border-mint-400 focus:outline-none transition-colors">
+							<option value="">All Categories</option>
+							{
+								projectCategories.map(category => (
+									<option value={category}>{category}</option>
+								))
+							}
+						</select>
+					</div>
+					<div class="text-mint-100 font-medium">
+						<span id="projectCount">{processedProjects.length}</span> projects
+					</div>
+				</div>
+			</div>
+		</section>
 
-      <!-- Bottom Back Button -->
-      <section class="py-8 px-8 max-md:py-4">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center">
-            <a href="/site#projects" class="inline-flex items-center text-mint-400 hover:text-mint-300 transition-colors">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-              Back to Projects
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
+		<!-- Projects Grid Section -->
+		<section class="py-8 px-8 max-md:py-4 mb-4">
+			<div class="max-w-7xl mx-auto">
+				<div
+					id="projectsGrid"
+					class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+					{
+						processedProjects.map(project => (
+							<div
+								class="project-card"
+								data-category={project.data.projectCategory || ''}>
+								<ProjectCard
+									name={project.data.name ?? project.id.replace('.md', '')}
+									imageURL={project.data.imageURL}
+									technologies={project.data.technologies}
+									shortDescription={project.data.shortDescription}
+									slug={project.slug}
+									companyLogoURL={project.companyLogoURL}
+									linkedCompany={project.data.linkedCompany}
+								/>
+							</div>
+						))
+					}
+				</div>
+			</div>
+		</section>
 
-    <script>
-      // Category filter functionality
-      const categoryFilter = document.getElementById('categoryFilter') as HTMLSelectElement;
-      const projectCards = document.querySelectorAll('.project-card') as NodeListOf<HTMLElement>;
-      const projectCount = document.getElementById('projectCount');
+		<!-- Bottom Back Button -->
+		<section class="py-8 px-8 max-md:py-4">
+			<div class="max-w-7xl mx-auto">
+				<div class="text-center">
+					<a
+						href="/site#projects"
+						class="inline-flex items-center text-mint-400 hover:text-mint-300 transition-colors">
+						<svg
+							class="w-5 h-5 mr-2"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M15 19l-7-7 7-7"></path>
+						</svg>
+						Back to Projects
+					</a>
+				</div>
+			</div>
+		</section>
+	</div>
 
-      function filterProjects() {
-        if (!categoryFilter || !projectCount) return;
-        
-        const selectedCategory = categoryFilter.value;
-        let visibleCount = 0;
+	<script>
+		// Category filter functionality
+		const categoryFilter = document.getElementById(
+			'categoryFilter'
+		) as HTMLSelectElement;
+		const projectCards = document.querySelectorAll(
+			'.project-card'
+		) as NodeListOf<HTMLElement>;
+		const projectCount = document.getElementById('projectCount');
 
-        projectCards.forEach(card => {
-          const cardCategory = card.dataset.category;
-          const shouldShow = !selectedCategory || cardCategory === selectedCategory;
-          
-          if (shouldShow) {
-            card.style.display = 'block';
-            visibleCount++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
+		function filterProjects() {
+			if (!categoryFilter || !projectCount) return;
 
-        // Update project count
-        projectCount.textContent = visibleCount.toString();
-      }
+			const selectedCategory = categoryFilter.value;
+			let visibleCount = 0;
 
-      // Add event listener for filter changes
-      if (categoryFilter) {
-        categoryFilter.addEventListener('change', filterProjects);
-      }
+			projectCards.forEach(card => {
+				const cardCategory = card.dataset.category;
+				const shouldShow =
+					!selectedCategory || cardCategory === selectedCategory;
 
-      // Initialize filter on page load
-      filterProjects();
-    </script>
-</Layout> 
+				if (shouldShow) {
+					card.style.display = 'block';
+					visibleCount++;
+				} else {
+					card.style.display = 'none';
+				}
+			});
+
+			// Update project count
+			projectCount.textContent = visibleCount.toString();
+		}
+
+		// Add event listener for filter changes
+		if (categoryFilter) {
+			categoryFilter.addEventListener('change', filterProjects);
+		}
+
+		// Initialize filter on page load
+		filterProjects();
+	</script>
+</Layout>

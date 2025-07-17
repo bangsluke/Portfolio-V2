@@ -1,8 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
-import ClientAndCustomerCarousel from './CustomerAndClientCarousel.tsx';
-import Heading from '../ui/Heading.astro';
 import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import Heading from '../ui/Heading.astro';
+import ClientAndCustomerCarousel from './CustomerAndClientCarousel.tsx';
 
 // Get all companies and clients from the local content folders
 const companies = await getCollection('companies');
@@ -37,13 +37,13 @@ const sortedClients = clients.sort((a, b) => {
 });
 
 // Filter companies with logos
-const companiesWithLogos = sortedCompanies.filter(company => 
-	company.data.logoURL && company.data.logoURL.trim() !== ''
+const companiesWithLogos = sortedCompanies.filter(
+	company => company.data.logoURL && company.data.logoURL.trim() !== ''
 );
 
-// Filter clients with images
-const clientsWithImages = sortedClients.filter(client => 
-	client.data.imageURL && client.data.imageURL.trim() !== ''
+// Filter clients with logos
+const clientsWithLogos = sortedClients.filter(
+	client => client.data.logoURL && client.data.logoURL.trim() !== ''
 );
 
 // Clean the company data to only include necessary fields
@@ -52,28 +52,29 @@ const cleanedCompanies = companiesWithLogos.map(company => ({
 	slug: company.slug,
 	type: 'company' as const,
 	data: {
+		name: company.id.replace('.md', ''), // Use filename without extension
 		logoURL: company.data.logoURL,
 		dateStart: company.data.dateStart,
 		dateEnd: company.data.dateEnd,
 		companyDescription: company.data.companyDescription,
 		keyAchievement: company.data.keyAchievement,
-	}
+	},
 }));
 
 // Clean the client data to only include necessary fields
-const cleanedClients = clientsWithImages.map(client => ({
+const cleanedClients = clientsWithLogos.map(client => ({
 	id: client.id,
 	slug: client.slug,
 	type: 'client' as const,
 	data: {
-		name: client.data.name,
-		imageURL: client.data.imageURL,
+		name: client.data.name || client.id.replace('.md', ''), // Use filename without extension if no name
+		logoURL: client.data.logoURL, // Use logoURL directly
 		dateStart: client.data.dateStart,
 		dateEnd: client.data.dateEnd,
 		linkedCompany: client.data.linkedCompany,
 		clientDescription: client.data.clientDescription,
 		keyAchievement: client.data.keyAchievement,
-	}
+	},
 }));
 
 // Combine companies and clients, sorted by date
@@ -86,8 +87,8 @@ const allItems = [...cleanedCompanies, ...cleanedClients].sort((a, b) => {
 	}
 
 	// Fallback to alphabetical sorting
-	const nameA = a.type === 'company' ? a.slug : (a.data.name || a.slug);
-	const nameB = b.type === 'company' ? b.slug : (b.data.name || b.slug);
+	const nameA = a.type === 'company' ? a.slug : a.data.name || a.slug;
+	const nameB = b.type === 'company' ? b.slug : b.data.name || b.slug;
 	return nameA.localeCompare(nameB);
 });
 
@@ -98,7 +99,7 @@ const itemsJson = JSON.stringify(allItems);
 <section
 	class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16"
 	id="customers-and-clients">
-	<div class="flex flex-col pt-8 max-w-4xl mx-auto">
+	<div class="flex flex-col pt-8 w-[90vw] mx-auto">
 		<div class="flex gap-4 items-center justify-center">
 			<Icon class="text-3xl dark:text-white text-blacktext" name="briefcase" />
 			<Heading text="Customers and " textGradient="Clients" level={2} />
@@ -114,13 +115,13 @@ const itemsJson = JSON.stringify(allItems);
 	.info-button {
 		backdrop-filter: blur(10px);
 	}
-	
+
 	/* Ensure smooth transitions */
 	.group:hover .info-button {
 		opacity: 1;
 		transform: translateY(0);
 	}
-	
+
 	/* Mobile touch support */
 	@media (max-width: 768px) {
 		.info-button {

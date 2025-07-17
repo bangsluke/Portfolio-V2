@@ -46,6 +46,7 @@ const projectsCollection = defineCollection({
 		technologies: z.union([z.array(z.string()), z.null()]).optional(),
 		projectCategory: z.union([z.string(), z.null()]).optional(),
 		linkedCompany: z.array(z.string()).optional(),
+		portfolioOrder: z.union([z.number(), z.null()]).optional(),
 		toolOwner: z.union([z.string(), z.null()]).optional(),
 		developers: z.array(z.string()).optional(),
 		topicTags: z.array(z.string()).optional(),
@@ -96,7 +97,9 @@ const clientsCollection = defineCollection({
 		dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
 		imageURL: z.union([z.string(), z.null()]).optional(),
 		logoURL: z.union([z.string(), z.null()]).optional(),
-		linkedCompany: z.union([z.string(), z.array(z.string()), z.null()]).optional(),
+		linkedCompany: z
+			.union([z.string(), z.array(z.string()), z.null()])
+			.optional(),
 		// Extracted section content
 		clientDescription: z.string().optional(),
 		keyAchievement: z.string().optional(),

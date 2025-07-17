@@ -1,46 +1,49 @@
 ---
 tags:
-  - tag
-  - work
-  - tool
+  - project
   - portfolio
+  - notes
   - project/completed/work
-modified: 2025-07-11T15:52:52+01:00
-viewCount: 6
-aliases: 
-projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/efd30e67-8ed4-4807-95cb-11f46a62d7d2/ReportSectiona3c344f318d21cde0ced?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
-codeURL: 
+  - coding
+  - work
+created: 2025-06-02 17:16
+modified: 2025-07-17T20:25:50+01:00
+aliases:
+  - SDP Dev Sites
+viewCount: 14
+projectURL: https://sdp-dev-sites.netlify.app/pages/sdp-acronyms
+codeURL: TBC
 codeMultipleRepos: false
-deploymentServiceURL: n/a
-folderURL: 
-logoURL: https://i.imgur.com/SFb7UNB.png
-imageURL: 
-dateStart: 
-dateEnd: 
+deploymentServiceURL: https://app.netlify.com/projects/sdp-dev-sites/overview
+folderURL: n/a
+logoURL: n/a
+imageURL: https://i.imgur.com/GoZ1rp5.png
+dateStart: ""
+dateEnd: ""
 technologies:
-  - "[[Power BI]]"
-  - "[[Power Query]]"
-  - "[[SharePoint]]"
-  - "[[SQL]]"
+  - "[[HTML]]"
+  - "[[CSS]]"
+  - "[[JavaScript]]"
+  - "[[GitLab]]"
+  - "[[Azure]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
-toolOwner: "[[Dominic Ede]]"
+toolOwner: "[[Uwe Kloss]]"
 developers:
-  - "[[Alex Sheers]]"
   - "[[Luke Bangs]]"
 topicTags:
+  - "[[SDP]]"
   - "[[Work]]"
-  - "[[GPMO]]"
-  - "[[Finances]]"
+  - "[[Digital Engineering]]"
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
-shortDescription: "The report section for the Financial Tracker showing global RLE International data."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+shortDescription: "A site for the consultants working with the tool, showing the acronyms and definitions used across the SDP tool, as well as documentation and an encyclopaedia."
+longDescription: "A full list of acronyms and definitions used across the RLE and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.\nThe SDP project was disbanded early into the websites development, leaving it only partially developed, but matching the style and design of the main tool."
+lessonsLearned: "Provided good learning for getting correct anchor points in HTML for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main SDP tool to provide a visual connection."
 ---
-# Group Sales Report
+# SDP Consultant Pages
 
 > [!back] Link back to [[01 Projects|Projects]]
 
@@ -73,29 +76,31 @@ WHERE file = this.file
 
 ## Introduction
 
-TBC
+A site for the consultants working with the tool, showing the acronyms and definitions used across the [[SDP]] tool, as well as documentation and an encyclopaedia.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Short Description
 
-The report section for the [[Financial Tracker]] showing global [[RLE International]] data.
+A site for the consultants working with the tool, showing the acronyms and definitions used across the [[SDP]] tool, as well as documentation and an encyclopaedia.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-TBC
+A full list of acronyms and definitions used across the [[SDP]] app, provided as support material to consultants using the tool for [[RLE International|RLE]] and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.
+
+The [[SDP]] project was disbanded early into the websites development, leaving it only partially developed, but matching the style and design of the main tool.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: TBC
-- Back end/Datasource: TBC
+- Front end: [[HTML]], [[CSS]], [[JavaScript]]
+- Back end/Datasource: n/a
 - Hosting: [[GitLab]] (see [Repositories](#repositories))
 - Security: n/a
-- Authentication: TBC
+- Authentication: [[Azure]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -116,19 +121,19 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Planning and Design
 
-- n/a
+- Designed to look like the [[SDP]] site in terms of styling.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- TBC
+- [[SDP|SDP]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-TBC
+Provided good learning for getting correct anchor points in [[HTML]] for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main [[SDP]] tool to provide a visual connection.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

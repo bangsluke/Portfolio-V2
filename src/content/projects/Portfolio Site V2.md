@@ -7,15 +7,17 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-07-16T12:49:27+01:00
-viewCount: 45
+modified: 2025-07-17T20:10:31+01:00
+viewCount: 47
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
 codeMultipleRepos: true
+deploymentServiceURL: https://app.netlify.com/projects/bangsluke-portfolio/overview
 folderURL: n/a
 logoURL: n/a
 imageURL: 
+powerShellAlias: portfolio
 dateStart: 2025-02-01
 dateEnd: ""
 technologies:
@@ -37,8 +39,8 @@ developers:
   - "[[Luke Bangs]]"
 topicTags:
   - "[[Work]]"
-powerShellAlias: portfolio
 version: 2
+portfolioOrder: 2
 shortDescription: "A personal portfolio website for displaying my skills and past projects"
 longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills"
 lessonsLearned: "TBC\nInitially I set the project up with an Astro front end and started doing GraphQL calls to my Backend Server project to collect the portfolio data I had stored in the Neo4j graph. However I soon realized that I was undoing the speed of Astro and switched to a script that loads the required portfolio data (stored in Obsidian Markdown files) into the portfolio repo and used Astro collections to gather and display the data that way."
@@ -58,6 +60,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`
@@ -153,6 +159,7 @@ Design initially started from a template project called [NeonMint](https://githu
         - projectURL
         - codeURL
         - codeMultipleRepos
+        - deploymentServiceURL
         - folderURL
         - logoURL
         - imageURL
@@ -166,6 +173,7 @@ Design initially started from a template project called [NeonMint](https://githu
         - topicTags - Connected to other nodes or left as strings
         - powerShellAlias
         - version
+        - portfolioOrder (1 being display first, higher number means later)
     - Sections
 	    - Introduction
 	    - Short Description
@@ -176,16 +184,19 @@ Design initially started from a template project called [NeonMint](https://githu
 
 ##### Projects List
 
+> Sorted by Portfolio Order
+
 ```dataview
 TABLE WITHOUT ID
 	file.link as "Project",
+	portfolioOrder as "Portfolio Order",
 	dateStart as "Start Date",
 	dateEnd as "End Date",
 	elink(projectURL, "Link") as "Project Link",
 	elink(codeURL, "Link") as "Code Link"
 FROM #project AND #portfolio
 WHERE file.name != "Template Project"
-SORT dateStart ASC
+SORT portfolioOrder ASC
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
