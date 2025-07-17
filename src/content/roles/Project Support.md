@@ -10,7 +10,7 @@ dateStart: 2014-09-01
 dateEnd: 2015-07-01
 linkedCompany:
   - "[[RLE International]]"
-roleDescription: "I began in a graduate support role at a high-end low volume sports car manufacturer, familiarising myself with the processes of OEMs and developing project planning tools for mapping project resources using Excel and VBA macros."
+roleDescription: "I began in a graduate support role at a high-end low volume sports car manufacturer, familiarising myself with the processes of OEMs and developing project planning tools for mapping project resources using [[Excel]] and [[VBA]] macros."
 keyAchievement: "TBC"
 ---
 # Project Support

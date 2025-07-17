@@ -10,7 +10,7 @@ dateStart: 2018-06-01
 dateEnd: 2019-07-01
 linkedCompany:
   - "[[RLE International]]"
-roleDescription: "Lead engineer for the Body Closures function group for a low production build taking designs from concept to production. I also owned systems within Body Exteriors and Interiors and designed an Excel BoM management tool on SharePoint to track team costs, weights and timings for all systems. Design proposals presented and justified to management to confirm system functionality for financial sign off. Robust resolution plans developed where required to meet extended targets."
+roleDescription: "Lead engineer for the Body Closures function group for a low production build taking designs from concept to production. I also owned systems within Body Exteriors and Interiors and designed an [[Excel]] [[BoM]] management tool on [[SharePoint]] to track team costs, weights and timings for all systems. Design proposals presented and justified to management to confirm system functionality for financial sign off. Robust resolution plans developed where required to meet extended targets."
 keyAchievement: "TBC"
 ---
 # Body Closures & Exteriors Engineer

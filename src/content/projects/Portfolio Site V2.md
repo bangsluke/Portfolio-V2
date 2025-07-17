@@ -43,7 +43,7 @@ version: 2
 portfolioOrder: 2
 shortDescription: "A personal portfolio website for displaying my skills and past projects"
 longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills"
-lessonsLearned: "TBC\nInitially I set the project up with an Astro front end and started doing GraphQL calls to my Backend Server project to collect the portfolio data I had stored in the Neo4j graph. However I soon realized that I was undoing the speed of Astro and switched to a script that loads the required portfolio data (stored in Obsidian Markdown files) into the portfolio repo and used Astro collections to gather and display the data that way."
+lessonsLearned: "TBC\nInitially I set the project up with an [[Astro]] front end and started doing [[GraphQL]] calls to my [[Backend Server]] project to collect the portfolio data I had stored in the [[Neo4j]] graph. However I soon realized that I was undoing the speed of [[Astro]] and switched to a script that loads the required portfolio data (stored in [[Obsidian]] [[Markdown]] files) into the portfolio repo and used [[Astro]] collections to gather and display the data that way."
 ---
 # Portfolio Site V2
 
@@ -387,6 +387,20 @@ SORT dateStart ASC
 
 > For node type analysis, see [[#Portfolio Items Analysis]]
 > For node maintenance, see [[Vault Maintenance#Portfolio Maintenance|Portfolio Maintenance]]
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+### Portfolio Site Text Content
+
+#### About Me Short
+
+Testing hello
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+#### About Me Long
+
+Long long
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

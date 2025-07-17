@@ -36,7 +36,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
-shortDescription: "A chat bot that takes on content such as an RFQ block of text and then allows the user to query the text via chat."
+shortDescription: "A chat bot that takes on content such as an [[RFQ]] block of text and then allows the user to query the text via chat."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---

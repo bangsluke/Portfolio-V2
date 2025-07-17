@@ -1,6 +1,5 @@
 ---
-import { processMarkdownContent } from '../../utils/content-processor';
-import { Icon } from 'astro-icon/components';
+import { processContent } from '../../utils/content-processor';
 
 interface Props {
 	name: string;
@@ -15,10 +14,8 @@ const { name, tags, skillRating, skillDescription, imageURL, keyAchievement } =
 	Astro.props;
 
 // Process content to handle Obsidian links and markdown
-const processedSkillDescription = processMarkdownContent(
-	skillDescription || ''
-);
-const processedKeyAchievement = processMarkdownContent(keyAchievement || '');
+const processedSkillDescription = processContent(skillDescription || '');
+const processedKeyAchievement = processContent(keyAchievement || '');
 
 // console.log(name);
 ---

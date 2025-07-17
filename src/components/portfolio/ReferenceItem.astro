@@ -1,6 +1,6 @@
 ---
 import {
-	processMarkdownContent,
+	processContent,
 	processObsidianLink,
 } from '../../utils/content-processor';
 
@@ -46,10 +46,10 @@ const {
 
 // Process content to handle Obsidian links and markdown
 const processedLinkedCompany = processObsidianLink(linkedCompany);
-const processedReferenceDescription = processMarkdownContent(
+const processedReferenceDescription = processContent(
 	referenceDescription || ''
 );
-const processedKeyAchievement = processMarkdownContent(keyAchievement || '');
+const processedKeyAchievement = processContent(keyAchievement || '');
 
 // console.log(name);
 ---

@@ -1,7 +1,7 @@
 ---
 import {
+	processContent,
 	processObsidianLink,
-	processMarkdownContent,
 } from '../../utils/content-processor';
 
 interface Props {
@@ -28,10 +28,38 @@ const {
 
 // Process content to handle Obsidian links and markdown
 const processedLinkedCompany = processObsidianLink(linkedCompany);
-const processedRoleDescription = processMarkdownContent(roleDescription || '');
-const processedKeyAchievement = processMarkdownContent(keyAchievement || '');
+const processedRoleDescription = processContent(roleDescription);
+const processedKeyAchievement = processContent(keyAchievement);
 
-// console.log(name);
+// Format dates in "MMM YYYY - MMM YYYY" format
+function formatDate(date: string | Date | null | undefined): string {
+	if (!date) return '';
+
+	const dateObj = typeof date === 'string' ? new Date(date) : date;
+	if (isNaN(dateObj.getTime())) return '';
+
+	return dateObj.toLocaleDateString('en-US', {
+		month: 'short',
+		year: 'numeric',
+	});
+}
+
+const formattedDateStart = formatDate(dateStart);
+const formattedDateEnd = formatDate(dateEnd);
+const dateRange =
+	formattedDateStart && formattedDateEnd
+		? `${formattedDateStart} - ${formattedDateEnd}`
+		: formattedDateStart || formattedDateEnd || '';
+
+// Debug logging
+console.log('=== WorkExperienceItem Debug ===');
+console.log('Name:', name);
+console.log('Original roleDescription:', roleDescription);
+console.log('Processed roleDescription:', processedRoleDescription);
+console.log('Original keyAchievement:', keyAchievement);
+console.log('Processed keyAchievement:', processedKeyAchievement);
+console.log('Date range:', dateRange);
+console.log('================================');
 ---
 
 <div
@@ -51,7 +79,7 @@ const processedKeyAchievement = processMarkdownContent(keyAchievement || '');
 			<time
 				datetime={dateStart?.toString()}
 				class="text-sm text-zinc-600/80 dark:text-white/80">
-				{dateStart?.toString()} - {dateEnd?.toString()}
+				{dateRange}
 			</time>
 		</div>
 	</div>

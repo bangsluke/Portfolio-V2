@@ -38,8 +38,8 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "Data input for financial tracking of RLE International projects."
-longDescription: "TBC\nPulled in timesheet data and financial information from various RLE International region sources such as Paycor, T-Sheet and Iplicit."
+shortDescription: "Data input for financial tracking of [[RLE International]] projects."
+longDescription: "TBC\nPulled in timesheet data and financial information from various [[RLE International]] region sources such as [[Paycor]], [[T-Sheet]] and [[Iplicit]]."
 lessonsLearned: "TBC"
 ---
 # Project Finance Data Manager

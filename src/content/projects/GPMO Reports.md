@@ -36,7 +36,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
-shortDescription: "The report section for the Financial Tracker showing global RLE International data."
+shortDescription: "The report section for the [[Financial Tracker]] showing global [[RLE International]] data."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---

@@ -18,6 +18,92 @@
 
 ## Auto Log
 
+## 2025-01-16 14:40 [develop] - Enhanced date formatting for Work Experience timeline
+- Updated WorkExperienceItem component with proper date formatting
+  - Added formatDate function to convert dates to "MMM YYYY" format
+  - Displays date range as "MMM YYYY - MMM YYYY" (e.g., "Jul 2022 - Jan 2025")
+  - Handles both dateStart and dateEnd with proper fallbacks
+  - Uses toLocaleDateString with 'en-US' locale for consistent formatting
+  - Added date range debugging to console logs
+- Consistent date formatting across all work experience displays
+  - WorkExperienceTimeline component automatically uses updated formatting
+  - Work experience page automatically uses updated formatting
+  - All work experience entries now show clean, readable date ranges
+
+## 2025-01-16 14:35 [develop] - Centralized content processing and enhanced Obsidian link styling
+- Created centralized processContent function for consistent markdown processing
+  - Single function handles all Obsidian links, markdown links, and content transformations
+  - Replaces processMarkdownContent with more robust processContent function
+  - Added proper TypeScript typing for undefined/null content
+  - Enhanced markdown links with target="_blank" and rel="noopener noreferrer"
+- Enhanced CSS styling for mint-link class with differentiated link types
+  - Obsidian links (strong tags): bold, mint-green, no underline
+  - Markdown links (anchor tags): bold, mint-green, with underline
+  - Added specific .processed-content .mint-link rules for higher specificity
+  - Ensures mint-link styling works consistently across all processed content
+  - Added dark mode support for processed content mint links
+- Updated WorkExperienceItem component to use centralized processing
+  - Replaced processMarkdownContent with processContent function
+  - Added comprehensive debugging logs to track content processing
+  - Improved error handling for undefined/null content values
+- Fixed Obsidian link processing in extracted content sections
+  - Updated section extraction in sync.js to preserve Obsidian links
+  - Removed Obsidian link stripping from extractSectionContent function
+  - Obsidian links like [[Next.js]], [[Python]] are now preserved in extracted content
+  - Allows content processor to properly convert Obsidian links to bold mint-green styling
+  - Maintains markdown link conversion to HTML while preserving Obsidian syntax
+- Updated section extraction in sync.js to preserve Obsidian links
+  - Removed Obsidian link stripping from extractSectionContent function
+  - Obsidian links like [[Next.js]], [[Python]] are now preserved in extracted content
+  - Allows content processor to properly convert Obsidian links to bold mint-green styling
+  - Maintains markdown link conversion to HTML while preserving Obsidian syntax
+- Fixed Digital Engineering Specialist role description processing
+  - Obsidian links in roleDescription now convert to bold mint-green text
+  - Example: "built using [[Next.js]], [[Nest.js]], a [[Neo4j]] database" now renders as bold mint-green
+  - All extracted content sections (roleDescription, keyAchievement, etc.) now preserve Obsidian links
+  - Content processor handles conversion to proper HTML with mint-link styling
+- Updated remaining components to use content processor consistently
+  - Updated ReferencesCarousel.astro to use processObsidianLink function
+  - Updated ProjectsGallery.astro to use processObsidianLink function
+  - All components now use centralized content processor for Obsidian link handling
+  - Ensures consistent processing and styling across the entire site
+
+## 2025-01-16 14:25 [develop] - Enhanced Obsidian link processing to use content processor consistently
+- Updated projects index page to use processObsidianLink function
+  - Replaced manual bracket removal with processObsidianLink from content processor
+  - Ensures consistent Obsidian link processing across all components
+  - Maintains proper styling for processed links
+- Updated project slug page to use processObsidianLink function
+  - Replaced manual bracket removal with processObsidianLink from content processor
+  - Ensures consistent link processing for company and client lookups
+  - Maintains proper styling for processed links
+- Updated ProjectCard component to use processObsidianLink function
+  - Replaced manual bracket removal with processObsidianLink from content processor
+  - Ensures consistent Obsidian link processing in project cards
+  - Fixed TypeScript linter errors by adding proper type annotations for event handlers
+- Improved consistency in Obsidian link processing across the site
+  - All components now use the centralized content processor
+  - Obsidian links are properly converted and styled with mint-green theme color
+  - Maintains bold styling for Obsidian links as requested
+  - Ensures proper hover effects and dark mode support
+
+## 2025-01-16 14:20 [develop] - Improved theme detection to prevent flash of incorrect theme
+- Moved theme detection script to Layout.astro head section
+  - Added theme detection script in head before page renders to prevent flash
+  - Script runs immediately to detect user's system preference (dark/light mode)
+  - Respects user's manual theme choice stored in localStorage
+  - Applies appropriate theme class to document before content renders
+- Updated ThemeIcon.astro to remove duplicate theme detection
+  - Removed duplicate theme detection script from ThemeIcon component
+  - Kept toggle functionality and system preference change listener
+  - Maintains manual theme switching capability
+  - Preserves system preference change detection when no manual choice is set
+- Enhanced user experience with immediate theme application
+  - Eliminates flash of incorrect theme on page load
+  - Theme is applied before any content is rendered
+  - Respects both system preference and user's manual choice
+  - Provides seamless theme switching experience
+
 ## 2025-01-16 14:15 [develop] - Fixed pagination bullets and added click-to-snap functionality
 - Fixed pagination bullet visibility and styling
   - Simplified Pagination plugin configuration to use default bullet rendering

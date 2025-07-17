@@ -40,9 +40,9 @@ topicTags:
 powerShellAlias: bangsluke
 version: 1
 portfolioOrder: 3
-shortDescription: "A personal documentation site storing key links to the software I use, articles I find useful, and a section on Dorkinians FC stats."
+shortDescription: "A personal documentation site storing key links to the software I use, articles I find useful, and a section on [[Dorkinians FC]] stats."
 longDescription: "Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment.\nI regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing."
-lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of Markdown and led me to notice how many different softwares either use Docusaurus or a very similar type static site builder for their documentation."
+lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of [[Markdown]] and led me to notice how many different softwares either use [[Docusaurus]] or a very similar type static site builder for their documentation."
 ---
 # bangsluke Documentation
 

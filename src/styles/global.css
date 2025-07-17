@@ -2,8 +2,6 @@
 
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
 	--font-montserrat: 'Montserrat', sans-serif;
 	--font-roboto: 'Roboto', sans-serif;
@@ -224,14 +222,24 @@ a.inline-block.leading-5.pl-12 {
 	color: #6ce9b7 !important;
 }
 
-/* Styling for mint links (both links and strong tags) */
+/* Styling for mint links - different styles for different link types */
+/* Obsidian links (strong tags) - bold, mint-green, no underline */
 .mint-link {
 	color: #31d69a !important;
-	text-decoration: underline;
 	transition: all 0.3s ease;
+	font-weight: bold;
 }
 
 .mint-link:hover {
+	color: #6ce9b7 !important;
+}
+
+/* Markdown links (anchor tags) - bold, mint-green, with underline */
+a.mint-link {
+	text-decoration: underline;
+}
+
+a.mint-link:hover {
 	color: #6ce9b7 !important;
 }
 
@@ -240,6 +248,48 @@ a.inline-block.leading-5.pl-12 {
 }
 
 .dark .mint-link:hover {
+	color: #6ce9b7 !important;
+}
+
+.dark a.mint-link {
+	color: #31d69a !important;
+}
+
+.dark a.mint-link:hover {
+	color: #6ce9b7 !important;
+}
+
+/* Ensure mint-link styling works in processed content */
+.processed-content .mint-link {
+	color: #31d69a !important;
+	font-weight: bold;
+}
+
+.processed-content a.mint-link {
+	text-decoration: underline;
+}
+
+.processed-content .mint-link:hover {
+	color: #6ce9b7 !important;
+}
+
+.processed-content a.mint-link:hover {
+	color: #6ce9b7 !important;
+}
+
+.dark .processed-content .mint-link {
+	color: #31d69a !important;
+}
+
+.dark .processed-content a.mint-link {
+	color: #31d69a !important;
+}
+
+.dark .processed-content .mint-link:hover {
+	color: #6ce9b7 !important;
+}
+
+.dark .processed-content a.mint-link:hover {
 	color: #6ce9b7 !important;
 }
 
@@ -509,7 +559,7 @@ a.inline-block.leading-5.pl-12 {
 }
 
 .dark .nav-links.expanded {
-	background: #0E0E11;
+	background: #0e0e11;
 	border-top: 1px solid #374151;
 }
 
