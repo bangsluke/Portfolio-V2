@@ -41,9 +41,7 @@ export default defineConfig({
       tailwindcss()
     ],
     define: {
-      // Make environment variables available to the client
-      'import.meta.env.PUBLIC_APP_BACKEND_URL_DEV': JSON.stringify(process.env.PUBLIC_APP_BACKEND_URL_DEV),
-      'import.meta.env.PUBLIC_APP_BACKEND_URL_PROD': JSON.stringify(process.env.PUBLIC_APP_BACKEND_URL_PROD),
+
     },
   },
   markdown: {

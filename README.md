@@ -4,26 +4,31 @@
 
 # Portfolio Site V2
 
-> A personal portfolio website for displaying my skills and past projects, with integrated Obsidian note syncing.
+> A modern, static portfolio website built with Astro and Tailwind CSS, featuring integrated Obsidian note syncing for seamless content management.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d9ed7eb9-789c-4a7c-b069-b9aebb73c553/deploy-status)](https://app.netlify.com/projects/bangsluke-portfolio/deploys)
-
-> Also see the backend server repo <https://github.com/bangsluke/bangsluke-backend-server> for more details and instructions
 
 ## Table of Contents
 
 - [Portfolio Site V2](#portfolio-site-v2)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
-  - [Quick start](#quick-start)
-    - [Development Start](#development-start)
-    - [Production Start](#production-start)
+    - [Key Benefits](#key-benefits)
+  - [Features](#features)
+  - [Quick Start](#quick-start)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Environment Configuration](#environment-configuration)
+    - [Development](#development)
+    - [Production](#production)
   - [Obsidian Sync System](#obsidian-sync-system)
-    - [Features](#features)
+    - [Overview](#overview)
     - [Quick Sync Commands](#quick-sync-commands)
     - [Configuration](#configuration)
       - [Environment Variables](#environment-variables)
       - [Default Paths](#default-paths)
+    - [Tag System](#tag-system)
+      - [Tagging Your Notes](#tagging-your-notes)
     - [Usage Examples](#usage-examples)
       - [Local Development](#local-development)
       - [Production Deployment](#production-deployment)
@@ -37,103 +42,115 @@
       - [Manual Trigger](#manual-trigger)
       - [Automated Deployment](#automated-deployment)
       - [Setup GitHub Secrets](#setup-github-secrets)
-    - [File Organization](#file-organization)
-      - [Tag to Folder Mapping](#tag-to-folder-mapping)
-    - [Portfolio Tag Filtering](#portfolio-tag-filtering)
-      - [In Frontmatter](#in-frontmatter)
-      - [In Content (Obsidian Style)](#in-content-obsidian-style)
-      - [Multiple Tags for Organization](#multiple-tags-for-organization)
-    - [Error Logging \& Email Notifications](#error-logging--email-notifications)
-      - [Error Log File](#error-log-file)
-      - [Email Notifications](#email-notifications-1)
-      - [File Verification](#file-verification)
+    - [Email Notifications](#email-notifications-1)
+      - [Setup](#setup)
+      - [Test Email Service](#test-email-service)
+      - [Email Content](#email-content)
     - [Troubleshooting](#troubleshooting)
       - [Common Issues](#common-issues)
       - [Debug Mode](#debug-mode)
       - [Manual File Processing](#manual-file-processing)
-    - [Obsidian Syntax Conversion](#obsidian-syntax-conversion)
-    - [Security Considerations](#security-considerations)
-  - [How it Works](#how-it-works)
-    - [GraphQL Connection](#graphql-connection)
-    - [Example Usage](#example-usage)
-    - [Error Handling](#error-handling)
-  - [GraphQL Setup](#graphql-setup)
-    - [Schema and Updates](#schema-and-updates)
-      - [Current Schema Structure](#current-schema-structure)
-      - [Adding New Fields](#adding-new-fields)
-      - [Schema Validation](#schema-validation)
-    - [Extending the Schema](#extending-the-schema)
-      - [Adding New Types](#adding-new-types)
-      - [Adding New Queries](#adding-new-queries)
-      - [Adding Query Parameters](#adding-query-parameters)
-      - [Best Practices](#best-practices)
-      - [Debugging Schema Changes](#debugging-schema-changes)
-  - [Debugging Problems](#debugging-problems)
-    - [Connection Problems](#connection-problems)
-  - [Email Service Setup](#email-service-setup)
-    - [Overview](#overview)
-    - [Prerequisites](#prerequisites)
-    - [Step 1: Install Dependencies](#step-1-install-dependencies)
-    - [Step 2: Set Up Gmail App Password](#step-2-set-up-gmail-app-password)
-      - [2.1 Enable 2-Factor Authentication](#21-enable-2-factor-authentication)
-      - [2.2 Generate App Password](#22-generate-app-password)
-    - [Step 3: Configure Environment Variables](#step-3-configure-environment-variables)
-      - [Environment Variable Details:](#environment-variable-details)
-    - [Step 4: Test the Email Service](#step-4-test-the-email-service)
-      - [4.1 Test Email Configuration](#41-test-email-configuration)
-      - [4.2 Test with Sync Script](#42-test-with-sync-script)
-    - [Step 5: Troubleshooting](#step-5-troubleshooting)
-      - [Common Issues and Solutions](#common-issues-and-solutions)
-        - [1. "Invalid login" Error](#1-invalid-login-error)
-        - [2. "Less secure app access" Error](#2-less-secure-app-access-error)
-        - [3. "Connection timeout" Error](#3-connection-timeout-error)
-        - [4. "Authentication failed" Error](#4-authentication-failed-error)
-      - [Debug Mode](#debug-mode-1)
-    - [Step 6: Security Best Practices](#step-6-security-best-practices)
-      - [1. Environment Variables](#1-environment-variables)
-      - [2. Email Content](#2-email-content)
-      - [3. Access Control](#3-access-control)
-    - [Step 7: Production Deployment](#step-7-production-deployment)
-      - [For Netlify/Vercel Deployment](#for-netlifyvercel-deployment)
-        - [Netlify](#netlify)
-        - [Vercel](#vercel)
-      - [For Local Development](#for-local-development)
-    - [Step 8: Email Templates](#step-8-email-templates)
-    - [Step 9: Monitoring and Maintenance](#step-9-monitoring-and-maintenance)
-      - [Regular Tasks](#regular-tasks)
-      - [Logs](#logs)
-    - [Support](#support)
-    - [Example .env Configuration](#example-env-configuration)
+  - [Project Structure](#project-structure)
+  - [Content Management](#content-management)
+    - [Obsidian Integration](#obsidian-integration)
+    - [Content Collections](#content-collections)
+    - [Markdown Processing](#markdown-processing)
+  - [Deployment](#deployment)
+    - [Netlify](#netlify)
+    - [Vercel](#vercel)
+    - [GitHub Actions](#github-actions)
+  - [Development](#development-1)
+    - [Tech Stack](#tech-stack)
+    - [Scripts](#scripts)
+    - [Styling](#styling)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Introduction
 
-A modern portfolio website built with Astro, featuring:
+Portfolio Site V2 is a modern, static portfolio website that combines the power of Astro's static site generation with seamless Obsidian integration. Write your content in Obsidian, tag it with `#portfolio`, and watch it automatically sync to your live website.
 
+### Key Benefits
+
+- **⚡ Lightning Fast**: Static site generation for optimal performance
+- **📝 Content-First**: Manage all content in Obsidian with familiar markdown
+- **🔄 Seamless Sync**: Automatic syncing from Obsidian to your website
+- **📱 Responsive**: Mobile-first design with Tailwind CSS
+- **🚀 Auto-Deploy**: Continuous deployment with GitHub Actions
+- **🎨 Modern UI**: Beautiful, accessible design with dark/light themes
+
+> [Back to Table of Contents](#table-of-contents)
+
+## Features
+
+- **Static Site Generation**: Built with Astro for optimal performance
 - **Obsidian Integration**: Sync selected notes from your Obsidian vault
-- **GraphQL Backend**: Dynamic content from Neo4j database
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
 - **Auto-Deployment**: GitHub Actions for continuous deployment
-- **Email Notifications**: Automated sync reports via Gmail
+- **Email Notifications**: Automated sync reports (optional)
+- **Content Collections**: Type-safe content management
+- **Dark/Light Themes**: Automatic theme switching
+- **Search & Filtering**: Find content quickly
+- **SEO Optimized**: Built-in SEO features
 
 > [Back to Table of Contents](#table-of-contents)
 
-## Quick start
+## Quick Start
 
-### Development Start
+### Prerequisites
+
+- **Node.js 18+** installed
+- **Git** configured with credentials
+- **Obsidian vault** with notes
+- **GitHub repository** (for deployment)
+- **Deployment platform** (Netlify/Vercel)
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/Portfolio-V2.git
+cd Portfolio-V2
+
 # Install dependencies
 npm install
-
-# Start the development server
-npm run dev
-
-# Open http://localhost:4321 to see the development site
 ```
 
-> [Back to Table of Contents](#table-of-contents)
+### Environment Configuration
 
-### Production Start
+Create a `.env` file in the root directory:
+
+```bash
+# Obsidian Sync Configuration
+OBSIDIAN_PATH="/path/to/your/obsidian/vault"
+PORTFOLIO_TAG="portfolio"
+AUTO_DEPLOY="true"
+
+# Email Notifications (Optional)
+EMAIL_NOTIFICATIONS="true"
+EMAIL_RECIPIENT="your-email@gmail.com"
+GMAIL_USER="your-email@gmail.com"
+GMAIL_APP_PASSWORD="your-app-password"
+
+# Deployment (Optional)
+NETLIFY_AUTH_TOKEN=your_netlify_token
+NETLIFY_SITE_ID=your_site_id
+VERCEL_TOKEN=your_vercel_token
+```
+
+### Development
+
+```bash
+# Run initial sync
+npm run sync
+
+# Start development server
+npm run dev
+
+# Open http://localhost:4321 to see your portfolio
+```
+
+### Production
 
 ```bash
 # Build for production
@@ -147,8 +164,11 @@ npm run preview
 
 ## Obsidian Sync System
 
-### Features
+### Overview
 
+The Obsidian sync system allows you to selectively sync notes from your Obsidian vault to your portfolio website. Only notes tagged with `#portfolio` (or your custom tag) will be synced, giving you complete control over what content is publicly visible.
+
+**Key Features:**
 - 🔄 **Selective Sync**: Copy only Obsidian notes with `#portfolio` tag
 - 📱 **Mobile Support**: Sync from different devices and platforms
 - 🚀 **Auto-Deploy**: Automatically deploy changes to production
@@ -167,22 +187,22 @@ npm run preview
 
 ```bash
 # Basic sync (copies files without deploying)
-npm run sync-obsidian
+npm run sync
 
 # Sync and automatically deploy
-npm run sync-obsidian:deploy
+npm run sync:prod:deploy
 
 # Sync with email notifications
-npm run sync-obsidian:email
+npm run sync:prod:email
 
 # Sync, deploy, and send email notification
-npm run sync-obsidian:deploy-email
+npm run sync:prod:deploy-email
 
 # Use custom tag (e.g., "public" instead of "portfolio")
-npm run sync-obsidian:custom -- "public"
+npm run sync:dev -- --tag "public"
 
 # Mobile-friendly interactive sync
-node scripts/sync-mobile.js
+npm run sync:mobile
 ```
 
 > [Back to Table of Contents](#table-of-contents)
@@ -209,10 +229,9 @@ export MOBILE="true"
 # Email notifications
 export EMAIL_NOTIFICATIONS="true"
 export EMAIL_RECIPIENT="your-email@gmail.com"
-export BACKEND_URL="https://bangsluke-backend-server.herokuapp.com"
+export GMAIL_USER="your-email@gmail.com"
+export GMAIL_APP_PASSWORD="your-app-password"
 ```
-
-> [Back to Table of Contents](#table-of-contents)
 
 #### Default Paths
 
@@ -224,59 +243,90 @@ The script automatically detects common Obsidian vault locations:
 
 > [Back to Table of Contents](#table-of-contents)
 
+### Tag System
+
+The sync system organizes your notes into folders based on tags:
+
+| Tag | Folder | Description |
+|-----|--------|-------------|
+| `#portfolio` | *(required)* | Main filter tag |
+| `#project` | `projects/` | Project showcases |
+| `#client` | `clients/` | Client work |
+| `#company` | `companies/` | Company experiences |
+| `#education` | `educations/` | Educational background |
+| `#reference` | `references/` | Reference materials |
+| `#role` | `roles/` | Job roles |
+| `#skill` | `skills/` | Skills and competencies |
+
+#### Tagging Your Notes
+
+Add the `#portfolio` tag to any Obsidian note you want to sync:
+
+**In Frontmatter:**
+```yaml
+---
+title: "My Project"
+date: 2024-01-01
+tags: ["portfolio", "project", "web-development"]
+---
+```
+
+**In Content:**
+```markdown
+# My Project
+
+This is a portfolio project that showcases my skills.
+
+#portfolio #project #web-development
+```
+
+> [Back to Table of Contents](#table-of-contents)
+
 ### Usage Examples
 
 #### Local Development
 
 ```bash
 # Sync without deploying
-npm run sync-obsidian
+npm run sync:dev
 
 # Start development server
 npm run dev
 
-# Visit http://localhost:4321/notes to see your notes
+# Visit http://localhost:4321 to see your notes
 ```
-
-> [Back to Table of Contents](#table-of-contents)
 
 #### Production Deployment
 
 ```bash
 # Sync and deploy to production
-npm run sync-obsidian:deploy
+npm run sync:prod:deploy
 ```
-
-> [Back to Table of Contents](#table-of-contents)
 
 #### Custom Path
 
 ```bash
 # Specify a custom Obsidian vault path
-OBSIDIAN_PATH="/custom/path/to/vault" npm run sync-obsidian
+OBSIDIAN_PATH="/custom/path/to/vault" npm run sync:dev
 ```
-
-> [Back to Table of Contents](#table-of-contents)
 
 #### Custom Tag
 
 ```bash
 # Use a different tag for filtering
-PORTFOLIO_TAG="public" npm run sync-obsidian
+PORTFOLIO_TAG="public" npm run sync:dev
 # or
-npm run sync-obsidian:custom -- "showcase"
+npm run sync:dev -- --tag "showcase"
 ```
-
-> [Back to Table of Contents](#table-of-contents)
 
 #### Email Notifications
 
 ```bash
 # Enable email notifications
-EMAIL_NOTIFICATIONS="true" npm run sync-obsidian
+EMAIL_NOTIFICATIONS="true" npm run sync:prod
 
 # Custom email recipient
-EMAIL_NOTIFICATIONS="true" EMAIL_RECIPIENT="custom@email.com" npm run sync-obsidian
+EMAIL_NOTIFICATIONS="true" EMAIL_RECIPIENT="custom@email.com" npm run sync:prod
 ```
 
 > [Back to Table of Contents](#table-of-contents)
@@ -291,27 +341,34 @@ EMAIL_NOTIFICATIONS="true" EMAIL_RECIPIENT="custom@email.com" npm run sync-obsid
 
 ```bash
 cd Portfolio-V2
-node scripts/sync-mobile.js
+npm run sync:mobile
 ```
 
 #### iOS
 
-**Important**: Obsidian mobile files are not stored in iCloud by default and are sandboxed within the app.
+Since Obsidian mobile files are sandboxed, use one of these methods:
 
-**Recommended Method**: Export and transfer files
+1. **Files App Export** (Recommended)
+   - Export vault as plain text from Obsidian mobile
+   - Save to Files app
+   - Transfer via AirDrop, iCloud Drive, or USB
 
-1. In Obsidian mobile: **Settings** → **About** → **Export vault** → **Export as plain text**
-2. Save to Files app
-3. Transfer to computer via AirDrop, iCloud Drive, or USB
-4. Run sync script on computer
+2. **Working Copy App**
+   - Install Working Copy from App Store
+   - Clone repository to iPhone
+   - Export and commit changes
 
-**Alternative Methods**:
+3. **iOS Shortcuts**
+   - Import the provided template
+   - Create automation for file transfer
 
-- Use **Working Copy** app for Git-based sync
-- Create **iOS Shortcuts** automation
-- Use **GitHub Actions** for automated deployment
+4. **GitHub Actions**
+   - Use automated workflow
+   - Manual trigger from GitHub
 
-See the [iOS Sync Guide](scripts/ios-sync-guide.md) for detailed instructions.
+See [iOS Sync Guide](scripts/ios-sync-guide.md) for detailed instructions.
+
+> [Back to Table of Contents](#table-of-contents)
 
 ### GitHub Actions Integration
 
@@ -322,6 +379,7 @@ See the [iOS Sync Guide](scripts/ios-sync-guide.md) for detailed instructions.
 3. Click "Run workflow"
 4. Optionally specify:
    - Obsidian vault path
+   - Portfolio tag
    - Auto-deploy setting
 
 #### Automated Deployment
@@ -330,7 +388,7 @@ The workflow can be triggered by:
 
 - **Manual**: Using the workflow dispatch
 - **Scheduled**: Daily at 2 AM UTC
-- **Push**: When changes are made to `src/content/obsidian/` or `scripts/`
+- **Push**: When changes are made to `src/content/` or `scripts/`
 
 #### Setup GitHub Secrets
 
@@ -339,7 +397,7 @@ Add these secrets to your GitHub repository:
 ```bash
 # For Netlify deployment
 NETLIFY_AUTH_TOKEN=your_netlify_token
-NETLIFY_SITE_ID=your_site_id
+NETLIFY_SITE_ID=your_netlify_site_id
 
 # For Vercel deployment (alternative)
 VERCEL_TOKEN=your_vercel_token
@@ -349,708 +407,280 @@ SLACK_WEBHOOK_URL=your_slack_webhook
 DISCORD_WEBHOOK_URL=your_discord_webhook
 ```
 
-### File Organization
+> [Back to Table of Contents](#table-of-contents)
 
-After sync, notes with the portfolio tag will be organized into specific folders based on their tags:
+### Email Notifications
 
-```
-src/content/
-├── obsidian/          # Notes without specific category tags
-├── projects/          # Notes with #project tag
-├── clients/           # Notes with #client tag
-├── companies/         # Notes with #company tag
-├── educations/        # Notes with #education tag
-├── references/        # Notes with #reference tag
-├── roles/            # Notes with #role tag
-└── skills/           # Notes with #skill tag
-```
+#### Setup
 
-#### Tag to Folder Mapping
+1. **Enable 2-Factor Authentication** on your Gmail account
+2. **Generate App Password**:
+   - Go to Google Account settings
+   - Security → 2-Step Verification → App passwords
+   - Generate password for "Mail"
+3. **Configure Environment Variables**:
 
-| Tag          | Folder        | Description                               |
-| ------------ | ------------- | ----------------------------------------- |
-| `#project`   | `projects/`   | Project showcases and case studies        |
-| `#client`    | `clients/`    | Client work and relationships             |
-| `#company`   | `companies/`  | Company experiences and collaborations    |
-| `#education` | `educations/` | Educational background and certifications |
-| `#reference` | `references/` | Reference materials and resources         |
-| `#role`      | `roles/`      | Job roles and positions                   |
-| `#skill`     | `skills/`     | Skills and competencies                   |
-
-Notes without these specific tags will be placed in the `obsidian/` folder.
-
-### Portfolio Tag Filtering
-
-The sync system only copies notes that contain the `#portfolio` tag. You can add this tag to your Obsidian notes in several ways:
-
-#### In Frontmatter
-
-```yaml
----
-title: 'My Project'
-date: 2024-01-01
-tags: ['portfolio', 'project', 'web-development']
----
+```bash
+EMAIL_NOTIFICATIONS="true"
+EMAIL_RECIPIENT="your-email@gmail.com"
+GMAIL_USER="your-email@gmail.com"
+GMAIL_APP_PASSWORD="your-app-password"
 ```
 
-#### In Content (Obsidian Style)
+#### Test Email Service
 
-```markdown
-# My Project
-
-This is a project I want to showcase on my portfolio.
-
-#portfolio #project #web-development
+```bash
+# Test email configuration
+npm run test-email
 ```
 
-#### Multiple Tags for Organization
+#### Email Content
 
-```markdown
-# Company Experience
-
-Working with this amazing company.
-
-#portfolio #company #tech #leadership
-```
-
-This note would be placed in the `companies/` folder due to the `#company` tag.
-
-### Error Logging & Email Notifications
-
-#### Error Log File
-
-The sync script creates a detailed error log at `sync-errors.json` containing:
-
-- Sync start/end times
-- Source path information
-- Processing and verification errors
-- Summary statistics
-- Success/failure status
-
-#### Email Notifications
-
-When enabled, the script sends detailed HTML email reports including:
-
+The sync script sends detailed HTML emails including:
 - Sync status (success/failure)
 - File processing summary
 - Error details in formatted tables
 - Timestamps and source information
 
-#### File Verification
-
-The script verifies each copied file by:
-
-- Checking if the target file exists
-- Ensuring the file has content (not empty)
-- Logging verification errors separately
-- Providing detailed error information
+> [Back to Table of Contents](#table-of-contents)
 
 ### Troubleshooting
 
 #### Common Issues
 
-**1. "Could not find Obsidian vault path"**
+**1. "Obsidian vault path not found"**
+- Verify `OBSIDIAN_PATH` environment variable
+- Check that the path exists and is accessible
 
-Solution: Set the `OBSIDIAN_PATH` environment variable:
+**2. "No files synced"**
+- Ensure notes have the `#portfolio` tag
+- Check file permissions
+- Verify file extensions are supported
 
-```bash
-export OBSIDIAN_PATH="/path/to/your/vault"
-npm run sync-obsidian
-```
-
-**2. "No files copied - all files skipped"**
-
-Solution: Add the `#portfolio` tag to your notes:
-
-```yaml
----
-title: 'My Note'
-tags: ['portfolio']
----
-```
-
-Or add `#portfolio` anywhere in your note content.
-
-**3. Permission denied errors**
-
-Solution: Check file permissions and ensure the script has read access to your Obsidian vault.
-
-**4. Git authentication errors**
-
-Solution: Ensure your Git credentials are properly configured:
-
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-```
-
-**5. Build errors**
-
-Solution: Check that all markdown files have valid frontmatter:
-
-```yaml
----
-title: 'Note Title'
-date: 2024-01-01
-tags: ['portfolio']
----
-```
+**3. "Email notifications not working"**
+- Verify Gmail app password is correct
+- Check 2-factor authentication is enabled
+- Test with `npm run test-email`
 
 #### Debug Mode
 
-Run with verbose logging:
-
 ```bash
-DEBUG=true npm run sync-obsidian
+# Run with debug logging
+DEBUG=true npm run sync:dev
 ```
 
 #### Manual File Processing
 
-If automatic sync fails, you can manually copy files:
-
 ```bash
-# Create the target directory
-mkdir -p src/content/obsidian
-
-# Copy files manually
-cp -r "/path/to/obsidian/vault"/* src/content/obsidian/
-
-# Build the project
-npm run build
+# Process specific files
+node scripts/process-obsidian-markdown.js --file "path/to/file.md"
 ```
-
-### Obsidian Syntax Conversion
-
-The sync script automatically converts Obsidian-specific syntax:
-
-| Obsidian                    | Standard Markdown                  |
-| --------------------------- | ---------------------------------- |
-| `[[Internal Link]]`         | `[Internal Link](Internal Link)`   |
-| `> [!NOTE] Text`            | `> **NOTE:** Text`                 |
-| `aliases: [alias1, alias2]` | _(removed)_                        |
-| `tags: [tag1, tag2]`        | _(preserved, portfolio tag added)_ |
-| `#portfolio`                | _(detected for filtering)_         |
-
-### Security Considerations
-
-- **Public Notes**: Only sync notes you want to make public
-- **Sensitive Data**: Never sync notes containing passwords, API keys, or personal information
-- **Git History**: Consider using `.gitignore` to exclude sensitive files
-- **Access Control**: Use proper authentication for your deployment platform
 
 > [Back to Table of Contents](#table-of-contents)
 
-## How it Works
+## Project Structure
 
-### GraphQL Connection
-
-The GraphQL client (`src/utils/graphql-client.ts`) automatically detects the environment:
-
-- **Development**: Uses `PUBLIC_APP_BACKEND_URL_DEV`
-- **Production**: Uses `PUBLIC_APP_BACKEND_URL_PROD`
-
-### Example Usage
-
-```typescript
-import { graphqlClient } from '../utils/graphql-client';
-import { fetchCompanies } from '../utils/companies';
-
-// Make GraphQL requests
-const companies = await fetchCompanies({ limit: 10, offset: 0 });
 ```
-
-### Error Handling
-
-If the environment variables are not set, the client will throw a descriptive error indicating which variable is missing.
+Portfolio-V2/
+├── src/
+│   ├── content/           # Synced Obsidian notes
+│   │   ├── companies/     # Company notes
+│   │   ├── projects/      # Project notes
+│   │   ├── clients/       # Client notes
+│   │   ├── educations/    # Education notes
+│   │   ├── references/    # Reference notes
+│   │   ├── roles/         # Role notes
+│   │   ├── skills/        # Skill notes
+│   │   ├── staticData/    # Static configuration
+│   │   └── config.ts      # Content schema
+│   ├── components/        # React/Preact components
+│   ├── layouts/           # Astro layouts
+│   ├── pages/             # Astro pages
+│   └── styles/            # Global styles
+├── scripts/               # Sync and deployment scripts
+│   ├── sync.js            # Main sync script
+│   ├── process-obsidian-markdown.js
+│   ├── email-service.js   # Email notifications
+│   ├── deploy.sh          # Deployment script
+│   └── ios-sync-guide.md  # iOS sync instructions
+├── .github/workflows/     # GitHub Actions
+│   └── obsidian-sync.yml  # Automated sync workflow
+├── public/                # Static assets
+└── dist/                  # Build output
+```
 
 > [Back to Table of Contents](#table-of-contents)
 
-## GraphQL Setup
+## Content Management
 
-### Schema and Updates
+### Obsidian Integration
 
-The GraphQL schema is defined in the backend server and can be updated by modifying the schema files. The frontend automatically adapts to schema changes through the GraphQL client.
+The portfolio uses Obsidian as the primary content management system:
 
-#### Current Schema Structure
+1. **Write in Obsidian**: Create and edit notes in your Obsidian vault
+2. **Tag for Portfolio**: Add `#portfolio` tag to notes you want to sync
+3. **Organize with Tags**: Use additional tags to organize content into sections
+4. **Sync Automatically**: Run sync commands to update your website
 
-The backend provides the following main types:
+### Content Collections
 
-- **Company**: `{ nodeId, name, dateStart, dateEnd }`
-- **Role**: `{ nodeId, name, dateStart, dateEnd, roleDescription }`
-- **Project**: `{ nodeId, title, description, technologies, githubUrl, liveUrl, imageUrl }`
+Astro's content collections provide type-safe content management:
 
-#### Adding New Fields
+- **Projects**: Showcase your work and projects
+- **Companies**: Display company experiences
+- **Clients**: Highlight client work
+- **Skills**: List your technical skills
+- **Education**: Show your educational background
+- **References**: Include testimonials and references
 
-To add new fields to existing types:
+### Markdown Processing
 
-1. **Backend**: Update the GraphQL schema in the backend server
-2. **Frontend**: Update the corresponding TypeScript interfaces in the utils files
-3. **Frontend**: Update any queries that use the modified type
+The sync system automatically converts Obsidian-specific syntax:
 
-Example - Adding a `description` field to Company:
-
-```typescript
-// Backend schema update
-type Company {
-  nodeId: String!
-  name: String!
-  dateStart: String!
-  dateEnd: String
-  description: String  # New field
-}
-
-// Frontend interface update (src/utils/companies.ts)
-export interface Company {
-  nodeId: string;
-  name: string;
-  dateStart: string;
-  dateEnd: string | null;
-  description?: string;  // New field
-}
-
-// Frontend query update
-const GET_COMPANIES_QUERY = `
-  query GetCompanies {
-    companies {
-      nodeId
-      name
-      dateStart
-      dateEnd
-      description  # New field
-    }
-  }
-`;
-```
-
-#### Schema Validation
-
-The GraphQL client automatically validates queries against the backend schema. If a query requests a field that doesn't exist, the backend will return an error with details about the missing field.
-
-### Extending the Schema
-
-#### Adding New Types
-
-To add completely new types to the schema:
-
-1. **Backend**: Define the new type in the GraphQL schema
-2. **Frontend**: Create a new utility file for the type
-3. **Frontend**: Define TypeScript interfaces and queries
-4. **Frontend**: Create fetch functions
-
-Example - Adding a `Skill` type:
-
-```typescript
-// 1. Backend schema (in backend server)
-type Skill {
-  nodeId: String!
-  name: String!
-  category: String!
-  proficiency: Int!
-  yearsOfExperience: Int!
-}
-
-// 2. Frontend utility file (src/utils/skills.ts)
-export interface Skill {
-  nodeId: string;
-  name: string;
-  category: string;
-  proficiency: number;
-  yearsOfExperience: number;
-}
-
-export interface GetSkillsResponse {
-  skills: Skill[];
-}
-
-const GET_SKILLS_QUERY = `
-  query GetSkills {
-    skills {
-      nodeId
-      name
-      category
-      proficiency
-      yearsOfExperience
-    }
-  }
-`;
-
-export async function fetchSkills(): Promise<Skill[]> {
-  try {
-    const response = await graphqlClient.request<GetSkillsResponse>(GET_SKILLS_QUERY);
-
-    if (!response.skills) {
-      throw new Error('Invalid response format: missing skills array');
-    }
-
-    return response.skills;
-  } catch (error) {
-    console.error('Error fetching skills:', error);
-    throw error;
-  }
-}
-```
-
-#### Adding New Queries
-
-To add new queries for existing types:
-
-1. **Frontend**: Add the new query to the appropriate utility file
-2. **Frontend**: Create a new fetch function
-3. **Frontend**: Update components to use the new function
-
-Example - Adding a query to get companies by date range:
-
-```typescript
-// In src/utils/companies.ts
-const GET_COMPANIES_BY_DATE_RANGE_QUERY = `
-  query GetCompaniesByDateRange($startDate: String!, $endDate: String!) {
-    companies(where: { dateStart: { gte: $startDate }, dateEnd: { lte: $endDate } }) {
-      nodeId
-      name
-      dateStart
-      dateEnd
-    }
-  }
-`;
-
-export async function fetchCompaniesByDateRange(
-	startDate: string,
-	endDate: string
-): Promise<Company[]> {
-	try {
-		const response = await graphqlClient.request<GetCompaniesResponse>(
-			GET_COMPANIES_BY_DATE_RANGE_QUERY,
-			{ startDate, endDate }
-		);
-
-		if (!response.companies) {
-			throw new Error('Invalid response format: missing companies array');
-		}
-
-		return response.companies;
-	} catch (error) {
-		console.error('Error fetching companies by date range:', error);
-		throw error;
-	}
-}
-```
-
-#### Adding Query Parameters
-
-To add parameters to existing queries:
-
-1. **Frontend**: Update the query to include variables
-2. **Frontend**: Update the fetch function to accept parameters
-3. **Frontend**: Pass parameters to the GraphQL client
-
-Example - Adding pagination to companies query:
-
-```typescript
-// Updated query with parameters
-const GET_COMPANIES_PAGINATED_QUERY = `
-  query GetCompanies($limit: Int, $offset: Int) {
-    companies(limit: $limit, offset: $offset) {
-      nodeId
-      name
-      dateStart
-      dateEnd
-    }
-  }
-`;
-
-// Updated fetch function
-export async function fetchCompanies(
-	options: { limit?: number; offset?: number } = {}
-): Promise<Company[]> {
-	try {
-		const { limit, offset } = options;
-		const response = await graphqlClient.request<GetCompaniesResponse>(
-			GET_COMPANIES_PAGINATED_QUERY,
-			{ limit, offset }
-		);
-
-		if (!response.companies) {
-			throw new Error('Invalid response format: missing companies array');
-		}
-
-		return response.companies;
-	} catch (error) {
-		console.error('Error fetching companies:', error);
-		throw error;
-	}
-}
-```
-
-#### Best Practices
-
-1. **Type Safety**: Always define TypeScript interfaces for your GraphQL types
-2. **Error Handling**: Include proper error handling in fetch functions
-3. **Query Organization**: Keep related queries in the same utility file
-4. **Naming Conventions**: Use descriptive names for queries and functions
-5. **Documentation**: Add comments explaining complex queries or business logic
-6. **Testing**: Test new queries in the GraphQL playground before implementing
-
-#### Debugging Schema Changes
-
-If you encounter issues after schema changes:
-
-1. **Check the GraphQL Playground**: Test queries directly in the backend GraphQL playground
-2. **Review Error Messages**: GraphQL provides detailed error messages for schema mismatches
-3. **Use the Debug Page**: Navigate to `/debug` to test the connection and see detailed error information
-4. **Check Console Logs**: Look for GraphQL errors in the browser console
+- **Internal Links**: `[[Note Name]]` → Standard markdown links
+- **Tags**: `#tag` → Preserved for filtering
+- **Callouts**: `> [!note]` → HTML blockquotes
+- **Frontmatter**: YAML metadata preserved and enhanced
 
 > [Back to Table of Contents](#table-of-contents)
 
-## Debugging Problems
+## Deployment
 
-### Connection Problems
+### Netlify
 
-If the problem is a connection issue between the backend server and front end website, navigate to `http://localhost:4321/debug` to see a connection test
+1. **Connect Repository**:
+   - Connect your GitHub repository to Netlify
+   - Set build command: `npm run build`
+   - Set publish directory: `dist`
+
+2. **Environment Variables**:
+   - Add your environment variables in Netlify dashboard
+   - Include all sync-related variables
+
+3. **Deploy**:
+   - Push changes to trigger automatic deployment
+   - Or use manual sync commands
+
+### Vercel
+
+1. **Import Project**:
+   - Import your GitHub repository to Vercel
+   - Framework preset: Astro
+   - Build command: `npm run build`
+
+2. **Environment Variables**:
+   - Add environment variables in Vercel dashboard
+   - Include all sync-related variables
+
+3. **Deploy**:
+   - Automatic deployment on push
+   - Manual deployment available
+
+### GitHub Actions
+
+The included workflow automatically syncs and deploys:
+
+```yaml
+name: Obsidian Sync & Deploy
+
+on:
+  workflow_dispatch:  # Manual trigger
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
+  push:
+    paths:
+      - 'src/content/**'
+      - 'scripts/**'
+
+jobs:
+  sync-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run Obsidian sync
+      env:
+        OBSIDIAN_PATH: ${{ secrets.OBSIDIAN_PATH }}
+        PORTFOLIO_TAG: ${{ secrets.PORTFOLIO_TAG }}
+        AUTO_DEPLOY: ${{ secrets.AUTO_DEPLOY }}
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        EMAIL_NOTIFICATIONS: ${{ secrets.EMAIL_NOTIFICATIONS }}
+        EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+      run: npm run sync:prod:deploy-email
+```
 
 > [Back to Table of Contents](#table-of-contents)
 
-## Email Service Setup
+## Development
 
-This guide will help you set up a self-contained email service for your Obsidian sync notifications using Gmail SMTP.
+### Tech Stack
 
-### Overview
+- **Framework**: [Astro](https://astro.build/) - Static site generator
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS
+- **Components**: [Preact](https://preactjs.com/) - Lightweight React alternative
+- **Icons**: [Astro Icon](https://github.com/natemoo-re/astro-icon) - Icon system
+- **Content**: Markdown with Obsidian integration
+- **Deployment**: Netlify/Vercel with GitHub Actions
 
-The email service has been updated to use Nodemailer with Gmail SMTP instead of relying on your backend server. This makes it completely self-contained within your Portfolio-V2 project.
-
-### Prerequisites
-
-1. A Gmail account
-2. Node.js and npm installed
-3. Access to your Portfolio-V2 project
-
-### Step 1: Install Dependencies
-
-First, install the required Nodemailer package:
+### Scripts
 
 ```bash
-npm install nodemailer
+# Development
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+
+# Sync Commands
+npm run sync         # Basic sync
+npm run sync:dev     # Development sync
+npm run sync:prod    # Production sync
+npm run sync:mobile  # Mobile sync
+
+# Email
+npm run test-email   # Test email service
+
+# Linting & Formatting
+npm run lint         # Run ESLint
+npm run lint:fix     # Fix ESLint issues
+npm run format       # Format with Prettier
 ```
 
-### Step 2: Set Up Gmail App Password
+### Styling
 
-**Important**: You cannot use your regular Gmail password. You need to create an "App Password" for security.
+The project uses Tailwind CSS with custom design tokens:
 
-#### 2.1 Enable 2-Factor Authentication
+- **Colors**: Custom mint and riptide color palettes
+- **Typography**: Montserrat, Roboto, and Open Sans fonts
+- **Themes**: Dark and light mode support
+- **Components**: Reusable component library
 
-1. Go to your [Google Account settings](https://myaccount.google.com/)
-2. Navigate to "Security"
-3. Enable "2-Step Verification" if not already enabled
+> [Back to Table of Contents](#table-of-contents)
 
-#### 2.2 Generate App Password
+## Contributing
 
-1. In your Google Account settings, go to "Security"
-2. Find "2-Step Verification" and click on it
-3. Scroll down to "App passwords"
-4. Click "Create new app password"
-5. Select "Mail" as the app type
-6. Choose "Other (Custom name)" and enter "Portfolio Sync"
-7. Click "Generate"
-8. **Copy the 16-character password** (it will look like: `abcd efgh ijkl mnop`)
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes
+4. Run tests: `npm run lint && npm run build`
+5. Commit your changes: `git commit -am 'Add feature'`
+6. Push to the branch: `git push origin feature-name`
+7. Submit a pull request
 
-**Important**: Save this password securely. You won't be able to see it again.
+> [Back to Table of Contents](#table-of-contents)
 
-### Step 3: Configure Environment Variables
+## License
 
-Add the following variables to your `.env` file:
-
-```env
-# Email Configuration
-EMAIL_NOTIFICATIONS=true
-EMAIL_RECIPIENT=your-email@gmail.com
-EMAIL_SENDER=your-email@gmail.com
-GMAIL_USER=your-email@gmail.com
-GMAIL_APP_PASSWORD=your-16-character-app-password
-```
-
-#### Environment Variable Details:
-
-- `EMAIL_NOTIFICATIONS`: Set to `true` to enable email notifications
-- `EMAIL_RECIPIENT`: The email address that will receive sync notifications
-- `EMAIL_SENDER`: The email address that will send notifications (usually same as GMAIL_USER)
-- `GMAIL_USER`: Your Gmail address
-- `GMAIL_APP_PASSWORD`: The 16-character app password you generated
-
-### Step 4: Test the Email Service
-
-#### 4.1 Test Email Configuration
-
-Use the provided test script to verify your email setup:
-
-```bash
-npm run test-email
-```
-
-#### 4.2 Test with Sync Script
-
-You can also test email notifications with your sync scripts:
-
-```bash
-# Test with basic sync
-npm run sync-obsidian:email
-
-# Test with production sync
-npm run sync-production:email
-```
-
-### Step 5: Troubleshooting
-
-#### Common Issues and Solutions
-
-##### 1. "Invalid login" Error
-
-**Problem**: `535-5.7.8 Username and Password not accepted`
-
-**Solution**:
-
-- Make sure you're using an App Password, not your regular Gmail password
-- Verify 2-Factor Authentication is enabled
-- Check that the GMAIL_USER matches the account where you generated the App Password
-
-##### 2. "Less secure app access" Error
-
-**Problem**: Gmail blocks the connection
-
-**Solution**:
-
-- This shouldn't happen with App Passwords, but if it does, make sure you're using the App Password correctly
-- Double-check that you copied the entire 16-character password
-
-##### 3. "Connection timeout" Error
-
-**Problem**: Network connectivity issues
-
-**Solution**:
-
-- Check your internet connection
-- Verify firewall settings aren't blocking SMTP (port 587)
-- Try again in a few minutes
-
-##### 4. "Authentication failed" Error
-
-**Problem**: Incorrect credentials
-
-**Solution**:
-
-- Verify all environment variables are set correctly
-- Make sure there are no extra spaces in your .env file
-- Regenerate the App Password if needed
-
-#### Debug Mode
-
-To see more detailed error information, you can add debug logging:
-
-```javascript
-// In your sync script, add this before emailService.initialize():
-process.env.DEBUG = 'true';
-```
-
-### Step 6: Security Best Practices
-
-#### 1. Environment Variables
-
-- Never commit your `.env` file to version control
-- Use different App Passwords for different environments
-- Rotate App Passwords periodically
-
-#### 2. Email Content
-
-- The email service sends HTML emails with detailed sync reports
-- Sensitive information is not included in emails
-- All sync data is logged locally in `sync-errors.json`
-
-#### 3. Access Control
-
-- Only authorized email addresses should receive notifications
-- Consider using a dedicated email address for notifications
-
-### Step 7: Production Deployment
-
-#### For Netlify/Vercel Deployment
-
-When deploying to production platforms, you'll need to set the environment variables in your deployment platform:
-
-##### Netlify
-
-1. Go to your site settings in Netlify
-2. Navigate to "Environment variables"
-3. Add all the email-related environment variables
-
-##### Vercel
-
-1. Go to your project settings in Vercel
-2. Navigate to "Environment Variables"
-3. Add all the email-related environment variables
-
-#### For Local Development
-
-Make sure your `.env` file is in the root of your project and contains all necessary variables.
-
-### Step 8: Email Templates
-
-The email service automatically generates beautiful HTML emails with:
-
-- Sync status (success/failure)
-- Detailed timing information
-- File processing statistics
-- Error reports (if any)
-- Professional styling
-
-You can customize the email templates by modifying the `generateSyncReport` method in `scripts/email-service.js`.
-
-### Step 9: Monitoring and Maintenance
-
-#### Regular Tasks
-
-1. **Monthly**: Check that emails are being received
-2. **Quarterly**: Rotate your Gmail App Password
-3. **As needed**: Update email templates or recipient lists
-
-#### Logs
-
-- Email service logs are included in your sync script output
-- Failed email attempts are logged to the console
-- Sync errors are saved to `sync-errors.json`
-
-### Support
-
-If you encounter issues:
-
-1. Check the troubleshooting section above
-2. Verify your Gmail App Password is correct
-3. Test with the provided test script
-4. Check your `.env` file configuration
-5. Review the console output for detailed error messages
-
-### Example .env Configuration
-
-Here's a complete example of what your `.env` file should look like:
-
-```env
-# Obsidian Configuration
-OBSIDIAN_PATH=C:/Users/bangs/Documents/Coding Projects/Obsidian-Backups/Obsidian-Personal-Notes/Personal Notes
-PORTFOLIO_TAG=portfolio
-
-# Email Configuration
-EMAIL_NOTIFICATIONS=true
-EMAIL_RECIPIENT=bangsluke@gmail.com
-EMAIL_SENDER=bangsluke@gmail.com
-GMAIL_USER=bangsluke@gmail.com
-GMAIL_APP_PASSWORD=abcd efgh ijkl mnop
-
-# Deployment Configuration
-AUTO_DEPLOY=true
-NETLIFY_SITE_ID=your-netlify-site-id
-NETLIFY_AUTH_TOKEN=your-netlify-token
-
-# Optional: Debug mode
-DEBUG=false
-```
-
-Remember to replace the placeholder values with your actual configuration!
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 > [Back to Table of Contents](#table-of-contents)
