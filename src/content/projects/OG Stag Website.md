@@ -6,15 +6,16 @@ tags:
   - coding
   - project/completed
 created: 2025-05-30 10:00
-modified: 2025-07-11T15:55:34+01:00
+modified: 2025-07-17T19:33:28+01:00
 aliases: 
-viewCount: 8
+viewCount: 10
 projectURL: https://og-stag.netlify.app/
 codeURL: https://github.com/bangsluke/OG-stag
 codeMultipleRepos: false
+deploymentServiceURL: https://app.netlify.com/projects/og-stag/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: 
+imageURL: https://i.imgur.com/hlZ9jEG.png
 dateStart: 2023-05-22
 dateEnd: 2023-07-07
 technologies:
@@ -33,6 +34,7 @@ topicTags:
   - "[[Oli Goddard]]"
 powerShellAlias: n/a
 version: 1
+portfolioOrder: 5
 shortDescription: "A website detailing the itinerary for Oli Goddard's stag do."
 longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and Google Maps links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.\nThis site was a copy and rebrand from the JS Stag Website I had previously built."
 lessonsLearned: "As this site was a copy of JS Stag Website, the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes."
@@ -52,6 +54,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

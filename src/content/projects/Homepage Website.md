@@ -6,13 +6,14 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 17:09
-modified: 2025-07-11T15:55:06+01:00
+modified: 2025-07-17T19:33:07+01:00
 aliases:
   - Homepage
-viewCount: 13
+viewCount: 15
 projectURL: https://bangsluke.github.io/Homepage.html
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
+deploymentServiceURL: https://github.com/bangsluke
 folderURL: n/a
 logoURL: n/a
 imageURL: 
@@ -34,6 +35,7 @@ topicTags:
   - Coding
 powerShellAlias: n/a
 version: 1
+portfolioOrder: 3
 shortDescription: "An early site built as a homepage for storing links to all my projects and showing a widget with the weather in my area."
 longDescription: "A single point of focus for where the links to all my projects were stored, as well as a weather widget for my area."
 lessonsLearned: "Main lesson was understanding and adjusting an existing codebase and learning how to correctly modify an online widget to receive my location and correct styling."
@@ -53,6 +55,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

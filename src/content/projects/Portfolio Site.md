@@ -9,13 +9,14 @@ tags:
 created: 2025-05-29 17:59
 modified: 2025-07-11T15:55:54+01:00
 aliases: 
-viewCount: 12
+viewCount: 14
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio
 codeMultipleRepos: false
+deploymentServiceURL: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: 
+imageURL: https://i.imgur.com/fMd3zzE.png
 dateStart: 2022-04-09
 dateEnd: 2024-02-02
 technologies:
@@ -35,6 +36,7 @@ topicTags:
   - "[[Work]]"
 powerShellAlias: n/a
 version: 1
+portfolioOrder: 3
 shortDescription: "The portfolio site was my initial attempt at creating a marketing page for myself as a developer, showcasing my skills and contact information."
 longDescription: "The portfolio site showcased all the information I believed to be relevant for possible hirers, clients or collaborators, providing details on my ambitions, my self-assessed skill level in several languages and technologies, my education and former work experience and finally my contact details."
 lessonsLearned: "The key lesson learned for this project was how useful it is to create re-usable components for a site - a skill I only began using after building this site. As such, this site became a challenge to maintain and ultimately broke, leading me to the decision to rebuild it entirely."
@@ -54,6 +56,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

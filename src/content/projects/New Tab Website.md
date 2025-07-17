@@ -6,13 +6,14 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 17:42
-modified: 2025-07-11T15:55:26+01:00
+modified: 2025-07-17T19:33:21+01:00
 aliases:
   - New Tab
-viewCount: 12
+viewCount: 14
 projectURL: https://bangsluke.github.io/pages/NewTab.html
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
+deploymentServiceURL: https://github.com/bangsluke
 folderURL: n/a
 logoURL: n/a
 imageURL: 
@@ -35,6 +36,7 @@ topicTags:
   - Navigation
 powerShellAlias: n/a
 version: 1
+portfolioOrder:
 shortDescription: "An early website I developed to be my new tab page across browsers, providing me fast links to my key sites and a link back to my Homepage Website."
 longDescription: "A site that opens up for new tabs across my browsers, developed from a theme I found online which stores my key site links and several images I have saved on the page in a masonry layout."
 lessonsLearned: "This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the CSS file from online) and then making it my own."
@@ -54,6 +56,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

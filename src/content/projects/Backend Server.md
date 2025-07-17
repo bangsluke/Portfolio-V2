@@ -5,16 +5,17 @@ tags:
   - notes
   - project/active
 created: 2025-06-23 13:36
-modified: 2025-07-13T09:46:29+01:00
+modified: 2025-07-17T19:24:09+01:00
 viewCount: 10
 aliases:
   - backend-server
 projectURL: https://bangsluke-backend-server-221df04e1ad6.herokuapp.com/
 codeURL: https://github.com/bangsluke/bangsluke-backend-server
 codeMultipleRepos: false
+deploymentServiceURL: https://dashboard.heroku.com/apps/server-mytraveljournal
 folderURL: n/a
 logoURL: https://i.imgur.com/yqTK1TX.png
-imageURL: 
+imageURL: https://i.imgur.com/o3p2v41.png
 dateStart: 2025-06-24
 dateEnd: ""
 technologies:
@@ -35,6 +36,7 @@ topicTags:
   - Backend
 powerShellAlias: backend
 version: 1
+portfolioOrder: 1
 shortDescription: "The backend source of data for several of my projects, allowing a singular point of management and maintenance."
 longDescription: "The source of data for several projects including my Travel Website and Portfolio Site V2, providing a route for data retrieval from a Neo4j graph using GraphQL queries."
 lessonsLearned: "Taught me about setting up a Flask server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage Python code in a growing codebase given my past experience with Python had been for single script projects.\nTBC"
@@ -54,6 +56,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

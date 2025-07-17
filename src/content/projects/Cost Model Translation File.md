@@ -5,12 +5,13 @@ tags:
   - tool
   - project/completed/work
   - portfolio
-modified: 2025-07-11T15:51:21+01:00
-viewCount: 2
+modified: 2025-07-17T19:29:37+01:00
+viewCount: 4
 aliases: 
 projectURL: TBC
 codeURL: n/a
 codeMultipleRepos: false
+deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model?csf=1&web=1&e=CGmO2I
 logoURL: n/a
 imageURL: 
@@ -32,6 +33,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 
+portfolioOrder: 4
 shortDescription: "The automation file to convert the Finance Tracker."
 longDescription: "TBC"
 lessonsLearned: "TBC"
@@ -51,6 +53,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

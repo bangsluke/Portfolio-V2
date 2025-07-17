@@ -8,13 +8,14 @@ tags:
 created: 2025-05-30 10:00
 modified: 2025-07-11T15:55:16+01:00
 aliases: 
-viewCount: 7
+viewCount: 9
 projectURL: https://js-stag.netlify.app/
 codeURL: https://github.com/bangsluke/JS-stag
 codeMultipleRepos: false
+deploymentServiceURL: https://app.netlify.com/projects/js-stag/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: 
+imageURL: https://i.imgur.com/Ve95p8R.png
 dateStart: 2023-03-23
 dateEnd: 2023-05-11
 technologies:
@@ -33,6 +34,7 @@ topicTags:
   - "[[Jonny Sourris]]"
 powerShellAlias: n/a
 version: 1
+portfolioOrder: 5
 shortDescription: "A website detailing the itinerary for Jonny Sourris's stag do."
 longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and Google Maps links to each activity, designed for late attendees (or drunk attendees) to re-locate the group."
 lessonsLearned: "There were a few lessons learned from this project;\n- Learning how to use Vite.js for the first time\n- Writing a website using Typescript for the first time\n- Implementing a timeline component and targeting mobile screen size\n- Correctly setting up hyperlinks from the users location to the next activity in Google Maps"
@@ -52,6 +54,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

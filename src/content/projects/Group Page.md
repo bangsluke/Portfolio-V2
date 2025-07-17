@@ -1,46 +1,46 @@
 ---
 tags:
-  - tag
-  - work
-  - tool
+  - project
   - portfolio
-  - project/completed/work
-modified: 2025-07-11T15:52:52+01:00
-viewCount: 6
-aliases: 
-projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/efd30e67-8ed4-4807-95cb-11f46a62d7d2/ReportSectiona3c344f318d21cde0ced?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
-codeURL: 
+  - notes
+  - project/completed
+  - coding
+created: 2025-05-29 18:03
+modified: 2025-07-17T19:32:55+01:00
+aliases:
+  - Tits Group Page
+viewCount: 2
+projectURL: https://group-page.netlify.app/
+codeURL: https://github.com/bangsluke/Group-Page
 codeMultipleRepos: false
-deploymentServiceURL: n/a
-folderURL: 
-logoURL: https://i.imgur.com/SFb7UNB.png
-imageURL: 
-dateStart: 
-dateEnd: 
+deploymentServiceURL: https://app.netlify.com/projects/group-page/overview
+folderURL: https://drive.google.com/drive/folders/1wnM7858WTLTL7RqmvdoRSki5CHLn8V19?usp=drive_link
+logoURL: n/a
+imageURL: https://i.imgur.com/8C8TZpB.png
+dateStart: 2022-04-09
+dateEnd: 2023-10-30
 technologies:
-  - "[[Power BI]]"
-  - "[[Power Query]]"
-  - "[[SharePoint]]"
-  - "[[SQL]]"
-projectCategory: Work Project
+  - "[[HTML]]"
+  - "[[CSS]]"
+  - "[[JavaScript]]"
+  - "[[Google Sheets]]"
+  - "[[GitHub]]"
+projectCategory: Personal Design
 linkedCompany:
-  - "[[RLE International]]"
-toolOwner: "[[Dominic Ede]]"
+  - n/a
+toolOwner: "[[Luke Bangs]]"
 developers:
-  - "[[Alex Sheers]]"
   - "[[Luke Bangs]]"
 topicTags:
-  - "[[Work]]"
-  - "[[GPMO]]"
-  - "[[Finances]]"
+  - Stats
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 4
-shortDescription: "The report section for the Financial Tracker showing global RLE International data."
+portfolioOrder: 6
+shortDescription: "TBC"
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
-# Group Sales Report
+# Group Page
 
 > [!back] Link back to [[01 Projects|Projects]]
 
@@ -79,7 +79,7 @@ TBC
 
 ## Short Description
 
-The report section for the [[Financial Tracker]] showing global [[RLE International]] data.
+TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -91,11 +91,11 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: TBC
-- Back end/Datasource: TBC
-- Hosting: [[GitLab]] (see [Repositories](#repositories))
+- Front end: [[HTML]], [[CSS]], [[JavaScript]]
+- Back end/Datasource: [[Google Sheets]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories))
 - Security: n/a
-- Authentication: TBC
+- Authentication: Manual
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -122,7 +122,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- TBC
+- [Tits Group Page Data - Google Sheets](https://docs.google.com/spreadsheets/d/1nMirJYChG8t2DC_C_esM7zeviuQ9YtIQLKDQ5LbuP-w/edit?usp=drivesdk)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

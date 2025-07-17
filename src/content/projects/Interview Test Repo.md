@@ -7,13 +7,14 @@ tags:
   - coding
   - work
 created: 2025-05-30 09:57
-modified: 2025-07-11T15:53:01+01:00
+modified: 2025-07-17T20:13:44+01:00
 aliases:
   - interview-test Repo
-viewCount: 11
+viewCount: 13
 projectURL: TBC
 codeURL: https://github.com/bangsluke/interview-test
 codeMultipleRepos: false
+deploymentServiceURL: TBC
 folderURL: n/a
 logoURL: n/a
 imageURL: 
@@ -33,6 +34,7 @@ topicTags:
   - "[[Work]]"
 powerShellAlias: n/a
 version: 1
+portfolioOrder: 8
 shortDescription: "TBC"
 longDescription: "TBC"
 lessonsLearned: "TBC"
@@ -52,6 +54,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

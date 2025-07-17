@@ -5,12 +5,13 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-11T15:51:13+01:00
-viewCount: 5
+modified: 2025-07-17T19:29:29+01:00
+viewCount: 7
 aliases: 
 projectURL: https://rleint.sharepoint.com/:x:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model/GPMO%20Cost%20Model%20V1.xlsx?d=w63d8777e305243178780a626d3abdf07&csf=1&web=1&e=hCf0X0
 codeURL: n/a
 codeMultipleRepos: 
+deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model?csf=1&web=1&e=CGmO2I
 logoURL: https://i.imgur.com/fmcxj4Y.png
 imageURL: 
@@ -31,6 +32,7 @@ topicTags:
   - "[[GPMO]]"
 powerShellAlias: n/a
 version: 
+portfolioOrder: 4
 shortDescription: "A unified cost model template and approach for costing projects - feeds into the Finance Tracker."
 longDescription: "TBC"
 lessonsLearned: "TBC"
@@ -50,6 +52,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

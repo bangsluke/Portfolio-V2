@@ -6,15 +6,16 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 18:01
-modified: 2025-07-11T15:55:44+01:00
+modified: 2025-07-17T19:33:40+01:00
 aliases: 
-viewCount: 9
+viewCount: 11
 projectURL: https://bangsluke-portfolio-card.netlify.app/
 codeURL: https://github.com/bangsluke/card-portfolio
 codeMultipleRepos: false
+deploymentServiceURL: https://app.netlify.com/projects/bangsluke-portfolio-card/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: 
+imageURL: https://i.imgur.com/Nr44f3t.png
 dateStart: 2022-06-07
 dateEnd: 2023-10-20
 technologies:
@@ -31,6 +32,7 @@ topicTags:
   - "[[Work]]"
 powerShellAlias: n/a
 version: 1
+portfolioOrder: 3
 shortDescription: "TBC"
 longDescription: "TBC"
 lessonsLearned: "TBC"
@@ -50,6 +52,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

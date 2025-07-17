@@ -7,17 +7,18 @@ tags:
   - portfolio
   - project/parked
 created: 2025-05-16T09:29:00
-modified: 2025-07-14T18:56:34+01:00
-viewCount: 28
+modified: 2025-07-17T19:28:46+01:00
+viewCount: 30
 aliases:
   - Travel Journal
   - mytraveljournal
 projectURL: https://bangsluke-mytraveljournal.netlify.app/
 codeURL: https://github.com/bangsluke/mytraveljournal
 codeMultipleRepos: true
+deploymentServiceURL: https://app.netlify.com/projects/bangsluke-mytraveljournal/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: TBC
+imageURL: https://i.imgur.com/imI7zYI.png
 dateStart: 2022-06-09
 dateEnd: ""
 technologies:
@@ -44,6 +45,7 @@ topicTags:
   - "[[Travel Notes]]"
 powerShellAlias: travel
 version: 2
+portfolioOrder: 1
 shortDescription: "A website to show details of my travels across the world."
 longDescription: "A visualisation and analysis of the travelling I have done, providing descriptions of my trips and a level of analysis on top of this such as most visited places, most common travel companions and other stats."
 lessonsLearned: "The biggest challenge for this project was setting up the Apollo backend server and getting the connection to the front end.\nI also learned a lot about the page routing in Next.js to develop the various page types on the site."
@@ -63,6 +65,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

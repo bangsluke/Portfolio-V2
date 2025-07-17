@@ -7,16 +7,17 @@ tags:
   - coding
   - work
 created: 2025-06-02 17:16
-modified: 2025-07-11T15:51:04+01:00
+modified: 2025-07-17T19:29:09+01:00
 aliases:
   - Stratamotiv Landing Page
-viewCount: 10
+viewCount: 12
 projectURL: https://stratamotiv.netlify.app/
 codeURL: TBC
 codeMultipleRepos: false
+deploymentServiceURL: https://app.netlify.com/projects/stratamotiv/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: TBC
+imageURL: https://i.imgur.com/BfUN7o4.png
 dateStart: ""
 dateEnd: ""
 technologies:
@@ -35,6 +36,7 @@ topicTags:
   - "[[Centre of Excellence|CoE]]"
 powerShellAlias: n/a
 version: 1
+portfolioOrder: 3
 shortDescription: "A landing page for showcasing a new Automotive Consultancy branch of RLE, known as Centre of Excellence."
 longDescription: "A basic landing page for showcasing a new Automotive Consultancy branch of RLE, known as Centre of Excellence ready for prospective clients to view and see the services we provide."
 lessonsLearned: "Main lesson was creating the automatic video background of the site along with a subtle purple filter across it which ended up looking pretty good. Sadly the site wasn’t finished as the requirements for the company changed."
@@ -54,6 +56,10 @@ WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
+WHERE file = this.file
+>```
+>```dataview
+TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

@@ -5,13 +5,14 @@ tags:
   - company
   - OEM
   - portfolio
+  - client
 modified: 2025-07-10T18:31:12+01:00
-viewCount: 5
+viewCount: 7
 aliases:
   - McLaren
 dateStart: 
 dateEnd: 
-imageURL: 
+logoURL: https://i.imgur.com/Ut9jRLb.png
 ---
 # McLaren Automotive
 
