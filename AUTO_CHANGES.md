@@ -18,6 +18,31 @@
 
 ## Auto Log
 
+## 2025-01-16 12:15 [develop] - Enhanced individual project page with comprehensive layout and linked company display
+- Completely redesigned project detail page ([slug].astro) with modern layout
+  - Added back buttons at top and bottom of page with arrow icons
+  - Implemented 90vw centered project image with max-width constraint and rounded corners
+  - Moved project name and technology pills below image with centered layout
+  - Created dedicated "Description" section with gradient background and proper spacing
+  - Added "Lessons Learned" section with same styling as Description section
+  - Organized project links in dedicated section with enhanced button styling
+  - Improved overall spacing and typography with larger headings and better readability
+- Added linked company display functionality
+  - Fetches companies collection and filters by linkedCompany property
+  - Displays CustomerAndClientCarouselItem components for each linked company
+  - Shows company logos, names, dates, descriptions, and achievements
+  - Handles null logoURL values properly with undefined fallback
+  - Creates responsive grid layout for company cards (1-3 columns based on screen size)
+- Enhanced visual design and user experience
+  - Increased max-width to 6xl for better content display
+  - Added shadow effects and hover animations to buttons and cards
+  - Improved technology pill styling with larger padding and better spacing
+  - Enhanced project links with scale hover effects and better visual hierarchy
+  - Maintained consistent mint-green color scheme throughout the page
+- Fixed TypeScript compatibility issues
+  - Resolved logoURL type mismatch between company data (string | null) and component props (string | undefined)
+  - Added proper null handling with undefined fallback for component compatibility
+
 ## 2025-01-16 12:00 [develop] - Enhanced CustomerAndClientCarousel with endless scrolling and interactive cards
 - Updated CustomerAndClientCarousel.tsx component for better carousel functionality
   - Removed unused Component import and debugInfo state to fix linter errors
