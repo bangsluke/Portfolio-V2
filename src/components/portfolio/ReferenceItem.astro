@@ -21,6 +21,7 @@ interface Props {
 	referenceAddress?: string;
 	referenceDescription?: string;
 	keyAchievement?: string;
+	companyLogoURL?: string | null;
 }
 
 const {
@@ -40,6 +41,7 @@ const {
 	referenceAddress,
 	referenceDescription,
 	keyAchievement,
+	companyLogoURL,
 } = Astro.props;
 
 // Process content to handle Obsidian links and markdown
@@ -76,6 +78,17 @@ const processedKeyAchievement = processMarkdownContent(keyAchievement || '');
 					<div class="mt-2">
 						<span class="text-sm text-zinc-600 dark:text-white">Company: </span>
 						<span class="text-sm text-mint-400">{processedLinkedCompany}</span>
+					</div>
+				)
+			}
+			{
+				companyLogoURL && (
+					<div class="mt-4">
+						<img
+							src={companyLogoURL}
+							alt={`${name} company logo`}
+							class="w-16 h-16 object-contain rounded-lg shadow-md"
+						/>
 					</div>
 				)
 			}

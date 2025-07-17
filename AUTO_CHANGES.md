@@ -18,6 +18,22 @@
 
 ## Auto Log
 
+## 2025-01-16 12:35 [develop] - Enhanced ReferencesCarousel with company logo display
+- Modified ReferencesCarousel.astro to collect companies collection and link company logos
+  - Added companies collection import alongside references collection
+  - Created processedReferences array that maps references to include company logos
+  - For each reference with linkedCompany, finds the corresponding company and extracts logoURL
+  - Passes companyLogoURL prop to ReferenceItem component
+- Updated ReferenceItem.astro to display company logos
+  - Added companyLogoURL to Props interface as optional string | null
+  - Added company logo display section with 64x64px image and rounded styling
+  - Positioned logo below company name with proper spacing and shadow effects
+  - Maintains existing layout and styling while adding visual company branding
+- Enhanced visual presentation of references
+  - Company logos provide immediate visual identification of reference companies
+  - Improves user experience by making company associations more prominent
+  - Maintains responsive design with proper image sizing and object-fit
+
 ## 2025-01-16 12:30 [develop] - Enhanced project gallery page with category filtering and improved navigation
 - Completely redesigned project gallery page (index.astro) with enhanced functionality
   - Changed page title from "All Projects" to "Project Gallery" for better clarity

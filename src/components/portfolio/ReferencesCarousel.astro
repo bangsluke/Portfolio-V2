@@ -1,16 +1,44 @@
 ---
-import ReferenceItem from './ReferenceItem.astro';
-import Heading from '../ui/Heading.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
+import Heading from '../ui/Heading.astro';
+import ReferenceItem from './ReferenceItem.astro';
 
-// Get all references from the local content folder
+// Get all references and companies from the local content folders
 const references = await getCollection('references');
+const companies = await getCollection('companies');
 
 // Sort references alphabetically by name
 const sortedReferences = references.sort((a, b) => {
 	// Sort alphabetically by slug (filename)
 	return a.slug.localeCompare(b.slug);
+});
+
+// Process references to include company logos
+const processedReferences = sortedReferences.map(reference => {
+	let companyLogoURL = null;
+
+	// If reference has linkedCompany, find the company and get its logoURL
+	if (reference.data.linkedCompany && reference.data.linkedCompany.length > 0) {
+		// Get the first linked company and strip Obsidian link format
+		const linkedCompanyRaw = reference.data.linkedCompany[0];
+		const linkedCompanyName = linkedCompanyRaw.replace(/\[\[|\]\]/g, ''); // Remove [[ and ]]
+
+		// Find company by filename (without .md extension)
+		const company = companies.find(company => {
+			const companyName = company.id.replace('.md', ''); // Remove .md extension
+			return companyName === linkedCompanyName;
+		});
+
+		if (company && company.data.logoURL) {
+			companyLogoURL = company.data.logoURL;
+		}
+	}
+
+	return {
+		...reference,
+		companyLogoURL,
+	};
 });
 ---
 
@@ -24,7 +52,7 @@ const sortedReferences = references.sort((a, b) => {
 		<div class="relative max-md:mt-0 mt-8" aria-label="References">
 			<ol class="relative mt-10">
 				{
-					sortedReferences.map((reference, index) => (
+					processedReferences.map((reference, index) => (
 						<li>
 							<article
 								role="article"
@@ -40,6 +68,7 @@ const sortedReferences = references.sort((a, b) => {
 												.replace(/-/g, ' ')
 												.replace(/\b\w/g, l => l.toUpperCase())
 										}
+										companyLogoURL={reference.companyLogoURL}
 									/>
 								</div>
 							</article>
