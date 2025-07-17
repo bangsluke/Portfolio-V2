@@ -1,9 +1,9 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import CustomerAndClientCarouselItem from '../../../components/portfolio/CustomerAndClientCarouselItem.astro';
 import Layout from '../../../layouts/Layout.astro';
+import { processObsidianLink } from '../../../utils/content-processor';
 
-// Generate static paths for all projects
 export async function getStaticPaths() {
 	const projects = await getCollection('projects');
 	return projects.map(project => ({
@@ -12,42 +12,41 @@ export async function getStaticPaths() {
 	}));
 }
 
-const { project }: { project: CollectionEntry<'projects'> } = Astro.props;
-const data = project.data;
+const { project } = Astro.props;
+const { data } = project;
 
-// Get linked companies and clients if they exist
-let linkedCompanies: CollectionEntry<'companies'>[] = [];
-let linkedClients: CollectionEntry<'clients'>[] = [];
-if (data.linkedCompany && data.linkedCompany.length > 0) {
-	try {
-		const companies = await getCollection('companies');
-		const clients = await getCollection('clients');
+// Get linked companies and clients
+let linkedCompanies: any[] = [];
+let linkedClients: any[] = [];
 
-		// Check each linked company/client
-		data.linkedCompany.forEach(linkedItem => {
-			const linkedName = linkedItem.replace(/\[\[|\]\]/g, ''); // Remove [[ and ]]
+try {
+	const companies = await getCollection('companies');
+	const clients = await getCollection('clients');
 
-			// First try to find in companies
-			const company = companies.find(
-				company => company.id.replace('.md', '') === linkedName
+	// Check each linked company/client
+	data.linkedCompany.forEach(linkedItem => {
+		const linkedName = processObsidianLink(linkedItem);
+
+		// First try to find in companies
+		const company = companies.find(
+			company => company.id.replace('.md', '') === linkedName
+		);
+
+		if (company) {
+			linkedCompanies.push(company);
+		} else {
+			// If not found in companies, try clients
+			const client = clients.find(
+				client => client.id.replace('.md', '') === linkedName
 			);
 
-			if (company) {
-				linkedCompanies.push(company);
-			} else {
-				// If not found in companies, try clients
-				const client = clients.find(
-					client => client.id.replace('.md', '') === linkedName
-				);
-
-				if (client) {
-					linkedClients.push(client);
-				}
+			if (client) {
+				linkedClients.push(client);
 			}
-		});
-	} catch (error) {
-		console.error('Error fetching linked companies/clients:', error);
-	}
+		}
+	});
+} catch (error) {
+	console.error('Error fetching linked companies/clients:', error);
 }
 
 const techIconMap: Record<string, string> = {

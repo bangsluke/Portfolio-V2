@@ -36,7 +36,7 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "A tool for identifying the progress of global RLE International projects from lead to in-play, through to completion."
+shortDescription: "A tool for identifying the progress of global [[RLE International]] projects from lead to in-play, through to completion."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---

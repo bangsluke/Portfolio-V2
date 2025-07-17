@@ -1,7 +1,7 @@
 ---
 import {
+	processContent,
 	processObsidianLink,
-	processMarkdownContent,
 } from '../../utils/content-processor';
 
 interface Props {
@@ -28,10 +28,17 @@ const {
 
 // Process content to handle Obsidian links and markdown
 const processedLinkedCompany = processObsidianLink(linkedCompany);
-const processedRoleDescription = processMarkdownContent(roleDescription || '');
-const processedKeyAchievement = processMarkdownContent(keyAchievement || '');
+const processedRoleDescription = processContent(roleDescription);
+const processedKeyAchievement = processContent(keyAchievement);
 
-// console.log(name);
+// Debug logging
+console.log('=== WorkExperienceItem Debug ===');
+console.log('Name:', name);
+console.log('Original roleDescription:', roleDescription);
+console.log('Processed roleDescription:', processedRoleDescription);
+console.log('Original keyAchievement:', keyAchievement);
+console.log('Processed keyAchievement:', processedKeyAchievement);
+console.log('================================');
 ---
 
 <div

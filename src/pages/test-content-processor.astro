@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { processMarkdownContent } from '../utils/content-processor';
+
+// Test the content processor
+const testContent =
+	'built using [[Next.js]], [[Nest.js]], a [[Neo4j]] database and a [[Flask]] [[API]] to call a [[Python]] algorithm';
+const processedContent = processMarkdownContent(testContent);
+
+// Also test with the actual role description from Digital Engineering Specialist
+const actualRoleDescription =
+	'Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using [[Next.js]], [[Nest.js]], a [[Neo4j]] database and a [[Flask]] [[API]] to call a [[Python]] algorithm. The tool collects inputs from a user, calculates several optimal [[DVP]] plans and then presents the options in several ways to enable further user decisions.';
+const processedActualContent = processMarkdownContent(actualRoleDescription);
+---
+
+<Layout pageTitle="Content Processor Test">
+	<div class="container mx-auto px-4 py-8 max-w-4xl">
+		<h1 class="text-3xl font-bold mb-8 text-mint-400">
+			Content Processor Test
+		</h1>
+
+		<div class="space-y-8">
+			<div class="bg-gray-800 p-6 rounded-lg">
+				<h2 class="text-xl font-bold mb-4 text-white">Test Content:</h2>
+				<p class="text-gray-300 mb-4">{testContent}</p>
+
+				<h3 class="text-lg font-bold mb-2 text-white">Processed Result:</h3>
+				<div
+					class="processed-content bg-gray-700 p-4 rounded"
+					set:html={processedContent}
+				/>
+			</div>
+
+			<div class="bg-gray-800 p-6 rounded-lg">
+				<h2 class="text-xl font-bold mb-4 text-white">
+					Actual Role Description:
+				</h2>
+				<p class="text-gray-300 mb-4">{actualRoleDescription}</p>
+
+				<h3 class="text-lg font-bold mb-2 text-white">Processed Result:</h3>
+				<div
+					class="processed-content bg-gray-700 p-4 rounded"
+					set:html={processedActualContent}
+				/>
+			</div>
+		</div>
+	</div>
+</Layout>
+

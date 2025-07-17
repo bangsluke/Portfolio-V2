@@ -1,11 +1,12 @@
 ---
+import Layout from '../../../layouts/Layout.astro';
 import ProjectCard from '../../../components/portfolio/ProjectCard.astro';
 import Heading from '../../../components/ui/Heading.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
-import Layout from '../../../layouts/Layout.astro';
+import { processObsidianLink } from '../../../utils/content-processor';
 
-// Get all projects, companies, and clients from the local content folders
+// Get all projects, companies, and clients
 const projects = await getCollection('projects');
 const companies = await getCollection('companies');
 const clients = await getCollection('clients');
@@ -38,15 +39,15 @@ const sortedProjects = projects.sort((a, b) => {
 	return a.slug.localeCompare(b.slug);
 });
 
-// Process projects to include company/client logos
+// Process projects to add company logos
 const processedProjects = sortedProjects.map(project => {
-	let companyLogoURL = null;
+	let companyLogoURL: string | null = null;
 
 	// If project has linkedCompany, find the company or client and get its logoURL
 	if (project.data.linkedCompany && project.data.linkedCompany.length > 0) {
-		// Get the first linked company and strip Obsidian link format
+		// Get the first linked company and process Obsidian link format
 		const linkedCompanyRaw = project.data.linkedCompany[0];
-		const linkedCompanyName = linkedCompanyRaw.replace(/\[\[|\]\]/g, ''); // Remove [[ and ]]
+		const linkedCompanyName = processObsidianLink(linkedCompanyRaw);
 
 		// First try to find in companies collection
 		const company = companies.find(company => {

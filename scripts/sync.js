@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 
+import { execSync } from 'child_process';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
-import { processDirectory as processMarkdownFiles } from './process-obsidian-markdown.js';
 import { emailService } from './email-service.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -81,9 +80,7 @@ function extractSectionContent(content, sectionName, endMarker) {
 			.trim()
 			.replace(/\n{3,}/g, '\n\n') // Replace multiple newlines with double newlines
 			.replace(/\s+$/gm, '') // Remove trailing whitespace from each line
-			.replace(/\[\[([^|]+)\|([^\]]+)\]\]/g, '$2') // Convert [[CompanyName|AltName]] to AltName
-			.replace(/\[\[([^\]]+)\]\]/g, '$1') // Remove remaining Obsidian-style links [[text]] -> text
-			.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>'); // Convert markdown links to HTML
+			.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>'); // Convert markdown links to HTML (keep Obsidian links for processing)
 	}
 	return null;
 }

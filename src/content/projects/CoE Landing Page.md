@@ -37,8 +37,8 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "A landing page for showcasing a new Automotive Consultancy branch of RLE, known as Centre of Excellence."
-longDescription: "A basic landing page for showcasing a new Automotive Consultancy branch of RLE, known as Centre of Excellence ready for prospective clients to view and see the services we provide."
+shortDescription: "A landing page for showcasing a new Automotive Consultancy branch of [[RLE International|RLE]], known as [[Centre of Excellence]]."
+longDescription: "A basic landing page for showcasing a new Automotive Consultancy branch of [[RLE International|RLE]], known as [[Centre of Excellence]] ready for prospective clients to view and see the services we provide."
 lessonsLearned: "Main lesson was creating the automatic video background of the site along with a subtle purple filter across it which ended up looking pretty good. Sadly the site wasn’t finished as the requirements for the company changed."
 ---
 # CoE Landing Page

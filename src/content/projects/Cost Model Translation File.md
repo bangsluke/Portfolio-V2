@@ -34,7 +34,7 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "The automation file to convert the Finance Tracker."
+shortDescription: "The automation file to convert the [[Cost Model]] into the data format required for the [[Financial Tracker|Finance Tracker]]."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---

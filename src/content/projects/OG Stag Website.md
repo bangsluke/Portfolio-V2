@@ -35,9 +35,9 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
-shortDescription: "A website detailing the itinerary for Oli Goddard's stag do."
-longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and Google Maps links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.\nThis site was a copy and rebrand from the JS Stag Website I had previously built."
-lessonsLearned: "As this site was a copy of JS Stag Website, the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes."
+shortDescription: "A website detailing the itinerary for [[Oli Goddard]]'s stag do."
+longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and [[Google Maps]] links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.\nThis site was a copy and rebrand from the [[JS Stag Website]] I had previously built."
+lessonsLearned: "As this site was a copy of [[JS Stag Website]], the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes."
 ---
 # OG Stag Website
 

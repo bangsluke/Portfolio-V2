@@ -36,7 +36,7 @@ powerShellAlias: n/a
 version: 1
 shortDescription: "A website built to display the notes I had taken across various holidays I had been on."
 longDescription: "A site dedicated to my travel explorations, providing details on what my wife and I did whilst abroad for several holidays with a picture from each trip."
-lessonsLearned: "This site taught me a few extra skills such as working with Markdown data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the Travel Website which dynamically loads in data via a Neo4j graph."
+lessonsLearned: "This site taught me a few extra skills such as working with [[Markdown]] data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the [[Travel Website]] which dynamically loads in data via a [[Neo4j]] graph."
 ---
 # My Travel Journal
 

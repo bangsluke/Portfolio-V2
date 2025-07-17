@@ -33,7 +33,7 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "The report section for the Financial Tracker showing global RLE International Project Pipeline data."
+shortDescription: "The report section for the [[Financial Tracker]] showing global [[RLE International]] [[Project Pipeline]] data."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---

@@ -1,4 +1,6 @@
 ---
+import { processObsidianLink } from '../../utils/content-processor';
+
 const {
 	name,
 	imageURL,
@@ -42,7 +44,7 @@ function getSlug(str: string) {
 let companyName = null;
 if (linkedCompany && linkedCompany.length > 0) {
 	const linkedCompanyRaw = linkedCompany[0];
-	const extractedName = linkedCompanyRaw.replace(/\[\[|\]\]/g, ''); // Remove [[ and ]]
+	const extractedName = processObsidianLink(linkedCompanyRaw);
 	// Only show if it's not "n/a" or blank
 	if (
 		extractedName &&
@@ -149,7 +151,7 @@ const projectSlug = slug || getSlug(name);
 			let isTouched = false;
 
 			// Handle touch start
-			card.addEventListener('touchstart', function () {
+			card.addEventListener('touchstart', function (this: HTMLElement) {
 				isTouched = true;
 				this.classList.add('group-hover');
 
@@ -163,13 +165,13 @@ const projectSlug = slug || getSlug(name);
 			});
 
 			// Handle touch end
-			card.addEventListener('touchend', function () {
+			card.addEventListener('touchend', function (this: HTMLElement) {
 				isTouched = false;
 				this.classList.remove('group-hover');
 			});
 
 			// Handle mouse leave (for desktop)
-			card.addEventListener('mouseleave', function () {
+			card.addEventListener('mouseleave', function (this: HTMLElement) {
 				this.classList.remove('group-hover');
 			});
 		});

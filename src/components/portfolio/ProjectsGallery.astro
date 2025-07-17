@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
+import { processObsidianLink } from '../../utils/content-processor';
 import Heading from '../ui/Heading.astro';
 import ProjectCard from './ProjectCard.astro';
 
@@ -43,9 +44,9 @@ const processedProjects = sortedProjects.map(project => {
 
 	// If project has linkedCompany, find the company or client and get its logoURL
 	if (project.data.linkedCompany && project.data.linkedCompany.length > 0) {
-		// Get the first linked company and strip Obsidian link format
+		// Get the first linked company and process Obsidian link format
 		const linkedCompanyRaw = project.data.linkedCompany[0];
-		const linkedCompanyName = linkedCompanyRaw.replace(/\[\[|\]\]/g, ''); // Remove [[ and ]]
+		const linkedCompanyName = processObsidianLink(linkedCompanyRaw);
 
 		// First try to find in companies collection
 		const company = companies.find(company => {
