@@ -31,6 +31,26 @@ const processedLinkedCompany = processObsidianLink(linkedCompany);
 const processedRoleDescription = processContent(roleDescription);
 const processedKeyAchievement = processContent(keyAchievement);
 
+// Format dates in "MMM YYYY - MMM YYYY" format
+function formatDate(date: string | Date | null | undefined): string {
+	if (!date) return '';
+
+	const dateObj = typeof date === 'string' ? new Date(date) : date;
+	if (isNaN(dateObj.getTime())) return '';
+
+	return dateObj.toLocaleDateString('en-US', {
+		month: 'short',
+		year: 'numeric',
+	});
+}
+
+const formattedDateStart = formatDate(dateStart);
+const formattedDateEnd = formatDate(dateEnd);
+const dateRange =
+	formattedDateStart && formattedDateEnd
+		? `${formattedDateStart} - ${formattedDateEnd}`
+		: formattedDateStart || formattedDateEnd || '';
+
 // Debug logging
 console.log('=== WorkExperienceItem Debug ===');
 console.log('Name:', name);
@@ -38,6 +58,7 @@ console.log('Original roleDescription:', roleDescription);
 console.log('Processed roleDescription:', processedRoleDescription);
 console.log('Original keyAchievement:', keyAchievement);
 console.log('Processed keyAchievement:', processedKeyAchievement);
+console.log('Date range:', dateRange);
 console.log('================================');
 ---
 
@@ -58,7 +79,7 @@ console.log('================================');
 			<time
 				datetime={dateStart?.toString()}
 				class="text-sm text-zinc-600/80 dark:text-white/80">
-				{dateStart?.toString()} - {dateEnd?.toString()}
+				{dateRange}
 			</time>
 		</div>
 	</div>

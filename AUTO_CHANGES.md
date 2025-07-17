@@ -18,6 +18,18 @@
 
 ## Auto Log
 
+## 2025-01-16 14:40 [develop] - Enhanced date formatting for Work Experience timeline
+- Updated WorkExperienceItem component with proper date formatting
+  - Added formatDate function to convert dates to "MMM YYYY" format
+  - Displays date range as "MMM YYYY - MMM YYYY" (e.g., "Jul 2022 - Jan 2025")
+  - Handles both dateStart and dateEnd with proper fallbacks
+  - Uses toLocaleDateString with 'en-US' locale for consistent formatting
+  - Added date range debugging to console logs
+- Consistent date formatting across all work experience displays
+  - WorkExperienceTimeline component automatically uses updated formatting
+  - Work experience page automatically uses updated formatting
+  - All work experience entries now show clean, readable date ranges
+
 ## 2025-01-16 14:35 [develop] - Centralized content processing and enhanced Obsidian link styling
 - Created centralized processContent function for consistent markdown processing
   - Single function handles all Obsidian links, markdown links, and content transformations
