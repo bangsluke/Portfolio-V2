@@ -18,6 +18,30 @@
 
 ## Auto Log
 
+## 2025-01-16 12:30 [develop] - Enhanced project gallery page with category filtering and improved navigation
+- Completely redesigned project gallery page (index.astro) with enhanced functionality
+  - Changed page title from "All Projects" to "Project Gallery" for better clarity
+  - Added back buttons at both top and bottom of page with consistent arrow icons
+  - Moved project count from bottom to filter section for better visibility
+  - Improved overall layout and spacing for better user experience
+- Added category filtering functionality with dropdown
+  - Created filter section with gradient background and modern styling
+  - Added dropdown with all available project categories (Personal Design, Work Project, Portfolio, Documentation, Backend)
+  - Implemented client-side filtering with JavaScript for instant results
+  - Added data-category attributes to project cards for filtering
+  - Updated project count dynamically based on selected filter
+- Enhanced visual design and user experience
+  - Added gradient background to filter section for visual separation
+  - Improved filter dropdown styling with mint-green accent colors
+  - Added proper TypeScript type checking for DOM elements
+  - Implemented responsive design for filter section (stacked on mobile, side-by-side on desktop)
+  - Added null checks and error handling for robust functionality
+- Fixed TypeScript compatibility issues
+  - Added proper type assertions for DOM elements
+  - Implemented null checks for all DOM element references
+  - Converted number to string for textContent assignment
+  - Added conditional event listener attachment
+
 ## 2025-01-16 12:15 [develop] - Enhanced individual project page with comprehensive layout and linked company display
 - Completely redesigned project detail page ([slug].astro) with modern layout
   - Added back buttons at top and bottom of page with arrow icons

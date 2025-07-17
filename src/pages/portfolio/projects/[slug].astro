@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import CustomerAndClientCarouselItem from '../../../components/portfolio/CustomerAndClientCarouselItem.astro';
+import Layout from '../../../layouts/Layout.astro';
 
 // Generate static paths for all projects
 export async function getStaticPaths() {
@@ -48,132 +49,135 @@ function getTechIcon(tech: string) {
   const icon = techIconMap[tech.replace(/\[|\]/g, '')];
   return icon ? `/src/icons/${icon}` : null;
 }
+
+const pageTitle = data.name + ' Project - bangsluke Portfolio';
+const description = data.shortDescription;
+const ogimage = {
+	url: '/images/imagedefault.webp',
+	alt: data.name + ' Project - bangsluke Portfolio',
+};
+
 ---
-<html lang="en">
-  <head>
-    <title>{data.name} | Project Details</title>
-    <meta name="description" content={data.shortDescription || data.longDescription || data.name} />
-  </head>
-  <body class="bg-[#10151a] text-white min-h-screen">
-    <main class="max-w-6xl mx-auto py-8 px-4">
-      <!-- Top Back Button -->
-      <div class="mb-8">
-        <a href="/site#projects" class="inline-flex items-center text-mint-400 hover:text-mint-300 transition-colors">
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          Back to Projects
-        </a>
-      </div>
 
-      <!-- Project Image (90vw centered) -->
-      <div class="flex justify-center mb-8">
-        <img 
-          src={data.imageURL || '/images/imagedefault.webp'} 
-          alt={data.name} 
-          class="w-[90vw] max-w-4xl h-96 object-cover object-center rounded-2xl shadow-2xl"
-        />
-      </div>
+<Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
+  <div class="min-h-screen">
+	<!-- Top Back Button -->
+  <div class="mb-8">
+    <a href="/site#projects" class="inline-flex items-center text-mint-400 hover:text-mint-300 transition-colors">
+      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
 
-      <!-- Project Name and Technologies -->
-      <div class="text-center mb-12">
-        <h1 class="text-5xl font-bold mb-6 text-mint-100">{data.name}</h1>
-        <div class="flex flex-wrap justify-center gap-3">
-          {data.technologies && data.technologies.map((tech: string) => {
-            const cleanTech = tech.replace(/\[|\]/g, '');
-            const icon = getTechIcon(cleanTech);
-            return (
-              <span class="flex items-center bg-[#232b32] text-mint-100 px-4 py-2 rounded-full text-sm font-medium shadow-lg" title={cleanTech}>
-                {icon && <img src={icon} alt={cleanTech} class="w-5 h-5 mr-2" />} 
-                {cleanTech}
-              </span>
-            );
-          })}
+  <!-- Project Image (90vw centered) -->
+  <div class="flex justify-center mb-8">
+    <img 
+      src={data.imageURL || '/images/imagedefault.webp'} 
+      alt={data.name} 
+      class="w-[90vw] max-w-4xl h-96 object-cover object-center rounded-2xl shadow-2xl"
+    />
+  </div>
+
+  <!-- Project Name and Technologies -->
+  <div class="text-center mb-12">
+    <h1 class="text-5xl font-bold mb-6 text-mint-100">{data.name}</h1>
+    <div class="flex flex-wrap justify-center gap-3">
+      {data.technologies && data.technologies.map((tech: string) => {
+        const cleanTech = tech.replace(/\[|\]/g, '');
+        const icon = getTechIcon(cleanTech);
+        return (
+          <span class="flex items-center bg-[#232b32] text-mint-100 px-4 py-2 rounded-full text-sm font-medium shadow-lg" title={cleanTech}>
+            {icon && <img src={icon} alt={cleanTech} class="w-5 h-5 mr-2" />} 
+            {cleanTech}
+          </span>
+        );
+      })}
+    </div>
+  </div>
+
+  <!-- Description Section -->
+  {data.longDescription && (
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-mint-100">Description</h2>
+      <div class="bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl p-8 shadow-lg">
+        <div class="text-lg text-zinc-200 leading-relaxed whitespace-pre-line">
+          {data.longDescription}
         </div>
       </div>
+    </section>
+  )}
 
-      <!-- Description Section -->
-      {data.longDescription && (
-        <section class="mb-12">
-          <h2 class="text-3xl font-bold mb-6 text-mint-100">Description</h2>
-          <div class="bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl p-8 shadow-lg">
-            <div class="text-lg text-zinc-200 leading-relaxed whitespace-pre-line">
-              {data.longDescription}
-            </div>
-          </div>
-        </section>
-      )}
-
-      <!-- Lessons Learned Section -->
-      {data.lessonsLearned && (
-        <section class="mb-12">
-          <h2 class="text-3xl font-bold mb-6 text-mint-100">Lessons Learned</h2>
-          <div class="bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl p-8 shadow-lg">
-            <div class="text-lg text-zinc-200 leading-relaxed whitespace-pre-line">
-              {data.lessonsLearned}
-            </div>
-          </div>
-        </section>
-      )}
-
-      <!-- Linked Company Section -->
-      {linkedCompanies.length > 0 && (
-        <section class="mb-12">
-          <h2 class="text-3xl font-bold mb-6 text-mint-100">Client</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {linkedCompanies.map(company => (
-              <CustomerAndClientCarouselItem
-                name={company.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                logoURL={company.data.logoURL || undefined}
-                dateStart={company.data.dateStart}
-                dateEnd={company.data.dateEnd}
-                description={company.data.companyDescription}
-                keyAchievement={company.data.keyAchievement}
-                type="company"
-              />
-            ))}
-          </div>
-        </section>
-      )}
-
-      <!-- Project Links -->
-      {(data.projectURL || data.codeURL) && (
-        <section class="mb-12">
-          <h2 class="text-3xl font-bold mb-6 text-mint-100">Project Links</h2>
-          <div class="flex flex-wrap gap-4 justify-center">
-            {data.projectURL && (
-              <a 
-                href={data.projectURL} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="bg-mint-400 hover:bg-mint-500 text-black font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
-              >
-                Visit Site
-              </a>
-            )}
-            {data.codeURL && (
-              <a 
-                href={data.codeURL} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="bg-[#232b32] hover:bg-mint-700/30 text-mint-100 font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
-              >
-                View Code
-              </a>
-            )}
-          </div>
-        </section>
-      )}
-
-      <!-- Bottom Back Button -->
-      <div class="text-center mt-12">
-        <a href="/site#projects" class="inline-flex items-center text-mint-400 hover:text-mint-300 transition-colors">
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          Back to Projects
-        </a>
+  <!-- Lessons Learned Section -->
+  {data.lessonsLearned && (
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-mint-100">Lessons Learned</h2>
+      <div class="bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl p-8 shadow-lg">
+        <div class="text-lg text-zinc-200 leading-relaxed whitespace-pre-line">
+          {data.lessonsLearned}
+        </div>
       </div>
-    </main>
-  </body>
-</html> 
+    </section>
+  )}
+
+  <!-- Linked Company Section -->
+  {linkedCompanies.length > 0 && (
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-mint-100">Client</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {linkedCompanies.map(company => (
+          <CustomerAndClientCarouselItem
+            name={company.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+            logoURL={company.data.logoURL || undefined}
+            dateStart={company.data.dateStart}
+            dateEnd={company.data.dateEnd}
+            description={company.data.companyDescription}
+            keyAchievement={company.data.keyAchievement}
+            type="company"
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Project Links -->
+  {(data.projectURL || data.codeURL) && (
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-mint-100">Project Links</h2>
+      <div class="flex flex-wrap gap-4 justify-center">
+        {data.projectURL && (
+          <a 
+            href={data.projectURL} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="bg-mint-400 hover:bg-mint-500 text-black font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            Visit Site
+          </a>
+        )}
+        {data.codeURL && (
+          <a 
+            href={data.codeURL} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="bg-[#232b32] hover:bg-mint-700/30 text-mint-100 font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            View Code
+          </a>
+        )}
+      </div>
+    </section>
+  )}
+
+  <!-- Bottom Back Button -->
+  <div class="text-center mt-12">
+    <a href="/site#projects" class="inline-flex items-center text-mint-400 hover:text-mint-300 transition-colors">
+      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+</div>
+</Layout> 
