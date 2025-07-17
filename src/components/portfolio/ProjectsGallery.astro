@@ -1,11 +1,12 @@
 ---
-import ProjectCard from './ProjectCard.astro';
-import Heading from '../ui/Heading.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
+import Heading from '../ui/Heading.astro';
+import ProjectCard from './ProjectCard.astro';
 
-// Get all projects from the local content folder
+// Get all projects and companies from the local content folders
 const projects = await getCollection('projects');
+const companies = await getCollection('companies');
 
 // Sort projects by dateStart date (newest first)
 const sortedProjects = projects.sort((a, b) => {
@@ -21,9 +22,37 @@ const sortedProjects = projects.sort((a, b) => {
 	return a.slug.localeCompare(b.slug);
 });
 
+// Process projects to include company logos
+const processedProjects = sortedProjects.map(project => {
+	let companyLogoURL = null;
+
+	// If project has linkedCompany, find the company and get its logoURL
+	if (project.data.linkedCompany && project.data.linkedCompany.length > 0) {
+		// Get the first linked company and strip Obsidian link format
+		const linkedCompanyRaw = project.data.linkedCompany[0];
+		const linkedCompanyName = linkedCompanyRaw.replace(/\[\[|\]\]/g, ''); // Remove [[ and ]]
+
+		// Find company by filename (without .md extension)
+		const company = companies.find(company => {
+			const companyName = company.id.replace('.md', ''); // Remove .md extension
+			return companyName === linkedCompanyName;
+		});
+
+		if (company && company.data.logoURL) {
+			companyLogoURL = company.data.logoURL;
+		}
+	}
+
+	return {
+		...project,
+		companyLogoURL,
+	};
+});
+
 // Show only first 6 projects
-const displayedProjects = sortedProjects.slice(0, 6);
+const displayedProjects = processedProjects.slice(0, 6);
 ---
+
 <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="projects">
 	<div class="flex flex-col pt-8 max-w-7xl mx-auto">
 		<div class="flex gap-4 items-center justify-center">
@@ -33,23 +62,36 @@ const displayedProjects = sortedProjects.slice(0, 6);
 
 		<div class="relative max-md:mt-0 mt-8" aria-label="Projects">
 			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-				{displayedProjects.map((project) => (
-					<ProjectCard
-						name={project.data.name ?? project.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-						imageURL={project.data.imageURL}
-						technologies={project.data.technologies}
-						shortDescription={project.data.shortDescription}
-						slug={project.slug}
-					/>
-				))}
+				{
+					displayedProjects.map(project => (
+						<ProjectCard
+							name={
+								project.data.name ??
+								project.slug
+									.replace(/-/g, ' ')
+									.replace(/\b\w/g, l => l.toUpperCase())
+							}
+							imageURL={project.data.imageURL}
+							technologies={project.data.technologies}
+							shortDescription={project.data.shortDescription}
+							slug={project.slug}
+							companyLogoURL={project.companyLogoURL}
+							linkedCompany={project.data.linkedCompany}
+						/>
+					))
+				}
 			</div>
-			{sortedProjects.length > 6 && (
-				<div class="flex justify-center mt-12">
-					<a href="/portfolio/projects" class="bg-mint-400 hover:bg-mint-500 text-black font-bold px-8 py-3 rounded-full transition-all duration-300 text-lg">
-						See more projects
-					</a>
-				</div>
-			)}
+			{
+				sortedProjects.length > 6 && (
+					<div class="flex justify-center mt-12">
+						<a
+							href="/portfolio/projects"
+							class="bg-mint-400 hover:bg-mint-500 text-black font-bold px-8 py-3 rounded-full transition-all duration-300 text-lg">
+							See more projects
+						</a>
+					</div>
+				)
+			}
 		</div>
 	</div>
 </section>

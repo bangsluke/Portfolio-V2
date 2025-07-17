@@ -18,6 +18,32 @@
 
 ## Auto Log
 
+## 2025-01-16 12:45 [develop] - Updated ProjectCard hover tooltip styling
+- Modified ProjectCard.astro to improve company name display in tooltip
+  - Kept "Developed for: " prefix text styled to match card text (zinc-300)
+  - Applied hover effect only to company name with bright theme color (mint-400)
+  - Company name transitions to mint-300 on hover with cursor-help indicator
+  - Maintains tooltip functionality while improving visual hierarchy
+
+## 2025-01-16 12:40 [develop] - Enhanced ProjectsGallery with company logo display
+- Modified ProjectsGallery.astro to collect companies collection and link company logos
+  - Added companies collection import alongside projects collection
+  - Created processedProjects array that maps projects to include company logos
+  - For each project with linkedCompany, finds the corresponding company and extracts logoURL
+  - Passes companyLogoURL prop to ProjectCard component
+- Updated ProjectCard.astro to display company logos
+  - Added companyLogoURL to component props as optional string | null
+  - Added company logo display in project card header alongside project name
+  - Positioned logo as 32x32px image with rounded corners and shadow
+  - Maintains existing layout and styling while adding visual company branding
+- Enhanced visual presentation of projects
+  - Company logos provide immediate visual identification of project companies
+  - Improves user experience by making company associations more prominent
+  - Maintains responsive design with proper image sizing and object-fit
+- Applied same logic to full projects page (index.astro)
+  - Updated projects gallery page to also include company logo functionality
+  - Ensures consistent company logo display across all project views
+
 ## 2025-01-16 12:35 [develop] - Enhanced ReferencesCarousel with company logo display
 - Modified ReferencesCarousel.astro to collect companies collection and link company logos
   - Added companies collection import alongside references collection
