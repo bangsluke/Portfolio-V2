@@ -1,13 +1,5 @@
 ---
-import Social from '../ui/Social.astro';
 import { AstroError } from 'astro/errors';
-import { getCollection } from 'astro:content';
-
-const [staticData] = await getCollection('staticData');
-
-if (!staticData) {
-	throw new AstroError('JSON data not found');
-}
 
 const { items = [] }: { items: (keyof typeof menu)[] } = Astro.props as {
 	items: (keyof typeof menu)[];
@@ -32,7 +24,6 @@ const menu = {
 const baseClasses = {
 	nav: 'nav-links flex w-full justify-center gap-6 max-md:gap-3 max-md:py-6',
 	link: 'px-2 py-2 transition-all hover:text-mint-300 max-md:mx-auto max-md:w-full max-md:px-6 max-md:py-2 ',
-	socialContainer: 'flex items-center justify-center gap-5 md:hidden',
 	dropdown: 'relative group flex items-center',
 	dropdownMenu:
 		'absolute left-0 top-full hidden group-hover:block bg-white dark:bg-zinc-800 shadow-lg rounded-md py-2 min-w-[200px] z-50',
@@ -121,34 +112,6 @@ const baseClasses = {
 			const item = menu[key as keyof typeof menu];
 			if (!item) return null;
 
-			if ('dropdown' in item) {
-				return (
-					<div class={baseClasses.dropdown}>
-						<a
-							href={item.path}
-							class={baseClasses.link}
-							data-path={item.path}
-							aria-label={item.name}
-							aria-current={
-								item.path === Astro.url.pathname ? 'page' : undefined
-							}>
-							{item.name}
-						</a>
-						<div class={baseClasses.dropdownMenu}>
-							{item.dropdown.map(dropdownItem => (
-								<a
-									href={dropdownItem.path}
-									class={baseClasses.dropdownItem}
-									data-path={dropdownItem.path}
-									aria-label={dropdownItem.name}>
-									{dropdownItem.name}
-								</a>
-							))}
-						</div>
-					</div>
-				);
-			}
-
 			return (
 				<a
 					href={item.path}
@@ -161,18 +124,4 @@ const baseClasses = {
 			);
 		})
 	}
-
-	<div
-		class={baseClasses.socialContainer}
-		role="group"
-		aria-label="Social Media Links">
-		<Social
-			link={staticData.data.github}
-			iconName={staticData.data.githubIconName}
-		/>
-		<Social
-			link={staticData.data.linkedin}
-			iconName={staticData.data.linkedinIconName}
-		/>
-	</div>
 </nav>

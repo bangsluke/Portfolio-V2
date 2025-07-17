@@ -1,0 +1,109 @@
+---
+const { name, imageURL, technologies, shortDescription, slug } = Astro.props;
+
+const techIconMap: Record<string, string> = {
+  'Astro': 'astro.svg',
+  'Tailwind CSS': 'tailwind.svg',
+  'Cloudflare': 'cloudflare.svg',
+  'JavaScript': 'javascript.svg',
+  'Vercel': 'vercel.svg',
+  'React': 'react.svg',
+  'Preact': 'preact.svg',
+  'Netlify': 'netlify.svg',
+  'GitHub': 'github.svg',
+  'Neo4j': 'neo4j.svg',
+  'GraphQL': 'graphql.svg',
+  'Obsidian': 'markdown.svg',
+  'Synk': 'shield.svg',
+  // Add more as needed
+};
+
+function getTechIcon(tech: string) {
+  const icon = techIconMap[tech.replace(/\[|\]/g, '')];
+  return icon ? `/src/icons/${icon}` : null;
+}
+
+function getSlug(str: string) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+const projectSlug = slug || getSlug(name);
+---
+<article class="group bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg p-0 flex flex-col overflow-hidden transition-transform hover:scale-105 duration-300 min-h-[420px]">
+  <div class="relative w-full h-48">
+    <img src={imageURL || '/images/imagedefault.webp'} alt={name} class="w-full h-48 object-cover object-top rounded-t-2xl" loading="lazy" />
+    <div class="absolute inset-0 bg-black/70 group-hover:bg-transparent transition-all duration-300 pointer-events-none"></div>
+    <a href={`/portfolio/projects/${projectSlug}`} class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 bg-mint-400 hover:bg-mint-500 text-black rounded-full p-2 shadow-lg z-10 flex items-center justify-center" aria-label={`View details for ${name}`} title={`View details for ${name}`}>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    </a>
+  </div>
+  <div class="flex flex-col flex-1 p-6">
+    <h2 class="text-2xl font-bold text-mint-100 mb-3">{name}</h2>
+    <div class="flex flex-wrap gap-2 mb-4">
+      {technologies && technologies.map((tech: string) => {
+        const cleanTech = tech.replace(/\[|\]/g, '');
+        const icon = getTechIcon(cleanTech);
+        return (
+          <span class="flex items-center bg-[#232b32] text-mint-100 px-3 py-1 rounded-full text-sm font-medium shadow hover:bg-mint-700/30 transition" title={cleanTech}>
+            {icon && <img src={icon} alt={cleanTech} class="w-5 h-5 mr-1" />} {cleanTech}
+          </span>
+        );
+      })}
+    </div>
+    <div class="text-zinc-300 text-base flex-1">
+      {shortDescription}
+    </div>
+  </div>
+</article>
+
+<script>
+  // Handle mobile touch events for project cards
+  document.addEventListener('DOMContentLoaded', function() {
+    const projectCards = document.querySelectorAll('.group');
+    
+    projectCards.forEach(card => {
+      let isTouched = false;
+      
+      // Handle touch start
+      card.addEventListener('touchstart', function() {
+        isTouched = true;
+        this.classList.add('group-hover');
+        
+        // Remove hover effect after a delay
+        setTimeout(() => {
+          if (isTouched) {
+            this.classList.remove('group-hover');
+            isTouched = false;
+          }
+        }, 2000);
+      });
+      
+      // Handle touch end
+      card.addEventListener('touchend', function() {
+        isTouched = false;
+        this.classList.remove('group-hover');
+      });
+      
+      // Handle mouse leave (for desktop)
+      card.addEventListener('mouseleave', function() {
+        this.classList.remove('group-hover');
+      });
+    });
+  });
+</script>
+
+<style>
+  @media (max-width: 768px) {
+    .group .absolute.top-3.right-3 {
+      opacity: 1 !important;
+    }
+  }
+  
+  /* Custom hover class for mobile */
+  .group-hover .absolute.inset-0 {
+    background-color: transparent !important;
+  }
+  
+  .group-hover .absolute.top-3.right-3 {
+    opacity: 1 !important;
+  }
+</style> 

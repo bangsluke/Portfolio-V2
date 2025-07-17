@@ -1,0 +1,88 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+// Generate static paths for all projects
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project }: { project: CollectionEntry<'projects'> } = Astro.props;
+const data = project.data;
+const techIconMap: Record<string, string> = {
+  'Astro': 'astro.svg',
+  'Tailwind CSS': 'tailwind.svg',
+  'Cloudflare': 'cloudflare.svg',
+  'JavaScript': 'javascript.svg',
+  'Vercel': 'vercel.svg',
+  'React': 'react.svg',
+  'Preact': 'preact.svg',
+  'Netlify': 'netlify.svg',
+  'GitHub': 'github.svg',
+  'Neo4j': 'neo4j.svg',
+  'GraphQL': 'graphql.svg',
+  'Obsidian': 'markdown.svg',
+  'Synk': 'shield.svg',
+  // Add more as needed
+};
+function getTechIcon(tech: string) {
+  const icon = techIconMap[tech.replace(/\[|\]/g, '')];
+  return icon ? `/src/icons/${icon}` : null;
+}
+---
+<html lang="en">
+  <head>
+    <title>{data.name} | Project Details</title>
+    <meta name="description" content={data.shortDescription || data.longDescription || data.name} />
+  </head>
+  <body class="bg-[#10151a] text-white min-h-screen">
+    <main class="max-w-3xl mx-auto py-12 px-4">
+      <a href="/site#projects" class="text-mint-400 hover:underline">← Back to Projects</a>
+      <div class="mt-6 bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg overflow-hidden">
+        <img src={data.imageURL || '/images/imagedefault.webp'} alt={data.name} class="w-full h-80 object-cover object-top" />
+        <div class="p-8">
+          <h1 class="text-4xl font-bold mb-4 text-mint-100">{data.name}</h1>
+          <div class="flex flex-wrap gap-2 mb-6">
+            {data.technologies && data.technologies.map((tech: string) => {
+              const cleanTech = tech.replace(/\[|\]/g, '');
+              const icon = getTechIcon(cleanTech);
+              return (
+                <span class="flex items-center bg-[#232b32] text-mint-100 px-3 py-1 rounded-full text-sm font-medium shadow" title={cleanTech}>
+                  {icon && <img src={icon} alt={cleanTech} class="w-5 h-5 mr-1" />} {cleanTech}
+                </span>
+              );
+            })}
+          </div>
+          {data.shortDescription && (
+            <div class="mb-4 text-lg text-zinc-200">
+              <strong>Summary:</strong> {data.shortDescription}
+            </div>
+          )}
+          {data.longDescription && (
+            <div class="mb-4 text-base text-zinc-300">
+              <strong>Description:</strong>
+              <div class="mt-2 whitespace-pre-line">{data.longDescription}</div>
+            </div>
+          )}
+          {data.lessonsLearned && (
+            <div class="mb-4 text-base text-zinc-300">
+              <strong>Lessons Learned:</strong>
+              <div class="mt-2 whitespace-pre-line">{data.lessonsLearned}</div>
+            </div>
+          )}
+          <div class="flex gap-4 mt-6">
+            {data.projectURL && (
+              <a href={data.projectURL} target="_blank" rel="noopener noreferrer" class="bg-mint-400 hover:bg-mint-500 text-black font-bold px-5 py-2 rounded-full transition">Visit Site</a>
+            )}
+            {data.codeURL && (
+              <a href={data.codeURL} target="_blank" rel="noopener noreferrer" class="bg-[#232b32] hover:bg-mint-700/30 text-mint-100 font-bold px-5 py-2 rounded-full transition">View Code</a>
+            )}
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html> 

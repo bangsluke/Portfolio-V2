@@ -1,5 +1,5 @@
 ---
-import ProjectItem from './ProjectItem.astro';
+import ProjectCard from './ProjectCard.astro';
 import Heading from '../ui/Heading.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
@@ -20,41 +20,36 @@ const sortedProjects = projects.sort((a, b) => {
 	// Fallback to alphabetical sorting by slug (filename)
 	return a.slug.localeCompare(b.slug);
 });
----
 
+// Show only first 6 projects
+const displayedProjects = sortedProjects.slice(0, 6);
+---
 <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="projects">
-	<div class="flex flex-col pt-8 max-w-4xl mx-auto">
+	<div class="flex flex-col pt-8 max-w-7xl mx-auto">
 		<div class="flex gap-4 items-center justify-center">
 			<Icon class="text-3xl dark:text-white text-blacktext" name="code" />
 			<Heading text="" textGradient="Projects " level={2} />
 		</div>
 
 		<div class="relative max-md:mt-0 mt-8" aria-label="Projects">
-			<ol class="relative mt-10">
-				{
-					sortedProjects.map((project, index) => (
-						<li>
-							<article
-								role="article"
-								aria-labelledby={`project-title-${index}`}>
-								<div
-									class="flex flex-col gap-2 text-zinc-00 dark:text-zinc-300 md:col-span-3"
-									aria-describedby={`project-title-${index}`}>
-									<ProjectItem
-										{...project.data}
-										name={
-											project.data.name ??
-											project.slug
-												.replace(/-/g, ' ')
-												.replace(/\b\w/g, l => l.toUpperCase())
-										}
-									/>
-								</div>
-							</article>
-						</li>
-					))
-				}
-			</ol>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+				{displayedProjects.map((project) => (
+					<ProjectCard
+						name={project.data.name ?? project.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+						imageURL={project.data.imageURL}
+						technologies={project.data.technologies}
+						shortDescription={project.data.shortDescription}
+						slug={project.slug}
+					/>
+				))}
+			</div>
+			{sortedProjects.length > 6 && (
+				<div class="flex justify-center mt-12">
+					<a href="/portfolio/projects" class="bg-mint-400 hover:bg-mint-500 text-black font-bold px-8 py-3 rounded-full transition-all duration-300 text-lg">
+						See more projects
+					</a>
+				</div>
+			)}
 		</div>
 	</div>
 </section>

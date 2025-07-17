@@ -19,10 +19,6 @@ const routes = ['/', '/portfolio', '/about-me'];
 // Check if the current route is in the list of routes
 const isActiveRoute = routes.includes(currentPath);
 
-// const navItems = isActiveRoute
-//   ? ["home", "experience", "projects", "about", "blog",]
-//   : ["home", "blog", "about"]; // Change the items
-
 const navItems = isActiveRoute
 	? ['home']
 	: ['home', 'projects', 'coding', 'experience', 'about']; // Change the items
@@ -31,7 +27,7 @@ const navItems = isActiveRoute
 <header
 	role="banner"
 	aria-label="Main navigation"
-	class="sticky top-0 z-50 w-full p-4 font-medium text-blacktext dark:text-zinc-300 dark:bg-[#0E0E11]/80 dark:border-b dark:border-zinc-800 bg-white/90 backdrop-blur-xs dark:backdrop-blur-xs max-md:z-50 max-md:px-0 transition-all">
+	class="relative sticky top-0 z-50 w-full p-4 font-medium text-blacktext dark:text-zinc-300 dark:bg-[#0E0E11]/80 dark:border-b dark:border-zinc-800 bg-white/90 backdrop-blur-xs dark:backdrop-blur-xs max-md:z-50 max-md:px-0 transition-all">
 	<div
 		class="relative mx-auto flex max-w-7xl flex-row items-center justify-between max-xl:px-6">
 		<a href="/" aria-label="Go to home">
@@ -40,21 +36,15 @@ const navItems = isActiveRoute
 
 		<Navigation items={navItems} />
 
-		<div class="flex items-center justify-between gap-5 text-xl">
-			<div
-				class="max-md:hidden flex items-center justify-center gap-5"
-				role="list">
-				<Social
-					link={staticData.data.github}
-					iconName={staticData.data.githubIconName}
-				/>
-				<Social
-					link={staticData.data.linkedin}
-					iconName={staticData.data.linkedinIconName}
-				/>
-			</div>
-		</div>
 		<div class="flex items-center gap-5 text-xl md:pl-5">
+			<Social
+				link={staticData.data.github}
+				iconName={staticData.data.githubIconName}
+			/>
+			<Social
+				link={staticData.data.linkedin}
+				iconName={staticData.data.linkedinIconName}
+			/>
 			<ThemeIcon />
 			<button
 				class="hamburger"

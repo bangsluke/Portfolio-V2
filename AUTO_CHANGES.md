@@ -787,3 +787,30 @@ CustomerAndClientCarousel now works perfectly with:
 - ✅ Site functionality preserved without the problematic page
 
 > [Back to Table of Contents](#table-of-contents)
+
+## [2024-06-09 16:00] [main]
+- Replaced project timeline with a responsive gallery of project cards using Astro collections, matching NeonMint style, showing all projects with images, tech pills, and introduction text. Updated ProjectsGallery.astro and added ProjectCard.astro.
+
+## [2024-06-09 16:10] [main]
+- Added dull overlay and info button to project cards. Clicking info opens a new project details page (/portfolio/projects/[slug]) with full project info, large image, and links.
+
+## [2024-06-09 16:20] [main]
+- Fixed hover effect to properly show full color image, added "Click for more" button to each card, limited gallery to 6 projects with "See more projects" button linking to full projects page.
+
+## [2024-06-09 16:30] [main]
+- Fixed dynamic route error with getStaticPaths, removed "Click for more" button, added mobile touch interaction for hover effects, and improved full projects page styling.
+
+## [2024-06-09 16:40] [main]
+- Fixed hamburger menu mobile navigation by restructuring header layout, updating CSS for proper mobile menu display, and adding debugging to menu script.
+
+## [2024-06-09 16:50] [main]
+- Fixed social icons positioning by moving GitHub and LinkedIn logos to be alongside theme toggle and hamburger button on all screen sizes.
+
+## [2024-06-09 17:00] [main]
+- Reverted header to original structure while keeping hamburger menu functional. Fixed mobile navigation positioning and restored proper social icons layout.
+
+## [2024-06-09 17:10] [main]
+- Moved GitHub and LinkedIn logos to be alongside theme toggle in the same container, making them visible on all screen sizes.
+
+## [2024-06-09 17:20] [main]
+- Removed GitHub and LinkedIn logos from mobile hamburger menu since they're now in the header. Cleaned up Navigation component by removing unused imports and dropdown code.
