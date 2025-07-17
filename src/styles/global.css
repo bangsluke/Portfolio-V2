@@ -464,19 +464,68 @@ a.inline-block.leading-5.pl-12 {
 /* Navigation bar styles */
 .hamburger {
 	cursor: pointer;
+	display: block !important; /* Force show hamburger by default */
+	background: none;
+	border: none;
+	padding: 0.5rem;
+	z-index: 100;
+}
+
+.hamburger-icon {
+	display: none;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.hamburger .bars-icon {
+	display: block !important; /* Show 'bars' icon by default */
+}
+
+.hamburger.active .bars-icon {
+	display: none !important; /* Hide 'bars' icon when .active is present */
+}
+
+.hamburger.active .xmark-icon {
+	display: block !important; /* Show 'xmark' icon when .active is present */
 }
 
 .nav-links {
-	display: none;
+	display: none; /* Hidden by default on mobile */
+}
+
+.nav-links.expanded {
+	display: flex !important; /* Show when expanded class is added */
+	flex-direction: column;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	background: white;
+	border-top: 1px solid #e5e7eb;
+	z-index: 50;
+	width: 100%;
+	padding: 1rem;
+	gap: 0.5rem;
+}
+
+.dark .nav-links.expanded {
+	background: #0E0E11;
+	border-top: 1px solid #374151;
 }
 
 @media screen and (min-width: 768px) {
 	.nav-links {
-		display: flex;
+		display: flex !important; /* Always show on desktop */
+		position: static;
+		background: transparent;
+		border-top: none;
+		padding: 0;
+		flex-direction: row;
+		width: auto;
 	}
 
 	.hamburger {
-		display: none;
+		display: none !important; /* Hide hamburger on desktop */
 	}
 }
 

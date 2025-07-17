@@ -18,6 +18,55 @@
 
 ## Auto Log
 
+## 2025-01-16 12:30 [develop] - Enhanced project gallery page with category filtering and improved navigation
+- Completely redesigned project gallery page (index.astro) with enhanced functionality
+  - Changed page title from "All Projects" to "Project Gallery" for better clarity
+  - Added back buttons at both top and bottom of page with consistent arrow icons
+  - Moved project count from bottom to filter section for better visibility
+  - Improved overall layout and spacing for better user experience
+- Added category filtering functionality with dropdown
+  - Created filter section with gradient background and modern styling
+  - Added dropdown with all available project categories (Personal Design, Work Project, Portfolio, Documentation, Backend)
+  - Implemented client-side filtering with JavaScript for instant results
+  - Added data-category attributes to project cards for filtering
+  - Updated project count dynamically based on selected filter
+- Enhanced visual design and user experience
+  - Added gradient background to filter section for visual separation
+  - Improved filter dropdown styling with mint-green accent colors
+  - Added proper TypeScript type checking for DOM elements
+  - Implemented responsive design for filter section (stacked on mobile, side-by-side on desktop)
+  - Added null checks and error handling for robust functionality
+- Fixed TypeScript compatibility issues
+  - Added proper type assertions for DOM elements
+  - Implemented null checks for all DOM element references
+  - Converted number to string for textContent assignment
+  - Added conditional event listener attachment
+
+## 2025-01-16 12:15 [develop] - Enhanced individual project page with comprehensive layout and linked company display
+- Completely redesigned project detail page ([slug].astro) with modern layout
+  - Added back buttons at top and bottom of page with arrow icons
+  - Implemented 90vw centered project image with max-width constraint and rounded corners
+  - Moved project name and technology pills below image with centered layout
+  - Created dedicated "Description" section with gradient background and proper spacing
+  - Added "Lessons Learned" section with same styling as Description section
+  - Organized project links in dedicated section with enhanced button styling
+  - Improved overall spacing and typography with larger headings and better readability
+- Added linked company display functionality
+  - Fetches companies collection and filters by linkedCompany property
+  - Displays CustomerAndClientCarouselItem components for each linked company
+  - Shows company logos, names, dates, descriptions, and achievements
+  - Handles null logoURL values properly with undefined fallback
+  - Creates responsive grid layout for company cards (1-3 columns based on screen size)
+- Enhanced visual design and user experience
+  - Increased max-width to 6xl for better content display
+  - Added shadow effects and hover animations to buttons and cards
+  - Improved technology pill styling with larger padding and better spacing
+  - Enhanced project links with scale hover effects and better visual hierarchy
+  - Maintained consistent mint-green color scheme throughout the page
+- Fixed TypeScript compatibility issues
+  - Resolved logoURL type mismatch between company data (string | null) and component props (string | undefined)
+  - Added proper null handling with undefined fallback for component compatibility
+
 ## 2025-01-16 12:00 [develop] - Enhanced CustomerAndClientCarousel with endless scrolling and interactive cards
 - Updated CustomerAndClientCarousel.tsx component for better carousel functionality
   - Removed unused Component import and debugInfo state to fix linter errors
@@ -787,3 +836,30 @@ CustomerAndClientCarousel now works perfectly with:
 - ✅ Site functionality preserved without the problematic page
 
 > [Back to Table of Contents](#table-of-contents)
+
+## [2024-06-09 16:00] [main]
+- Replaced project timeline with a responsive gallery of project cards using Astro collections, matching NeonMint style, showing all projects with images, tech pills, and introduction text. Updated ProjectsGallery.astro and added ProjectCard.astro.
+
+## [2024-06-09 16:10] [main]
+- Added dull overlay and info button to project cards. Clicking info opens a new project details page (/portfolio/projects/[slug]) with full project info, large image, and links.
+
+## [2024-06-09 16:20] [main]
+- Fixed hover effect to properly show full color image, added "Click for more" button to each card, limited gallery to 6 projects with "See more projects" button linking to full projects page.
+
+## [2024-06-09 16:30] [main]
+- Fixed dynamic route error with getStaticPaths, removed "Click for more" button, added mobile touch interaction for hover effects, and improved full projects page styling.
+
+## [2024-06-09 16:40] [main]
+- Fixed hamburger menu mobile navigation by restructuring header layout, updating CSS for proper mobile menu display, and adding debugging to menu script.
+
+## [2024-06-09 16:50] [main]
+- Fixed social icons positioning by moving GitHub and LinkedIn logos to be alongside theme toggle and hamburger button on all screen sizes.
+
+## [2024-06-09 17:00] [main]
+- Reverted header to original structure while keeping hamburger menu functional. Fixed mobile navigation positioning and restored proper social icons layout.
+
+## [2024-06-09 17:10] [main]
+- Moved GitHub and LinkedIn logos to be alongside theme toggle in the same container, making them visible on all screen sizes.
+
+## [2024-06-09 17:20] [main]
+- Removed GitHub and LinkedIn logos from mobile hamburger menu since they're now in the header. Cleaned up Navigation component by removing unused imports and dropdown code.

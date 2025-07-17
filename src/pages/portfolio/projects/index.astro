@@ -1,0 +1,155 @@
+---
+import ProjectCard from '../../../components/portfolio/ProjectCard.astro';
+import Heading from '../../../components/ui/Heading.astro';
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+
+// Get all projects from the local content folder
+const projects = await getCollection('projects');
+
+// Sort projects by dateStart date (newest first)
+const sortedProjects = projects.sort((a, b) => {
+	// Sort by dateStart date, fallback to dateEnd date, then alphabetically
+	const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
+	const dateB = b.data.dateStart || b.data.dateEnd || new Date(0);
+
+	if (dateA instanceof Date && dateB instanceof Date) {
+		return dateB.getTime() - dateA.getTime();
+	}
+
+	// Fallback to alphabetical sorting by slug (filename)
+	return a.slug.localeCompare(b.slug);
+});
+
+// Get unique project categories
+const projectCategories = [...new Set(sortedProjects.map(project => project.data.projectCategory).filter(Boolean))].sort();
+
+const pageTitle = 'Project Gallery - bangsluke Portfolio';
+const description = 'Explore all my projects and developments';
+const ogimage = {
+	url: '/images/imagedefault.webp',
+	alt: 'Project Gallery - bangsluke Portfolio',
+};
+---
+
+<Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
+    <div class="min-h-screen">
+      <!-- Header Section -->
+      <section class="py-8 px-8 max-md:py-4">
+        <div class="max-w-7xl mx-auto">
+          <!-- Top Back Button -->
+          <div class="mb-8">
+            <a href="/site#projects" class="inline-flex items-center text-mint-400 hover:text-mint-300 transition-colors">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+              Back to Projects
+            </a>
+          </div>
+          
+          <div class="flex gap-4 items-center justify-center mb-12">
+            <Icon class="text-4xl text-mint-400" name="code" />
+            <Heading text="" textGradient="Project Gallery" level={1} />
+          </div>
+
+          <p class="text-center mx-auto text-lg max-xl:text-base max-w-2xl text-gray-300 mb-12 leading-6 font-medium">
+            Explore all my <b class="bg-linear-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text">projects and developments</b>.
+            Each one represents a unique challenge and learning experience.
+          </p>
+
+          <!-- Filter Section -->
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 p-6 bg-gradient-to-r from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg">
+            <div class="flex items-center gap-4">
+              <label for="categoryFilter" class="text-mint-100 font-medium">Filter by Category:</label>
+              <select 
+                id="categoryFilter" 
+                class="bg-[#232b32] text-mint-100 px-4 py-2 rounded-lg border border-mint-400/30 focus:border-mint-400 focus:outline-none transition-colors"
+              >
+                <option value="">All Categories</option>
+                {projectCategories.map(category => (
+                  <option value={category}>{category}</option>
+                ))}
+              </select>
+            </div>
+            <div class="text-mint-100 font-medium">
+              <span id="projectCount">{sortedProjects.length}</span> projects
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Grid Section -->
+      <section class="py-8 px-8 max-md:py-4 mb-4">
+        <div class="max-w-7xl mx-auto">
+          <div id="projectsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {sortedProjects.map((project) => (
+              <div 
+                class="project-card" 
+                data-category={project.data.projectCategory || ''}
+              >
+                <ProjectCard
+                  name={project.data.name ?? project.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                  imageURL={project.data.imageURL}
+                  technologies={project.data.technologies}
+                  shortDescription={project.data.shortDescription}
+                  slug={project.slug}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Back Button -->
+      <section class="py-8 px-8 max-md:py-4">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center">
+            <a href="/site#projects" class="inline-flex items-center text-mint-400 hover:text-mint-300 transition-colors">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+              Back to Projects
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // Category filter functionality
+      const categoryFilter = document.getElementById('categoryFilter') as HTMLSelectElement;
+      const projectCards = document.querySelectorAll('.project-card') as NodeListOf<HTMLElement>;
+      const projectCount = document.getElementById('projectCount');
+
+      function filterProjects() {
+        if (!categoryFilter || !projectCount) return;
+        
+        const selectedCategory = categoryFilter.value;
+        let visibleCount = 0;
+
+        projectCards.forEach(card => {
+          const cardCategory = card.dataset.category;
+          const shouldShow = !selectedCategory || cardCategory === selectedCategory;
+          
+          if (shouldShow) {
+            card.style.display = 'block';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Update project count
+        projectCount.textContent = visibleCount.toString();
+      }
+
+      // Add event listener for filter changes
+      if (categoryFilter) {
+        categoryFilter.addEventListener('change', filterProjects);
+      }
+
+      // Initialize filter on page load
+      filterProjects();
+    </script>
+</Layout> 
