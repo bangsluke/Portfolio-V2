@@ -18,6 +18,42 @@
 
 ## Auto Log
 
+## 2025-01-16 13:10 [develop] - Updated project card names to display filenames without case transformations
+- Modified ProjectsGallery.astro to display project names as-is
+  - Removed case transformation logic that converted slugs to title case
+  - Now displays project.data.name if available, otherwise project.id without .md extension
+  - Uses project.id instead of project.slug to preserve original filename casing
+- Updated full projects page (index.astro) with same naming logic
+  - Applied identical name display logic as ProjectsGallery component
+  - Uses project.id.replace('.md', '') to get filename without extension
+  - Ensures consistent project naming across all gallery views
+- Updated individual project page ([slug].astro) for company/client names
+  - Removed case transformations from company and client slug displays
+  - Company names now display as slug without title case conversion
+  - Client names display as data.name if available, otherwise slug as-is
+  - Maintains consistent naming approach across all components
+- Enhanced project name display consistency
+  - All project cards now show filenames (without extension) as project titles
+  - Preserves original casing and formatting from Obsidian filenames
+  - Uses project.id instead of project.slug to maintain exact filename casing
+  - Provides more accurate representation of project names as stored in files
+
+## 2025-01-16 13:05 [develop] - Fixed project sorting logic for proper chronological ordering
+- Fixed sorting algorithm in ProjectsGallery.astro and index.astro
+  - Changed from string concatenation sorting to proper numerical/chronological sorting
+  - Now sorts by portfolioOrder numerically first, then by dateStart chronologically
+  - Projects with same portfolioOrder now properly sort by date (newest first)
+  - Resolves issue where projects with same portfolioOrder weren't sorting by date correctly
+- Improved sorting logic implementation
+  - Primary sort: portfolioOrder (numerical comparison, lowest first)
+  - Secondary sort: dateStart (chronological comparison, newest first)
+  - Tertiary sort: alphabetical by slug for tie-breaking
+  - Handles both Date objects and date strings properly
+- Enhanced date handling in sorting
+  - Converts date strings to timestamps for proper chronological comparison
+  - Maintains backward compatibility with existing date formats
+  - Ensures consistent sorting behavior across all project views
+
 ## 2025-01-16 13:00 [develop] - Added portfolioOrder property and enhanced project sorting
 - Added portfolioOrder property to projects collection schema in config.ts
   - Added portfolioOrder: z.union([z.number(), z.null()]).optional() to projects schema

@@ -10,29 +10,32 @@ const projects = await getCollection('projects');
 const companies = await getCollection('companies');
 const clients = await getCollection('clients');
 
-// Sort projects by portfolioOrder + dateStart, then alphabetically
+// Sort projects by portfolioOrder first, then dateStart, then alphabetically
 const sortedProjects = projects.sort((a, b) => {
-	// Create sort keys: portfolioOrder + "-" + dateStart
-	const getSortKey = (project: any) => {
-		const portfolioOrder = project.data.portfolioOrder || 999; // Default to high number if not set
-		const dateStart = project.data.dateStart || new Date(0);
-		const dateString =
-			dateStart instanceof Date ? dateStart.toISOString() : String(dateStart);
-		return `${portfolioOrder}-${dateString}`;
-	};
+	// Get portfolioOrder values (default to 999 if not set)
+	const orderA = a.data.portfolioOrder || 999;
+	const orderB = b.data.portfolioOrder || 999;
 
-	const keyA = getSortKey(a);
-	const keyB = getSortKey(b);
-
-	// Sort by the combined key
-	const sortResult = keyA.localeCompare(keyB);
-
-	// If keys are equal, fallback to alphabetical sorting by slug
-	if (sortResult === 0) {
-		return a.slug.localeCompare(b.slug);
+	// First, sort by portfolioOrder (numerically)
+	if (orderA !== orderB) {
+		return orderA - orderB;
 	}
 
-	return sortResult;
+	// If portfolioOrder is the same, sort by dateStart (chronologically)
+	const dateA = a.data.dateStart || new Date(0);
+	const dateB = b.data.dateStart || new Date(0);
+
+	const dateAValue =
+		dateA instanceof Date ? dateA.getTime() : new Date(dateA).getTime();
+	const dateBValue =
+		dateB instanceof Date ? dateB.getTime() : new Date(dateB).getTime();
+
+	if (dateAValue !== dateBValue) {
+		return dateBValue - dateAValue; // Newest dates first
+	}
+
+	// If dates are the same, fallback to alphabetical sorting by slug
+	return a.slug.localeCompare(b.slug);
 });
 
 // Process projects to include company/client logos
@@ -164,12 +167,7 @@ const ogimage = {
 								class="project-card"
 								data-category={project.data.projectCategory || ''}>
 								<ProjectCard
-									name={
-										project.data.name ??
-										project.slug
-											.replace(/-/g, ' ')
-											.replace(/\b\w/g, l => l.toUpperCase())
-									}
+									name={project.data.name ?? project.id.replace('.md', '')}
 									imageURL={project.data.imageURL}
 									technologies={project.data.technologies}
 									shortDescription={project.data.shortDescription}

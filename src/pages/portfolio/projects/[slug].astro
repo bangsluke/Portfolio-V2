@@ -171,9 +171,7 @@ const ogimage = {
 					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 						{linkedCompanies.map(company => (
 							<CustomerAndClientCarouselItem
-								name={company.slug
-									.replace(/-/g, ' ')
-									.replace(/\b\w/g, l => l.toUpperCase())}
+								name={company.slug}
 								logoURL={company.data.logoURL || undefined}
 								dateStart={company.data.dateStart}
 								dateEnd={company.data.dateEnd}
@@ -184,12 +182,7 @@ const ogimage = {
 						))}
 						{linkedClients.map(client => (
 							<CustomerAndClientCarouselItem
-								name={
-									client.data.name ||
-									client.slug
-										.replace(/-/g, ' ')
-										.replace(/\b\w/g, l => l.toUpperCase())
-								}
+								name={client.data.name || client.slug}
 								logoURL={client.data.logoURL || undefined}
 								dateStart={client.data.dateStart}
 								dateEnd={client.data.dateEnd}
