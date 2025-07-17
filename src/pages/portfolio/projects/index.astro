@@ -10,18 +10,29 @@ const projects = await getCollection('projects');
 const companies = await getCollection('companies');
 const clients = await getCollection('clients');
 
-// Sort projects by dateStart date (newest first)
+// Sort projects by portfolioOrder + dateStart, then alphabetically
 const sortedProjects = projects.sort((a, b) => {
-	// Sort by dateStart date, fallback to dateEnd date, then alphabetically
-	const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
-	const dateB = b.data.dateStart || b.data.dateEnd || new Date(0);
+	// Create sort keys: portfolioOrder + "-" + dateStart
+	const getSortKey = (project: any) => {
+		const portfolioOrder = project.data.portfolioOrder || 999; // Default to high number if not set
+		const dateStart = project.data.dateStart || new Date(0);
+		const dateString =
+			dateStart instanceof Date ? dateStart.toISOString() : String(dateStart);
+		return `${portfolioOrder}-${dateString}`;
+	};
 
-	if (dateA instanceof Date && dateB instanceof Date) {
-		return dateB.getTime() - dateA.getTime();
+	const keyA = getSortKey(a);
+	const keyB = getSortKey(b);
+
+	// Sort by the combined key
+	const sortResult = keyA.localeCompare(keyB);
+
+	// If keys are equal, fallback to alphabetical sorting by slug
+	if (sortResult === 0) {
+		return a.slug.localeCompare(b.slug);
 	}
 
-	// Fallback to alphabetical sorting by slug (filename)
-	return a.slug.localeCompare(b.slug);
+	return sortResult;
 });
 
 // Process projects to include company/client logos

@@ -18,6 +18,26 @@
 
 ## Auto Log
 
+## 2025-01-16 13:00 [develop] - Added portfolioOrder property and enhanced project sorting
+- Added portfolioOrder property to projects collection schema in config.ts
+  - Added portfolioOrder: z.union([z.number(), z.null()]).optional() to projects schema
+  - Allows projects to have a custom ordering number for portfolio display
+  - Maintains backward compatibility with existing projects without portfolioOrder
+- Updated ProjectsGallery.astro with new sorting logic
+  - Changed from date-based sorting to portfolioOrder + dateStart sorting
+  - Creates sort keys in format: "portfolioOrder-dateStart" for consistent ordering
+  - Projects without portfolioOrder default to 999 for end-of-list placement
+  - Falls back to alphabetical sorting by slug when sort keys are equal
+- Updated full projects page (index.astro) with same sorting logic
+  - Applied identical portfolioOrder + dateStart sorting algorithm
+  - Ensures consistent project ordering across all gallery views
+  - Maintains responsive design and filtering functionality
+- Enhanced project display ordering system
+  - Primary sort: portfolioOrder (lowest numbers first)
+  - Secondary sort: dateStart (earliest dates first)
+  - Tertiary sort: alphabetical by slug for tie-breaking
+  - Provides flexible control over project presentation order
+
 ## 2025-01-16 12:55 [develop] - Enhanced individual project page with client display
 - Updated project slug page ([slug].astro) to display both companies and clients
   - Added clients collection import alongside companies collection
