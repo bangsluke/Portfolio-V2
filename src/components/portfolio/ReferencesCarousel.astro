@@ -74,10 +74,7 @@ const processedReferences = sortedReferences.map(reference => {
 									<ReferenceItem
 										{...reference.data}
 										name={
-											reference.data.name ||
-											reference.slug
-												.replace(/-/g, ' ')
-												.replace(/\b\w/g, l => l.toUpperCase())
+											reference.data.name || reference.id.replace('.md', '')
 										}
 										companyLogoURL={reference.companyLogoURL}
 									/>

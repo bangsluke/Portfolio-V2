@@ -18,6 +18,73 @@
 
 ## Auto Log
 
+## 2025-01-16 14:15 [develop] - Fixed pagination bullets and added click-to-snap functionality
+- Fixed pagination bullet visibility and styling
+  - Simplified Pagination plugin configuration to use default bullet rendering
+  - Added proper pagination container for Flicking to populate with bullets
+  - Updated CSS to target correct Flicking pagination classes (flicking-pagination-bullet)
+  - Enhanced bullet styling with proper size, colors, and hover effects
+- Added click-to-snap functionality for carousel items
+  - Enhanced handleItemClick to snap carousel to clicked item using moveTo()
+  - When user clicks on a carousel item, it now centers that item in the viewport
+  - Maintains selection state while providing smooth navigation to selected item
+  - Improves user experience by combining selection and navigation in single click
+- Improved pagination visual feedback
+  - Active bullet shows mint-400 color with scale(1.2) transform
+  - Inactive bullets show gray color with hover effects
+  - Smooth transitions for all state changes
+  - Proper spacing and alignment for pagination container
+- Enhanced carousel interaction and usability
+  - Users can now click items to both select and navigate to them
+  - Pagination bullets provide clear visual indication of current position
+  - Maintains all existing functionality: auto-rotation, selection styling, hover effects
+  - Better integration between selection, navigation, and pagination systems
+
+## 2025-01-16 13:25 [develop] - Enhanced CustomerAndClientCarousel with continuous rotation and click-to-highlight
+- Updated CustomerAndClientCarousel.tsx to ensure continuous rotation
+  - Changed AutoPlay stopOnHover from true to false for uninterrupted rotation
+  - Carousel now continues rotating even when user hovers over items
+  - Maintains smooth 3-second interval between transitions
+- Added click-to-highlight functionality for carousel items
+  - Added selectedItem state to track which item is currently highlighted
+  - Implemented handleItemClick function to toggle item selection
+  - Added visual feedback with ring-4 ring-mint-400 and scale-105 for selected items
+- Enhanced CompanyCard component with selection support
+  - Added isSelected and onClick props to CompanyCard interface
+  - Selected items display with mint-green ring border and slight scale effect
+  - Maintains existing hover effects while adding selection state
+- Implemented click-outside-to-deselect functionality
+  - Added useEffect to handle clicks outside carousel items
+  - Automatically deselects highlighted item when clicking elsewhere
+  - Works on both desktop and mobile devices
+- Improved user interaction and visual feedback
+  - Clear visual indication of selected carousel items
+  - Smooth transitions between selection states
+  - Maintains accessibility with proper ARIA labels and keyboard support
+
+## 2025-01-16 13:20 [develop] - Fixed case transformations and updated carousel width
+- Updated CustomerAndClientCarousel.astro to use 90% viewport width
+  - Changed from max-w-4xl to w-[90vw] for wider carousel display
+  - Maintains responsive design while providing more space for content
+- Fixed company and client name processing in CustomerAndClientCarousel
+  - Updated company data to use company.id.replace('.md', '') for filename without extension
+  - Updated client data to use client.data.name || client.id.replace('.md', '') as fallback
+  - Removed case transformations to preserve original filename casing
+- Updated CustomerAndClientCarousel.tsx to use name field instead of case transformations
+  - Changed company name processing to use company.data.name || company.id.replace('.md', '')
+  - Changed client name processing to use company.data.name || company.id.replace('.md', '')
+  - Eliminates slug-based case transformations that were changing original casing
+- Fixed case transformations across all portfolio components
+  - Updated ReferencesCarousel.astro to use reference.id.replace('.md', '') instead of slug transformations
+  - Updated WorkExperienceTimeline.astro to use role.id.replace('.md', '') for role names
+  - Updated EducationTimeline.astro to use education.id.replace('.md', '') for education names
+  - Updated SkillsBubbles.astro to use skill.id.replace('.md', '') for skill names
+- Enhanced consistent naming approach throughout the site
+  - All components now use filename (without extension) as display names
+  - Preserves original Obsidian filename casing and formatting
+  - Maintains fallback to explicit name field when available
+  - Provides more accurate representation of content as stored in files
+
 ## 2025-01-16 13:15 [develop] - Added floating action button for scroll to top functionality
 - Created ScrollToTop.astro component with floating action button (FAB)
   - Positioned at bottom-right corner (5% from right, 5% from bottom)

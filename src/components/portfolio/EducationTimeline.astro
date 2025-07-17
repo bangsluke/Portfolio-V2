@@ -1,8 +1,8 @@
 ---
-import EducationTimelineItem from './EducationTimelineItem.astro';
-import Heading from '../ui/Heading.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
+import Heading from '../ui/Heading.astro';
+import EducationTimelineItem from './EducationTimelineItem.astro';
 
 // Get all education from the local content folder
 const education = await getCollection('educations');
@@ -48,9 +48,7 @@ const hasMoreItems = sortedEducation.length > 3;
 										{...education.data}
 										name={
 											education.data.name ||
-											education.slug
-												.replace(/-/g, ' ')
-												.replace(/\b\w/g, l => l.toUpperCase())
+											education.id.replace('.md', '')
 										}
 									/>
 								</div>

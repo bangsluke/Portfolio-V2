@@ -1,9 +1,8 @@
 ---
-import WorkExperienceItem from './WorkExperienceItem.astro';
-import Heading from '../ui/Heading.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
-import { formatDateToMMMYYYY } from '../../utils/date-formatter';
+import Heading from '../ui/Heading.astro';
+import WorkExperienceItem from './WorkExperienceItem.astro';
 
 // Get all roles from the local content folder
 const roles = await getCollection('roles');
@@ -49,9 +48,7 @@ const hasMoreItems = sortedRoles.length > 3;
 										{...role.data}
 										name={
 											role.data.name ||
-											role.slug
-												.replace(/-/g, ' ')
-												.replace(/\b\w/g, l => l.toUpperCase())
+											role.id.replace('.md', '')
 										}
 									/>
 								</div>
