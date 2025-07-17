@@ -4,9 +4,10 @@ import { getCollection } from 'astro:content';
 import Heading from '../ui/Heading.astro';
 import ProjectCard from './ProjectCard.astro';
 
-// Get all projects and companies from the local content folders
+// Get all projects, companies, and clients from the local content folders
 const projects = await getCollection('projects');
 const companies = await getCollection('companies');
+const clients = await getCollection('clients');
 
 // Sort projects by dateStart date (newest first)
 const sortedProjects = projects.sort((a, b) => {
@@ -22,17 +23,17 @@ const sortedProjects = projects.sort((a, b) => {
 	return a.slug.localeCompare(b.slug);
 });
 
-// Process projects to include company logos
+// Process projects to include company/client logos
 const processedProjects = sortedProjects.map(project => {
 	let companyLogoURL = null;
 
-	// If project has linkedCompany, find the company and get its logoURL
+	// If project has linkedCompany, find the company or client and get its logoURL
 	if (project.data.linkedCompany && project.data.linkedCompany.length > 0) {
 		// Get the first linked company and strip Obsidian link format
 		const linkedCompanyRaw = project.data.linkedCompany[0];
 		const linkedCompanyName = linkedCompanyRaw.replace(/\[\[|\]\]/g, ''); // Remove [[ and ]]
 
-		// Find company by filename (without .md extension)
+		// First try to find in companies collection
 		const company = companies.find(company => {
 			const companyName = company.id.replace('.md', ''); // Remove .md extension
 			return companyName === linkedCompanyName;
@@ -40,6 +41,16 @@ const processedProjects = sortedProjects.map(project => {
 
 		if (company && company.data.logoURL) {
 			companyLogoURL = company.data.logoURL;
+		} else {
+			// If not found in companies, try clients collection
+			const client = clients.find(client => {
+				const clientName = client.id.replace('.md', ''); // Remove .md extension
+				return clientName === linkedCompanyName;
+			});
+
+			if (client && client.data.logoURL) {
+				companyLogoURL = client.data.logoURL;
+			}
 		}
 	}
 

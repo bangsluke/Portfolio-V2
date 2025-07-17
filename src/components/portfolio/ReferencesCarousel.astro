@@ -4,9 +4,10 @@ import { getCollection } from 'astro:content';
 import Heading from '../ui/Heading.astro';
 import ReferenceItem from './ReferenceItem.astro';
 
-// Get all references and companies from the local content folders
+// Get all references, companies, and clients from the local content folders
 const references = await getCollection('references');
 const companies = await getCollection('companies');
+const clients = await getCollection('clients');
 
 // Sort references alphabetically by name
 const sortedReferences = references.sort((a, b) => {
@@ -14,17 +15,17 @@ const sortedReferences = references.sort((a, b) => {
 	return a.slug.localeCompare(b.slug);
 });
 
-// Process references to include company logos
+// Process references to include company/client logos
 const processedReferences = sortedReferences.map(reference => {
 	let companyLogoURL = null;
 
-	// If reference has linkedCompany, find the company and get its logoURL
+	// If reference has linkedCompany, find the company or client and get its logoURL
 	if (reference.data.linkedCompany && reference.data.linkedCompany.length > 0) {
 		// Get the first linked company and strip Obsidian link format
 		const linkedCompanyRaw = reference.data.linkedCompany[0];
 		const linkedCompanyName = linkedCompanyRaw.replace(/\[\[|\]\]/g, ''); // Remove [[ and ]]
 
-		// Find company by filename (without .md extension)
+		// First try to find in companies collection
 		const company = companies.find(company => {
 			const companyName = company.id.replace('.md', ''); // Remove .md extension
 			return companyName === linkedCompanyName;
@@ -32,6 +33,16 @@ const processedReferences = sortedReferences.map(reference => {
 
 		if (company && company.data.logoURL) {
 			companyLogoURL = company.data.logoURL;
+		} else {
+			// If not found in companies, try clients collection
+			const client = clients.find(client => {
+				const clientName = client.id.replace('.md', ''); // Remove .md extension
+				return clientName === linkedCompanyName;
+			});
+
+			if (client && client.data.logoURL) {
+				companyLogoURL = client.data.logoURL;
+			}
 		}
 	}
 

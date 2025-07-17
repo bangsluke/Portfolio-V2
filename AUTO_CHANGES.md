@@ -18,6 +18,45 @@
 
 ## Auto Log
 
+## 2025-01-16 12:55 [develop] - Enhanced individual project page with client display
+- Updated project slug page ([slug].astro) to display both companies and clients
+  - Added clients collection import alongside companies collection
+  - Modified linked entity lookup to check both companies and clients collections
+  - Changed section title from "Client" to "Developed For" for better clarity
+  - Projects can now display both company and client information with logos
+- Enhanced linked entity processing logic
+  - Iterates through each linkedCompany value and checks both collections
+  - Uses Obsidian link format stripping for consistent filename matching
+  - Maintains separate arrays for companies and clients for proper display
+  - Handles both company and client data structures appropriately
+- Improved project page layout and information display
+  - Combined companies and clients in single "Developed For" section
+  - Uses CustomerAndClientCarouselItem component for consistent styling
+  - Displays client names from data.name field or derived from slug
+  - Shows client logos, dates, descriptions, and achievements
+  - Maintains responsive grid layout for multiple entities
+
+## 2025-01-16 12:50 [develop] - Enhanced project and reference components with client logo support
+- Updated ProjectsGallery.astro to support client logos in addition to company logos
+  - Added clients collection import alongside companies collection
+  - Modified logo lookup logic to first check companies, then fallback to clients
+  - Maintains existing functionality while adding client logo support
+  - Projects can now display logos from both companies and clients
+- Updated ReferencesCarousel.astro to support client logos in addition to company logos
+  - Added clients collection import alongside companies collection
+  - Modified logo lookup logic to first check companies, then fallback to clients
+  - References can now display logos from both companies and clients
+  - Maintains existing functionality while adding client logo support
+- Updated full projects page (index.astro) to support client logos
+  - Added clients collection import alongside companies collection
+  - Applied same logo lookup logic as ProjectsGallery component
+  - Ensures consistent client logo support across all project views
+- Enhanced logo retrieval system for linkedCompany values
+  - linkedCompany can now reference either companies or clients
+  - System first checks companies collection, then falls back to clients collection
+  - Maintains backward compatibility with existing company-only references
+  - Improves flexibility for projects and references linked to clients
+
 ## 2025-01-16 12:45 [develop] - Updated ProjectCard hover tooltip styling
 - Modified ProjectCard.astro to improve company name display in tooltip
   - Kept "Developed for: " prefix text styled to match card text (zinc-300)
