@@ -6,6 +6,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{html,md,mdx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       typography: {

@@ -18,6 +18,23 @@
 
 ## Auto Log
 
+## 2025-01-16 14:20 [develop] - Improved theme detection to prevent flash of incorrect theme
+- Moved theme detection script to Layout.astro head section
+  - Added theme detection script in head before page renders to prevent flash
+  - Script runs immediately to detect user's system preference (dark/light mode)
+  - Respects user's manual theme choice stored in localStorage
+  - Applies appropriate theme class to document before content renders
+- Updated ThemeIcon.astro to remove duplicate theme detection
+  - Removed duplicate theme detection script from ThemeIcon component
+  - Kept toggle functionality and system preference change listener
+  - Maintains manual theme switching capability
+  - Preserves system preference change detection when no manual choice is set
+- Enhanced user experience with immediate theme application
+  - Eliminates flash of incorrect theme on page load
+  - Theme is applied before any content is rendered
+  - Respects both system preference and user's manual choice
+  - Provides seamless theme switching experience
+
 ## 2025-01-16 14:15 [develop] - Fixed pagination bullets and added click-to-snap functionality
 - Fixed pagination bullet visibility and styling
   - Simplified Pagination plugin configuration to use default bullet rendering

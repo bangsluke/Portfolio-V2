@@ -32,6 +32,66 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>{pageTitle}</title>
+
+		<!-- Theme detection script - runs before page renders to prevent flash -->
+		<script is:inline>
+			// Execute immediately to prevent flash of incorrect theme
+			(function () {
+				try {
+					// Check if we're in a browser environment
+					if (typeof window === 'undefined') return;
+
+					// Get the current theme preference
+					const getTheme = () => {
+						// First check localStorage for user preference
+						if (
+							typeof localStorage !== 'undefined' &&
+							localStorage.getItem('theme')
+						) {
+							return localStorage.getItem('theme');
+						}
+
+						// Then check system preference
+						if (
+							typeof window.matchMedia !== 'undefined' &&
+							window.matchMedia('(prefers-color-scheme: dark)').matches
+						) {
+							return 'dark';
+						}
+
+						// Default to light
+						return 'light';
+					};
+
+					const theme = getTheme();
+					const root = document.documentElement;
+
+					// Apply the theme
+					if (theme === 'dark') {
+						root.classList.add('dark');
+					} else {
+						root.classList.remove('dark');
+					}
+
+					// Store the theme preference
+					if (typeof localStorage !== 'undefined') {
+						localStorage.setItem('theme', theme);
+					}
+
+					// Debug logging (remove in production)
+					console.log('Theme detection:', {
+						detectedTheme: theme,
+						hasDarkClass: root.classList.contains('dark'),
+						localStorage: localStorage.getItem('theme'),
+						systemPrefersDark: window.matchMedia('(prefers-color-scheme: dark)')
+							.matches,
+					});
+				} catch (error) {
+					console.error('Theme detection error:', error);
+				}
+			})();
+		</script>
+
 		<!-- Favicon for different platforms -->
 		<link rel="icon" href="/favicon-32x32.png" sizes="32x32" />
 		<link rel="icon" href="/favicon-16x16.png" sizes="16x16" />
