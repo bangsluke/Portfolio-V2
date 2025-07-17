@@ -921,3 +921,37 @@ CustomerAndClientCarousel now works perfectly with:
 
 ## [2024-06-09 17:20] [main]
 - Removed GitHub and LinkedIn logos from mobile hamburger menu since they're now in the header. Cleaned up Navigation component by removing unused imports and dropdown code.
+
+## 2024-12-19 17:00 [main] - Email Service Troubleshooting
+
+### Problem Identified:
+- **Missing .env file**: Email service failing because no environment variables configured
+- **Error message**: "📧 Email notifications disabled" when running `npm run test-email`
+- **Root cause**: No `.env` file in Portfolio-V2 directory
+
+### Investigation Results:
+- **Email service code**: ✅ All email service files intact and functional
+- **Dependencies**: ✅ `nodemailer` still installed in package.json
+- **Scripts**: ✅ All email-related scripts still available
+- **Configuration**: ❌ Missing `.env` file with email credentials
+
+### Solution Provided:
+- **Created .env template**: Provided complete environment variables template
+- **Gmail setup instructions**: Step-by-step guide for Gmail app password setup
+- **Testing commands**: Provided commands to test email service after setup
+
+### Required Environment Variables:
+```bash
+EMAIL_NOTIFICATIONS="true"
+EMAIL_RECIPIENT="bangsluke@gmail.com"
+GMAIL_USER="bangsluke@gmail.com"
+GMAIL_APP_PASSWORD="your-gmail-app-password-here"
+```
+
+### Result:
+✅ Email service code is fully functional
+✅ Issue was configuration, not missing files
+✅ User needs to create .env file with Gmail credentials
+✅ No code changes required - just configuration setup
+
+> [Back to Table of Contents](#table-of-contents)

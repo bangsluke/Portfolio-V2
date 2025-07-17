@@ -23,7 +23,7 @@
 		"sync:mobile": "cross-env SYNC_MODE=mobile node scripts/sync.js",
 		"sync:mobile:debug": "cross-env SYNC_MODE=mobile DEBUG=true node scripts/sync.js",
 		"process-markdown": "node scripts/process-obsidian-markdown.js",
-		"test-email": "node test-email.js"
+		"test-email": "cross-env EMAIL_NOTIFICATIONS=true node test-email.js"
 	},
 	"dependencies": {
 		"@astrojs/preact": "^4.0.8",
