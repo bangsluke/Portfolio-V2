@@ -18,6 +18,31 @@
 
 ## Auto Log
 
+## 2025-01-16 13:15 [develop] - Added floating action button for scroll to top functionality
+- Created ScrollToTop.astro component with floating action button (FAB)
+  - Positioned at bottom-right corner (5% from right, 5% from bottom)
+  - Uses main accent color (mint-400) with hover effects (mint-500)
+  - Features up arrow icon and smooth hover animations (scale-110)
+  - Includes proper accessibility attributes (aria-label, title)
+- Implemented scroll-based visibility logic
+  - FAB appears when user scrolls more than 10% down the page
+  - Smooth fade-in/fade-out animation with 300ms duration
+  - Uses opacity and pointer-events for proper show/hide behavior
+  - Calculates scroll percentage based on viewport and document height
+- Added smooth scroll to top functionality
+  - Uses window.scrollTo with smooth behavior
+  - Scrolls to top of current page when FAB is clicked
+  - Includes proper event listeners and null checks for TypeScript
+- Integrated FAB into main Layout.astro component
+  - Added ScrollToTop component to all pages using the main layout
+  - Positioned after Footer for proper z-index layering
+  - Ensures FAB appears on all site pages consistently
+- Enhanced user experience with modern UI patterns
+  - Floating action button follows Material Design principles
+  - Smooth animations and transitions for professional feel
+  - Responsive design that works across all screen sizes
+  - High z-index (50) ensures FAB stays above other content
+
 ## 2025-01-16 13:10 [develop] - Updated project card names to display filenames without case transformations
 - Modified ProjectsGallery.astro to display project names as-is
   - Removed case transformation logic that converted slugs to title case

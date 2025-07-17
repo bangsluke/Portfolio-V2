@@ -1,0 +1,64 @@
+---
+// No props needed for this component
+---
+
+<div
+	id="scroll-to-top"
+	class="fixed bottom-[5%] right-[5%] z-50 opacity-0 pointer-events-none transition-all duration-300 ease-in-out">
+	<button
+		id="scroll-to-top-btn"
+		class="bg-mint-400 hover:bg-mint-500 text-black w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 flex items-center justify-center"
+		aria-label="Scroll to top"
+		title="Scroll to top">
+		<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"
+				d="M5 10l7-7m0 0l7 7m-7-7v18">
+			</path>
+		</svg>
+	</button>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const scrollToTop = document.getElementById('scroll-to-top');
+		const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+
+		if (!scrollToTop || !scrollToTopBtn) return;
+
+		// Show/hide FAB based on scroll position
+		function toggleScrollToTop() {
+			if (!scrollToTop) return;
+
+			const scrollPercent =
+				(window.scrollY /
+					(document.documentElement.scrollHeight - window.innerHeight)) *
+				100;
+
+			if (scrollPercent > 15) {
+				scrollToTop.classList.remove('opacity-0', 'pointer-events-none');
+				scrollToTop.classList.add('opacity-100', 'pointer-events-auto');
+			} else {
+				scrollToTop.classList.add('opacity-0', 'pointer-events-none');
+				scrollToTop.classList.remove('opacity-100', 'pointer-events-auto');
+			}
+		}
+
+		// Smooth scroll to top
+		function scrollToTopHandler() {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			});
+		}
+
+		// Add event listeners
+		window.addEventListener('scroll', toggleScrollToTop);
+		scrollToTopBtn.addEventListener('click', scrollToTopHandler);
+
+		// Initial check in case page is already scrolled
+		toggleScrollToTop();
+	});
+</script>
