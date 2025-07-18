@@ -7,14 +7,14 @@ tags:
   - skill
   - notes
   - portfolio
-modified: 2025-07-09T07:37:52+01:00
+modified: 2025-07-18T12:12:54+01:00
 created: 2023-08-18T15:44:00
-viewCount: 4
+viewCount: 6
 aliases:
   - TS
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: typescript.svg
 ---
 # Typescript
 

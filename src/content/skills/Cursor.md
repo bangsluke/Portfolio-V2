@@ -11,7 +11,7 @@ viewCount: 1
 aliases: 
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName:
 ---
 # Cursor
 

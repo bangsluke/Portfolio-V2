@@ -12,7 +12,7 @@ viewCount: 7
 aliases: 
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: nextjs.svg
 ---
 # Next.js
 

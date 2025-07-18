@@ -15,7 +15,7 @@ aliases:
   - Visual Basic
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName:
 ---
 # VBA
 

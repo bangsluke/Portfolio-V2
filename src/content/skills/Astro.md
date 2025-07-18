@@ -9,11 +9,11 @@ tags:
   - skill
 created: 2025-05-16T19:59:00
 modified: 2025-07-16T12:18:20+01:00
-viewCount: 6
+viewCount: 7
 aliases: 
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: astro.svg
 ---
 # Astro
 

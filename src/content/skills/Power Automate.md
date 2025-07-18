@@ -9,7 +9,7 @@ viewCount: 2
 aliases: 
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName:
 ---
 # Power Automate
 

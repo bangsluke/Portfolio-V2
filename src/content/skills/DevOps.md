@@ -5,12 +5,12 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-02T14:31:35+01:00
-viewCount: 3
+viewCount: 2
 aliases:
   - Azure DevOps
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: azure_devops.svg
 ---
 # DevOps
 

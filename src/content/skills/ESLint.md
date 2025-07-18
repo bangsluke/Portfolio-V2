@@ -5,12 +5,12 @@ tags:
   - coding
   - skill
   - portfolio
-modified: 2025-07-05T07:03:29+01:00
-viewCount: 2
+modified: 2025-07-18T13:20:20+01:00
+viewCount: 4
 aliases: 
-skillRating: 0
+skillRating: 50
 skillDescription: TBC
-imageURL: 
+logoFileName: eslint.svg
 ---
 # ESLint
 

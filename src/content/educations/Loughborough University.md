@@ -6,8 +6,8 @@ tags:
   - notes
   - tag
 created: 2025-02-08 13:47
-modified: 2025-07-07T21:11:21+01:00
-viewCount: 9
+modified: 2025-07-18T08:41:31+01:00
+viewCount: 10
 dateStart: 2011-09-05
 dateEnd: 2014-06-27
 logoURL: https://media.licdn.com/dms/image/v2/C561BAQEo3Ke2CIHRbA/company-background_10000/company-background_10000/0/1617176515173/loughborough_university_cover?e=2147483647&v=beta&t=TabCtm4ROKsS0ZXjH0ioh6D4bemFR556N8rzoabbFo8

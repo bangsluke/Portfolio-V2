@@ -8,12 +8,12 @@ tags:
   - notes
   - tag
 created: 2025-05-16T15:38:00
-modified: 2025-07-02T14:21:04+01:00
-viewCount: 17
+modified: 2025-07-18T12:09:09+01:00
+viewCount: 19
 aliases:
   - JS
 skillRating: 65
-imageURL: 
+logoFileName: javascript.svg
 skillDescription: A good understanding of JavaScript concepts to build dynamic pages that respond to user requests and how best to structure large scale JavaScript projects
 ---
 # JavaScript

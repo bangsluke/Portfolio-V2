@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import SkillPill from '../ui/SkillPill.astro';
+
+// Get all projects
+const projects = await getCollection('projects');
+
+// Count technology usage across all projects
+const techCount: Record<string, number> = {};
+
+projects.forEach(project => {
+	if (project.data.technologies) {
+		project.data.technologies.forEach((tech: string) => {
+			// Clean the technology name by removing Obsidian brackets
+			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
+
+			// Increment count for this technology
+			techCount[cleanTech] = (techCount[cleanTech] || 0) + 1;
+		});
+	}
+});
+
+// Sort technologies by usage count (descending) and get top 10
+const topTechs = Object.entries(techCount)
+	.sort(([, a], [, b]) => b - a) // Sort by count descending
+	.slice(0, 10) // Get top 10
+	.map(([tech, count]) => ({ tech, count }));
+
+type TechVariant = 'default' | 'center';
+
+// Base classes that are common to all variants
+const baseClasses = 'flex flex-wrap gap-4 max-lg:gap-1 grid-auto-efe';
+
+// Variant-specific classes
+const variantClasses: Record<TechVariant, string> = {
+	default: 'cursor-default',
+	center: 'justify-center cursor-default',
+};
+
+const { variant = 'default', size = 'md' } = Astro.props;
+
+// Combine base classes with variant-specific classes
+const classes = `${baseClasses} ${variantClasses[variant as TechVariant]}`;
+---
+
+<div class={classes}>
+	{
+		topTechs.map(({ tech, count }, index) => (
+			<div class="relative group/tech">
+				<SkillPill
+					skillName={tech}
+					variant="default"
+					size={size === 'xs' ? 'xs' : 'md'}
+				/>
+				{/* Tooltip showing usage count - positioned above or below based on row */}
+				<div
+					class={`absolute left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 ${
+						index < 5 ? 'top-full mt-2' : 'bottom-full mb-2'
+					}`}>
+					Used in {count} project{count > 1 ? 's' : ''}
+					<div
+						class={`absolute left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-transparent ${
+							index < 5
+								? 'top-0 -mt-1 border-t-2 border-t-gray-900'
+								: 'bottom-0 -mb-1 border-b-2 border-b-gray-900'
+						}`}
+					/>
+				</div>
+			</div>
+		))
+	}
+</div>

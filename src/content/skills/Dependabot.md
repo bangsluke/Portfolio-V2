@@ -6,13 +6,13 @@ tags:
   - testing
   - skill
   - portfolio
-modified: 2025-07-05T07:00:23+01:00
-viewCount: 3
+modified: 2025-07-18T12:36:59+01:00
+viewCount: 4
 aliases:
   - dependabot
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: 
 ---
 # Dependabot
 

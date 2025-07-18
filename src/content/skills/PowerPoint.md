@@ -4,13 +4,13 @@ tags:
   - software
   - skill
   - portfolio
-viewCount: 3
-modified: 2025-07-02T15:58:25+01:00
+viewCount: 2
+modified: 2025-07-18T12:24:49+01:00
 aliases:
   - Microsoft PowerPoint
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName:
 ---
 # PowerPoint
 

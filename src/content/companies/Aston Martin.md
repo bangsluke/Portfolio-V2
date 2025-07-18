@@ -6,14 +6,16 @@ tags:
   - OEM
   - client
   - portfolio
-modified: 2025-07-17T21:09:30+01:00
-viewCount: 5
+modified: 2025-07-18T08:43:17+01:00
+viewCount: 2
 aliases:
   - AML
   - Aston Martin Limited
 dateStart: 
 dateEnd: 
 logoURL: https://i.imgur.com/ImIdiJo.jpeg
+linkedCompany:
+  - "[[RLE International]]"
 ---
 # Aston Martin
 

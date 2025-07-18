@@ -13,7 +13,7 @@ viewCount: 5
 aliases: 
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: python.svg
 ---
 # Python
 

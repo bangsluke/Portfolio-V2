@@ -4,14 +4,14 @@ tags:
   - software
   - skill
   - portfolio
-modified: 2025-07-02T16:01:03+01:00
+modified: 2025-07-18T12:26:00+01:00
 created: 2025-06-02T17:51:00
-viewCount: 3
+viewCount: 2
 aliases:
   - Microsoft Project
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: 
 ---
 # Project
 

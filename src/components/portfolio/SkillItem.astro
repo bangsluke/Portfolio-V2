@@ -1,23 +1,87 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { processContent } from '../../utils/content-processor';
 
 interface Props {
 	name: string;
-	tags?: string[];
 	skillRating?: number;
 	skillDescription?: string;
-	imageURL?: string | null;
-	keyAchievement?: string;
+	logoFileName?: string | null;
 }
 
-const { name, tags, skillRating, skillDescription, imageURL, keyAchievement } =
-	Astro.props;
+const { name, skillRating, skillDescription, logoFileName } = Astro.props;
 
 // Process content to handle Obsidian links and markdown
 const processedSkillDescription = processContent(skillDescription || '');
-const processedKeyAchievement = processContent(keyAchievement || '');
 
-// console.log(name);
+function getSkillIconName(logoFileName: string | null) {
+	if (!logoFileName) return null;
+	// Remove .svg extension if present
+	return logoFileName.replace(/\.svg$/, '');
+}
+
+// List of known working icons (we can expand this)
+const knownIcons = [
+	'javascript',
+	'typescript',
+	'python',
+	'react',
+	'node',
+	'git',
+	'github',
+	'html',
+	'css',
+	'astro',
+	'tailwind',
+	'vercel',
+	'netlify',
+	'markdown',
+	'angular',
+	'arrow-left',
+	'bars',
+	'bitwarden',
+	'bootstrap',
+	'briefcase',
+	'cloudflare',
+	'code',
+	'dashboard',
+	'envelope',
+	'facebook',
+	'figma',
+	'firebase',
+	'gatsby',
+	'github-svg',
+	'info',
+	'instagram',
+	'linkedin',
+	'md',
+	'mongo',
+	'moon',
+	'mysql',
+	'nestjs',
+	'nextjs',
+	'nodejs',
+	'paperplane',
+	'person',
+	'php',
+	'rocket',
+	'sass',
+	'sun',
+	'twitter',
+	'whatsapp',
+	'windsurf-logo',
+	'wordpress',
+	'xmark',
+	'youtube',
+	'cursor-ia',
+	'copilot',
+	'deepseek',
+	'flask',
+];
+
+function shouldShowIcon(iconName: string) {
+	return knownIcons.includes(iconName.toLowerCase());
+}
 ---
 
 <div
@@ -28,9 +92,29 @@ const processedKeyAchievement = processContent(keyAchievement || '');
 				class="absolute -left-[42px] text-5xl text-mint-400 rounded-full drop-shadow-[0px_0px_8px_rgba(0,255,94,1)]"
 				>&bull;</span
 			>
-			<h3 class="text-xl font-bold text-mint-400">
-				{name}
-			</h3>
+			<div class="flex items-center gap-3">
+				{/* Skill Icon */}
+				{
+					(() => {
+						const iconName = getSkillIconName(logoFileName || null);
+						if (iconName && shouldShowIcon(iconName)) {
+							return <Icon name={iconName} class="w-8 h-8" title={name} />;
+						}
+						// Show a placeholder for missing icons
+						if (logoFileName) {
+							return (
+								<div class="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center text-xs text-gray-500 dark:text-gray-400">
+									?
+								</div>
+							);
+						}
+						return null;
+					})()
+				}
+				<h3 class="text-xl font-bold text-mint-400">
+					{name}
+				</h3>
+			</div>
 			{
 				skillRating && (
 					<div class="mt-2">
@@ -56,17 +140,6 @@ const processedKeyAchievement = processContent(keyAchievement || '');
 		{
 			processedSkillDescription && (
 				<div class="processed-content" set:html={processedSkillDescription} />
-			)
-		}
-		{
-			processedKeyAchievement && (
-				<div class="mt-4">
-					<strong>Key Achievement:</strong>
-					<div
-						class="processed-content mt-2"
-						set:html={processedKeyAchievement}
-					/>
-				</div>
 			)
 		}
 	</div>

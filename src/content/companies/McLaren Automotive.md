@@ -6,13 +6,15 @@ tags:
   - OEM
   - portfolio
   - client
-modified: 2025-07-10T18:31:12+01:00
-viewCount: 7
+modified: 2025-07-18T07:50:36+01:00
+viewCount: 6
 aliases:
   - McLaren
 dateStart: 
 dateEnd: 
 logoURL: https://i.imgur.com/Ut9jRLb.png
+linkedCompany:
+  - "[[RLE International]]"
 ---
 # McLaren Automotive
 

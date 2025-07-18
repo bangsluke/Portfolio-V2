@@ -63,12 +63,9 @@ const skillsCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
 		name: z.string().optional(),
-		tags: z.array(z.string()).optional(),
 		skillRating: z.number().optional(),
 		skillDescription: z.string().optional(),
-		imageURL: z.union([z.string(), z.null()]).optional(),
-		// Extracted section content
-		keyAchievement: z.string().optional(),
+		logoFileName: z.union([z.string(), z.null()]).optional(),
 	}),
 });
 

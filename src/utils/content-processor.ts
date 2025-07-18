@@ -24,6 +24,135 @@ export function processContent(content: string | undefined | null): string {
 }
 
 /**
+ * Extract the "About Me Short" section from the Portfolio Site V2 markdown file
+ * This function reads the markdown file and extracts the content between "About Me Short" and the end marker
+ */
+export async function getHeroDescription(): Promise<string> {
+	try {
+		const fs = await import('fs/promises');
+		const path = await import('path');
+
+		// Path to the Portfolio Site V2 markdown file
+		const filePath = path.join(
+			process.cwd(),
+			'src',
+			'content',
+			'projects',
+			'Portfolio Site V2.md'
+		);
+
+		const content = await fs.readFile(filePath, 'utf8');
+
+		// Extract content between "About Me Short" and the end marker
+		const endMarker = '>[!top] [Back to top](#Table%20of%20Contents)';
+		const sectionRegex = new RegExp(
+			`####\\s*About Me Short\\s*\\n([\\s\\S]*?)(?=\\s*${endMarker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`,
+			'i'
+		);
+		const match = content.match(sectionRegex);
+
+		if (match && match[1]) {
+			// Clean up the extracted content
+			return match[1]
+				.trim()
+				.replace(/\n{3,}/g, '\n\n') // Replace multiple newlines with double newlines
+				.replace(/\s+$/gm, ''); // Remove trailing whitespace from each line
+		}
+
+		return '';
+	} catch (error) {
+		console.error('Error reading hero description:', error);
+		return '';
+	}
+}
+
+/**
+ * Portfolio configuration options interface
+ */
+export interface PortfolioConfig {
+	lookingForWork?: boolean;
+	maxProjectsDisplay?: number;
+}
+
+/**
+ * Extract configuration options from the Portfolio Site V2 markdown file
+ * This function reads the markdown file and extracts key-value pairs from the "Portfolio Config Options" section
+ */
+export async function getPortfolioConfig(): Promise<PortfolioConfig> {
+	try {
+		const fs = await import('fs/promises');
+		const path = await import('path');
+
+		// Path to the Portfolio Site V2 markdown file
+		const filePath = path.join(
+			process.cwd(),
+			'src',
+			'content',
+			'projects',
+			'Portfolio Site V2.md'
+		);
+
+		const content = await fs.readFile(filePath, 'utf8');
+
+		// Extract content between "Portfolio Config Options" and the end marker
+		const endMarker = '>[!top] [Back to top](#Table%20of%20Contents)';
+		const sectionRegex = new RegExp(
+			`####\\s*Portfolio Config Options\\s*\\n([\\s\\S]*?)(?=\\s*${endMarker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`,
+			'i'
+		);
+		const match = content.match(sectionRegex);
+
+		if (match && match[1]) {
+			const configContent = match[1].trim();
+			const config: PortfolioConfig = {};
+
+			// Parse key-value pairs from bullet points
+			const lines = configContent.split('\n');
+			for (const line of lines) {
+				const trimmedLine = line.trim();
+				// Look for pattern "- key: value" (value can include comments after dash)
+				const keyValueMatch = trimmedLine.match(
+					/^-\s*([a-zA-Z]+):\s*([^-]+?)(?:\s*-\s*(.+))?$/
+				);
+				if (keyValueMatch) {
+					const key = keyValueMatch[1];
+					let value: string | boolean | number = keyValueMatch[2].trim();
+
+					// Convert string values to appropriate types
+					if (value === 'true') {
+						value = true;
+					} else if (value === 'false') {
+						value = false;
+					} else if (!isNaN(Number(value))) {
+						value = Number(value);
+					}
+
+					(config as any)[key] = value;
+				}
+			}
+
+			return config;
+		}
+
+		return {};
+	} catch (error) {
+		console.error('Error reading portfolio config:', error);
+		return {};
+	}
+}
+
+/**
+ * Get a specific portfolio configuration value with a default fallback
+ */
+export async function getPortfolioConfigValue<K extends keyof PortfolioConfig>(
+	key: K,
+	defaultValue: PortfolioConfig[K]
+): Promise<PortfolioConfig[K]> {
+	const config = await getPortfolioConfig();
+	return config[key] ?? defaultValue;
+}
+
+/**
  * Process markdown content to handle Obsidian link syntax and markdown links
  * This function should be used when rendering content on the site
  * @deprecated Use processContent instead for consistency

@@ -5,13 +5,13 @@ tags:
   - coding
   - skill
   - portfolio
-modified: 2025-07-05T07:56:39+01:00
-viewCount: 3
+modified: 2025-07-18T12:43:15+01:00
+viewCount: 5
 aliases:
   - Aura
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: 
 ---
 # Neo4j Aura
 

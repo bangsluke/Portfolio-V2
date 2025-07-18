@@ -12,7 +12,7 @@ viewCount: 5
 aliases: 
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: netlify.svg
 ---
 # Netlify
 

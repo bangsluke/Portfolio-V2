@@ -1,0 +1,209 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	skillName: string;
+	size?: 'xs' | 'sm' | 'md' | 'lg';
+	variant?: 'default' | 'dark' | 'mint';
+	className?: string;
+}
+
+const {
+	skillName,
+	size = 'md',
+	variant = 'default',
+	className = '',
+} = Astro.props;
+
+// Clean the skill name by removing Obsidian link brackets
+const cleanSkillName = skillName.replace(/\[\[|\]\]/g, '');
+
+function getSkillIconName(logoFileName: string | null) {
+	if (!logoFileName) return null;
+	// Remove .svg extension if present
+	return logoFileName.replace(/\.svg$/, '');
+}
+
+// List of known working icons (same as SkillsBubbles)
+const knownIcons = [
+	'javascript',
+	'typescript',
+	'python',
+	'react',
+	'node',
+	'git',
+	'github',
+	'html',
+	'css',
+	'astro',
+	'tailwind',
+	'vercel',
+	'netlify',
+	'markdown',
+	'angular',
+	'arrow-left',
+	'bars',
+	'bitwarden',
+	'bootstrap',
+	'briefcase',
+	'cloudflare',
+	'code',
+	'dashboard',
+	'envelope',
+	'facebook',
+	'figma',
+	'firebase',
+	'gatsby',
+	'github-svg',
+	'info',
+	'instagram',
+	'linkedin',
+	'md',
+	'mongo',
+	'moon',
+	'mysql',
+	'nestjs',
+	'nextjs',
+	'nodejs',
+	'paperplane',
+	'person',
+	'php',
+	'rocket',
+	'sass',
+	'sun',
+	'twitter',
+	'whatsapp',
+	'windsurf-logo',
+	'wordpress',
+	'xmark',
+	'youtube',
+	'cursor-ia',
+	'copilot',
+	'deepseek',
+	'flask',
+];
+
+function shouldShowIcon(iconName: string) {
+	return knownIcons.includes(iconName.toLowerCase());
+}
+
+// Get the icon name for the skill - try multiple variations
+function findIconForSkill(skillName: string) {
+	// Try exact match first
+	let iconName = getSkillIconName(skillName + '.svg');
+	if (iconName && shouldShowIcon(iconName)) {
+		return iconName;
+	}
+
+	// Try lowercase
+	iconName = getSkillIconName(skillName.toLowerCase() + '.svg');
+	if (iconName && shouldShowIcon(iconName)) {
+		return iconName;
+	}
+
+	// Try common mappings
+	const skillMappings: Record<string, string> = {
+		JavaScript: 'javascript',
+		TypeScript: 'typescript',
+		Python: 'python',
+		React: 'react',
+		'Node.js': 'node',
+		Node: 'node',
+		Git: 'git',
+		GitHub: 'github',
+		HTML: 'html',
+		CSS: 'css',
+		Astro: 'astro',
+		'Tailwind CSS': 'tailwind',
+		Tailwind: 'tailwind',
+		Vercel: 'vercel',
+		Netlify: 'netlify',
+		Markdown: 'markdown',
+		Angular: 'angular',
+		Bootstrap: 'bootstrap',
+		Cloudflare: 'cloudflare',
+		Figma: 'figma',
+		Firebase: 'firebase',
+		Gatsby: 'gatsby',
+		Instagram: 'instagram',
+		LinkedIn: 'linkedin',
+		MongoDB: 'mongo',
+		MySQL: 'mysql',
+		NestJS: 'nestjs',
+		'Next.js': 'nextjs',
+		NextJS: 'nextjs',
+		PHP: 'php',
+		Sass: 'sass',
+		WordPress: 'wordpress',
+		YouTube: 'youtube',
+		Flask: 'flask',
+	};
+
+	const mappedIcon = skillMappings[skillName];
+	if (mappedIcon && shouldShowIcon(mappedIcon)) {
+		return mappedIcon;
+	}
+
+	return null;
+}
+
+const iconName = findIconForSkill(cleanSkillName);
+const hasValidIcon = iconName !== null;
+
+// Ensure icon name is lowercase for the Icon component
+const finalIconName = iconName ? iconName.toLowerCase() : null;
+
+// Size classes
+const sizeClasses = {
+	xs: {
+		container: 'px-2 py-1 text-xs gap-1',
+		icon: 'w-3 h-3',
+		text: 'text-xs',
+	},
+	sm: {
+		container: 'px-2.5 py-1.5 text-sm gap-1.5',
+		icon: 'w-4 h-4',
+		text: 'text-sm',
+	},
+	md: {
+		container: 'px-3 py-2 text-sm gap-2',
+		icon: 'w-5 h-5',
+		text: 'text-sm',
+	},
+	lg: {
+		container: 'px-4 py-2.5 text-base gap-2.5',
+		icon: 'w-6 h-6',
+		text: 'text-base',
+	},
+};
+
+// Variant classes
+const variantClasses = {
+	default: 'bg-white text-gray-800 border border-gray-200 hover:bg-gray-50',
+	dark: 'bg-gray-800 text-white border border-gray-700 hover:bg-gray-700',
+	mint: 'bg-mint-400 text-black border border-mint-500 hover:bg-mint-500',
+};
+
+const baseClasses =
+	'flex items-center rounded-full font-medium transition-colors duration-200 cursor-pointer';
+const containerClasses = `${baseClasses} ${sizeClasses[size].container} ${variantClasses[variant]} ${className}`;
+---
+
+<span class={containerClasses} title={cleanSkillName}>
+	{
+		hasValidIcon ? (
+			<Icon
+				name={finalIconName}
+				class={`${sizeClasses[size].icon} text-gray-600`}
+			/>
+		) : (
+			<div
+				class={`${sizeClasses[size].icon} bg-gray-300 rounded-full flex items-center justify-center text-gray-500 text-xs`}>
+				?
+			</div>
+		)
+	}
+	<span class={`${sizeClasses[size].text} font-medium`}>
+		{cleanSkillName}
+	</span>
+</span>

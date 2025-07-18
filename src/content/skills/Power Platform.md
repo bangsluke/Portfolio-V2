@@ -5,13 +5,13 @@ tags:
   - skill
   - portfolio
 created: 2025-06-02T18:33:00
-modified: 2025-07-02T14:39:10+01:00
-viewCount: 4
+modified: 2025-07-18T12:24:28+01:00
+viewCount: 2
 aliases:
   - Microsoft Power Platform
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName:
 ---
 # Power Platform
 

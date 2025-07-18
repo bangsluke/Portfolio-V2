@@ -1,5 +1,13 @@
 ---
+import { processContent } from '../utils/content-processor';
+import { getCollection } from 'astro:content';
 import Layout from './Layout.astro';
+import { processObsidianLink } from '../utils/content-processor';
+import {
+	extractAboutMeShort,
+	extractConfigOptions,
+} from '../utils/content-processor';
+import MostCommonTechs from '../components/portfolio/MostCommonTechs.astro';
 import { Icon } from 'astro-icon/components';
 import Heading from '../components/ui/Heading.astro';
 import WorkExperienceTimeline from '../components/portfolio/WorkExperienceTimeline.astro';
@@ -94,7 +102,7 @@ const { frontmatter } = Astro.props;
 				<Icon class="text-3xl text-white" name="dashboard" />
 				<Heading text="Stack" textGradient="Technological" level={2} />
 			</div>
-			<Tools variant="center" />
+			<MostCommonTechs />
 		</div>
 	</section>
 	<Contact />
