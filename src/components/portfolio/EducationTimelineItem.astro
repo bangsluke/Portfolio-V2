@@ -19,6 +19,26 @@ const {
 	additionalDetails,
 } = Astro.props;
 
+// Format dates in "MMM YYYY - MMM YYYY" format
+function formatDate(date: string | Date | null | undefined): string {
+	if (!date) return '';
+
+	const dateObj = typeof date === 'string' ? new Date(date) : date;
+	if (isNaN(dateObj.getTime())) return '';
+
+	return dateObj.toLocaleDateString('en-US', {
+		month: 'short',
+		year: 'numeric',
+	});
+}
+
+const formattedDateStart = formatDate(dateStart);
+const formattedDateEnd = formatDate(dateEnd);
+const dateRange =
+	formattedDateStart && formattedDateEnd
+		? `${formattedDateStart} - ${formattedDateEnd}`
+		: formattedDateStart || formattedDateEnd || '';
+
 // console.log(name);
 ---
 
@@ -33,18 +53,18 @@ const {
 			<h3 class="text-xl font-bold text-mint-400">
 				{name}
 			</h3>
-			<h4 class="text-xl font-semibold text-zinc-600 dark:text-white">
-				{qualifications}
-			</h4>
 			<time
 				datetime={dateStart?.toString()}
 				class="text-sm text-zinc-600/80 dark:text-white/80">
-				{dateStart?.toString()}
+				{dateRange}
 			</time>
 		</div>
 	</div>
 	<div
 		class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3">
+		<h4 class="text-xl font-semibold text-zinc-600 dark:text-white">
+			{qualifications}
+		</h4>
 		{additionalDetails}
 	</div>
 </div>

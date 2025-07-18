@@ -110,8 +110,10 @@ export async function getPortfolioConfig(): Promise<PortfolioConfig> {
 			const lines = configContent.split('\n');
 			for (const line of lines) {
 				const trimmedLine = line.trim();
-				// Look for pattern "- key: value"
-				const keyValueMatch = trimmedLine.match(/^-\s*([a-zA-Z]+):\s*(.+)$/);
+				// Look for pattern "- key: value" (value can include comments after dash)
+				const keyValueMatch = trimmedLine.match(
+					/^-\s*([a-zA-Z]+):\s*([^-]+?)(?:\s*-\s*(.+))?$/
+				);
 				if (keyValueMatch) {
 					const key = keyValueMatch[1];
 					let value: string | boolean | number = keyValueMatch[2].trim();
