@@ -1,8 +1,10 @@
 ---
+import SkillPill from '../ui/SkillPill.astro';
+
 const allTools = [
 	'html',
 	'javascript',
-	'ts',
+	'typescript',
 	'angular',
 	'astro',
 
@@ -30,8 +32,6 @@ const allTools = [
 	'wordpress',
 ];
 
-import Capsule from '../ui/Capsule.astro';
-
 type ToolVariant = 'default' | 'center';
 
 // Base classes that are common to all variants
@@ -52,7 +52,11 @@ const classes = `${baseClasses} ${variantClasses[variant as ToolVariant]}`;
 <div class={classes}>
 	{
 		allTools.map(tool => (
-			<Capsule lang={tool} linkEnabled={linkEnabled} size={size} />
+			<SkillPill
+				skillName={tool}
+				variant="default"
+				size={size === 'xs' ? 'xs' : 'md'}
+			/>
 		))
 	}
 </div>

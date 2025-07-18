@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import CustomerAndClientCarouselItem from '../../../components/portfolio/CustomerAndClientCarouselItem.astro';
+import SkillPill from '../../../components/ui/SkillPill.astro';
 import Layout from '../../../layouts/Layout.astro';
 import { processObsidianLink } from '../../../utils/content-processor';
 
@@ -47,28 +48,6 @@ try {
 	});
 } catch (error) {
 	console.error('Error fetching linked companies/clients:', error);
-}
-
-const techIconMap: Record<string, string> = {
-	Astro: 'astro.svg',
-	'Tailwind CSS': 'tailwind.svg',
-	Cloudflare: 'cloudflare.svg',
-	JavaScript: 'javascript.svg',
-	Vercel: 'vercel.svg',
-	React: 'react.svg',
-	Preact: 'preact.svg',
-	Netlify: 'netlify.svg',
-	GitHub: 'github.svg',
-	Neo4j: 'neo4j.svg',
-	GraphQL: 'graphql.svg',
-	Obsidian: 'markdown.svg',
-	Synk: 'shield.svg',
-	// Add more as needed
-};
-
-function getTechIcon(tech: string) {
-	const icon = techIconMap[tech.replace(/\[|\]/g, '')];
-	return icon ? `/src/icons/${icon}` : null;
 }
 
 const pageTitle = data.name + ' Project - bangsluke Portfolio';
@@ -118,16 +97,13 @@ const ogimage = {
 					data.technologies &&
 						data.technologies.map((tech: string) => {
 							const cleanTech = tech.replace(/\[|\]/g, '');
-							const icon = getTechIcon(cleanTech);
 							return (
-								<span
-									class="flex items-center bg-[#232b32] text-mint-100 px-4 py-2 rounded-full text-sm font-medium shadow-lg"
-									title={cleanTech}>
-									{icon && (
-										<img src={icon} alt={cleanTech} class="w-5 h-5 mr-2" />
-									)}
-									{cleanTech}
-								</span>
+								<SkillPill
+									skillName={cleanTech}
+									variant="dark"
+									size="md"
+									className="shadow-lg"
+								/>
 							);
 						})
 				}
