@@ -13,29 +13,15 @@ const projects = await getCollection('projects');
 const companies = await getCollection('companies');
 const clients = await getCollection('clients');
 
-console.log('=== ProjectsGallery Debug ===');
-console.log('Raw projects collection:', projects);
-console.log('Projects count:', projects.length);
-
-// Log first few projects to see their structure
-if (projects.length > 0) {
-	console.log('First project:', projects[0]);
-	console.log('First project data:', projects[0].data);
-	console.log('First project slug:', projects[0].slug);
-}
-
 // Get portfolio configuration with fallback
 let maxProjectsDisplay = 6;
 try {
 	maxProjectsDisplay =
 		(await getPortfolioConfigValue('maxProjectsDisplay', 6)) || 6;
-	console.log('ProjectsGallery: maxProjectsDisplay =', maxProjectsDisplay);
 } catch (error) {
 	console.error('Error getting portfolio config:', error);
 	maxProjectsDisplay = 6; // Fallback to default
 }
-
-console.log('ProjectsGallery: Total projects found =', projects.length);
 
 // Sort projects by portfolioOrder first, then dateStart, then alphabetically
 const sortedProjects = projects.sort((a, b) => {
@@ -64,8 +50,6 @@ const sortedProjects = projects.sort((a, b) => {
 	// If dates are the same, fallback to alphabetical sorting by slug
 	return a.slug.localeCompare(b.slug);
 });
-
-console.log('ProjectsGallery: Sorted projects count =', sortedProjects.length);
 
 // Process projects to include company/client logos
 const processedProjects = sortedProjects.map(project => {
@@ -106,16 +90,6 @@ const processedProjects = sortedProjects.map(project => {
 
 // Show projects based on configuration
 const displayedProjects = processedProjects.slice(0, maxProjectsDisplay);
-
-console.log(
-	'ProjectsGallery: Displayed projects count =',
-	displayedProjects.length
-);
-console.log(
-	'Displayed projects:',
-	displayedProjects.map(p => p.slug)
-);
-console.log('=== End ProjectsGallery Debug ===');
 ---
 
 <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="projects">
