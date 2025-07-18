@@ -7,12 +7,12 @@ tags:
   - notes
   - subsidiary
 created: 2025-05-30T11:25:00
-modified: 2025-07-10T19:01:49+01:00
-viewCount: 4
+modified: 2025-07-18T08:07:25+01:00
+viewCount: 5
 aliases: 
 dateStart: 2014-09-01
 dateEnd: ""
-logoURL: https://i.imgur.com/WlMzHZX.png
+logoURL: https://i.imgur.com/YO94MEL.png
 ---
 # RLE UK
 

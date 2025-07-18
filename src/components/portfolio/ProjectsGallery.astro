@@ -1,7 +1,10 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
-import { processObsidianLink } from '../../utils/content-processor';
+import {
+	getPortfolioConfigValue,
+	processObsidianLink,
+} from '../../utils/content-processor';
 import Heading from '../ui/Heading.astro';
 import ProjectCard from './ProjectCard.astro';
 
@@ -9,6 +12,10 @@ import ProjectCard from './ProjectCard.astro';
 const projects = await getCollection('projects');
 const companies = await getCollection('companies');
 const clients = await getCollection('clients');
+
+// Get portfolio configuration
+const maxProjectsDisplay =
+	(await getPortfolioConfigValue('maxProjectsDisplay', 6)) || 6;
 
 // Sort projects by portfolioOrder first, then dateStart, then alphabetically
 const sortedProjects = projects.sort((a, b) => {
@@ -75,8 +82,8 @@ const processedProjects = sortedProjects.map(project => {
 	};
 });
 
-// Show only first 6 projects
-const displayedProjects = processedProjects.slice(0, 6);
+// Show projects based on configuration
+const displayedProjects = processedProjects.slice(0, maxProjectsDisplay);
 ---
 
 <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="projects">
@@ -103,7 +110,7 @@ const displayedProjects = processedProjects.slice(0, 6);
 				}
 			</div>
 			{
-				sortedProjects.length > 6 && (
+				sortedProjects.length > maxProjectsDisplay && (
 					<div class="flex justify-center mt-12">
 						<a
 							href="/portfolio/projects"

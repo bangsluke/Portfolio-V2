@@ -7,8 +7,8 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-07-17T20:10:31+01:00
-viewCount: 47
+modified: 2025-07-18T09:39:15+01:00
+viewCount: 49
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -43,7 +43,7 @@ version: 2
 portfolioOrder: 2
 shortDescription: "A personal portfolio website for displaying my skills and past projects"
 longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills"
-lessonsLearned: "TBC\nInitially I set the project up with an [[Astro]] front end and started doing [[GraphQL]] calls to my [[Backend Server]] project to collect the portfolio data I had stored in the [[Neo4j]] graph. However I soon realized that I was undoing the speed of [[Astro]] and switched to a script that loads the required portfolio data (stored in [[Obsidian]] [[Markdown]] files) into the portfolio repo and used [[Astro]] collections to gather and display the data that way."
+lessonsLearned: "TBC\nInitially I set the project up with an [[Astro]] front end and started doing [[GraphQL]] calls to my [[Backend Server]] project to collect the portfolio data I had stored in the [[Neo4j]] graph. However I soon realized that I was undoing the speed of [[Astro]] and switched to a script that loads the required portfolio data (stored in [[Obsidian]] [[Markdown]] files) into the portfolio repo and used [[Astro]] collections to gather and display the data that way.\nThe project taught me about defining [[npm]] functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package."
 ---
 # Portfolio Site V2
 
@@ -392,15 +392,38 @@ SORT dateStart ASC
 
 ### Portfolio Site Text Content
 
+#### Portfolio Config Options
+
+> Configuration options that control various features and display settings on the portfolio site. These settings are automatically read from this markdown file and applied to the site.
+
+- lookingForWork: true - Controls whether the "Available for work" indicator is displayed in the hero section. Set to `false` to hide this indicator.
+- maxProjectsDisplay: 6 - Maximum number of projects to display in the main projects gallery on the homepage. Projects beyond this limit will show a "See more projects" button.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
 #### About Me Short
 
 Testing hello
+
+TBC - Write more
+
+Don't replace
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 #### About Me Long
 
 Long long
+
+How It Works
+
+The Portfolio site serves static markdown files and displays the data from within these files. These are the following steps;
+- When the user triggers the sync function (can be done during development or remotely) using the defined [[npm]] scripts in `package.json`, the script copies across all notes tagged as “portfolio” in the connected [[Obsidian]] vault
+- These are processed within the `sync.js` file to format the [[Markdown]] (such as processing internal `[[link]]` and external `[Text](link)` [[Obsidian]] links) and extract blocks of text between section headers
+- The processed [[Markdown]] content is then stored in the `/content` folder
+- A collection is generated to define the schema types of each note type (project, company, client etc) in the `TBC` file
+- The [[Astro]] pages and components then read this content data and schema in using collections and then loops through the data using [[JavaScript]] in the top section of the `.astro` files to return [[HTML]] elements in the lower section of the `.astro` files
+- [[Astro]] then strips back all [[JavaScript]] it can from the file output (leaving Islands TBC) and serves the lightweight remaining [[HTML]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -415,6 +438,8 @@ Long long
 TBC
 
 Initially I set the project up with an [[Astro]] front end and started doing [[GraphQL]] calls to my [[Backend Server]] project to collect the portfolio data I had stored in the [[Neo4j]] graph. However I soon realized that I was undoing the speed of [[Astro]] and switched to a script that loads the required portfolio data (stored in [[Obsidian]] [[Markdown]] files) into the portfolio repo and used [[Astro]] collections to gather and display the data that way.
+
+The project taught me about defining [[npm]] functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
