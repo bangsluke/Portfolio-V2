@@ -6,11 +6,11 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-05T07:08:54+01:00
-viewCount: 3
+viewCount: 5
 aliases: 
-skillRating: 0
+skillRating: 70
 skillDescription: TBC
-imageURL: 
+logoFileName: git.svg
 ---
 # Git
 

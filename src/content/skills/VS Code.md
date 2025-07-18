@@ -11,7 +11,7 @@ aliases:
   - Microsoft VS Code
 skillRating: 0
 skillDescription: TBC
-logoFileName: 
+logoFileName: vs_code.svg
 ---
 # VS Code
 

@@ -10,7 +10,7 @@ modified: 2025-07-18T12:28:57+01:00
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: npm.svg
 ---
 # npm
 

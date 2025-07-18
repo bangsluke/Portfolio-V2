@@ -10,7 +10,7 @@ aliases:
   - Azure DevOps
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: azure_devops.svg
 ---
 # DevOps
 

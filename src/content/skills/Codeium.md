@@ -6,12 +6,12 @@ tags:
   - AI
   - skill
   - portfolio
-modified: 2025-07-12T19:10:16+01:00
+modified: 2025-07-18T12:36:44+01:00
 viewCount: 6
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: 
 ---
 # Codeium
 

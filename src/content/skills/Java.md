@@ -13,7 +13,7 @@ viewCount: 4
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: java.svg
 ---
 # Java
 

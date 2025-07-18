@@ -7,12 +7,12 @@ tags:
   - skill
   - notes
   - portfolio
-modified: 2025-07-02T14:24:14+01:00
-viewCount: 5
+modified: 2025-07-18T12:38:29+01:00
+viewCount: 7
 aliases: 
-skillRating: 0
+skillRating: 60
 skillDescription: TBC
-imageURL: 
+logoFileName: heroku.svg
 ---
 # Heroku
 

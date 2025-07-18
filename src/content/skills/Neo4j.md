@@ -6,11 +6,11 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-05T07:55:45+01:00
-viewCount: 3
+viewCount: 5
 aliases: 
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName:
 ---
 # Neo4j
 

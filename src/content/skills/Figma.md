@@ -5,12 +5,12 @@ tags:
   - design
   - skill
   - portfolio
-modified: 2025-07-05T07:05:46+01:00
-viewCount: 3
+modified: 2025-07-18T12:37:34+01:00
+viewCount: 5
 aliases: 
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: figma.svg
 ---
 # Figma
 

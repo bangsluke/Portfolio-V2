@@ -2,43 +2,29 @@
 tags:
   - tag
   - software
+  - coding
   - skill
   - portfolio
-created: 2023-08-18T15:45:00
-modified: 2025-07-05T08:04:52+01:00
+modified: 2025-07-05T06:52:14+01:00
 viewCount: 7
-aliases: 
+aliases:
+  - Algolia Docsearch
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: algolia.svg
 ---
-# Obsidian
+# Algolia
 
 > [!back] Link back to [[Skills Notes]]
 
-> [[PKMS|Personal Knowledge Management System]] - Language: [[Markdown]]
-
-## Table of Contents 
+## Table of Contents
 
 ```table-of-contents
 ```
 
 ## Links
 
-- [Todoist link](https://todoist.com/app/project/Obsidian-Updates-6XF5Hq5W4vhCFw4q)
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Plugins List
-
-```dataview
-TABLE WITHOUT ID
-	file.link as "Plugin",
-	length(file.inlinks) AS "Mentions",
-	viewCount as "View Count"
-FROM #plugin 
-SORT length(file.inlinks) DESC
-```
+- n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
