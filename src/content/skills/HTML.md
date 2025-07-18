@@ -14,7 +14,7 @@ aliases:
   - Hypertext Markup Language
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: html.svg
 ---
 # HTML
 

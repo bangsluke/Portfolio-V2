@@ -4,13 +4,13 @@ tags:
   - software
   - skill
   - portfolio
-viewCount: 3
+viewCount: 2
 aliases:
   - Microsoft Excel
-modified: 2025-07-02T14:34:37+01:00
+modified: 2025-07-18T12:16:41+01:00
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: 
 ---
 # Excel
 

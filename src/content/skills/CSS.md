@@ -14,7 +14,7 @@ aliases:
   - Cascading Sheet Styles
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: css.svg
 ---
 # CSS
 

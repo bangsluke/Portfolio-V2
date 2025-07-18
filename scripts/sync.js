@@ -274,6 +274,9 @@ let syncErrors = {
 	success: false,
 };
 
+// Track skills with missing SVG files (warnings, not errors)
+const missingSvgFiles = [];
+
 console.log(`🚀 Starting ${SYNC_MODE.toUpperCase()} Obsidian Sync...`);
 console.log('📁 Obsidian vault path:', OBSIDIAN_VAULT_PATH);
 console.log('🎯 Astro content path:', ASTRO_CONTENT_PATH);
@@ -518,6 +521,71 @@ function isProtected(itemName) {
 	return PROTECTED_ITEMS.includes(itemName);
 }
 
+// Check for missing SVG files for skills
+function checkMissingSvgFiles() {
+	try {
+		const skillsPath = path.join(ASTRO_CONTENT_PATH, 'skills');
+		const iconsPath = path.join(__dirname, '../src/icons');
+
+		if (!fs.existsSync(skillsPath)) {
+			console.log('📁 Skills directory does not exist, skipping SVG check');
+			return;
+		}
+
+		const skillFiles = fs
+			.readdirSync(skillsPath)
+			.filter(file => file.endsWith('.md'));
+
+		skillFiles.forEach(skillFile => {
+			const skillPath = path.join(skillsPath, skillFile);
+			const content = fs.readFileSync(skillPath, 'utf8');
+
+			// Extract logoFileName from frontmatter
+			const logoFileNameMatch = content.match(/logoFileName:\s*(.+)/);
+			if (logoFileNameMatch) {
+				const logoFileName = logoFileNameMatch[1].trim();
+
+				// Check if the SVG file exists
+				const svgPath = path.join(iconsPath, logoFileName);
+				if (!fs.existsSync(svgPath)) {
+					const skillName = skillFile.replace('.md', '');
+					missingSvgFiles.push({
+						skill: skillName,
+						logoFileName: logoFileName,
+						file: skillFile,
+					});
+
+					if (DEBUG_MODE) {
+						console.log(
+							`⚠️  Missing SVG file for skill ${skillName}: ${logoFileName}`
+						);
+					}
+				}
+			}
+		});
+
+		// Add missing SVG warnings to syncErrors (don't affect success status)
+		if (missingSvgFiles.length > 0) {
+			missingSvgFiles.forEach(missing => {
+				syncErrors.errors.push({
+					file: missing.file,
+					error: `Missing SVG file: ${missing.logoFileName} for skill ${missing.skill}`,
+					type: 'missing_svg_warning',
+					timestamp: new Date().toISOString(),
+				});
+			});
+			// Don't increment error count for missing SVG warnings
+		}
+	} catch (error) {
+		console.error('❌ Error checking for missing SVG files:', error.message);
+		syncErrors.errors.push({
+			file: 'SVG check',
+			error: `Failed to check for missing SVG files: ${error.message}`,
+		});
+		syncErrors.summary.errors++;
+	}
+}
+
 // Post-process all markdown files in the content directory to remove image references
 function postProcessContentImages(contentDir) {
 	function processFile(filePath) {
@@ -651,9 +719,31 @@ async function sendEmailNotification() {
 	}
 
 	try {
+		console.log('📧 Initializing email service...');
+		const emailInitialized = await emailService.initialize();
+
+		if (!emailInitialized) {
+			console.log(
+				'📧 Email service initialization failed, skipping email notification'
+			);
+			return;
+		}
+
 		console.log('📧 Sending email notification...');
 
-		const subject = `Portfolio Sync ${syncErrors.success ? '✅ Success' : '❌ Failed'}`;
+		// Separate errors from warnings
+		const errors = syncErrors.errors.filter(
+			error => error.type !== 'missing_svg_warning'
+		);
+		const warnings = syncErrors.errors.filter(
+			error => error.type === 'missing_svg_warning'
+		);
+
+		// Build subject line with warning count if there are warnings
+		let subject = `Portfolio Sync ${syncErrors.success ? '✅ Success' : '❌ Failed'}`;
+		if (warnings.length > 0) {
+			subject += ` (${warnings.length} warning${warnings.length > 1 ? 's' : ''})`;
+		}
 		const body = `
       <h2>Portfolio Sync Report</h2>
       <p><strong>Mode:</strong> ${SYNC_MODE}</p>
@@ -666,18 +756,36 @@ async function sendEmailNotification() {
         <li>Processed Files: ${syncErrors.summary.processedFiles}</li>
         <li>Copied Files: ${syncErrors.summary.copiedFiles}</li>
         <li>Skipped Files: ${syncErrors.summary.skippedFiles}</li>
-        <li>Errors: ${syncErrors.summary.errors}</li>
+        <li>Errors: ${errors.length}</li>
+        <li>Warnings: ${warnings.length}</li>
       </ul>
       
       ${
-				syncErrors.errors.length > 0
+				errors.length > 0
 					? `
         <h3>Errors</h3>
         <ul>
-          ${syncErrors.errors
+          ${errors
 						.map(
 							error => `
             <li><strong>${error.file || error.directory}:</strong> ${error.error}</li>
+          `
+						)
+						.join('')}
+        </ul>
+      `
+					: ''
+			}
+      
+      ${
+				warnings.length > 0
+					? `
+        <h3>Warnings</h3>
+        <ul>
+          ${warnings
+						.map(
+							warning => `
+            <li><strong>${warning.file}:</strong> ${warning.error}</li>
           `
 						)
 						.join('')}
@@ -705,6 +813,12 @@ async function main() {
 		// Process Obsidian vault
 		console.log('📁 Processing Obsidian vault...');
 		processDirectory(OBSIDIAN_VAULT_PATH);
+
+		// Check for missing SVG files (only for production mode)
+		if (SYNC_MODE === 'production') {
+			console.log('🔍 Checking for missing SVG files...');
+			checkMissingSvgFiles();
+		}
 
 		// Post-process content (only for production mode)
 		if (SYNC_MODE === 'production') {

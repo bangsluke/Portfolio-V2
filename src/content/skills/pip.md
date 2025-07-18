@@ -5,12 +5,12 @@ tags:
   - packageManagement
   - skill
   - portfolio
-modified: 2025-07-05T06:48:31+01:00
-viewCount: 2
+modified: 2025-07-18T12:29:05+01:00
+viewCount: 4
 aliases: 
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: 
 ---
 # pip
 

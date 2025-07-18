@@ -15,7 +15,7 @@ viewCount: 9
 aliases: 
 skillRating: 70
 skillDescription: Able to create more advanced React applications with wide functionality and scalability, utilising hooks and refactoring components down to useable functions
-imageURL: 
+logoFileName: react.svg
 ---
 # React
 

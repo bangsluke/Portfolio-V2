@@ -8,12 +8,12 @@ tags:
   - portfolio
   - skill
 created: 2023-08-18T15:51:00
-modified: 2025-07-02T14:18:49+01:00
-viewCount: 8
+modified: 2025-07-18T11:09:49+01:00
+viewCount: 9
 aliases: 
 skillRating: 0
 skillDescription: TBC
-imageURL: https://flask.palletsprojects.com/en/stable/_static/flask-logo.svg
+logoFileName: flask.svg
 ---
 # Flask
 

@@ -10,7 +10,7 @@ aliases:
   - Microsoft Power Query
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName:
 ---
 # Power Query
 

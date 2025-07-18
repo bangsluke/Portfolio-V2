@@ -8,12 +8,12 @@ tags:
   - portfolio
 created: 2023-08-18T15:51:00
 modified: 2025-07-02T14:19:48+01:00
-viewCount: 3
+viewCount: 5
 aliases:
   - Vite
 skillRating: 0
 skillDescription: TBC
-imageURL:
+logoFileName: vitejs.svg
 ---
 # Vite.js
 

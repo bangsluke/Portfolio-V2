@@ -5,13 +5,13 @@ tags:
   - coding
   - skill
   - portfolio
-modified: 2025-07-02T16:03:08+01:00
-viewCount: 3
+modified: 2025-07-18T12:27:00+01:00
+viewCount: 2
 aliases:
   - Microsoft VS Code
 skillRating: 0
 skillDescription: TBC
-imageURL:
+logoFileName: 
 ---
 # VS Code
 

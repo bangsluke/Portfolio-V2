@@ -14,7 +14,7 @@ aliases:
   - md
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: markdown.svg
 ---
 # Markdown
 

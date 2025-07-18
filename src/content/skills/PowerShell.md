@@ -4,14 +4,14 @@ tags:
   - software
   - skill
   - portfolio
-viewCount: 4
-modified: 2025-07-02T16:00:27+01:00
+viewCount: 2
+modified: 2025-07-18T12:25:44+01:00
 aliases:
   - Microsoft PowerShell
   - Powershell
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName:
 ---
 # PowerShell
 

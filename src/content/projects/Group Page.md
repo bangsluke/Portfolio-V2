@@ -58,7 +58,7 @@ TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","Tru
 WHERE file = this.file
 >```
 >```dataview
-TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
+TABLE WITHOUT ID this.deploymentServiceURL as "Deployment Service Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`

@@ -10,7 +10,7 @@ aliases:
   - Microsoft Power BI
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName:
 ---
 # Power BI
 

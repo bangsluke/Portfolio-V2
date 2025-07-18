@@ -14,7 +14,7 @@ aliases:
   - GAS
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName:
 ---
 # Google Apps Script
 

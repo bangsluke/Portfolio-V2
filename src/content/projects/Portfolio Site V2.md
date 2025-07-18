@@ -7,7 +7,7 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-07-18T09:39:15+01:00
+modified: 2025-07-18T11:01:12+01:00
 viewCount: 49
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
@@ -63,7 +63,7 @@ TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","Tru
 WHERE file = this.file
 >```
 >```dataview
-TABLE WITHOUT ID this.deploymentServiceURL as "Codebase URL Link"
+TABLE WITHOUT ID this.deploymentServiceURL as "Deployment Service Link"
 WHERE file = this.file
 
 >[!details]  `=this.file.name`
@@ -211,7 +211,7 @@ If any note has a tag `skill` (and `portfolio`) then they will show up on the Po
     - Properties
         - skillRating
         - skillDescription
-        - logoURL
+        - logoFileName (used for mapping to the svg file within the site)
 	- Sections
 		- Analysis
 			- Unread Links (using [[Dataview]])

@@ -8,13 +8,13 @@ tags:
   - tag
   - framework
 created: 2025-05-31T22:28:00
-modified: 2025-07-09T07:36:08+01:00
-viewCount: 1
+modified: 2025-07-18T12:03:26+01:00
+viewCount: 8
 aliases:
   - Tailwind
 skillRating: 0
 skillDescription: TBC
-imageURL: 
+logoFileName: tailwind.svg
 ---
 # Tailwind CSS
 
