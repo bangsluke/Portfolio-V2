@@ -16,11 +16,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: typescript.svg
 ---
+
 # Typescript
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> Superset language of: [[JavaScript]]
+> Superset language of: <p class="mint-link">JavaScript</p>
 
 ## Table of Contents
 

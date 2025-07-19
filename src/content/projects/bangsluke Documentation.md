@@ -6,11 +6,11 @@ tags:
   - coding
   - project/completed
 created: 2024-02-20T09:27:00
-modified: 2025-07-11T15:54:33+01:00
+modified: 2025-07-19T09:52:56+01:00
 aliases:
   - Documentation Site
   - bangsluke-documentation
-viewCount: 14
+viewCount: 16
 projectURL: https://bangsluke-documentation.netlify.app/
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
@@ -40,13 +40,13 @@ topicTags:
 powerShellAlias: bangsluke
 version: 1
 portfolioOrder: 3
-shortDescription: "A personal documentation site storing key links to the software I use, articles I find useful, and a section on [[Dorkinians FC]] stats."
+shortDescription: "A personal documentation site storing key links to the software I use, articles I find useful, and a section on <p class=\"mint-link\">Homepage</p> and <a href=\"/portfolio/projects/New Tab Website\" class=\"mint-link\">New Tab</a> pages."
 longDescription: "Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment.\nI regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing."
-lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of [[Markdown]] and led me to notice how many different softwares either use [[Docusaurus]] or a very similar type static site builder for their documentation."
+lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of <p class=\"mint-link\">Markdown</p> and led me to notice how many different softwares either use <p class=\"mint-link\">Docusaurus</p> or a very similar type static site builder for their documentation."
 ---
 # bangsluke Documentation
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <p class="mint-link">Projects</p>
 
 >[!website-link] Links
 > ```dataview
@@ -75,17 +75,9 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-A personal documentation site storing key links to the software I use, articles I find useful, and a section on [[Dorkinians FC]] stats.
-
-The repo also contains my [[Homepage Website|Homepage]] and [[New Tab Website|New Tab]] pages.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-A personal documentation site storing key links to the software I use, articles I find useful, and a section on [[Dorkinians FC]] stats.
+A personal documentation site storing key links to the software I use, articles I find useful, and a section on <p class="mint-link">Homepage</p> and <a href="/portfolio/projects/New Tab Website" class="mint-link">New Tab</a> pages.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -99,10 +91,10 @@ I regularly keep it updated with new links and processes I find so that it remai
 
 ## Architecture and Technologies
 
-- Front end: [[React]] using [[Docusaurus]], [[Algolia]]
-- Back end/Datasource: [[Markdown]]
-- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
-- Security: [[Synk]]
+- Front end: <p class="mint-link">React</p> using <p class="mint-link">Docusaurus</p>, <p class="mint-link">Algolia</p>
+- Back end/Datasource: <p class="mint-link">Markdown</p>
+- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories)), <p class="mint-link">Netlify</p>
+- Security: <p class="mint-link">Synk</p>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -116,7 +108,7 @@ I regularly keep it updated with new links and processes I find so that it remai
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
 
 > `=this.powerShellAlias`
 
@@ -124,7 +116,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Planning and Design
 
-- All built and designed using [[Docusaurus]] structures with minimal additional styling added.
+- All built and designed using <p class="mint-link">Docusaurus</p> structures with minimal additional styling added.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -136,7 +128,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-This project introduced me to the concept of documentation sites, the ease and brilliance of [[Markdown]] and led me to notice how many different softwares either use [[Docusaurus]] or a very similar type static site builder for their documentation.
+This project introduced me to the concept of documentation sites, the ease and brilliance of <p class="mint-link">Markdown</p> and led me to notice how many different softwares either use <p class="mint-link">Docusaurus</p> or a very similar type static site builder for their documentation.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

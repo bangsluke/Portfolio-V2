@@ -227,7 +227,6 @@ a.inline-block.leading-5.pl-12 {
 .mint-link {
 	color: #31d69a !important;
 	transition: all 0.3s ease;
-	font-weight: bold;
 }
 
 .mint-link:hover {
@@ -262,7 +261,6 @@ a.mint-link:hover {
 /* Ensure mint-link styling works in processed content */
 .processed-content .mint-link {
 	color: #31d69a !important;
-	font-weight: bold;
 }
 
 .processed-content a.mint-link {

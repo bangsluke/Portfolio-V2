@@ -6,10 +6,10 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 17:42
-modified: 2025-07-17T19:33:21+01:00
+modified: 2025-07-19T09:38:40+01:00
 aliases:
   - New Tab
-viewCount: 14
+viewCount: 16
 projectURL: https://bangsluke.github.io/pages/NewTab.html
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
@@ -36,14 +36,14 @@ topicTags:
   - Navigation
 powerShellAlias: n/a
 version: 1
-portfolioOrder:
-shortDescription: "An early website I developed to be my new tab page across browsers, providing me fast links to my key sites and a link back to my [[Homepage Website]]."
+portfolioOrder: 3
+shortDescription: "An early website I developed to be my new tab page across browsers, providing me fast links to my key sites and a link back to my <a href=\"/portfolio/projects/Homepage Website\" class=\"mint-link\">Homepage Website</a>."
 longDescription: "A site that opens up for new tabs across my browsers, developed from a theme I found online which stores my key site links and several images I have saved on the page in a masonry layout."
-lessonsLearned: "This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the [[CSS]] file from online) and then making it my own."
+lessonsLearned: "This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the <p class=\"mint-link\">CSS</p> file from online) and then making it my own."
 ---
 # New Tab Website
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <p class="mint-link">Projects</p>
 
 >[!website-link] Links
 > ```dataview
@@ -72,15 +72,9 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-A note about my new tab page website.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-An early website I developed to be my new tab page across browsers, providing me fast links to my key sites and a link back to my [[Homepage Website]].
+An early website I developed to be my new tab page across browsers, providing me fast links to my key sites and a link back to my <a href="/portfolio/projects/Homepage Website" class="mint-link">Homepage Website</a>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -92,10 +86,10 @@ A site that opens up for new tabs across my browsers, developed from a theme I f
 
 ## Architecture and Technologies
 
-- Front end: [[HTML]], [[CSS]] and [[JavaScript]]
+- Front end: <p class="mint-link">HTML</p>, <p class="mint-link">CSS</p> and <p class="mint-link">JavaScript</p>
 - Back end/Datasource: n/a
-- Hosting: [[GitHub]] (see [Repositories](#repositories))
-- Security: [[Synk]]
+- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories))
+- Security: <p class="mint-link">Synk</p>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -109,7 +103,7 @@ A site that opens up for new tabs across my browsers, developed from a theme I f
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
 
 > `=this.powerShellAlias`
 
@@ -123,13 +117,13 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- [[Homepage Website]]
+- <a href="/portfolio/projects/Homepage Website" class="mint-link">Homepage Website</a>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the [[CSS]] file from online) and then making it my own.
+This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the <p class="mint-link">CSS</p> file from online) and then making it my own.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

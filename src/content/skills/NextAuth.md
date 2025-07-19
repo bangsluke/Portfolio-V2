@@ -13,11 +13,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # NextAuth
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> Authentication library for [[Next.js]]
+> Authentication library for <p class="mint-link">Next.js</p>
 
 ## Table of Contents
 

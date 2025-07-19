@@ -9,12 +9,14 @@ export function processContent(content: string | undefined | null): string {
 	return (
 		content
 			// First, handle [[CompanyName|AltName]] format to extract AltName and make it bold and mint green
-			.replace(
-				/\[\[([^|]+)\|([^\]]+)\]\]/g,
-				'<strong class="mint-link">$2</strong>'
-			)
+			.replace(/\[\[([^|]+)\|([^\]]+)\]\]/g, '<p class="mint-link">$2</p>')
 			// Then handle simple Obsidian links [[text]] -> bold and mint green text
-			.replace(/\[\[([^\]]+)\]\]/g, '<strong class="mint-link">$1</strong>')
+			.replace(/\[\[([^\]]+)\]\]/g, '<p class="mint-link">$1</p>')
+			// Handle existing HTML mint-link tags to ensure they're properly styled
+			.replace(
+				/<p class="mint-link">([^<]+)<\/p>/g,
+				'<p class="mint-link">$1</p>'
+			)
 			// Finally, convert markdown links to HTML with mint green and underline styling
 			.replace(
 				/\[([^\]]+)\]\(([^)]+)\)/g,

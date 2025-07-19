@@ -14,9 +14,10 @@ dateStart: 2011-03-06
 dateEnd: 2014-07-25
 logoURL: https://www.opus2.com/wp-content/uploads/2024/03/Spring-release-from-Opus-2-delivers-powerful-enhancements-to-market-leading-case-management-and-analysis-software.jpg
 ---
+
 # Opus 2 International
 
-> [!back] Link back to [[Company Notes]]
+> [!back] Link back to <p class="mint-link">Company Notes</p>
 
 >[!website-link] Links
 >```dataview

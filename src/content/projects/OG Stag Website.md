@@ -6,9 +6,9 @@ tags:
   - coding
   - project/completed
 created: 2025-05-30 10:00
-modified: 2025-07-17T19:33:28+01:00
+modified: 2025-07-19T10:11:40+01:00
 aliases: 
-viewCount: 10
+viewCount: 12
 projectURL: https://og-stag.netlify.app/
 codeURL: https://github.com/bangsluke/OG-stag
 codeMultipleRepos: false
@@ -35,13 +35,13 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
-shortDescription: "A website detailing the itinerary for [[Oli Goddard]]'s stag do."
-longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and [[Google Maps]] links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.\nThis site was a copy and rebrand from the [[JS Stag Website]] I had previously built."
-lessonsLearned: "As this site was a copy of [[JS Stag Website]], the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes."
+shortDescription: "A website detailing the itinerary for <p class=\"mint-link\">Oli Goddard</p>'s stag do."
+longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and <p class=\"mint-link\">Google Maps</p> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.\nThis site was a copy and rebrand from the <a href=\"/portfolio/projects/JS Stag Website\" class=\"mint-link\">JS Stag Website</a> I had previously built."
+lessonsLearned: "As this site was a copy of <a href=\"/portfolio/projects/JS Stag Website\" class=\"mint-link\">JS Stag Website</a>, the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes."
 ---
 # OG Stag Website
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <p class="mint-link">Projects</p>
 
 >[!website-link] Links
 > ```dataview
@@ -69,32 +69,26 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-A website detailing the itinerary for [[Oli Goddard]]'s stag do.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-A website detailing the itinerary for [[Oli Goddard]]'s stag do.
+A website detailing the itinerary for <p class="mint-link">Oli Goddard</p>'s stag do.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-This site provided the stag attendees with the full itinerary of the stag, with timings and [[Google Maps]] links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
+This site provided the stag attendees with the full itinerary of the stag, with timings and <p class="mint-link">Google Maps</p> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
 
-This site was a copy and rebrand from the [[JS Stag Website]] I had previously built.
+This site was a copy and rebrand from the <a href="/portfolio/projects/JS Stag Website" class="mint-link">JS Stag Website</a> I had previously built.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: [[Vite.js]], [[React]]
+- Front end: <p class="mint-link">Vite.js</p>, <p class="mint-link">React</p>
 - Back end/Datasource: n/a
-- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
-- Security: [[Synk]]
+- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories)), <p class="mint-link">Netlify</p>
+- Security: <p class="mint-link">Synk</p>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -108,7 +102,7 @@ This site was a copy and rebrand from the [[JS Stag Website]] I had previously b
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
 
 > `=this.powerShellAlias`
 
@@ -122,13 +116,13 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- [[JS Stag Website]]
+- <a href="/portfolio/projects/JS Stag Website" class="mint-link">JS Stag Website</a>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-As this site was a copy of [[JS Stag Website]], the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes.
+As this site was a copy of <a href="/portfolio/projects/JS Stag Website" class="mint-link">JS Stag Website</a>, the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

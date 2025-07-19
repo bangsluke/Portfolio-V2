@@ -9,17 +9,18 @@ tags:
   - notes
 created: 2023-08-18T15:49:00
 modified: 2025-07-02T14:20:40+01:00
-viewCount: 4
+viewCount: 5
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: graphql.svg
 ---
+
 # GraphQL
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> Language: [[JavaScript]]
+> Language: <p class="mint-link">JavaScript</p>
 
 ## Table of Contents 
 

@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-17T19:31:50+01:00
-viewCount: 5
+modified: 2025-07-19T10:13:05+01:00
+viewCount: 7
 aliases:
   - Sales Chatbot
 projectURL: https://rle-sales-details.netlify.app/
@@ -36,13 +36,13 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
-shortDescription: "A chat bot that takes on content such as an [[RFQ]] block of text and then allows the user to query the text via chat."
+shortDescription: "A chat bot that takes on content such as an <p class=\"mint-link\">RFQ</p> block of text and then allows the user to query the text via chat."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
 # RLEGPT
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <p class="mint-link">Projects</p>
 
 >[!website-link] Links
 > ```dataview
@@ -71,15 +71,9 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-TBC
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-A chat bot that takes on content such as an [[RFQ]] block of text and then allows the user to query the text via chat.
+A chat bot that takes on content such as an <p class="mint-link">RFQ</p> block of text and then allows the user to query the text via chat.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -93,7 +87,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: [[GitLab]] (see [Repositories](#repositories))
+- Hosting: <p class="mint-link">GitLab</p> (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -108,7 +102,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
 
 > `=this.powerShellAlias`
 

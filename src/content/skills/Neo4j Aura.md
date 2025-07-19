@@ -13,11 +13,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: 
 ---
+
 # Neo4j Aura
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> Hosted [[Neo4j]] graph service
+> Hosted <p class="mint-link">Neo4j</p> graph service
 
 ## Table of Contents
 

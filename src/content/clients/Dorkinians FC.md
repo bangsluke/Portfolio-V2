@@ -17,16 +17,10 @@ logoURL: https://i.imgur.com/wMPmx9P.png
 linkedCompany:
   - n/a
 ---
+
 # Dorkinians FC
 
-> [!back] Link back to [[Sport]]
-
->[!website-link] Links
->```dataview
-TABLE WITHOUT ID elink("https://en.wikipedia.org/wiki/"+replace(this.file.name, " ", "_"), this.file.name + " Wiki") as "Wikipedia Link"
-WHERE file = this.file
-
-> The best amateur [[Football|football]] team in the world
+> [!back] Link back to <strong class="mint-link">football</strong> team in the world
 
 ## Table of Contents
 ```table-of-contents

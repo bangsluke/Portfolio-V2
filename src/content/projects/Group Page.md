@@ -6,10 +6,10 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 18:03
-modified: 2025-07-17T19:32:55+01:00
+modified: 2025-07-19T10:13:21+01:00
 aliases:
   - Tits Group Page
-viewCount: 2
+viewCount: 4
 projectURL: https://group-page.netlify.app/
 codeURL: https://github.com/bangsluke/Group-Page
 codeMultipleRepos: false
@@ -42,7 +42,7 @@ lessonsLearned: "TBC"
 ---
 # Group Page
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <p class="mint-link">Projects</p>
 
 >[!website-link] Links
 > ```dataview
@@ -71,12 +71,6 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-TBC
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
 TBC
@@ -91,9 +85,9 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: [[HTML]], [[CSS]], [[JavaScript]]
-- Back end/Datasource: [[Google Sheets]]
-- Hosting: [[GitHub]] (see [Repositories](#repositories))
+- Front end: <p class="mint-link">HTML</p>, <p class="mint-link">CSS</p>, <p class="mint-link">JavaScript</p>
+- Back end/Datasource: <p class="mint-link">Google Sheets</p>
+- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: Manual
 
@@ -108,7 +102,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
 
 > `=this.powerShellAlias`
 

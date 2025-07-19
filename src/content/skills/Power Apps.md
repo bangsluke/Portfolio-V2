@@ -13,11 +13,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # Power Apps
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[Microsoft]] Power Apps - Language: [[JavaScript]]
+> <p class="mint-link">Microsoft</p> Power Apps - Language: <p class="mint-link">JavaScript</p>
 
 ## Table of Contents
 

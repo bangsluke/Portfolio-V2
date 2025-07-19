@@ -12,11 +12,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # Power BI
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[Microsoft]] Power BI
+> <p class="mint-link">Microsoft</p> Power BI
 
 ## Table of Contents
 

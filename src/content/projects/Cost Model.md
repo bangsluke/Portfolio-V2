@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-17T19:29:29+01:00
-viewCount: 7
+modified: 2025-07-19T10:04:20+01:00
+viewCount: 9
 aliases: 
 projectURL: https://rleint.sharepoint.com/:x:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model/GPMO%20Cost%20Model%20V1.xlsx?d=w63d8777e305243178780a626d3abdf07&csf=1&web=1&e=hCf0X0
 codeURL: n/a
@@ -33,13 +33,13 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "A unified cost model template and approach for costing projects - feeds into the [[Financial Tracker|Finance Tracker]]."
+shortDescription: "A unified cost model template and approach for costing projects - feeds into the <a href=\"/portfolio/projects/Financial Tracker\" class=\"mint-link\">Finance Tracker</a>."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
 # Cost Model
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <p class="mint-link">Projects</p>
 
 >[!website-link] Links
 > ```dataview
@@ -66,15 +66,11 @@ WHERE file = this.file
 ```table-of-contents
 ```
 
-## Introduction
-
-TBC
-
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Short Description
 
-A unified cost model template and approach for costing projects - feeds into the [[Financial Tracker|Finance Tracker]].
+A unified cost model template and approach for costing projects - feeds into the <a href="/portfolio/projects/Financial Tracker" class="mint-link">Finance Tracker</a>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -88,9 +84,9 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: n/a
-- Hosting: [[Azure]]
+- Hosting: <p class="mint-link">Azure</p>
 - Security: n/a
-- Authentication: [[Azure]]
+- Authentication: <p class="mint-link">Azure</p>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -103,7 +99,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
 
 > `=this.powerShellAlias`
 
@@ -136,7 +132,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- [[GPMO]]
+- <p class="mint-link">GPMO</p>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

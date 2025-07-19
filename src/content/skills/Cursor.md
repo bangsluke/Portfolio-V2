@@ -13,11 +13,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # Cursor
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[AI]] integrated coding IDE
+> <p class="mint-link">AI</p> integrated coding IDE
 
 ## Table of Contents
 

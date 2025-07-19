@@ -10,12 +10,12 @@ dateStart: 2018-06-01
 dateEnd: 2019-07-01
 linkedCompany:
   - "[[RLE International]]"
-roleDescription: "Lead engineer for the Body Closures function group for a low production build taking designs from concept to production. I also owned systems within Body Exteriors and Interiors and designed an [[Excel]] [[BoM]] management tool on [[SharePoint]] to track team costs, weights and timings for all systems. Design proposals presented and justified to management to confirm system functionality for financial sign off. Robust resolution plans developed where required to meet extended targets."
+roleDescription: "Lead engineer for the Body Closures function group for a low production build taking designs from concept to production. I also owned systems within Body Exteriors and Interiors and designed an <p class=\"mint-link\">Excel</p> <p class=\"mint-link\">BoM</p> management tool on <p class=\"mint-link\">SharePoint</p> to track team costs, weights and timings for all systems. Design proposals presented and justified to management to confirm system functionality for financial sign off. Robust resolution plans developed where required to meet extended targets."
 keyAchievement: "TBC"
 ---
 # Body Closures & Exteriors Engineer
 
-> [!back] Link back to [[Role Notes]]
+> [!back] Link back to <p class="mint-link">Role Notes</p>
 
 ## Table of Contents
 ```table-of-contents
@@ -23,7 +23,7 @@ keyAchievement: "TBC"
 
 ## Role Description
 
-Lead engineer for the Body Closures function group for a low production build taking designs from concept to production. I also owned systems within Body Exteriors and Interiors and designed an [[Excel]] [[BoM]] management tool on [[SharePoint]] to track team costs, weights and timings for all systems. Design proposals presented and justified to management to confirm system functionality for financial sign off. Robust resolution plans developed where required to meet extended targets.
+Lead engineer for the Body Closures function group for a low production build taking designs from concept to production. I also owned systems within Body Exteriors and Interiors and designed an <p class="mint-link">Excel</p> <p class="mint-link">BoM</p> management tool on <p class="mint-link">SharePoint</p> to track team costs, weights and timings for all systems. Design proposals presented and justified to management to confirm system functionality for financial sign off. Robust resolution plans developed where required to meet extended targets.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

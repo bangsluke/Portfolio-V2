@@ -6,17 +6,18 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-18T12:29:40+01:00
-viewCount: 8
+viewCount: 9
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName: 
+logoFileName: apollo.svg
 ---
+
 # Apollo
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> Server for [[GraphQL]]
+> Server for <p class="mint-link">GraphQL</p>
 
 ## Table of Contents
 

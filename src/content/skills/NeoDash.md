@@ -12,11 +12,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # NeoDash
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> A tool for building dashboards on top of [[Neo4j]] data - Language: [[Cypher]] and [[React]]
+> A tool for building dashboards on top of <p class="mint-link">Neo4j</p> data - Language: <p class="mint-link">Cypher</p> and <p class="mint-link">React</p>
 
 ## Table of Contents
 

@@ -7,10 +7,10 @@ tags:
   - coding
   - work
 created: 2025-05-30 09:57
-modified: 2025-07-17T20:13:44+01:00
+modified: 2025-07-19T10:13:59+01:00
 aliases:
   - interview-test Repo
-viewCount: 13
+viewCount: 15
 projectURL: TBC
 codeURL: https://github.com/bangsluke/interview-test
 codeMultipleRepos: false
@@ -35,13 +35,13 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 8
-shortDescription: "TBC"
+shortDescription: "An interview test written for possibly hiring a <p class=\"mint-link\">RLE</p> with <p class=\"mint-link\">Uwe Kloss</p>."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
 # Interview Test Repo
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <p class="mint-link">Projects</p>
 
 >[!website-link] Links
 > ```dataview
@@ -70,15 +70,9 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-An interview test written for possibly hiring a [[React]] developer when working for Digital Engineering at [[RLE International|RLE]] with [[Uwe Kloss]]
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-TBC
+An interview test written for possibly hiring a <p class="mint-link">RLE</p> with <p class="mint-link">Uwe Kloss</p>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -90,10 +84,10 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: [[React]]
+- Front end: <p class="mint-link">React</p>
 - Back end/Datasource: TBC
-- Hosting: [[GitHub]] (see [Repositories](#repositories)), TBC
-- Security: [[Synk]]
+- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories)), TBC
+- Security: <p class="mint-link">Synk</p>
 - Authentication: TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -107,7 +101,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
 
 > `=this.powerShellAlias`
 

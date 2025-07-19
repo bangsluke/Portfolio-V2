@@ -5,8 +5,8 @@ tags:
   - tool
   - project/completed/work
   - portfolio
-modified: 2025-07-17T19:29:37+01:00
-viewCount: 4
+modified: 2025-07-19T10:04:36+01:00
+viewCount: 6
 aliases: 
 projectURL: TBC
 codeURL: n/a
@@ -34,13 +34,13 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "The automation file to convert the [[Cost Model]] into the data format required for the [[Financial Tracker|Finance Tracker]]."
+shortDescription: "The automation file to convert the <p class=\"mint-link\">Finance Tracker</p>."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
 # Cost Model Translation File
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <p class="mint-link">Projects</p>
 
 >[!website-link] Links
 > ```dataview
@@ -69,15 +69,9 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-TBC
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-The automation file to convert the [[Cost Model]] into the data format required for the [[Financial Tracker|Finance Tracker]].
+The automation file to convert the <p class="mint-link">Finance Tracker</p>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -91,7 +85,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: [[GitLab]] (see [Repositories](#repositories))
+- Hosting: <p class="mint-link">GitLab</p> (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -106,7 +100,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
 
 > `=this.powerShellAlias`
 

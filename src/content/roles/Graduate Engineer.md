@@ -15,7 +15,7 @@ keyAchievement: "TBC"
 ---
 # Graduate Engineer
 
-> [!back] Link back to [[Role Notes]]
+> [!back] Link back to <p class="mint-link">Role Notes</p>
 
 ## Table of Contents
 ```table-of-contents

@@ -6,10 +6,10 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 17:09
-modified: 2025-07-17T19:33:07+01:00
+modified: 2025-07-19T09:59:36+01:00
 aliases:
   - Homepage
-viewCount: 15
+viewCount: 17
 projectURL: https://bangsluke.github.io/Homepage.html
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
@@ -42,7 +42,7 @@ lessonsLearned: "Main lesson was understanding and adjusting an existing codebas
 ---
 # Homepage Website
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <p class="mint-link">Projects</p>
 
 >[!website-link] Links
 > ```dataview
@@ -71,12 +71,6 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-A note about my Homepage site.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
 An early site built as a homepage for storing links to all my projects and showing a widget with the weather in my area.
@@ -91,38 +85,7 @@ A single point of focus for where the links to all my projects were stored, as w
 
 ## Architecture and Technologies
 
-- Front end: [[HTML]], [[CSS]] and [[JavaScript]]
-- Back end/Datasource: n/a
-- Hosting: [[GitHub]] (see [Repositories](#repositories))
-- Security: [[Synk]]
-- Authentication: n/a
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Repositories
-
-- Main repo: `=this.codeURL`
-- Secondary repo: n/a
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## PowerShell Query
-
-To launch the repo, use the [[PowerShell]] alias 
-
-> `=this.powerShellAlias`
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Planning and Design
-
-- n/a
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Other Links
-
-- [[New Tab Website|New Tab]]
+- Front end: <p class="mint-link">New Tab</p>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -13,11 +13,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: 
 ---
+
 # Project
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[Microsoft]] Project
+> <p class="mint-link">Microsoft</p> Project
 
 ## Table of Contents
 

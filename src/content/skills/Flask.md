@@ -15,11 +15,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: flask.svg
 ---
+
 # Flask
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-A framework for [[Python]]
+A framework for <p class="mint-link">Python</p>
 
 ## Table of Contents 
 

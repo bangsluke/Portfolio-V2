@@ -14,11 +14,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: 
 ---
+
 # Dependabot
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[GitHub]] security plugin
+> <p class="mint-link">GitHub</p> security plugin
 
 ## Table of Contents
 

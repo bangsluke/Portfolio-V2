@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-11T15:52:52+01:00
-viewCount: 6
+modified: 2025-07-19T10:05:58+01:00
+viewCount: 8
 aliases: 
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/efd30e67-8ed4-4807-95cb-11f46a62d7d2/ReportSectiona3c344f318d21cde0ced?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
 codeURL: 
@@ -36,13 +36,13 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
-shortDescription: "The report section for the [[Financial Tracker]] showing global [[RLE International]] data."
+shortDescription: "The report section for the <a href=\"/portfolio/projects/Financial Tracker\" class=\"mint-link\">Financial Tracker</a> showing global <p class=\"mint-link\">RLE International</p> data."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
 # Group Sales Report
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <p class="mint-link">Projects</p>
 
 >[!website-link] Links
 > ```dataview
@@ -71,15 +71,9 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-TBC
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-The report section for the [[Financial Tracker]] showing global [[RLE International]] data.
+The report section for the <a href="/portfolio/projects/Financial Tracker" class="mint-link">Financial Tracker</a> showing global <p class="mint-link">RLE International</p> data.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -93,7 +87,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: [[GitLab]] (see [Repositories](#repositories))
+- Hosting: <p class="mint-link">GitLab</p> (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -108,7 +102,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
 
 > `=this.powerShellAlias`
 

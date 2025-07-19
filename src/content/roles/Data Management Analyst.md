@@ -10,12 +10,12 @@ dateStart: 2019-07-01
 dateEnd: 2022-07-01
 linkedCompany:
   - "[[RLE International]]"
-roleDescription: "Joined an internal team in developing an automotive scalable development plan (<a href=\"https://sdp.rle.de/#home\">SDP</a>), initially defining a process in [[Excel]], and then developing this into a web-based tool. I was responsible for collecting the data by interviewing experts within and outside the company and collating the data into a format that we could use algorithms to automatically develop a tailored timing plan for a customer.\nResponsibilities also include supporting decisions on the architecture of the tool, design of the [[UI]] and managing the offshore developers in building and maintaining the tool.\nThe role has allowed me to begin writing code in a number of languages, from writing test files in [[Java]], creating [[Cypher]] queries on our graph database, to developing a basic [[React]] app for providing support information to consultants using the tool."
+roleDescription: "Joined an internal team in developing an automotive scalable development plan (<a href=\"https://sdp.rle.de/#home\">SDP</a>), initially defining a process in <p class=\"mint-link\">Excel</p>, and then developing this into a web-based tool. I was responsible for collecting the data by interviewing experts within and outside the company and collating the data into a format that we could use algorithms to automatically develop a tailored timing plan for a customer.\nResponsibilities also include supporting decisions on the architecture of the tool, design of the <p class=\"mint-link\">UI</p> and managing the offshore developers in building and maintaining the tool.\nThe role has allowed me to begin writing code in a number of languages, from writing test files in <p class=\"mint-link\">Java</p>, creating <p class=\"mint-link\">Cypher</p> queries on our graph database, to developing a basic <p class=\"mint-link\">React</p> app for providing support information to consultants using the tool."
 keyAchievement: "TBC"
 ---
 # Data Management Analyst
 
-> [!back] Link back to [[Role Notes]]
+> [!back] Link back to <p class="mint-link">Role Notes</p>
 
 ## Table of Contents
 ```table-of-contents
@@ -23,11 +23,11 @@ keyAchievement: "TBC"
 
 ## Role Description
 
-Joined an internal team in developing an automotive scalable development plan ([SDP](https://sdp.rle.de/#home)), initially defining a process in [[Excel]], and then developing this into a web-based tool. I was responsible for collecting the data by interviewing experts within and outside the company and collating the data into a format that we could use algorithms to automatically develop a tailored timing plan for a customer.
+Joined an internal team in developing an automotive scalable development plan ([SDP](https://sdp.rle.de/#home)), initially defining a process in <p class="mint-link">Excel</p>, and then developing this into a web-based tool. I was responsible for collecting the data by interviewing experts within and outside the company and collating the data into a format that we could use algorithms to automatically develop a tailored timing plan for a customer.
 
-Responsibilities also include supporting decisions on the architecture of the tool, design of the [[UI]] and managing the offshore developers in building and maintaining the tool.
+Responsibilities also include supporting decisions on the architecture of the tool, design of the <p class="mint-link">UI</p> and managing the offshore developers in building and maintaining the tool.
 
-The role has allowed me to begin writing code in a number of languages, from writing test files in [[Java]], creating [[Cypher]] queries on our graph database, to developing a basic [[React]] app for providing support information to consultants using the tool.
+The role has allowed me to begin writing code in a number of languages, from writing test files in <p class="mint-link">Java</p>, creating <p class="mint-link">Cypher</p> queries on our graph database, to developing a basic <p class="mint-link">React</p> app for providing support information to consultants using the tool.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

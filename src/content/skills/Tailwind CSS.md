@@ -16,11 +16,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: tailwind.svg
 ---
+
 # Tailwind CSS
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> A framework for [[CSS]]
+> A framework for <p class="mint-link">CSS</p>
 
 ## Table of Contents
 

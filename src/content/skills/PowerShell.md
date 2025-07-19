@@ -13,11 +13,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # PowerShell
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[Microsoft]] PowerShell
+> <p class="mint-link">Microsoft</p> PowerShell
 
 ## Table of Contents
 

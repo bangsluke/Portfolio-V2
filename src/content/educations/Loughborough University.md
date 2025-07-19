@@ -12,11 +12,11 @@ dateStart: 2011-09-05
 dateEnd: 2014-06-27
 logoURL: https://media.licdn.com/dms/image/v2/C561BAQEo3Ke2CIHRbA/company-background_10000/company-background_10000/0/1617176515173/loughborough_university_cover?e=2147483647&v=beta&t=TabCtm4ROKsS0ZXjH0ioh6D4bemFR556N8rzoabbFo8
 qualifications: "BEng. Automotive Engineering. Second Class Honours, Upper Division (2:1)"
-additionalDetails: "Large range of engineering topics, exploring multiple engineering fundamentals from structures and materials to vehicle aerodynamics. Final year project conducted on the numerical analysis of CNG, LPG and Hydrogen turbulent premixed flames data from experiments conducted in [[Sydney]]"
+additionalDetails: "Large range of engineering topics, exploring multiple engineering fundamentals from structures and materials to vehicle aerodynamics. Final year project conducted on the numerical analysis of CNG, LPG and Hydrogen turbulent premixed flames data from experiments conducted in <p class=\"mint-link\">Bryony</p> and some other decent chaps in <p class=\"mint-link\">Matt</p>, <p class=\"mint-link\">Andy</p> and <p class=\"mint-link\">Steve</p> in <p class=\"mint-link\">Bry</p> in the freezing snow\n	- Being the first student to get kicked out of a lab session for turning up in flip flops\n	- Having my thermodynamics grade go from 75% to 5% when the lecturer corrected his spreadsheet name error\n- Second Year\n	- Living at <p class=\"mint-link\">Matt</p>, <p class=\"mint-link\">Steve</p> and Rob\n	- The incredible house party we threw with the flame thrower and spitting fire\n	- Our Christmas Day at the girls house and the huge roast\n- Third Year\n	- Living at <p class=\"mint-link\">7 Burleigh Road</p> with Naomi, Olivia & Rebecca\n	- Spending hours measuring images of flames expanding in a tube for my dissertation\n	- Finally handing in my dissertation"
 ---
 # Loughborough University
 
-> [!back] Link back to [[Education Notes]]
+> [!back] Link back to <p class="mint-link">Education Notes</p>
 
 >[!website-link] Links
 >```dataview
@@ -40,24 +40,15 @@ BEng. Automotive Engineering. Second Class Honours, Upper Division (2:1)
 
 ## Additional Details
 
-Large range of engineering topics, exploring multiple engineering fundamentals from structures and materials to vehicle aerodynamics. Final year project conducted on the numerical analysis of CNG, LPG and Hydrogen turbulent premixed flames data from experiments conducted in [[Sydney]]
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Key Memories
-
-- First Year
-	- Meeting my incredible wife [[Bryony Lund|Bryony]] and some other decent chaps in [[Matt Dowty|Matt]], [[Andy Taylor|Andy]] and [[Steve Butler|Steve]] in [[Royce Hall Block 14]]
-	- In halls where we had that incredible hot summer when after lectures we’d be drinking outside our halls
-	- The winter after where I watched [[Bryony Lund|Bry]] in the freezing snow
+Large range of engineering topics, exploring multiple engineering fundamentals from structures and materials to vehicle aerodynamics. Final year project conducted on the numerical analysis of CNG, LPG and Hydrogen turbulent premixed flames data from experiments conducted in <p class="mint-link">Bryony</p> and some other decent chaps in <p class="mint-link">Matt</p>, <p class="mint-link">Andy</p> and <p class="mint-link">Steve</p> in <p class="mint-link">Bry</p> in the freezing snow
 	- Being the first student to get kicked out of a lab session for turning up in flip flops
 	- Having my thermodynamics grade go from 75% to 5% when the lecturer corrected his spreadsheet name error
 - Second Year
-	- Living at [[2 Granville Street]] with [[Matt Dowty|Matt]], [[Steve Butler|Steve]] and Rob
+	- Living at <p class="mint-link">Matt</p>, <p class="mint-link">Steve</p> and Rob
 	- The incredible house party we threw with the flame thrower and spitting fire
 	- Our Christmas Day at the girls house and the huge roast 
 - Third Year
-	- Living at [[7 Burleigh Road]] with Naomi, Olivia & Rebecca
+	- Living at <p class="mint-link">7 Burleigh Road</p> with Naomi, Olivia & Rebecca
 	- Spending hours measuring images of flames expanding in a tube for my dissertation
 	- Finally handing in my dissertation
 

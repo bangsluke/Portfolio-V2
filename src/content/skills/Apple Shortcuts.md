@@ -15,11 +15,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # Apple Shortcuts
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[Apple]]'s [[iOS]] automation app
+> <p class="mint-link">Apple</p>'s <p class="mint-link">iOS</p> automation app
 
 ## Table of Contents
 

@@ -17,9 +17,10 @@ logoURL: https://i.imgur.com/ImIdiJo.jpeg
 linkedCompany:
   - "[[RLE International]]"
 ---
+
 # Aston Martin
 
-> [!back] Link back to [[Company Notes]]
+> [!back] Link back to <p class="mint-link">Company Notes</p>
 
 >[!website-link] Links
 >```dataview

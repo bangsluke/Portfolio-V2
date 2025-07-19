@@ -13,11 +13,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: 
 ---
+
 # Synk
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> Codebase security plugin for [[GitHub]]
+> Codebase security plugin for <p class="mint-link">GitHub</p>
 
 ## Table of Contents
 

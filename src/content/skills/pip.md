@@ -6,17 +6,18 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-18T12:29:05+01:00
-viewCount: 4
+viewCount: 5
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName: 
+logoFileName: pip.svg
 ---
+
 # pip
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[Python]] package manager
+> <p class="mint-link">Python</p> package manager
 
 ## Table of Contents
 

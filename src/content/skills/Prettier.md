@@ -12,11 +12,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: 
 ---
+
 # Prettier
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[VS Code]] plugin
+> <p class="mint-link">VS Code</p> plugin
 
 ## Table of Contents
 

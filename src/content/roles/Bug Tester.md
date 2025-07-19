@@ -10,20 +10,11 @@ dateStart: 2014-03-03
 dateEnd: 2014-07-25
 linkedCompany:
   - "[[Opus 2 International]]"
-roleDescription: "For the final few months at [[01 Notes/02 Areas/Work Notes/Company Notes/Opus 2 International|Opus 2]] I was involved in programme bug testing the software and reviewing the sites applications for users."
 keyAchievement: "Finding several front end bugs and developing a reporting structure for developers to understand easily"
 ---
 # Bug Tester
 
-> [!back] Link back to [[Role Notes]]
-
-## Table of Contents
-```table-of-contents
-```
-
-## Role Description
-
-For the final few months at [[01 Notes/02 Areas/Work Notes/Company Notes/Opus 2 International|Opus 2]] I was involved in programme bug testing the software and reviewing the sites applications for users.
+> [!back] Link back to <p class="mint-link">Opus 2</p> I was involved in programme bug testing the software and reviewing the sites applications for users.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

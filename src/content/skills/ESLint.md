@@ -12,11 +12,12 @@ skillRating: 50
 skillDescription: TBC
 logoFileName: eslint.svg
 ---
+
 # ESLint
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[JavaScript]] linter and [[VS Code]] plugin
+> <p class="mint-link">JavaScript</p> linter and <p class="mint-link">VS Code</p> plugin
 
 ## Table of Contents
 

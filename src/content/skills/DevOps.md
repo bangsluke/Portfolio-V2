@@ -12,11 +12,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: azure_devops.svg
 ---
+
 # DevOps
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[Microsoft]] [[Azure]] DevOps
+> <p class="mint-link">Microsoft</p> <p class="mint-link">Azure</p> DevOps
 
 ## Table of Contents
 

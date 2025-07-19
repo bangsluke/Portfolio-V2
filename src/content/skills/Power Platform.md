@@ -13,11 +13,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # Power Platform
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[Microsoft]] Power Platform
+> <p class="mint-link">Microsoft</p> Power Platform
 
 ## Table of Contents
 

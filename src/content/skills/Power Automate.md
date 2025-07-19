@@ -11,11 +11,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # Power Automate
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[Microsoft]] Power Automate
+> <p class="mint-link">Microsoft</p> Power Automate
 
 ## Table of Contents
 

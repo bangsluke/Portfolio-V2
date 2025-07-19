@@ -4,19 +4,20 @@ tags:
   - software
   - skill
   - portfolio
-viewCount: 2
+viewCount: 3
 modified: 2025-07-18T12:24:49+01:00
 aliases:
   - Microsoft PowerPoint
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: powerpoint.svg
 ---
+
 # PowerPoint
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[Microsoft]] PowerPoint - Language: [[VBA]]
+> <p class="mint-link">Microsoft</p> PowerPoint - Language: <p class="mint-link">VBA</p>
 
 ## Table of Contents
 

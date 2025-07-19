@@ -7,9 +7,9 @@ tags:
   - sport
   - project/parked
 created: 2025-05-30 09:40
-modified: 2025-07-17T19:28:19+01:00
+modified: 2025-07-19T09:39:19+01:00
 aliases: 
-viewCount: 11
+viewCount: 14
 projectURL: TBC
 codeURL: TBC
 codeMultipleRepos: false
@@ -31,14 +31,14 @@ topicTags:
   - "[[Football]]"
 powerShellAlias: TBC
 version: 2
-portfolioOrder:
-shortDescription: "TBC"
+portfolioOrder: 4
+shortDescription: "TBC\nthe next version of the <p class=\"mint-link\">Dorkinians FC</p> website, following on from <a href=\"/portfolio/projects/Dorkinians Website\" class=\"mint-link\">Dorkinians Website</a>"
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
 # Dorkinians Website V2
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <p class="mint-link">Projects</p>
 
 >[!website-link] Links
 > ```dataview
@@ -67,15 +67,11 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-A note for storing ideas on building the next version of the [[Dorkinians FC]] website, following on from [[Dorkinians Website]]
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
 TBC
+
+the next version of the <p class="mint-link">Dorkinians FC</p> website, following on from <a href="/portfolio/projects/Dorkinians Website" class="mint-link">Dorkinians Website</a>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -89,7 +85,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: [[GitHub]] (see [Repositories](#repositories)), TBC
+- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories)), TBC
 - Security: TBC
 - Authentication: TBC
 
@@ -104,7 +100,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
 
 > `=this.powerShellAlias`
 
@@ -141,8 +137,8 @@ Authentication: The site should be secure behind a single password.
 
 - How do I store the stats data ready for the website to quickly retrieve and display the information?
 	- Requirements 
-		- Keep using [[Google Sheets]] for stat input 
-		- Automatically update the database daily from the [[Google Sheets]]
+		- Keep using <p class="mint-link">Google Sheets</p> for stat input 
+		- Automatically update the database daily from the <p class="mint-link">Google Sheets</p>
 - How do I make the website easily packaged and customisable for other clubs?
 	- Config file
 	- Pick a club logo
@@ -164,7 +160,7 @@ Authentication: The site should be secure behind a single password.
 
 #### Player Stats
 
-![[20241201 Player Stats Page Design.jpeg]]
+!<p class="mint-link">20241201 Player Stats Page Design.jpeg</p>
 
 - Two swipable tabs;
 	- This Season 
@@ -192,9 +188,9 @@ Authentication: The site should be secure behind a single password.
 
 #### Club Stats
 
-- Points per game - value between 0 and 3 ![[20241001 - PointsPerGame.jpeg]]
+- Points per game - value between 0 and 3 !<p class="mint-link">20241001 - PointsPerGame.jpeg</p>
 - Top 5 player appearances 
-- Have the below background behind the stats? ![[20241001 - Stats Background.png]]
+- Have the below background behind the stats? !<p class="mint-link">20241001 - Stats Background.png</p>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -229,7 +225,7 @@ Authentication: The site should be secure behind a single password.
 		- If player selected, go to that players stats
 		- If no player selected, go to TOTW
 - For stats filtering, follow the guidance in [this article](https://uxmovement.medium.com/how-to-handle-a-massive-filter-with-over-100-options-dc8b1966d3c7) 
-	- ![[20241001 - Stats Filters.png]]
+	- !<p class="mint-link">20241001 - Stats Filters.png</p>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -243,15 +239,15 @@ Authentication: The site should be secure behind a single password.
 #### Crazy Ideas
 
 - Show the players that each player has played with most - likely needs a graph db
-- Add a chatbot to the site that allows a user to chat to the database. Write a statement such as "How many times has [[Kieran Mackrell]] played against Wandsworth?" and then the text is identified into a cypher query and sent to the database and returns the answer. Should display the generated cypher query for debugging purposes.
-	- Not sure this is possible unless I am able to find a way to use a [[OpenAI]] API call to create a [[GraphQL]] query in the client
+- Add a chatbot to the site that allows a user to chat to the database. Write a statement such as "How many times has <p class="mint-link">Kieran Mackrell</p> played against Wandsworth?" and then the text is identified into a cypher query and sent to the database and returns the answer. Should display the generated cypher query for debugging purposes.
+	- Not sure this is possible unless I am able to find a way to use a <p class="mint-link">OpenAI</p> API call to create a <p class="mint-link">GraphQL</p> query in the client
 - Have a map component that looks up the locations that each player has played at (using the locations postcodes) to show where the player has played. Bigger circle on the map shows more times played
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- [Dorkinians Website Tasks](https://todoist.com/app/section/Dorkinians-Website-6C4XfJFRgpfFpJgC) - [[Todoist]]
+- [Dorkinians Website Tasks](https://todoist.com/app/section/Dorkinians-Website-6C4XfJFRgpfFpJgC) - <p class="mint-link">Todoist</p>
 - [Medium Stories list](https://medium.com/@bangsluke/list/410a590e0a2b)
 - https://dribbble.com/
 - https://mobbin.com/browse/web/apps

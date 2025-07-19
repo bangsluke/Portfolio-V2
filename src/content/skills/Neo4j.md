@@ -12,11 +12,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # Neo4j
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> Graph database - Language: [[Cypher]]
+> Graph database - Language: <p class="mint-link">Cypher</p>
 
 ## Table of Contents
 

@@ -12,11 +12,10 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # Obsidian
 
-> [!back] Link back to [[Skills Notes]]
-
-> [[PKMS|Personal Knowledge Management System]] - Language: [[Markdown]]
+> [!back] Link back to <p class="mint-link">Personal Knowledge Management System</p> - Language: <p class="mint-link">Markdown</p>
 
 ## Table of Contents 
 

@@ -15,11 +15,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: bash.svg
 ---
+
 # Bash
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> Link: [[PowerShell]]
+> Link: <p class="mint-link">PowerShell</p>
 
 ## Table of Contents 
 

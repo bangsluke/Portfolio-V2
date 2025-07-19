@@ -15,7 +15,7 @@ additionalDetails: "TBC - Add full details"
 ---
 # Ashcombe Sixth Form College
 
-> [!back] Link back to [[Education Notes]]
+> [!back] Link back to <p class="mint-link">Education Notes</p>
 
 >[!website-link] Links
 >```dataview

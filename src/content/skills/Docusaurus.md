@@ -12,11 +12,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # Docusaurus
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> Built with: [[React]], language: [[JavaScript]], supporting: [[Markdown]]
+> Built with: <p class="mint-link">React</p>, language: <p class="mint-link">JavaScript</p>, supporting: <p class="mint-link">Markdown</p>
 
 ## Table of Contents
 

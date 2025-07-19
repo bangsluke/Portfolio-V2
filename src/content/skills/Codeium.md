@@ -13,11 +13,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: 
 ---
+
 # Codeium
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> Coding support and predictive code - Similar to [[GitHub]] Co-pilot
+> Coding support and predictive code - Similar to <p class="mint-link">GitHub</p> Co-pilot
 
 ## Table of Contents
 

@@ -7,10 +7,10 @@ tags:
   - coding
   - work
 created: 2025-06-02 17:16
-modified: 2025-07-17T20:25:50+01:00
+modified: 2025-07-19T10:10:51+01:00
 aliases:
   - SDP Dev Sites
-viewCount: 14
+viewCount: 16
 projectURL: https://sdp-dev-sites.netlify.app/pages/sdp-acronyms
 codeURL: TBC
 codeMultipleRepos: false
@@ -39,13 +39,12 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
-shortDescription: "A site for the consultants working with the tool, showing the acronyms and definitions used across the [[SDP]] tool, as well as documentation and an encyclopaedia."
-longDescription: "A full list of acronyms and definitions used across the [[SDP]] app, provided as support material to consultants using the tool for [[RLE International|RLE]] and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.\nThe [[SDP]] project was disbanded early into the websites development, leaving it only partially developed, but matching the style and design of the main tool."
-lessonsLearned: "Provided good learning for getting correct anchor points in [[HTML]] for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main [[SDP]] tool to provide a visual connection."
+shortDescription: "A site for the consultants working with the tool, showing the acronyms and definitions used across the <p class=\"mint-link\">RLE</p> and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.\nThe <p class=\"mint-link\">SDP</p>"
+lessonsLearned: "Provided good learning for getting correct anchor points in <p class=\"mint-link\">HTML</p> for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main <a href=\"/portfolio/projects/SDP\" class=\"mint-link\">SDP</a> tool to provide a visual connection."
 ---
 # SDP Consultant Pages
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <p class="mint-link">Projects</p>
 
 >[!website-link] Links
 > ```dataview
@@ -74,66 +73,17 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-A site for the consultants working with the tool, showing the acronyms and definitions used across the [[SDP]] tool, as well as documentation and an encyclopaedia.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-A site for the consultants working with the tool, showing the acronyms and definitions used across the [[SDP]] tool, as well as documentation and an encyclopaedia.
+A site for the consultants working with the tool, showing the acronyms and definitions used across the <p class="mint-link">RLE</p> and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.
 
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Long Description
-
-A full list of acronyms and definitions used across the [[SDP]] app, provided as support material to consultants using the tool for [[RLE International|RLE]] and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.
-
-The [[SDP]] project was disbanded early into the websites development, leaving it only partially developed, but matching the style and design of the main tool.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Architecture and Technologies
-
-- Front end: [[HTML]], [[CSS]], [[JavaScript]]
-- Back end/Datasource: n/a
-- Hosting: [[GitLab]] (see [Repositories](#repositories))
-- Security: n/a
-- Authentication: [[Azure]]
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Repositories
-
-- Main repo: `=this.codeURL`
-- Secondary repo: n/a
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## PowerShell Query
-
-To launch the repo, use the [[PowerShell]] alias 
-
-> `=this.powerShellAlias`
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Planning and Design
-
-- Designed to look like the [[SDP]] site in terms of styling.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Other Links
-
-- [[SDP|SDP]]
+The <p class="mint-link">SDP</p>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-Provided good learning for getting correct anchor points in [[HTML]] for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main [[SDP]] tool to provide a visual connection.
+Provided good learning for getting correct anchor points in <p class="mint-link">HTML</p> for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main <a href="/portfolio/projects/SDP" class="mint-link">SDP</a> tool to provide a visual connection.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

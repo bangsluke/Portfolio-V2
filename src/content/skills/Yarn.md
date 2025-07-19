@@ -12,11 +12,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: yarn.svg
 ---
+
 # Yarn
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> [[JavaScript]] package manager
+> <p class="mint-link">JavaScript</p> package manager
 
 ## Table of Contents
 

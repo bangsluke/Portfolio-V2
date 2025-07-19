@@ -16,11 +16,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName:
 ---
+
 # Google Apps Script
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
-> Language developed by [[Google]]. Form of [[JavaScript]]
+> Language developed by <p class="mint-link">Google</p>. Form of <p class="mint-link">JavaScript</p>
 
 ## Table of Contents
 

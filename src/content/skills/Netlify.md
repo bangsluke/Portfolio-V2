@@ -14,9 +14,10 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: netlify.svg
 ---
+
 # Netlify
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <p class="mint-link">Skills Notes</p>
 
 ## Table of Contents
 
