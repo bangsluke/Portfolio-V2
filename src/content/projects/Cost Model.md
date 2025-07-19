@@ -39,7 +39,7 @@ lessonsLearned: "TBC"
 ---
 # Cost Model
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -84,9 +84,9 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: n/a
-- Hosting: <p class="mint-link">Azure</p>
+- Hosting: <span class="mint-link">Azure</span>
 - Security: n/a
-- Authentication: <p class="mint-link">Azure</p>
+- Authentication: <span class="mint-link">Azure</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -99,7 +99,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -132,7 +132,7 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 
 ## Other Links
 
-- <p class="mint-link">GPMO</p>
+- <span class="mint-link">GPMO</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

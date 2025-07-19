@@ -16,7 +16,7 @@ additionalDetails: "TBC - Add full details"
 ---
 # Ashcombe School
 
-> [!back] Link back to <p class="mint-link">Education Notes</p>
+> [!back] Link back to <span class="mint-link">Education Notes</span>
 
 >[!website-link] Links
 >```dataview
@@ -48,7 +48,7 @@ TBC - Add full details
 
 ## Key Memories
 
-- Getting detention every other day for not having my shirt tucked in and then one day at detention during the register read out, hearing <p class="mint-link">Ross</p>’ name read out after mine and being a proud big brother
+- Getting detention every other day for not having my shirt tucked in and then one day at detention during the register read out, hearing <span class="mint-link">Ross</span>’ name read out after mine and being a proud big brother
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

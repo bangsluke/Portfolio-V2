@@ -15,9 +15,9 @@ logoFileName: pip.svg
 
 # pip
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> <p class="mint-link">Python</p> package manager
+> <span class="mint-link">Python</span> package manager
 
 ## Table of Contents
 

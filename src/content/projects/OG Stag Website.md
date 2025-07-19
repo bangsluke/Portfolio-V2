@@ -35,13 +35,13 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
-shortDescription: "A website detailing the itinerary for <p class=\"mint-link\">Oli Goddard</p>'s stag do."
-longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and <p class=\"mint-link\">Google Maps</p> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.\nThis site was a copy and rebrand from the <a href=\"/portfolio/projects/JS Stag Website\" class=\"mint-link\">JS Stag Website</a> I had previously built."
+shortDescription: "A website detailing the itinerary for <span class=\"mint-link\">Oli Goddard</span>'s stag do."
+longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and <span class=\"mint-link\">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.\nThis site was a copy and rebrand from the <a href=\"/portfolio/projects/JS Stag Website\" class=\"mint-link\">JS Stag Website</a> I had previously built."
 lessonsLearned: "As this site was a copy of <a href=\"/portfolio/projects/JS Stag Website\" class=\"mint-link\">JS Stag Website</a>, the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes."
 ---
 # OG Stag Website
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -71,13 +71,13 @@ WHERE file = this.file
 
 ## Short Description
 
-A website detailing the itinerary for <p class="mint-link">Oli Goddard</p>'s stag do.
+A website detailing the itinerary for <span class="mint-link">Oli Goddard</span>'s stag do.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-This site provided the stag attendees with the full itinerary of the stag, with timings and <p class="mint-link">Google Maps</p> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
+This site provided the stag attendees with the full itinerary of the stag, with timings and <span class="mint-link">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
 
 This site was a copy and rebrand from the <a href="/portfolio/projects/JS Stag Website" class="mint-link">JS Stag Website</a> I had previously built.
 
@@ -85,10 +85,10 @@ This site was a copy and rebrand from the <a href="/portfolio/projects/JS Stag W
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">Vite.js</p>, <p class="mint-link">React</p>
+- Front end: <span class="mint-link">Vite.js</span>, <span class="mint-link">React</span>
 - Back end/Datasource: n/a
-- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories)), <p class="mint-link">Netlify</p>
-- Security: <p class="mint-link">Synk</p>
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
+- Security: <span class="mint-link">Synk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -102,7 +102,7 @@ This site was a copy and rebrand from the <a href="/portfolio/projects/JS Stag W
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 

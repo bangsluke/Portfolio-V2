@@ -19,9 +19,9 @@ logoFileName:
 
 # Google Apps Script
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Language developed by <p class="mint-link">Google</p>. Form of <p class="mint-link">JavaScript</p>
+> Language developed by <span class="mint-link">Google</span>. Form of <span class="mint-link">JavaScript</span>
 
 ## Table of Contents
 

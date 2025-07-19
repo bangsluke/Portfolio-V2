@@ -33,13 +33,13 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "The report section for the <a href=\"/portfolio/projects/Financial Tracker\" class=\"mint-link\">Financial Tracker</a> showing global <p class=\"mint-link\">RLE International</p> <a href=\"/portfolio/projects/Project Pipeline\" class=\"mint-link\">Project Pipeline</a> data."
+shortDescription: "The report section for the <a href=\"/portfolio/projects/Financial Tracker\" class=\"mint-link\">Financial Tracker</a> showing global <span class=\"mint-link\">RLE International</span> <a href=\"/portfolio/projects/Project Pipeline\" class=\"mint-link\">Project Pipeline</a> data."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
 # Pipeline App User Report
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -70,7 +70,7 @@ WHERE file = this.file
 
 ## Short Description
 
-The report section for the <a href="/portfolio/projects/Financial Tracker" class="mint-link">Financial Tracker</a> showing global <p class="mint-link">RLE International</p> <a href="/portfolio/projects/Project Pipeline" class="mint-link">Project Pipeline</a> data.
+The report section for the <a href="/portfolio/projects/Financial Tracker" class="mint-link">Financial Tracker</a> showing global <span class="mint-link">RLE International</span> <a href="/portfolio/projects/Project Pipeline" class="mint-link">Project Pipeline</a> data.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -84,7 +84,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: <p class="mint-link">GitLab</p> (see [Repositories](#repositories))
+- Hosting: <span class="mint-link">GitLab</span> (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -99,7 +99,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 

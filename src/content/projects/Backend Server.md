@@ -38,12 +38,12 @@ powerShellAlias: backend
 version: 1
 portfolioOrder: 1
 shortDescription: "The backend server and source of data for several of my projects, allowing a singular point of management and maintenance."
-longDescription: "The source of data for several projects including my <a href=\"/portfolio/projects/Travel Website\" class=\"mint-link\">Travel Website</a> and <a href=\"/portfolio/projects/Portfolio Site V2\" class=\"mint-link\">Portfolio Site V2</a>, providing a route for data retrieval from a <p class=\"mint-link\">Neo4j</p> graph using <p class=\"mint-link\">GraphQL</p> queries."
-lessonsLearned: "Taught me about setting up a <p class=\"mint-link\">Flask</p> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <p class=\"mint-link\">Python</p> code in a growing codebase given my past experience with <p class=\"mint-link\">Python</p> had been for single script projects.\nTBC"
+longDescription: "The source of data for several projects including my <a href=\"/portfolio/projects/Travel Website\" class=\"mint-link\">Travel Website</a> and <a href=\"/portfolio/projects/Portfolio Site V2\" class=\"mint-link\">Portfolio Site V2</a>, providing a route for data retrieval from a <span class=\"mint-link\">Neo4j</span> graph using <span class=\"mint-link\">GraphQL</span> queries."
+lessonsLearned: "Taught me about setting up a <span class=\"mint-link\">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class=\"mint-link\">Python</span> code in a growing codebase given my past experience with <span class=\"mint-link\">Python</span> had been for single script projects.\nTBC"
 ---
 # Backend Server
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -80,16 +80,16 @@ The backend server and source of data for several of my projects, allowing a sin
 
 ## Long Description
 
-The source of data for several projects including my <a href="/portfolio/projects/Travel Website" class="mint-link">Travel Website</a> and <a href="/portfolio/projects/Portfolio Site V2" class="mint-link">Portfolio Site V2</a>, providing a route for data retrieval from a <p class="mint-link">Neo4j</p> graph using <p class="mint-link">GraphQL</p> queries.
+The source of data for several projects including my <a href="/portfolio/projects/Travel Website" class="mint-link">Travel Website</a> and <a href="/portfolio/projects/Portfolio Site V2" class="mint-link">Portfolio Site V2</a>, providing a route for data retrieval from a <span class="mint-link">Neo4j</span> graph using <span class="mint-link">GraphQL</span> queries.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
 - Front end: n/a
-- Back end/Datasource: <p class="mint-link">Neo4j</p>, <p class="mint-link">Neo4j Aura</p>, <p class="mint-link">Cypher</p>, <p class="mint-link">Python</p>, <p class="mint-link">Flask</p>
-- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories)), <p class="mint-link">Heroku</p>
-- Security: <p class="mint-link">Synk</p>
+- Back end/Datasource: <span class="mint-link">Neo4j</span>, <span class="mint-link">Neo4j Aura</span>, <span class="mint-link">Cypher</span>, <span class="mint-link">Python</span>, <span class="mint-link">Flask</span>
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Heroku</span>
+- Security: <span class="mint-link">Synk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -103,7 +103,7 @@ The source of data for several projects including my <a href="/portfolio/project
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -126,7 +126,7 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 
 ## Lessons Learned
 
-Taught me about setting up a <p class="mint-link">Flask</p> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <p class="mint-link">Python</p> code in a growing codebase given my past experience with <p class="mint-link">Python</p> had been for single script projects.
+Taught me about setting up a <span class="mint-link">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class="mint-link">Python</span> code in a growing codebase given my past experience with <span class="mint-link">Python</span> had been for single script projects.
 
 TBC
 

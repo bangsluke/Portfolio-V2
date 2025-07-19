@@ -18,7 +18,7 @@ logoFileName: python.svg
 
 # Python
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
 ## Table of Contents
 

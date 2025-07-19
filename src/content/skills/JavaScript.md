@@ -19,7 +19,7 @@ skillDescription: A good understanding of JavaScript concepts to build dynamic p
 
 # JavaScript
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
 ## Table of Contents 
 

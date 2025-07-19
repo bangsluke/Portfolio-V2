@@ -16,9 +16,9 @@ logoFileName:
 
 # Cursor
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> <p class="mint-link">AI</p> integrated coding IDE
+> <span class="mint-link">AI</span> integrated coding IDE
 
 ## Table of Contents
 

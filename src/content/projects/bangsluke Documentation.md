@@ -40,13 +40,13 @@ topicTags:
 powerShellAlias: bangsluke
 version: 1
 portfolioOrder: 3
-shortDescription: "A personal documentation site storing key links to the software I use, articles I find useful, and a section on <p class=\"mint-link\">Homepage</p> and <a href=\"/portfolio/projects/New Tab Website\" class=\"mint-link\">New Tab</a> pages."
+shortDescription: "A personal documentation site storing key links to the software I use, articles I find useful, and a section on <span class=\"mint-link\">Homepage</span> and <a href=\"/portfolio/projects/New Tab Website\" class=\"mint-link\">New Tab</a> pages."
 longDescription: "Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment.\nI regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing."
-lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of <p class=\"mint-link\">Markdown</p> and led me to notice how many different softwares either use <p class=\"mint-link\">Docusaurus</p> or a very similar type static site builder for their documentation."
+lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of <span class=\"mint-link\">Markdown</span> and led me to notice how many different softwares either use <span class=\"mint-link\">Docusaurus</span> or a very similar type static site builder for their documentation."
 ---
 # bangsluke Documentation
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -77,7 +77,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A personal documentation site storing key links to the software I use, articles I find useful, and a section on <p class="mint-link">Homepage</p> and <a href="/portfolio/projects/New Tab Website" class="mint-link">New Tab</a> pages.
+A personal documentation site storing key links to the software I use, articles I find useful, and a section on <span class="mint-link">Homepage</span> and <a href="/portfolio/projects/New Tab Website" class="mint-link">New Tab</a> pages.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -91,10 +91,10 @@ I regularly keep it updated with new links and processes I find so that it remai
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">React</p> using <p class="mint-link">Docusaurus</p>, <p class="mint-link">Algolia</p>
-- Back end/Datasource: <p class="mint-link">Markdown</p>
-- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories)), <p class="mint-link">Netlify</p>
-- Security: <p class="mint-link">Synk</p>
+- Front end: <span class="mint-link">React</span> using <span class="mint-link">Docusaurus</span>, <span class="mint-link">Algolia</span>
+- Back end/Datasource: <span class="mint-link">Markdown</span>
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
+- Security: <span class="mint-link">Synk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -108,7 +108,7 @@ I regularly keep it updated with new links and processes I find so that it remai
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -116,7 +116,7 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 
 ## Planning and Design
 
-- All built and designed using <p class="mint-link">Docusaurus</p> structures with minimal additional styling added.
+- All built and designed using <span class="mint-link">Docusaurus</span> structures with minimal additional styling added.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -128,7 +128,7 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 
 ## Lessons Learned
 
-This project introduced me to the concept of documentation sites, the ease and brilliance of <p class="mint-link">Markdown</p> and led me to notice how many different softwares either use <p class="mint-link">Docusaurus</p> or a very similar type static site builder for their documentation.
+This project introduced me to the concept of documentation sites, the ease and brilliance of <span class="mint-link">Markdown</span> and led me to notice how many different softwares either use <span class="mint-link">Docusaurus</span> or a very similar type static site builder for their documentation.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

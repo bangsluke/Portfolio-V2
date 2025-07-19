@@ -15,9 +15,9 @@ logoFileName:
 
 # NeoDash
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> A tool for building dashboards on top of <p class="mint-link">Neo4j</p> data - Language: <p class="mint-link">Cypher</p> and <p class="mint-link">React</p>
+> A tool for building dashboards on top of <span class="mint-link">Neo4j</span> data - Language: <span class="mint-link">Cypher</span> and <span class="mint-link">React</span>
 
 ## Table of Contents
 

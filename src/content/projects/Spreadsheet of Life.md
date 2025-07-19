@@ -34,13 +34,13 @@ topicTags:
 powerShellAlias: n/a
 version: 3.1
 portfolioOrder: 3
-shortDescription: "A <p class=\"mint-link\">Google Sheets</p> file that I use to collate all my key details on which is mainly financial data but is also used as the data source for health data such as steps to produce my daily, weekly and monthly summary emails to myself using <p class=\"mint-link\">Google Apps Script</p>."
-longDescription: "The Spreadsheet of Life (or SoL for short) is the backbone of my finances, holding data for helping me with all my financial decisions.\nIt is an ever expanding <p class=\"mint-link\">Google Sheets</p> file that I use to take snapshots of my daily, weekly and monthly finances which is then summarised to me each day through automated emails, run through <p class=\"mint-link\">Google Apps Script</p>.\nSoL also contains health data such as distance traveled, steps and fluid intake which I send each evening from my phone to the file via <p class=\"mint-link\">Apple Shortcuts</p>."
-lessonsLearned: "The Spreadsheet of Life was my first real introduction to <p class=\"mint-link\">JavaScript</p>, via <p class=\"mint-link\">Google Apps Script</p>, allowing me to generate daily emails to myself. This also brought up several challenges such as storing snapshots of generated graphs within the file to be sent which I achieved using temporary storage in <p class=\"mint-link\">Google Drive</p>.\nIt also taught me the full power of <p class=\"mint-link\">API</p>s from an early stage, allowing me to populate the sheet remotely from using <p class=\"mint-link\">Apple Shortcuts</p> on my iPhone."
+shortDescription: "A <span class=\"mint-link\">Google Sheets</span> file that I use to collate all my key details on which is mainly financial data but is also used as the data source for health data such as steps to produce my daily, weekly and monthly summary emails to myself using <span class=\"mint-link\">Google Apps Script</span>."
+longDescription: "The Spreadsheet of Life (or SoL for short) is the backbone of my finances, holding data for helping me with all my financial decisions.\nIt is an ever expanding <span class=\"mint-link\">Google Sheets</span> file that I use to take snapshots of my daily, weekly and monthly finances which is then summarised to me each day through automated emails, run through <span class=\"mint-link\">Google Apps Script</span>.\nSoL also contains health data such as distance traveled, steps and fluid intake which I send each evening from my phone to the file via <span class=\"mint-link\">Apple Shortcuts</span>."
+lessonsLearned: "The Spreadsheet of Life was my first real introduction to <span class=\"mint-link\">JavaScript</span>, via <span class=\"mint-link\">Google Apps Script</span>, allowing me to generate daily emails to myself. This also brought up several challenges such as storing snapshots of generated graphs within the file to be sent which I achieved using temporary storage in <span class=\"mint-link\">Google Drive</span>.\nIt also taught me the full power of <span class=\"mint-link\">API</span>s from an early stage, allowing me to populate the sheet remotely from using <span class=\"mint-link\">Apple Shortcuts</span> on my iPhone."
 ---
 # Spreadsheet of Life
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -71,7 +71,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A <p class="mint-link">Google Sheets</p> file that I use to collate all my key details on which is mainly financial data but is also used as the data source for health data such as steps to produce my daily, weekly and monthly summary emails to myself using <p class="mint-link">Google Apps Script</p>.
+A <span class="mint-link">Google Sheets</span> file that I use to collate all my key details on which is mainly financial data but is also used as the data source for health data such as steps to produce my daily, weekly and monthly summary emails to myself using <span class="mint-link">Google Apps Script</span>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -79,19 +79,19 @@ A <p class="mint-link">Google Sheets</p> file that I use to collate all my key d
 
 The Spreadsheet of Life (or SoL for short) is the backbone of my finances, holding data for helping me with all my financial decisions.
 
-It is an ever expanding <p class="mint-link">Google Sheets</p> file that I use to take snapshots of my daily, weekly and monthly finances which is then summarised to me each day through automated emails, run through <p class="mint-link">Google Apps Script</p>.
+It is an ever expanding <span class="mint-link">Google Sheets</span> file that I use to take snapshots of my daily, weekly and monthly finances which is then summarised to me each day through automated emails, run through <span class="mint-link">Google Apps Script</span>.
 
-SoL also contains health data such as distance traveled, steps and fluid intake which I send each evening from my phone to the file via <p class="mint-link">Apple Shortcuts</p>.
+SoL also contains health data such as distance traveled, steps and fluid intake which I send each evening from my phone to the file via <span class="mint-link">Apple Shortcuts</span>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">Google Sheets</p>
-- Back end/Datasource: <p class="mint-link">Google Apps Script</p>/<p class="mint-link">Google Sheets</p>
-- Hosting: <p class="mint-link">Google</p>
-- Security: <p class="mint-link">Google</p>
-- Authentication: <p class="mint-link">Google</p>
+- Front end: <span class="mint-link">Google Sheets</span>
+- Back end/Datasource: <span class="mint-link">Google Apps Script</span>/<span class="mint-link">Google Sheets</span>
+- Hosting: <span class="mint-link">Google</span>
+- Security: <span class="mint-link">Google</span>
+- Authentication: <span class="mint-link">Google</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -104,7 +104,7 @@ SoL also contains health data such as distance traveled, steps and fluid intake 
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -125,9 +125,9 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 
 ## Lessons Learned
 
-The Spreadsheet of Life was my first real introduction to <p class="mint-link">JavaScript</p>, via <p class="mint-link">Google Apps Script</p>, allowing me to generate daily emails to myself. This also brought up several challenges such as storing snapshots of generated graphs within the file to be sent which I achieved using temporary storage in <p class="mint-link">Google Drive</p>.
+The Spreadsheet of Life was my first real introduction to <span class="mint-link">JavaScript</span>, via <span class="mint-link">Google Apps Script</span>, allowing me to generate daily emails to myself. This also brought up several challenges such as storing snapshots of generated graphs within the file to be sent which I achieved using temporary storage in <span class="mint-link">Google Drive</span>.
 
-It also taught me the full power of <p class="mint-link">API</p>s from an early stage, allowing me to populate the sheet remotely from using <p class="mint-link">Apple Shortcuts</p> on my iPhone.
+It also taught me the full power of <span class="mint-link">API</span>s from an early stage, allowing me to populate the sheet remotely from using <span class="mint-link">Apple Shortcuts</span> on my iPhone.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

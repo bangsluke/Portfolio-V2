@@ -42,7 +42,7 @@ lessonsLearned: "Main lesson was understanding and adjusting an existing codebas
 ---
 # Homepage Website
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -85,7 +85,7 @@ A single point of focus for where the links to all my projects were stored, as w
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">New Tab</p>
+- Front end: <span class="mint-link">New Tab</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

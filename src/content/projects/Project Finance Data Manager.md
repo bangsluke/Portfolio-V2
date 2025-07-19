@@ -38,13 +38,13 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "Data input for financial tracking of <p class=\"mint-link\">RLE International</p> projects."
-longDescription: "TBC\nPulled in timesheet data and financial information from various <p class=\"mint-link\">RLE International</p> region sources such as <p class=\"mint-link\">Paycor</p>, <p class=\"mint-link\">T-Sheet</p> and <p class=\"mint-link\">Iplicit</p>."
+shortDescription: "Data input for financial tracking of <span class=\"mint-link\">RLE International</span> projects."
+longDescription: "TBC\nPulled in timesheet data and financial information from various <span class=\"mint-link\">RLE International</span> region sources such as <span class=\"mint-link\">Paycor</span>, <span class=\"mint-link\">T-Sheet</span> and <span class=\"mint-link\">Iplicit</span>."
 lessonsLearned: "TBC"
 ---
 # Project Finance Data Manager
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -75,7 +75,7 @@ WHERE file = this.file
 
 ## Short Description
 
-Data input for financial tracking of <p class="mint-link">RLE International</p> projects.
+Data input for financial tracking of <span class="mint-link">RLE International</span> projects.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -83,7 +83,7 @@ Data input for financial tracking of <p class="mint-link">RLE International</p> 
 
 TBC
 
-Pulled in timesheet data and financial information from various <p class="mint-link">RLE International</p> region sources such as <p class="mint-link">Paycor</p>, <p class="mint-link">T-Sheet</p> and <p class="mint-link">Iplicit</p>.
+Pulled in timesheet data and financial information from various <span class="mint-link">RLE International</span> region sources such as <span class="mint-link">Paycor</span>, <span class="mint-link">T-Sheet</span> and <span class="mint-link">Iplicit</span>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -91,7 +91,7 @@ Pulled in timesheet data and financial information from various <p class="mint-l
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: <p class="mint-link">GitLab</p> (see [Repositories](#repositories))
+- Hosting: <span class="mint-link">GitLab</span> (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -106,7 +106,7 @@ Pulled in timesheet data and financial information from various <p class="mint-l
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 

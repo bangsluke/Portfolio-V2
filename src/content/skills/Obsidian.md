@@ -15,7 +15,7 @@ logoFileName:
 
 # Obsidian
 
-> [!back] Link back to <p class="mint-link">Personal Knowledge Management System</p> - Language: <p class="mint-link">Markdown</p>
+> [!back] Link back to <span class="mint-link">Personal Knowledge Management System</span> - Language: <span class="mint-link">Markdown</span>
 
 ## Table of Contents 
 

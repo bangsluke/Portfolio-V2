@@ -42,11 +42,11 @@ version: 2
 portfolioOrder: 2
 shortDescription: "A personal portfolio website for displaying my skills and past projects."
 longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills."
-lessonsLearned: "TBC\nInitially I set the project up with an <p class=\"mint-link\">Astro</p> front end and started doing <p class=\"mint-link\">GraphQL</p> calls to my <a href=\"/portfolio/projects/Backend Server\" class=\"mint-link\">Backend Server</a> project to collect the portfolio data I had stored in the <p class=\"mint-link\">Neo4j</p> graph. However I soon realized that I was undoing the speed of <p class=\"mint-link\">Astro</p> and switched to a script that loads the required portfolio data (stored in <p class=\"mint-link\">Obsidian</p> <p class=\"mint-link\">Markdown</p> files) into the portfolio repo and used <p class=\"mint-link\">Astro</p> collections to gather and display the data that way.\nThe project taught me about defining <p class=\"mint-link\">npm</p> functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package."
+lessonsLearned: "TBC\nInitially I set the project up with an <span class=\"mint-link\">Astro</span> front end and started doing <span class=\"mint-link\">GraphQL</span> calls to my <a href=\"/portfolio/projects/Backend Server\" class=\"mint-link\">Backend Server</a> project to collect the portfolio data I had stored in the <span class=\"mint-link\">Neo4j</span> graph. However I soon realized that I was undoing the speed of <span class=\"mint-link\">Astro</span> and switched to a script that loads the required portfolio data (stored in <span class=\"mint-link\">Obsidian</span> <span class=\"mint-link\">Markdown</span> files) into the portfolio repo and used <span class=\"mint-link\">Astro</span> collections to gather and display the data that way.\nThe project taught me about defining <span class=\"mint-link\">npm</span> functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package."
 ---
 # Portfolio Site V2
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -89,7 +89,7 @@ An updated personal portfolio website for displaying my skills and past projects
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">Portfolio Site V2 Canvas</p> for the design
+- Front end: <span class="mint-link">Portfolio Site V2 Canvas</span> for the design
 - Also see “Portfolio V2” in Freeform for design ideas
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -98,8 +98,8 @@ An updated personal portfolio website for displaying my skills and past projects
 
 #### Projects
 
-- <p class="mint-link">Project</p>
-	- Example project: <p class="mint-link">Portfolio Maintenance</p>
+- <span class="mint-link">Project</span>
+	- Example project: <span class="mint-link">Portfolio Maintenance</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -131,12 +131,12 @@ Long long
 How It Works
 
 The Portfolio site serves static markdown files and displays the data from within these files. These are the following steps;
-- When the user triggers the sync function (can be done during development or remotely) using the defined <p class="mint-link">npm</p> scripts in `package.json`, the script copies across all notes tagged as “portfolio” in the connected <p class="mint-link">Obsidian</p> vault
-- These are processed within the `sync.js` file to format the <p class="mint-link">Markdown</p> (such as processing internal `<p class="mint-link">link</p>` and external `[Text](link)` <p class="mint-link">Obsidian</p> links) and extract blocks of text between section headers
-- The processed <p class="mint-link">Markdown</p> content is then stored in the `/content` folder
+- When the user triggers the sync function (can be done during development or remotely) using the defined <span class="mint-link">npm</span> scripts in `package.json`, the script copies across all notes tagged as “portfolio” in the connected <span class="mint-link">Obsidian</span> vault
+- These are processed within the `sync.js` file to format the <span class="mint-link">Markdown</span> (such as processing internal `<span class="mint-link">link</span>` and external `[Text](link)` <span class="mint-link">Obsidian</span> links) and extract blocks of text between section headers
+- The processed <span class="mint-link">Markdown</span> content is then stored in the `/content` folder
 - A collection is generated to define the schema types of each note type (project, company, client etc) in the `TBC` file
-- The <p class="mint-link">Astro</p> pages and components then read this content data and schema in using collections and then loops through the data using <p class="mint-link">JavaScript</p> in the top section of the `.astro` files to return <p class="mint-link">HTML</p> elements in the lower section of the `.astro` files
-- <p class="mint-link">Astro</p> then strips back all <p class="mint-link">JavaScript</p> it can from the file output (leaving Islands TBC) and serves the lightweight remaining <p class="mint-link">HTML</p>
+- The <span class="mint-link">Astro</span> pages and components then read this content data and schema in using collections and then loops through the data using <span class="mint-link">JavaScript</span> in the top section of the `.astro` files to return <span class="mint-link">HTML</span> elements in the lower section of the `.astro` files
+- <span class="mint-link">Astro</span> then strips back all <span class="mint-link">JavaScript</span> it can from the file output (leaving Islands TBC) and serves the lightweight remaining <span class="mint-link">HTML</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -150,9 +150,9 @@ The Portfolio site serves static markdown files and displays the data from withi
 
 TBC
 
-Initially I set the project up with an <p class="mint-link">Astro</p> front end and started doing <p class="mint-link">GraphQL</p> calls to my <a href="/portfolio/projects/Backend Server" class="mint-link">Backend Server</a> project to collect the portfolio data I had stored in the <p class="mint-link">Neo4j</p> graph. However I soon realized that I was undoing the speed of <p class="mint-link">Astro</p> and switched to a script that loads the required portfolio data (stored in <p class="mint-link">Obsidian</p> <p class="mint-link">Markdown</p> files) into the portfolio repo and used <p class="mint-link">Astro</p> collections to gather and display the data that way.
+Initially I set the project up with an <span class="mint-link">Astro</span> front end and started doing <span class="mint-link">GraphQL</span> calls to my <a href="/portfolio/projects/Backend Server" class="mint-link">Backend Server</a> project to collect the portfolio data I had stored in the <span class="mint-link">Neo4j</span> graph. However I soon realized that I was undoing the speed of <span class="mint-link">Astro</span> and switched to a script that loads the required portfolio data (stored in <span class="mint-link">Obsidian</span> <span class="mint-link">Markdown</span> files) into the portfolio repo and used <span class="mint-link">Astro</span> collections to gather and display the data that way.
 
-The project taught me about defining <p class="mint-link">npm</p> functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package.
+The project taught me about defining <span class="mint-link">npm</span> functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

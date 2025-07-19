@@ -20,7 +20,7 @@ linkedCompany:
 
 # Aston Martin
 
-> [!back] Link back to <p class="mint-link">Company Notes</p>
+> [!back] Link back to <span class="mint-link">Company Notes</span>
 
 >[!website-link] Links
 >```dataview

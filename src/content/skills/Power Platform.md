@@ -16,9 +16,9 @@ logoFileName:
 
 # Power Platform
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> <p class="mint-link">Microsoft</p> Power Platform
+> <span class="mint-link">Microsoft</span> Power Platform
 
 ## Table of Contents
 

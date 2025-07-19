@@ -39,7 +39,7 @@ lessonsLearned: "TBC"
 ---
 # Portfolio Card
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -82,10 +82,10 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">React</p>
+- Front end: <span class="mint-link">React</span>
 - Back end/Datasource: n/a
-- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories))
-- Security: <p class="mint-link">Synk</p>
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories))
+- Security: <span class="mint-link">Synk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -99,7 +99,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 

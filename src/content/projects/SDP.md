@@ -47,11 +47,11 @@ version: 3
 portfolioOrder: 3
 shortDescription: "Scalable Development Plan to automatically building a full development timing plan based on a number of inputs.\nTBC"
 longDescription: "TBC"
-lessonsLearned: "TBC\nI was fully in charge of the <p class=\"mint-link\">SQL</p> backend database, meaning I had to learn how to write <p class=\"mint-link\">SQL</p> queries. I optimised this by storing the data that we collected day to day in <p class=\"mint-link\">Excel</p> and then writing a <p class=\"mint-link\">VBA</p> script to automate creating the <p class=\"mint-link\">SQL</p> queries to update the database quickly.\nThis lead to a complete rebuild when our company migrated from <p class=\"mint-link\">Microsoft</p> to <p class=\"mint-link\">Google</p>, meaning I had to migrate the data and automations into <p class=\"mint-link\">Google Sheets</p> and use <p class=\"mint-link\">Google Apps Script</p>.\nThere was a brief period where we began consider rebuilding the frontend in <p class=\"mint-link\">React</p> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.\nAs well as the main app, we also developed several <p class=\"mint-link\">NeoDash</p> dashboards off of the <p class=\"mint-link\">Neo4j</p> data for ongoing maintenance to check on the data."
+lessonsLearned: "TBC\nI was fully in charge of the <span class=\"mint-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"mint-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"mint-link\">Excel</span> and then writing a <span class=\"mint-link\">VBA</span> script to automate creating the <span class=\"mint-link\">SQL</span> queries to update the database quickly.\nThis lead to a complete rebuild when our company migrated from <span class=\"mint-link\">Microsoft</span> to <span class=\"mint-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"mint-link\">Google Sheets</span> and use <span class=\"mint-link\">Google Apps Script</span>.\nThere was a brief period where we began consider rebuilding the frontend in <span class=\"mint-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.\nAs well as the main app, we also developed several <span class=\"mint-link\">NeoDash</span> dashboards off of the <span class=\"mint-link\">Neo4j</span> data for ongoing maintenance to check on the data."
 ---
 # SDP
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -96,7 +96,7 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">Java</p>/<p class="mint-link">Java</p>, <p class="mint-link">GCP</p>
+- Front end: <span class="mint-link">Java</span>/<span class="mint-link">Java</span>, <span class="mint-link">GCP</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -109,7 +109,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -132,13 +132,13 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 
 TBC
 
-I was fully in charge of the <p class="mint-link">SQL</p> backend database, meaning I had to learn how to write <p class="mint-link">SQL</p> queries. I optimised this by storing the data that we collected day to day in <p class="mint-link">Excel</p> and then writing a <p class="mint-link">VBA</p> script to automate creating the <p class="mint-link">SQL</p> queries to update the database quickly.
+I was fully in charge of the <span class="mint-link">SQL</span> backend database, meaning I had to learn how to write <span class="mint-link">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class="mint-link">Excel</span> and then writing a <span class="mint-link">VBA</span> script to automate creating the <span class="mint-link">SQL</span> queries to update the database quickly.
 
-This lead to a complete rebuild when our company migrated from <p class="mint-link">Microsoft</p> to <p class="mint-link">Google</p>, meaning I had to migrate the data and automations into <p class="mint-link">Google Sheets</p> and use <p class="mint-link">Google Apps Script</p>.
+This lead to a complete rebuild when our company migrated from <span class="mint-link">Microsoft</span> to <span class="mint-link">Google</span>, meaning I had to migrate the data and automations into <span class="mint-link">Google Sheets</span> and use <span class="mint-link">Google Apps Script</span>.
 
-There was a brief period where we began consider rebuilding the frontend in <p class="mint-link">React</p> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
+There was a brief period where we began consider rebuilding the frontend in <span class="mint-link">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
 
-As well as the main app, we also developed several <p class="mint-link">NeoDash</p> dashboards off of the <p class="mint-link">Neo4j</p> data for ongoing maintenance to check on the data.
+As well as the main app, we also developed several <span class="mint-link">NeoDash</span> dashboards off of the <span class="mint-link">Neo4j</span> data for ongoing maintenance to check on the data.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

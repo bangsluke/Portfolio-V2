@@ -16,9 +16,9 @@ logoFileName:
 
 # Power Apps
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> <p class="mint-link">Microsoft</p> Power Apps - Language: <p class="mint-link">JavaScript</p>
+> <span class="mint-link">Microsoft</span> Power Apps - Language: <span class="mint-link">JavaScript</span>
 
 ## Table of Contents
 

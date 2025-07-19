@@ -15,7 +15,7 @@ keyAchievement: "TBC"
 ---
 # Assistant Treasurer
 
-> [!back] Link back to <p class="mint-link">Role Notes</p>
+> [!back] Link back to <span class="mint-link">Role Notes</span>
 
 ## Table of Contents
 ```table-of-contents

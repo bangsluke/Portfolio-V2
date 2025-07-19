@@ -634,7 +634,7 @@ function processObsidianLinks(content) {
 				return `<a href="/portfolio/projects/${slug}" class="mint-link">${altText}</a>`;
 			}
 			// If not a project, keep as bold text
-			return `<p class="mint-link">${altText}</p>`;
+			return `<span class="mint-link">${altText}</span>`;
 		}
 	);
 
@@ -645,7 +645,7 @@ function processObsidianLinks(content) {
 			return `<a href="/portfolio/projects/${slug}" class="mint-link">${projectName}</a>`;
 		}
 		// If not a project, keep as bold text
-		return `<p class="mint-link">${projectName}</p>`;
+		return `<span class="mint-link">${projectName}</span>`;
 	});
 
 	return content;

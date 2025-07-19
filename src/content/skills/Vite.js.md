@@ -18,9 +18,9 @@ logoFileName: vitejs.svg
 
 # Vite.js
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Language: <p class="mint-link">JavaScript</p> built on <p class="mint-link">React</p>
+> Language: <span class="mint-link">JavaScript</span> built on <span class="mint-link">React</span>
 
 ## Table of Contents 
 

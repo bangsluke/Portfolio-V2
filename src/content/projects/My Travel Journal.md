@@ -38,11 +38,11 @@ version: 1
 portfolioOrder: 6
 shortDescription: "A website built to display the notes I had taken across various holidays I had been on."
 longDescription: "A site dedicated to my travel explorations, providing details on what my wife and I did whilst abroad for several holidays with a picture from each trip."
-lessonsLearned: "This site taught me a few extra skills such as working with <p class=\"mint-link\">Markdown</p> data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the <a href=\"/portfolio/projects/Travel Website\" class=\"mint-link\">Travel Website</a> which dynamically loads in data via a <p class=\"mint-link\">Neo4j</p> graph."
+lessonsLearned: "This site taught me a few extra skills such as working with <span class=\"mint-link\">Markdown</span> data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the <a href=\"/portfolio/projects/Travel Website\" class=\"mint-link\">Travel Website</a> which dynamically loads in data via a <span class=\"mint-link\">Neo4j</span> graph."
 ---
 # My Travel Journal
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -85,10 +85,10 @@ A site dedicated to my travel explorations, providing details on what my wife an
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">React</p>
-- Back end/Datasource: <p class="mint-link">Markdown</p>
-- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories)), <p class="mint-link">Netlify</p>
-- Security: <p class="mint-link">Synk</p>
+- Front end: <span class="mint-link">React</span>
+- Back end/Datasource: <span class="mint-link">Markdown</span>
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
+- Security: <span class="mint-link">Synk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -102,7 +102,7 @@ A site dedicated to my travel explorations, providing details on what my wife an
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -122,7 +122,7 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 
 ## Lessons Learned
 
-This site taught me a few extra skills such as working with <p class="mint-link">Markdown</p> data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the <a href="/portfolio/projects/Travel Website" class="mint-link">Travel Website</a> which dynamically loads in data via a <p class="mint-link">Neo4j</p> graph.
+This site taught me a few extra skills such as working with <span class="mint-link">Markdown</span> data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the <a href="/portfolio/projects/Travel Website" class="mint-link">Travel Website</a> which dynamically loads in data via a <span class="mint-link">Neo4j</span> graph.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

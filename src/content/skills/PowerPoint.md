@@ -15,9 +15,9 @@ logoFileName: powerpoint.svg
 
 # PowerPoint
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> <p class="mint-link">Microsoft</p> PowerPoint - Language: <p class="mint-link">VBA</p>
+> <span class="mint-link">Microsoft</span> PowerPoint - Language: <span class="mint-link">VBA</span>
 
 ## Table of Contents
 

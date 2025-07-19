@@ -18,9 +18,9 @@ logoFileName: flask.svg
 
 # Flask
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-A framework for <p class="mint-link">Python</p>
+A framework for <span class="mint-link">Python</span>
 
 ## Table of Contents 
 

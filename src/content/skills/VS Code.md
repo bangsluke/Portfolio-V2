@@ -16,9 +16,9 @@ logoFileName: vs_code.svg
 
 # VS Code
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> <p class="mint-link">Microsoft</p> VS Code
+> <span class="mint-link">Microsoft</span> VS Code
 
 ## Table of Contents
 

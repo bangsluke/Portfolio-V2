@@ -37,13 +37,13 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
-shortDescription: "A quick access, mobile friendly filterable stats site for <p class=\"mint-link\">Dorkinians FC</p> players."
+shortDescription: "A quick access, mobile friendly filterable stats site for <span class=\"mint-link\">Dorkinians FC</span> players."
 longDescription: "After creating the initial <a href=\"/portfolio/projects/Dorkinians Website\" class=\"mint-link\">Dorkinians Website</a>, I would regularly be asked by players “But how many goals were just in cup games/not friendlies/just league?” Etc etc.\nI therefore decided to play around with creating a filterable site so that players could answer these questions themselves."
-lessonsLearned: "This project let me design my first filter <p class=\"mint-link\">UI</p> popup using <p class=\"mint-link\">React</p> and taught me methods of filtering the data received from the back end.\nI also tried out a new <p class=\"mint-link\">API</p> method of retrieving data to the front end from <p class=\"mint-link\">Google Sheets</p>, using their available method instead of parsing generated <p class=\"mint-link\">CSV</p> data like I did on the <a href=\"/portfolio/projects/Dorkinians Website\" class=\"mint-link\">Dorkinians Website</a>."
+lessonsLearned: "This project let me design my first filter <span class=\"mint-link\">UI</span> popup using <span class=\"mint-link\">React</span> and taught me methods of filtering the data received from the back end.\nI also tried out a new <span class=\"mint-link\">API</span> method of retrieving data to the front end from <span class=\"mint-link\">Google Sheets</span>, using their available method instead of parsing generated <span class=\"mint-link\">CSV</span> data like I did on the <a href=\"/portfolio/projects/Dorkinians Website\" class=\"mint-link\">Dorkinians Website</a>."
 ---
 # Dorkinians Mobile Site
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -74,7 +74,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A quick access, mobile friendly filterable stats site for <p class="mint-link">Dorkinians FC</p> players.
+A quick access, mobile friendly filterable stats site for <span class="mint-link">Dorkinians FC</span> players.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -88,10 +88,10 @@ I therefore decided to play around with creating a filterable site so that playe
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">React</p>
-- Back end/Datasource: <p class="mint-link">Google Sheets</p>
-- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories)), <p class="mint-link">Netlify</p>
-- Security: <p class="mint-link">Synk</p>
+- Front end: <span class="mint-link">React</span>
+- Back end/Datasource: <span class="mint-link">Google Sheets</span>
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
+- Security: <span class="mint-link">Synk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -105,7 +105,7 @@ I therefore decided to play around with creating a filterable site so that playe
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -124,16 +124,16 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 - https://github.com/bangsluke/mobile-stats-dorkinians
 - <a href="/portfolio/projects/Dorkinians Website" class="mint-link">Dorkinians Website</a>
 - <a href="/portfolio/projects/Dorkinians Website V2" class="mint-link">Dorkinians Website V2</a>
-- <p class="mint-link">Todoist</p> Lists
+- <span class="mint-link">Todoist</span> Lists
 	- [Dorkinians Mobile Site](https://todoist.com/showTask?id=6496470356&sync_id=6506077820)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This project let me design my first filter <p class="mint-link">UI</p> popup using <p class="mint-link">React</p> and taught me methods of filtering the data received from the back end.
+This project let me design my first filter <span class="mint-link">UI</span> popup using <span class="mint-link">React</span> and taught me methods of filtering the data received from the back end.
 
-I also tried out a new <p class="mint-link">API</p> method of retrieving data to the front end from <p class="mint-link">Google Sheets</p>, using their available method instead of parsing generated <p class="mint-link">CSV</p> data like I did on the <a href="/portfolio/projects/Dorkinians Website" class="mint-link">Dorkinians Website</a>.
+I also tried out a new <span class="mint-link">API</span> method of retrieving data to the front end from <span class="mint-link">Google Sheets</span>, using their available method instead of parsing generated <span class="mint-link">CSV</span> data like I did on the <a href="/portfolio/projects/Dorkinians Website" class="mint-link">Dorkinians Website</a>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

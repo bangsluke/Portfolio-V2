@@ -10,12 +10,12 @@ dateStart: 2015-07-01
 dateEnd: 2019-07-01
 linkedCompany:
   - "[[RLE International]]"
-roleDescription: "Internally I have been responsible for the creation of numerous project\ntracking documents for the organisation and a range of customers through.\n<p class=\"mint-link\">Excel</p> and <p class=\"mint-link\">VBA</p> coding. Projects included timesheet & holiday\nmanagement, cost & resource estimating, warehouse storage tracking and\na technical documentation library."
+roleDescription: "Internally I have been responsible for the creation of numerous project\ntracking documents for the organisation and a range of customers through.\n<span class=\"mint-link\">Excel</span> and <span class=\"mint-link\">VBA</span> coding. Projects included timesheet & holiday\nmanagement, cost & resource estimating, warehouse storage tracking and\na technical documentation library."
 keyAchievement: "TBC"
 ---
 # Process Development
 
-> [!back] Link back to <p class="mint-link">Role Notes</p>
+> [!back] Link back to <span class="mint-link">Role Notes</span>
 
 ## Table of Contents
 ```table-of-contents
@@ -26,7 +26,7 @@ keyAchievement: "TBC"
 Internally I have been responsible for the creation of numerous project
 tracking documents for the organisation and a range of customers through.
 
-<p class="mint-link">Excel</p> and <p class="mint-link">VBA</p> coding. Projects included timesheet & holiday
+<span class="mint-link">Excel</span> and <span class="mint-link">VBA</span> coding. Projects included timesheet & holiday
 management, cost & resource estimating, warehouse storage tracking and
 a technical documentation library.
 

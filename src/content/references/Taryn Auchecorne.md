@@ -25,7 +25,7 @@ referenceAddress: London, EC4A 3BF
 
 # Taryn Auchecorne
 
-> [!back] Link back to <p class="mint-link">People Notes</p>
+> [!back] Link back to <span class="mint-link">People Notes</span>
 
 ## Table of Contents 
 

@@ -39,11 +39,11 @@ version: 1
 portfolioOrder: 3
 shortDescription: "An early website I developed to be my new tab page across browsers, providing me fast links to my key sites and a link back to my <a href=\"/portfolio/projects/Homepage Website\" class=\"mint-link\">Homepage Website</a>."
 longDescription: "A site that opens up for new tabs across my browsers, developed from a theme I found online which stores my key site links and several images I have saved on the page in a masonry layout."
-lessonsLearned: "This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the <p class=\"mint-link\">CSS</p> file from online) and then making it my own."
+lessonsLearned: "This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the <span class=\"mint-link\">CSS</span> file from online) and then making it my own."
 ---
 # New Tab Website
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -86,10 +86,10 @@ A site that opens up for new tabs across my browsers, developed from a theme I f
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">HTML</p>, <p class="mint-link">CSS</p> and <p class="mint-link">JavaScript</p>
+- Front end: <span class="mint-link">HTML</span>, <span class="mint-link">CSS</span> and <span class="mint-link">JavaScript</span>
 - Back end/Datasource: n/a
-- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories))
-- Security: <p class="mint-link">Synk</p>
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories))
+- Security: <span class="mint-link">Synk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -103,7 +103,7 @@ A site that opens up for new tabs across my browsers, developed from a theme I f
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -123,7 +123,7 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 
 ## Lessons Learned
 
-This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the <p class="mint-link">CSS</p> file from online) and then making it my own.
+This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the <span class="mint-link">CSS</span> file from online) and then making it my own.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

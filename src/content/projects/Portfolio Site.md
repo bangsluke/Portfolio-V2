@@ -43,7 +43,7 @@ lessonsLearned: "The key lesson learned for this project was how useful it is to
 ---
 # Portfolio Site
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -86,10 +86,10 @@ The portfolio site showcased all the information I believed to be relevant for p
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">HTML</p>, <p class="mint-link">CSS</p> and <p class="mint-link">JavaScript</p>
+- Front end: <span class="mint-link">HTML</span>, <span class="mint-link">CSS</span> and <span class="mint-link">JavaScript</span>
 - Back end/Datasource: n/a
-- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories)), <p class="mint-link">Netlify</p>
-- Security: <p class="mint-link">Synk</p>
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
+- Security: <span class="mint-link">Synk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -98,13 +98,13 @@ The portfolio site showcased all the information I believed to be relevant for p
 
 - Main repo: `=this.codeURL`
 - Secondary repo: n/a
-- <p class="mint-link">Netlify</p>: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
+- <span class="mint-link">Netlify</span>: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -115,7 +115,7 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 - For page headers, use the below / style for each page.
 - Also add the language bubble tags for each project
 
-!<p class="mint-link">20231009 PageHeaderInspiration.jpeg</p>
+!<span class="mint-link">20231009 PageHeaderInspiration.jpeg</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

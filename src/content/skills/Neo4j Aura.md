@@ -16,9 +16,9 @@ logoFileName:
 
 # Neo4j Aura
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Hosted <p class="mint-link">Neo4j</p> graph service
+> Hosted <span class="mint-link">Neo4j</span> graph service
 
 ## Table of Contents
 

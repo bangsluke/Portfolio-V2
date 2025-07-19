@@ -15,9 +15,9 @@ logoFileName:
 
 # Docusaurus
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Built with: <p class="mint-link">React</p>, language: <p class="mint-link">JavaScript</p>, supporting: <p class="mint-link">Markdown</p>
+> Built with: <span class="mint-link">React</span>, language: <span class="mint-link">JavaScript</span>, supporting: <span class="mint-link">Markdown</span>
 
 ## Table of Contents
 

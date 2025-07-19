@@ -16,7 +16,7 @@ additionalDetails: "TBC - add full list from above"
 ---
 # Brockham School
 
-> [!back] Link back to <p class="mint-link">Education Notes</p>
+> [!back] Link back to <span class="mint-link">Education Notes</span>
 
 >[!website-link] Links
 >```dataview

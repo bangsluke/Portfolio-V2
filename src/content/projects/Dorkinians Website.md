@@ -39,13 +39,13 @@ topicTags:
 powerShellAlias: dorkinians
 version: 1
 portfolioOrder: 2
-shortDescription: "A sport stats website for displaying performance data for <p class=\"mint-link\">Dorkinians FC</p> players and teams."
-longDescription: "A sports stats site for displaying performance data for <p class=\"mint-link\">Dorkinians FC</p> players and teams, my local <p class=\"mint-link\">football</p> club which I play for. What initially started as an <p class=\"mint-link\">Excel</p> spreadsheet with stats posted on our club WhatsApp each week was the perfect opportunity for me to try and develop into my first real public website. I even wrote a <a href=\"https://dev.to/bangsluke/building-a-stats-website-for-a-sports-club-4g5m\">Dev article</a> explaining how I built the stats site."
-lessonsLearned: "This project taught me several things:\n- Retrospectively taught me the importance of components for reusability for long term maintainability. All of this project was built within a single <p class=\"mint-link\">HTML</p> and <p class=\"mint-link\">JavaScript</p> file (and <p class=\"mint-link\">CSS</p>) before I knew how to work properly with components, meaning everything is copied out and manually edited over and over again, making maintenance a nightmare\n- Reviewing the speed of the website through analysis tools helped me learn I need to reduce the number of <p class=\"mint-link\">HTML</p> elements in the future by being smarter and more efficient in components\n- Taught me that parsing a <p class=\"mint-link\">CSV</p> using the method I used is too slow for large amounts of data, especially when the data continues growing. The project needs to be rebuilt faster with a new method\n- Allowed me to learn how to work with <p class=\"mint-link\">SVG</p> files used as the images on the TOTW page\n- Helped me creatively come up with ideas to keep users engaged whilst data was loading, leading to the various random humorous quotes I have appearing on the main loading screen\nAll of the above led me to begin work on <a href=\"/portfolio/projects/Dorkinians Website V2\" class=\"mint-link\">Dorkinians Website V2</a> to overcome the problems listed above."
+shortDescription: "A sport stats website for displaying performance data for <span class=\"mint-link\">Dorkinians FC</span> players and teams."
+longDescription: "A sports stats site for displaying performance data for <span class=\"mint-link\">Dorkinians FC</span> players and teams, my local <span class=\"mint-link\">football</span> club which I play for. What initially started as an <span class=\"mint-link\">Excel</span> spreadsheet with stats posted on our club WhatsApp each week was the perfect opportunity for me to try and develop into my first real public website. I even wrote a <a href=\"https://dev.to/bangsluke/building-a-stats-website-for-a-sports-club-4g5m\">Dev article</a> explaining how I built the stats site."
+lessonsLearned: "This project taught me several things:\n- Retrospectively taught me the importance of components for reusability for long term maintainability. All of this project was built within a single <span class=\"mint-link\">HTML</span> and <span class=\"mint-link\">JavaScript</span> file (and <span class=\"mint-link\">CSS</span>) before I knew how to work properly with components, meaning everything is copied out and manually edited over and over again, making maintenance a nightmare\n- Reviewing the speed of the website through analysis tools helped me learn I need to reduce the number of <span class=\"mint-link\">HTML</span> elements in the future by being smarter and more efficient in components\n- Taught me that parsing a <span class=\"mint-link\">CSV</span> using the method I used is too slow for large amounts of data, especially when the data continues growing. The project needs to be rebuilt faster with a new method\n- Allowed me to learn how to work with <span class=\"mint-link\">SVG</span> files used as the images on the TOTW page\n- Helped me creatively come up with ideas to keep users engaged whilst data was loading, leading to the various random humorous quotes I have appearing on the main loading screen\nAll of the above led me to begin work on <a href=\"/portfolio/projects/Dorkinians Website V2\" class=\"mint-link\">Dorkinians Website V2</a> to overcome the problems listed above."
 ---
 # Dorkinians Website
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -76,22 +76,22 @@ WHERE file = this.file
 
 ## Short Description
 
-A sport stats website for displaying performance data for <p class="mint-link">Dorkinians FC</p> players and teams.
+A sport stats website for displaying performance data for <span class="mint-link">Dorkinians FC</span> players and teams.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-A sports stats site for displaying performance data for <p class="mint-link">Dorkinians FC</p> players and teams, my local <p class="mint-link">football</p> club which I play for. What initially started as an <p class="mint-link">Excel</p> spreadsheet with stats posted on our club WhatsApp each week was the perfect opportunity for me to try and develop into my first real public website. I even wrote a [Dev article](https://dev.to/bangsluke/building-a-stats-website-for-a-sports-club-4g5m) explaining how I built the stats site.
+A sports stats site for displaying performance data for <span class="mint-link">Dorkinians FC</span> players and teams, my local <span class="mint-link">football</span> club which I play for. What initially started as an <span class="mint-link">Excel</span> spreadsheet with stats posted on our club WhatsApp each week was the perfect opportunity for me to try and develop into my first real public website. I even wrote a [Dev article](https://dev.to/bangsluke/building-a-stats-website-for-a-sports-club-4g5m) explaining how I built the stats site.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: Vanilla <p class="mint-link">HTML</p>, <p class="mint-link">CSS</p> and <p class="mint-link">JavaScript</p>
-- Back end/Datasource: <p class="mint-link">Google Sheets</p>
-- Hosting: <p class="mint-link">GitHub</p> (see [Repositories](#repositories)) and <p class="mint-link">Netlify</p>
-- Security: <p class="mint-link">Synk</p>
+- Front end: Vanilla <span class="mint-link">HTML</span>, <span class="mint-link">CSS</span> and <span class="mint-link">JavaScript</span>
+- Back end/Datasource: <span class="mint-link">Google Sheets</span>
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)) and <span class="mint-link">Netlify</span>
+- Security: <span class="mint-link">Synk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -105,7 +105,7 @@ A sports stats site for displaying performance data for <p class="mint-link">Dor
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -127,10 +127,10 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 ## Lessons Learned
 
 This project taught me several things:
-- Retrospectively taught me the importance of components for reusability for long term maintainability. All of this project was built within a single <p class="mint-link">HTML</p> and <p class="mint-link">JavaScript</p> file (and <p class="mint-link">CSS</p>) before I knew how to work properly with components, meaning everything is copied out and manually edited over and over again, making maintenance a nightmare
-- Reviewing the speed of the website through analysis tools helped me learn I need to reduce the number of <p class="mint-link">HTML</p> elements in the future by being smarter and more efficient in components
-- Taught me that parsing a <p class="mint-link">CSV</p> using the method I used is too slow for large amounts of data, especially when the data continues growing. The project needs to be rebuilt faster with a new method
-- Allowed me to learn how to work with <p class="mint-link">SVG</p> files used as the images on the TOTW page
+- Retrospectively taught me the importance of components for reusability for long term maintainability. All of this project was built within a single <span class="mint-link">HTML</span> and <span class="mint-link">JavaScript</span> file (and <span class="mint-link">CSS</span>) before I knew how to work properly with components, meaning everything is copied out and manually edited over and over again, making maintenance a nightmare
+- Reviewing the speed of the website through analysis tools helped me learn I need to reduce the number of <span class="mint-link">HTML</span> elements in the future by being smarter and more efficient in components
+- Taught me that parsing a <span class="mint-link">CSV</span> using the method I used is too slow for large amounts of data, especially when the data continues growing. The project needs to be rebuilt faster with a new method
+- Allowed me to learn how to work with <span class="mint-link">SVG</span> files used as the images on the TOTW page
 - Helped me creatively come up with ideas to keep users engaged whilst data was loading, leading to the various random humorous quotes I have appearing on the main loading screen
 All of the above led me to begin work on <a href="/portfolio/projects/Dorkinians Website V2" class="mint-link">Dorkinians Website V2</a> to overcome the problems listed above.
 

@@ -45,7 +45,7 @@ lessonsLearned: "TBC"
 ---
 # Financial Tracker
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -67,7 +67,7 @@ WHERE file = this.file
 >[!details]  `=this.file.name`
 >`=choice(this.folderURL = null | this.folderURL = "" | this.folderURL = "n/a","","<br>Folder URL: " + link(this.folderURL,"Link")) + choice(this.dateStart = null | this.dateStart = "","","<br>Date Start: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>Date End: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "", "", choice(this.dateEnd = "", "<br>Development Duration: " + string(date(today) - date(this.dateStart)), "<br>Development Duration: " + string(date(this.dateEnd) - date(this.dateStart)))) + choice(this.projectCategory = null | this.projectCategory = "","","<br>Category: " + this.projectCategory) + choice(this.linkedCompany = null | this.linkedCompany = "" | contains(this.linkedCompany, "n/a"),"","<br>Project for: " + this.linkedCompany) + choice(this.toolOwner = null | this.toolOwner = "","","<br>Tool Owner: " + this.toolOwner) + choice(this.developers = null | this.developers = "","","<br>Developers: " + this.developers) + choice(this.technologies = null | this.technologies = "","","<br>Technologies: " + this.technologies) + choice(this.topicTags = null | this.topicTags = "","","<br>Topics: " + this.topicTags) + choice(this.powerShellAlias = null | this.powerShellAlias = "" | this.powerShellAlias = "n/a","","<br>PowerShell Alias: " + this.powerShellAlias) + choice(this.version = null | this.version = "","","<br>Version: " + this.version)`
 
-> Previous Owners: <p class="mint-link">Thomas Lerch</p>, <p class="mint-link">Ian Digman</p>
+> Previous Owners: <span class="mint-link">Thomas Lerch</span>, <span class="mint-link">Ian Digman</span>
 
 ## Table of Contents
 
@@ -90,11 +90,11 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">Power Apps</p>, <p class="mint-link">Power BI</p> 
-- Back end/Datasource: <p class="mint-link">SharePoint</p>, <p class="mint-link">Power Query</p>
-- Hosting: <p class="mint-link">SharePoint</p>
-- Security: <p class="mint-link">SharePoint</p>
-- Authentication: <p class="mint-link">SharePoint</p>
+- Front end: <span class="mint-link">Power Apps</span>, <span class="mint-link">Power BI</span> 
+- Back end/Datasource: <span class="mint-link">SharePoint</span>, <span class="mint-link">Power Query</span>
+- Hosting: <span class="mint-link">SharePoint</span>
+- Security: <span class="mint-link">SharePoint</span>
+- Authentication: <span class="mint-link">SharePoint</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -107,7 +107,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 

@@ -37,12 +37,12 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "A landing page for showcasing a new Automotive Consultancy branch of <p class=\"mint-link\">RLE</p>, known as <p class=\"mint-link\">RLE</p>, known as <p class=\"mint-link\">Centre of Excellence</p> ready for prospective clients to view and see the services we provide."
+shortDescription: "A landing page for showcasing a new Automotive Consultancy branch of <span class=\"mint-link\">RLE</span>, known as <span class=\"mint-link\">RLE</span>, known as <span class=\"mint-link\">Centre of Excellence</span> ready for prospective clients to view and see the services we provide."
 lessonsLearned: "Main lesson was creating the automatic video background of the site along with a subtle purple filter across it which ended up looking pretty good. Sadly the site wasn’t finished as the requirements for the company changed."
 ---
 # CoE Landing Page
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -73,17 +73,17 @@ WHERE file = this.file
 
 ## Short Description
 
-A landing page for showcasing a new Automotive Consultancy branch of <p class="mint-link">RLE</p>, known as <p class="mint-link">RLE</p>, known as <p class="mint-link">Centre of Excellence</p> ready for prospective clients to view and see the services we provide.
+A landing page for showcasing a new Automotive Consultancy branch of <span class="mint-link">RLE</span>, known as <span class="mint-link">RLE</span>, known as <span class="mint-link">Centre of Excellence</span> ready for prospective clients to view and see the services we provide.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">React</p>
+- Front end: <span class="mint-link">React</span>
 - Back end/Datasource: n/a
-- Hosting: <p class="mint-link">GitLab</p> (see [Repositories](#repositories)), <p class="mint-link">Netlify</p>
+- Hosting: <span class="mint-link">GitLab</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
 - Security: n/a
-- Authentication: <p class="mint-link">Azure</p>
+- Authentication: <span class="mint-link">Azure</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -96,7 +96,7 @@ A landing page for showcasing a new Automotive Consultancy branch of <p class="m
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -110,7 +110,7 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 
 ## Other Links
 
-- <p class="mint-link">Centre of Excellence</p>
+- <span class="mint-link">Centre of Excellence</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

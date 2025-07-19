@@ -34,13 +34,13 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "The automation file to convert the <p class=\"mint-link\">Finance Tracker</p>."
+shortDescription: "The automation file to convert the <span class=\"mint-link\">Finance Tracker</span>."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
 # Cost Model Translation File
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -71,7 +71,7 @@ WHERE file = this.file
 
 ## Short Description
 
-The automation file to convert the <p class="mint-link">Finance Tracker</p>.
+The automation file to convert the <span class="mint-link">Finance Tracker</span>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -85,7 +85,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: <p class="mint-link">GitLab</p> (see [Repositories](#repositories))
+- Hosting: <span class="mint-link">GitLab</span> (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -100,7 +100,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 

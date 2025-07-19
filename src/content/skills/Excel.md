@@ -15,9 +15,9 @@ logoFileName: excel.svg
 
 # Excel
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> <p class="mint-link">Microsoft</p> Excel - Language: <p class="mint-link">VBA</p>
+> <span class="mint-link">Microsoft</span> Excel - Language: <span class="mint-link">VBA</span>
 
 ## Table of Contents
 

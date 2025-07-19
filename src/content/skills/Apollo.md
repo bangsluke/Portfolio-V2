@@ -15,9 +15,9 @@ logoFileName: apollo.svg
 
 # Apollo
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Server for <p class="mint-link">GraphQL</p>
+> Server for <span class="mint-link">GraphQL</span>
 
 ## Table of Contents
 

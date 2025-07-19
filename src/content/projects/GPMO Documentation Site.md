@@ -44,7 +44,7 @@ lessonsLearned: "TBC"
 ---
 # GPMO Documentation Site
 
-> [!back] Link back to <p class="mint-link">Projects</p>
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -87,9 +87,9 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <p class="mint-link">React</p>, <p class="mint-link">Docusaurus</p>
-- Back end/Datasource: <p class="mint-link">Markdown</p>
-- Hosting: <p class="mint-link">GitLab</p> (see [Repositories](#repositories)), <p class="mint-link">Azure</p> TBC
+- Front end: <span class="mint-link">React</span>, <span class="mint-link">Docusaurus</span>
+- Back end/Datasource: <span class="mint-link">Markdown</span>
+- Hosting: <span class="mint-link">GitLab</span> (see [Repositories](#repositories)), <span class="mint-link">Azure</span> TBC
 - Security: TBC
 - Authentication: TBC
 
@@ -104,7 +104,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <p class="mint-link">PowerShell</p> alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -118,7 +118,7 @@ To launch the repo, use the <p class="mint-link">PowerShell</p> alias
 
 ## Other Links
 
-- <p class="mint-link">GPMO</p>
+- <span class="mint-link">GPMO</span>
 - TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)

@@ -16,9 +16,9 @@ logoFileName:
 
 # NextAuth
 
-> [!back] Link back to <p class="mint-link">Skills Notes</p>
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Authentication library for <p class="mint-link">Next.js</p>
+> Authentication library for <span class="mint-link">Next.js</span>
 
 ## Table of Contents
 
