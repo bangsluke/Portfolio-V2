@@ -41,6 +41,16 @@ if (linkedCompany && linkedCompany.length > 0) {
 }
 
 const projectSlug = slug || getSlug(name);
+
+// Process technologies for display
+const MAX_VISIBLE_SKILLS = 5;
+const visibleTechnologies = technologies
+	? technologies.slice(0, MAX_VISIBLE_SKILLS)
+	: [];
+const hiddenTechnologies = technologies
+	? technologies.slice(MAX_VISIBLE_SKILLS)
+	: [];
+const hasHiddenSkills = hiddenTechnologies.length > 0;
 ---
 
 <article
@@ -74,8 +84,8 @@ const projectSlug = slug || getSlug(name);
 		<h2 class="text-2xl font-bold text-mint-100 mb-3">{name}</h2>
 		<div class="flex flex-wrap gap-2 mb-4">
 			{
-				technologies &&
-					technologies.map((tech: string) => {
+				visibleTechnologies &&
+					visibleTechnologies.map((tech: string) => {
 						const cleanTech = tech.replace(/\[|\]/g, '');
 						return (
 							<SkillPill
@@ -86,6 +96,37 @@ const projectSlug = slug || getSlug(name);
 							/>
 						);
 					})
+			}
+			{
+				hasHiddenSkills && (
+					<div class="relative group/tooltip">
+						<div class="flex items-center justify-center w-8 h-8 bg-mint-400/20 border border-mint-400/30 rounded-full text-mint-400 hover:bg-mint-400/30 transition-colors duration-200 cursor-help">
+							<span class="text-sm font-medium">
+								+{hiddenTechnologies.length}
+							</span>
+						</div>
+						<div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover/tooltip:opacity-100 group-active/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-50 w-[250px] max-w-[90vw]">
+							<div class="bg-[#1a232a] border border-mint-400/30 rounded-lg p-3 shadow-lg w-full">
+								<div class="text-xs text-mint-400 font-medium mb-2">
+									Additional technologies:
+								</div>
+								<div class="flex flex-wrap gap-2">
+									{hiddenTechnologies.map((tech: string) => {
+										const cleanTech = tech.replace(/\[|\]/g, '');
+										return (
+											<SkillPill
+												skillName={cleanTech}
+												variant="dark"
+												size="sm"
+												className="shadow hover:bg-mint-700/30"
+											/>
+										);
+									})}
+								</div>
+							</div>
+						</div>
+					</div>
+				)
 			}
 		</div>
 		<div
@@ -156,6 +197,47 @@ const projectSlug = slug || getSlug(name);
 			// Handle mouse leave (for desktop)
 			card.addEventListener('mouseleave', function (this: HTMLElement) {
 				this.classList.remove('group-hover');
+			});
+		});
+
+		// Handle mobile touch events for tooltips
+		const tooltipTriggers = document.querySelectorAll('.group\\/tooltip');
+
+		tooltipTriggers.forEach(trigger => {
+			let tooltipActive = false;
+
+			// Handle touch start for tooltip
+			trigger.addEventListener(
+				'touchstart',
+				function (this: HTMLElement, e: Event) {
+					const touchEvent = e as TouchEvent;
+					touchEvent.preventDefault();
+					touchEvent.stopPropagation();
+
+					if (tooltipActive) {
+						// Hide tooltip if already active
+						this.classList.remove('group-active/tooltip');
+						tooltipActive = false;
+					} else {
+						// Show tooltip
+						this.classList.add('group-active/tooltip');
+						tooltipActive = true;
+
+						// Hide tooltip after 3 seconds
+						setTimeout(() => {
+							this.classList.remove('group-active/tooltip');
+							tooltipActive = false;
+						}, 3000);
+					}
+				}
+			);
+
+			// Handle click outside to close tooltip
+			document.addEventListener('click', function (e: Event) {
+				if (!trigger.contains(e.target as Node)) {
+					trigger.classList.remove('group-active/tooltip');
+					tooltipActive = false;
+				}
 			});
 		});
 	});
