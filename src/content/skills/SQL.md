@@ -9,11 +9,11 @@ tags:
   - notes
 created: 2023-10-13T07:42:00
 modified: 2025-07-02T14:21:35+01:00
-viewCount: 5
+viewCount: 6
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: sql.svg
 ---
 
 # SQL

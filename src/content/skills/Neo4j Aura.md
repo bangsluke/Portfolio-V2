@@ -11,7 +11,7 @@ aliases:
   - Aura
 skillRating: 0
 skillDescription: TBC
-logoFileName: neo4j-cypher.svg
+logoFileName: neo4j_cypher.svg
 ---
 
 # Neo4j Aura

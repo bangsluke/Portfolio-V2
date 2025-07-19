@@ -29,7 +29,7 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Heroku]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
   - "[[Google Cloud]]"
   - "[[Cypher]]"
   - "[[Neo4j Aura]]"
@@ -98,7 +98,7 @@ A visualisation and analysis of the travelling I have done, providing descriptio
 - Front end: <span class="mint-link">Next.js</span>, <span class="mint-link">Apollo</span> Client
 - Back end/Datasource: <span class="mint-link">Python</span>, <span class="mint-link">Neo4j</span>, <span class="mint-link">Neo4j Aura</span>, <span class="mint-link">Apollo</span> Server, <span class="mint-link">Cypher</span>
 - Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span> and <span class="mint-link">Heroku</span>
-- Security: <span class="mint-link">Synk</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: <span class="mint-link">NextAuth</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)

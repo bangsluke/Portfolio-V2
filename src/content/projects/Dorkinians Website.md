@@ -26,7 +26,7 @@ technologies:
   - "[[Google Sheets]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
 projectCategory: Personal Design
 linkedCompany:
   - "[[Dorkinians FC]]"
@@ -91,7 +91,7 @@ A sports stats site for displaying performance data for <span class="mint-link">
 - Front end: Vanilla <span class="mint-link">HTML</span>, <span class="mint-link">CSS</span> and <span class="mint-link">JavaScript</span>
 - Back end/Datasource: <span class="mint-link">Google Sheets</span>
 - Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)) and <span class="mint-link">Netlify</span>
-- Security: <span class="mint-link">Synk</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)

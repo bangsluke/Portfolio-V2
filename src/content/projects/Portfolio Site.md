@@ -25,7 +25,7 @@ technologies:
   - "[[JavaScript]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a
@@ -89,7 +89,7 @@ The portfolio site showcased all the information I believed to be relevant for p
 - Front end: <span class="mint-link">HTML</span>, <span class="mint-link">CSS</span> and <span class="mint-link">JavaScript</span>
 - Back end/Datasource: n/a
 - Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
-- Security: <span class="mint-link">Synk</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)

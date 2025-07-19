@@ -24,7 +24,7 @@ technologies:
   - "[[CSS]]"
   - "[[JavaScript]]"
   - "[[GitHub]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -89,7 +89,7 @@ A site that opens up for new tabs across my browsers, developed from a theme I f
 - Front end: <span class="mint-link">HTML</span>, <span class="mint-link">CSS</span> and <span class="mint-link">JavaScript</span>
 - Back end/Datasource: n/a
 - Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories))
-- Security: <span class="mint-link">Synk</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)

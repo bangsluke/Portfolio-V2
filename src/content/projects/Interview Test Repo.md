@@ -23,7 +23,7 @@ dateEnd: ""
 technologies:
   - "[[React]]"
   - "[[GitHub]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -87,7 +87,7 @@ TBC
 - Front end: <span class="mint-link">React</span>
 - Back end/Datasource: TBC
 - Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), TBC
-- Security: <span class="mint-link">Synk</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)

@@ -5,11 +5,11 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-02T14:37:35+01:00
-viewCount: 2
+viewCount: 3
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: power_automate.svg
 ---
 
 # Power Automate

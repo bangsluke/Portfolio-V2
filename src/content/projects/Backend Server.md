@@ -89,7 +89,7 @@ The source of data for several projects including my <a href="/portfolio/project
 - Front end: n/a
 - Back end/Datasource: <span class="mint-link">Neo4j</span>, <span class="mint-link">Neo4j Aura</span>, <span class="mint-link">Cypher</span>, <span class="mint-link">Python</span>, <span class="mint-link">Flask</span>
 - Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Heroku</span>
-- Security: <span class="mint-link">Synk</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)

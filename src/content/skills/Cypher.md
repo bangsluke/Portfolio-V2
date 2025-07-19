@@ -13,7 +13,7 @@ viewCount: 9
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName: neo4j-cypher.svg
+logoFileName: neo4j_cypher.svg
 ---
 
 # Cypher

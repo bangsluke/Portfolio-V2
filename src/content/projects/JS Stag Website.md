@@ -23,7 +23,7 @@ technologies:
   - "[[React]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -87,7 +87,7 @@ This site provided the stag attendees with the full itinerary of the stag, with 
 - Front end: <span class="mint-link">Vite.js</span>, <span class="mint-link">React</span>
 - Back end/Datasource: n/a
 - Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
-- Security: <span class="mint-link">Synk</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)

@@ -26,7 +26,7 @@ technologies:
   - "[[Markdown]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
   - "[[Algolia]]"
 projectCategory: Documentation
 linkedCompany:
@@ -94,7 +94,7 @@ I regularly keep it updated with new links and processes I find so that it remai
 - Front end: <span class="mint-link">React</span> using <span class="mint-link">Docusaurus</span>, <span class="mint-link">Algolia</span>
 - Back end/Datasource: <span class="mint-link">Markdown</span>
 - Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
-- Security: <span class="mint-link">Synk</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)

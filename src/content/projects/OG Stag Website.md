@@ -23,7 +23,7 @@ technologies:
   - "[[React]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -88,7 +88,7 @@ This site was a copy and rebrand from the <a href="/portfolio/projects/JS Stag W
 - Front end: <span class="mint-link">Vite.js</span>, <span class="mint-link">React</span>
 - Back end/Datasource: n/a
 - Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
-- Security: <span class="mint-link">Synk</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)

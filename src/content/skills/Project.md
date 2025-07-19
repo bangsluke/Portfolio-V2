@@ -6,12 +6,12 @@ tags:
   - portfolio
 modified: 2025-07-18T12:26:00+01:00
 created: 2025-06-02T17:51:00
-viewCount: 2
+viewCount: 3
 aliases:
   - Microsoft Project
 skillRating: 0
 skillDescription: TBC
-logoFileName: 
+logoFileName: project.svg
 ---
 
 # Project

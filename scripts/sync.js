@@ -632,13 +632,13 @@ function processObsidianLinks(content) {
 	const projectMappings = getProjectNameToSlugMappings();
 
 	// Process [[ProjectName|AltText]] format
-	console.log(SPACING_LEVEL_3 + 'Processing [[ProjectName|AltText]] formats');
+	// console.log(SPACING_LEVEL_3 + 'Processing [[ProjectName|AltText]] formats');
 	content = content.replace(
 		/\[\[([^|]+)\|([^\]]+)\]\]/g,
 		(match, projectName, altText) => {
 			// First check if the main project name matches
 			let slug = projectMappings[projectName];
-			console.log(slug);
+			// console.log(slug);
 
 			// If not found, check if the alt text matches a project slug
 			if (!slug) {
@@ -667,7 +667,7 @@ function processObsidianLinks(content) {
 	);
 
 	// Process [[ProjectName]] format
-	console.log(SPACING_LEVEL_3 + 'Processing [[ProjectName]] formats');
+	// console.log(SPACING_LEVEL_3 + 'Processing [[ProjectName]] formats');
 	content = content.replace(/\[\[([^\]]+)\]\]/g, (match, projectName) => {
 		const slug = projectMappings[projectName];
 		if (slug) {

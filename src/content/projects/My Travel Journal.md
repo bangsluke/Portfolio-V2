@@ -23,7 +23,7 @@ technologies:
   - "[[Markdown]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -88,7 +88,7 @@ A site dedicated to my travel explorations, providing details on what my wife an
 - Front end: <span class="mint-link">React</span>
 - Back end/Datasource: <span class="mint-link">Markdown</span>
 - Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
-- Security: <span class="mint-link">Synk</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)

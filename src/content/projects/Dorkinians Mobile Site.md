@@ -24,7 +24,7 @@ technologies:
   - "[[Google Sheets]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
 projectCategory: Personal Design
 linkedCompany:
   - "[[Dorkinians FC]]"
@@ -91,7 +91,7 @@ I therefore decided to play around with creating a filterable site so that playe
 - Front end: <span class="mint-link">React</span>
 - Back end/Datasource: <span class="mint-link">Google Sheets</span>
 - Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
-- Security: <span class="mint-link">Synk</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)

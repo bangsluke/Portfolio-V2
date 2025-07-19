@@ -23,7 +23,7 @@ technologies:
   - "[[Google Sheets]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -87,7 +87,7 @@ A site I developed for an annual <span class="mint-link">golf</span> competition
 - Front end: <span class="mint-link">Next.js</span>
 - Back end/Datasource: <span class="mint-link">Google Sheets</span>
 - Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
-- Security: <span class="mint-link">Synk</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)

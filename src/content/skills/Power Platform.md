@@ -6,12 +6,12 @@ tags:
   - portfolio
 created: 2025-06-02T18:33:00
 modified: 2025-07-18T12:24:28+01:00
-viewCount: 2
+viewCount: 3
 aliases:
   - Microsoft Power Platform
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: power_platform.svg
 ---
 
 # Power Platform

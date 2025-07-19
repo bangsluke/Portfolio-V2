@@ -24,7 +24,7 @@ technologies:
   - "[[CSS]]"
   - "[[JavaScript]]"
   - "[[GitHub]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a

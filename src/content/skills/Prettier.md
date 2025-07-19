@@ -6,11 +6,11 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-18T12:44:19+01:00
-viewCount: 5
+viewCount: 6
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName: 
+logoFileName: prettier.svg
 ---
 
 # Prettier
