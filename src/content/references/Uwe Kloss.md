@@ -26,9 +26,10 @@ referenceEmail: uwe.kloss@rle.de
 referenceNumber: +49 (172) 3180-304
 referenceAddress: RLE International, Germany
 ---
+
 # Uwe Kloss
 
-> [!back] Link back to [[People Notes]]
+> [!back] Link back to <span class="mint-link">People Notes</span>
 
 ## Table of Contents 
 

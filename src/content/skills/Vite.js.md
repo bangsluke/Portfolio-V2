@@ -15,11 +15,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: vitejs.svg
 ---
+
 # Vite.js
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Language: [[JavaScript]] built on [[React]]
+> Language: <span class="mint-link">JavaScript</span> built on <span class="mint-link">React</span>
 
 ## Table of Contents 
 

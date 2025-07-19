@@ -8,18 +8,19 @@ tags:
   - notes
 created: 2023-08-18T15:45:00
 modified: 2025-07-02T14:22:46+01:00
-viewCount: 7
+viewCount: 8
 aliases:
   - Apple Shortcut
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: apple_shortcuts.svg
 ---
+
 # Apple Shortcuts
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> [[Apple]]'s [[iOS]] automation app
+> <span class="mint-link">Apple</span>'s <span class="mint-link">iOS</span> automation app
 
 ## Table of Contents
 

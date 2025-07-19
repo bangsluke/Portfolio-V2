@@ -7,9 +7,9 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 17:59
-modified: 2025-07-11T15:55:54+01:00
+modified: 2025-07-19T10:01:02+01:00
 aliases: 
-viewCount: 14
+viewCount: 16
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio
 codeMultipleRepos: false
@@ -25,7 +25,7 @@ technologies:
   - "[[JavaScript]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a
@@ -43,7 +43,7 @@ lessonsLearned: "The key lesson learned for this project was how useful it is to
 ---
 # Portfolio Site
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -72,12 +72,6 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-A note for storing ideas on building the first version of my Portfolio site.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
 The portfolio site was my initial attempt at creating a marketing page for myself as a developer, showcasing my skills and contact information.
@@ -92,10 +86,10 @@ The portfolio site showcased all the information I believed to be relevant for p
 
 ## Architecture and Technologies
 
-- Front end: [[HTML]], [[CSS]] and [[JavaScript]]
+- Front end: <span class="mint-link">HTML</span>, <span class="mint-link">CSS</span> and <span class="mint-link">JavaScript</span>
 - Back end/Datasource: n/a
-- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
-- Security: [[Synk]]
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -104,13 +98,13 @@ The portfolio site showcased all the information I believed to be relevant for p
 
 - Main repo: `=this.codeURL`
 - Secondary repo: n/a
-- [[Netlify]]: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
+- <span class="mint-link">Netlify</span>: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -121,15 +115,15 @@ To launch the repo, use the [[PowerShell]] alias
 - For page headers, use the below / style for each page.
 - Also add the language bubble tags for each project
 
-![[20231009 PageHeaderInspiration.jpeg]]
+!<span class="mint-link">20231009 PageHeaderInspiration.jpeg</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
 - [Portfolio Site page Todoist list](https://todoist.com/showTask?id=5773759872&sync_id=6506087454)
-- [[Portfolio Card]]
-- [[Portfolio Site V2]]
+- <a href="/portfolio/projects/Portfolio Card" class="mint-link">Portfolio Card</a>
+- <a href="/portfolio/projects/Portfolio Site V2" class="mint-link">Portfolio Site V2</a>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

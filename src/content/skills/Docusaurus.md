@@ -6,17 +6,18 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-05T07:01:48+01:00
-viewCount: 4
+viewCount: 6
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: docusaurus.svg
 ---
+
 # Docusaurus
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Built with: [[React]], language: [[JavaScript]], supporting: [[Markdown]]
+> Built with: <span class="mint-link">React</span>, language: <span class="mint-link">JavaScript</span>, supporting: <span class="mint-link">Markdown</span>
 
 ## Table of Contents
 

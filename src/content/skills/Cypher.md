@@ -9,15 +9,16 @@ tags:
   - notes
 created: 2025-06-13T08:16:00
 modified: 2025-07-02T14:20:29+01:00
-viewCount: 8
+viewCount: 9
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: neo4j_cypher.svg
 ---
+
 # Cypher
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
 ## Table of Contents 
 

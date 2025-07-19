@@ -9,19 +9,20 @@ tags:
   - portfolio
 modified: 2025-07-02T14:22:00+01:00
 created: 2023-08-18T15:45:00
-viewCount: 5
+viewCount: 6
 aliases:
   - Visual Basic Application
   - Visual Basic
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: vba.svg
 ---
+
 # VBA
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Language behind: [[Excel]]
+> Language behind: <span class="mint-link">Excel</span>
 
 ## Table of Contents
 

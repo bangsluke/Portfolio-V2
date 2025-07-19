@@ -13,11 +13,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: vs_code.svg
 ---
+
 # VS Code
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> [[Microsoft]] VS Code
+> <span class="mint-link">Microsoft</span> VS Code
 
 ## Table of Contents
 

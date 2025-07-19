@@ -12,9 +12,10 @@ skillRating: 70
 skillDescription: TBC
 logoFileName: git.svg
 ---
+
 # Git
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
 > Software Version Management
 

@@ -10,12 +10,12 @@ dateStart: 2022-07-01
 dateEnd: ""
 linkedCompany:
   - "[[RLE International]]"
-roleDescription: "Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using [[Next.js]], [[Nest.js]], a [[Neo4j]] database and a [[Flask]] [[API]] to call a [[Python]] algorithm. The tool collects inputs from a user, calculates several optimal [[DVP]] plans and then presents the options in several ways to enable further user decisions."
+roleDescription: "Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using <span class=\"mint-link\">Next.js</span>, <span class=\"mint-link\">Nest.js</span>, a <span class=\"mint-link\">Neo4j</span> database and a <span class=\"mint-link\">Flask</span> <span class=\"mint-link\">API</span> to call a <span class=\"mint-link\">Python</span> algorithm. The tool collects inputs from a user, calculates several optimal <span class=\"mint-link\">DVP</span> plans and then presents the options in several ways to enable further user decisions."
 keyAchievement: "TBC"
 ---
 # Digital Engineering Specialist
 
-> [!back] Link back to [[Role Notes]]
+> [!back] Link back to <span class="mint-link">Role Notes</span>
 
 ## Table of Contents
 ```table-of-contents
@@ -23,7 +23,7 @@ keyAchievement: "TBC"
 
 ## Role Description
 
-Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using [[Next.js]], [[Nest.js]], a [[Neo4j]] database and a [[Flask]] [[API]] to call a [[Python]] algorithm. The tool collects inputs from a user, calculates several optimal [[DVP]] plans and then presents the options in several ways to enable further user decisions.
+Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using <span class="mint-link">Next.js</span>, <span class="mint-link">Nest.js</span>, a <span class="mint-link">Neo4j</span> database and a <span class="mint-link">Flask</span> <span class="mint-link">API</span> to call a <span class="mint-link">Python</span> algorithm. The tool collects inputs from a user, calculates several optimal <span class="mint-link">DVP</span> plans and then presents the options in several ways to enable further user decisions.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

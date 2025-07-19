@@ -7,10 +7,10 @@ tags:
   - coding
   - work
 created: 2025-06-02 17:16
-modified: 2025-07-17T19:29:09+01:00
+modified: 2025-07-19T09:57:46+01:00
 aliases:
   - Stratamotiv Landing Page
-viewCount: 12
+viewCount: 14
 projectURL: https://stratamotiv.netlify.app/
 codeURL: TBC
 codeMultipleRepos: false
@@ -37,13 +37,12 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "A landing page for showcasing a new Automotive Consultancy branch of [[RLE International|RLE]], known as [[Centre of Excellence]]."
-longDescription: "A basic landing page for showcasing a new Automotive Consultancy branch of [[RLE International|RLE]], known as [[Centre of Excellence]] ready for prospective clients to view and see the services we provide."
+shortDescription: "A landing page for showcasing a new Automotive Consultancy branch of <span class=\"mint-link\">RLE</span>, known as <span class=\"mint-link\">RLE</span>, known as <span class=\"mint-link\">Centre of Excellence</span> ready for prospective clients to view and see the services we provide."
 lessonsLearned: "Main lesson was creating the automatic video background of the site along with a subtle purple filter across it which ended up looking pretty good. Sadly the site wasn’t finished as the requirements for the company changed."
 ---
 # CoE Landing Page
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -72,31 +71,19 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-A landing page for showcasing a new Automotive Consultancy branch of [[RLE International|RLE]], known as [[Centre of Excellence]].
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-A landing page for showcasing a new Automotive Consultancy branch of [[RLE International|RLE]], known as [[Centre of Excellence]].
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Long Description
-
-A basic landing page for showcasing a new Automotive Consultancy branch of [[RLE International|RLE]], known as [[Centre of Excellence]] ready for prospective clients to view and see the services we provide.
+A landing page for showcasing a new Automotive Consultancy branch of <span class="mint-link">RLE</span>, known as <span class="mint-link">RLE</span>, known as <span class="mint-link">Centre of Excellence</span> ready for prospective clients to view and see the services we provide.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: [[React]]
+- Front end: <span class="mint-link">React</span>
 - Back end/Datasource: n/a
-- Hosting: [[GitLab]] (see [Repositories](#repositories)), [[Netlify]]
+- Hosting: <span class="mint-link">GitLab</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
 - Security: n/a
-- Authentication: [[Azure]]
+- Authentication: <span class="mint-link">Azure</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -109,7 +96,7 @@ A basic landing page for showcasing a new Automotive Consultancy branch of [[RLE
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -123,7 +110,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- [[Centre of Excellence]]
+- <span class="mint-link">Centre of Excellence</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

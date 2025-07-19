@@ -5,18 +5,19 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-02T16:02:04+01:00
-viewCount: 2
+viewCount: 3
 aliases:
   - Microsoft Visio
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: visio.svg
 ---
+
 # Visio
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> [[Microsoft]] Visio
+> <span class="mint-link">Microsoft</span> Visio
 
 ## Table of Contents
 

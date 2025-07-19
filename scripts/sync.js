@@ -26,13 +26,19 @@ const EMAIL_NOTIFICATIONS = process.env.EMAIL_NOTIFICATIONS === 'true';
 const AUTO_DEPLOY = process.env.AUTO_DEPLOY === 'true';
 const DEBUG_MODE = process.env.DEBUG === 'true';
 
+// Add spacings for console log messages
+const SPACING_LEVEL_1 = ' '.repeat(2);
+const SPACING_LEVEL_2 = ' '.repeat(4);
+const SPACING_LEVEL_3 = ' '.repeat(6);
+
 // Validate OBSIDIAN_PATH
 if (!OBSIDIAN_VAULT_PATH) {
 	console.error('❌ OBSIDIAN_PATH environment variable is not set!');
 	console.error(
-		'Please set OBSIDIAN_PATH in your .env file to the path of your Obsidian vault.'
+		SPACING_LEVEL_1 +
+			'Please set OBSIDIAN_PATH in your .env file to the path of your Obsidian vault.'
 	);
-	console.error('Expected .env file location:', envPath);
+	console.error(SPACING_LEVEL_1 + 'Expected .env file location:', envPath);
 	console.error(
 		'Available environment variables:',
 		Object.keys(process.env).filter(
@@ -48,7 +54,9 @@ if (!OBSIDIAN_VAULT_PATH) {
 // Check if the Obsidian vault path exists
 if (!fs.existsSync(OBSIDIAN_VAULT_PATH)) {
 	console.error('❌ Obsidian vault path does not exist:', OBSIDIAN_VAULT_PATH);
-	console.error('Please check your OBSIDIAN_PATH in the .env file.');
+	console.error(
+		SPACING_LEVEL_1 + 'Please check your OBSIDIAN_PATH in the .env file.'
+	);
 	process.exit(1);
 }
 
@@ -65,6 +73,9 @@ const FOLDER_MAPPING = {
 
 // Protected items that should never be deleted or overwritten
 const PROTECTED_ITEMS = ['staticData', 'config.ts', 'allStaticData.json'];
+
+// Cache for project name to slug mappings
+let projectNameToSlugCache = null;
 
 // Extract content between specific markdown sections
 function extractSectionContent(content, sectionName, endMarker) {
@@ -141,37 +152,6 @@ function extractSectionsToFrontmatter(content, contentType) {
 			property: 'keyAchievement',
 			contentType: 'company',
 		},
-
-		// Skill-specific sections (excluding skillDescription - should come from YAML frontmatter)
-		{
-			name: 'Key Achievement',
-			property: 'keyAchievement',
-			contentType: 'skill',
-		},
-
-		// Client-specific sections
-		{
-			name: 'Client Description',
-			property: 'clientDescription',
-			contentType: 'client',
-		},
-		{
-			name: 'Key Achievement',
-			property: 'keyAchievement',
-			contentType: 'client',
-		},
-
-		// Reference-specific sections
-		{
-			name: 'Reference Description',
-			property: 'referenceDescription',
-			contentType: 'reference',
-		},
-		{
-			name: 'Key Achievement',
-			property: 'keyAchievement',
-			contentType: 'reference',
-		},
 	];
 
 	const extractedData = {};
@@ -186,7 +166,8 @@ function extractSectionsToFrontmatter(content, contentType) {
 					extractedData[property] = sectionContent;
 					if (DEBUG_MODE) {
 						console.log(
-							`📝 Extracted ${property} for ${contentType}: ${sectionContent.substring(0, 50)}...`
+							SPACING_LEVEL_3 +
+								`📝 Extracted ${property} for ${contentType}: ${sectionContent.substring(0, 50)}...`
 						);
 					}
 				}
@@ -226,12 +207,15 @@ function extractSectionsToFrontmatter(content, contentType) {
 					const escapedValue = value.replace(/"/g, '\\"').replace(/\n/g, '\\n');
 					newFrontmatterLines.push(`${property}: "${escapedValue}"`);
 					if (DEBUG_MODE) {
-						console.log(`✅ Added ${property} to frontmatter`);
+						console.log(
+							SPACING_LEVEL_3 + `✅ Added ${property} to frontmatter`
+						);
 					}
 				} else {
 					if (DEBUG_MODE) {
 						console.log(
-							`⚠️  Skipped ${property} - already exists in frontmatter`
+							SPACING_LEVEL_3 +
+								`⚠️  Skipped ${property} - already exists in frontmatter`
 						);
 					}
 				}
@@ -259,10 +243,12 @@ function extractSectionsToFrontmatter(content, contentType) {
 	return content;
 }
 
-// Error tracking (only for production mode)
+// Error tracking (for all modes)
 let syncErrors = {
 	timestamp: new Date().toISOString(),
 	source: OBSIDIAN_VAULT_PATH,
+	syncMode: SYNC_MODE,
+	debugMode: DEBUG_MODE,
 	errors: [],
 	summary: {
 		totalFiles: 0,
@@ -280,7 +266,7 @@ const missingSvgFiles = [];
 console.log(`🚀 Starting ${SYNC_MODE.toUpperCase()} Obsidian Sync...`);
 console.log('📁 Obsidian vault path:', OBSIDIAN_VAULT_PATH);
 console.log('🎯 Astro content path:', ASTRO_CONTENT_PATH);
-console.log('⚙️  Sync mode:', SYNC_MODE);
+console.log('⚙️ Sync mode:', SYNC_MODE);
 console.log(
 	'📧 Email notifications:',
 	EMAIL_NOTIFICATIONS ? 'enabled' : 'disabled'
@@ -361,68 +347,73 @@ function getContentType(targetFolder) {
 // Process a markdown file
 function processMarkdownFile(filePath, relativePath) {
 	try {
-		if (SYNC_MODE === 'production') {
-			syncErrors.summary.totalFiles++;
-		}
+		syncErrors.summary.totalFiles++;
 
 		let content = fs.readFileSync(filePath, 'utf8');
 		const { tags } = parseFrontmatter(content);
 
 		if (DEBUG_MODE) {
-			console.log(`📄 Processing: ${relativePath}`);
-			console.log(`🏷️  Tags found: ${tags.join(', ')}`);
+			console.log(`📄 1. Processing: ${relativePath}`);
 		}
 
 		// Check if file has portfolio tag
 		const portfolioTag = process.env.PORTFOLIO_TAG || 'portfolio';
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_2 +
+					`🔍 2: Checking for portfolio tag '${portfolioTag}' and skipping if not found...`
+			);
+		}
 		if (!tags.includes(portfolioTag)) {
-			if (SYNC_MODE === 'production') {
-				syncErrors.summary.skippedFiles++;
-			}
-			if (DEBUG_MODE) {
-				console.log(`⏭️  Skipping - no ${portfolioTag} tag`);
-			}
+			syncErrors.summary.skippedFiles++;
 			return;
 		}
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_3 +
+					`✅ 2. Portfolio tag found. Tags found: ${tags.join(', ')}`
+			);
+		}
 
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_2 +
+					`🔍 3: Determining target folder based on tags and skipping if not found...`
+			);
+		}
 		const targetFolder = getTargetFolder(tags);
 		if (!targetFolder) {
-			if (SYNC_MODE === 'production') {
-				syncErrors.summary.skippedFiles++;
-			}
-			if (DEBUG_MODE) {
-				console.log(
-					`⏭️  Skipping - no matching folder for tags: ${tags.join(', ')}`
-				);
-			}
+			syncErrors.summary.skippedFiles++;
 			return;
+		}
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_3 +
+					`✅ 3. Target folder: ${targetFolder} and skipping if not found...`
+			);
 		}
 
 		const fileName = path.basename(filePath);
 		const targetPath = path.join(ASTRO_CONTENT_PATH, targetFolder, fileName);
 
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_2 +
+					`🔍 4: Checking if file is protected and skipping if found...`
+			);
+		}
 		// Check if target file is protected
 		if (isProtected(fileName)) {
-			if (SYNC_MODE === 'production') {
-				syncErrors.summary.skippedFiles++;
-			}
-			if (DEBUG_MODE) {
-				console.log(`🛡️  Skipping - file is protected: ${fileName}`);
-			}
+			syncErrors.summary.skippedFiles++;
 			return;
 		}
 
-		// Extract sections based on content type
-		const contentType = getContentType(targetFolder);
-		if (contentType) {
-			content = extractSectionsToFrontmatter(content, contentType);
-			if (DEBUG_MODE) {
-				console.log(
-					`🔍 Applied section extraction for content type: ${contentType}`
-				);
-			}
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_2 +
+					`🔍 5: Removing Obsidian image references and skipping if not found...`
+			);
 		}
-
 		// Filter out image references that could cause build errors
 		content = content.replace(
 			/!\[([^\]]*)\]\(#([^)]+)\)/g,
@@ -430,7 +421,18 @@ function processMarkdownFile(filePath, relativePath) {
 				return `<!-- Image removed during sync: ${altText} (${imageName}) -->`;
 			}
 		);
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_3 + `✅ 5. Obsidian image references processed`
+			);
+		}
 
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_2 +
+					`🔍 6: Processing problematic markdown images and skipping if not found...`
+			);
+		}
 		// Also handle standard markdown images that might reference non-existent files
 		content = content.replace(
 			/!\[([^\]]*)\]\(([^)]+)\)/g,
@@ -453,33 +455,71 @@ function processMarkdownFile(filePath, relativePath) {
 				return match;
 			}
 		);
-
-		// Write the filtered content to target folder
-		fs.writeFileSync(targetPath, content, 'utf8');
-
-		if (SYNC_MODE === 'production') {
-			syncErrors.summary.copiedFiles++;
+		if (DEBUG_MODE) {
+			console.log(SPACING_LEVEL_3 + `✅ 6. Markdown images processed`);
 		}
 
 		if (DEBUG_MODE) {
-			console.log(`✅ Copied to: ${targetPath}`);
+			console.log(
+				SPACING_LEVEL_2 +
+					`🔍 7: Processing Obsidian links (content body only) and skipping if not found...`
+			);
+		}
+		// Process Obsidian links only in the content body (not in frontmatter)
+		content = processObsidianLinksInContentOnly(content);
+		if (DEBUG_MODE) {
+			console.log(SPACING_LEVEL_3 + `✅ 7. Obsidian links processed`);
+		}
+
+		// Extract sections based on content type (after Obsidian links are processed)
+		const contentType = getContentType(targetFolder);
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_2 +
+					`🔍 8: Checking for section extraction and skipping if not found...`
+			);
+		}
+		if (contentType) {
+			content = extractSectionsToFrontmatter(content, contentType);
+		} else if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_3 +
+					`⏭️ 8. No section extraction needed for this content type`
+			);
+		}
+
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_2 +
+					`🔍 9: Writing processed content to target folder and skipping if not found...`
+			);
+		}
+		// Write the filtered content to target folder
+		fs.writeFileSync(targetPath, content, 'utf8');
+
+		syncErrors.summary.copiedFiles++;
+
+		if (DEBUG_MODE) {
+			console.log(SPACING_LEVEL_2 + `✅ 9. Content written to: ${targetPath}`);
 		}
 	} catch (error) {
-		if (SYNC_MODE === 'production') {
-			syncErrors.summary.errors++;
-			const errorInfo = {
-				file: filePath,
-				error: error.message,
-				timestamp: new Date().toISOString(),
-			};
-			syncErrors.errors.push(errorInfo);
-		}
+		syncErrors.summary.errors++;
+		const errorInfo = {
+			file: filePath,
+			error: error.message,
+			timestamp: new Date().toISOString(),
+		};
+		syncErrors.errors.push(errorInfo);
 		console.error(`❌ Error processing ${filePath}:`, error.message);
 	}
 }
 
 // Recursively process directory
 function processDirectory(dirPath, relativePath = '') {
+	if (DEBUG_MODE) {
+		console.log(`📂 Entering directory: ${relativePath || dirPath}`);
+	}
+
 	try {
 		const items = fs.readdirSync(dirPath);
 
@@ -490,35 +530,176 @@ function processDirectory(dirPath, relativePath = '') {
 
 			// Skip protected items
 			if (isProtected(item)) {
-				if (DEBUG_MODE) {
-					console.log(`🛡️ Skipping protected item: ${itemRelativePath}`);
-				}
 				continue;
 			}
 
+			// Skip directories starting with "03 Attachments" or "04 Templates"
 			if (stat.isDirectory()) {
+				if (
+					item.startsWith('02 Tags') ||
+					item.startsWith('03 Attachments') ||
+					item.startsWith('04 Templates')
+				) {
+					if (DEBUG_MODE) {
+						console.log(
+							`⏭️  Skipping directory: ${itemRelativePath} (attachments/templates)`
+						);
+					}
+					continue;
+				}
+
+				if (DEBUG_MODE && item.includes('Projects')) {
+					console.log(`🔍 Found Projects directory: ${itemRelativePath}`);
+				}
+
 				processDirectory(fullPath, itemRelativePath);
 			} else if (item.endsWith('.md')) {
+				if (DEBUG_MODE && item.includes('Documentation')) {
+					console.log(`🔍 Found Documentation file: ${itemRelativePath}`);
+				}
 				processMarkdownFile(fullPath, itemRelativePath);
 			}
 		}
 	} catch (error) {
-		if (SYNC_MODE === 'production') {
-			syncErrors.summary.errors++;
-			const errorInfo = {
-				directory: dirPath,
-				error: error.message,
-				timestamp: new Date().toISOString(),
-			};
-			syncErrors.errors.push(errorInfo);
-		}
 		console.error(`❌ Error processing directory ${dirPath}:`, error.message);
+		syncErrors.errors.push({
+			file: relativePath || dirPath,
+			error: `Failed to process directory: ${error.message}`,
+		});
+		syncErrors.summary.errors++;
 	}
 }
 
 // Check if an item should be protected
 function isProtected(itemName) {
 	return PROTECTED_ITEMS.includes(itemName);
+}
+
+// Get project name to slug mappings
+function getProjectNameToSlugMappings() {
+	if (projectNameToSlugCache) {
+		return projectNameToSlugCache;
+	}
+
+	try {
+		const projectsPath = path.join(ASTRO_CONTENT_PATH, 'projects');
+		if (!fs.existsSync(projectsPath)) {
+			console.log(
+				'📁 Projects directory does not exist, skipping project link processing'
+			);
+			return {};
+		}
+
+		const projectFiles = fs
+			.readdirSync(projectsPath)
+			.filter(file => file.endsWith('.md'));
+
+		const mappings = {};
+
+		projectFiles.forEach(projectFile => {
+			const projectPath = path.join(projectsPath, projectFile);
+			const content = fs.readFileSync(projectPath, 'utf8');
+
+			// Extract project name from frontmatter or filename
+			const nameMatch = content.match(/^#\s*(.+)$/m);
+			const projectName = nameMatch
+				? nameMatch[1].trim()
+				: projectFile.replace('.md', '');
+
+			// Generate slug from filename (remove .md extension)
+			const slug = projectFile.replace('.md', '');
+
+			mappings[projectName] = slug;
+		});
+
+		projectNameToSlugCache = mappings;
+
+		if (DEBUG_MODE) {
+			console.log(
+				`📋 Loaded ${Object.keys(mappings).length} project name mappings`
+			);
+		}
+
+		return mappings;
+	} catch (error) {
+		console.error('❌ Error loading project name mappings:', error.message);
+		return {};
+	}
+}
+
+// Process Obsidian links to convert project references to portfolio links
+function processObsidianLinks(content) {
+	const projectMappings = getProjectNameToSlugMappings();
+
+	// Process [[ProjectName|AltText]] format
+	// console.log(SPACING_LEVEL_3 + 'Processing [[ProjectName|AltText]] formats');
+	content = content.replace(
+		/\[\[([^|]+)\|([^\]]+)\]\]/g,
+		(match, projectName, altText) => {
+			// First check if the main project name matches
+			let slug = projectMappings[projectName];
+			// console.log(slug);
+
+			// If not found, check if the alt text matches a project slug
+			if (!slug) {
+				// Convert alt text to slug format and check if it matches any project
+				const altTextSlug = altText
+					.toLowerCase()
+					.replace(/[^a-z0-9]+/g, '-')
+					.replace(/(^-|-$)/g, '');
+
+				// Find project by slug
+				const projectEntry = Object.entries(projectMappings).find(
+					([name, slug]) => slug === altTextSlug
+				);
+
+				if (projectEntry) {
+					slug = projectEntry[1]; // Use the found slug
+				}
+			}
+
+			if (slug) {
+				return `<a href="/portfolio/projects/${slug}" class="mint-link">${altText}</a>`;
+			}
+			// If not a project, keep as bold text
+			return `<span class="mint-link">${altText}</span>`;
+		}
+	);
+
+	// Process [[ProjectName]] format
+	// console.log(SPACING_LEVEL_3 + 'Processing [[ProjectName]] formats');
+	content = content.replace(/\[\[([^\]]+)\]\]/g, (match, projectName) => {
+		const slug = projectMappings[projectName];
+		if (slug) {
+			return `<a href="/portfolio/projects/${slug}" class="mint-link">${projectName}</a>`;
+		}
+		// If not a project, keep as bold text
+		return `<span class="mint-link">${projectName}</span>`;
+	});
+
+	return content;
+}
+
+// Process Obsidian links only in the content body (not in frontmatter)
+function processObsidianLinksInContentOnly(content) {
+	// Split content into frontmatter and body
+	const frontmatterMatch = content.match(
+		/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/
+	);
+
+	if (frontmatterMatch) {
+		const frontmatter = frontmatterMatch[1];
+		const body = frontmatterMatch[2];
+
+		// Only process Obsidian links in the body, not in frontmatter
+		const processedBody = processObsidianLinks(body);
+
+		// Reconstruct the content with processed body but unchanged frontmatter
+		return `---\n${frontmatter}\n---\n\n${processedBody}`;
+	} else {
+		// If no frontmatter found, process the entire content
+		return processObsidianLinks(content);
+	}
 }
 
 // Check for missing SVG files for skills
@@ -581,6 +762,64 @@ function checkMissingSvgFiles() {
 		syncErrors.errors.push({
 			file: 'SVG check',
 			error: `Failed to check for missing SVG files: ${error.message}`,
+		});
+		syncErrors.summary.errors++;
+	}
+}
+
+// Update icon-utils with current icons from the icons directory
+function updateIconUtils() {
+	try {
+		const iconsDir = path.join(__dirname, '../src/icons');
+		const iconUtilsFile = path.join(__dirname, '../src/utils/icon-utils.ts');
+
+		// Check if icons directory exists
+		if (!fs.existsSync(iconsDir)) {
+			console.warn('📁 Icons directory not found:', iconsDir);
+			return;
+		}
+
+		// Read all files in the icons directory
+		const files = fs.readdirSync(iconsDir);
+
+		// Filter for SVG files and remove the .svg extension
+		const icons = files
+			.filter(file => file.endsWith('.svg'))
+			.map(file => file.replace('.svg', ''))
+			.sort(); // Sort alphabetically for consistency
+
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_1 + `🎨 Found ${icons.length} SVG icons:`,
+				icons
+			);
+		}
+
+		// Read the current icon-utils file
+		let content = fs.readFileSync(iconUtilsFile, 'utf8');
+
+		// Create the new icons array string
+		const iconsArrayString = icons.map(icon => `\t'${icon}'`).join(',\n');
+
+		// Replace the existing icons array
+		const updatedContent = content.replace(
+			/let knownIconsCache: string\[\] = \[[\s\S]*?\];/,
+			`let knownIconsCache: string[] = [\n${iconsArrayString},\n];`
+		);
+
+		// Write the updated content back to the file
+		fs.writeFileSync(iconUtilsFile, updatedContent, 'utf8');
+
+		console.log(
+			`✅ Successfully updated icon-utils.ts with ${icons.length} icons`
+		);
+	} catch (error) {
+		console.error('❌ Error updating icon-utils:', error.message);
+		syncErrors.errors.push({
+			file: 'icon-utils update',
+			error: `Failed to update icon-utils: ${error.message}`,
+			type: 'icon_update_error',
+			timestamp: new Date().toISOString(),
 		});
 		syncErrors.summary.errors++;
 	}
@@ -806,35 +1045,87 @@ async function sendEmailNotification() {
 async function main() {
 	try {
 		console.log('🔄 Starting sync process...');
+		console.log('📋 SYNC PROCESS ORDER:');
+		console.log(SPACING_LEVEL_1 + '1. Validate paths and create directories');
+		console.log(
+			SPACING_LEVEL_1 + '2. Load project name mappings for Obsidian links'
+		);
+		console.log(
+			SPACING_LEVEL_1 + '3. Process Obsidian vault files (recursive scan)'
+		);
+		console.log(
+			SPACING_LEVEL_1 + '4. Apply markdown processing rules to each file'
+		);
+		console.log(
+			SPACING_LEVEL_1 + '5. Copy processed files to Astro content folders'
+		);
+		console.log(
+			SPACING_LEVEL_1 + '6. Post-process images and check for missing SVGs'
+		);
+		console.log(SPACING_LEVEL_1 + '7. Build and deploy (production mode only)');
+		console.log('');
+		console.log('📋 MARKDOWN PROCESSING RULES ORDER:');
+		console.log(SPACING_LEVEL_1 + '1. Parse frontmatter and extract tags');
+		console.log(SPACING_LEVEL_1 + '2. Check for portfolio tag');
+		console.log(SPACING_LEVEL_1 + '3. Determine target folder based on tags');
+		console.log(SPACING_LEVEL_1 + '4. Check if file is protected');
+		console.log(SPACING_LEVEL_1 + '5. Remove Obsidian image references');
+		console.log(SPACING_LEVEL_1 + '6. Remove problematic markdown images');
+		console.log(
+			SPACING_LEVEL_1 + '7. Process Obsidian links (content body only)'
+		);
+		console.log(
+			SPACING_LEVEL_1 + '8. Extract sections to frontmatter (if applicable)'
+		);
+		console.log(
+			SPACING_LEVEL_1 + '9. Write processed content to target folder'
+		);
+		console.log('');
 
 		// Ensure directories exist
+		console.log('📁 Step 1: Creating/validating directories...');
 		ensureDirectories();
 
+		// Load project name mappings for Obsidian link processing
+		console.log(
+			'📋 Step 2: Loading project name mappings for Obsidian links...'
+		);
+		getProjectNameToSlugMappings();
+
 		// Process Obsidian vault
-		console.log('📁 Processing Obsidian vault...');
+		console.log('📁 Step 3: Processing Obsidian vault files...');
+		console.log(
+			SPACING_LEVEL_1 + '📂 Scanning directory structure recursively...'
+		);
 		processDirectory(OBSIDIAN_VAULT_PATH);
 
-		// Check for missing SVG files (only for production mode)
-		if (SYNC_MODE === 'production') {
-			console.log('🔍 Checking for missing SVG files...');
+		// Check for missing SVG files (for production mode or when email notifications are enabled)
+		if (SYNC_MODE === 'production' || EMAIL_NOTIFICATIONS) {
+			console.log('🔍 Step 6: Checking for missing SVG files...');
 			checkMissingSvgFiles();
 		}
 
+		// Update icon-utils with current icons (always run)
+		console.log('🎨 Updating icon-utils with current icons...');
+		updateIconUtils();
+
 		// Post-process content (only for production mode)
 		if (SYNC_MODE === 'production') {
-			console.log('🔧 Post-processing content...');
+			console.log('🔧 Post-processing content images...');
 			postProcessContentImages(ASTRO_CONTENT_PATH);
 		}
 
 		// Build project (only for production mode or when auto deploy is enabled)
 		let buildSuccess = true;
 		if (SYNC_MODE === 'production' || AUTO_DEPLOY) {
+			console.log('🔨 Building project...');
 			buildSuccess = buildProject();
 		}
 
 		// Deploy to production (only when auto deploy is enabled)
 		let deploySuccess = true;
 		if (AUTO_DEPLOY) {
+			console.log('🚀 Deploying to production...');
 			deploySuccess = deployToProduction();
 		}
 
@@ -842,12 +1133,14 @@ async function main() {
 		if (SYNC_MODE === 'production') {
 			syncErrors.success =
 				buildSuccess && deploySuccess && syncErrors.summary.errors === 0;
+		} else {
+			// For development mode, success is based on whether files were processed
+			syncErrors.success =
+				syncErrors.summary.totalFiles > 0 && syncErrors.summary.errors === 0;
 		}
 
-		// Save error log (only for production mode)
-		if (SYNC_MODE === 'production') {
-			saveErrorLog();
-		}
+		// Save error log (for all modes)
+		saveErrorLog();
 
 		// Send email notification (only for production mode or when explicitly enabled)
 		if (SYNC_MODE === 'production' || EMAIL_NOTIFICATIONS) {
@@ -863,9 +1156,20 @@ async function main() {
 	} catch (error) {
 		console.error('❌ Sync process failed:', error.message);
 
-		if (SYNC_MODE === 'production') {
-			syncErrors.success = false;
-			saveErrorLog();
+		// Capture the error in syncErrors
+		syncErrors.success = false;
+		syncErrors.errors.push({
+			type: 'sync_failure',
+			error: error.message,
+			timestamp: new Date().toISOString(),
+			stack: error.stack,
+		});
+
+		// Save error log for all modes
+		saveErrorLog();
+
+		// Send email notification (only for production mode or when explicitly enabled)
+		if (SYNC_MODE === 'production' || EMAIL_NOTIFICATIONS) {
 			await sendEmailNotification();
 		}
 

@@ -97,9 +97,6 @@ const clientsCollection = defineCollection({
 		linkedCompany: z
 			.union([z.string(), z.array(z.string()), z.null()])
 			.optional(),
-		// Extracted section content
-		clientDescription: z.string().optional(),
-		keyAchievement: z.string().optional(),
 	}),
 });
 
@@ -144,9 +141,6 @@ const referencesCollection = defineCollection({
 		referenceEmail: z.string().optional(),
 		referenceNumber: z.string().optional(),
 		referenceAddress: z.string().optional(),
-		// Extracted section content
-		referenceDescription: z.string().optional(),
-		keyAchievement: z.string().optional(),
 	}),
 });
 

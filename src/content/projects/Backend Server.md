@@ -5,8 +5,8 @@ tags:
   - notes
   - project/active
 created: 2025-06-23 13:36
-modified: 2025-07-17T19:24:09+01:00
-viewCount: 10
+modified: 2025-07-19T09:42:21+01:00
+viewCount: 13
 aliases:
   - backend-server
 projectURL: https://bangsluke-backend-server-221df04e1ad6.herokuapp.com/
@@ -37,13 +37,13 @@ topicTags:
 powerShellAlias: backend
 version: 1
 portfolioOrder: 1
-shortDescription: "The backend source of data for several of my projects, allowing a singular point of management and maintenance."
-longDescription: "The source of data for several projects including my [[Travel Website]] and [[Portfolio Site V2]], providing a route for data retrieval from a [[Neo4j]] graph using [[GraphQL]] queries."
-lessonsLearned: "Taught me about setting up a [[Flask]] server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage [[Python]] code in a growing codebase given my past experience with [[Python]] had been for single script projects.\nTBC"
+shortDescription: "The backend server and source of data for several of my projects, allowing a singular point of management and maintenance."
+longDescription: "The source of data for several projects including my <a href=\"/portfolio/projects/Travel Website\" class=\"mint-link\">Travel Website</a> and <a href=\"/portfolio/projects/Portfolio Site V2\" class=\"mint-link\">Portfolio Site V2</a>, providing a route for data retrieval from a <span class=\"mint-link\">Neo4j</span> graph using <span class=\"mint-link\">GraphQL</span> queries."
+lessonsLearned: "Taught me about setting up a <span class=\"mint-link\">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class=\"mint-link\">Python</span> code in a growing codebase given my past experience with <span class=\"mint-link\">Python</span> had been for single script projects.\nTBC"
 ---
 # Backend Server
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -72,30 +72,24 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-A backend server for the data behind my projects.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-The backend source of data for several of my projects, allowing a singular point of management and maintenance.
+The backend server and source of data for several of my projects, allowing a singular point of management and maintenance.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-The source of data for several projects including my [[Travel Website]] and [[Portfolio Site V2]], providing a route for data retrieval from a [[Neo4j]] graph using [[GraphQL]] queries.
+The source of data for several projects including my <a href="/portfolio/projects/Travel Website" class="mint-link">Travel Website</a> and <a href="/portfolio/projects/Portfolio Site V2" class="mint-link">Portfolio Site V2</a>, providing a route for data retrieval from a <span class="mint-link">Neo4j</span> graph using <span class="mint-link">GraphQL</span> queries.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
 - Front end: n/a
-- Back end/Datasource: [[Neo4j]], [[Neo4j Aura]], [[Cypher]], [[Python]], [[Flask]]
-- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Heroku]]
-- Security: [[Synk]]
+- Back end/Datasource: <span class="mint-link">Neo4j</span>, <span class="mint-link">Neo4j Aura</span>, <span class="mint-link">Cypher</span>, <span class="mint-link">Python</span>, <span class="mint-link">Flask</span>
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Heroku</span>
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -109,7 +103,7 @@ The source of data for several projects including my [[Travel Website]] and [[Po
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -123,8 +117,8 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- [[Travel Website]]
-- [[Portfolio Site V2]]
+- <a href="/portfolio/projects/Travel Website" class="mint-link">Travel Website</a>
+- <a href="/portfolio/projects/Portfolio Site V2" class="mint-link">Portfolio Site V2</a>
 - [Heroku Test Scheduler](https://dashboard.heroku.com/apps/bangsluke-backend-server/scheduler)
 - TBC
 
@@ -132,7 +126,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-Taught me about setting up a [[Flask]] server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage [[Python]] code in a growing codebase given my past experience with [[Python]] had been for single script projects.
+Taught me about setting up a <span class="mint-link">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class="mint-link">Python</span> code in a growing codebase given my past experience with <span class="mint-link">Python</span> had been for single script projects.
 
 TBC
 

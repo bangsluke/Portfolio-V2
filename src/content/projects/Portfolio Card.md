@@ -6,9 +6,9 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 18:01
-modified: 2025-07-17T19:33:40+01:00
+modified: 2025-07-19T10:00:14+01:00
 aliases: 
-viewCount: 11
+viewCount: 13
 projectURL: https://bangsluke-portfolio-card.netlify.app/
 codeURL: https://github.com/bangsluke/card-portfolio
 codeMultipleRepos: false
@@ -21,7 +21,7 @@ dateEnd: 2023-10-20
 technologies:
   - "[[React]]"
   - "[[GitHub]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a
@@ -33,13 +33,13 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "TBC"
+shortDescription: "A simplified portfolio idea to show just a single card of my contact details."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
 # Portfolio Card
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -68,15 +68,9 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-A note about the work done on a simplified portfolio idea to show just a single card of my contact details.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-TBC
+A simplified portfolio idea to show just a single card of my contact details.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -88,10 +82,10 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: [[React]]
+- Front end: <span class="mint-link">React</span>
 - Back end/Datasource: n/a
-- Hosting: [[GitHub]] (see [Repositories](#repositories))
-- Security: [[Synk]]
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories))
+- Security: <span class="mint-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -105,7 +99,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -120,8 +114,8 @@ To launch the repo, use the [[PowerShell]] alias
 ## Other Links
 
 - [Portfolio Site page Todoist list](https://todoist.com/showTask?id=5773759872&sync_id=6506087454)
-- [[Portfolio Site]]
-- [[Portfolio Site V2]]
+- <a href="/portfolio/projects/Portfolio Site" class="mint-link">Portfolio Site</a>
+- <a href="/portfolio/projects/Portfolio Site V2" class="mint-link">Portfolio Site V2</a>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -14,9 +14,10 @@ skillRating: 60
 skillDescription: TBC
 logoFileName: heroku.svg
 ---
+
 # Heroku
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
 ## Table of Contents
 

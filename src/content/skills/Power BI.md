@@ -5,18 +5,19 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-02T14:38:37+01:00
-viewCount: 2
+viewCount: 3
 aliases:
   - Microsoft Power BI
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: power_bi.svg
 ---
+
 # Power BI
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> [[Microsoft]] Power BI
+> <span class="mint-link">Microsoft</span> Power BI
 
 ## Table of Contents
 

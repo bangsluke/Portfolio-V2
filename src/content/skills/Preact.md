@@ -17,11 +17,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: preact.svg
 ---
+
 # Preact
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Language: [[JavaScript]]. Lightweight version of [[React]]
+> Language: <span class="mint-link">JavaScript</span>. Lightweight version of <span class="mint-link">React</span>
 
 ## Table of Contents
 

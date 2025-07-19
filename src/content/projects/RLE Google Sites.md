@@ -6,8 +6,8 @@ tags:
   - portfolio
   - project/completed/work
 created: 2025-07-18T08:23:00
-modified: 2025-07-18T08:30:05+01:00
-viewCount: 1
+modified: 2025-07-19T10:10:28+01:00
+viewCount: 2
 aliases: 
 projectURL: 
 codeURL: 
@@ -33,11 +33,11 @@ version: 1
 portfolioOrder: 4
 shortDescription: "A internal site providing links to key sites needed by employees."
 longDescription: "A site providing links to key sites needed by employees, a tools library of useful documents and templates and a lessons learned page for end-of project.\nThis provided a structure for engineers to work with on a day to day basis to ensure consistency with work output quality."
-lessonsLearned: "This taught me how to use basic website building tools such as [[Google Sites]] to quickly create a website structure using drag and drop components."
+lessonsLearned: "This taught me how to use basic website building tools such as <span class=\"mint-link\">Google Sites</span> to quickly create a website structure using drag and drop components."
 ---
 # RLE Google Sites
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -66,12 +66,6 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-A site providing links to key sites needed by employees, a tools library of useful documents and templates and a lessons learned page for end-of project.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
 A internal site providing links to key sites needed by employees.
@@ -88,11 +82,11 @@ This provided a structure for engineers to work with on a day to day basis to en
 
 ## Architecture and Technologies
 
-- Front end: [[Google Sites]]
+- Front end: <span class="mint-link">Google Sites</span>
 - Back end/Datasource: n/a
 - Hosting: n/a
 - Security: n/a
-- Authentication: [[Google]]
+- Authentication: <span class="mint-link">Google</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -105,7 +99,7 @@ This provided a structure for engineers to work with on a day to day basis to en
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -125,7 +119,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-This taught me how to use basic website building tools such as [[Google Sites]] to quickly create a website structure using drag and drop components.
+This taught me how to use basic website building tools such as <span class="mint-link">Google Sites</span> to quickly create a website structure using drag and drop components.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

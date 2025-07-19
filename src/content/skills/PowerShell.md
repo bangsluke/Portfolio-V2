@@ -4,20 +4,21 @@ tags:
   - software
   - skill
   - portfolio
-viewCount: 2
+viewCount: 4
 modified: 2025-07-18T12:25:44+01:00
 aliases:
   - Microsoft PowerShell
   - Powershell
 skillRating: 0
-skillDescription: TBC
-logoFileName:
+skillDescription: TBC - able to write simple alias scripts for automating chained commands.
+logoFileName: powershell.svg
 ---
+
 # PowerShell
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> [[Microsoft]] PowerShell
+> <span class="mint-link">Microsoft</span> PowerShell
 
 ## Table of Contents
 

@@ -6,17 +6,18 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-18T12:43:22+01:00
-viewCount: 5
+viewCount: 6
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: neo4j.svg
 ---
+
 # NeoDash
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> A tool for building dashboards on top of [[Neo4j]] data - Language: [[Cypher]] and [[React]]
+> A tool for building dashboards on top of <span class="mint-link">Neo4j</span> data - Language: <span class="mint-link">Cypher</span> and <span class="mint-link">React</span>
 
 ## Table of Contents
 

@@ -6,18 +6,19 @@ tags:
   - security
   - skill
   - portfolio
-modified: 2025-07-18T12:44:48+01:00
-viewCount: 5
+modified: 2025-07-19T16:06:07+01:00
+viewCount: 7
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName: 
+logoFileName: snyk.svg
 ---
-# Synk
 
-> [!back] Link back to [[Skills Notes]]
+# Snyk
 
-> Codebase security plugin for [[GitHub]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
+
+> Codebase security plugin for <span class="mint-link">GitHub</span>
 
 ## Table of Contents
 

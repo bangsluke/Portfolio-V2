@@ -4,10 +4,10 @@ tags:
   - portfolio
   - notes
 created: 2025-06-27 10:45
-modified: 2025-07-17T19:31:58+01:00
+modified: 2025-07-19T10:01:44+01:00
 aliases:
   - Scalable Development Plan
-viewCount: 10
+viewCount: 12
 projectURL: TBC
 codeURL: TBC
 codeMultipleRepos: false
@@ -45,13 +45,13 @@ topicTags:
 powerShellAlias: n/a
 version: 3
 portfolioOrder: 3
-shortDescription: "TBC"
+shortDescription: "Scalable Development Plan to automatically building a full development timing plan based on a number of inputs.\nTBC"
 longDescription: "TBC"
-lessonsLearned: "TBC\nI was fully in charge of the [[SQL]] backend database, meaning I had to learn how to write [[SQL]] queries. I optimised this by storing the data that we collected day to day in [[Excel]] and then writing a [[VBA]] script to automate creating the [[SQL]] queries to update the database quickly.\nThis lead to a complete rebuild when our company migrated from [[Microsoft]] to [[Google]], meaning I had to migrate the data and automations into [[Google Sheets]] and use [[Google Apps Script]].\nThere was a brief period where we began consider rebuilding the frontend in [[React]] and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.\nAs well as the main app, we also developed several [[NeoDash]] dashboards off of the [[Neo4j]] data for ongoing maintenance to check on the data."
+lessonsLearned: "TBC\nI was fully in charge of the <span class=\"mint-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"mint-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"mint-link\">Excel</span> and then writing a <span class=\"mint-link\">VBA</span> script to automate creating the <span class=\"mint-link\">SQL</span> queries to update the database quickly.\nThis lead to a complete rebuild when our company migrated from <span class=\"mint-link\">Microsoft</span> to <span class=\"mint-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"mint-link\">Google Sheets</span> and use <span class=\"mint-link\">Google Apps Script</span>.\nThere was a brief period where we began consider rebuilding the frontend in <span class=\"mint-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.\nAs well as the main app, we also developed several <span class=\"mint-link\">NeoDash</span> dashboards off of the <span class=\"mint-link\">Neo4j</span> data for ongoing maintenance to check on the data."
 ---
 # SDP
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -80,15 +80,9 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
+## Short Description
 
 Scalable Development Plan to automatically building a full development timing plan based on a number of inputs.
-
-Worked on this project with [[Elena Kohlwey]], [[Karsten Maylahn]], [[Uwe Kloss]] and [[Adele Donaldson-Logan]].
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Short Description
 
 TBC
 
@@ -102,11 +96,7 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]/[[React]]
-- Back end/Datasource: [[Neo4j]], [[Cypher]], [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]], [[SQL]], [[Excel]], [[VBA]], [[Google Sheets]], [[Google Apps Script]]
-- Hosting: [[GitLab]] (see [Repositories](#repositories))
-- Security: n/a
-- Authentication: [[Google Cloud|GCP]]
+- Front end: <span class="mint-link">Java</span>/<span class="mint-link">Java</span>, <span class="mint-link">GCP</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -119,7 +109,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -133,8 +123,8 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- [[SDP Consultant Pages]]
-- [[SDP Encyclopaedia]]
+- <a href="/portfolio/projects/SDP Consultant Pages" class="mint-link">SDP Consultant Pages</a>
+- <a href="/portfolio/projects/SDP Encyclopaedia" class="mint-link">SDP Encyclopaedia</a>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -142,13 +132,13 @@ To launch the repo, use the [[PowerShell]] alias
 
 TBC
 
-I was fully in charge of the [[SQL]] backend database, meaning I had to learn how to write [[SQL]] queries. I optimised this by storing the data that we collected day to day in [[Excel]] and then writing a [[VBA]] script to automate creating the [[SQL]] queries to update the database quickly.
+I was fully in charge of the <span class="mint-link">SQL</span> backend database, meaning I had to learn how to write <span class="mint-link">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class="mint-link">Excel</span> and then writing a <span class="mint-link">VBA</span> script to automate creating the <span class="mint-link">SQL</span> queries to update the database quickly.
 
-This lead to a complete rebuild when our company migrated from [[Microsoft]] to [[Google]], meaning I had to migrate the data and automations into [[Google Sheets]] and use [[Google Apps Script]].
+This lead to a complete rebuild when our company migrated from <span class="mint-link">Microsoft</span> to <span class="mint-link">Google</span>, meaning I had to migrate the data and automations into <span class="mint-link">Google Sheets</span> and use <span class="mint-link">Google Apps Script</span>.
 
-There was a brief period where we began consider rebuilding the frontend in [[React]] and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
+There was a brief period where we began consider rebuilding the frontend in <span class="mint-link">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
 
-As well as the main app, we also developed several [[NeoDash]] dashboards off of the [[Neo4j]] data for ongoing maintenance to check on the data.
+As well as the main app, we also developed several <span class="mint-link">NeoDash</span> dashboards off of the <span class="mint-link">Neo4j</span> data for ongoing maintenance to check on the data.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

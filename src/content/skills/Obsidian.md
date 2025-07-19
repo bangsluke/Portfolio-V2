@@ -6,17 +6,16 @@ tags:
   - portfolio
 created: 2023-08-18T15:45:00
 modified: 2025-07-05T08:04:52+01:00
-viewCount: 7
+viewCount: 8
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: obsidian.svg
 ---
+
 # Obsidian
 
-> [!back] Link back to [[Skills Notes]]
-
-> [[PKMS|Personal Knowledge Management System]] - Language: [[Markdown]]
+> [!back] Link back to <span class="mint-link">Personal Knowledge Management System</span> - Language: <span class="mint-link">Markdown</span>
 
 ## Table of Contents 
 

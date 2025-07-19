@@ -7,8 +7,8 @@ tags:
   - portfolio
   - project/parked
 created: 2025-05-16T09:29:00
-modified: 2025-07-17T19:28:46+01:00
-viewCount: 30
+modified: 2025-07-19T09:42:38+01:00
+viewCount: 1
 aliases:
   - Travel Journal
   - mytraveljournal
@@ -29,7 +29,7 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Heroku]]"
-  - "[[Synk]]"
+  - "[[Snyk]]"
   - "[[Google Cloud]]"
   - "[[Cypher]]"
   - "[[Neo4j Aura]]"
@@ -48,11 +48,11 @@ version: 2
 portfolioOrder: 1
 shortDescription: "A website to show details of my travels across the world."
 longDescription: "A visualisation and analysis of the travelling I have done, providing descriptions of my trips and a level of analysis on top of this such as most visited places, most common travel companions and other stats."
-lessonsLearned: "The biggest challenge for this project was setting up the [[Apollo]] backend server and getting the connection to the front end.\nI also learned a lot about the page routing in [[Next.js]] to develop the various page types on the site."
+lessonsLearned: "The biggest challenge for this project was setting up the <span class=\"mint-link\">Apollo</span> backend server and getting the connection to the front end.\nI also learned a lot about the page routing in <span class=\"mint-link\">Next.js</span> to develop the various page types on the site."
 ---
 # Travel Website
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -79,10 +79,6 @@ WHERE file = this.file
 ```table-of-contents
 ```
 
-## Introduction
-
-A note for storing ideas on building the next version of My Travel Journal website.
-
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Short Description
@@ -99,18 +95,18 @@ A visualisation and analysis of the travelling I have done, providing descriptio
 
 ## Architecture and Technologies
 
-- Front end: [[Next.js]], [[Apollo]] Client
-- Back end/Datasource: [[Python]], [[Neo4j]], [[Neo4j Aura]], [[Apollo]] Server, [[Cypher]]
-- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]] and [[Heroku]]
-- Security: [[Synk]]
-- Authentication: [[NextAuth]]
+- Front end: <span class="mint-link">Next.js</span>, <span class="mint-link">Apollo</span> Client
+- Back end/Datasource: <span class="mint-link">Python</span>, <span class="mint-link">Neo4j</span>, <span class="mint-link">Neo4j Aura</span>, <span class="mint-link">Apollo</span> Server, <span class="mint-link">Cypher</span>
+- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span> and <span class="mint-link">Heroku</span>
+- Security: <span class="mint-link">Snyk</span>
+- Authentication: <span class="mint-link">NextAuth</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Database
 
-- Local database is [[Neo4j]] desktop
-- Production database is [[Neo4j Aura]], kept active by some [[Google Cloud]] Cloud Functions and Cloud Scheduler
+- Local database is <span class="mint-link">Neo4j</span> desktop
+- Production database is <span class="mint-link">Neo4j Aura</span>, kept active by some <span class="mint-link">Google Cloud</span> Cloud Functions and Cloud Scheduler
 	- Cloud Functions - [Google Cloud Platform - Cloud Functions - MyTravelJournal](https://console.cloud.google.com/functions/list?env=gen2&cloudshell=true&project=mytraveljournal)
 	- Cloud Scheduler - [Google Cloud Platform - Cloud Scheduler - MyTravelJournal](https://console.cloud.google.com/cloudscheduler?cloudshell=true&project=mytraveljournal)
 
@@ -126,7 +122,7 @@ A visualisation and analysis of the travelling I have done, providing descriptio
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -138,15 +134,15 @@ To launch the repo, use the [[PowerShell]] alias
 
 - Use [Docusauras](https://docusaurus.io/) or Docify
 - Load md files from Travel notes through a script to populate the site
-- Use the [[Obsidian]] graph and have [[Neo4j]] queries running on the graph using [[GraphQL]]
+- Use the <span class="mint-link">Obsidian</span> graph and have <span class="mint-link">Neo4j</span> queries running on the graph using <span class="mint-link">GraphQL</span>
 - Have a count of key tags, e.g. count number of country tags there are for number of places visited
 - Have a timeline component that shows the holidays plotted on a linear scale
-- Add a chatbot to the site that allows a user to chat to the database. Write a statement such as "How many times has [[Kieran Mackrell]] been on holiday with [[Luke Bangs]]?" and then the text is identified into a cypher query and sent to the database and returns the answer. Should display the generated cypher query for debugging purposes. Get the chatbot front end visuals from the customer tool I made with Dom.
-	- Not sure this is possible unless I am able to find a way to use a [[OpenAI]] API call to create a [[GraphQL]] query in the client
+- Add a chatbot to the site that allows a user to chat to the database. Write a statement such as "How many times has <span class="mint-link">Kieran Mackrell</span> been on holiday with <span class="mint-link">Luke Bangs</span>?" and then the text is identified into a cypher query and sent to the database and returns the answer. Should display the generated cypher query for debugging purposes. Get the chatbot front end visuals from the customer tool I made with Dom.
+	- Not sure this is possible unless I am able to find a way to use a <span class="mint-link">OpenAI</span> API call to create a <span class="mint-link">GraphQL</span> query in the client
 	- <https://www.apollographql.com/docs/apollo-server/schema/directives/>
 - Add back to top Floating Action Button on all pages
 - Add a heading per page in the below style. Add tags to holidays in the same style as the below bubbles for things such as “skiing”
-- Use suspense in [[React]] for loading faster - [Efficient and Elegant Web Development with Next.js: A Deep Dive into Component Streaming and Chunked Transfer Encoding | by Momen Daoud | Nov, 2023 | Medium](https://medium.com/@momendaoud/efficient-and-elegant-web-development-with-next-js-6087b3fd86e1)
+- Use suspense in <span class="mint-link">React</span> for loading faster - [Efficient and Elegant Web Development with Next.js: A Deep Dive into Component Streaming and Chunked Transfer Encoding | by Momen Daoud | Nov, 2023 | Medium](https://medium.com/@momendaoud/efficient-and-elegant-web-development-with-next-js-6087b3fd86e1)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -169,57 +165,14 @@ To launch the repo, use the [[PowerShell]] alias
 
 - At the very top, have some big text about travel or adventure 
 
-![[20231115 Website Inspiration 3.jpeg]]
-
-- Top of the page, show the world map
-- Initial card list of holidays and descriptions below it
-- Clicking on a holiday jumps to that holiday page
-- Have a show more at bottom of list to only load a few in originally 
-- Click a button on each card to make it full screen? Or just transition to the holiday page via animation where the card grows to fill the page 
-
-![[20231009 TravelWebsitePageLayoutSketch.jpeg]]
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-#### Sidebar
-
-- Have on left of the screen
-- When toggled, have it come in from the left and change the colour of the logo in the top left corner from white to a red version of the same logo
-- Have the page links look like the headers on each page with a / before each
-- For the sidebar, always have visible for desktop but have as appearing on mobile 
-
-![[20231009 SidebarInspiration.jpeg]]
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-#### Holiday Page
-
-- For each holiday, have a separate page where it shows
-	- An image of the holiday 
-	- A distance travelled to get to that holiday - from the departingAirport unless set as n/a
-	- A list of clickable attendees 
-- Make the holiday image fill the entire screen, including removing the page header, like below
-- Only the header text and back button remain, as bold white over the image
-
-![[20231009 FullScreenInspiration.jpeg]]
-
-![[20231115 Website Inspiration 1.jpeg]]
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-#### World Map Visualisation 
-
-- Find a full screen map that colours countries based on if I've been there or not
-- Best component will also colour darker if I've been more than once
-- Add date filters to limit the data
-- Clicking a country will jump to the [[Travel Website#Country Page|Country Page]]
+!<span class="mint-link">Country Page</span>
 - Have the map greyed out like below with coloured tag markers to be visually in line with current red and white theme Of the site
 
-![[20231009 MapIconInspiration.jpeg]]
+!<span class="mint-link">20231009 MapIconInspiration.jpeg</span>
 
 - Have key numbers below the map as shown below
 
-![[20231009 MapStatsInspiration.jpeg]]
+!<span class="mint-link">20231009 MapStatsInspiration.jpeg</span>
 
 - Possible libraries
 	- [Home | React Google Maps](https://visgl.github.io/react-google-maps/)
@@ -231,7 +184,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 #### Neo4j Graph Visualisation 
 
-- Allow users to pan around and zoom into the graph like in [[Neo4j]]
+- Allow users to pan around and zoom into the graph like in <span class="mint-link">Neo4j</span>
 - Allow users to click on nodes to jump to other pages
 - Kevin to send link to visualiser
 	- <https://www.npmjs.com/package/vis-react>
@@ -248,7 +201,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 #### Country Page
 
-- [REST Countries](https://restcountries.com/#rest-countries) - [[API]]
+- [REST Countries](https://restcountries.com/#rest-countries) - <span class="mint-link">API</span>
 - Show the flag of the country
 - Show all locations connected to that country
 - Show how many times I've been to that country
@@ -268,32 +221,32 @@ To launch the repo, use the [[PowerShell]] alias
 ### Planned Features
 
 - Highly connected set of pages
-	- [[GraphQL]] - [Pass variables in call](https://youtu.be/YBP-waKYbnA?si=DYmKIROE3_uS1N_s)
+	- <span class="mint-link">GraphQL</span> - [Pass variables in call](https://youtu.be/YBP-waKYbnA?si=DYmKIROE3_uS1N_s)
 - Use slugs for urls to create links between pages
-	- [[Next.js]] - [Next.js Dynamic Routes](https://youtu.be/Ql5kyJaYbls?si=WE8sp-XLz5ASo8Pd)
+	- <span class="mint-link">Next.js</span> - [Next.js Dynamic Routes](https://youtu.be/Ql5kyJaYbls?si=WE8sp-XLz5ASo8Pd)
 - Have common layout component between pages 
 	- [Simple Next.js Layout Tutorial](https://youtu.be/DGn25s42NvQ?si=b-hBV_gHT4rJCLRy)
-	- [[Next.js]] - [Layouts turorials](https://youtu.be/zbYBgy_ChGY?si=Anh6wL8ZjB8758B7)
+	- <span class="mint-link">Next.js</span> - [Layouts turorials](https://youtu.be/zbYBgy_ChGY?si=Anh6wL8ZjB8758B7)
 - Create reusable components such as a attendees list that is fed props such as an object of attendees names, ids and the slug to their page to create quick hyperlinks
-- In the header, have a back button with a simple [[JavaScript]] back code (see Big Lynn 404 page) to get back to any previous page
+- In the header, have a back button with a simple <span class="mint-link">JavaScript</span> back code (see Big Lynn 404 page) to get back to any previous page
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- [Travel Website Tasks](https://todoist.com/app/section/Travel-Website-6C4XfjXjf47p6WgC) - [[Todoist]]
+- [Travel Website Tasks](https://todoist.com/app/section/Travel-Website-6C4XfjXjf47p6WgC) - <span class="mint-link">Todoist</span>
 - [Old my-travel-journal website](https://bangsluke-my-travel-journal.netlify.app/)
 - [Old my-travel-journal GitHub Repo](https://github.com/bangsluke/my-travel-journal)
 - [frontend-mytraveljournal GitHub Repo](https://github.com/bangsluke/frontend-mytraveljournal)
-	- An attempt to change the [[Next.js]] front end to be app routing
+	- An attempt to change the <span class="mint-link">Next.js</span> front end to be app routing
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-The biggest challenge for this project was setting up the [[Apollo]] backend server and getting the connection to the front end.
+The biggest challenge for this project was setting up the <span class="mint-link">Apollo</span> backend server and getting the connection to the front end.
 
-I also learned a lot about the page routing in [[Next.js]] to develop the various page types on the site.
+I also learned a lot about the page routing in <span class="mint-link">Next.js</span> to develop the various page types on the site.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -4,19 +4,20 @@ tags:
   - software
   - skill
   - portfolio
-viewCount: 2
+viewCount: 3
 aliases:
   - Microsoft Excel
 modified: 2025-07-18T12:16:41+01:00
 skillRating: 0
 skillDescription: TBC
-logoFileName: 
+logoFileName: excel.svg
 ---
+
 # Excel
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> [[Microsoft]] Excel - Language: [[VBA]]
+> <span class="mint-link">Microsoft</span> Excel - Language: <span class="mint-link">VBA</span>
 
 ## Table of Contents
 

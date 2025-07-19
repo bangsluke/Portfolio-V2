@@ -22,9 +22,10 @@ referenceEmail: tauchecorne@opus2.com
 referenceNumber: 07912 945265
 referenceAddress: London, EC4A 3BF
 ---
+
 # Taryn Auchecorne
 
-> [!back] Link back to [[People Notes]]
+> [!back] Link back to <span class="mint-link">People Notes</span>
 
 ## Table of Contents 
 

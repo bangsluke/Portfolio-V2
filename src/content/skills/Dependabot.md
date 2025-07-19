@@ -7,18 +7,19 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-18T12:36:59+01:00
-viewCount: 4
+viewCount: 5
 aliases:
   - dependabot
 skillRating: 0
 skillDescription: TBC
-logoFileName: 
+logoFileName: dependabot.svg
 ---
+
 # Dependabot
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> [[GitHub]] security plugin
+> <span class="mint-link">GitHub</span> security plugin
 
 ## Table of Contents
 

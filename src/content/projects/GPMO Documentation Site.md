@@ -7,8 +7,8 @@ tags:
   - coding
   - work
 created: 2025-05-30 09:57
-modified: 2025-07-17T20:12:20+01:00
-viewCount: 11
+modified: 2025-07-19T09:42:58+01:00
+viewCount: 13
 aliases: 
 projectURL: TBC
 codeURL: TBC
@@ -44,7 +44,7 @@ lessonsLearned: "TBC"
 ---
 # GPMO Documentation Site
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -73,12 +73,6 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-TBC
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
 TBC
@@ -93,9 +87,9 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: [[React]], [[Docusaurus]]
-- Back end/Datasource: [[Markdown]]
-- Hosting: [[GitLab]] (see [Repositories](#repositories)), [[Azure]] TBC
+- Front end: <span class="mint-link">React</span>, <span class="mint-link">Docusaurus</span>
+- Back end/Datasource: <span class="mint-link">Markdown</span>
+- Hosting: <span class="mint-link">GitLab</span> (see [Repositories](#repositories)), <span class="mint-link">Azure</span> TBC
 - Security: TBC
 - Authentication: TBC
 
@@ -110,7 +104,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -124,7 +118,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- [[GPMO]]
+- <span class="mint-link">GPMO</span>
 - TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)

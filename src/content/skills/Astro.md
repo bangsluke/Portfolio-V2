@@ -15,11 +15,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: astro.svg
 ---
+
 # Astro
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-A framework for [[JavaScript]]
+A framework for <span class="mint-link">JavaScript</span>
 
 ## Table of Contents 
 

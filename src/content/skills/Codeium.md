@@ -7,17 +7,18 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-18T12:36:44+01:00
-viewCount: 6
+viewCount: 7
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName: 
+logoFileName: codeium.svg
 ---
+
 # Codeium
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Coding support and predictive code - Similar to [[GitHub]] Co-pilot
+> Coding support and predictive code - Similar to <span class="mint-link">GitHub</span> Co-pilot
 
 ## Table of Contents
 

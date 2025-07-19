@@ -15,9 +15,10 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: python.svg
 ---
+
 # Python
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
 ## Table of Contents
 

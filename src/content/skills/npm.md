@@ -12,11 +12,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: npm.svg
 ---
+
 # npm
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> [[JavaScript]] package manager
+> <span class="mint-link">JavaScript</span> package manager
 
 ## Table of Contents
 

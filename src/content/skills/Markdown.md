@@ -16,9 +16,10 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: markdown.svg
 ---
+
 # Markdown
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
 ## Table of Contents
 

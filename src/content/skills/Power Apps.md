@@ -4,20 +4,21 @@ tags:
   - software
   - skill
   - portfolio
-modified: 2025-07-02T14:36:55+01:00
-viewCount: 2
+modified: 2025-07-19T16:06:59+01:00
+viewCount: 3
 aliases:
   - Microsoft Power Apps
   - Power App
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: power_apps.svg
 ---
+
 # Power Apps
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> [[Microsoft]] Power Apps - Language: [[JavaScript]]
+> <span class="mint-link">Microsoft</span> Power Apps - Language: <span class="mint-link">JavaScript</span>
 
 ## Table of Contents
 

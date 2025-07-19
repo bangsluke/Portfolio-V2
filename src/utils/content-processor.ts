@@ -11,16 +11,40 @@ export function processContent(content: string | undefined | null): string {
 			// First, handle [[CompanyName|AltName]] format to extract AltName and make it bold and mint green
 			.replace(
 				/\[\[([^|]+)\|([^\]]+)\]\]/g,
-				'<strong class="mint-link">$2</strong>'
+				'<span class="mint-link">$2</span>'
 			)
 			// Then handle simple Obsidian links [[text]] -> bold and mint green text
-			.replace(/\[\[([^\]]+)\]\]/g, '<strong class="mint-link">$1</strong>')
+			.replace(/\[\[([^\]]+)\]\]/g, '<span class="mint-link">$1</span>')
+			// Handle existing HTML mint-link tags to ensure they're properly styled
+			.replace(
+				/<p class="mint-link">([^<]+)<\/p>/g,
+				'<span class="mint-link">$1</span>'
+			)
+			// Convert hardcoded project links to use slugs
+			.replace(
+				/href="\/portfolio\/projects\/([^"]+)"/g,
+				(match, projectName) => {
+					const slug = convertProjectNameToSlug(projectName);
+					return `href="/portfolio/projects/${slug}"`;
+				}
+			)
 			// Finally, convert markdown links to HTML with mint green and underline styling
 			.replace(
 				/\[([^\]]+)\]\(([^)]+)\)/g,
 				'<a href="$2" class="mint-link" target="_blank" rel="noopener noreferrer">$1</a>'
 			)
 	);
+}
+
+/**
+ * Convert a project name to a slug format
+ * This function converts project names like "Portfolio Card" to "portfolio-card"
+ */
+export function convertProjectNameToSlug(projectName: string): string {
+	return projectName
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/(^-|-$)/g, '');
 }
 
 /**

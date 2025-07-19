@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-17T19:31:25+01:00
-viewCount: 6
+modified: 2025-07-19T10:07:51+01:00
+viewCount: 8
 aliases:
   - PFDM
 projectURL: 
@@ -38,13 +38,13 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "Data input for financial tracking of [[RLE International]] projects."
-longDescription: "TBC\nPulled in timesheet data and financial information from various [[RLE International]] region sources such as [[Paycor]], [[T-Sheet]] and [[Iplicit]]."
+shortDescription: "Data input for financial tracking of <span class=\"mint-link\">RLE International</span> projects."
+longDescription: "TBC\nPulled in timesheet data and financial information from various <span class=\"mint-link\">RLE International</span> region sources such as <span class=\"mint-link\">Paycor</span>, <span class=\"mint-link\">T-Sheet</span> and <span class=\"mint-link\">Iplicit</span>."
 lessonsLearned: "TBC"
 ---
 # Project Finance Data Manager
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -73,15 +73,9 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-TBC
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-Data input for financial tracking of [[RLE International]] projects.
+Data input for financial tracking of <span class="mint-link">RLE International</span> projects.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -89,7 +83,7 @@ Data input for financial tracking of [[RLE International]] projects.
 
 TBC
 
-Pulled in timesheet data and financial information from various [[RLE International]] region sources such as [[Paycor]], [[T-Sheet]] and [[Iplicit]].
+Pulled in timesheet data and financial information from various <span class="mint-link">RLE International</span> region sources such as <span class="mint-link">Paycor</span>, <span class="mint-link">T-Sheet</span> and <span class="mint-link">Iplicit</span>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -97,7 +91,7 @@ Pulled in timesheet data and financial information from various [[RLE Internatio
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: [[GitLab]] (see [Repositories](#repositories))
+- Hosting: <span class="mint-link">GitLab</span> (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -112,7 +106,7 @@ Pulled in timesheet data and financial information from various [[RLE Internatio
 
 ## PowerShell Query
 
-To launch the repo, use the [[PowerShell]] alias 
+To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 

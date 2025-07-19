@@ -15,11 +15,12 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: nodejs.svg
 ---
+
 # Node.js
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Language: [[JavaScript]]
+> Language: <span class="mint-link">JavaScript</span>
 
 ## Table of Contents 
 

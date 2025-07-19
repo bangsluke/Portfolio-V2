@@ -8,19 +8,20 @@ tags:
   - portfolio
 created: 2024-06-13T11:18:00
 modified: 2025-06-29T17:16:05+01:00
-viewCount: 5
+viewCount: 6
 aliases:
   - Apps Script
   - GAS
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: google_apps_script.svg
 ---
+
 # Google Apps Script
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
-> Language developed by [[Google]]. Form of [[JavaScript]]
+> Language developed by <span class="mint-link">Google</span>. Form of <span class="mint-link">JavaScript</span>
 
 ## Table of Contents
 

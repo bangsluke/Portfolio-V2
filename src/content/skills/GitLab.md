@@ -13,9 +13,10 @@ skillRating: 0
 skillDescription: TBC
 logoFileName: gitlab.svg
 ---
+
 # GitLab
 
-> [!back] Link back to [[Skills Notes]]
+> [!back] Link back to <span class="mint-link">Skills Notes</span>
 
 ## Table of Contents
 

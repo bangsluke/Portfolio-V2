@@ -68,8 +68,6 @@ export class EmailService {
 		}
 
 		try {
-			console.log('📧 Sending email notification...');
-
 			const mailOptions = {
 				from: this.sender,
 				to: this.recipient,
@@ -78,7 +76,6 @@ export class EmailService {
 			};
 
 			const result = await this.transporter.sendMail(mailOptions);
-			console.log('✅ Email notification sent successfully');
 			return true;
 		} catch (error) {
 			console.error('❌ Failed to send email notification:', error.message);

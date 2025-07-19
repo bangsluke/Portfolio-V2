@@ -7,10 +7,10 @@ tags:
   - project/completed/work
   - coding
 created: 2025-05-29 18:05
-modified: 2025-07-17T19:29:46+01:00
+modified: 2025-07-19T09:58:59+01:00
 aliases:
   - DVP Prototype
-viewCount: 12
+viewCount: 14
 projectURL: https://dvp-fe.icypebble-0bf96993.germanywestcentral
 codeURL: TBC
 codeMultipleRepos: false
@@ -42,13 +42,11 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "The [[DVP]] project was a short demonstration of using [[Neo4j]] graphs for running optimisation calculations for the Automotive industry."
-longDescription: "[[RLE International|RLE]]’s [[DVP]] tool was a working demonstration tool for how problems such as automatically generating a vehicle [[DVP]] could be done from inputs and running optimisation algorithms to generate a Pareto curve of the importance of each input."
-lessonsLearned: "The lessons learned for me were mainly in data visualisation in the front end, as I received various data points from the backend [[Neo4j]] and [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]] calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.\nIt also taught me a lot about passing large objects of states from one page to the next."
+shortDescription: "The <span class=\"mint-link\">RLE</span>’s <span class=\"mint-link\">Java</span>\n- Hosting: <span class=\"mint-link\">Java</span> calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.\nIt also taught me a lot about passing large objects of states from one page to the next."
 ---
 # DVP Tool
 
-> [!back] Link back to [[01 Projects|Projects]]
+> [!back] Link back to <span class="mint-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -77,66 +75,10 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-## Introduction
-
-A note detailing the work I did on an online [[DVP]] planning tool for [[RLE International]].
-
-Worked on this with [[Elena Kohlwey]] and [[Kevin Tim Gruner]].
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Short Description
 
-The [[DVP]] project was a short demonstration of using [[Neo4j]] graphs for running optimisation calculations for the Automotive industry.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Long Description
-
-[[RLE International|RLE]]’s [[DVP]] tool was a working demonstration tool for how problems such as automatically generating a vehicle [[DVP]] could be done from inputs and running optimisation algorithms to generate a Pareto curve of the importance of each input.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Architecture and Technologies
-
-- Front end: [[React]], [[JavaScript]], [[Next.js]]
-- Back end/Datasource: [[Neo4j]], [[Cypher]], [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]
-- Hosting: [[GitLab]] (see [Repositories](#repositories))
-- Security: n/a
-- Authentication: [[Azure]]
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Repositories
-
-- Main repo: `=this.codeURL`
-- Secondary repo: n/a
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## PowerShell Query
-
-To launch the repo, use the [[PowerShell]] alias 
-
-> `=this.powerShellAlias`
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Planning and Design
-
-- The main template of the frontend was a Berry Material [[UI]] template
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Other Links
-
-- TBC - add link to the GitLab top level project?
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Lessons Learned
-
-The lessons learned for me were mainly in data visualisation in the front end, as I received various data points from the backend [[Neo4j]] and [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]] calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.
+The <span class="mint-link">RLE</span>’s <span class="mint-link">Java</span>
+- Hosting: <span class="mint-link">Java</span> calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.
 
 It also taught me a lot about passing large objects of states from one page to the next.
 
