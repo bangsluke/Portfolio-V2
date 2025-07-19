@@ -7,8 +7,8 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-07-18T11:01:12+01:00
-viewCount: 49
+modified: 2025-07-18T13:24:15+01:00
+viewCount: 47
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -21,7 +21,6 @@ powerShellAlias: portfolio
 dateStart: 2025-02-01
 dateEnd: ""
 technologies:
-  - "[[React]]"
   - "[[Neo4j]]"
   - "[[GraphQL]]"
   - "[[Obsidian]]"
@@ -96,7 +95,7 @@ An updated personal portfolio website for displaying my skills and past projects
 
 ## Architecture and Technologies
 
-- Front end: [[Astro]], [[Preact]], [[React]], [[Tailwind CSS]]
+- Front end: [[Astro]], [[Preact]], [[Tailwind CSS]]
 - Back end/Datasource: [[Obsidian]], [[Neo4j]], [[Neo4j Aura]], [[GraphQL]]
 - Hosting: [[GitHub]] and [[Netlify]]
 - Security: [[Synk]]

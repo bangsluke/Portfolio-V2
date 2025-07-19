@@ -1,180 +1,194 @@
 {
-  "timestamp": "2025-07-18T11:36:31.513Z",
+  "timestamp": "2025-07-19T09:10:58.684Z",
   "source": "C:\\\\Users\\\\bangs\\\\Documents\\\\Obsidian Personal Notes",
+  "syncMode": "development",
+  "debugMode": false,
   "errors": [
     {
       "file": "Apollo.md",
       "error": "Missing SVG file: --- for skill Apollo",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.132Z"
     },
     {
       "file": "Apple Shortcuts.md",
       "error": "Missing SVG file: --- for skill Apple Shortcuts",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
-    },
-    {
-      "file": "Bash.md",
-      "error": "Missing SVG file: bash.svg for skill Bash",
-      "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.132Z"
     },
     {
       "file": "Codeium.md",
       "error": "Missing SVG file: --- for skill Codeium",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.132Z"
     },
     {
       "file": "Cursor.md",
       "error": "Missing SVG file: --- for skill Cursor",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.132Z"
     },
     {
       "file": "Cypher.md",
       "error": "Missing SVG file: --- for skill Cypher",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.132Z"
     },
     {
-      "file": "DevOps.md",
-      "error": "Missing SVG file: --- for skill DevOps",
+      "file": "Dependabot.md",
+      "error": "Missing SVG file: --- for skill Dependabot",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.132Z"
+    },
+    {
+      "file": "Docusaurus.md",
+      "error": "Missing SVG file: --- for skill Docusaurus",
+      "type": "missing_svg_warning",
+      "timestamp": "2025-07-19T09:11:00.132Z"
     },
     {
       "file": "Excel.md",
       "error": "Missing SVG file: --- for skill Excel",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.132Z"
     },
     {
       "file": "Google Apps Script.md",
       "error": "Missing SVG file: --- for skill Google Apps Script",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.132Z"
     },
     {
       "file": "GraphQL.md",
       "error": "Missing SVG file: --- for skill GraphQL",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.132Z"
     },
     {
-      "file": "Java.md",
-      "error": "Missing SVG file: --- for skill Java",
+      "file": "Neo4j Aura.md",
+      "error": "Missing SVG file: --- for skill Neo4j Aura",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.132Z"
     },
     {
-      "file": "npm.md",
-      "error": "Missing SVG file: --- for skill npm",
+      "file": "Neo4j.md",
+      "error": "Missing SVG file: --- for skill Neo4j",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.132Z"
+    },
+    {
+      "file": "NeoDash.md",
+      "error": "Missing SVG file: --- for skill NeoDash",
+      "type": "missing_svg_warning",
+      "timestamp": "2025-07-19T09:11:00.132Z"
+    },
+    {
+      "file": "NextAuth.md",
+      "error": "Missing SVG file: --- for skill NextAuth",
+      "type": "missing_svg_warning",
+      "timestamp": "2025-07-19T09:11:00.132Z"
+    },
+    {
+      "file": "Obsidian.md",
+      "error": "Missing SVG file: --- for skill Obsidian",
+      "type": "missing_svg_warning",
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "pip.md",
       "error": "Missing SVG file: --- for skill pip",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "Power Apps.md",
       "error": "Missing SVG file: --- for skill Power Apps",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "Power Automate.md",
       "error": "Missing SVG file: --- for skill Power Automate",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "Power BI.md",
       "error": "Missing SVG file: --- for skill Power BI",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "Power Platform.md",
       "error": "Missing SVG file: --- for skill Power Platform",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "Power Query.md",
       "error": "Missing SVG file: --- for skill Power Query",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "PowerPoint.md",
       "error": "Missing SVG file: --- for skill PowerPoint",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "PowerShell.md",
       "error": "Missing SVG file: --- for skill PowerShell",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "Preact.md",
       "error": "Missing SVG file: preact.svg for skill Preact",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
+    },
+    {
+      "file": "Prettier.md",
+      "error": "Missing SVG file: --- for skill Prettier",
+      "type": "missing_svg_warning",
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "Project.md",
       "error": "Missing SVG file: --- for skill Project",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "SQL.md",
       "error": "Missing SVG file: --- for skill SQL",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
+    },
+    {
+      "file": "Synk.md",
+      "error": "Missing SVG file: --- for skill Synk",
+      "type": "missing_svg_warning",
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "VBA.md",
       "error": "Missing SVG file: --- for skill VBA",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
     },
     {
       "file": "Visio.md",
       "error": "Missing SVG file: --- for skill Visio",
       "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
-    },
-    {
-      "file": "Vite.js.md",
-      "error": "Missing SVG file: vitejs.svg for skill Vite.js",
-      "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
-    },
-    {
-      "file": "VS Code.md",
-      "error": "Missing SVG file: --- for skill VS Code",
-      "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
-    },
-    {
-      "file": "Yarn.md",
-      "error": "Missing SVG file: --- for skill Yarn",
-      "type": "missing_svg_warning",
-      "timestamp": "2025-07-18T11:36:53.699Z"
+      "timestamp": "2025-07-19T09:11:00.133Z"
     }
   ],
   "summary": {
-    "totalFiles": 2102,
+    "totalFiles": 2103,
     "processedFiles": 0,
-    "copiedFiles": 116,
+    "copiedFiles": 117,
     "skippedFiles": 1986,
     "errors": 0
   },

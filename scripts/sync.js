@@ -26,13 +26,21 @@ const EMAIL_NOTIFICATIONS = process.env.EMAIL_NOTIFICATIONS === 'true';
 const AUTO_DEPLOY = process.env.AUTO_DEPLOY === 'true';
 const DEBUG_MODE = process.env.DEBUG === 'true';
 
+// Add spacings for console log messages
+const SPACING_LEVEL_1 = ' '.repeat(2);
+const SPACING_LEVEL_2 = ' '.repeat(4);
+const SPACING_LEVEL_3 = ' '.repeat(6);
+const SPACING_LEVEL_4 = ' '.repeat(8);
+const SPACING_LEVEL_5 = ' '.repeat(10);
+
 // Validate OBSIDIAN_PATH
 if (!OBSIDIAN_VAULT_PATH) {
 	console.error('❌ OBSIDIAN_PATH environment variable is not set!');
 	console.error(
-		'Please set OBSIDIAN_PATH in your .env file to the path of your Obsidian vault.'
+		SPACING_LEVEL_1 +
+			'Please set OBSIDIAN_PATH in your .env file to the path of your Obsidian vault.'
 	);
-	console.error('Expected .env file location:', envPath);
+	console.error(SPACING_LEVEL_1 + 'Expected .env file location:', envPath);
 	console.error(
 		'Available environment variables:',
 		Object.keys(process.env).filter(
@@ -48,7 +56,9 @@ if (!OBSIDIAN_VAULT_PATH) {
 // Check if the Obsidian vault path exists
 if (!fs.existsSync(OBSIDIAN_VAULT_PATH)) {
 	console.error('❌ Obsidian vault path does not exist:', OBSIDIAN_VAULT_PATH);
-	console.error('Please check your OBSIDIAN_PATH in the .env file.');
+	console.error(
+		SPACING_LEVEL_1 + 'Please check your OBSIDIAN_PATH in the .env file.'
+	);
 	process.exit(1);
 }
 
@@ -141,37 +151,6 @@ function extractSectionsToFrontmatter(content, contentType) {
 			property: 'keyAchievement',
 			contentType: 'company',
 		},
-
-		// Skill-specific sections (excluding skillDescription - should come from YAML frontmatter)
-		{
-			name: 'Key Achievement',
-			property: 'keyAchievement',
-			contentType: 'skill',
-		},
-
-		// Client-specific sections
-		{
-			name: 'Client Description',
-			property: 'clientDescription',
-			contentType: 'client',
-		},
-		{
-			name: 'Key Achievement',
-			property: 'keyAchievement',
-			contentType: 'client',
-		},
-
-		// Reference-specific sections
-		{
-			name: 'Reference Description',
-			property: 'referenceDescription',
-			contentType: 'reference',
-		},
-		{
-			name: 'Key Achievement',
-			property: 'keyAchievement',
-			contentType: 'reference',
-		},
 	];
 
 	const extractedData = {};
@@ -259,10 +238,12 @@ function extractSectionsToFrontmatter(content, contentType) {
 	return content;
 }
 
-// Error tracking (only for production mode)
+// Error tracking (for all modes)
 let syncErrors = {
 	timestamp: new Date().toISOString(),
 	source: OBSIDIAN_VAULT_PATH,
+	syncMode: SYNC_MODE,
+	debugMode: DEBUG_MODE,
 	errors: [],
 	summary: {
 		totalFiles: 0,
@@ -361,38 +342,33 @@ function getContentType(targetFolder) {
 // Process a markdown file
 function processMarkdownFile(filePath, relativePath) {
 	try {
-		if (SYNC_MODE === 'production') {
-			syncErrors.summary.totalFiles++;
-		}
+		syncErrors.summary.totalFiles++;
 
 		let content = fs.readFileSync(filePath, 'utf8');
 		const { tags } = parseFrontmatter(content);
 
 		if (DEBUG_MODE) {
 			console.log(`📄 Processing: ${relativePath}`);
-			console.log(`🏷️  Tags found: ${tags.join(', ')}`);
+			console.log(SPACING_LEVEL_1 + `🏷️  Tags found: ${tags.join(', ')}`);
 		}
 
 		// Check if file has portfolio tag
 		const portfolioTag = process.env.PORTFOLIO_TAG || 'portfolio';
 		if (!tags.includes(portfolioTag)) {
-			if (SYNC_MODE === 'production') {
-				syncErrors.summary.skippedFiles++;
-			}
+			syncErrors.summary.skippedFiles++;
 			if (DEBUG_MODE) {
-				console.log(`⏭️  Skipping - no ${portfolioTag} tag`);
+				console.log(SPACING_LEVEL_2 + `⏭️  Skipping - no ${portfolioTag} tag`);
 			}
 			return;
 		}
 
 		const targetFolder = getTargetFolder(tags);
 		if (!targetFolder) {
-			if (SYNC_MODE === 'production') {
-				syncErrors.summary.skippedFiles++;
-			}
+			syncErrors.summary.skippedFiles++;
 			if (DEBUG_MODE) {
 				console.log(
-					`⏭️  Skipping - no matching folder for tags: ${tags.join(', ')}`
+					SPACING_LEVEL_2 +
+						`⏭️  Skipping - no matching folder for tags: ${tags.join(', ')}`
 				);
 			}
 			return;
@@ -403,11 +379,11 @@ function processMarkdownFile(filePath, relativePath) {
 
 		// Check if target file is protected
 		if (isProtected(fileName)) {
-			if (SYNC_MODE === 'production') {
-				syncErrors.summary.skippedFiles++;
-			}
+			syncErrors.summary.skippedFiles++;
 			if (DEBUG_MODE) {
-				console.log(`🛡️  Skipping - file is protected: ${fileName}`);
+				console.log(
+					SPACING_LEVEL_2 + `🛡️  Skipping - file is protected: ${fileName}`
+				);
 			}
 			return;
 		}
@@ -457,23 +433,19 @@ function processMarkdownFile(filePath, relativePath) {
 		// Write the filtered content to target folder
 		fs.writeFileSync(targetPath, content, 'utf8');
 
-		if (SYNC_MODE === 'production') {
-			syncErrors.summary.copiedFiles++;
-		}
+		syncErrors.summary.copiedFiles++;
 
 		if (DEBUG_MODE) {
 			console.log(`✅ Copied to: ${targetPath}`);
 		}
 	} catch (error) {
-		if (SYNC_MODE === 'production') {
-			syncErrors.summary.errors++;
-			const errorInfo = {
-				file: filePath,
-				error: error.message,
-				timestamp: new Date().toISOString(),
-			};
-			syncErrors.errors.push(errorInfo);
-		}
+		syncErrors.summary.errors++;
+		const errorInfo = {
+			file: filePath,
+			error: error.message,
+			timestamp: new Date().toISOString(),
+		};
+		syncErrors.errors.push(errorInfo);
 		console.error(`❌ Error processing ${filePath}:`, error.message);
 	}
 }
@@ -503,15 +475,13 @@ function processDirectory(dirPath, relativePath = '') {
 			}
 		}
 	} catch (error) {
-		if (SYNC_MODE === 'production') {
-			syncErrors.summary.errors++;
-			const errorInfo = {
-				directory: dirPath,
-				error: error.message,
-				timestamp: new Date().toISOString(),
-			};
-			syncErrors.errors.push(errorInfo);
-		}
+		syncErrors.summary.errors++;
+		const errorInfo = {
+			directory: dirPath,
+			error: error.message,
+			timestamp: new Date().toISOString(),
+		};
+		syncErrors.errors.push(errorInfo);
 		console.error(`❌ Error processing directory ${dirPath}:`, error.message);
 	}
 }
@@ -814,8 +784,8 @@ async function main() {
 		console.log('📁 Processing Obsidian vault...');
 		processDirectory(OBSIDIAN_VAULT_PATH);
 
-		// Check for missing SVG files (only for production mode)
-		if (SYNC_MODE === 'production') {
+		// Check for missing SVG files (for production mode or when email notifications are enabled)
+		if (SYNC_MODE === 'production' || EMAIL_NOTIFICATIONS) {
 			console.log('🔍 Checking for missing SVG files...');
 			checkMissingSvgFiles();
 		}
@@ -842,12 +812,14 @@ async function main() {
 		if (SYNC_MODE === 'production') {
 			syncErrors.success =
 				buildSuccess && deploySuccess && syncErrors.summary.errors === 0;
+		} else {
+			// For development mode, success is based on whether files were processed
+			syncErrors.success =
+				syncErrors.summary.totalFiles > 0 && syncErrors.summary.errors === 0;
 		}
 
-		// Save error log (only for production mode)
-		if (SYNC_MODE === 'production') {
-			saveErrorLog();
-		}
+		// Save error log (for all modes)
+		saveErrorLog();
 
 		// Send email notification (only for production mode or when explicitly enabled)
 		if (SYNC_MODE === 'production' || EMAIL_NOTIFICATIONS) {
@@ -863,9 +835,20 @@ async function main() {
 	} catch (error) {
 		console.error('❌ Sync process failed:', error.message);
 
-		if (SYNC_MODE === 'production') {
-			syncErrors.success = false;
-			saveErrorLog();
+		// Capture the error in syncErrors
+		syncErrors.success = false;
+		syncErrors.errors.push({
+			type: 'sync_failure',
+			error: error.message,
+			timestamp: new Date().toISOString(),
+			stack: error.stack,
+		});
+
+		// Save error log for all modes
+		saveErrorLog();
+
+		// Send email notification (only for production mode or when explicitly enabled)
+		if (SYNC_MODE === 'production' || EMAIL_NOTIFICATIONS) {
 			await sendEmailNotification();
 		}
 
