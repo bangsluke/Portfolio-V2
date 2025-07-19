@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { getSkillIconName, shouldShowIcon } from '../../utils/icon-utils';
 
 interface Props {
 	skillName: string;
@@ -17,75 +18,6 @@ const {
 
 // Clean the skill name by removing Obsidian link brackets
 const cleanSkillName = skillName.replace(/\[\[|\]\]/g, '');
-
-function getSkillIconName(logoFileName: string | null) {
-	if (!logoFileName) return null;
-	// Remove .svg extension if present
-	return logoFileName.replace(/\.svg$/, '');
-}
-
-// List of known working icons (same as SkillsBubbles)
-const knownIcons = [
-	'javascript',
-	'typescript',
-	'python',
-	'react',
-	'node',
-	'git',
-	'github',
-	'html',
-	'css',
-	'astro',
-	'tailwind',
-	'vercel',
-	'netlify',
-	'markdown',
-	'angular',
-	'arrow-left',
-	'bars',
-	'bitwarden',
-	'bootstrap',
-	'briefcase',
-	'cloudflare',
-	'code',
-	'dashboard',
-	'envelope',
-	'facebook',
-	'figma',
-	'firebase',
-	'gatsby',
-	'github-svg',
-	'info',
-	'instagram',
-	'linkedin',
-	'md',
-	'mongo',
-	'moon',
-	'mysql',
-	'nestjs',
-	'nextjs',
-	'nodejs',
-	'paperplane',
-	'person',
-	'php',
-	'rocket',
-	'sass',
-	'sun',
-	'twitter',
-	'whatsapp',
-	'windsurf-logo',
-	'wordpress',
-	'xmark',
-	'youtube',
-	'cursor-ia',
-	'copilot',
-	'deepseek',
-	'flask',
-];
-
-function shouldShowIcon(iconName: string) {
-	return knownIcons.includes(iconName.toLowerCase());
-}
 
 // Get the icon name for the skill - try multiple variations
 function findIconForSkill(skillName: string) {

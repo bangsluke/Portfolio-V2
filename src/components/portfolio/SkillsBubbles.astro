@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
+import { getSkillIconName, shouldShowIcon } from '../../utils/icon-utils';
 
 // Get all skills from the local content folder
 const skills = await getCollection('skills');
@@ -18,75 +19,6 @@ const sortedSkills = skills.sort((a, b) => {
 	// Fallback to alphabetical sorting by slug (filename)
 	return a.slug.localeCompare(b.slug);
 });
-
-function getSkillIconName(logoFileName: string | null) {
-	if (!logoFileName) return null;
-	// Remove .svg extension if present
-	return logoFileName.replace(/\.svg$/, '');
-}
-
-// List of known working icons
-const knownIcons = [
-	'javascript',
-	'typescript',
-	'python',
-	'react',
-	'node',
-	'git',
-	'github',
-	'html',
-	'css',
-	'astro',
-	'tailwind',
-	'vercel',
-	'netlify',
-	'markdown',
-	'angular',
-	'arrow-left',
-	'bars',
-	'bitwarden',
-	'bootstrap',
-	'briefcase',
-	'cloudflare',
-	'code',
-	'dashboard',
-	'envelope',
-	'facebook',
-	'figma',
-	'firebase',
-	'gatsby',
-	'github-svg',
-	'info',
-	'instagram',
-	'linkedin',
-	'md',
-	'mongo',
-	'moon',
-	'mysql',
-	'nestjs',
-	'nextjs',
-	'nodejs',
-	'paperplane',
-	'person',
-	'php',
-	'rocket',
-	'sass',
-	'sun',
-	'twitter',
-	'whatsapp',
-	'windsurf-logo',
-	'wordpress',
-	'xmark',
-	'youtube',
-	'cursor-ia',
-	'copilot',
-	'deepseek',
-	'flask',
-];
-
-function shouldShowIcon(iconName: string) {
-	return knownIcons.includes(iconName.toLowerCase());
-}
 ---
 
 <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="skills">

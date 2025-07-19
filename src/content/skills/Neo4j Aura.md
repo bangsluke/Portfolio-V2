@@ -6,12 +6,12 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-18T12:43:15+01:00
-viewCount: 5
+viewCount: 6
 aliases:
   - Aura
 skillRating: 0
 skillDescription: TBC
-logoFileName: 
+logoFileName: neo4j-cypher.svg
 ---
 
 # Neo4j Aura

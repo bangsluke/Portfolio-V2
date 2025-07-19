@@ -13,7 +13,7 @@ aliases:
   - Apple Shortcut
 skillRating: 0
 skillDescription: TBC
-logoFileName: apple_shortcuts.JPEG
+logoFileName: apple_shortcuts.svg
 ---
 
 # Apple Shortcuts

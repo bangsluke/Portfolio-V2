@@ -7,11 +7,11 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-18T12:36:44+01:00
-viewCount: 6
+viewCount: 7
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName: 
+logoFileName: codeium.svg
 ---
 
 # Codeium

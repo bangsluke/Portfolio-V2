@@ -7,11 +7,11 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-12T19:11:39+01:00
-viewCount: 1
+viewCount: 4
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: cursor.svg
 ---
 
 # Cursor

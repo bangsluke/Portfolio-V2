@@ -516,12 +516,12 @@ function processMarkdownFile(filePath, relativePath) {
 
 // Recursively process directory
 function processDirectory(dirPath, relativePath = '') {
+	if (DEBUG_MODE) {
+		console.log(`📂 Entering directory: ${relativePath || dirPath}`);
+	}
+
 	try {
 		const items = fs.readdirSync(dirPath);
-
-		if (DEBUG_MODE && relativePath) {
-			console.log(SPACING_LEVEL_2 + `📂 Entering directory: ${relativePath}`);
-		}
 
 		for (const item of items) {
 			const fullPath = path.join(dirPath, item);
@@ -547,20 +547,26 @@ function processDirectory(dirPath, relativePath = '') {
 					}
 					continue;
 				}
+
+				if (DEBUG_MODE && item.includes('Projects')) {
+					console.log(`🔍 Found Projects directory: ${itemRelativePath}`);
+				}
+
 				processDirectory(fullPath, itemRelativePath);
 			} else if (item.endsWith('.md')) {
+				if (DEBUG_MODE && item.includes('Documentation')) {
+					console.log(`🔍 Found Documentation file: ${itemRelativePath}`);
+				}
 				processMarkdownFile(fullPath, itemRelativePath);
 			}
 		}
 	} catch (error) {
-		syncErrors.summary.errors++;
-		const errorInfo = {
-			directory: dirPath,
-			error: error.message,
-			timestamp: new Date().toISOString(),
-		};
-		syncErrors.errors.push(errorInfo);
 		console.error(`❌ Error processing directory ${dirPath}:`, error.message);
+		syncErrors.errors.push({
+			file: relativePath || dirPath,
+			error: `Failed to process directory: ${error.message}`,
+		});
+		syncErrors.summary.errors++;
 	}
 }
 
@@ -626,10 +632,32 @@ function processObsidianLinks(content) {
 	const projectMappings = getProjectNameToSlugMappings();
 
 	// Process [[ProjectName|AltText]] format
+	console.log(SPACING_LEVEL_3 + 'Processing [[ProjectName|AltText]] formats');
 	content = content.replace(
 		/\[\[([^|]+)\|([^\]]+)\]\]/g,
 		(match, projectName, altText) => {
-			const slug = projectMappings[projectName];
+			// First check if the main project name matches
+			let slug = projectMappings[projectName];
+			console.log(slug);
+
+			// If not found, check if the alt text matches a project slug
+			if (!slug) {
+				// Convert alt text to slug format and check if it matches any project
+				const altTextSlug = altText
+					.toLowerCase()
+					.replace(/[^a-z0-9]+/g, '-')
+					.replace(/(^-|-$)/g, '');
+
+				// Find project by slug
+				const projectEntry = Object.entries(projectMappings).find(
+					([name, slug]) => slug === altTextSlug
+				);
+
+				if (projectEntry) {
+					slug = projectEntry[1]; // Use the found slug
+				}
+			}
+
 			if (slug) {
 				return `<a href="/portfolio/projects/${slug}" class="mint-link">${altText}</a>`;
 			}
@@ -639,6 +667,7 @@ function processObsidianLinks(content) {
 	);
 
 	// Process [[ProjectName]] format
+	console.log(SPACING_LEVEL_3 + 'Processing [[ProjectName]] formats');
 	content = content.replace(/\[\[([^\]]+)\]\]/g, (match, projectName) => {
 		const slug = projectMappings[projectName];
 		if (slug) {
@@ -733,6 +762,64 @@ function checkMissingSvgFiles() {
 		syncErrors.errors.push({
 			file: 'SVG check',
 			error: `Failed to check for missing SVG files: ${error.message}`,
+		});
+		syncErrors.summary.errors++;
+	}
+}
+
+// Update icon-utils with current icons from the icons directory
+function updateIconUtils() {
+	try {
+		const iconsDir = path.join(__dirname, '../src/icons');
+		const iconUtilsFile = path.join(__dirname, '../src/utils/icon-utils.ts');
+
+		// Check if icons directory exists
+		if (!fs.existsSync(iconsDir)) {
+			console.warn('📁 Icons directory not found:', iconsDir);
+			return;
+		}
+
+		// Read all files in the icons directory
+		const files = fs.readdirSync(iconsDir);
+
+		// Filter for SVG files and remove the .svg extension
+		const icons = files
+			.filter(file => file.endsWith('.svg'))
+			.map(file => file.replace('.svg', ''))
+			.sort(); // Sort alphabetically for consistency
+
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_1 + `🎨 Found ${icons.length} SVG icons:`,
+				icons
+			);
+		}
+
+		// Read the current icon-utils file
+		let content = fs.readFileSync(iconUtilsFile, 'utf8');
+
+		// Create the new icons array string
+		const iconsArrayString = icons.map(icon => `\t'${icon}'`).join(',\n');
+
+		// Replace the existing icons array
+		const updatedContent = content.replace(
+			/let knownIconsCache: string\[\] = \[[\s\S]*?\];/,
+			`let knownIconsCache: string[] = [\n${iconsArrayString},\n];`
+		);
+
+		// Write the updated content back to the file
+		fs.writeFileSync(iconUtilsFile, updatedContent, 'utf8');
+
+		console.log(
+			`✅ Successfully updated icon-utils.ts with ${icons.length} icons`
+		);
+	} catch (error) {
+		console.error('❌ Error updating icon-utils:', error.message);
+		syncErrors.errors.push({
+			file: 'icon-utils update',
+			error: `Failed to update icon-utils: ${error.message}`,
+			type: 'icon_update_error',
+			timestamp: new Date().toISOString(),
 		});
 		syncErrors.summary.errors++;
 	}
@@ -1018,23 +1105,27 @@ async function main() {
 			checkMissingSvgFiles();
 		}
 
+		// Update icon-utils with current icons (always run)
+		console.log('🎨 Updating icon-utils with current icons...');
+		updateIconUtils();
+
 		// Post-process content (only for production mode)
 		if (SYNC_MODE === 'production') {
-			console.log('🔧 Step 6b: Post-processing content images...');
+			console.log('🔧 Post-processing content images...');
 			postProcessContentImages(ASTRO_CONTENT_PATH);
 		}
 
 		// Build project (only for production mode or when auto deploy is enabled)
 		let buildSuccess = true;
 		if (SYNC_MODE === 'production' || AUTO_DEPLOY) {
-			console.log('🔨 Step 7a: Building project...');
+			console.log('🔨 Building project...');
 			buildSuccess = buildProject();
 		}
 
 		// Deploy to production (only when auto deploy is enabled)
 		let deploySuccess = true;
 		if (AUTO_DEPLOY) {
-			console.log('🚀 Step 7b: Deploying to production...');
+			console.log('🚀 Deploying to production...');
 			deploySuccess = deployToProduction();
 		}
 

@@ -9,11 +9,11 @@ tags:
   - notes
 created: 2025-06-13T08:16:00
 modified: 2025-07-02T14:20:29+01:00
-viewCount: 8
+viewCount: 9
 aliases: 
 skillRating: 0
 skillDescription: TBC
-logoFileName:
+logoFileName: neo4j-cypher.svg
 ---
 
 # Cypher
