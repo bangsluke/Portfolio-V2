@@ -6,10 +6,10 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-18T12:37:34+01:00
-viewCount: 5
+viewCount: 6
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 30
+skillDescription: Able to create basic designs, utilising components to build up more complex designs.
 logoFileName: figma.svg
 ---
 

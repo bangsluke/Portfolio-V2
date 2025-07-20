@@ -126,6 +126,8 @@ const SkillsBubbleChart = ({
 	// Process skills into bubble data
 	const bubbleData = useMemo((): BubbleData[] => {
 		return filteredSkills.map(skill => {
+			// Use skill ID (minus file extension) for tooltip name
+			const skillId = skill.id.replace(/\.md$/, '');
 			const skillName = skill.data.name || skill.slug;
 			const rating = skill.data.skillRating || 0;
 			const projectCount = getProjectCount(skillName);
@@ -138,7 +140,7 @@ const SkillsBubbleChart = ({
 
 			return {
 				id: skill.slug,
-				name: skillName,
+				name: skillId, // Use skill ID for tooltip display
 				rating,
 				description: skill.data.skillDescription || 'No description available',
 				logoFileName: skill.data.logoFileName || null,

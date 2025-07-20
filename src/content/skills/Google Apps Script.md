@@ -8,12 +8,12 @@ tags:
   - portfolio
 created: 2024-06-13T11:18:00
 modified: 2025-06-29T17:16:05+01:00
-viewCount: 6
+viewCount: 7
 aliases:
   - Apps Script
   - GAS
-skillRating: 0
-skillDescription: TBC
+skillRating: 50
+skillDescription: Written several scripts to automate the manipulation of data in a Google Sheets file to generate data and charts for use in Automated daily emails.
 logoFileName: google_apps_script.svg
 ---
 

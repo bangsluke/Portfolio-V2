@@ -6,11 +6,11 @@ tags:
   - hosting
   - skill
   - portfolio
-viewCount: 5
+viewCount: 6
 modified: 2025-07-18T12:38:02+01:00
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 70
+skillDescription: Managed all of my projects via GitHub, setting up security checks and CI/CD actions across required projects
 logoFileName: github.svg
 ---
 

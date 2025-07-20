@@ -5,11 +5,11 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-02T14:31:35+01:00
-viewCount: 2
+viewCount: 3
 aliases:
   - Azure DevOps
-skillRating: 0
-skillDescription: TBC
+skillRating: 70
+skillDescription: Managed several projects as development lead using Azure DevOps to track progress and report on sprint progress, building report dashboards within DevOps.
 logoFileName: azure_devops.svg
 ---
 

@@ -9,11 +9,11 @@ tags:
   - portfolio
 modified: 2025-07-18T12:12:54+01:00
 created: 2023-08-18T15:44:00
-viewCount: 6
+viewCount: 7
 aliases:
   - TS
-skillRating: 0
-skillDescription: TBC
+skillRating: 45
+skillDescription: A reasonable understanding and application of TypeScript, with a couple of larger projects built using it.
 logoFileName: typescript.svg
 ---
 

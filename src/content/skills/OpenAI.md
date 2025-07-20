@@ -9,8 +9,8 @@ tags:
 modified: 2025-07-20T13:19:43+01:00
 viewCount: 9
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 30
+skillDescription: Single test app built using the OpenAI API to understand how to connect to it but proficient and writing efficient prompts.
 logoFileName: openai.svg
 ---
 

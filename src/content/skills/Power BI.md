@@ -5,11 +5,11 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-02T14:38:37+01:00
-viewCount: 3
+viewCount: 4
 aliases:
   - Microsoft Power BI
-skillRating: 0
-skillDescription: TBC
+skillRating: 45
+skillDescription: Supported the design and development of several Power BI reports for internal management review.
 logoFileName: power_bi.svg
 ---
 

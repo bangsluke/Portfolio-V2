@@ -6,13 +6,13 @@ tags:
   - notes
   - tag
 created: 2025-03-31T23:59:00
-modified: 2025-07-17T17:00:17+01:00
+modified: 2025-07-20T19:46:28+01:00
 viewCount: 9
 dateStart: 1996-09-01
 dateEnd: 2002-07-17
 imageURL: https://www.northdowns.surrey.sch.uk/_site/data/files/images/slideshow/2/4952A86E2A8478097467ECD264682D1D.jpg
 qualifications: "n/a"
-additionalDetails: "TBC - add full list from above"
+additionalDetails: "n/a"
 ---
 # Brockham School
 
@@ -40,7 +40,7 @@ n/a
 
 ## Additional Details
 
-TBC - add full list from above
+n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -6,13 +6,13 @@ tags:
   - notes
   - tag
 created: 2025-02-04 18:53
-modified: 2025-07-17T17:00:04+01:00
-viewCount: 1
+modified: 2025-07-20T19:45:37+01:00
+viewCount: 15
 dateStart: 2003-09-01
 dateEnd: 2009-07-17
 imageURL: https://www.ashcombe.surrey.sch.uk/Admissions/23_07_13_Ashcombe_Facade___74A1923_WEB.jpg
-qualifications: "9½ GCSE's:  3 A*s (Incl. Mathematics), 5 A's (Incl. English Literature), 1½ B's (Incl. English Language)"
-additionalDetails: "TBC - Add full details"
+qualifications: "9½ GCSE's all at grade B or higher"
+additionalDetails: "9½ GCSE's:  3 A*s (Incl. Mathematics), 5 A's (Incl. English Literature), 1½ B's (Incl. English Language)"
 ---
 # Ashcombe School
 
@@ -36,13 +36,13 @@ WHERE file = this.file
 
 ## Qualifications
 
-9½ GCSE's:  3 A*s (Incl. Mathematics), 5 A's (Incl. English Literature), 1½ B's (Incl. English Language)
+9½ GCSE's all at grade B or higher
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Additional Details
 
-TBC - Add full details
+9½ GCSE's:  3 A*s (Incl. Mathematics), 5 A's (Incl. English Literature), 1½ B's (Incl. English Language)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

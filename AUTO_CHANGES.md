@@ -39,6 +39,11 @@
   - Sections with "n/a" content (case-insensitive) are now hidden from display
   - Improved content filtering to prevent empty or placeholder content from showing
   - Enhanced user experience by only showing meaningful education information
+- Updated skills bubble chart tooltip to use skill ID instead of skill name
+  - Modified bubble data creation to use skill.id.replace(/\.md$/, '') for tooltip display
+  - Tooltips now show the skill filename (minus .md extension) instead of skill name
+  - Improved consistency by using the actual skill identifier in tooltips
+  - Maintains existing functionality while changing only the displayed name
 
 ## 2025-01-16 17:00 [main] - Created interactive bubble chart for skills display
 - Created new SkillsBubbleChart.tsx Preact component for interactive skills visualization
