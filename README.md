@@ -14,7 +14,8 @@
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
     - [Key Benefits](#key-benefits)
-  - [Features](#features)
+    - [Features](#features)
+  - [How It Works](#how-it-works)
   - [Quick Start](#quick-start)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
@@ -88,7 +89,7 @@ Portfolio Site V2 is a modern, static portfolio website that combines the power 
 
 > [Back to Table of Contents](#table-of-contents)
 
-## Features
+### Features
 
 - **Static Site Generation**: Built with Astro for optimal performance
 - **Obsidian Integration**: Sync selected notes from your Obsidian vault
@@ -104,6 +105,26 @@ Portfolio Site V2 is a modern, static portfolio website that combines the power 
 - **Blog System**: Markdown-based blog with tag filtering
 - **Icon System**: Comprehensive icon library with Astro Icon
 - **Mobile Sync**: Cross-platform sync support for mobile devices
+
+> [Back to Table of Contents](#table-of-contents)
+
+## How It Works
+
+The Portfolio site serves static markdown files and displays the data from within these files. These are the following steps;
+
+- When the user triggers the sync function (can be done during development or remotely) using the defined `npm` scripts in [`package.json`](./package.json), the script copies across all `Markdown` notes tagged as `#portfolio` in the connected `Obsidian` vault (path defined in [`.env`](./.env))
+- These `Markdown` notes are processed within the [`sync.js`](./scripts/sync.js) file in the function ([processMarkdownFile()](./scripts/sync.js#L304)) to format the [[Markdown]] ready for display on the site;
+  - Removes images from the `Obsidian` files (as they aren't copied across from the vault as they aren't needed) - done within the [processMarkdownFile()](./scripts/sync.js#L304) script
+  - In the `Markdown` note content (ignoring the frontmatter) - see [processObsidianLinksInContentOnly()](./scripts/sync.js#L304);
+    - Processes internal links to matched Projects with an alt name `[[Project|Alt name]]` ([processObsidianLinks()](./scripts/sync.js#L640)) to link to that Project's individual page (whilst displaying the alt name) and styles the resulting text on the site
+    - Processes internal links to matched Projects `[[Project]]` ([processObsidianLinks()](./scripts/sync.js#L640)) to link to that Project's individual page and styles the resulting text on the site
+    - Processes internal `Obsidian` `[[link]]` ([processObsidianLinks()](./scripts/sync.js#L640)) and styles the resulting text on the site
+    - Processes external `[Text](link)` `Obsidian` links ([extractSectionContent()](./scripts/sync.js#L640)) to create hyperlinks
+    - Extracts blocks of text between section headers (which sections are based on the note type - defined in the [`config.js`](./scripts/config.js) file) and adds them as properties to the note type for use throughout the site ([extractSectionsToFrontmatter()](./scripts/sync.js#L103))
+- The processed `Markdown` files are then stored in the [`/content`](./src/content/) folder
+- A collection is generated to define the schema types of each note type (project, company, client etc) in the Zod [`typeConfig.ts`](./src/content/typeConfig.ts) file
+- The `Astro` pages ([`./src/pages/](./src/pages/)) and components ([`./src/components/](./src/components/)) then read this content data and schema in using collections and then loops through the data using `JavaScript` in the top fenced section (`---`) of the `.astro` files to return `HTML` elements in the lower section of the `.astro` files
+- `Astro` then strips back all `JavaScript` it can from the file output (leaving "`islands`" of `JS` - see [source](https://docs.astro.build/en/concepts/islands/)) and serves the lightweight remaining `HTML`
 
 > [Back to Table of Contents](#table-of-contents)
 
@@ -196,6 +217,7 @@ The Obsidian sync system allows you to selectively sync notes from your Obsidian
 - 📊 **Schema Validation**: [Zod](https://zod.dev) schemas ensure content integrity
 - 🎨 **Icon Integration**: Automatic icon matching for skills and technologies
 - 📱 **Touch Support**: Mobile-optimized sync with touch-friendly interfaces
+- 🔗 **Auto-Link Updates**: README function links automatically updated during build process
 
 > [Back to Table of Contents](#table-of-contents)
 
@@ -507,7 +529,7 @@ Portfolio-V2/
 │   │   ├── roles/         # Job roles and positions
 │   │   ├── skills/        # Technical skills and competencies
 │   │   ├── staticData/    # Static configuration and metadata
-│   │   └── config.ts      # [Zod](https://zod.dev) schemas for content validation
+│   │   └── typeConfig.ts  # [Zod](https://zod.dev) schemas for content validation
 │   ├── components/        # Reusable UI components
 │   │   ├── blog/          # Blog-specific components
 │   │   ├── layout/        # Layout and navigation components
@@ -750,6 +772,7 @@ npm run test-email             # Test email service configuration
 
 # Utilities
 npm run update-icons           # Update icon library
+npm run update-readme-links    # Update function links in README (runs automatically during build)
 
 # Code Quality
 npm run lint                   # Run ESLint
