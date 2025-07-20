@@ -208,6 +208,38 @@
   - Now directly looks up skills in the skills collection for real-time accuracy
   - Eliminates "skillIconMapping is not defined" error by removing unnecessary mapping layer
   - Maintains all error handling and fallback logic for missing skills
+
+## 2025-01-16 16:30 [develop] - Enhanced project pages with improved layout and filtering
+- Updated project slug page layout and functionality
+  - Centered "Back to Projects" buttons horizontally for better visual balance
+  - Added project name display below the image and above technology pills
+  - Added date range display in "MMM YYYY - MMM YYYY" format when both dateStart and dateEnd are available
+  - Added clickable project category link that navigates to projects page with pre-filled filter
+  - Modified "Developed For" section to only show when linkedCompany is populated
+  - Improved visual hierarchy with proper spacing between elements
+- Enhanced projects gallery page with advanced filtering and responsive layout
+  - Centered "Back to Projects" button horizontally for consistency
+  - Replaced date range slider with two date input boxes for better usability
+  - Date inputs start blank to show all projects by default
+  - Implemented responsive filter layout: desktop shows all filters in one row, mobile stacks vertically
+  - Added separate mobile filter elements with proper event handling for both layouts
+  - Implemented URL parameter support for pre-filling category filter (e.g., ?category=Web%20Development)
+  - Enhanced filter logic to combine category and date range filtering
+  - Added real-time project count updates for both desktop and mobile layouts
+  - Improved filter UI layout with better organization and spacing
+  - Fixed issue where projects weren't showing due to restrictive initial date filter values
+- Fixed "Unable to locate 'google' icon" error
+  - Removed invalid "[[Google]]" reference from Spreadsheet of Life project technologies
+  - The error was caused by referencing a non-existent "Google" skill file
+  - Updated to use only valid skill references: "[[Google Sheets]]" and "[[Google Apps Script]]"
+  - Available Google-related skills are: Google Cloud, Google Sheets, Google Apps Script
+- Enhanced SkillPill component to handle Obsidian pipe aliases
+  - Updated cleanSkillName function to parse Obsidian links with pipe symbols (e.g., "[[path/to/file|Display Name]]")
+  - Extracts the filename from the path (before the pipe) for skill lookup
+  - Uses the display name (after the pipe) for the pill text
+  - Handles cases like "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]" correctly
+  - Maintains compatibility with standard Obsidian links without pipes
+  - Reverted project file changes since the component now handles these links natively
   - Graceful degradation when skills collection is not available
 
 ## 2025-01-16 16:20 [develop] - Implemented proper skill icon mapping system using sync process

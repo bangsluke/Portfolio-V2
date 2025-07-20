@@ -85,6 +85,39 @@ const projectCategories = [
 	),
 ].sort();
 
+// Calculate date range for filter (for input min/max attributes)
+const projectDates = processedProjects
+	.map(project => {
+		const startDate = project.data.dateStart
+			? new Date(project.data.dateStart)
+			: null;
+		const endDate = project.data.dateEnd
+			? new Date(project.data.dateEnd)
+			: null;
+		return { startDate, endDate };
+	})
+	.filter(dates => dates.startDate || dates.endDate);
+
+const minDate =
+	projectDates.length > 0
+		? Math.min(
+				...projectDates.map(
+					d => d.startDate?.getTime() || d.endDate?.getTime() || Date.now()
+				)
+			)
+		: Date.now();
+const maxDate =
+	projectDates.length > 0
+		? Math.max(
+				...projectDates.map(
+					d => d.endDate?.getTime() || d.startDate?.getTime() || 0
+				)
+			)
+		: Date.now();
+
+const minYear = new Date(minDate).getFullYear();
+const maxYear = new Date(maxDate).getFullYear();
+
 const pageTitle = 'Project Gallery - bangsluke Portfolio';
 const description = 'Explore all my projects and developments';
 const ogimage = {
@@ -99,7 +132,7 @@ const ogimage = {
 		<section class="py-8 px-8 max-md:py-4">
 			<div class="max-w-7xl mx-auto">
 				<!-- Top Back Button -->
-				<div class="mb-8">
+				<div class="mb-8 text-center">
 					<a
 						href="/site#projects"
 						class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
@@ -128,29 +161,115 @@ const ogimage = {
 					Explore all my <b
 						class="bg-linear-to-r from-riptide-500 to-theme-500 dark:from-riptide-300 dark:to-theme-200 text-transparent bg-clip-text"
 						>projects and developments</b
-					>. Each one represents a unique challenge and learning experience.
+					>
 				</p>
 
 				<!-- Filter Section -->
 				<div
-					class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 p-6 bg-gradient-to-r from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg">
-					<div class="flex items-center gap-4">
-						<label for="categoryFilter" class="text-theme-100 font-medium"
-							>Filter by Category:</label
-						>
-						<select
-							id="categoryFilter"
-							class="bg-[#232b32] text-theme-100 px-4 py-2 rounded-lg border border-theme-400/30 focus:border-theme-400 focus:outline-none transition-colors">
-							<option value="">All Categories</option>
-							{
-								projectCategories.map(category => (
-									<option value={category}>{category}</option>
-								))
-							}
-						</select>
+					class="flex flex-col gap-6 mb-8 p-6 bg-gradient-to-r from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg">
+					<!-- Desktop Layout: All filters in one row -->
+					<div class="hidden md:flex items-center justify-between gap-6">
+						<!-- Category Filter -->
+						<div class="flex items-center gap-4">
+							<label
+								for="categoryFilter"
+								class="text-theme-100 font-medium whitespace-nowrap"
+								>Filter by Category:</label
+							>
+							<select
+								id="categoryFilter"
+								class="bg-[#232b32] text-theme-100 px-4 py-2 rounded-lg border border-theme-400/30 focus:border-theme-400 focus:outline-none transition-colors">
+								<option value="">All Categories</option>
+								{
+									projectCategories.map(category => (
+										<option value={category}>{category}</option>
+									))
+								}
+							</select>
+						</div>
+
+						<!-- Date Range Filter -->
+						<div class="flex items-center gap-4">
+							<label class="text-theme-100 font-medium whitespace-nowrap"
+								>Date Range:</label
+							>
+							<div class="flex items-center gap-2">
+								<input
+									type="date"
+									id="startDateInput"
+									min={`${minYear}-01-01`}
+									max={`${maxYear}-12-31`}
+									class="bg-[#232b32] text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none"
+									placeholder="Start Date"
+								/>
+								<span class="text-theme-100">-</span>
+								<input
+									type="date"
+									id="endDateInput"
+									min={`${minYear}-01-01`}
+									max={`${maxYear}-12-31`}
+									class="bg-[#232b32] text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none"
+									placeholder="End Date"
+								/>
+							</div>
+						</div>
+
+						<!-- Project Count -->
+						<div class="text-theme-100 font-medium whitespace-nowrap">
+							<span id="projectCount">{processedProjects.length}</span> projects
+						</div>
 					</div>
-					<div class="text-theme-100 font-medium">
-						<span id="projectCount">{processedProjects.length}</span> projects
+
+					<!-- Mobile Layout: Stacked filters -->
+					<div class="md:hidden flex flex-col gap-4">
+						<!-- Category Filter -->
+						<div class="flex flex-col gap-2">
+							<label
+								for="categoryFilterMobile"
+								class="text-theme-100 font-medium">Filter by Category:</label
+							>
+							<select
+								id="categoryFilterMobile"
+								class="bg-[#232b32] text-theme-100 px-4 py-2 rounded-lg border border-theme-400/30 focus:border-theme-400 focus:outline-none transition-colors">
+								<option value="">All Categories</option>
+								{
+									projectCategories.map(category => (
+										<option value={category}>{category}</option>
+									))
+								}
+							</select>
+						</div>
+
+						<!-- Date Range Filter -->
+						<div class="flex flex-col gap-2">
+							<label class="text-theme-100 font-medium"
+								>Filter by Date Range:</label
+							>
+							<div class="flex items-center gap-2">
+								<input
+									type="date"
+									id="startDateInputMobile"
+									min={`${minYear}-01-01`}
+									max={`${maxYear}-12-31`}
+									class="flex-1 bg-[#232b32] text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none"
+									placeholder="Start Date"
+								/>
+								<span class="text-theme-100">-</span>
+								<input
+									type="date"
+									id="endDateInputMobile"
+									min={`${minYear}-01-01`}
+									max={`${maxYear}-12-31`}
+									class="flex-1 bg-[#232b32] text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none"
+									placeholder="End Date"
+								/>
+							</div>
+						</div>
+
+						<!-- Project Count -->
+						<div class="text-theme-100 font-medium text-center">
+							<span id="projectCountMobile">{processedProjects.length}</span> projects
+						</div>
 					</div>
 				</div>
 			</div>
@@ -163,21 +282,32 @@ const ogimage = {
 					id="projectsGrid"
 					class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 					{
-						processedProjects.map(project => (
-							<div
-								class="project-card"
-								data-category={project.data.projectCategory || ''}>
-								<ProjectCard
-									name={project.data.name ?? project.id.replace('.md', '')}
-									imageURL={project.data.imageURL}
-									technologies={project.data.technologies}
-									shortDescription={project.data.shortDescription}
-									slug={project.slug}
-									companyLogoURL={project.companyLogoURL}
-									linkedCompany={project.data.linkedCompany}
-								/>
-							</div>
-						))
+						processedProjects.map(project => {
+							const startYear = project.data.dateStart
+								? new Date(project.data.dateStart).getFullYear()
+								: null;
+							const endYear = project.data.dateEnd
+								? new Date(project.data.dateEnd).getFullYear()
+								: null;
+							const projectYear = endYear || startYear;
+
+							return (
+								<div
+									class="project-card"
+									data-category={project.data.projectCategory || ''}
+									data-year={projectYear || ''}>
+									<ProjectCard
+										name={project.data.name ?? project.id.replace('.md', '')}
+										imageURL={project.data.imageURL}
+										technologies={project.data.technologies}
+										shortDescription={project.data.shortDescription}
+										slug={project.slug}
+										companyLogoURL={project.companyLogoURL}
+										linkedCompany={project.data.linkedCompany}
+									/>
+								</div>
+							);
+						})
 					}
 				</div>
 			</div>
@@ -209,7 +339,11 @@ const ogimage = {
 	</div>
 
 	<script>
-		// Category filter functionality
+		// Get URL parameters
+		const urlParams = new URLSearchParams(window.location.search);
+		const categoryParam = urlParams.get('category');
+
+		// Filter elements (Desktop)
 		const categoryFilter = document.getElementById(
 			'categoryFilter'
 		) as HTMLSelectElement;
@@ -217,17 +351,64 @@ const ogimage = {
 			'.project-card'
 		) as NodeListOf<HTMLElement>;
 		const projectCount = document.getElementById('projectCount');
+		const startDateInput = document.getElementById(
+			'startDateInput'
+		) as HTMLInputElement;
+		const endDateInput = document.getElementById(
+			'endDateInput'
+		) as HTMLInputElement;
+
+		// Filter elements (Mobile)
+		const categoryFilterMobile = document.getElementById(
+			'categoryFilterMobile'
+		) as HTMLSelectElement;
+		const projectCountMobile = document.getElementById('projectCountMobile');
+		const startDateInputMobile = document.getElementById(
+			'startDateInputMobile'
+		) as HTMLInputElement;
+		const endDateInputMobile = document.getElementById(
+			'endDateInputMobile'
+		) as HTMLInputElement;
+
+		// Pre-fill category filter from URL parameter (both desktop and mobile)
+		if (categoryParam) {
+			if (categoryFilter) categoryFilter.value = categoryParam;
+			if (categoryFilterMobile) categoryFilterMobile.value = categoryParam;
+		}
 
 		function filterProjects() {
-			if (!categoryFilter || !projectCount) return;
+			// Get values from desktop or mobile inputs (whichever is visible)
+			const selectedCategory =
+				categoryFilter?.value || categoryFilterMobile?.value || '';
+			const startDate =
+				startDateInput?.value || startDateInputMobile?.value
+					? new Date(startDateInput?.value || startDateInputMobile?.value || '')
+					: null;
+			const endDate =
+				endDateInput?.value || endDateInputMobile?.value
+					? new Date(endDateInput?.value || endDateInputMobile?.value || '')
+					: null;
 
-			const selectedCategory = categoryFilter.value;
 			let visibleCount = 0;
 
 			projectCards.forEach(card => {
 				const cardCategory = card.dataset.category;
-				const shouldShow =
+				const cardYear = parseInt(card.dataset.year || '0');
+				const cardDate = cardYear ? new Date(cardYear, 0, 1) : null; // January 1st of the year
+
+				const categoryMatch =
 					!selectedCategory || cardCategory === selectedCategory;
+
+				// Date filtering logic
+				let dateMatch = true;
+				if (startDate && cardDate) {
+					dateMatch = dateMatch && cardDate >= startDate;
+				}
+				if (endDate && cardDate) {
+					dateMatch = dateMatch && cardDate <= endDate;
+				}
+
+				const shouldShow = categoryMatch && dateMatch;
 
 				if (shouldShow) {
 					card.style.display = 'block';
@@ -237,16 +418,35 @@ const ogimage = {
 				}
 			});
 
-			// Update project count
-			projectCount.textContent = visibleCount.toString();
+			// Update project count (both desktop and mobile)
+			if (projectCount) projectCount.textContent = visibleCount.toString();
+			if (projectCountMobile)
+				projectCountMobile.textContent = visibleCount.toString();
 		}
 
-		// Add event listener for filter changes
+		// Add event listeners for desktop
 		if (categoryFilter) {
 			categoryFilter.addEventListener('change', filterProjects);
 		}
+		if (startDateInput) {
+			startDateInput.addEventListener('input', filterProjects);
+		}
+		if (endDateInput) {
+			endDateInput.addEventListener('input', filterProjects);
+		}
 
-		// Initialize filter on page load
+		// Add event listeners for mobile
+		if (categoryFilterMobile) {
+			categoryFilterMobile.addEventListener('change', filterProjects);
+		}
+		if (startDateInputMobile) {
+			startDateInputMobile.addEventListener('input', filterProjects);
+		}
+		if (endDateInputMobile) {
+			endDateInputMobile.addEventListener('input', filterProjects);
+		}
+
+		// Initialize filters on page load
 		filterProjects();
 	</script>
 </Layout>

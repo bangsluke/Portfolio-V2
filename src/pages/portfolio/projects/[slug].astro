@@ -69,7 +69,7 @@ const ogimage = {
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
 	<div class="min-h-screen">
 		<!-- Top Back Button -->
-		<div class="mb-8">
+		<div class="mb-8 text-center">
 			<a
 				href="/site#projects"
 				class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
@@ -97,9 +97,42 @@ const ogimage = {
 			/>
 		</div>
 
-		<!-- Project Name and Technologies -->
+		<!-- Project Name, Date Range, and Technologies -->
 		<div class="text-center mb-12">
-			<h1 class="text-5xl font-bold mb-6 text-theme-100">{data.name}</h1>
+			<h1 class="text-5xl font-bold mb-4 text-theme-100">{data.name}</h1>
+
+			{/* Date Range */}
+			{
+				data.dateStart && data.dateEnd && (
+					<div class="mb-6">
+						<p class="text-lg text-gray-300">
+							{new Date(data.dateStart).toLocaleDateString('en-US', {
+								month: 'short',
+								year: 'numeric',
+							})}{' '}
+							-{' '}
+							{new Date(data.dateEnd).toLocaleDateString('en-US', {
+								month: 'short',
+								year: 'numeric',
+							})}
+						</p>
+					</div>
+				)
+			}
+
+			{/* Project Category */}
+			{
+				data.projectCategory && (
+					<div class="mb-6">
+						<a
+							href={`/portfolio/projects?category=${encodeURIComponent(data.projectCategory)}`}
+							class="inline-block bg-theme-400 hover:bg-theme-500 text-black font-bold px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+							{data.projectCategory}
+						</a>
+					</div>
+				)
+			}
+
 			<div class="flex flex-wrap justify-center gap-3">
 				{
 					data.technologies &&
@@ -152,8 +185,7 @@ const ogimage = {
 
 		<!-- Linked Company/Client Section -->
 		{
-			((data.linkedCompany && data.linkedCompany.length > 0) ||
-				linkedClients.length > 0) && (
+			data.linkedCompany && data.linkedCompany.length > 0 && (
 				<section class="mb-12">
 					<h2 class="text-3xl font-bold mb-6 text-theme-100">Developed For</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

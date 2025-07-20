@@ -6,10 +6,10 @@ tags:
   - project/completed
   - finances
 created: 2024-03-02T09:21:00
-modified: 2025-07-19T10:03:53+01:00
+modified: 2025-07-20T13:08:51+01:00
 aliases:
   - SoL
-viewCount: 14
+viewCount: 15
 projectURL: https://docs.google.com/spreadsheets/d/114gu85xbOJppMf3JIuHzoWIVsWAcy3ALmdv0owwyCQ0/edit?usp=sharing
 codeURL: https://script.google.com/home/projects/1e_U-ujneCBoYpGoZVAPtSYR9wI2StLhy4gLbL6t946wAJVTjDdAhn9xs/edit
 codeMultipleRepos: false
@@ -20,7 +20,6 @@ imageURL: https://i.imgur.com/r0wyTKP.png
 dateStart: 2020-07-18
 dateEnd: 2025-06-20
 technologies:
-  - "[[Google]]"
   - "[[Google Sheets]]"
   - "[[Google Apps Script]]"
 projectCategory: Personal Design
@@ -87,9 +86,9 @@ SoL also contains health data such as distance traveled, steps and fluid intake 
 
 - Front end: <span class="theme-link">Google Sheets</span>
 - Back end/Datasource: <span class="theme-link">Google Apps Script</span>/<span class="theme-link">Google Sheets</span>
-- Hosting: <span class="theme-link">Google</span>
-- Security: <span class="theme-link">Google</span>
-- Authentication: <span class="theme-link">Google</span>
+- Hosting: <span class="theme-link">Google Sheets</span>
+- Security: <span class="theme-link">Google Sheets</span>
+- Authentication: <span class="theme-link">Google Sheets</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

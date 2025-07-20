@@ -17,18 +17,41 @@ const {
 	className = '',
 } = Astro.props;
 
-// Clean the skill name by removing Obsidian link brackets
-const cleanSkillName = skillName.replace(/\[\[|\]\]/g, '');
+// Clean the skill name by removing Obsidian link brackets and handling pipe aliases
+function cleanSkillName(skillName: string) {
+	// Remove Obsidian link brackets
+	let cleaned = skillName.replace(/\[\[|\]\]/g, '');
+
+	// Handle pipe aliases: if there's a pipe, use the part after it as the display name
+	// but try to find the skill using the part before the pipe
+	if (cleaned.includes('|')) {
+		const [skillPath, displayName] = cleaned.split('|');
+		// Extract just the filename from the path (last part after /)
+		const skillNameFromPath = skillPath.split('/').pop() || skillPath;
+		return {
+			skillNameForLookup: skillNameFromPath,
+			displayName: displayName || skillNameFromPath,
+		};
+	}
+
+	return {
+		skillNameForLookup: cleaned,
+		displayName: cleaned,
+	};
+}
 
 // Get the icon name for the skill by looking up the skill in the skills collection
 async function findIconForSkill(skillName: string) {
+	// Clean the skill name and get lookup/display names
+	const { skillNameForLookup, displayName } = cleanSkillName(skillName);
+
 	// Try to find the skill in the skills collection
 	try {
 		const skills = await getCollection('skills');
 		const skill = skills.find(s => {
 			// Check if skill name matches (from frontmatter or filename)
 			const skillNameFromData = s.data.name || s.id.replace('.md', '');
-			return skillNameFromData === skillName;
+			return skillNameFromData === skillNameForLookup;
 		});
 
 		if (skill && skill.data.logoFileName) {
@@ -38,8 +61,10 @@ async function findIconForSkill(skillName: string) {
 
 		// If skill is not found in the collection, log a helpful error message
 		if (!skill) {
-			console.error(`❌ Missing skill markdown file: "${skillName}"`);
-			console.error(`   Create a file at: src/content/skills/${skillName}.md`);
+			console.error(`❌ Missing skill markdown file: "${skillNameForLookup}"`);
+			console.error(
+				`   Create a file at: src/content/skills/${skillNameForLookup}.md`
+			);
 			console.error(
 				`   This skill is referenced in projects but the corresponding skill file is missing.`
 			);
@@ -53,13 +78,13 @@ async function findIconForSkill(skillName: string) {
 	}
 
 	// Fallback: try exact match as icon name
-	let iconName = getSkillIconName(skillName + '.svg');
+	let iconName = getSkillIconName(skillNameForLookup + '.svg');
 	if (iconName) {
 		return iconName;
 	}
 
 	// Fallback: try lowercase as icon name
-	iconName = getSkillIconName(skillName.toLowerCase() + '.svg');
+	iconName = getSkillIconName(skillNameForLookup.toLowerCase() + '.svg');
 	if (iconName) {
 		return iconName;
 	}
@@ -67,7 +92,8 @@ async function findIconForSkill(skillName: string) {
 	return null;
 }
 
-const iconName = await findIconForSkill(cleanSkillName);
+const cleanedSkill = cleanSkillName(skillName);
+const iconName = await findIconForSkill(skillName);
 
 // Ensure icon name is lowercase for the Icon component
 const finalIconName = iconName ? iconName.toLowerCase() : null;
@@ -108,7 +134,7 @@ const baseClasses =
 const containerClasses = `${baseClasses} ${sizeClasses[size].container} ${variantClasses[variant]} ${className}`;
 ---
 
-<span class={containerClasses} title={cleanSkillName}>
+<span class={containerClasses} title={cleanedSkill.displayName}>
 	{
 		finalIconName ? (
 			<Icon
@@ -123,6 +149,6 @@ const containerClasses = `${baseClasses} ${sizeClasses[size].container} ${varian
 		)
 	}
 	<span class={`${sizeClasses[size].text} font-medium`}>
-		{cleanSkillName}
+		{cleanedSkill.displayName}
 	</span>
 </span>
