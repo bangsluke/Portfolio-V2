@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { SCRIPTS_PATH, SPACING_LEVEL_1 } from './config.js';
+import { SCRIPTS_PATH, SPACING_LEVEL_1 } from './repoConfig.js';
 
 // Functions to track with their expected names
 const FUNCTIONS_TO_TRACK = [

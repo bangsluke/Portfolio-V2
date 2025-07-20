@@ -18,6 +18,20 @@
 
 ## Auto Log
 
+## 2025-01-16 15:50 [main] - Renamed config files for better clarity and Astro compatibility
+- Renamed src/content/typeConfig.ts back to src/content/config.ts for Astro compatibility
+  - Astro expects content configuration to be named config.ts by default
+  - This fixes the "staticData collection does not exist" build error
+- Renamed scripts/config.js to scripts/repoConfig.js to avoid naming conflicts
+  - Updated all import statements in scripts to use repoConfig.js
+  - Updated sync.js, update-readme-links.js, and watch-obsidian.js imports
+  - Updated protected items list to reference config.ts instead of typeConfig.ts
+- Updated README.md to reflect new file naming
+  - Updated links to point to config.ts for content configuration
+  - Updated links to point to repoConfig.js for script configuration
+- Clear separation between Astro content config (config.ts) and script config (repoConfig.js)
+- Build error resolved - Astro can now find the content configuration file
+
 ## 2025-01-16 15:45 [main] - Renamed config.ts to typeConfig.ts for better clarity
 - Renamed src/content/config.ts to src/content/typeConfig.ts to better distinguish from scripts/config.js
 - Updated all references to the renamed file:

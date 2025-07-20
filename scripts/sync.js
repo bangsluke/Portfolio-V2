@@ -5,8 +5,15 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { SPACING_LEVEL_1, SPACING_LEVEL_2, SPACING_LEVEL_3 } from './config.js';
 import { emailService } from './email-service.js';
+import {
+	CONTENT_TYPE_MAPPINGS,
+	DEFAULT_PORTFOLIO_TAG,
+	PROTECTED_PATTERNS,
+	SPACING_LEVEL_1,
+	SPACING_LEVEL_2,
+	SPACING_LEVEL_3,
+} from './repoConfig.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -72,7 +79,7 @@ const FOLDER_MAPPING = {
 // Protected items that should never be deleted or overwritten
 const PROTECTED_ITEMS = [
 	'staticData',
-	'typeConfig.ts',
+	'config.ts',
 	'allStaticData.json',
 	...PROTECTED_PATTERNS,
 ];

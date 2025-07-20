@@ -4,7 +4,7 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { SPACING_LEVEL_1 } from './config.js';
+import { SPACING_LEVEL_1 } from './repoConfig.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
