@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { getSkillIconName, shouldShowIcon } from '../../utils/icon-utils';
+import { getCollection } from 'astro:content';
+import { getSkillIconName } from '../../utils/icon-utils';
 
 interface Props {
 	skillName: string;
@@ -19,68 +20,54 @@ const {
 // Clean the skill name by removing Obsidian link brackets
 const cleanSkillName = skillName.replace(/\[\[|\]\]/g, '');
 
-// Get the icon name for the skill - try multiple variations
-function findIconForSkill(skillName: string) {
-	// Try exact match first
+// Get the icon name for the skill by looking up the skill in the skills collection
+async function findIconForSkill(skillName: string) {
+	// Try to find the skill in the skills collection
+	try {
+		const skills = await getCollection('skills');
+		const skill = skills.find(s => {
+			// Check if skill name matches (from frontmatter or filename)
+			const skillNameFromData = s.data.name || s.id.replace('.md', '');
+			return skillNameFromData === skillName;
+		});
+
+		if (skill && skill.data.logoFileName) {
+			// Use the logoFileName from the skill's frontmatter
+			return getSkillIconName(skill.data.logoFileName);
+		}
+
+		// If skill is not found in the collection, log a helpful error message
+		if (!skill) {
+			console.error(`❌ Missing skill markdown file: "${skillName}"`);
+			console.error(`   Create a file at: src/content/skills/${skillName}.md`);
+			console.error(
+				`   This skill is referenced in projects but the corresponding skill file is missing.`
+			);
+			console.error(
+				`   The skill file should include a 'logoFileName' property in its frontmatter.`
+			);
+		}
+	} catch (error) {
+		// If skills collection is not available, continue to fallback methods
+		console.warn('Could not access skills collection:', error);
+	}
+
+	// Fallback: try exact match as icon name
 	let iconName = getSkillIconName(skillName + '.svg');
-	if (iconName && shouldShowIcon(iconName)) {
+	if (iconName) {
 		return iconName;
 	}
 
-	// Try lowercase
+	// Fallback: try lowercase as icon name
 	iconName = getSkillIconName(skillName.toLowerCase() + '.svg');
-	if (iconName && shouldShowIcon(iconName)) {
+	if (iconName) {
 		return iconName;
-	}
-
-	// Try common mappings
-	const skillMappings: Record<string, string> = {
-		JavaScript: 'javascript',
-		TypeScript: 'typescript',
-		Python: 'python',
-		React: 'react',
-		'Node.js': 'node',
-		Node: 'node',
-		Git: 'git',
-		GitHub: 'github',
-		HTML: 'html',
-		CSS: 'css',
-		Astro: 'astro',
-		'Tailwind CSS': 'tailwind',
-		Tailwind: 'tailwind',
-		Vercel: 'vercel',
-		Netlify: 'netlify',
-		Markdown: 'markdown',
-		Angular: 'angular',
-		Bootstrap: 'bootstrap',
-		Cloudflare: 'cloudflare',
-		Figma: 'figma',
-		Firebase: 'firebase',
-		Gatsby: 'gatsby',
-		Instagram: 'instagram',
-		LinkedIn: 'linkedin',
-		MongoDB: 'mongo',
-		MySQL: 'mysql',
-		NestJS: 'nestjs',
-		'Next.js': 'nextjs',
-		NextJS: 'nextjs',
-		PHP: 'php',
-		Sass: 'sass',
-		WordPress: 'wordpress',
-		YouTube: 'youtube',
-		Flask: 'flask',
-	};
-
-	const mappedIcon = skillMappings[skillName];
-	if (mappedIcon && shouldShowIcon(mappedIcon)) {
-		return mappedIcon;
 	}
 
 	return null;
 }
 
-const iconName = findIconForSkill(cleanSkillName);
-const hasValidIcon = iconName !== null;
+const iconName = await findIconForSkill(cleanSkillName);
 
 // Ensure icon name is lowercase for the Icon component
 const finalIconName = iconName ? iconName.toLowerCase() : null;
@@ -123,7 +110,7 @@ const containerClasses = `${baseClasses} ${sizeClasses[size].container} ${varian
 
 <span class={containerClasses} title={cleanSkillName}>
 	{
-		hasValidIcon ? (
+		finalIconName ? (
 			<Icon
 				name={finalIconName}
 				class={`${sizeClasses[size].icon} text-gray-600`}

@@ -185,6 +185,83 @@
   - Maintains bold styling for Obsidian links as requested
   - Ensures proper hover effects and dark mode support
 
+## 2025-01-16 16:25 [develop] - Fixed skill icon lookup to use logoFileName from skills collection
+- Fixed SkillPill component to properly use skill logoFileName
+  - Updated findIconForSkill function to look up skills in the skills collection
+  - Now uses skill.data.logoFileName instead of trying to match skill names to icon names
+  - Resolves "cannot find an icon named 'next.js'" error by using proper logoFileName lookup
+- Enhanced skill icon lookup logic
+  - First tries skill mapping (from sync process)
+  - Then looks up skill in skills collection and uses logoFileName from frontmatter
+  - Falls back to direct icon name matching for non-skill technologies
+  - Properly handles async operations with skills collection
+- Improved error handling and fallbacks
+  - Added try-catch for skills collection access
+  - Maintains backward compatibility with existing icon lookup methods
+- Added helpful error messages for missing skill files
+  - When a skill is referenced in projects but missing from skills collection, logs clear error message
+  - Shows exact file path that needs to be created: src/content/skills/{skillName}.md
+  - Explains that the skill file should include a 'logoFileName' property in frontmatter
+  - Helps developers quickly identify and fix missing skill files
+- Simplified skill icon lookup by removing dependency on skillIconMapping
+  - Removed getSkillIconByName function dependency from SkillPill component
+  - Now directly looks up skills in the skills collection for real-time accuracy
+  - Eliminates "skillIconMapping is not defined" error by removing unnecessary mapping layer
+  - Maintains all error handling and fallback logic for missing skills
+  - Graceful degradation when skills collection is not available
+
+## 2025-01-16 16:20 [develop] - Implemented proper skill icon mapping system using sync process
+- Removed hardcoded skill mappings from SkillPill component
+  - Removed hardcoded skill mappings that were causing maintenance issues
+  - SkillPill component now uses proper skill name to icon lookup system
+- Enhanced sync process to create skill icon mapping
+  - Added createSkillIconMapping function to sync.js
+  - Function reads skill files and extracts name and logoFileName from frontmatter
+  - Creates mapping between skill names and their corresponding icon names
+  - Auto-generates skillIconMapping in icon-utils.ts during sync process
+- Updated icon-utils.ts with skill mapping system
+  - Added skillIconMapping object to store skill name to icon mappings
+  - Added getSkillIconByName function to lookup icons by skill name
+  - Maintains backward compatibility with existing icon functions
+- Updated SkillPill component to use new mapping system
+  - Now uses getSkillIconByName as primary lookup method
+  - Falls back to direct icon name lookup for non-mapped skills
+  - Resolves "Neo4j Aura" icon error by using proper mapping from skill frontmatter
+- Improved maintainability and consistency
+  - Skill icons are now managed through skill frontmatter logoFileName field
+  - Sync process automatically updates mappings when skills change
+  - No more hardcoded mappings in components
+
+## 2025-01-16 16:15 [develop] - Fixed Neo4j Aura icon mapping and enhanced skill pill functionality
+- Fixed Neo4j Aura icon display issue
+  - Added "Neo4j Aura" mapping to neo4j_cypher icon in SkillPill component
+  - Added "Neo4j" mapping to neo4j icon for consistency
+  - Added "Cypher" mapping to neo4j_cypher icon for related technologies
+  - Resolved "Unable to locate neo4j aura icon" error
+- Enhanced skill pill icon mappings
+  - Updated skill mappings to include database and graph technologies
+  - Ensured all Neo4j-related technologies display proper icons
+  - Maintained consistency with existing icon naming conventions
+
+## 2025-01-16 16:10 [develop] - Enhanced mobile project card interaction and fixed skill pill icons
+- Implemented mobile card selection functionality for projects gallery
+  - Added touch-based card selection that stays bright until user clicks off
+  - Cards show visual feedback with scale, glow, and border when selected
+  - Added "See more detail..." link that appears at bottom of selected cards
+  - Link directs users to the project slug with smooth animation
+  - Only one card can be selected at a time with proper deselection logic
+- Fixed skill pill icon filtering and question mark issues
+  - Removed shouldShowIcon filtering to ensure all icons display properly
+  - Updated SkillPill, SkillsBubbles, and SkillItem components to remove filtering
+  - Icons now display as bold and vivid without any filtering restrictions
+  - Fixed question mark fallback to only show when no icon name is available
+  - Maintained proper icon mapping for common technology names
+- Enhanced mobile user experience
+  - Added smooth animations for card selection and detail link appearance
+  - Implemented proper touch event handling with preventDefault
+  - Added click-outside functionality to deselect cards
+  - Improved visual feedback with mint-green glow and border effects
+
 ## 2025-01-16 16:05 [develop] - Fixed theme toggle not changing background due to overlay elements
 - Fixed theme toggle background change issue
   - Identified that fixed positioned overlay elements were covering the background

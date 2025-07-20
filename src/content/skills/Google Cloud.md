@@ -1,34 +1,34 @@
 ---
 tags:
   - tag
-  - framework
-  - coding
   - software
   - portfolio
   - skill
-created: 2023-08-18T15:51:00
-modified: 2025-07-20T11:25:16+01:00
-viewCount: 9
-aliases: 
+created: 2023-10-13T07:46:00
+modified: 2025-07-20T11:50:03+01:00
+viewCount: 8
+aliases:
+  - Google Cloud Platform
+  - GCP
 skillRating: 0
 skillDescription: TBC
-logoFileName: nextjs.svg
+logoFileName: google_cloud.svg
 ---
 
-# Next.js
+# Google Cloud
 
 > [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Language: <span class="theme-link">JavaScript</span>, built on <span class="theme-link">React</span>
+> <span class="theme-link">Google</span>'s cloud service
 
-## Table of Contents 
+## Table of Contents
 
 ```table-of-contents
 ```
 
 ## Links
 
-- [Link to Documentation site](https://bangsluke-documentation.netlify.app/docs/Project%20Set%20Up%20to%20Release/4Development#nextjs)
+- n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

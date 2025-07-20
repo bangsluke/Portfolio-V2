@@ -54,7 +54,8 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 ---
 
 <article
-	class="group bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg p-0 flex flex-col overflow-hidden transition-transform hover:scale-105 duration-300 min-h-[420px]">
+	class="project-card group bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg p-0 flex flex-col overflow-hidden transition-transform hover:scale-105 duration-300 min-h-[420px]"
+	data-slug={projectSlug}>
 	<div class="relative w-full h-48">
 		<img
 			src={imageURL || '/images/imagedefault.webp'}
@@ -163,36 +164,74 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 				</div>
 			)
 		}
+
+		<!-- Mobile "See more detail..." link -->
+		<div
+			class="mobile-detail-link hidden md:hidden mt-4 pt-4 border-t border-zinc-700">
+			<a
+				href={`/portfolio/projects/${projectSlug}`}
+				class="flex items-center justify-center gap-2 text-theme-400 hover:text-theme-300 transition-colors text-sm font-medium">
+				<span>See more detail...</span>
+				<svg
+					class="w-4 h-4"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M9 5l7 7-7 7"></path>
+				</svg>
+			</a>
+		</div>
 	</div>
 </article>
 
 <script>
 	// Handle mobile touch events for project cards
 	document.addEventListener('DOMContentLoaded', function () {
-		const projectCards = document.querySelectorAll('.group');
+		const projectCards = document.querySelectorAll('.project-card');
+		let selectedCard: HTMLElement | null = null;
 
 		projectCards.forEach(card => {
-			let isTouched = false;
+			// Handle touch start for card selection
+			card.addEventListener(
+				'touchstart',
+				function (this: HTMLElement, e: Event) {
+					e.preventDefault();
 
-			// Handle touch start
-			card.addEventListener('touchstart', function (this: HTMLElement) {
-				isTouched = true;
-				this.classList.add('group-hover');
-
-				// Remove hover effect after a delay
-				setTimeout(() => {
-					if (isTouched) {
-						this.classList.remove('group-hover');
-						isTouched = false;
+					// Deselect previously selected card
+					if (selectedCard && selectedCard !== this) {
+						selectedCard.classList.remove('card-selected');
+						const prevDetailLink = selectedCard.querySelector(
+							'.mobile-detail-link'
+						);
+						if (prevDetailLink) {
+							prevDetailLink.classList.add('hidden');
+						}
 					}
-				}, 2000);
-			});
 
-			// Handle touch end
-			card.addEventListener('touchend', function (this: HTMLElement) {
-				isTouched = false;
-				this.classList.remove('group-hover');
-			});
+					// Toggle selection for current card
+					if (this.classList.contains('card-selected')) {
+						// Deselect
+						this.classList.remove('card-selected');
+						const detailLink = this.querySelector('.mobile-detail-link');
+						if (detailLink) {
+							detailLink.classList.add('hidden');
+						}
+						selectedCard = null;
+					} else {
+						// Select
+						this.classList.add('card-selected');
+						const detailLink = this.querySelector('.mobile-detail-link');
+						if (detailLink) {
+							detailLink.classList.remove('hidden');
+						}
+						selectedCard = this;
+					}
+				}
+			);
 
 			// Handle mouse leave (for desktop)
 			card.addEventListener('mouseleave', function (this: HTMLElement) {
@@ -240,6 +279,21 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 				}
 			});
 		});
+
+		// Handle click outside to deselect cards
+		document.addEventListener('click', function (e: Event) {
+			const target = e.target as HTMLElement;
+			if (!target.closest('.project-card')) {
+				if (selectedCard) {
+					selectedCard.classList.remove('card-selected');
+					const detailLink = selectedCard.querySelector('.mobile-detail-link');
+					if (detailLink) {
+						detailLink.classList.add('hidden');
+					}
+					selectedCard = null;
+				}
+			}
+		});
 	});
 </script>
 
@@ -257,5 +311,36 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 
 	.group-hover .absolute.top-3.right-3 {
 		opacity: 1 !important;
+	}
+
+	/* Card selection styles for mobile */
+	.card-selected {
+		transform: scale(1.02) !important;
+		box-shadow: 0 0 20px rgba(49, 214, 154, 0.3) !important;
+		border: 2px solid #31d69a !important;
+	}
+
+	.card-selected .absolute.inset-0 {
+		background-color: transparent !important;
+	}
+
+	.card-selected .absolute.top-3.right-3 {
+		opacity: 1 !important;
+	}
+
+	/* Mobile detail link animation */
+	.mobile-detail-link {
+		animation: slideIn 0.3s ease-out;
+	}
+
+	@keyframes slideIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 </style>

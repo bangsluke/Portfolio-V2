@@ -43,6 +43,7 @@ let knownIconsCache: string[] = [
 	'gitlab',
 	'google_apps_script',
 	'google_cloud',
+	'google_sheets',
 	'graphql',
 	'heroku',
 	'html',
@@ -103,6 +104,7 @@ let knownIconsCache: string[] = [
 	'xmark',
 	'yarn',
 	'youtube',
+	'zod',
 ];
 
 /**
@@ -136,6 +138,19 @@ export function getSkillIconName(logoFileName: string | null): string | null {
 	if (!logoFileName) return null;
 	// Remove .svg extension if present
 	return logoFileName.replace(/\.svg$/, '');
+}
+
+/**
+ * Gets the icon name for a skill by looking up the skill name in the mapping
+ * @param skillName - The skill name to look up
+ * @returns Icon name or null if not found
+ * @deprecated This function is no longer used. Skills are now looked up directly from the skills collection.
+ */
+export function getSkillIconByName(skillName: string): string | null {
+	if (!skillName) return null;
+	// This function is deprecated - skills are now looked up directly from the skills collection
+	// in the SkillPill component for better error handling and real-time updates
+	return null;
 }
 
 /**

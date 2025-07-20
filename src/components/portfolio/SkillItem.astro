@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { processContent } from '../../utils/content-processor';
-import { getSkillIconName, shouldShowIcon } from '../../utils/icon-utils';
+import { getSkillIconName } from '../../utils/icon-utils';
 
 interface Props {
 	name: string;
@@ -29,7 +29,7 @@ const processedSkillDescription = processContent(skillDescription || '');
 				{
 					(() => {
 						const iconName = getSkillIconName(logoFileName || null);
-						if (iconName && shouldShowIcon(iconName)) {
+						if (iconName) {
 							return <Icon name={iconName} class="w-8 h-8" title={name} />;
 						}
 						// Show a placeholder for missing icons
