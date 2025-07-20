@@ -72,10 +72,10 @@ const variantClasses = {
         max-sm:text-sm 
         hover:bg-linear-to-l 
         bg-linear-to-r 
-        from-riptide-300 
-        to-mint-300 
-        dark:from-riptide-500 
-        dark:to-mint-500
+        from-light-theme-accent-300 
+        to-dark-theme-accent-300 
+        dark:from-light-theme-accent-500 
+        dark:to-dark-theme-accent-500
     `,
 	big: `
         font-normal 
@@ -94,10 +94,10 @@ const variantClasses = {
         max-sm:text-lg 
         hover:bg-linear-to-l 
         bg-linear-to-r 
-        from-riptide-200 
-        to-mint-200 
-        dark:from-riptide-500 
-        dark:to-mint-500
+        from-light-theme-accent-200 
+        to-dark-theme-accent-200 
+        dark:from-light-theme-accent-500 
+        dark:to-dark-theme-accent-500
     `,
 	dark: `
         group 
@@ -114,7 +114,7 @@ const variantClasses = {
         max-sm:text-sm 
         dark:bg-zinc-800 
         bg-white
-        dark:hover:bg-mint-500
+        dark:hover:bg-dark-theme-accent-500
     `,
 };
 
@@ -150,8 +150,8 @@ const loadingAriaLabel = isLoading
 ---
 
 <div
-	class="w-fit h-fit from-transparent via-riptide-300 to-transparent dark:from-transparent dark:via-mint-500 dark:to-transparent from-40% to-60% animate-rotate-border bg-conic/[from_var(--border-angle)] p-px hover:shadow-lg
-    hover:shadow-mint-500/30 rounded-full">
+	class="w-fit h-fit from-transparent via-light-theme-accent-300 to-transparent dark:from-transparent dark:via-dark-theme-accent-500 dark:to-transparent from-40% to-60% animate-rotate-border bg-conic/[from_var(--border-angle)] p-px hover:shadow-lg
+    hover:shadow-dark-theme-accent-500/30 rounded-full">
 	<a
 		class:list={[buttonClasses, className]}
 		href={disabled ? '#' : link}
