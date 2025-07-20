@@ -18,6 +18,28 @@
 
 ## Auto Log
 
+## 2025-01-16 15:10 [main] - Added Zod links to README
+- Added direct links to Zod in README.md
+  - Added link to [Zod](https://zod.dev) in features section for content collections
+  - Added link to [Zod](https://zod.dev) in sync system key features for schema validation
+  - Added link to [Zod](https://zod.dev) in project structure for config.ts description
+  - Added link to [Zod](https://zod.dev) in markdown processing section for frontmatter validation
+  - Added link to [Zod](https://zod.dev) in tech stack section for content validation
+
+## 2025-01-16 15:05 [main] - Added Netlify links to README
+- Added direct links to Netlify in README.md
+  - Added link to [Netlify](https://netlify.com) in deployment section
+  - Added link to [Netlify dashboard](https://app.netlify.com) in environment variables section
+  - Added link to [Netlify](https://netlify.com) in tech stack deployment section
+
+## 2025-01-16 15:00 [main] - Corrected README tech stack information
+- Fixed incorrect Prism.js references in README.md
+  - Removed Prism.js from tech stack as it's not actually used in the project
+  - Updated to correctly reference Shiki (Astro's default syntax highlighter)
+  - Corrected code highlighting description in markdown processing section
+- Verified Zod is actively used in src/content/config.ts for content validation
+  - Confirmed Zod schemas are properly implemented for all content collections
+  - No changes needed for Zod references as they are accurate
 ## 2025-01-16 14:40 [develop] - Enhanced date formatting for Work Experience timeline
 - Updated WorkExperienceItem component with proper date formatting
   - Added formatDate function to convert dates to "MMM YYYY" format

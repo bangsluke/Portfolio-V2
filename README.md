@@ -60,17 +60,15 @@
     - [Skills Display](#skills-display)
     - [Work Experience Timeline](#work-experience-timeline)
     - [Education Timeline](#education-timeline)
-    - [References & Testimonials](#references--testimonials)
+    - [References](#references)
     - [Blog System](#blog-system)
   - [Deployment](#deployment)
     - [Netlify](#netlify)
-    - [Vercel](#vercel)
     - [GitHub Actions](#github-actions)
   - [Development](#development-1)
     - [Tech Stack](#tech-stack)
     - [Scripts](#scripts)
     - [Styling](#styling)
-  - [Contributing](#contributing)
   - [License](#license)
 
 ## Introduction
@@ -97,7 +95,7 @@ Portfolio Site V2 is a modern, static portfolio website that combines the power 
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
 - **Auto-Deployment**: GitHub Actions for continuous deployment
 - **Email Notifications**: Automated sync reports (optional)
-- **Content Collections**: Type-safe content management with Zod schemas
+- **Content Collections**: Type-safe content management with [Zod](https://zod.dev) schemas
 - **Dark/Light Themes**: Automatic theme switching
 - **Search & Filtering**: Find content quickly with tag-based filtering
 - **SEO Optimized**: Built-in SEO features with sitemap generation
@@ -117,7 +115,7 @@ Portfolio Site V2 is a modern, static portfolio website that combines the power 
 - **Git** configured with credentials
 - **Obsidian vault** with notes
 - **GitHub repository** (for deployment)
-- **Deployment platform** (Netlify/Vercel)
+- **Deployment platform** (Netlify)
 
 ### Installation
 
@@ -149,7 +147,6 @@ GMAIL_APP_PASSWORD="your-app-password"
 # Deployment (Optional)
 NETLIFY_AUTH_TOKEN=your_netlify_token
 NETLIFY_SITE_ID=your_site_id
-VERCEL_TOKEN=your_vercel_token
 ```
 
 ### Development
@@ -186,7 +183,7 @@ The Obsidian sync system allows you to selectively sync notes from your Obsidian
 
 - 🔄 **Selective Sync**: Copy only Obsidian notes with `#portfolio` tag
 - 📱 **Mobile Support**: Sync from different devices and platforms (Android, iOS)
-- 🚀 **Auto-Deploy**: Automatically deploy changes to production via Netlify/Vercel
+- 🚀 **Auto-Deploy**: Automatically deploy changes to production via Netlify
 - 🏷️ **Tag Filtering**: Filter notes by tags on the website with dynamic routing
 - 🔍 **Search**: Search through your notes with tag-based filtering
 - 📝 **Markdown Processing**: Convert Obsidian-specific syntax to standard markdown
@@ -196,7 +193,7 @@ The Obsidian sync system allows you to selectively sync notes from your Obsidian
 - 📧 **Email Notifications**: Automated email reports via Gmail with HTML formatting
 - ✅ **File Verification**: Ensures copied files exist and have content
 - 🔄 **Content Extraction**: Automatically extracts and organizes content sections
-- 📊 **Schema Validation**: Zod schemas ensure content integrity
+- 📊 **Schema Validation**: [Zod](https://zod.dev) schemas ensure content integrity
 - 🎨 **Icon Integration**: Automatic icon matching for skills and technologies
 - 📱 **Touch Support**: Mobile-optimized sync with touch-friendly interfaces
 
@@ -419,13 +416,6 @@ Add these secrets to your GitHub repository:
 # For Netlify deployment
 NETLIFY_AUTH_TOKEN=your_netlify_token
 NETLIFY_SITE_ID=your_netlify_site_id
-
-# For Vercel deployment (alternative)
-VERCEL_TOKEN=your_vercel_token
-
-# For notifications (optional)
-SLACK_WEBHOOK_URL=your_slack_webhook
-DISCORD_WEBHOOK_URL=your_discord_webhook
 ```
 
 > [Back to Table of Contents](#table-of-contents)
@@ -517,7 +507,7 @@ Portfolio-V2/
 │   │   ├── roles/         # Job roles and positions
 │   │   ├── skills/        # Technical skills and competencies
 │   │   ├── staticData/    # Static configuration and metadata
-│   │   └── config.ts      # Zod schemas for content validation
+│   │   └── config.ts      # [Zod](https://zod.dev) schemas for content validation
 │   ├── components/        # Reusable UI components
 │   │   ├── blog/          # Blog-specific components
 │   │   ├── layout/        # Layout and navigation components
@@ -580,8 +570,8 @@ The sync system automatically converts Obsidian-specific syntax:
 - **Internal Links**: `[[Note Name]]` → Standard markdown links with proper URL generation
 - **Tags**: `#tag` → Preserved for filtering and categorization
 - **Callouts**: `> [!note]` → HTML blockquotes with styling
-- **Frontmatter**: YAML metadata preserved and enhanced with Zod validation
-- **Code Blocks**: Syntax highlighting with Prism.js
+- **Frontmatter**: YAML metadata preserved and enhanced with [Zod](https://zod.dev) validation
+- **Code Blocks**: Syntax highlighting with Shiki (Astro's default)
 - **Images**: Automatic image processing and optimization
 - **Obsidian Syntax**: Handles Obsidian-specific features like dataview and meta-bind
 - **Content Extraction**: Automatically extracts sections like descriptions, achievements, and lessons learned
@@ -631,11 +621,9 @@ Educational background showcase:
 - **Date Tracking**: Academic periods and completion dates
 - **Responsive Layout**: Mobile-friendly education display
 
-### References & Testimonials
+### References
 
-Professional references system:
-
-- **Reference Cards**: Professional testimonials with contact information
+- **Reference Cards**: Professional references with contact information
 - **Company Links**: Connect references to companies
 - **Contact Details**: Email, phone, and address information
 - **Role Information**: Reference roles and positions
@@ -658,32 +646,19 @@ Content management and blogging:
 ### Netlify
 
 1. **Connect Repository**:
-   - Connect your GitHub repository to Netlify
+   - Connect your GitHub repository to [Netlify](https://netlify.com)
    - Set build command: `npm run build`
    - Set publish directory: `dist`
 
 2. **Environment Variables**:
-   - Add your environment variables in Netlify dashboard
+   - Add your environment variables in [Netlify dashboard](https://app.netlify.com)
    - Include all sync-related variables
 
 3. **Deploy**:
    - Push changes to trigger automatic deployment
    - Or use manual sync commands
 
-### Vercel
-
-1. **Import Project**:
-   - Import your GitHub repository to Vercel
-   - Framework preset: Astro
-   - Build command: `npm run build`
-
-2. **Environment Variables**:
-   - Add environment variables in Vercel dashboard
-   - Include all sync-related variables
-
-3. **Deploy**:
-   - Automatic deployment on push
-   - Manual deployment available
+> [Back to Table of Contents](#table-of-contents)
 
 ### GitHub Actions
 
@@ -739,12 +714,12 @@ jobs:
 - **Styling**: [Tailwind CSS 4.1+](https://tailwindcss.com/) - Utility-first CSS framework
 - **Components**: [Preact 10.26+](https://preactjs.com/) - Lightweight React alternative for interactive components
 - **Icons**: [Astro Icon](https://github.com/natemoo-re/astro-icon) - Comprehensive icon system with 100+ technology icons
-- **Content**: Markdown with Obsidian integration and Zod schema validation
+- **Content**: Markdown with Obsidian integration and [Zod](https://zod.dev) schema validation
 - **Carousel**: [Flicking](https://github.com/naver/egjs-flicking) - Touch-friendly carousel for project galleries
 - **GitHub Integration**: [GitHub Calendar](https://github.com/Bloggify/github-calendar) - GitHub contribution visualization
 - **Email**: [Nodemailer](https://nodemailer.com/) - Email notifications for sync operations
-- **Deployment**: Netlify/Vercel with GitHub Actions for CI/CD
-- **Code Highlighting**: [Prism.js](https://prismjs.com/) - Syntax highlighting for code blocks
+- **Deployment**: [Netlify](https://netlify.com) with GitHub Actions for CI/CD
+- **Code Highlighting**: [Shiki](https://shiki.matsu.io/) - Syntax highlighting via Astro's markdown processing
 
 ### Scripts
 
@@ -794,18 +769,6 @@ The project uses Tailwind CSS 4.1+ with custom design tokens:
 - **Animations**: Smooth transitions and hover effects using Tailwind's animation utilities
 - **Responsive Design**: Mobile-first approach with breakpoint-specific styling
 - **Icon System**: 100+ technology icons with automatic matching and fallbacks
-
-> [Back to Table of Contents](#table-of-contents)
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Make your changes
-4. Run tests: `npm run lint && npm run build`
-5. Commit your changes: `git commit -am 'Add feature'`
-6. Push to the branch: `git push origin feature-name`
-7. Submit a pull request
 
 > [Back to Table of Contents](#table-of-contents)
 
