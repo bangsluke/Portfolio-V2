@@ -60,21 +60,36 @@ function updateReadmeLinks() {
 
 		if (lineNumber) {
 			// Create the new link pattern
-			const newLink = `([${funcName}()](./scripts/sync.js#L${lineNumber}))`;
+			const newLink = `([\`${funcName}()\`](./scripts/sync.js#L${lineNumber}))`;
 
-			// Find and replace the old link pattern
-			const oldPattern = new RegExp(
-				`\\(\\[${funcName}\\(\\)\\]\\(\\./scripts/sync\\.js#L\\d+\\)\\)`,
+			// Find and replace any link to this function (with or without parentheses)
+			const oldPatternWithParens = new RegExp(
+				`\\(\\[\`${funcName}\\(\\)\`\\]\\(\\./scripts/sync\\.js#L\\d+\\)\\)`,
+				'g'
+			);
+			const oldPatternWithoutParens = new RegExp(
+				`\\[\`${funcName}\\(\\)\`\\]\\(\\./scripts/sync\\.js#L\\d+\\)`,
 				'g'
 			);
 
-			if (oldPattern.test(readmeContent)) {
-				readmeContent = readmeContent.replace(oldPattern, newLink);
+			let found = false;
+			if (oldPatternWithParens.test(readmeContent)) {
+				readmeContent = readmeContent.replace(oldPatternWithParens, newLink);
 				console.log(
 					SPACING_LEVEL_1 + `✅ Updated ${funcName} link to line ${lineNumber}`
 				);
 				updated = true;
-			} else {
+				found = true;
+			} else if (oldPatternWithoutParens.test(readmeContent)) {
+				readmeContent = readmeContent.replace(oldPatternWithoutParens, newLink);
+				console.log(
+					SPACING_LEVEL_1 + `✅ Updated ${funcName} link to line ${lineNumber}`
+				);
+				updated = true;
+				found = true;
+			}
+
+			if (!found) {
 				console.log(
 					SPACING_LEVEL_1 + `⚠️  No existing link found for ${funcName}`
 				);
