@@ -18,6 +18,59 @@
 
 ## Auto Log
 
+## 2025-01-16 15:40 [main] - Made config the master file for section definitions
+- Expanded CONTENT_TYPE_MAPPINGS in scripts/config.js to include complete section definitions
+  - Added section name and property mappings for all content types
+  - Each content type now has detailed section configuration with name and property pairs
+  - Added support for projects, companies, clients, roles, and educations content types
+- Updated extractSectionsToFrontmatter function in sync.js to use config as master
+  - Removed hardcoded section definitions from the function
+  - Function now reads section definitions from CONTENT_TYPE_MAPPINGS config
+  - Added proper error handling for content types not defined in config
+  - Simplified logic by removing content type filtering (now handled by config structure)
+- Config is now the single source of truth for all section extraction rules
+- All section definitions can be modified in one place without touching sync.js
+
+## 2025-01-16 15:35 [main] - Centralized spacing configuration across all scripts
+- Created scripts/config.js to centralize spacing levels and configuration constants
+  - Added SPACING_LEVEL_1, SPACING_LEVEL_2, SPACING_LEVEL_3 for consistent console log spacing
+  - Added DEFAULT_PORTFOLIO_TAG, DEFAULT_DEBUG_MODE, and other configuration constants
+  - Added PROTECTED_PATTERNS array for file protection logic
+  - Added CONTENT_TYPE_MAPPINGS for content type definitions
+  - Added file path constants (ASTRO_CONTENT_PATH, SCRIPTS_PATH)
+- Updated sync.js to use centralized configuration
+  - Imported spacing levels and configuration constants from config.js
+  - Updated portfolio tag reference to use DEFAULT_PORTFOLIO_TAG
+  - Updated protected items to include PROTECTED_PATTERNS
+  - Updated debug mode to use DEFAULT_DEBUG_MODE fallback
+- Updated update-readme-links.js to use centralized configuration
+  - Imported SCRIPTS_PATH and SPACING_LEVEL_1 from config.js
+  - Added proper spacing to all console.log statements
+- Updated watch-obsidian.js to use centralized configuration
+  - Imported SPACING_LEVEL_1 and SPACING_LEVEL_2 from config.js
+  - Added proper spacing to all console.log statements
+- All scripts now use consistent spacing and configuration management
+
+## 2025-01-16 15:30 [main] - Simplified README link update system and integrated with build process
+- Streamlined README link update system to use only manual updates
+  - Removed git hooks and file watcher scripts (setup-git-hooks.js, watch-sync-links.js)
+  - Removed setup-hooks and watch-links npm scripts
+  - Integrated update-readme-links script into build process (runs before astro build)
+  - Updated README to reflect simplified approach and build integration
+  - Updated Auto-Link Updates feature description to mention build process
+  - Added note about automatic updates during build in "How It Works" section
+
+## 2025-01-16 15:20 [main] - Added function links to sync.js in README
+- Added direct links to specific functions in sync.js file in README.md
+  - Added link to [processMarkdownFile()](./scripts/sync.js#L347) function in "How It Works" section
+  - Added link to [processObsidianLinksInContentOnly()](./scripts/sync.js#L683) function for internal link processing
+  - Added link to [extractSectionsToFrontmatter()](./scripts/sync.js#L99) function for section extraction
+  - All links point to specific line numbers in the sync.js file for easy navigation
+
+## 2025-01-16 15:15 [main] - Added package.json link to README
+- Added direct link to package.json file in README.md
+  - Added link to [`package.json`](./package.json) in "How It Works" section for npm scripts reference
+
 ## 2025-01-16 15:10 [main] - Added Zod links to README
 - Added direct links to Zod in README.md
   - Added link to [Zod](https://zod.dev) in features section for content collections
@@ -886,7 +939,7 @@
   - Converted Tailwind utility classes to raw CSS values
   - Fixed font-bold, text-gray-900, mt-8, mb-4, and other utility classes
 - Fixed @apply bg-blue-100 in companies/index.astro  
-  - Replaced `@apply bg-blue-100 border-blue-300 text-blue-700`
+  - Replaced `@apply bg-blue-100 border-blue-300 text-blue-700` with direct CSS color values
 
 ## 2024-12-19 16:15 - Carousel UI Improvements
 
