@@ -1,14 +1,14 @@
 {
-  "timestamp": "2025-07-19T15:22:45.184Z",
+  "timestamp": "2025-07-20T15:59:57.344Z",
   "source": "C:\\\\Users\\\\bangs\\\\Documents\\\\Obsidian Personal Notes",
   "syncMode": "development",
   "debugMode": false,
   "errors": [],
   "summary": {
-    "totalFiles": 1349,
-    "processedFiles": 0,
-    "copiedFiles": 116,
-    "skippedFiles": 1233,
+    "totalFiles": 2080,
+    "processedFiles": 124,
+    "copiedFiles": 124,
+    "skippedFiles": 1956,
     "errors": 0
   },
   "success": true

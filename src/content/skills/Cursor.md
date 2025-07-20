@@ -16,9 +16,9 @@ logoFileName: cursor.svg
 
 # Cursor
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="mint-link">AI</span> integrated coding IDE
+> <span class="theme-link">AI</span> integrated coding IDE
 
 ## Table of Contents
 

@@ -18,9 +18,9 @@ logoFileName: bash.svg
 
 # Bash
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Link: <span class="mint-link">PowerShell</span>
+> Link: <span class="theme-link">PowerShell</span>
 
 ## Table of Contents 
 

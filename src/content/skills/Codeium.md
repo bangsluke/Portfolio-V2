@@ -16,9 +16,9 @@ logoFileName: codeium.svg
 
 # Codeium
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Coding support and predictive code - Similar to <span class="mint-link">GitHub</span> Co-pilot
+> Coding support and predictive code - Similar to <span class="theme-link">GitHub</span> Co-pilot
 
 ## Table of Contents
 

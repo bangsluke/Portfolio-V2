@@ -7,8 +7,8 @@ tags:
   - portfolio
   - skill
 created: 2023-08-18T15:51:00
-modified: 2025-07-02T14:19:11+01:00
-viewCount: 7
+modified: 2025-07-20T11:25:16+01:00
+viewCount: 9
 aliases: 
 skillRating: 0
 skillDescription: TBC
@@ -17,9 +17,9 @@ logoFileName: nextjs.svg
 
 # Next.js
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Language: <span class="mint-link">JavaScript</span>, built on <span class="mint-link">React</span>
+> Language: <span class="theme-link">JavaScript</span>, built on <span class="theme-link">React</span>
 
 ## Table of Contents 
 

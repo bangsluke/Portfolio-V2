@@ -15,9 +15,9 @@ logoFileName: docusaurus.svg
 
 # Docusaurus
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Built with: <span class="mint-link">React</span>, language: <span class="mint-link">JavaScript</span>, supporting: <span class="mint-link">Markdown</span>
+> Built with: <span class="theme-link">React</span>, language: <span class="theme-link">JavaScript</span>, supporting: <span class="theme-link">Markdown</span>
 
 ## Table of Contents
 

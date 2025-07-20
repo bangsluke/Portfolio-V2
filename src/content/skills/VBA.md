@@ -20,9 +20,9 @@ logoFileName: vba.svg
 
 # VBA
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Language behind: <span class="mint-link">Excel</span>
+> Language behind: <span class="theme-link">Excel</span>
 
 ## Table of Contents
 

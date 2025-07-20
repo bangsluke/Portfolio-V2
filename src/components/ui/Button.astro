@@ -60,7 +60,7 @@ const baseClasses = `
 const variantClasses = {
 	default: `
         text-blacktext/90 
-        dark:text-mint-50 
+        dark:text-theme-50 
         dark:hover:text-white 
         px-6 
         py-4 
@@ -72,17 +72,17 @@ const variantClasses = {
         max-sm:text-sm 
         hover:bg-linear-to-l 
         bg-linear-to-r 
-        from-light-theme-accent-300 
-        to-dark-theme-accent-300 
-        dark:from-light-theme-accent-500 
-        dark:to-dark-theme-accent-500
+        from-riptide-300 
+        to-theme-300 
+        dark:from-riptide-500 
+        dark:to-theme-500
     `,
 	big: `
         font-normal 
         gap-3 
         max-md:gap-1 
         text-blacktext 
-        dark:text-mint-50 
+        dark:text-theme-50 
         dark:hover:text-white 
         px-8 
         max-sm:py-3 
@@ -94,14 +94,14 @@ const variantClasses = {
         max-sm:text-lg 
         hover:bg-linear-to-l 
         bg-linear-to-r 
-        from-light-theme-accent-200 
-        to-dark-theme-accent-200 
-        dark:from-light-theme-accent-500 
-        dark:to-dark-theme-accent-500
+        from-riptide-200 
+        to-theme-200 
+        dark:from-riptide-500 
+        dark:to-theme-500
     `,
 	dark: `
         group 
-        dark:text-mint-50 
+        dark:text-theme-50 
         text-blacktext
         dark:hover:text-white 
         px-6 
@@ -114,7 +114,7 @@ const variantClasses = {
         max-sm:text-sm 
         dark:bg-zinc-800 
         bg-white
-        dark:hover:bg-dark-theme-accent-500
+        dark:hover:bg-theme-500
     `,
 };
 
@@ -122,7 +122,7 @@ const variantClasses = {
 const iconClasses = {
 	default: 'size-5',
 	big: 'size-5',
-	dark: 'size-5 dark:text-mint-300 text-blacktext group-hover:text-blacktext dark:group-hover:text-white transition-colors',
+	dark: 'size-5 dark:text-theme-300 text-blacktext group-hover:text-blacktext dark:group-hover:text-white transition-colors',
 };
 
 // Combine base classes with variant-specific classes
@@ -150,8 +150,8 @@ const loadingAriaLabel = isLoading
 ---
 
 <div
-	class="w-fit h-fit from-transparent via-light-theme-accent-300 to-transparent dark:from-transparent dark:via-dark-theme-accent-500 dark:to-transparent from-40% to-60% animate-rotate-border bg-conic/[from_var(--border-angle)] p-px hover:shadow-lg
-    hover:shadow-dark-theme-accent-500/30 rounded-full">
+	class="w-fit h-fit from-transparent via-riptide-300 to-transparent dark:from-transparent dark:via-theme-500 dark:to-transparent from-40% to-60% animate-rotate-border bg-conic/[from_var(--border-angle)] p-px hover:shadow-lg
+    hover:shadow-theme-500/30 rounded-full">
 	<a
 		class:list={[buttonClasses, className]}
 		href={disabled ? '#' : link}

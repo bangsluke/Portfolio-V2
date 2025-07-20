@@ -18,9 +18,9 @@ logoFileName: apple_shortcuts.svg
 
 # Apple Shortcuts
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="mint-link">Apple</span>'s <span class="mint-link">iOS</span> automation app
+> <span class="theme-link">Apple</span>'s <span class="theme-link">iOS</span> automation app
 
 ## Table of Contents
 

@@ -27,7 +27,7 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 
 <html
 	lang="en"
-	class="dark:bg-[#0E0E11] bg-dark-theme-accent-50/5 font-montserrat scroll-smooth">
+	class="dark:bg-[#0E0E11] bg-theme-50/5 font-montserrat scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -73,8 +73,14 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 						root.classList.remove('dark');
 					}
 
-					// Store the theme preference
-					if (typeof localStorage !== 'undefined') {
+					// Only store the theme if it's a user preference, not system preference
+					if (
+						typeof localStorage !== 'undefined' &&
+						localStorage.getItem('theme')
+					) {
+						// Theme is already stored, keep it
+					} else {
+						// Store the detected theme (system preference or default)
 						localStorage.setItem('theme', theme);
 					}
 

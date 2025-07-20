@@ -14,9 +14,9 @@ logoFileName: power_automate.svg
 
 # Power Automate
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="mint-link">Microsoft</span> Power Automate
+> <span class="theme-link">Microsoft</span> Power Automate
 
 ## Table of Contents
 

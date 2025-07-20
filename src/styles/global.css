@@ -7,17 +7,17 @@
 	--font-roboto: 'Roboto', sans-serif;
 	--font-opensans: 'Open Sans', sans-serif;
 	--color-blacktext: #171717;
-	--color-dark-theme-accent-50: #ecfdf5;
-	--color-dark-theme-accent-100: #d0fbe5;
-	--color-dark-theme-accent-200: #a4f4cf;
-	--color-dark-theme-accent-300: #6ce9b7;
-	--color-dark-theme-accent-400: #31d69a;
-	--color-dark-theme-accent-500: #0dbc82;
-	--color-dark-theme-accent-600: #03986a;
-	--color-dark-theme-accent-700: #027a58;
-	--color-dark-theme-accent-800: #056047;
-	--color-dark-theme-accent-900: #054f3c;
-	--color-dark-theme-accent-950: #012d22;
+	--color-theme-50: #ecfdf5;
+	--color-theme-100: #d0fbe5;
+	--color-theme-200: #a4f4cf;
+	--color-theme-300: #6ce9b7;
+	--color-theme-400: #31d69a;
+	--color-theme-500: #0dbc82;
+	--color-theme-600: #03986a;
+	--color-theme-700: #027a58;
+	--color-theme-800: #056047;
+	--color-theme-900: #054f3c;
+	--color-theme-950: #012d22;
 
 	--color-light-theme-accent-50: #f0fdfa;
 	--color-light-theme-accent-100: #cbfcf1;
@@ -79,6 +79,25 @@ pre,
 	100% {
 		transform: rotate(-360deg) scale(10);
 	}
+}
+
+/* Theme-aware gradient backgrounds */
+.bg-gradient-light {
+	background: linear-gradient(
+		45deg,
+		rgba(96, 250, 155, 0) 10.79%,
+		rgba(96, 250, 170, 0.03) 40.92%,
+		rgba(96, 250, 155, 0) 90.35%
+	);
+}
+
+.bg-gradient-dark {
+	background: linear-gradient(
+		45deg,
+		rgba(96, 250, 155, 0) 10.79%,
+		rgba(96, 250, 170, 0.01) 40.92%,
+		rgba(96, 250, 155, 0) 90.35%
+	);
 }
 
 a.inline-block.leading-5.pl-12 {
@@ -222,72 +241,72 @@ a.inline-block.leading-5.pl-12 {
 	color: #6ce9b7 !important;
 }
 
-/* Styling for dark theme accent links - different styles for different link types */
-/* Obsidian links (strong tags) - bold, dark-theme-accent, no underline */
-.dark-theme-accent-link {
+/* Styling for theme links - different styles for different link types */
+/* Obsidian links (strong tags) - bold, theme-green, no underline */
+.theme-link {
 	color: #31d69a !important;
 	transition: all 0.3s ease;
 }
 
-.dark-theme-accent-link:hover {
+.theme-link:hover {
 	color: #6ce9b7 !important;
 }
 
-/* Markdown links (anchor tags) - bold, dark-theme-accent, with underline */
-a.dark-theme-accent-link {
+/* Markdown links (anchor tags) - bold, theme-green, with underline */
+a.theme-link {
 	text-decoration: underline;
 }
 
-a.dark-theme-accent-link:hover {
+a.theme-link:hover {
 	color: #6ce9b7 !important;
 }
 
-.dark .dark-theme-accent-link {
+.dark .theme-link {
 	color: #31d69a !important;
 }
 
-.dark .dark-theme-accent-link:hover {
+.dark .theme-link:hover {
 	color: #6ce9b7 !important;
 }
 
-.dark a.dark-theme-accent-link {
+.dark a.theme-link {
 	color: #31d69a !important;
 }
 
-.dark a.dark-theme-accent-link:hover {
+.dark a.theme-link:hover {
 	color: #6ce9b7 !important;
 }
 
-/* Ensure dark-theme-accent-link styling works in processed content */
-.processed-content .dark-theme-accent-link {
+/* Ensure theme-link styling works in processed content */
+.processed-content .theme-link {
 	color: #31d69a !important;
 }
 
-.processed-content a.dark-theme-accent-link {
+.processed-content a.theme-link {
 	text-decoration: underline;
 }
 
-.processed-content .dark-theme-accent-link:hover {
+.processed-content .theme-link:hover {
 	color: #6ce9b7 !important;
 }
 
-.processed-content a.dark-theme-accent-link:hover {
+.processed-content a.theme-link:hover {
 	color: #6ce9b7 !important;
 }
 
-.dark .processed-content .dark-theme-accent-link {
+.dark .processed-content .theme-link {
 	color: #31d69a !important;
 }
 
-.dark .processed-content a.dark-theme-accent-link {
+.dark .processed-content a.theme-link {
 	color: #31d69a !important;
 }
 
-.dark .processed-content .dark-theme-accent-link:hover {
+.dark .processed-content .theme-link:hover {
 	color: #6ce9b7 !important;
 }
 
-.dark .processed-content a.dark-theme-accent-link:hover {
+.dark .processed-content a.theme-link:hover {
 	color: #6ce9b7 !important;
 }
 
@@ -554,10 +573,13 @@ a.dark-theme-accent-link:hover {
 	width: 100%;
 	padding: 1rem;
 	gap: 0.5rem;
+	backdrop-filter: blur(8px);
+	backdrop-saturate: 100%;
+	backdrop-contrast: 100%;
 }
 
 .dark .nav-links.expanded {
-	background: #0e0e11;
+	background: rgba(14, 14, 17, 0.95);
 	border-top: 1px solid #374151;
 }
 

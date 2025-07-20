@@ -16,9 +16,9 @@ logoFileName: power_apps.svg
 
 # Power Apps
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="mint-link">Microsoft</span> Power Apps - Language: <span class="mint-link">JavaScript</span>
+> <span class="theme-link">Microsoft</span> Power Apps - Language: <span class="theme-link">JavaScript</span>
 
 ## Table of Contents
 

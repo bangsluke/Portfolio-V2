@@ -36,13 +36,13 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
-shortDescription: "A chat bot that takes on content such as an <span class=\"mint-link\">RFQ</span> block of text and then allows the user to query the text via chat."
+shortDescription: "A chat bot that takes on content such as an <span class=\"theme-link\">RFQ</span> block of text and then allows the user to query the text via chat."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
 # RLEGPT
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -73,7 +73,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A chat bot that takes on content such as an <span class="mint-link">RFQ</span> block of text and then allows the user to query the text via chat.
+A chat bot that takes on content such as an <span class="theme-link">RFQ</span> block of text and then allows the user to query the text via chat.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -87,7 +87,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: <span class="mint-link">GitLab</span> (see [Repositories](#repositories))
+- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -102,7 +102,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 

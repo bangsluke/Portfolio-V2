@@ -10,10 +10,25 @@ import {
 
 export async function getStaticPaths() {
 	const projects = await getCollection('projects');
-	return projects.map(project => ({
-		params: { slug: project.slug },
-		props: { project },
-	}));
+	return projects.map(project => {
+		// Generate name from filename if not provided in frontmatter
+		const projectData = {
+			...project.data,
+			name:
+				project.data.name ||
+				project.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+		};
+
+		return {
+			params: { slug: project.slug },
+			props: {
+				project: {
+					...project,
+					data: projectData,
+				},
+			},
+		};
+	});
 }
 
 const { project } = Astro.props;
@@ -69,10 +84,10 @@ const ogimage = {
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
 	<div class="min-h-screen">
 		<!-- Top Back Button -->
-		<div class="mb-8">
+		<div class="mb-8 text-center">
 			<a
 				href="/site#projects"
-				class="inline-flex items-center text-dark-theme-accent-400 hover:text-dark-theme-accent-300 transition-colors">
+				class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
 				<svg
 					class="w-5 h-5 mr-2"
 					fill="none"
@@ -97,11 +112,44 @@ const ogimage = {
 			/>
 		</div>
 
-		<!-- Project Name and Technologies -->
+		<!-- Project Name, Date Range, and Technologies -->
 		<div class="text-center mb-12">
-			<h1 class="text-5xl font-bold mb-6 text-dark-theme-accent-100">
-				{data.name}
-			</h1>
+			<h1 class="text-5xl font-bold mb-4 text-theme-100">{data.name}</h1>
+
+			{/* Date Range */}
+			{
+				data.dateStart && (
+					<div class="mb-6">
+						<p class="text-lg text-gray-300">
+							{new Date(data.dateStart).toLocaleDateString('en-US', {
+								month: 'short',
+								year: 'numeric',
+							})}{' '}
+							{data.dateEnd
+								? `- ${new Date(data.dateEnd).toLocaleDateString('en-US', {
+										month: 'short',
+										year: 'numeric',
+									})}`
+								: '- Present'}
+						</p>
+					</div>
+				)
+			}
+
+			{/* Project Category */}
+			{
+				data.projectCategory && (
+					<div class="mb-6">
+						<span class="text-lg text-gray-300 mr-3">Category:</span>
+						<a
+							href={`/portfolio/projects?category=${encodeURIComponent(data.projectCategory)}`}
+							class="inline-block bg-theme-400 hover:bg-theme-500 text-black font-bold px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+							{data.projectCategory}
+						</a>
+					</div>
+				)
+			}
+
 			<div class="flex flex-wrap justify-center gap-3">
 				{
 					data.technologies &&
@@ -124,9 +172,7 @@ const ogimage = {
 		{
 			processedLongDescription && (
 				<section class="mb-12">
-					<h2 class="text-3xl font-bold mb-6 text-dark-theme-accent-100">
-						Description
-					</h2>
+					<h2 class="text-3xl font-bold mb-6 text-theme-100">Description</h2>
 					<div class="bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl p-8 shadow-lg">
 						<div
 							class="text-lg text-zinc-200 leading-relaxed processed-content"
@@ -141,7 +187,7 @@ const ogimage = {
 		{
 			processedLessonsLearned && (
 				<section class="mb-12">
-					<h2 class="text-3xl font-bold mb-6 text-dark-theme-accent-100">
+					<h2 class="text-3xl font-bold mb-6 text-theme-100">
 						Lessons Learned
 					</h2>
 					<div class="bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl p-8 shadow-lg">
@@ -156,66 +202,91 @@ const ogimage = {
 
 		<!-- Linked Company/Client Section -->
 		{
-			((data.linkedCompany && data.linkedCompany.length > 0) ||
-				linkedClients.length > 0) && (
-				<section class="mb-12">
-					<h2 class="text-3xl font-bold mb-6 text-dark-theme-accent-100">
-						Developed For
-					</h2>
-					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						{linkedCompanies.map(company => (
-							<CustomerAndClientCarouselItem
-								name={company.slug}
-								logoURL={company.data.logoURL || undefined}
-								dateStart={company.data.dateStart}
-								dateEnd={company.data.dateEnd}
-								description={company.data.companyDescription}
-								keyAchievement={company.data.keyAchievement}
-								type="company"
-							/>
-						))}
-						{linkedClients.map(client => (
-							<CustomerAndClientCarouselItem
-								name={client.data.name || client.slug}
-								logoURL={client.data.logoURL || undefined}
-								dateStart={client.data.dateStart}
-								dateEnd={client.data.dateEnd}
-								description={client.data.clientDescription}
-								keyAchievement={client.data.keyAchievement}
-								type="client"
-							/>
-						))}
-					</div>
-				</section>
-			)
+			data.linkedCompany &&
+				data.linkedCompany.length > 0 &&
+				(linkedCompanies.length > 0 || linkedClients.length > 0) && (
+					<section class="mb-12">
+						<h2 class="text-3xl font-bold mb-6 text-theme-100">
+							Developed For
+						</h2>
+						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+							{linkedCompanies.map(company => (
+								<CustomerAndClientCarouselItem
+									name={company.slug}
+									logoURL={company.data.logoURL || undefined}
+									dateStart={company.data.dateStart}
+									dateEnd={company.data.dateEnd}
+									description={company.data.companyDescription}
+									keyAchievement={company.data.keyAchievement}
+									type="company"
+								/>
+							))}
+							{linkedClients.map(client => (
+								<CustomerAndClientCarouselItem
+									name={client.data.name || client.slug}
+									logoURL={client.data.logoURL || undefined}
+									dateStart={client.data.dateStart}
+									dateEnd={client.data.dateEnd}
+									description={client.data.clientDescription}
+									keyAchievement={client.data.keyAchievement}
+									type="client"
+								/>
+							))}
+						</div>
+					</section>
+				)
 		}
 
 		<!-- Project Links -->
 		{
 			(data.projectURL || data.codeURL) && (
 				<section class="mb-12">
-					<h2 class="text-3xl font-bold mb-6 text-dark-theme-accent-100">
-						Project Links
-					</h2>
-					<div class="flex flex-wrap gap-4 justify-center">
-						{data.projectURL && (
-							<a
-								href={data.projectURL}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="bg-dark-theme-accent-400 hover:bg-dark-theme-accent-500 text-black font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
-								Visit Site
-							</a>
-						)}
-						{data.codeURL && (
-							<a
-								href={data.codeURL}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="bg-[#232b32] hover:bg-dark-theme-accent-700/30 text-dark-theme-accent-100 font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
-								View Code
-							</a>
-						)}
+					<div class="text-center">
+						<span class="text-lg text-gray-300 mr-4">Project Links:</span>
+						<div class="inline-flex flex-wrap gap-4 justify-center">
+							{data.projectURL && (
+								<a
+									href={data.projectURL}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="bg-theme-400 hover:bg-theme-500 text-black font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
+									<svg
+										class="w-5 h-5 mr-2"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+										/>
+									</svg>
+									Visit Site
+								</a>
+							)}
+							{data.codeURL && (
+								<a
+									href={data.codeURL}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="bg-[#232b32] hover:bg-theme-700/30 text-theme-100 font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
+									<svg
+										class="w-5 h-5 mr-2"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+										/>
+									</svg>
+									View Code
+								</a>
+							)}
+						</div>
 					</div>
 				</section>
 			)
@@ -225,7 +296,7 @@ const ogimage = {
 		<div class="text-center mt-12">
 			<a
 				href="/site#projects"
-				class="inline-flex items-center text-dark-theme-accent-400 hover:text-dark-theme-accent-300 transition-colors">
+				class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
 				<svg
 					class="w-5 h-5 mr-2"
 					fill="none"

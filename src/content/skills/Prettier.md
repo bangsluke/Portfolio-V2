@@ -15,9 +15,9 @@ logoFileName: prettier.svg
 
 # Prettier
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="mint-link">VS Code</span> plugin
+> <span class="theme-link">VS Code</span> plugin
 
 ## Table of Contents
 

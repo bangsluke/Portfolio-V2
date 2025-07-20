@@ -42,7 +42,7 @@ lessonsLearned: "TBC"
 ---
 # Group Page
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -85,9 +85,9 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <span class="mint-link">HTML</span>, <span class="mint-link">CSS</span>, <span class="mint-link">JavaScript</span>
-- Back end/Datasource: <span class="mint-link">Google Sheets</span>
-- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories))
+- Front end: <span class="theme-link">HTML</span>, <span class="theme-link">CSS</span>, <span class="theme-link">JavaScript</span>
+- Back end/Datasource: <span class="theme-link">Google Sheets</span>
+- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: Manual
 
@@ -102,7 +102,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 

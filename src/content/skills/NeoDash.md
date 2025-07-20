@@ -15,9 +15,9 @@ logoFileName: neo4j.svg
 
 # NeoDash
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> A tool for building dashboards on top of <span class="mint-link">Neo4j</span> data - Language: <span class="mint-link">Cypher</span> and <span class="mint-link">React</span>
+> A tool for building dashboards on top of <span class="theme-link">Neo4j</span> data - Language: <span class="theme-link">Cypher</span> and <span class="theme-link">React</span>
 
 ## Table of Contents
 

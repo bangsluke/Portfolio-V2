@@ -8,20 +8,17 @@ export function processContent(content: string | undefined | null): string {
 
 	return (
 		content
-			// First, handle [[CompanyName|AltName]] format to extract AltName and make it bold and dark theme accent
+			// First, handle [[Link Name|AltName]] format to extract AltName and make it bold and theme green
 			.replace(
 				/\[\[([^|]+)\|([^\]]+)\]\]/g,
-				'<span class="dark-theme-accent-link">$2</span>'
+				'<span class="theme-link">$2</span>'
 			)
-			// Then handle simple Obsidian links [[text]] -> bold and dark theme accent text
+			// Then handle simple Obsidian links [[text]] -> bold and theme green text
+			.replace(/\[\[([^\]]+)\]\]/g, '<span class="theme-link">$1</span>')
+			// Handle existing HTML theme-link tags to ensure they're properly styled
 			.replace(
-				/\[\[([^\]]+)\]\]/g,
-				'<span class="dark-theme-accent-link">$1</span>'
-			)
-			// Handle existing HTML dark-theme-accent-link tags to ensure they're properly styled
-			.replace(
-				/<p class="dark-theme-accent-link">([^<]+)<\/p>/g,
-				'<span class="dark-theme-accent-link">$1</span>'
+				/<p class="theme-link">([^<]+)<\/p>/g,
+				'<span class="theme-link">$1</span>'
 			)
 			// Convert hardcoded project links to use slugs
 			.replace(
@@ -31,10 +28,10 @@ export function processContent(content: string | undefined | null): string {
 					return `href="/portfolio/projects/${slug}"`;
 				}
 			)
-			// Finally, convert markdown links to HTML with dark theme accent and underline styling
+			// Finally, convert markdown links to HTML with theme green and underline styling
 			.replace(
 				/\[([^\]]+)\]\(([^)]+)\)/g,
-				'<a href="$2" class="dark-theme-accent-link" target="_blank" rel="noopener noreferrer">$1</a>'
+				'<a href="$2" class="theme-link" target="_blank" rel="noopener noreferrer">$1</a>'
 			)
 	);
 }

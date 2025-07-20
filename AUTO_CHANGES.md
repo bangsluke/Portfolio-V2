@@ -33,6 +33,25 @@
 - Improved semantic naming for better understanding of color scheme purpose
 - Maintained all existing color values while improving naming convention
 
+## 2025-01-16 16:40 [main] - Fixed section extraction not working for projects
+- Fixed getContentType function in sync.js to return folder names directly
+  - Previous function returned singular content types (e.g., 'project') but CONTENT_TYPE_MAPPINGS uses plural keys (e.g., 'projects')
+  - This caused extractSectionsToFrontmatter to fail because it couldn't find the mapping
+  - Now returns folder names directly to match CONTENT_TYPE_MAPPINGS keys
+- Section extraction now works properly for all content types
+  - shortDescription, longDescription, and lessonsLearned will be extracted from project markdown files
+  - companyDescription and keyAchievement will be extracted from company files
+  - roleDescription and keyAchievement will be extracted from role files
+  - All extracted sections will be added to frontmatter automatically during sync
+
+## 2025-01-16 16:35 [main] - Fixed content collection schema validation error
+- Fixed missing shortDescription field in Backend Server.md project file
+  - Added shortDescription to frontmatter to match projects collection schema
+  - Schema requires shortDescription field but it was missing from the project file
+  - Added value: "The backend server and source of data for several of my projects, allowing a singular point of management and maintenance."
+- Resolved InvalidContentEntryDataError for projects collection
+  - Content validation now passes for all project files
+  - Schema validation ensures all required fields are present in project frontmatter
 ## 2025-01-16 15:50 [main] - Renamed config files for better clarity and Astro compatibility
 - Renamed src/content/typeConfig.ts back to src/content/config.ts for Astro compatibility
   - Astro expects content configuration to be named config.ts by default
@@ -199,6 +218,169 @@
   - Obsidian links are properly converted and styled with mint-green theme color
   - Maintains bold styling for Obsidian links as requested
   - Ensures proper hover effects and dark mode support
+
+## 2025-01-16 16:25 [develop] - Fixed skill icon lookup to use logoFileName from skills collection
+- Fixed SkillPill component to properly use skill logoFileName
+  - Updated findIconForSkill function to look up skills in the skills collection
+  - Now uses skill.data.logoFileName instead of trying to match skill names to icon names
+  - Resolves "cannot find an icon named 'next.js'" error by using proper logoFileName lookup
+- Enhanced skill icon lookup logic
+  - First tries skill mapping (from sync process)
+  - Then looks up skill in skills collection and uses logoFileName from frontmatter
+  - Falls back to direct icon name matching for non-skill technologies
+  - Properly handles async operations with skills collection
+- Improved error handling and fallbacks
+  - Added try-catch for skills collection access
+  - Maintains backward compatibility with existing icon lookup methods
+- Added helpful error messages for missing skill files
+  - When a skill is referenced in projects but missing from skills collection, logs clear error message
+  - Shows exact file path that needs to be created: src/content/skills/{skillName}.md
+  - Explains that the skill file should include a 'logoFileName' property in frontmatter
+  - Helps developers quickly identify and fix missing skill files
+- Simplified skill icon lookup by removing dependency on skillIconMapping
+  - Removed getSkillIconByName function dependency from SkillPill component
+  - Now directly looks up skills in the skills collection for real-time accuracy
+  - Eliminates "skillIconMapping is not defined" error by removing unnecessary mapping layer
+  - Maintains all error handling and fallback logic for missing skills
+
+## 2025-01-16 16:30 [develop] - Enhanced project pages with improved layout and filtering
+- Updated project slug page layout and functionality
+  - Centered "Back to Projects" buttons horizontally for better visual balance
+  - Added project name display below the image and above technology pills
+  - Added date range display in "MMM YYYY - MMM YYYY" format when both dateStart and dateEnd are available
+  - Added clickable project category link that navigates to projects page with pre-filled filter
+  - Modified "Developed For" section to only show when linkedCompany is populated
+  - Improved visual hierarchy with proper spacing between elements
+- Enhanced projects gallery page with advanced filtering and responsive layout
+  - Centered "Back to Projects" button horizontally for consistency
+  - Replaced date range slider with two date input boxes for better usability
+  - Date inputs start blank to show all projects by default
+  - Implemented responsive filter layout: desktop shows all filters in one row, mobile stacks vertically
+  - Added separate mobile filter elements with proper event handling for both layouts
+  - Implemented URL parameter support for pre-filling category filter (e.g., ?category=Web%20Development)
+  - Enhanced filter logic to combine category and date range filtering
+  - Added real-time project count updates for both desktop and mobile layouts
+  - Improved filter UI layout with better organization and spacing
+  - Fixed issue where projects weren't showing due to restrictive initial date filter values
+- Fixed project page content display issues
+  - Fixed sync script error by adding missing DEFAULT_DEBUG_MODE import
+  - Manually added missing longDescription and lessonsLearned fields to Spreadsheet of Life project
+  - Manually added missing shortDescription, longDescription and lessonsLearned fields to Travel Website project
+  - Ensured project pages display description and lessons learned sections properly
+  - Verified that "Developed For" section only shows when linkedCompany is populated
+  - Added automatic name generation from filename for projects without explicit name field
+  - Updated date range display to show "Present" when dateEnd is empty
+  - Added "Category:" label in front of project category button for better clarity
+  - Enhanced "Developed For" section logic to only show when valid companies/clients are found
+  - Added icons to "Visit Site" and "View Code" buttons for better visual appeal
+  - Changed "Project Links" from header to inline text label for better layout flow
+  - Added missing shortDescription, longDescription, and lessonsLearned frontmatter properties to Spreadsheet of Life project (properties already defined in config.ts and displayed in components)
+- Fixed "Unable to locate 'google' icon" error
+  - Removed invalid "[[Google]]" reference from Spreadsheet of Life project technologies
+  - The error was caused by referencing a non-existent "Google" skill file
+  - Updated to use only valid skill references: "[[Google Sheets]]" and "[[Google Apps Script]]"
+  - Available Google-related skills are: Google Cloud, Google Sheets, Google Apps Script
+- Enhanced SkillPill component to handle Obsidian pipe aliases
+  - Updated cleanSkillName function to parse Obsidian links with pipe symbols (e.g., "[[path/to/file|Display Name]]")
+  - Extracts the filename from the path (before the pipe) for skill lookup
+  - Uses the display name (after the pipe) for the pill text
+  - Handles cases like "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]" correctly
+  - Maintains compatibility with standard Obsidian links without pipes
+  - Reverted project file changes since the component now handles these links natively
+  - Graceful degradation when skills collection is not available
+
+## 2025-01-16 16:20 [develop] - Implemented proper skill icon mapping system using sync process
+- Removed hardcoded skill mappings from SkillPill component
+  - Removed hardcoded skill mappings that were causing maintenance issues
+  - SkillPill component now uses proper skill name to icon lookup system
+- Enhanced sync process to create skill icon mapping
+  - Added createSkillIconMapping function to sync.js
+  - Function reads skill files and extracts name and logoFileName from frontmatter
+  - Creates mapping between skill names and their corresponding icon names
+  - Auto-generates skillIconMapping in icon-utils.ts during sync process
+- Updated icon-utils.ts with skill mapping system
+  - Added skillIconMapping object to store skill name to icon mappings
+  - Added getSkillIconByName function to lookup icons by skill name
+  - Maintains backward compatibility with existing icon functions
+- Updated SkillPill component to use new mapping system
+  - Now uses getSkillIconByName as primary lookup method
+  - Falls back to direct icon name lookup for non-mapped skills
+  - Resolves "Neo4j Aura" icon error by using proper mapping from skill frontmatter
+- Improved maintainability and consistency
+  - Skill icons are now managed through skill frontmatter logoFileName field
+  - Sync process automatically updates mappings when skills change
+  - No more hardcoded mappings in components
+
+## 2025-01-16 16:15 [develop] - Fixed Neo4j Aura icon mapping and enhanced skill pill functionality
+- Fixed Neo4j Aura icon display issue
+  - Added "Neo4j Aura" mapping to neo4j_cypher icon in SkillPill component
+  - Added "Neo4j" mapping to neo4j icon for consistency
+  - Added "Cypher" mapping to neo4j_cypher icon for related technologies
+  - Resolved "Unable to locate neo4j aura icon" error
+- Enhanced skill pill icon mappings
+  - Updated skill mappings to include database and graph technologies
+  - Ensured all Neo4j-related technologies display proper icons
+  - Maintained consistency with existing icon naming conventions
+
+## 2025-01-16 16:10 [develop] - Enhanced mobile project card interaction and fixed skill pill icons
+- Implemented mobile card selection functionality for projects gallery
+  - Added touch-based card selection that stays bright until user clicks off
+  - Cards show visual feedback with scale, glow, and border when selected
+  - Added "See more detail..." link that appears at bottom of selected cards
+  - Link directs users to the project slug with smooth animation
+  - Only one card can be selected at a time with proper deselection logic
+- Fixed skill pill icon filtering and question mark issues
+  - Removed shouldShowIcon filtering to ensure all icons display properly
+  - Updated SkillPill, SkillsBubbles, and SkillItem components to remove filtering
+  - Icons now display as bold and vivid without any filtering restrictions
+  - Fixed question mark fallback to only show when no icon name is available
+  - Maintained proper icon mapping for common technology names
+- Enhanced mobile user experience
+  - Added smooth animations for card selection and detail link appearance
+  - Implemented proper touch event handling with preventDefault
+  - Added click-outside functionality to deselect cards
+  - Improved visual feedback with mint-green glow and border effects
+
+## 2025-01-16 16:05 [develop] - Fixed theme toggle not changing background due to overlay elements
+- Fixed theme toggle background change issue
+  - Identified that fixed positioned overlay elements were covering the background
+  - Converted inline gradient styles to CSS classes for theme awareness
+  - Added bg-gradient-light and bg-gradient-dark classes for proper theme switching
+  - Background color now properly changes when theme toggle is clicked
+- Enhanced overlay element theme responsiveness
+  - Gradient overlay now responds to theme changes
+  - Blur circle already had proper theme-aware styling
+  - All background elements now properly switch between light and dark modes
+
+## 2025-01-16 16:00 [develop] - Fixed background color toggle and improved light mode appearance
+- Fixed background color toggle functionality
+  - Changed light mode background from bg-theme-50/5 to bg-gray-50 for cleaner near-white appearance
+  - Dark mode background remains #0E0E11 as requested
+  - Theme toggle now properly changes background color between light and dark modes
+- Enhanced light mode visual appearance
+  - Light mode now uses a clean gray-50 background instead of tinted mint green
+  - Better contrast and readability in light mode
+  - Maintains the same dark mode aesthetic
+
+## 2025-01-16 15:55 [develop] - Fixed light/dark theme functionality and improved mobile navigation
+- Enhanced theme detection and toggle functionality
+  - Updated Layout.astro theme detection script to properly handle system preference vs user preference
+  - Modified ThemeIcon.astro to only store user preference when toggle is clicked
+  - Fixed theme detection to respect user's manual choice over system preference
+  - Improved theme icon display to show correct alternative theme mode
+- Fixed mobile navigation dropdown background
+  - Added backdrop-filter blur and transparency to mobile dropdown
+  - Updated dark mode background to use rgba with transparency
+  - Improved visual consistency with header backdrop blur
+- Fixed about me page text contrast in dark mode
+  - Removed hardcoded "text-white" class from markdown content
+  - Now uses proper dark mode text colors from global CSS
+  - Improved readability and contrast in dark mode
+- Enhanced theme system behavior
+  - Initial page load now correctly matches user's device preference
+  - Theme toggle properly overrides system preference when clicked
+  - Mobile navigation now properly adapts to theme changes
+  - About me page text now has proper contrast in both light and dark modes
 
 ## 2025-01-16 14:20 [develop] - Improved theme detection to prevent flash of incorrect theme
 - Moved theme detection script to Layout.astro head section

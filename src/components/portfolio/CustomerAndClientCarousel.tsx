@@ -81,7 +81,7 @@ function CompanyCard({
 		<>
 			<div
 				className={`relative w-full h-full rounded-lg overflow-hidden group cursor-pointer transition-all duration-300 transform hover:scale-105 ${
-					isSelected ? 'ring-4 ring-mint-400 scale-105' : ''
+					isSelected ? 'ring-4 ring-theme-400 scale-105' : ''
 				}`}
 				style={
 					hasBackground
@@ -107,8 +107,8 @@ function CompanyCard({
 						<h3
 							className={`text-xl font-bold mb-2 transition-colors duration-300 ${
 								isSelected
-									? 'text-mint-400'
-									: 'text-white group-hover:text-mint-400'
+									? 'text-theme-400'
+									: 'text-white group-hover:text-theme-400'
 							}`}>
 							{item.title}
 						</h3>
@@ -122,7 +122,7 @@ function CompanyCard({
 					{/* Bottom section with info button */}
 					<div className="flex justify-end">
 						<button
-							className="info-button opacity-0 group-hover:opacity-100 transition-all duration-300 bg-mint-400 hover:bg-mint-500 text-black rounded-full p-3 shadow-lg transform translate-y-2 group-hover:translate-y-0"
+							className="info-button opacity-0 group-hover:opacity-100 transition-all duration-300 bg-theme-400 hover:bg-theme-500 text-black rounded-full p-3 shadow-lg transform translate-y-2 group-hover:translate-y-0"
 							aria-label={`View details for ${item.title}`}
 							title={`View details for ${item.title}`}
 							onClick={showCompanyModal}>
@@ -313,9 +313,9 @@ export default function ClientAndCustomerCarousel({
 	useEffect(() => {
 		if (flickingRef.current && carouselItems.length > 0) {
 			const flicking = flickingRef.current;
-			console.log('Circular mode enabled:', flicking.circularEnabled);
-			console.log('Total panels:', carouselItems.length);
-			console.log('Viewport width:', flicking.viewport?.width);
+			// console.log('Circular mode enabled:', flicking.circularEnabled);
+			// console.log('Total panels:', carouselItems.length);
+			// console.log('Viewport width:', flicking.viewport?.width);
 		}
 	}, [carouselItems]);
 

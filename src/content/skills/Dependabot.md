@@ -17,9 +17,9 @@ logoFileName: dependabot.svg
 
 # Dependabot
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="mint-link">GitHub</span> security plugin
+> <span class="theme-link">GitHub</span> security plugin
 
 ## Table of Contents
 

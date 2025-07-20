@@ -4,9 +4,9 @@ const allPosts = await import.meta.glob('../../pages/blog/posts/*.md', {
 });
 const posts = Object.values(allPosts);
 
-import Tag from '../ui/Tag.astro';
-import ReadMore from '../ui/ReadMore.astro';
 import Capsule from '../ui/Capsule.astro';
+import ReadMore from '../ui/ReadMore.astro';
+import Tag from '../ui/Tag.astro';
 import DatePub from './DatePub.astro';
 
 // Get the latest post using reduce
@@ -53,19 +53,19 @@ const imageAlt =
 
 				<a
 					href={latestPost.url}
-					class="text-mint-50 gap-3 h-full flex items-end max-sm:px-6  rounded-lg transition-all"
+					class="text-theme-50 gap-3 h-full flex items-end max-sm:px-6  rounded-lg transition-all"
 					aria-label={`Read article: ${latestPost.frontmatter.title}`}>
 					<div class="gap-3 flex flex-col justify-end drop-shadow-[1px_6px_1px_rgba(0,0,0,0.3)]">
 						<DatePub
 							date={latestPost.frontmatter.pubDate}
-							class="text-mint-50"
+							class="text-theme-50"
 						/>
 						<h2
 							id="post-title"
 							class="text-4xl max-xl:text-3xl max-sm:text-2xl font-bold">
 							<span>{latestPost.frontmatter.title}</span>
 						</h2>
-						<ReadMore class="text-mint-50" />
+						<ReadMore class="text-theme-50" />
 					</div>
 				</a>
 

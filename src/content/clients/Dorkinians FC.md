@@ -20,7 +20,7 @@ linkedCompany:
 
 # Dorkinians FC
 
-> [!back] Link back to <strong class="mint-link">football</strong> team in the world
+> [!back] Link back to <span class="theme-link">football</span> team in the world
 
 ## Table of Contents
 ```table-of-contents

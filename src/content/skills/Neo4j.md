@@ -15,9 +15,9 @@ logoFileName: neo4j.svg
 
 # Neo4j
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Graph database - Language: <span class="mint-link">Cypher</span>
+> Graph database - Language: <span class="theme-link">Cypher</span>
 
 ## Table of Contents
 

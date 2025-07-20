@@ -16,7 +16,7 @@ logoFileName: algolia.svg
 
 # Algolia
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
 ## Table of Contents
 

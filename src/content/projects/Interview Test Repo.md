@@ -35,13 +35,13 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 8
-shortDescription: "An interview test written for possibly hiring a <span class=\"mint-link\">RLE</span> with <span class=\"mint-link\">Uwe Kloss</span>."
+shortDescription: "An interview test written for possibly hiring a <span class=\"theme-link\">RLE</span> with <span class=\"theme-link\">Uwe Kloss</span>."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
 # Interview Test Repo
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -72,7 +72,7 @@ WHERE file = this.file
 
 ## Short Description
 
-An interview test written for possibly hiring a <span class="mint-link">RLE</span> with <span class="mint-link">Uwe Kloss</span>.
+An interview test written for possibly hiring a <span class="theme-link">RLE</span> with <span class="theme-link">Uwe Kloss</span>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -84,10 +84,10 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <span class="mint-link">React</span>
+- Front end: <span class="theme-link">React</span>
 - Back end/Datasource: TBC
-- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), TBC
-- Security: <span class="mint-link">Snyk</span>
+- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), TBC
+- Security: <span class="theme-link">Snyk</span>
 - Authentication: TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -101,7 +101,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 

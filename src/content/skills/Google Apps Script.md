@@ -19,9 +19,9 @@ logoFileName: google_apps_script.svg
 
 # Google Apps Script
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Language developed by <span class="mint-link">Google</span>. Form of <span class="mint-link">JavaScript</span>
+> Language developed by <span class="theme-link">Google</span>. Form of <span class="theme-link">JavaScript</span>
 
 ## Table of Contents
 

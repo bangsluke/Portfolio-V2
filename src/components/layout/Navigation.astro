@@ -23,12 +23,12 @@ const menu = {
 // Common base classes
 const baseClasses = {
 	nav: 'nav-links flex w-full justify-center gap-6 max-md:gap-3 max-md:py-6',
-	link: 'px-2 py-2 transition-all hover:text-mint-300 max-md:mx-auto max-md:w-full max-md:px-6 max-md:py-2 ',
+	link: 'px-2 py-2 transition-all hover:text-theme-300 max-md:mx-auto max-md:w-full max-md:px-6 max-md:py-2 ',
 	dropdown: 'relative group flex items-center',
 	dropdownMenu:
 		'absolute left-0 top-full hidden group-hover:block bg-white dark:bg-zinc-800 shadow-lg rounded-md py-2 min-w-[200px] z-50',
 	dropdownItem:
-		'block px-4 py-2 text-sm hover:bg-mint-100 dark:hover:bg-zinc-700 transition-colors',
+		'block px-4 py-2 text-sm hover:bg-theme-100 dark:hover:bg-zinc-700 transition-colors',
 } as const;
 ---
 
@@ -39,8 +39,8 @@ const baseClasses = {
 		// Classes for link states
 		const linkClasses = {
 			active: [
-				'text-mint-500',
-				'dark:text-mint-400',
+				'text-theme-500',
+				'dark:text-theme-400',
 				'font-bold',
 				'[text-shadow:1px_1px_11px_rgba(208,251,229,0.7)]',
 			],

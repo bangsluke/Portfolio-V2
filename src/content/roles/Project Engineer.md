@@ -15,7 +15,7 @@ keyAchievement: "TBC"
 ---
 # Project Engineer
 
-> [!back] Link back to <span class="mint-link">Role Notes</span>
+> [!back] Link back to <span class="theme-link">Role Notes</span>
 
 ## Table of Contents
 ```table-of-contents

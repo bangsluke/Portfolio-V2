@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { processContent } from '../../utils/content-processor';
-import { getSkillIconName, shouldShowIcon } from '../../utils/icon-utils';
+import { getSkillIconName } from '../../utils/icon-utils';
 
 interface Props {
 	name: string;
@@ -21,7 +21,7 @@ const processedSkillDescription = processContent(skillDescription || '');
 	<div class="pb-12 md:col-span-2">
 		<div class="sticky top-0">
 			<span
-				class="absolute -left-[42px] text-5xl text-mint-400 rounded-full drop-shadow-[0px_0px_8px_rgba(0,255,94,1)]"
+				class="absolute -left-[42px] text-5xl text-theme-400 rounded-full drop-shadow-[0px_0px_8px_rgba(0,255,94,1)]"
 				>&bull;</span
 			>
 			<div class="flex items-center gap-3">
@@ -29,7 +29,7 @@ const processedSkillDescription = processContent(skillDescription || '');
 				{
 					(() => {
 						const iconName = getSkillIconName(logoFileName || null);
-						if (iconName && shouldShowIcon(iconName)) {
+						if (iconName) {
 							return <Icon name={iconName} class="w-8 h-8" title={name} />;
 						}
 						// Show a placeholder for missing icons
@@ -43,7 +43,7 @@ const processedSkillDescription = processContent(skillDescription || '');
 						return null;
 					})()
 				}
-				<h3 class="text-xl font-bold text-mint-400">
+				<h3 class="text-xl font-bold text-theme-400">
 					{name}
 				</h3>
 			</div>

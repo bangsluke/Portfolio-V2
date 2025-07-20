@@ -1,14 +1,13 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import WorkExperienceTimeline from '../components/portfolio/WorkExperienceTimeline.astro';
-import EducationTimeline from '../components/portfolio/EducationTimeline.astro';
-import ProjectsGallery from '../components/portfolio/ProjectsGallery.astro';
-import CustomerAndClientCarousel from '../components/portfolio/CustomerAndClientCarousel.astro';
-import ReferencesCarousel from '../components/portfolio/ReferencesCarousel.astro';
-import HeroIndex from '../components/portfolio/HeroIndex.astro';
-import Contact from '../components/portfolio/Contact.astro';
-import CompaniesList from '../components/portfolio/CompaniesList.astro';
 import CodingSection from '../components/portfolio/CodingSection.astro';
+import Contact from '../components/portfolio/Contact.astro';
+import CustomerAndClientCarousel from '../components/portfolio/CustomerAndClientCarousel.astro';
+import EducationTimeline from '../components/portfolio/EducationTimeline.astro';
+import HeroIndex from '../components/portfolio/HeroIndex.astro';
+import ProjectsGallery from '../components/portfolio/ProjectsGallery.astro';
+import ReferencesCarousel from '../components/portfolio/ReferencesCarousel.astro';
+import WorkExperienceTimeline from '../components/portfolio/WorkExperienceTimeline.astro';
+import Layout from '../layouts/Layout.astro';
 const pageTitle = 'bangsluke Portfolio';
 const description = 'My portfolio site';
 const ogimage = {
@@ -22,9 +21,7 @@ const ogimage = {
 	<ProjectsGallery />
 	<CodingSection />
 	<WorkExperienceTimeline />
-	<!-- TODO: Delete below Customer Carousel -->
 	<CustomerAndClientCarousel />
-	<!-- <CompaniesList /> -->
 	<EducationTimeline />
 	<ReferencesCarousel />
 	<Contact />
