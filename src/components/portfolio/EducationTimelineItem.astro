@@ -25,6 +25,12 @@ const {
 const processedQualifications = processContent(qualifications || '');
 const processedAdditionalDetails = processContent(additionalDetails || '');
 
+// Check if content should be hidden (contains "n/a")
+const shouldShowQualifications =
+	qualifications && qualifications.trim().toLowerCase() !== 'n/a';
+const shouldShowAdditionalDetails =
+	additionalDetails && additionalDetails.trim().toLowerCase() !== 'n/a';
+
 // Format dates in "MMM YYYY - MMM YYYY" format
 function formatDate(date: string | Date | null | undefined): string {
 	if (!date) return '';
@@ -69,7 +75,7 @@ const dateRange =
 	<div
 		class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3">
 		{
-			processedQualifications && (
+			shouldShowQualifications && processedQualifications && (
 				<h4
 					class="text-xl font-semibold text-zinc-600 dark:text-white processed-content"
 					set:html={processedQualifications}
@@ -77,7 +83,7 @@ const dateRange =
 			)
 		}
 		{
-			processedAdditionalDetails && (
+			shouldShowAdditionalDetails && processedAdditionalDetails && (
 				<div class="processed-content" set:html={processedAdditionalDetails} />
 			)
 		}

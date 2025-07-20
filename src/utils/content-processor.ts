@@ -28,6 +28,8 @@ export function processContent(content: string | undefined | null): string {
 					return `href="/portfolio/projects/${slug}"`;
 				}
 			)
+			// Convert newlines to <br> tags for proper HTML rendering
+			.replace(/\n/g, '<br>')
 			// Finally, convert markdown links to HTML with theme green and underline styling
 			.replace(
 				/\[([^\]]+)\]\(([^)]+)\)/g,

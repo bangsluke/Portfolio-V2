@@ -18,6 +18,28 @@
 
 ## Auto Log
 
+## 2025-01-16 17:15 [main] - Limited education timeline and fixed content parsing
+- Limited education timeline to display only 2 items instead of 3
+  - Updated displayedEducation slice from 0,3 to 0,2 in EducationTimeline.astro
+  - Removed hasMoreItems variable and related fade out functionality
+  - Eliminated fade effect overlay and "See more items" button
+  - Simplified timeline component structure for cleaner appearance
+- Fixed additionalDetails content parsing in content-processor.ts
+  - Added newline to <br> tag conversion for proper HTML rendering
+  - Fixed issue where newlines in additionalDetails were not being rendered as line breaks
+  - Improved content display for education timeline items with multi-line descriptions
+  - Enhanced readability of education details with proper HTML formatting
+- Re-added "See more items" button for education timeline
+  - Restored hasMoreItems variable to check if more than 2 education items exist
+  - Added "See more items" button that appears when there are additional education entries
+  - Button links to /education page for full education timeline view
+  - Removed fade effect overlay for cleaner appearance
+- Added logic to hide "n/a" content in education timeline
+  - Added shouldShowQualifications and shouldShowAdditionalDetails checks in EducationTimelineItem.astro
+  - Sections with "n/a" content (case-insensitive) are now hidden from display
+  - Improved content filtering to prevent empty or placeholder content from showing
+  - Enhanced user experience by only showing meaningful education information
+
 ## 2025-01-16 17:00 [main] - Created interactive bubble chart for skills display
 - Created new SkillsBubbleChart.tsx Preact component for interactive skills visualization
   - Bubbles sized based on skillRating value (20-60px radius range)
