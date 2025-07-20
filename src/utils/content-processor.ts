@@ -8,17 +8,17 @@ export function processContent(content: string | undefined | null): string {
 
 	return (
 		content
-			// First, handle [[CompanyName|AltName]] format to extract AltName and make it bold and mint green
+			// First, handle [[CompanyName|AltName]] format to extract AltName and make it bold and theme green
 			.replace(
 				/\[\[([^|]+)\|([^\]]+)\]\]/g,
-				'<span class="mint-link">$2</span>'
+				'<span class="theme-link">$2</span>'
 			)
-			// Then handle simple Obsidian links [[text]] -> bold and mint green text
-			.replace(/\[\[([^\]]+)\]\]/g, '<span class="mint-link">$1</span>')
-			// Handle existing HTML mint-link tags to ensure they're properly styled
+			// Then handle simple Obsidian links [[text]] -> bold and theme green text
+			.replace(/\[\[([^\]]+)\]\]/g, '<span class="theme-link">$1</span>')
+			// Handle existing HTML theme-link tags to ensure they're properly styled
 			.replace(
-				/<p class="mint-link">([^<]+)<\/p>/g,
-				'<span class="mint-link">$1</span>'
+				/<p class="theme-link">([^<]+)<\/p>/g,
+				'<span class="theme-link">$1</span>'
 			)
 			// Convert hardcoded project links to use slugs
 			.replace(
@@ -28,10 +28,10 @@ export function processContent(content: string | undefined | null): string {
 					return `href="/portfolio/projects/${slug}"`;
 				}
 			)
-			// Finally, convert markdown links to HTML with mint green and underline styling
+			// Finally, convert markdown links to HTML with theme green and underline styling
 			.replace(
 				/\[([^\]]+)\]\(([^)]+)\)/g,
-				'<a href="$2" class="mint-link" target="_blank" rel="noopener noreferrer">$1</a>'
+				'<a href="$2" class="theme-link" target="_blank" rel="noopener noreferrer">$1</a>'
 			)
 	);
 }

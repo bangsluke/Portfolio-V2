@@ -1,11 +1,11 @@
 ---
-import Navigation from './Navigation.astro';
-import ThemeIcon from '../ui/ThemeIcon.astro';
-import Social from '../ui/Social.astro';
-import Logo from '../ui/Logo.astro';
 import { Icon } from 'astro-icon/components';
 import { AstroError } from 'astro/errors';
 import { getCollection } from 'astro:content';
+import Logo from '../ui/Logo.astro';
+import Social from '../ui/Social.astro';
+import ThemeIcon from '../ui/ThemeIcon.astro';
+import Navigation from './Navigation.astro';
 
 const [staticData] = await getCollection('staticData');
 
@@ -31,7 +31,7 @@ const navItems = isActiveRoute
 	<div
 		class="relative mx-auto flex max-w-7xl flex-row items-center justify-between max-xl:px-6">
 		<a href="/" aria-label="Go to home">
-			<Logo class="h-6 cursor-pointer transition-all hover:text-mint-300" />
+			<Logo class="h-6 cursor-pointer transition-all hover:text-theme-300" />
 		</a>
 
 		<Navigation items={navItems} />

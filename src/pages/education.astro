@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import EducationTimelineItem from '../components/portfolio/EducationTimelineItem.astro';
-import Heading from '../components/ui/Heading.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
+import EducationTimelineItem from '../components/portfolio/EducationTimelineItem.astro';
+import Heading from '../components/ui/Heading.astro';
+import Layout from '../layouts/Layout.astro';
 
 // Get all education from the local content folder
 const education = await getCollection('educations');
@@ -33,22 +33,30 @@ const ogimage = {
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
 	<div class="min-h-screen bg-white dark:bg-gray-900">
 		<!-- Header -->
-		<div class="bg-gradient-to-r from-mint-400 to-mint-500 py-16">
+		<div class="bg-gradient-to-r from-theme-400 to-theme-500 py-16">
 			<div class="max-w-4xl mx-auto px-8 text-center">
 				<div class="flex gap-4 items-center justify-center mb-4">
 					<Icon class="text-4xl text-white" name="briefcase" />
 					<Heading text="" textGradient="Education" level={1} />
 				</div>
 				<p class="text-white/90 text-lg max-w-2xl mx-auto">
-					Complete timeline of my educational background and academic achievements
+					Complete timeline of my educational background and academic
+					achievements
 				</p>
 				<div class="mt-6">
-					<a 
-						href="/site" 
-						class="inline-flex items-center px-4 py-2 bg-white/20 hover:bg-white/30 text-white font-medium rounded-lg transition-colors duration-300"
-					>
-						<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+					<a
+						href="/site"
+						class="inline-flex items-center px-4 py-2 bg-white/20 hover:bg-white/30 text-white font-medium rounded-lg transition-colors duration-300">
+						<svg
+							class="w-4 h-4 mr-2"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
 						</svg>
 						Back to Portfolio
 					</a>
@@ -88,12 +96,19 @@ const ogimage = {
 				</div>
 				<!-- Bottom Back to Portfolio Button -->
 				<div class="flex justify-center mt-16">
-					<a 
-						href="/site" 
-						class="inline-flex items-center px-4 py-2 bg-white/20 hover:bg-white/30 text-mint-500 dark:text-mint-400 font-medium rounded-lg transition-colors duration-300 border border-mint-400 dark:border-mint-500"
-					>
-						<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+					<a
+						href="/site"
+						class="inline-flex items-center px-4 py-2 bg-white/20 hover:bg-white/30 text-theme-500 dark:text-theme-400 font-medium rounded-lg transition-colors duration-300 border border-theme-400 dark:border-theme-500">
+						<svg
+							class="w-4 h-4 mr-2"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
 						</svg>
 						Back to Portfolio
 					</a>
@@ -101,4 +116,5 @@ const ogimage = {
 			</div>
 		</section>
 	</div>
-</Layout> 
+</Layout>
+

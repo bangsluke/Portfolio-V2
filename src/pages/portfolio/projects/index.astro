@@ -102,7 +102,7 @@ const ogimage = {
 				<div class="mb-8">
 					<a
 						href="/site#projects"
-						class="inline-flex items-center text-mint-400 hover:text-mint-300 transition-colors">
+						class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
 						<svg
 							class="w-5 h-5 mr-2"
 							fill="none"
@@ -119,14 +119,14 @@ const ogimage = {
 				</div>
 
 				<div class="flex gap-4 items-center justify-center mb-12">
-					<Icon class="text-4xl text-mint-400" name="code" />
+					<Icon class="text-4xl text-theme-400" name="code" />
 					<Heading text="" textGradient="Project Gallery" level={1} />
 				</div>
 
 				<p
 					class="text-center mx-auto text-lg max-xl:text-base max-w-2xl text-gray-300 mb-12 leading-6 font-medium">
 					Explore all my <b
-						class="bg-linear-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text"
+						class="bg-linear-to-r from-riptide-500 to-theme-500 dark:from-riptide-300 dark:to-theme-200 text-transparent bg-clip-text"
 						>projects and developments</b
 					>. Each one represents a unique challenge and learning experience.
 				</p>
@@ -135,12 +135,12 @@ const ogimage = {
 				<div
 					class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 p-6 bg-gradient-to-r from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg">
 					<div class="flex items-center gap-4">
-						<label for="categoryFilter" class="text-mint-100 font-medium"
+						<label for="categoryFilter" class="text-theme-100 font-medium"
 							>Filter by Category:</label
 						>
 						<select
 							id="categoryFilter"
-							class="bg-[#232b32] text-mint-100 px-4 py-2 rounded-lg border border-mint-400/30 focus:border-mint-400 focus:outline-none transition-colors">
+							class="bg-[#232b32] text-theme-100 px-4 py-2 rounded-lg border border-theme-400/30 focus:border-theme-400 focus:outline-none transition-colors">
 							<option value="">All Categories</option>
 							{
 								projectCategories.map(category => (
@@ -149,7 +149,7 @@ const ogimage = {
 							}
 						</select>
 					</div>
-					<div class="text-mint-100 font-medium">
+					<div class="text-theme-100 font-medium">
 						<span id="projectCount">{processedProjects.length}</span> projects
 					</div>
 				</div>
@@ -189,7 +189,7 @@ const ogimage = {
 				<div class="text-center">
 					<a
 						href="/site#projects"
-						class="inline-flex items-center text-mint-400 hover:text-mint-300 transition-colors">
+						class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
 						<svg
 							class="w-5 h-5 mr-2"
 							fill="none"

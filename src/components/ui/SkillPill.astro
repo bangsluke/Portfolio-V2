@@ -5,7 +5,7 @@ import { getSkillIconName, shouldShowIcon } from '../../utils/icon-utils';
 interface Props {
 	skillName: string;
 	size?: 'xs' | 'sm' | 'md' | 'lg';
-	variant?: 'default' | 'dark' | 'mint';
+	variant?: 'default' | 'dark' | 'theme';
 	className?: string;
 }
 
@@ -113,7 +113,7 @@ const sizeClasses = {
 const variantClasses = {
 	default: 'bg-white text-gray-800 border border-gray-200 hover:bg-gray-50',
 	dark: 'bg-gray-800 text-white border border-gray-700 hover:bg-gray-700',
-	mint: 'bg-mint-400 text-black border border-mint-500 hover:bg-mint-500',
+	theme: 'bg-theme-400 text-black border border-theme-500 hover:bg-theme-500',
 };
 
 const baseClasses =

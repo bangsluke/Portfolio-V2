@@ -67,7 +67,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 		</div>
 		<a
 			href={`/portfolio/projects/${projectSlug}`}
-			class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 bg-mint-400 hover:bg-mint-500 text-black rounded-full p-2 shadow-lg z-10 flex items-center justify-center"
+			class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 bg-theme-400 hover:bg-theme-500 text-black rounded-full p-2 shadow-lg z-10 flex items-center justify-center"
 			aria-label={`View details for ${name}`}
 			title={`View details for ${name}`}>
 			<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -81,7 +81,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 		</a>
 	</div>
 	<div class="flex flex-col flex-1 p-6">
-		<h2 class="text-2xl font-bold text-mint-100 mb-3">{name}</h2>
+		<h2 class="text-2xl font-bold text-theme-100 mb-3">{name}</h2>
 		<div class="flex flex-wrap gap-2 mb-4">
 			{
 				visibleTechnologies &&
@@ -92,7 +92,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 								skillName={cleanTech}
 								variant="dark"
 								size="sm"
-								className="shadow hover:bg-mint-700/30"
+								className="shadow hover:bg-theme-700/30"
 							/>
 						);
 					})
@@ -100,14 +100,14 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 			{
 				hasHiddenSkills && (
 					<div class="relative group/tooltip">
-						<div class="flex items-center justify-center w-8 h-8 bg-mint-400/20 border border-mint-400/30 rounded-full text-mint-400 hover:bg-mint-400/30 transition-colors duration-200 cursor-help">
+						<div class="flex items-center justify-center w-8 h-8 bg-theme-400/20 border border-theme-400/30 rounded-full text-theme-400 hover:bg-theme-400/30 transition-colors duration-200 cursor-help">
 							<span class="text-sm font-medium">
 								+{hiddenTechnologies.length}
 							</span>
 						</div>
 						<div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover/tooltip:opacity-100 group-active/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-50 w-[250px] max-w-[90vw]">
-							<div class="bg-[#1a232a] border border-mint-400/30 rounded-lg p-3 shadow-lg w-full">
-								<div class="text-xs text-mint-400 font-medium mb-2">
+							<div class="bg-[#1a232a] border border-theme-400/30 rounded-lg p-3 shadow-lg w-full">
+								<div class="text-xs text-theme-400 font-medium mb-2">
 									Additional technologies:
 								</div>
 								<div class="flex flex-wrap gap-2">
@@ -118,7 +118,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 												skillName={cleanTech}
 												variant="dark"
 												size="sm"
-												className="shadow hover:bg-mint-700/30"
+												className="shadow hover:bg-theme-700/30"
 											/>
 										);
 									})}
@@ -139,13 +139,13 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 					<div class="relative group/tooltip">
 						<span class="text-sm text-zinc-300">
 							Developed for:{' '}
-							<span class="text-mint-400 hover:text-mint-300 transition-colors cursor-help">
+							<span class="text-theme-400 hover:text-theme-300 transition-colors cursor-help">
 								{companyName}
 							</span>
 						</span>
 						{companyLogoURL && (
 							<div class="absolute bottom-full left-0 mb-2 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-20">
-								<div class="bg-[#1a232a] border border-mint-400/30 rounded-lg p-3 shadow-lg">
+								<div class="bg-[#1a232a] border border-theme-400/30 rounded-lg p-3 shadow-lg">
 									<div class="flex items-center gap-3">
 										<img
 											src={companyLogoURL}

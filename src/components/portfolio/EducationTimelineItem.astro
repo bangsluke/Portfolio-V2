@@ -53,10 +53,10 @@ const dateRange =
 	<div class="pb-12 md:col-span-2">
 		<div class="sticky top-0">
 			<span
-				class="absolute -left-[42px] text-5xl text-mint-400 rounded-full drop-shadow-[0px_0px_8px_rgba(0,255,94,1)]"
+				class="absolute -left-[42px] text-5xl text-theme-400 rounded-full drop-shadow-[0px_0px_8px_rgba(0,255,94,1)]"
 				>&bull;</span
 			>
-			<h3 class="text-xl font-bold text-mint-400">
+			<h3 class="text-xl font-bold text-theme-400">
 				{name}
 			</h3>
 			<time
@@ -72,14 +72,13 @@ const dateRange =
 			processedQualifications && (
 				<h4
 					class="text-xl font-semibold text-zinc-600 dark:text-white processed-content"
-					set:html={processedQualifications}></h4>
+					set:html={processedQualifications}
+				/>
 			)
 		}
 		{
 			processedAdditionalDetails && (
-				<div
-					class="processed-content"
-					set:html={processedAdditionalDetails}></div>
+				<div class="processed-content" set:html={processedAdditionalDetails} />
 			)
 		}
 	</div>

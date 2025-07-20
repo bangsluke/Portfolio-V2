@@ -1,6 +1,6 @@
 ---
-import BlogPost from './BlogPost.astro';
 import Heading from '../ui/Heading.astro';
+import BlogPost from './BlogPost.astro';
 
 // Prop to determine whether to exclude the latest post or a specific post
 export interface Props {
@@ -74,7 +74,7 @@ if (!all) {
 			<div id="morePosts" class="w-full flex justify-center text-center my-12">
 				<a
 					href="/blog/posts/"
-					class="font-bold cursor-pointer text-mint-400 dark:text-mint-100 hover:text-mint-500 dark:hover:text-mint-300 transition-all">
+					class="font-bold cursor-pointer text-theme-400 dark:text-theme-100 hover:text-theme-500 dark:hover:text-theme-300 transition-all">
 					View all posts...
 				</a>
 			</div>

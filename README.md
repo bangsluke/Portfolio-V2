@@ -786,7 +786,7 @@ npm run format:check           # Check formatting without fixing
 
 The project uses Tailwind CSS 4.1+ with custom design tokens:
 
-- **Color Palette**: Custom mint (#4ade80) and riptide color schemes with dark/light variants
+- **Color Palette**: Custom theme (#4ade80) and riptide color schemes with dark/light variants
 - **Typography**: Montserrat, Roboto, and Open Sans font families
 - **Themes**: Automatic dark/light mode switching with system preference detection
 - **Components**: Comprehensive component library with consistent design patterns
