@@ -32,8 +32,10 @@ topicTags:
 powerShellAlias: TBC
 version: 2
 portfolioOrder: 4
+shortDescription: "TBC\nthe next version of the <span class=\"theme-link\">Dorkinians FC</span> website, following on from <a href=\"/portfolio/projects/Dorkinians Website\" class=\"theme-link\">Dorkinians Website</a>"
+longDescription: "TBC"
+lessonsLearned: "TBC"
 ---
-
 # Dorkinians Website V2
 
 > [!back] Link back to <span class="theme-link">Projects</span>

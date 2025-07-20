@@ -33,8 +33,10 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
+shortDescription: "The report section for the <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Financial Tracker</a> showing global <span class=\"theme-link\">RLE International</span> <a href=\"/portfolio/projects/Project Pipeline\" class=\"theme-link\">Project Pipeline</a> data."
+longDescription: "TBC"
+lessonsLearned: "TBC"
 ---
-
 # Pipeline App User Report
 
 > [!back] Link back to <span class="theme-link">Projects</span>

@@ -39,8 +39,9 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
+shortDescription: "A site for the consultants working with the tool, showing the acronyms and definitions used across the <span class=\"theme-link\">RLE</span> and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.\nThe <span class=\"theme-link\">SDP</span>"
+lessonsLearned: "Provided good learning for getting correct anchor points in <span class=\"theme-link\">HTML</span> for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main <a href=\"/portfolio/projects/SDP\" class=\"theme-link\">SDP</a> tool to provide a visual connection."
 ---
-
 # SDP Consultant Pages
 
 > [!back] Link back to <span class="theme-link">Projects</span>

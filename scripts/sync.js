@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 import { emailService } from './email-service.js';
 import {
 	CONTENT_TYPE_MAPPINGS,
+	DEFAULT_DEBUG_MODE,
 	DEFAULT_PORTFOLIO_TAG,
 	PROTECTED_PATTERNS,
 	SPACING_LEVEL_1,
@@ -295,16 +296,8 @@ function getTargetFolder(tags) {
 
 // Determine content type based on target folder
 function getContentType(targetFolder) {
-	const folderToTypeMap = {
-		roles: 'role',
-		projects: 'project',
-		educations: 'education',
-		companies: 'company',
-		skills: 'skill',
-		clients: 'client',
-		references: 'reference',
-	};
-	return folderToTypeMap[targetFolder] || null;
+	// Return the folder name directly to match CONTENT_TYPE_MAPPINGS keys
+	return targetFolder || null;
 }
 
 // Process a markdown file
@@ -461,6 +454,7 @@ function processMarkdownFile(filePath, relativePath) {
 		fs.writeFileSync(targetPath, content, 'utf8');
 
 		syncErrors.summary.copiedFiles++;
+		syncErrors.summary.processedFiles++;
 
 		if (DEBUG_MODE) {
 			console.log(SPACING_LEVEL_2 + `✅ 9. Content written to: ${targetPath}`);
@@ -792,7 +786,7 @@ function createSkillIconMapping() {
 		}
 
 		// Write the updated content back to the file
-		fs.writeFileSync(iconUtilsFile, updatedContent, 'utf8');
+		fs.writeFileSync(iconUtilsFile, content, 'utf8');
 
 		console.log(
 			`✅ Successfully updated icon-utils.ts with ${Object.keys(skillIconMapping).length} skill icon mappings`

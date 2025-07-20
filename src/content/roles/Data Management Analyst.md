@@ -10,8 +10,9 @@ dateStart: 2019-07-01
 dateEnd: 2022-07-01
 linkedCompany:
   - "[[RLE International]]"
+roleDescription: "Joined an internal team in developing an automotive scalable development plan (<a href=\"https://sdp.rle.de/#home\">SDP</a>), initially defining a process in <span class=\"theme-link\">Excel</span>, and then developing this into a web-based tool. I was responsible for collecting the data by interviewing experts within and outside the company and collating the data into a format that we could use algorithms to automatically develop a tailored timing plan for a customer.\nResponsibilities also include supporting decisions on the architecture of the tool, design of the <span class=\"theme-link\">UI</span> and managing the offshore developers in building and maintaining the tool.\nThe role has allowed me to begin writing code in a number of languages, from writing test files in <span class=\"theme-link\">Java</span>, creating <span class=\"theme-link\">Cypher</span> queries on our graph database, to developing a basic <span class=\"theme-link\">React</span> app for providing support information to consultants using the tool."
+keyAchievement: "TBC"
 ---
-
 # Data Management Analyst
 
 > [!back] Link back to <span class="theme-link">Role Notes</span>

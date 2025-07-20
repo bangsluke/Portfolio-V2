@@ -35,8 +35,10 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 8
+shortDescription: "An interview test written for possibly hiring a <span class=\"theme-link\">RLE</span> with <span class=\"theme-link\">Uwe Kloss</span>."
+longDescription: "TBC"
+lessonsLearned: "TBC"
 ---
-
 # Interview Test Repo
 
 > [!back] Link back to <span class="theme-link">Projects</span>

@@ -35,8 +35,10 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
+shortDescription: "A stats and information website about an annual <span class=\"theme-link\">golf</span> competition that I am involved in."
+longDescription: "A site I developed for an annual <span class=\"theme-link\">golf</span> competition that I play in, where I displayed details for the 2023 competition that I was in charge of organising and then I collected past years data and displayed this for each player as well as predictions for the upcoming year."
+lessonsLearned: "This project let me take an existing Berry Material <span class=\"theme-link\">UI</span> template and extend and develop it into the site I required. It helped me integrate animations and stats components like graphs into the site using libraries like d3."
 ---
-
 # Big Lynn Website
 
 > [!back] Link back to <span class="theme-link">Projects</span>

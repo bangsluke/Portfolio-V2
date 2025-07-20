@@ -10,8 +10,9 @@ dateStart: 2025-06-10
 dateEnd: ""
 linkedCompany:
   - "[[Dorkinians FC]]"
+roleDescription: "TBC"
+keyAchievement: "TBC"
 ---
-
 # Assistant Treasurer
 
 > [!back] Link back to <span class="theme-link">Role Notes</span>

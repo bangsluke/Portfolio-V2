@@ -10,8 +10,9 @@ dateStart: 2015-07-01
 dateEnd: 2019-07-01
 linkedCompany:
   - "[[RLE International]]"
+roleDescription: "Internally I have been responsible for the creation of numerous project\ntracking documents for the organisation and a range of customers through.\n<span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> coding. Projects included timesheet & holiday\nmanagement, cost & resource estimating, warehouse storage tracking and\na technical documentation library."
+keyAchievement: "TBC"
 ---
-
 # Process Development
 
 > [!back] Link back to <span class="theme-link">Role Notes</span>

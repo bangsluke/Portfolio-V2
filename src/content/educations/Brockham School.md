@@ -11,8 +11,9 @@ viewCount: 9
 dateStart: 1996-09-01
 dateEnd: 2002-07-17
 imageURL: https://www.northdowns.surrey.sch.uk/_site/data/files/images/slideshow/2/4952A86E2A8478097467ECD264682D1D.jpg
+qualifications: "n/a"
+additionalDetails: "TBC - add full list from above"
 ---
-
 # Brockham School
 
 > [!back] Link back to <span class="theme-link">Education Notes</span>

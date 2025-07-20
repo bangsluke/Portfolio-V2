@@ -11,8 +11,9 @@ viewCount: 1
 dateStart: 2003-09-01
 dateEnd: 2009-07-17
 imageURL: https://www.ashcombe.surrey.sch.uk/Admissions/23_07_13_Ashcombe_Facade___74A1923_WEB.jpg
+qualifications: "9½ GCSE's:  3 A*s (Incl. Mathematics), 5 A's (Incl. English Literature), 1½ B's (Incl. English Language)"
+additionalDetails: "TBC - Add full details"
 ---
-
 # Ashcombe School
 
 > [!back] Link back to <span class="theme-link">Education Notes</span>

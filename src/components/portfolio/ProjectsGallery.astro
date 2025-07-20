@@ -84,6 +84,7 @@ const processedProjects = sortedProjects.map(project => {
 
 	return {
 		...project,
+		shortDescription: project.data.shortDescription,
 		companyLogoURL,
 	};
 });

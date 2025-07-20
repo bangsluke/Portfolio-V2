@@ -52,9 +52,9 @@ const projectsCollection = defineCollection({
 		topicTags: z.array(z.string()).optional(),
 		version: z.union([z.number(), z.null()]).optional(),
 		// Extracted section content
-		shortDescription: z.string().optional(),
-		longDescription: z.string().optional(),
-		lessonsLearned: z.string().optional(),
+		shortDescription: z.union([z.string(), z.null()]).optional(),
+		longDescription: z.union([z.string(), z.null()]).optional(),
+		lessonsLearned: z.union([z.string(), z.null()]).optional(),
 	}),
 });
 

@@ -18,6 +18,25 @@
 
 ## Auto Log
 
+## 2025-01-16 16:40 [main] - Fixed section extraction not working for projects
+- Fixed getContentType function in sync.js to return folder names directly
+  - Previous function returned singular content types (e.g., 'project') but CONTENT_TYPE_MAPPINGS uses plural keys (e.g., 'projects')
+  - This caused extractSectionsToFrontmatter to fail because it couldn't find the mapping
+  - Now returns folder names directly to match CONTENT_TYPE_MAPPINGS keys
+- Section extraction now works properly for all content types
+  - shortDescription, longDescription, and lessonsLearned will be extracted from project markdown files
+  - companyDescription and keyAchievement will be extracted from company files
+  - roleDescription and keyAchievement will be extracted from role files
+  - All extracted sections will be added to frontmatter automatically during sync
+
+## 2025-01-16 16:35 [main] - Fixed content collection schema validation error
+- Fixed missing shortDescription field in Backend Server.md project file
+  - Added shortDescription to frontmatter to match projects collection schema
+  - Schema requires shortDescription field but it was missing from the project file
+  - Added value: "The backend server and source of data for several of my projects, allowing a singular point of management and maintenance."
+- Resolved InvalidContentEntryDataError for projects collection
+  - Content validation now passes for all project files
+  - Schema validation ensures all required fields are present in project frontmatter
 ## 2025-01-16 15:50 [main] - Renamed config files for better clarity and Astro compatibility
 - Renamed src/content/typeConfig.ts back to src/content/config.ts for Astro compatibility
   - Astro expects content configuration to be named config.ts by default
@@ -228,6 +247,19 @@
   - Added real-time project count updates for both desktop and mobile layouts
   - Improved filter UI layout with better organization and spacing
   - Fixed issue where projects weren't showing due to restrictive initial date filter values
+- Fixed project page content display issues
+  - Fixed sync script error by adding missing DEFAULT_DEBUG_MODE import
+  - Manually added missing longDescription and lessonsLearned fields to Spreadsheet of Life project
+  - Manually added missing shortDescription, longDescription and lessonsLearned fields to Travel Website project
+  - Ensured project pages display description and lessons learned sections properly
+  - Verified that "Developed For" section only shows when linkedCompany is populated
+  - Added automatic name generation from filename for projects without explicit name field
+  - Updated date range display to show "Present" when dateEnd is empty
+  - Added "Category:" label in front of project category button for better clarity
+  - Enhanced "Developed For" section logic to only show when valid companies/clients are found
+  - Added icons to "Visit Site" and "View Code" buttons for better visual appeal
+  - Changed "Project Links" from header to inline text label for better layout flow
+  - Added missing shortDescription, longDescription, and lessonsLearned frontmatter properties to Spreadsheet of Life project (properties already defined in config.ts and displayed in components)
 - Fixed "Unable to locate 'google' icon" error
   - Removed invalid "[[Google]]" reference from Spreadsheet of Life project technologies
   - The error was caused by referencing a non-existent "Google" skill file

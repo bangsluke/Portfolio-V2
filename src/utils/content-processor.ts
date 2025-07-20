@@ -8,7 +8,7 @@ export function processContent(content: string | undefined | null): string {
 
 	return (
 		content
-			// First, handle [[CompanyName|AltName]] format to extract AltName and make it bold and theme green
+			// First, handle [[Link Name|AltName]] format to extract AltName and make it bold and theme green
 			.replace(
 				/\[\[([^|]+)\|([^\]]+)\]\]/g,
 				'<span class="theme-link">$2</span>'

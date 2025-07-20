@@ -11,8 +11,9 @@ viewCount: 11
 dateStart: 2011-09-05
 dateEnd: 2014-06-27
 logoURL: https://media.licdn.com/dms/image/v2/C561BAQEo3Ke2CIHRbA/company-background_10000/company-background_10000/0/1617176515173/loughborough_university_cover?e=2147483647&v=beta&t=TabCtm4ROKsS0ZXjH0ioh6D4bemFR556N8rzoabbFo8
+qualifications: "BEng. Automotive Engineering. Second Class Honours, Upper Division (2:1)"
+additionalDetails: "Large range of engineering topics, exploring multiple engineering fundamentals from structures and materials to vehicle aerodynamics. Final year project conducted on the numerical analysis of CNG, LPG and Hydrogen turbulent premixed flames data from experiments conducted in <span class=\"theme-link\">Bryony</span> and some other decent chaps in <span class=\"theme-link\">Matt</span>, <span class=\"theme-link\">Andy</span> and <span class=\"theme-link\">Steve</span> in <span class=\"theme-link\">Bry</span> in the freezing snow\n	- Being the first student to get kicked out of a lab session for turning up in flip flops\n	- Having my thermodynamics grade go from 75% to 5% when the lecturer corrected his spreadsheet name error\n- Second Year\n	- Living at <span class=\"theme-link\">Matt</span>, <span class=\"theme-link\">Steve</span> and Rob\n	- The incredible house party we threw with the flame thrower and spitting fire\n	- Our Christmas Day at the girls house and the huge roast\n- Third Year\n	- Living at <span class=\"theme-link\">7 Burleigh Road</span> with Naomi, Olivia & Rebecca\n	- Spending hours measuring images of flames expanding in a tube for my dissertation\n	- Finally handing in my dissertation"
 ---
-
 # Loughborough University
 
 > [!back] Link back to <span class="theme-link">Education Notes</span>

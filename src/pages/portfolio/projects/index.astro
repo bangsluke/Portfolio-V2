@@ -39,9 +39,14 @@ const sortedProjects = projects.sort((a, b) => {
 	return a.slug.localeCompare(b.slug);
 });
 
-// Process projects to add company logos
+// Process projects to add company logos and generate names
 const processedProjects = sortedProjects.map(project => {
 	let companyLogoURL: string | null = null;
+
+	// Generate name from filename if not provided in frontmatter
+	const projectName =
+		project.data.name ||
+		project.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
 	// If project has linkedCompany, find the company or client and get its logoURL
 	if (project.data.linkedCompany && project.data.linkedCompany.length > 0) {
@@ -72,6 +77,10 @@ const processedProjects = sortedProjects.map(project => {
 
 	return {
 		...project,
+		data: {
+			...project.data,
+			name: projectName,
+		},
 		companyLogoURL,
 	};
 });

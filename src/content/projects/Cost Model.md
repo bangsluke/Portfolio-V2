@@ -33,8 +33,10 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
+shortDescription: "A unified cost model template and approach for costing projects - feeds into the <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Finance Tracker</a>."
+longDescription: "TBC"
+lessonsLearned: "TBC"
 ---
-
 # Cost Model
 
 > [!back] Link back to <span class="theme-link">Projects</span>
