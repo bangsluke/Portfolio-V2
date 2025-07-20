@@ -5,12 +5,12 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-19T16:06:59+01:00
-viewCount: 3
+viewCount: 4
 aliases:
   - Microsoft Power Apps
   - Power App
-skillRating: 0
-skillDescription: TBC
+skillRating: 65
+skillDescription: Supported development of several applications for internal financial tracking, providing users minimal inputs to gather the required data.
 logoFileName: power_apps.svg
 ---
 

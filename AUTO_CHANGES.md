@@ -18,21 +18,6 @@
 
 ## Auto Log
 
-## 2025-01-16 16:00 [main] - Renamed color scheme references throughout the repository
-- Renamed "mint" and "mint-green" references to "dark-theme-accent" for better semantic naming
-- Renamed "riptide" references to "light-theme-accent" for better semantic naming
-- Updated CSS variables in global.css from mint-* to dark-theme-accent-* and riptide-* to light-theme-accent-*
-- Updated CSS class definitions from .mint-link to .dark-theme-accent-link
-- Updated content processor to use new class names for Obsidian and markdown links
-- Updated Tailwind CSS classes throughout components and pages:
-  - Updated Button.astro, Heading.astro, Layout.astro components
-  - Updated MarkdownAbout.astro, MarkdownPostLayout.astro layouts
-  - Updated education.astro, work-experience.astro, portfolio project pages
-  - Updated sync.js script to use new class names
-- Content files kept as-is with existing mint-link references (content processor handles conversion)
-- Improved semantic naming for better understanding of color scheme purpose
-- Maintained all existing color values while improving naming convention
-
 ## 2025-01-16 16:40 [main] - Fixed section extraction not working for projects
 - Fixed getContentType function in sync.js to return folder names directly
   - Previous function returned singular content types (e.g., 'project') but CONTENT_TYPE_MAPPINGS uses plural keys (e.g., 'projects')

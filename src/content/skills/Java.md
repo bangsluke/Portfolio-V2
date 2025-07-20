@@ -11,8 +11,8 @@ created: 2023-10-13T07:43:00
 modified: 2025-07-20T13:09:34+01:00
 viewCount: 6
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 30
+skillDescription: Capable of writing basic Java functions and able to review and correct more complex code.
 logoFileName: java.svg
 ---
 

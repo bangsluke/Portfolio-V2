@@ -9,10 +9,10 @@ tags:
   - notes
 created: 2023-10-13T07:42:00
 modified: 2025-07-02T14:21:35+01:00
-viewCount: 6
+viewCount: 7
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 50
+skillDescription: Built and maintained a relatively complex SQL database using MySQL writing schema modification statements and automating the population of data.
 logoFileName: sql.svg
 ---
 

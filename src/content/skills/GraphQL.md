@@ -9,10 +9,10 @@ tags:
   - notes
 created: 2023-08-18T15:49:00
 modified: 2025-07-02T14:20:40+01:00
-viewCount: 5
+viewCount: 6
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 60
+skillDescription: Set up several projects using GraphQL queries and mutations to interact with a Neo4j graph and developed detailed queries for extracting data for the front end.
 logoFileName: graphql.svg
 ---
 

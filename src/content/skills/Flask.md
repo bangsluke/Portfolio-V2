@@ -9,10 +9,10 @@ tags:
   - skill
 created: 2023-08-18T15:51:00
 modified: 2025-07-18T11:09:49+01:00
-viewCount: 9
+viewCount: 10
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 40
+skillDescription: Built a single Flask API set up for a work project to enable a Python algorithm to be called from the frontend.
 logoFileName: flask.svg
 ---
 

@@ -9,10 +9,10 @@ tags:
   - skill
 modified: 2025-07-18T11:10:52+01:00
 created: 2023-10-13T07:42:00
-viewCount: 6
+viewCount: 7
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 10
+skillDescription: A very basic understanding of the concept of Nest.JS as a Node framework.
 logoFileName: nestjs.svg
 ---
 

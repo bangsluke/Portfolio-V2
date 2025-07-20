@@ -97,3 +97,13 @@ export const CONTENT_TYPE_MAPPINGS = {
 		],
 	},
 };
+
+// Skills bubble chart configuration
+export const SKILLS_FILTER_OPTIONS = [
+	'all',
+	'framework',
+	'library',
+	'language',
+	'database',
+	'design',
+];
