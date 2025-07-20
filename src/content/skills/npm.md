@@ -15,9 +15,9 @@ logoFileName: npm.svg
 
 # npm
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="mint-link">JavaScript</span> package manager
+> <span class="theme-link">JavaScript</span> package manager
 
 ## Table of Contents
 

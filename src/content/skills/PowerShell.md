@@ -16,9 +16,9 @@ logoFileName: powershell.svg
 
 # PowerShell
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="mint-link">Microsoft</span> PowerShell
+> <span class="theme-link">Microsoft</span> PowerShell
 
 ## Table of Contents
 

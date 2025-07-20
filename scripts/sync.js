@@ -499,7 +499,6 @@ function processDirectory(dirPath, relativePath = '') {
 			// Skip directories starting with "03 Attachments" or "04 Templates"
 			if (stat.isDirectory()) {
 				if (
-					item.startsWith('02 Tags') ||
 					item.startsWith('03 Attachments') ||
 					item.startsWith('04 Templates')
 				) {

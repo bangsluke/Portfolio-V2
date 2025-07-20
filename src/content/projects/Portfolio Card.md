@@ -33,13 +33,11 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "A simplified portfolio idea to show just a single card of my contact details."
-longDescription: "TBC"
-lessonsLearned: "TBC"
 ---
+
 # Portfolio Card
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -82,10 +80,10 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <span class="mint-link">React</span>
+- Front end: <span class="theme-link">React</span>
 - Back end/Datasource: n/a
-- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories))
-- Security: <span class="mint-link">Snyk</span>
+- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories))
+- Security: <span class="theme-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -99,7 +97,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -114,8 +112,8 @@ To launch the repo, use the <span class="mint-link">PowerShell</span> alias
 ## Other Links
 
 - [Portfolio Site page Todoist list](https://todoist.com/showTask?id=5773759872&sync_id=6506087454)
-- <a href="/portfolio/projects/Portfolio Site" class="mint-link">Portfolio Site</a>
-- <a href="/portfolio/projects/Portfolio Site V2" class="mint-link">Portfolio Site V2</a>
+- <a href="/portfolio/projects/Portfolio Site" class="theme-link">Portfolio Site</a>
+- <a href="/portfolio/projects/Portfolio Site V2" class="theme-link">Portfolio Site V2</a>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

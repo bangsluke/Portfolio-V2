@@ -35,13 +35,11 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
-shortDescription: "A website detailing the itinerary for <span class=\"mint-link\">Jonny Sourris</span>'s stag do."
-longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and <span class=\"mint-link\">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group."
-lessonsLearned: "There were a few lessons learned from this project;\n- Learning how to use <span class=\"mint-link\">Vite.js</span> for the first time\n- Writing a website using <span class=\"mint-link\">Typescript</span> for the first time\n- Implementing a timeline component and targeting mobile screen size\n- Correctly setting up hyperlinks from the users location to the next activity in <span class=\"mint-link\">Google Maps</span>"
 ---
+
 # JS Stag Website
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -72,22 +70,22 @@ WHERE file = this.file
 
 ## Short Description
 
-A website detailing the itinerary for <span class="mint-link">Jonny Sourris</span>'s stag do.
+A website detailing the itinerary for <span class="theme-link">Jonny Sourris</span>'s stag do.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-This site provided the stag attendees with the full itinerary of the stag, with timings and <span class="mint-link">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
+This site provided the stag attendees with the full itinerary of the stag, with timings and <span class="theme-link">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="mint-link">Vite.js</span>, <span class="mint-link">React</span>
+- Front end: <span class="theme-link">Vite.js</span>, <span class="theme-link">React</span>
 - Back end/Datasource: n/a
-- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
-- Security: <span class="mint-link">Snyk</span>
+- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), <span class="theme-link">Netlify</span>
+- Security: <span class="theme-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -101,7 +99,7 @@ This site provided the stag attendees with the full itinerary of the stag, with 
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -115,17 +113,17 @@ To launch the repo, use the <span class="mint-link">PowerShell</span> alias
 
 ## Other Links
 
-- <a href="/portfolio/projects/OG Stag Website" class="mint-link">OG Stag Website</a>
+- <a href="/portfolio/projects/OG Stag Website" class="theme-link">OG Stag Website</a>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
 There were a few lessons learned from this project;
-- Learning how to use <span class="mint-link">Vite.js</span> for the first time
-- Writing a website using <span class="mint-link">Typescript</span> for the first time
+- Learning how to use <span class="theme-link">Vite.js</span> for the first time
+- Writing a website using <span class="theme-link">Typescript</span> for the first time
 - Implementing a timeline component and targeting mobile screen size
-- Correctly setting up hyperlinks from the users location to the next activity in <span class="mint-link">Google Maps</span>
+- Correctly setting up hyperlinks from the users location to the next activity in <span class="theme-link">Google Maps</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

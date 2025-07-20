@@ -15,9 +15,9 @@ logoFileName: power_query.svg
 
 # Power Query
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="mint-link">Microsoft</span> Power Query
+> <span class="theme-link">Microsoft</span> Power Query
 
 ## Table of Contents
 

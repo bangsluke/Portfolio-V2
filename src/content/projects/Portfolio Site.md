@@ -37,13 +37,11 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "The portfolio site was my initial attempt at creating a marketing page for myself as a developer, showcasing my skills and contact information."
-longDescription: "The portfolio site showcased all the information I believed to be relevant for possible hirers, clients or collaborators, providing details on my ambitions, my self-assessed skill level in several languages and technologies, my education and former work experience and finally my contact details."
-lessonsLearned: "The key lesson learned for this project was how useful it is to create re-usable components for a site - a skill I only began using after building this site. As such, this site became a challenge to maintain and ultimately broke, leading me to the decision to rebuild it entirely."
 ---
+
 # Portfolio Site
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -86,10 +84,10 @@ The portfolio site showcased all the information I believed to be relevant for p
 
 ## Architecture and Technologies
 
-- Front end: <span class="mint-link">HTML</span>, <span class="mint-link">CSS</span> and <span class="mint-link">JavaScript</span>
+- Front end: <span class="theme-link">HTML</span>, <span class="theme-link">CSS</span> and <span class="theme-link">JavaScript</span>
 - Back end/Datasource: n/a
-- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
-- Security: <span class="mint-link">Snyk</span>
+- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), <span class="theme-link">Netlify</span>
+- Security: <span class="theme-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -98,13 +96,13 @@ The portfolio site showcased all the information I believed to be relevant for p
 
 - Main repo: `=this.codeURL`
 - Secondary repo: n/a
-- <span class="mint-link">Netlify</span>: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
+- <span class="theme-link">Netlify</span>: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -115,15 +113,15 @@ To launch the repo, use the <span class="mint-link">PowerShell</span> alias
 - For page headers, use the below / style for each page.
 - Also add the language bubble tags for each project
 
-!<span class="mint-link">20231009 PageHeaderInspiration.jpeg</span>
+!<span class="theme-link">20231009 PageHeaderInspiration.jpeg</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
 - [Portfolio Site page Todoist list](https://todoist.com/showTask?id=5773759872&sync_id=6506087454)
-- <a href="/portfolio/projects/Portfolio Card" class="mint-link">Portfolio Card</a>
-- <a href="/portfolio/projects/Portfolio Site V2" class="mint-link">Portfolio Site V2</a>
+- <a href="/portfolio/projects/Portfolio Card" class="theme-link">Portfolio Card</a>
+- <a href="/portfolio/projects/Portfolio Site V2" class="theme-link">Portfolio Site V2</a>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

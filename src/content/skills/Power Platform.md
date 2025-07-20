@@ -16,9 +16,9 @@ logoFileName: power_platform.svg
 
 # Power Platform
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="mint-link">Microsoft</span> Power Platform
+> <span class="theme-link">Microsoft</span> Power Platform
 
 ## Table of Contents
 

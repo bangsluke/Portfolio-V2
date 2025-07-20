@@ -31,13 +31,11 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
-shortDescription: "A internal site providing links to key sites needed by employees."
-longDescription: "A site providing links to key sites needed by employees, a tools library of useful documents and templates and a lessons learned page for end-of project.\nThis provided a structure for engineers to work with on a day to day basis to ensure consistency with work output quality."
-lessonsLearned: "This taught me how to use basic website building tools such as <span class=\"mint-link\">Google Sites</span> to quickly create a website structure using drag and drop components."
 ---
+
 # RLE Google Sites
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -82,11 +80,11 @@ This provided a structure for engineers to work with on a day to day basis to en
 
 ## Architecture and Technologies
 
-- Front end: <span class="mint-link">Google Sites</span>
+- Front end: <span class="theme-link">Google Sites</span>
 - Back end/Datasource: n/a
 - Hosting: n/a
 - Security: n/a
-- Authentication: <span class="mint-link">Google</span>
+- Authentication: <span class="theme-link">Google</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -99,7 +97,7 @@ This provided a structure for engineers to work with on a day to day basis to en
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -119,7 +117,7 @@ To launch the repo, use the <span class="mint-link">PowerShell</span> alias
 
 ## Lessons Learned
 
-This taught me how to use basic website building tools such as <span class="mint-link">Google Sites</span> to quickly create a website structure using drag and drop components.
+This taught me how to use basic website building tools such as <span class="theme-link">Google Sites</span> to quickly create a website structure using drag and drop components.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

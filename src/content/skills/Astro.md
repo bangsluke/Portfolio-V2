@@ -18,9 +18,9 @@ logoFileName: astro.svg
 
 # Astro
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-A framework for <span class="mint-link">JavaScript</span>
+A framework for <span class="theme-link">JavaScript</span>
 
 ## Table of Contents 
 

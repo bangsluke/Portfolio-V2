@@ -35,13 +35,11 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "A stats and information website about an annual <span class=\"mint-link\">golf</span> competition that I am involved in."
-longDescription: "A site I developed for an annual <span class=\"mint-link\">golf</span> competition that I play in, where I displayed details for the 2023 competition that I was in charge of organising and then I collected past years data and displayed this for each player as well as predictions for the upcoming year."
-lessonsLearned: "This project let me take an existing Berry Material <span class=\"mint-link\">UI</span> template and extend and develop it into the site I required. It helped me integrate animations and stats components like graphs into the site using libraries like d3."
 ---
+
 # Big Lynn Website
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -72,22 +70,22 @@ WHERE file = this.file
 
 ## Short Description
 
-A stats and information website about an annual <span class="mint-link">golf</span> competition that I am involved in.
+A stats and information website about an annual <span class="theme-link">golf</span> competition that I am involved in.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-A site I developed for an annual <span class="mint-link">golf</span> competition that I play in, where I displayed details for the 2023 competition that I was in charge of organising and then I collected past years data and displayed this for each player as well as predictions for the upcoming year.
+A site I developed for an annual <span class="theme-link">golf</span> competition that I play in, where I displayed details for the 2023 competition that I was in charge of organising and then I collected past years data and displayed this for each player as well as predictions for the upcoming year.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="mint-link">Next.js</span>
-- Back end/Datasource: <span class="mint-link">Google Sheets</span>
-- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), <span class="mint-link">Netlify</span>
-- Security: <span class="mint-link">Snyk</span>
+- Front end: <span class="theme-link">Next.js</span>
+- Back end/Datasource: <span class="theme-link">Google Sheets</span>
+- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), <span class="theme-link">Netlify</span>
+- Security: <span class="theme-link">Snyk</span>
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -101,7 +99,7 @@ A site I developed for an annual <span class="mint-link">golf</span> competition
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -109,21 +107,21 @@ To launch the repo, use the <span class="mint-link">PowerShell</span> alias
 
 ## Planning and Design
 
-- The main template of the frontend was a Berry Material <span class="mint-link">UI</span> template
+- The main template of the frontend was a Berry Material <span class="theme-link">UI</span> template
 - Some designs sketched out on paper
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- [Big Lynn Website Tasks](https://todoist.com/app/section/Big-Lynn-6C4XgHCXxqhRx95j) - <span class="mint-link">Todoist</span>
+- [Big Lynn Website Tasks](https://todoist.com/app/section/Big-Lynn-6C4XgHCXxqhRx95j) - <span class="theme-link">Todoist</span>
 - [Old website link](https://biglynn2023.netlify.app/info)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This project let me take an existing Berry Material <span class="mint-link">UI</span> template and extend and develop it into the site I required. It helped me integrate animations and stats components like graphs into the site using libraries like d3.
+This project let me take an existing Berry Material <span class="theme-link">UI</span> template and extend and develop it into the site I required. It helped me integrate animations and stats components like graphs into the site using libraries like d3.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

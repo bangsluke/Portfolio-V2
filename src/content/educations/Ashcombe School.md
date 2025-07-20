@@ -11,12 +11,11 @@ viewCount: 1
 dateStart: 2003-09-01
 dateEnd: 2009-07-17
 imageURL: https://www.ashcombe.surrey.sch.uk/Admissions/23_07_13_Ashcombe_Facade___74A1923_WEB.jpg
-qualifications: "9½ GCSE's:  3 A*s (Incl. Mathematics), 5 A's (Incl. English Literature), 1½ B's (Incl. English Language)"
-additionalDetails: "TBC - Add full details"
 ---
+
 # Ashcombe School
 
-> [!back] Link back to <span class="mint-link">Education Notes</span>
+> [!back] Link back to <span class="theme-link">Education Notes</span>
 
 >[!website-link] Links
 >```dataview
@@ -48,7 +47,7 @@ TBC - Add full details
 
 ## Key Memories
 
-- Getting detention every other day for not having my shirt tucked in and then one day at detention during the register read out, hearing <span class="mint-link">Ross</span>’ name read out after mine and being a proud big brother
+- Getting detention every other day for not having my shirt tucked in and then one day at detention during the register read out, hearing <span class="theme-link">Ross</span>’ name read out after mine and being a proud big brother
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

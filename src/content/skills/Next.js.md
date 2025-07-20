@@ -17,9 +17,9 @@ logoFileName: nextjs.svg
 
 # Next.js
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Language: <span class="mint-link">JavaScript</span>, built on <span class="mint-link">React</span>
+> Language: <span class="theme-link">JavaScript</span>, built on <span class="theme-link">React</span>
 
 ## Table of Contents 
 

@@ -38,13 +38,11 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "Data input for financial tracking of <span class=\"mint-link\">RLE International</span> projects."
-longDescription: "TBC\nPulled in timesheet data and financial information from various <span class=\"mint-link\">RLE International</span> region sources such as <span class=\"mint-link\">Paycor</span>, <span class=\"mint-link\">T-Sheet</span> and <span class=\"mint-link\">Iplicit</span>."
-lessonsLearned: "TBC"
 ---
+
 # Project Finance Data Manager
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -75,7 +73,7 @@ WHERE file = this.file
 
 ## Short Description
 
-Data input for financial tracking of <span class="mint-link">RLE International</span> projects.
+Data input for financial tracking of <span class="theme-link">RLE International</span> projects.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -83,7 +81,7 @@ Data input for financial tracking of <span class="mint-link">RLE International</
 
 TBC
 
-Pulled in timesheet data and financial information from various <span class="mint-link">RLE International</span> region sources such as <span class="mint-link">Paycor</span>, <span class="mint-link">T-Sheet</span> and <span class="mint-link">Iplicit</span>.
+Pulled in timesheet data and financial information from various <span class="theme-link">RLE International</span> region sources such as <span class="theme-link">Paycor</span>, <span class="theme-link">T-Sheet</span> and <span class="theme-link">Iplicit</span>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -91,7 +89,7 @@ Pulled in timesheet data and financial information from various <span class="min
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: <span class="mint-link">GitLab</span> (see [Repositories](#repositories))
+- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -106,7 +104,7 @@ Pulled in timesheet data and financial information from various <span class="min
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 

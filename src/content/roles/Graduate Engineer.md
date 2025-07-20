@@ -10,12 +10,11 @@ dateStart: 2015-07-01
 dateEnd: 2016-02-01
 linkedCompany:
   - "[[RLE International]]"
-roleDescription: "After re-locating to the customer’s location, I assumed a larger number of responsibilities including the delivery of an engineered automotive solution for a new super series car dihedral door system. I worked directly with several suppliers, managing budgets and delivery plans from development phase into prototype build."
-keyAchievement: "TBC"
 ---
+
 # Graduate Engineer
 
-> [!back] Link back to <span class="mint-link">Role Notes</span>
+> [!back] Link back to <span class="theme-link">Role Notes</span>
 
 ## Table of Contents
 ```table-of-contents

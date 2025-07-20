@@ -16,7 +16,7 @@ logoURL: https://i.imgur.com/YO94MEL.png
 
 # RLE International
 
-> [!back] Link back to <span class="mint-link">Company Notes</span>
+> [!back] Link back to <span class="theme-link">Company Notes</span>
 
 >[!website-link] Links
 >```dataview
@@ -30,19 +30,19 @@ WHERE file = this.file
 ## Folder Contents
 
 %% Begin Waypoint %%
-- **<span class="mint-link">RLE International</span>**
-	- <span class="mint-link">Centre of Excellence</span>
-	- <span class="mint-link">Digital Engineering</span>
-	- <span class="mint-link">FutureMotiv</span>
-	- <span class="mint-link">GPMO</span>
-	- <span class="mint-link">Recotech</span>
-	- <span class="mint-link">RLE China</span>
-	- <span class="mint-link">RLE Germany</span>
-	- <span class="mint-link">RLE Iberia</span>
-	- <span class="mint-link">RLE India</span>
-	- <span class="mint-link">RLE UK</span>
-	- <span class="mint-link">RLE USA</span>
-	- <span class="mint-link">VESOFTx</span>
+- **<span class="theme-link">RLE International</span>**
+	- <span class="theme-link">Centre of Excellence</span>
+	- <span class="theme-link">Digital Engineering</span>
+	- <span class="theme-link">FutureMotiv</span>
+	- <span class="theme-link">GPMO</span>
+	- <span class="theme-link">Recotech</span>
+	- <span class="theme-link">RLE China</span>
+	- <span class="theme-link">RLE Germany</span>
+	- <span class="theme-link">RLE Iberia</span>
+	- <span class="theme-link">RLE India</span>
+	- <span class="theme-link">RLE UK</span>
+	- <span class="theme-link">RLE USA</span>
+	- <span class="theme-link">VESOFTx</span>
 
 %% End Waypoint %%
 

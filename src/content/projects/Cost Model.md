@@ -33,13 +33,11 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "A unified cost model template and approach for costing projects - feeds into the <a href=\"/portfolio/projects/Financial Tracker\" class=\"mint-link\">Finance Tracker</a>."
-longDescription: "TBC"
-lessonsLearned: "TBC"
 ---
+
 # Cost Model
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -70,7 +68,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A unified cost model template and approach for costing projects - feeds into the <a href="/portfolio/projects/Financial Tracker" class="mint-link">Finance Tracker</a>.
+A unified cost model template and approach for costing projects - feeds into the <a href="/portfolio/projects/Financial Tracker" class="theme-link">Finance Tracker</a>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -84,9 +82,9 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: n/a
-- Hosting: <span class="mint-link">Azure</span>
+- Hosting: <span class="theme-link">Azure</span>
 - Security: n/a
-- Authentication: <span class="mint-link">Azure</span>
+- Authentication: <span class="theme-link">Azure</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -99,7 +97,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -132,7 +130,7 @@ To launch the repo, use the <span class="mint-link">PowerShell</span> alias
 
 ## Other Links
 
-- <span class="mint-link">GPMO</span>
+- <span class="theme-link">GPMO</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

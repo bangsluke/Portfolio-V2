@@ -32,13 +32,11 @@ topicTags:
 powerShellAlias: TBC
 version: 2
 portfolioOrder: 4
-shortDescription: "TBC\nthe next version of the <span class=\"mint-link\">Dorkinians FC</span> website, following on from <a href=\"/portfolio/projects/Dorkinians Website\" class=\"mint-link\">Dorkinians Website</a>"
-longDescription: "TBC"
-lessonsLearned: "TBC"
 ---
+
 # Dorkinians Website V2
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -71,7 +69,7 @@ WHERE file = this.file
 
 TBC
 
-the next version of the <span class="mint-link">Dorkinians FC</span> website, following on from <a href="/portfolio/projects/Dorkinians Website" class="mint-link">Dorkinians Website</a>
+the next version of the <span class="theme-link">Dorkinians FC</span> website, following on from <a href="/portfolio/projects/Dorkinians Website" class="theme-link">Dorkinians Website</a>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -85,7 +83,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: <span class="mint-link">GitHub</span> (see [Repositories](#repositories)), TBC
+- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), TBC
 - Security: TBC
 - Authentication: TBC
 
@@ -100,7 +98,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -137,8 +135,8 @@ Authentication: The site should be secure behind a single password.
 
 - How do I store the stats data ready for the website to quickly retrieve and display the information?
 	- Requirements 
-		- Keep using <span class="mint-link">Google Sheets</span> for stat input 
-		- Automatically update the database daily from the <span class="mint-link">Google Sheets</span>
+		- Keep using <span class="theme-link">Google Sheets</span> for stat input 
+		- Automatically update the database daily from the <span class="theme-link">Google Sheets</span>
 - How do I make the website easily packaged and customisable for other clubs?
 	- Config file
 	- Pick a club logo
@@ -160,7 +158,7 @@ Authentication: The site should be secure behind a single password.
 
 #### Player Stats
 
-!<span class="mint-link">20241201 Player Stats Page Design.jpeg</span>
+!<span class="theme-link">20241201 Player Stats Page Design.jpeg</span>
 
 - Two swipable tabs;
 	- This Season 
@@ -188,9 +186,9 @@ Authentication: The site should be secure behind a single password.
 
 #### Club Stats
 
-- Points per game - value between 0 and 3 !<span class="mint-link">20241001 - PointsPerGame.jpeg</span>
+- Points per game - value between 0 and 3 !<span class="theme-link">20241001 - PointsPerGame.jpeg</span>
 - Top 5 player appearances 
-- Have the below background behind the stats? !<span class="mint-link">20241001 - Stats Background.png</span>
+- Have the below background behind the stats? !<span class="theme-link">20241001 - Stats Background.png</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -225,7 +223,7 @@ Authentication: The site should be secure behind a single password.
 		- If player selected, go to that players stats
 		- If no player selected, go to TOTW
 - For stats filtering, follow the guidance in [this article](https://uxmovement.medium.com/how-to-handle-a-massive-filter-with-over-100-options-dc8b1966d3c7) 
-	- !<span class="mint-link">20241001 - Stats Filters.png</span>
+	- !<span class="theme-link">20241001 - Stats Filters.png</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -239,15 +237,15 @@ Authentication: The site should be secure behind a single password.
 #### Crazy Ideas
 
 - Show the players that each player has played with most - likely needs a graph db
-- Add a chatbot to the site that allows a user to chat to the database. Write a statement such as "How many times has <span class="mint-link">Kieran Mackrell</span> played against Wandsworth?" and then the text is identified into a cypher query and sent to the database and returns the answer. Should display the generated cypher query for debugging purposes.
-	- Not sure this is possible unless I am able to find a way to use a <span class="mint-link">OpenAI</span> API call to create a <span class="mint-link">GraphQL</span> query in the client
+- Add a chatbot to the site that allows a user to chat to the database. Write a statement such as "How many times has <span class="theme-link">Kieran Mackrell</span> played against Wandsworth?" and then the text is identified into a cypher query and sent to the database and returns the answer. Should display the generated cypher query for debugging purposes.
+	- Not sure this is possible unless I am able to find a way to use a <span class="theme-link">OpenAI</span> API call to create a <span class="theme-link">GraphQL</span> query in the client
 - Have a map component that looks up the locations that each player has played at (using the locations postcodes) to show where the player has played. Bigger circle on the map shows more times played
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- [Dorkinians Website Tasks](https://todoist.com/app/section/Dorkinians-Website-6C4XfJFRgpfFpJgC) - <span class="mint-link">Todoist</span>
+- [Dorkinians Website Tasks](https://todoist.com/app/section/Dorkinians-Website-6C4XfJFRgpfFpJgC) - <span class="theme-link">Todoist</span>
 - [Medium Stories list](https://medium.com/@bangsluke/list/410a590e0a2b)
 - https://dribbble.com/
 - https://mobbin.com/browse/web/apps

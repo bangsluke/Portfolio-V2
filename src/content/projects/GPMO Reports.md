@@ -36,13 +36,11 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
-shortDescription: "The report section for the <a href=\"/portfolio/projects/Financial Tracker\" class=\"mint-link\">Financial Tracker</a> showing global <span class=\"mint-link\">RLE International</span> data."
-longDescription: "TBC"
-lessonsLearned: "TBC"
 ---
+
 # GPMO Reports
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -73,7 +71,7 @@ WHERE file = this.file
 
 ## Short Description
 
-The report section for the <a href="/portfolio/projects/Financial Tracker" class="mint-link">Financial Tracker</a> showing global <span class="mint-link">RLE International</span> data.
+The report section for the <a href="/portfolio/projects/Financial Tracker" class="theme-link">Financial Tracker</a> showing global <span class="theme-link">RLE International</span> data.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -87,7 +85,7 @@ TBC
 
 - Front end: TBC
 - Back end/Datasource: TBC
-- Hosting: <span class="mint-link">GitLab</span> (see [Repositories](#repositories))
+- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: TBC
 
@@ -102,7 +100,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -117,9 +115,9 @@ To launch the repo, use the <span class="mint-link">PowerShell</span> alias
 ## Other Links
 
 - Sub sections:
-	- <a href="/portfolio/projects/Pipeline App User Report" class="mint-link">Pipeline App User Report</a>
-	- <a href="/portfolio/projects/Group Sales Report" class="mint-link">Group Sales Report</a>
-	- <a href="/portfolio/projects/Project Finance Tracking Report" class="mint-link">Project Finance Tracking Report</a>
+	- <a href="/portfolio/projects/Pipeline App User Report" class="theme-link">Pipeline App User Report</a>
+	- <a href="/portfolio/projects/Group Sales Report" class="theme-link">Group Sales Report</a>
+	- <a href="/portfolio/projects/Project Finance Tracking Report" class="theme-link">Project Finance Tracking Report</a>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -38,13 +38,11 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 2
-shortDescription: "TBC"
-longDescription: "TBC"
-lessonsLearned: "TBC"
 ---
+
 # GPMO Documentation Site
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -87,9 +85,9 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <span class="mint-link">React</span>, <span class="mint-link">Docusaurus</span>
-- Back end/Datasource: <span class="mint-link">Markdown</span>
-- Hosting: <span class="mint-link">GitLab</span> (see [Repositories](#repositories)), <span class="mint-link">Azure</span> TBC
+- Front end: <span class="theme-link">React</span>, <span class="theme-link">Docusaurus</span>
+- Back end/Datasource: <span class="theme-link">Markdown</span>
+- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories)), <span class="theme-link">Azure</span> TBC
 - Security: TBC
 - Authentication: TBC
 
@@ -104,7 +102,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -118,7 +116,7 @@ To launch the repo, use the <span class="mint-link">PowerShell</span> alias
 
 ## Other Links
 
-- <span class="mint-link">GPMO</span>
+- <span class="theme-link">GPMO</span>
 - TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)

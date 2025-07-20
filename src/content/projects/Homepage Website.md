@@ -36,13 +36,11 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "An early site built as a homepage for storing links to all my projects and showing a widget with the weather in my area."
-longDescription: "A single point of focus for where the links to all my projects were stored, as well as a weather widget for my area."
-lessonsLearned: "Main lesson was understanding and adjusting an existing codebase and learning how to correctly modify an online widget to receive my location and correct styling."
 ---
+
 # Homepage Website
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -85,7 +83,7 @@ A single point of focus for where the links to all my projects were stored, as w
 
 ## Architecture and Technologies
 
-- Front end: <span class="mint-link">New Tab</span>
+- Front end: <span class="theme-link">New Tab</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

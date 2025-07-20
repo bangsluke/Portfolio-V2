@@ -34,13 +34,11 @@ topicTags:
 powerShellAlias: n/a
 version: 3.1
 portfolioOrder: 3
-shortDescription: "A <span class=\"mint-link\">Google Sheets</span> file that I use to collate all my key details on which is mainly financial data but is also used as the data source for health data such as steps to produce my daily, weekly and monthly summary emails to myself using <span class=\"mint-link\">Google Apps Script</span>."
-longDescription: "The Spreadsheet of Life (or SoL for short) is the backbone of my finances, holding data for helping me with all my financial decisions.\nIt is an ever expanding <span class=\"mint-link\">Google Sheets</span> file that I use to take snapshots of my daily, weekly and monthly finances which is then summarised to me each day through automated emails, run through <span class=\"mint-link\">Google Apps Script</span>.\nSoL also contains health data such as distance traveled, steps and fluid intake which I send each evening from my phone to the file via <span class=\"mint-link\">Apple Shortcuts</span>."
-lessonsLearned: "The Spreadsheet of Life was my first real introduction to <span class=\"mint-link\">JavaScript</span>, via <span class=\"mint-link\">Google Apps Script</span>, allowing me to generate daily emails to myself. This also brought up several challenges such as storing snapshots of generated graphs within the file to be sent which I achieved using temporary storage in <span class=\"mint-link\">Google Drive</span>.\nIt also taught me the full power of <span class=\"mint-link\">API</span>s from an early stage, allowing me to populate the sheet remotely from using <span class=\"mint-link\">Apple Shortcuts</span> on my iPhone."
 ---
+
 # Spreadsheet of Life
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -71,7 +69,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A <span class="mint-link">Google Sheets</span> file that I use to collate all my key details on which is mainly financial data but is also used as the data source for health data such as steps to produce my daily, weekly and monthly summary emails to myself using <span class="mint-link">Google Apps Script</span>.
+A <span class="theme-link">Google Sheets</span> file that I use to collate all my key details on which is mainly financial data but is also used as the data source for health data such as steps to produce my daily, weekly and monthly summary emails to myself using <span class="theme-link">Google Apps Script</span>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -79,19 +77,19 @@ A <span class="mint-link">Google Sheets</span> file that I use to collate all my
 
 The Spreadsheet of Life (or SoL for short) is the backbone of my finances, holding data for helping me with all my financial decisions.
 
-It is an ever expanding <span class="mint-link">Google Sheets</span> file that I use to take snapshots of my daily, weekly and monthly finances which is then summarised to me each day through automated emails, run through <span class="mint-link">Google Apps Script</span>.
+It is an ever expanding <span class="theme-link">Google Sheets</span> file that I use to take snapshots of my daily, weekly and monthly finances which is then summarised to me each day through automated emails, run through <span class="theme-link">Google Apps Script</span>.
 
-SoL also contains health data such as distance traveled, steps and fluid intake which I send each evening from my phone to the file via <span class="mint-link">Apple Shortcuts</span>.
+SoL also contains health data such as distance traveled, steps and fluid intake which I send each evening from my phone to the file via <span class="theme-link">Apple Shortcuts</span>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="mint-link">Google Sheets</span>
-- Back end/Datasource: <span class="mint-link">Google Apps Script</span>/<span class="mint-link">Google Sheets</span>
-- Hosting: <span class="mint-link">Google</span>
-- Security: <span class="mint-link">Google</span>
-- Authentication: <span class="mint-link">Google</span>
+- Front end: <span class="theme-link">Google Sheets</span>
+- Back end/Datasource: <span class="theme-link">Google Apps Script</span>/<span class="theme-link">Google Sheets</span>
+- Hosting: <span class="theme-link">Google</span>
+- Security: <span class="theme-link">Google</span>
+- Authentication: <span class="theme-link">Google</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -104,7 +102,7 @@ SoL also contains health data such as distance traveled, steps and fluid intake 
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="mint-link">PowerShell</span> alias 
+To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
 
 > `=this.powerShellAlias`
 
@@ -125,9 +123,9 @@ To launch the repo, use the <span class="mint-link">PowerShell</span> alias
 
 ## Lessons Learned
 
-The Spreadsheet of Life was my first real introduction to <span class="mint-link">JavaScript</span>, via <span class="mint-link">Google Apps Script</span>, allowing me to generate daily emails to myself. This also brought up several challenges such as storing snapshots of generated graphs within the file to be sent which I achieved using temporary storage in <span class="mint-link">Google Drive</span>.
+The Spreadsheet of Life was my first real introduction to <span class="theme-link">JavaScript</span>, via <span class="theme-link">Google Apps Script</span>, allowing me to generate daily emails to myself. This also brought up several challenges such as storing snapshots of generated graphs within the file to be sent which I achieved using temporary storage in <span class="theme-link">Google Drive</span>.
 
-It also taught me the full power of <span class="mint-link">API</span>s from an early stage, allowing me to populate the sheet remotely from using <span class="mint-link">Apple Shortcuts</span> on my iPhone.
+It also taught me the full power of <span class="theme-link">API</span>s from an early stage, allowing me to populate the sheet remotely from using <span class="theme-link">Apple Shortcuts</span> on my iPhone.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

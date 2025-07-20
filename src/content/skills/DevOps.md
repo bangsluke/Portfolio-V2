@@ -15,9 +15,9 @@ logoFileName: azure_devops.svg
 
 # DevOps
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="mint-link">Microsoft</span> <span class="mint-link">Azure</span> DevOps
+> <span class="theme-link">Microsoft</span> <span class="theme-link">Azure</span> DevOps
 
 ## Table of Contents
 

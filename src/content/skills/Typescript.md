@@ -19,9 +19,9 @@ logoFileName: typescript.svg
 
 # Typescript
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Superset language of: <span class="mint-link">JavaScript</span>
+> Superset language of: <span class="theme-link">JavaScript</span>
 
 ## Table of Contents
 

@@ -19,9 +19,9 @@ logoFileName: tailwind.svg
 
 # Tailwind CSS
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> A framework for <span class="mint-link">CSS</span>
+> A framework for <span class="theme-link">CSS</span>
 
 ## Table of Contents
 

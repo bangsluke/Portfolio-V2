@@ -15,9 +15,9 @@ logoFileName: visio.svg
 
 # Visio
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="mint-link">Microsoft</span> Visio
+> <span class="theme-link">Microsoft</span> Visio
 
 ## Table of Contents
 

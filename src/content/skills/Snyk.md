@@ -16,9 +16,9 @@ logoFileName: snyk.svg
 
 # Snyk
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Codebase security plugin for <span class="mint-link">GitHub</span>
+> Codebase security plugin for <span class="theme-link">GitHub</span>
 
 ## Table of Contents
 

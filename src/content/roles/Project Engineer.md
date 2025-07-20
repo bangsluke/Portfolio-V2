@@ -10,12 +10,11 @@ dateStart: 2016-02-01
 dateEnd: 2018-06-01
 linkedCompany:
   - "[[RLE International]]"
-roleDescription: "Development of lightweight rear closure door hinges to replace a high-volume multinational OEM’s overly complex design for a weight and cost saving. Steel cast hinges incorporated with a new check arm design that became common across all commercial vehicle variants. Cross-continental implementation in three production plants achieved through managing multiple supply chain costs and timing. Continued interaction with suppliers to find cost down opportunities, functionally test the designed system and improve assembly processes for enhanced part quality."
-keyAchievement: "TBC"
 ---
+
 # Project Engineer
 
-> [!back] Link back to <span class="mint-link">Role Notes</span>
+> [!back] Link back to <span class="theme-link">Role Notes</span>
 
 ## Table of Contents
 ```table-of-contents

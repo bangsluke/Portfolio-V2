@@ -42,11 +42,11 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "The <span class=\"mint-link\">RLE</span>’s <span class=\"mint-link\">Java</span>\n- Hosting: <span class=\"mint-link\">Java</span> calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.\nIt also taught me a lot about passing large objects of states from one page to the next."
 ---
+
 # DVP Tool
 
-> [!back] Link back to <span class="mint-link">Projects</span>
+> [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
 > ```dataview
@@ -77,8 +77,8 @@ WHERE file = this.file
 
 ## Short Description
 
-The <span class="mint-link">RLE</span>’s <span class="mint-link">Java</span>
-- Hosting: <span class="mint-link">Java</span> calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.
+The <span class="theme-link">RLE</span>’s <span class="theme-link">Java</span>
+- Hosting: <span class="theme-link">Java</span> calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.
 
 It also taught me a lot about passing large objects of states from one page to the next.
 

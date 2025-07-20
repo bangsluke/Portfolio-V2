@@ -29,7 +29,7 @@ referenceAddress: RLE International, Germany
 
 # Uwe Kloss
 
-> [!back] Link back to <span class="mint-link">People Notes</span>
+> [!back] Link back to <span class="theme-link">People Notes</span>
 
 ## Table of Contents 
 

@@ -17,14 +17,14 @@ logoURL: https://i.imgur.com/YO94MEL.png
 
 # RLE UK
 
-> [!back] Link back to <span class="mint-link">Company Notes</span>
+> [!back] Link back to <span class="theme-link">Company Notes</span>
 
 >[!website-link] Links
 >```dataview
 TABLE WITHOUT ID elink("https://en.wikipedia.org/wiki/"+replace(this.file.name, " ", "_"), this.file.name + " Wiki") as "Wikipedia Link"
 WHERE file = this.file
 
-> Subsidiary of <span class="mint-link">RLE International</span> based in the <span class="mint-link">United Kingdom</span>
+> Subsidiary of <span class="theme-link">RLE International</span> based in the <span class="theme-link">United Kingdom</span>
 
 ## Table of Contents
 ```table-of-contents

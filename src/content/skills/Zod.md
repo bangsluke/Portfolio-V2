@@ -5,20 +5,19 @@ tags:
   - coding
   - skill
   - portfolio
-modified: 2025-07-18T12:27:00+01:00
+created: 2025-07-20T07:44:00
+modified: 2025-07-20T07:43:48+01:00
 viewCount: 2
-aliases:
-  - Microsoft VS Code
 skillRating: 0
-skillDescription: TBC
-logoFileName: vs_code.svg
+skillDescription: n/a
+logoFileName:
 ---
 
-# VS Code
+# Zod
 
 > [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="theme-link">Microsoft</span> VS Code
+> <span class="theme-link">Typescript</span> type validation library
 
 ## Table of Contents
 

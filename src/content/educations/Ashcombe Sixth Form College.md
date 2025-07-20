@@ -10,12 +10,11 @@ viewCount: 12
 dateStart: 2009-09-01
 dateEnd: 2011-06-24
 imageURL: https://www.ashcombe.surrey.sch.uk/Admissions/23_07_13_Ashcombe_Facade___74A1923_WEB.jpg
-qualifications: "A Levels in Mathematics (A), Physics (A) and History (A), AS Level in Economics (A)"
-additionalDetails: "TBC - Add full details"
 ---
+
 # Ashcombe Sixth Form College
 
-> [!back] Link back to <span class="mint-link">Education Notes</span>
+> [!back] Link back to <span class="theme-link">Education Notes</span>
 
 >[!website-link] Links
 >```dataview

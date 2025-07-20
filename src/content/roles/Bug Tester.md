@@ -10,11 +10,11 @@ dateStart: 2014-03-03
 dateEnd: 2014-07-25
 linkedCompany:
   - "[[Opus 2 International]]"
-keyAchievement: "Finding several front end bugs and developing a reporting structure for developers to understand easily"
 ---
+
 # Bug Tester
 
-> [!back] Link back to <span class="mint-link">Opus 2</span> I was involved in programme bug testing the software and reviewing the sites applications for users.
+> [!back] Link back to <span class="theme-link">Opus 2</span> I was involved in programme bug testing the software and reviewing the sites applications for users.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

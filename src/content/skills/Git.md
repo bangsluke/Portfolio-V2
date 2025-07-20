@@ -15,7 +15,7 @@ logoFileName: git.svg
 
 # Git
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
 > Software Version Management
 

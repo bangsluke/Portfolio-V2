@@ -16,9 +16,9 @@ logoFileName: neo4j_cypher.svg
 
 # Neo4j Aura
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Hosted <span class="mint-link">Neo4j</span> graph service
+> Hosted <span class="theme-link">Neo4j</span> graph service
 
 ## Table of Contents
 

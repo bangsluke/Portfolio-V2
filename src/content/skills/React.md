@@ -20,9 +20,9 @@ logoFileName: react.svg
 
 # React
 
-> [!back] Link back to <span class="mint-link">Skills Notes</span>
+> [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> Language: <span class="mint-link">JavaScript</span>
+> Language: <span class="theme-link">JavaScript</span>
 
 ## Table of Contents
 
