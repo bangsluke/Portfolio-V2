@@ -152,6 +152,7 @@ const skillIconMapping: Record<string, string> = {
 	'Node.js': 'nodejs',
 	'npm': 'npm',
 	'Obsidian': 'obsidian',
+	'OpenAI': 'openai',
 	'pip': 'pip',
 	'Power Apps': 'power_apps',
 	'Power Automate': 'power_automate',
