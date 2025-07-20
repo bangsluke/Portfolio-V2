@@ -313,9 +313,9 @@ export default function ClientAndCustomerCarousel({
 	useEffect(() => {
 		if (flickingRef.current && carouselItems.length > 0) {
 			const flicking = flickingRef.current;
-			console.log('Circular mode enabled:', flicking.circularEnabled);
-			console.log('Total panels:', carouselItems.length);
-			console.log('Viewport width:', flicking.viewport?.width);
+			// console.log('Circular mode enabled:', flicking.circularEnabled);
+			// console.log('Total panels:', carouselItems.length);
+			// console.log('Viewport width:', flicking.viewport?.width);
 		}
 	}, [carouselItems]);
 

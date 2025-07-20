@@ -185,6 +185,27 @@
   - Maintains bold styling for Obsidian links as requested
   - Ensures proper hover effects and dark mode support
 
+## 2025-01-16 16:05 [develop] - Fixed theme toggle not changing background due to overlay elements
+- Fixed theme toggle background change issue
+  - Identified that fixed positioned overlay elements were covering the background
+  - Converted inline gradient styles to CSS classes for theme awareness
+  - Added bg-gradient-light and bg-gradient-dark classes for proper theme switching
+  - Background color now properly changes when theme toggle is clicked
+- Enhanced overlay element theme responsiveness
+  - Gradient overlay now responds to theme changes
+  - Blur circle already had proper theme-aware styling
+  - All background elements now properly switch between light and dark modes
+
+## 2025-01-16 16:00 [develop] - Fixed background color toggle and improved light mode appearance
+- Fixed background color toggle functionality
+  - Changed light mode background from bg-theme-50/5 to bg-gray-50 for cleaner near-white appearance
+  - Dark mode background remains #0E0E11 as requested
+  - Theme toggle now properly changes background color between light and dark modes
+- Enhanced light mode visual appearance
+  - Light mode now uses a clean gray-50 background instead of tinted mint green
+  - Better contrast and readability in light mode
+  - Maintains the same dark mode aesthetic
+
 ## 2025-01-16 15:55 [develop] - Fixed light/dark theme functionality and improved mobile navigation
 - Enhanced theme detection and toggle functionality
   - Updated Layout.astro theme detection script to properly handle system preference vs user preference

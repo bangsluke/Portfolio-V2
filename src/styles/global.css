@@ -81,6 +81,25 @@ pre,
 	}
 }
 
+/* Theme-aware gradient backgrounds */
+.bg-gradient-light {
+	background: linear-gradient(
+		45deg,
+		rgba(96, 250, 155, 0) 10.79%,
+		rgba(96, 250, 170, 0.03) 40.92%,
+		rgba(96, 250, 155, 0) 90.35%
+	);
+}
+
+.bg-gradient-dark {
+	background: linear-gradient(
+		45deg,
+		rgba(96, 250, 155, 0) 10.79%,
+		rgba(96, 250, 170, 0.01) 40.92%,
+		rgba(96, 250, 155, 0) 90.35%
+	);
+}
+
 a.inline-block.leading-5.pl-12 {
 	font-size: 0.875rem;
 	line-height: 1.25rem;
