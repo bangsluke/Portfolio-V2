@@ -554,10 +554,13 @@ a.theme-link:hover {
 	width: 100%;
 	padding: 1rem;
 	gap: 0.5rem;
+	backdrop-filter: blur(8px);
+	backdrop-saturate: 100%;
+	backdrop-contrast: 100%;
 }
 
 .dark .nav-links.expanded {
-	background: #0e0e11;
+	background: rgba(14, 14, 17, 0.95);
 	border-top: 1px solid #374151;
 }
 

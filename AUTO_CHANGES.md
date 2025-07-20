@@ -185,6 +185,26 @@
   - Maintains bold styling for Obsidian links as requested
   - Ensures proper hover effects and dark mode support
 
+## 2025-01-16 15:55 [develop] - Fixed light/dark theme functionality and improved mobile navigation
+- Enhanced theme detection and toggle functionality
+  - Updated Layout.astro theme detection script to properly handle system preference vs user preference
+  - Modified ThemeIcon.astro to only store user preference when toggle is clicked
+  - Fixed theme detection to respect user's manual choice over system preference
+  - Improved theme icon display to show correct alternative theme mode
+- Fixed mobile navigation dropdown background
+  - Added backdrop-filter blur and transparency to mobile dropdown
+  - Updated dark mode background to use rgba with transparency
+  - Improved visual consistency with header backdrop blur
+- Fixed about me page text contrast in dark mode
+  - Removed hardcoded "text-white" class from markdown content
+  - Now uses proper dark mode text colors from global CSS
+  - Improved readability and contrast in dark mode
+- Enhanced theme system behavior
+  - Initial page load now correctly matches user's device preference
+  - Theme toggle properly overrides system preference when clicked
+  - Mobile navigation now properly adapts to theme changes
+  - About me page text now has proper contrast in both light and dark modes
+
 ## 2025-01-16 14:20 [develop] - Improved theme detection to prevent flash of incorrect theme
 - Moved theme detection script to Layout.astro head section
   - Added theme detection script in head before page renders to prevent flash

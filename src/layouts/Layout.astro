@@ -73,8 +73,14 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 						root.classList.remove('dark');
 					}
 
-					// Store the theme preference
-					if (typeof localStorage !== 'undefined') {
+					// Only store the theme if it's a user preference, not system preference
+					if (
+						typeof localStorage !== 'undefined' &&
+						localStorage.getItem('theme')
+					) {
+						// Theme is already stored, keep it
+					} else {
+						// Store the detected theme (system preference or default)
 						localStorage.setItem('theme', theme);
 					}
 
