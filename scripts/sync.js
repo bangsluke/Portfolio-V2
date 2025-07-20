@@ -72,7 +72,7 @@ const FOLDER_MAPPING = {
 // Protected items that should never be deleted or overwritten
 const PROTECTED_ITEMS = [
 	'staticData',
-	'config.ts',
+	'typeConfig.ts',
 	'allStaticData.json',
 	...PROTECTED_PATTERNS,
 ];
