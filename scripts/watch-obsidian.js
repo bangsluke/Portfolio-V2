@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
+import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+import { SPACING_LEVEL_1 } from './repoConfig.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,9 +21,9 @@ let syncInProgress = false;
 let fileChangeDetected = false;
 
 console.log('👀 Starting Obsidian Watch Mode...');
-console.log('📁 Watching:', OBSIDIAN_VAULT_PATH);
-console.log('⏱️  Check interval:', WATCH_INTERVAL + 'ms');
-console.log('🔄 Debounce delay:', DEBOUNCE_DELAY + 'ms');
+console.log(SPACING_LEVEL_1 + '📁 Watching:', OBSIDIAN_VAULT_PATH);
+console.log(SPACING_LEVEL_1 + '⏱️  Check interval:', WATCH_INTERVAL + 'ms');
+console.log(SPACING_LEVEL_1 + '🔄 Debounce delay:', DEBOUNCE_DELAY + 'ms');
 
 // Check if files have changed since last sync
 function hasFilesChanged() {
@@ -31,13 +32,16 @@ function hasFilesChanged() {
 		const lastModified = stats.mtime.getTime();
 
 		if (lastModified > lastSyncTime) {
-			console.log('📝 File changes detected');
+			console.log(SPACING_LEVEL_1 + '📝 File changes detected');
 			return true;
 		}
 
 		return false;
 	} catch (error) {
-		console.error('❌ Error checking file changes:', error.message);
+		console.error(
+			SPACING_LEVEL_1 + '❌ Error checking file changes:',
+			error.message
+		);
 		return false;
 	}
 }
@@ -45,12 +49,12 @@ function hasFilesChanged() {
 // Run the sync script
 function runSync() {
 	if (syncInProgress) {
-		console.log('⏳ Sync already in progress, skipping...');
+		console.log(SPACING_LEVEL_1 + '⏳ Sync already in progress, skipping...');
 		return;
 	}
 
 	syncInProgress = true;
-	console.log('🔄 Running sync...');
+	console.log(SPACING_LEVEL_1 + '🔄 Running sync...');
 
 	try {
 		execSync('node scripts/sync-production.js', {
@@ -60,9 +64,9 @@ function runSync() {
 
 		lastSyncTime = Date.now();
 		fileChangeDetected = false;
-		console.log('✅ Sync completed');
+		console.log(SPACING_LEVEL_1 + '✅ Sync completed');
 	} catch (error) {
-		console.error('❌ Sync failed:', error.message);
+		console.error(SPACING_LEVEL_1 + '❌ Sync failed:', error.message);
 	} finally {
 		syncInProgress = false;
 	}

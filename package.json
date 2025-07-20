@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "astro dev",
-		"build": "astro build",
+		"build": "npm run update-readme-links && astro build",
 		"preview": "astro preview",
 		"astro": "astro",
 		"lint": "eslint . --ext .js,.ts,.jsx,.tsx,.astro",
@@ -24,7 +24,8 @@
 		"sync:mobile:debug": "cross-env SYNC_MODE=mobile DEBUG=true node scripts/sync.js",
 		"process-markdown": "node scripts/process-obsidian-markdown.js",
 		"test-email": "cross-env EMAIL_NOTIFICATIONS=true node test-email.js",
-		"update-icons": "node scripts/update-icons.cjs"
+		"update-icons": "node scripts/update-icons.cjs",
+		"update-readme-links": "node scripts/update-readme-links.js"
 	},
 	"dependencies": {
 		"@astrojs/preact": "^4.0.8",

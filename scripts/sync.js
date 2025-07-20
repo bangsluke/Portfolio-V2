@@ -6,6 +6,14 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { emailService } from './email-service.js';
+import {
+	CONTENT_TYPE_MAPPINGS,
+	DEFAULT_PORTFOLIO_TAG,
+	PROTECTED_PATTERNS,
+	SPACING_LEVEL_1,
+	SPACING_LEVEL_2,
+	SPACING_LEVEL_3,
+} from './repoConfig.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,12 +32,9 @@ const ERROR_LOG_PATH = path.join(__dirname, '../sync-errors.json');
 const SYNC_MODE = process.env.SYNC_MODE || 'development'; // 'development', 'production', 'mobile'
 const EMAIL_NOTIFICATIONS = process.env.EMAIL_NOTIFICATIONS === 'true';
 const AUTO_DEPLOY = process.env.AUTO_DEPLOY === 'true';
-const DEBUG_MODE = process.env.DEBUG === 'true';
+const DEBUG_MODE = process.env.DEBUG === 'true' || DEFAULT_DEBUG_MODE;
 
-// Add spacings for console log messages
-const SPACING_LEVEL_1 = ' '.repeat(2);
-const SPACING_LEVEL_2 = ' '.repeat(4);
-const SPACING_LEVEL_3 = ' '.repeat(6);
+// Import configuration
 
 // Validate OBSIDIAN_PATH
 if (!OBSIDIAN_VAULT_PATH) {
@@ -72,7 +77,12 @@ const FOLDER_MAPPING = {
 };
 
 // Protected items that should never be deleted or overwritten
-const PROTECTED_ITEMS = ['staticData', 'config.ts', 'allStaticData.json'];
+const PROTECTED_ITEMS = [
+	'staticData',
+	'config.ts',
+	'allStaticData.json',
+	...PROTECTED_PATTERNS,
+];
 
 // Cache for project name to slug mappings
 let projectNameToSlugCache = null;
@@ -98,82 +108,35 @@ function extractSectionContent(content, sectionName, endMarker) {
 
 // Extract sections and add to frontmatter based on content type
 function extractSectionsToFrontmatter(content, contentType) {
-	// Define sections to extract based on content type
-	const sectionsToExtract = [
-		// Role-specific sections
-		{
-			name: 'Role Description',
-			property: 'roleDescription',
-			contentType: 'role',
-		},
-		{
-			name: 'Key Achievement',
-			property: 'keyAchievement',
-			contentType: 'role',
-		},
+	// Get sections to extract from config based on content type
+	const contentTypeConfig = CONTENT_TYPE_MAPPINGS[contentType];
+	if (!contentTypeConfig) {
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_3 +
+					`⏭️  No section extraction config found for content type: ${contentType}`
+			);
+		}
+		return content;
+	}
 
-		// Project-specific sections
-		{
-			name: 'Short Description',
-			property: 'shortDescription',
-			contentType: 'project',
-		},
-		{
-			name: 'Long Description',
-			property: 'longDescription',
-			contentType: 'project',
-		},
-		{
-			name: 'Lessons Learned',
-			property: 'lessonsLearned',
-			contentType: 'project',
-		},
-
-		// Education-specific sections
-		{
-			name: 'Qualifications',
-			property: 'qualifications',
-			contentType: 'education',
-		},
-		{
-			name: 'Additional Details',
-			property: 'additionalDetails',
-			contentType: 'education',
-		},
-
-		// Company-specific sections
-		{
-			name: 'Company Description',
-			property: 'companyDescription',
-			contentType: 'company',
-		},
-		{
-			name: 'Key Achievement',
-			property: 'keyAchievement',
-			contentType: 'company',
-		},
-	];
-
+	const sectionsToExtract = contentTypeConfig.sections;
 	const extractedData = {};
 	const endMarker = '>[!top] [Back to top](#Table%20of%20Contents)';
 
-	// Extract content from each section that matches the content type
-	sectionsToExtract.forEach(
-		({ name, property, contentType: sectionContentType }) => {
-			if (sectionContentType === contentType) {
-				const sectionContent = extractSectionContent(content, name, endMarker);
-				if (sectionContent) {
-					extractedData[property] = sectionContent;
-					if (DEBUG_MODE) {
-						console.log(
-							SPACING_LEVEL_3 +
-								`📝 Extracted ${property} for ${contentType}: ${sectionContent.substring(0, 50)}...`
-						);
-					}
-				}
+	// Extract content from each section defined in config
+	sectionsToExtract.forEach(({ name, property }) => {
+		const sectionContent = extractSectionContent(content, name, endMarker);
+		if (sectionContent) {
+			extractedData[property] = sectionContent;
+			if (DEBUG_MODE) {
+				console.log(
+					SPACING_LEVEL_3 +
+						`📝 Extracted ${property} for ${contentType}: ${sectionContent.substring(0, 50)}...`
+				);
 			}
 		}
-	);
+	});
 
 	// If we found any sections, add them to frontmatter
 	if (Object.keys(extractedData).length > 0) {
@@ -357,7 +320,7 @@ function processMarkdownFile(filePath, relativePath) {
 		}
 
 		// Check if file has portfolio tag
-		const portfolioTag = process.env.PORTFOLIO_TAG || 'portfolio';
+		const portfolioTag = process.env.PORTFOLIO_TAG || DEFAULT_PORTFOLIO_TAG;
 		if (DEBUG_MODE) {
 			console.log(
 				SPACING_LEVEL_2 +
@@ -659,10 +622,10 @@ function processObsidianLinks(content) {
 			}
 
 			if (slug) {
-				return `<a href="/portfolio/projects/${slug}" class="mint-link">${altText}</a>`;
+				return `<a href="/portfolio/projects/${slug}" class="dark-theme-accent-link">${altText}</a>`;
 			}
 			// If not a project, keep as bold text
-			return `<span class="mint-link">${altText}</span>`;
+			return `<span class="dark-theme-accent-link">${altText}</span>`;
 		}
 	);
 
@@ -671,10 +634,10 @@ function processObsidianLinks(content) {
 	content = content.replace(/\[\[([^\]]+)\]\]/g, (match, projectName) => {
 		const slug = projectMappings[projectName];
 		if (slug) {
-			return `<a href="/portfolio/projects/${slug}" class="mint-link">${projectName}</a>`;
+			return `<a href="/portfolio/projects/${slug}" class="dark-theme-accent-link">${projectName}</a>`;
 		}
 		// If not a project, keep as bold text
-		return `<span class="mint-link">${projectName}</span>`;
+		return `<span class="dark-theme-accent-link">${projectName}</span>`;
 	});
 
 	return content;
