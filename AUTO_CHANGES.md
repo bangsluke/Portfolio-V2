@@ -18,6 +18,90 @@
 
 ## Auto Log
 
+## 2025-01-16 17:00 [main] - Created interactive bubble chart for skills display
+- Created new SkillsBubbleChart.tsx Preact component for interactive skills visualization
+  - Bubbles sized based on skillRating value (20-60px radius range)
+  - Color-coded bubbles based on skill tags (framework, language, tool, database, cloud, design)
+  - Background images use skill logos from /icons/ directory
+  - Hover and click interactions for tooltips with skill details
+  - Mobile touch support for bubble interactions
+  - Dropdown filter to show skills by tag category
+  - Tooltips display skill name, rating, project count, and description
+  - Legend showing color coding for different skill types
+- Updated SkillsBubbles.astro to use new bubble chart component
+  - Replaced grid layout with interactive bubble chart
+  - Added projects collection import for skill-project relationship counting
+  - Passes sorted skills and projects to SkillsBubbleChart component
+  - Uses client:only="preact" directive for interactive Preact component
+- Updated content config to include tags field in skills schema
+  - Added tags array field to skillsCollection schema in config.ts
+  - Enables filtering and color coding based on skill tags
+- Fixed React hooks error by switching to Preact hooks
+  - Changed import from 'react' to 'preact/hooks' for useState, useMemo, useRef
+  - Updated client directive to use Preact instead of React
+  - Resolves "Invalid hook call" error by using correct framework
+- Enhanced bubble chart layout and configuration
+  - Improved force-directed layout algorithm for better bubble positioning
+  - Bubbles now group together in the center of the container
+  - Removed background gradient for cleaner appearance
+  - Fixed logo display with proper background blend mode (multiply)
+  - Added SKILLS_FILTER_OPTIONS configuration to repoConfig.js
+  - Filter dropdown now uses predefined options from configuration
+  - Dynamic scaling of bubbles based on container space
+  - Better collision detection and spacing between bubbles
+- Replaced custom bubble chart with professional D3.js implementation
+  - Installed D3.js library for advanced data visualization
+  - Implemented force-directed bubble chart with physics simulation
+  - Dynamic bubble sizing based on skill rating and project count
+  - Smooth animations and transitions with D3's transition system
+  - Professional zoom and pan functionality with D3.zoom
+  - Drag behavior for individual bubbles with force simulation
+  - Enhanced visual design with drop shadows and proper styling
+  - Improved tooltip system with detailed skill information
+  - Better performance with optimized D3 rendering
+  - Responsive design that adapts to container size changes
+- Fixed logo display in D3.js bubble chart
+  - Updated logo loading to use correct path from src/icons folder
+  - Added proper icon name resolution using getSkillIconName utility
+  - Improved logo positioning and sizing within bubbles
+  - Enhanced visual integration with mix-blend-mode multiply
+  - Better opacity and layering for logo visibility
+- Improved skills bubble chart layout and styling
+  - Removed instructions text for cleaner appearance
+  - Moved filter dropdown to align with Skills section heading
+  - Removed chart background to maximize width within parent card
+  - Eliminated padding and margins to use full available space
+  - Simplified component structure for better integration
+  - Enhanced visual hierarchy with dropdown positioned next to heading
+- Fixed D3.js chart flashing issue in development mode
+  - Added proper simulation cleanup with useRef to prevent memory leaks
+  - Optimized useEffect dependencies to only re-render when bubbleData changes
+  - Added useCallback for helper functions to prevent unnecessary re-renders
+  - Improved simulation lifecycle management with proper stop/restart logic
+  - Enhanced performance by reducing unnecessary chart re-renders
+  - Fixed development mode flashing by preventing constant chart recreation
+- Added fullscreen modal functionality for skills bubble chart
+  - Added fullscreen button next to filter dropdown in Skills section
+  - Created modal overlay with 95% screen coverage and blackout background
+  - Implemented modal with dropdown filter and close button
+  - Added keyboard support (Escape key) and click-outside-to-close functionality
+  - Enhanced mobile experience with responsive modal sizing
+  - Fixed SVG logo loading by using canvas-generated fallback images
+  - Improved TypeScript compatibility with proper event handling
+- Added interactive tooltips to skills bubble chart
+  - Implemented hover tooltips for desktop with skill name, description, and rating
+  - Added click/touch tooltips for mobile devices with touchstart event handling
+  - Created floating tooltip with arrow pointer positioned near cursor/touch point
+  - Added click-outside-to-close functionality for tooltip dismissal
+  - Enhanced tooltip styling with dark mode support and responsive design
+  - Improved accessibility with proper z-index layering and pointer events
+  - Maintained existing detailed tooltip for selected skills below chart
+- Bubble chart features:
+  - Fluid layout with collision detection for bubble positioning
+  - Responsive design that adapts to container size
+  - Smooth animations and transitions for interactions
+  - Dark mode support with appropriate color schemes
+  - Project count calculation by matching skill names in project technologies
 ## 2025-01-16 16:40 [main] - Fixed section extraction not working for projects
 - Fixed getContentType function in sync.js to return folder names directly
   - Previous function returned singular content types (e.g., 'project') but CONTENT_TYPE_MAPPINGS uses plural keys (e.g., 'projects')
