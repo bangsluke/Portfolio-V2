@@ -1453,3 +1453,21 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - `linkedCompany` can now be: `string`, `string[]`, or `null`
 - Array values are converted to comma-separated strings for display
 - Clients can use either `imageURL` or `logoURL`
+
+## 2025-01-16 18:35 [main] - Added Download CV button and placeholder PDF
+- Created public/CV-placeholder.pdf as a downloadable placeholder CV
+- Added Download CV button to ReferencesCarousel.astro
+  - On desktop: button appears alongside the References section header
+  - On mobile: button appears below the References carousel
+- Button uses Tailwind styling and includes a download icon
+- Verified download functionality with placeholder file
+
+## 2025-01-16 18:40 [main] - Moved Download CV button to contact section
+- Removed Download CV button from References section header and below carousel
+- Added Download CV button to the right of the Email Me button in the bottom contact section (Contact.astro)
+- Used existing 'download' icon for the button
+- Button links to /CV-placeholder.pdf and uses Button.astro for consistent styling
+- Changed button variant from 'big' to 'dark' to match About Me button styling in HeroSection
+- Updated icon from 'download' to 'briefcase' for better visual consistency
+- Changed Contact Me button back to 'big' variant with custom height classes to match Download CV button size while keeping gradient background
+- Removed container-level hover effects and added individual hover effects to each button for independent scaling
