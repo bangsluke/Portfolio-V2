@@ -4,12 +4,63 @@ import { getCollection } from 'astro:content';
 import WorkExperienceItem from '../components/portfolio/WorkExperienceItem.astro';
 import Heading from '../components/ui/Heading.astro';
 import Layout from '../layouts/Layout.astro';
+import { processObsidianLink } from '../utils/content-processor';
 
-// Get all roles from the local content folder
+// Get all roles and companies from the local content folder
 const roles = await getCollection('roles');
+const companies = await getCollection('companies');
+
+// Process company data for each role
+const rolesWithCompanyData = await Promise.all(
+	roles.map(async role => {
+		let companyLogoURL = null;
+		let processedLinkedCompany = '';
+		let allCompanyLogos: { logoURL: string | null; name: string }[] = [];
+
+		if (role.data.linkedCompany && role.data.linkedCompany.length > 0) {
+			// Process the first company for display
+			processedLinkedCompany = processObsidianLink(role.data.linkedCompany[0]);
+
+			// Get company logos for all companies
+			allCompanyLogos = await Promise.all(
+				role.data.linkedCompany.map(async companyLink => {
+					let logoURL: string | null = null;
+					// Extract company name from Obsidian link format [[Company Name]]
+					const companyName = companyLink.replace(/\[\[(.*?)\]\]/, '$1');
+
+					// Find company in the pre-fetched companies collection
+					const company = companies.find(
+						company => company.id === companyName + '.md'
+					);
+
+					if (company && company.data.logoURL) {
+						logoURL = company.data.logoURL;
+					}
+
+					return {
+						logoURL,
+						name: companyName,
+					};
+				})
+			);
+
+			// Get company logo for the first company
+			if (allCompanyLogos.length > 0) {
+				companyLogoURL = allCompanyLogos[0].logoURL;
+			}
+		}
+
+		return {
+			...role,
+			companyLogoURL,
+			processedLinkedCompany,
+			allCompanyLogos,
+		};
+	})
+);
 
 // Sort roles by dateStart date (newest first)
-const sortedRoles = roles.sort((a, b) => {
+const sortedRoles = rolesWithCompanyData.sort((a, b) => {
 	// Sort by dateStart date, fallback to dateEnd date, then alphabetically
 	const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
 	const dateB = b.data.dateStart || b.data.dateEnd || new Date(0);
@@ -85,6 +136,9 @@ const ogimage = {
 														.replace(/-/g, ' ')
 														.replace(/\b\w/g, l => l.toUpperCase())
 												}
+												processedLinkedCompany={role.processedLinkedCompany}
+												companyLogoURL={role.companyLogoURL}
+												allCompanyLogos={role.allCompanyLogos}
 											/>
 										</div>
 									</article>
@@ -116,4 +170,3 @@ const ogimage = {
 		</section>
 	</div>
 </Layout>
-

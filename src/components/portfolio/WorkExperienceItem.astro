@@ -1,8 +1,5 @@
 ---
-import {
-	processContent,
-	processObsidianLink,
-} from '../../utils/content-processor';
+import { processContent } from '../../utils/content-processor';
 
 interface Props {
 	name: string;
@@ -13,6 +10,9 @@ interface Props {
 	linkedCompany?: string[];
 	roleDescription?: string;
 	keyAchievement?: string;
+	processedLinkedCompany?: string;
+	companyLogoURL?: string | null;
+	allCompanyLogos?: { logoURL: string | null; name: string }[];
 }
 
 const {
@@ -24,10 +24,12 @@ const {
 	linkedCompany,
 	roleDescription,
 	keyAchievement,
+	processedLinkedCompany,
+	companyLogoURL,
+	allCompanyLogos,
 } = Astro.props;
 
 // Process content to handle Obsidian links and markdown
-const processedLinkedCompany = processObsidianLink(linkedCompany);
 const processedRoleDescription = processContent(roleDescription);
 const processedKeyAchievement = processContent(keyAchievement);
 
@@ -79,6 +81,28 @@ if (formattedDateStart && formattedDateEnd) {
 				class="text-sm text-zinc-600/80 dark:text-white/80">
 				{dateRange}
 			</time>
+
+			{/* Company logos card */}
+			{
+				allCompanyLogos && allCompanyLogos.length > 0 && (
+					<div class="mt-3 flex flex-wrap gap-2">
+						{allCompanyLogos.map(company => {
+							console.log(
+								`Rendering company logo for: ${company.name}, logoURL: ${company.logoURL}`
+							);
+							return company.logoURL ? (
+								<div class="w-8 h-8 rounded-lg overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20">
+									<img
+										src={company.logoURL}
+										alt={`${company.name} logo`}
+										class="w-full h-full object-contain p-1"
+									/>
+								</div>
+							) : null;
+						})}
+					</div>
+				)
+			}
 		</div>
 	</div>
 	<div

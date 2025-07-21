@@ -1471,3 +1471,14 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - Updated icon from 'download' to 'briefcase' for better visual consistency
 - Changed Contact Me button back to 'big' variant with custom height classes to match Download CV button size while keeping gradient background
 - Removed container-level hover effects and added individual hover effects to each button for independent scaling
+
+## 2025-01-16 18:45 [main] - Updated work experience timeline company display
+- Modified WorkExperienceTimeline.astro to display only the first company name from linkedCompany array
+- Added company logo processing logic to fetch logos for all companies in linkedCompany array
+- Updated WorkExperienceItem.astro to show a small card with company logos below the date string
+- Added allCompanyLogos prop to WorkExperienceItem interface for passing processed logo data
+- Updated work-experience.astro page to use the same company processing logic
+- Company logos are displayed as small 8x8 rounded cards with backdrop blur and border styling
+- Fixed company name extraction to remove Obsidian link brackets [[Company Name]] and extract just the company name
+- Optimized company logo lookup by pre-fetching companies collection instead of individual getCollection calls
+- Added debugging console.log statements to troubleshoot logo display issues in WorkExperienceTimeline and WorkExperienceItem
