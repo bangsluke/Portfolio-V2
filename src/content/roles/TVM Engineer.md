@@ -14,6 +14,7 @@ linkedCompany:
 roleDescription: "Development of lightweight rear closure door hinges to replace a high-volume multinational OEM’s overly complex design for a weight and cost saving. Steel cast hinges incorporated with a new check arm design that became common across all commercial vehicle variants. Cross-continental implementation in three production plants achieved through managing multiple supply chain costs and timing. Continued interaction with suppliers to find cost down opportunities, functionally test the designed system and improve assembly processes for enhanced part quality."
 keyAchievement: "TBC"
 ---
+
 # TVM Engineer
 
 > [!back] Link back to <span class="theme-link">Role Notes</span>

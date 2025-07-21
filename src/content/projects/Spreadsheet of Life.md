@@ -37,6 +37,7 @@ shortDescription: "A <span class=\"theme-link\">Google Sheets</span> file that I
 longDescription: "The Spreadsheet of Life (or SoL for short) is the backbone of my finances, holding data for helping me with all my financial decisions.\nIt is an ever expanding <span class=\"theme-link\">Google Sheets</span> file that I use to take snapshots of my daily, weekly and monthly finances which is then summarised to me each day through automated emails, run through <span class=\"theme-link\">Google Apps Script</span>.\nSoL also contains health data such as distance traveled, steps and fluid intake which I send each evening from my phone to the file via <span class=\"theme-link\">Apple Shortcuts</span>."
 lessonsLearned: "The Spreadsheet of Life was my first real introduction to <span class=\"theme-link\">JavaScript</span>, via <span class=\"theme-link\">Google Apps Script</span>, allowing me to generate daily emails to myself. This also brought up several challenges such as storing snapshots of generated graphs within the file to be sent which I achieved using temporary storage in <span class=\"theme-link\">Google Drive</span>.\nIt also taught me the full power of <span class=\"theme-link\">API</span>s from an early stage, allowing me to populate the sheet remotely from using <span class=\"theme-link\">Apple Shortcuts</span> on my iPhone."
 ---
+
 # Spreadsheet of Life
 
 > [!back] Link back to <span class="theme-link">Projects</span>

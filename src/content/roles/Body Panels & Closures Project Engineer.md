@@ -14,6 +14,7 @@ linkedCompany:
 roleDescription: "After re-locating to the customer’s location, I assumed a larger number of responsibilities including the delivery of an engineered automotive solution for a new super series car dihedral door system. I worked directly with several suppliers, managing budgets and delivery plans from development phase into prototype build."
 keyAchievement: "TBC"
 ---
+
 # Body Panels & Closures Project Engineer
 
 > [!back] Link back to <span class="theme-link">Role Notes</span>

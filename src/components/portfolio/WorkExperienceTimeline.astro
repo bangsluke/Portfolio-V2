@@ -16,13 +16,9 @@ const rolesWithCompanyData = await Promise.all(
 		let processedLinkedCompany = '';
 		let allCompanyLogos: { logoURL: string | null; name: string }[] = [];
 
-		console.log(`Processing role: ${role.id}`);
-		console.log(`linkedCompany data:`, role.data.linkedCompany);
-
 		if (role.data.linkedCompany && role.data.linkedCompany.length > 0) {
 			// Process the first company for display
 			processedLinkedCompany = processObsidianLink(role.data.linkedCompany[0]);
-			console.log(`First company processed: ${processedLinkedCompany}`);
 
 			// Get company logos for all companies
 			allCompanyLogos = await Promise.all(
@@ -30,14 +26,11 @@ const rolesWithCompanyData = await Promise.all(
 					let logoURL: string | null = null;
 					// Extract company name from Obsidian link format [[Company Name]]
 					const companyName = companyLink.replace(/\[\[(.*?)\]\]/, '$1');
-					console.log(`Extracted company name: ${companyName}`);
 
 					// Find company in the pre-fetched companies collection
 					const company = companies.find(
 						company => company.id === companyName.replace('.md', '')
 					);
-					console.log(`Found company:`, company ? company.id : 'NOT FOUND');
-					console.log(`Company logoURL:`, company?.data.logoURL);
 
 					if (company && company.data.logoURL) {
 						logoURL = company.data.logoURL;
@@ -49,8 +42,6 @@ const rolesWithCompanyData = await Promise.all(
 					};
 				})
 			);
-
-			console.log(`All company logos for ${role.id}:`, allCompanyLogos);
 
 			// Get company logo for the first company
 			if (allCompanyLogos.length > 0) {

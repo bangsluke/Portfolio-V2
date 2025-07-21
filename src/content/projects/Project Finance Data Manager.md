@@ -42,6 +42,7 @@ shortDescription: "Data input for financial tracking of <span class=\"theme-link
 longDescription: "TBC\nPulled in timesheet data and financial information from various <span class=\"theme-link\">RLE International</span> region sources such as <span class=\"theme-link\">Paycor</span>, <span class=\"theme-link\">T-Sheet</span> and <span class=\"theme-link\">Iplicit</span>."
 lessonsLearned: "TBC"
 ---
+
 # Project Finance Data Manager
 
 > [!back] Link back to <span class="theme-link">Projects</span>

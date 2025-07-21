@@ -1485,3 +1485,7 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - Made company logos larger (12x12) without container styling and added tooltips showing company names
 - Fixed role name casing to preserve original format (e.g., "TVM Engineer" instead of "Tvm Engineer")
 - Increased company logo size to 24x24 pixels (100% larger) for better visibility
+- Debugged sync.js script for Sydney link processing issue in Loughborough University education note
+- Added and then removed debugging code to investigate Obsidian link processing
+- Confirmed sync process is working correctly - Sydney links are converted to theme-link spans since Sydney is not a project name
+- Cleaned up debugging code to maintain script quality

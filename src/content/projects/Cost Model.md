@@ -37,6 +37,7 @@ shortDescription: "A unified cost model template and approach for costing projec
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
+
 # Cost Model
 
 > [!back] Link back to <span class="theme-link">Projects</span>

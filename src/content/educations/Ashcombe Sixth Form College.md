@@ -13,6 +13,7 @@ imageURL: https://www.ashcombe.surrey.sch.uk/Admissions/23_07_13_Ashcombe_Facade
 qualifications: "4 A Levels"
 additionalDetails: "A Levels in Mathematics (A), Physics (A) and History (A), AS Level in Economics (A)"
 ---
+
 # Ashcombe Sixth Form College
 
 > [!back] Link back to <span class="theme-link">Education Notes</span>

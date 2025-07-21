@@ -87,9 +87,6 @@ if (formattedDateStart && formattedDateEnd) {
 				allCompanyLogos && allCompanyLogos.length > 0 && (
 					<div class="mt-3 flex flex-wrap gap-3">
 						{allCompanyLogos.map(company => {
-							console.log(
-								`Rendering company logo for: ${company.name}, logoURL: ${company.logoURL}`
-							);
 							return company.logoURL ? (
 								<img
 									src={company.logoURL}

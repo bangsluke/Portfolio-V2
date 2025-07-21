@@ -40,6 +40,7 @@ shortDescription: "TBC"
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
+
 # Group Page
 
 > [!back] Link back to <span class="theme-link">Projects</span>

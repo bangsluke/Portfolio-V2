@@ -41,6 +41,7 @@ shortDescription: "An early website I developed to be my new tab page across bro
 longDescription: "A site that opens up for new tabs across my browsers, developed from a theme I found online which stores my key site links and several images I have saved on the page in a masonry layout."
 lessonsLearned: "This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the <span class=\"theme-link\">CSS</span> file from online) and then making it my own."
 ---
+
 # New Tab Website
 
 > [!back] Link back to <span class="theme-link">Projects</span>

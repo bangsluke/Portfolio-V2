@@ -37,6 +37,7 @@ shortDescription: "A simplified portfolio idea to show just a single card of my 
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
+
 # Portfolio Card
 
 > [!back] Link back to <span class="theme-link">Projects</span>

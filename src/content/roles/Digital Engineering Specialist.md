@@ -13,6 +13,7 @@ linkedCompany:
 roleDescription: "Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using <span class=\"theme-link\">Next.js</span>, <span class=\"theme-link\">Nest.js</span>, a <span class=\"theme-link\">Neo4j</span> database and a <span class=\"theme-link\">Flask</span> <span class=\"theme-link\">API</span> to call a <span class=\"theme-link\">Python</span> algorithm. The tool collects inputs from a user, calculates several optimal <span class=\"theme-link\">DVP</span> plans and then presents the options in several ways to enable further user decisions."
 keyAchievement: "TBC"
 ---
+
 # Digital Engineering Specialist
 
 > [!back] Link back to <span class="theme-link">Role Notes</span>

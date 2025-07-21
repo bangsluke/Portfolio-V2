@@ -45,6 +45,7 @@ shortDescription: "A personal portfolio website for displaying my skills and pas
 longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills."
 lessonsLearned: "TBC\nInitially I set the project up with an <span class=\"theme-link\">Astro</span> front end and started doing <span class=\"theme-link\">GraphQL</span> calls to my <a href=\"/portfolio/projects/Backend Server\" class=\"theme-link\">Backend Server</a> project to collect the portfolio data I had stored in the <span class=\"theme-link\">Neo4j</span> graph. However I soon realized that I was undoing the speed of <span class=\"theme-link\">Astro</span> and switched to a script that loads the required portfolio data (stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> files) into the portfolio repo and used <span class=\"theme-link\">Astro</span> collections to gather and display the data that way.\nThe project taught me about defining <span class=\"theme-link\">npm</span> functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package."
 ---
+
 # Portfolio Site V2
 
 > [!back] Link back to <span class="theme-link">Projects</span>
