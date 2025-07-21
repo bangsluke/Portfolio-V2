@@ -56,8 +56,6 @@ const cleanedCompanies = companiesWithLogos.map(company => ({
 		logoURL: company.data.logoURL,
 		dateStart: company.data.dateStart,
 		dateEnd: company.data.dateEnd,
-		companyDescription: company.data.companyDescription,
-		keyAchievement: company.data.keyAchievement,
 	},
 }));
 
@@ -72,8 +70,6 @@ const cleanedClients = clientsWithLogos.map(client => ({
 		dateStart: client.data.dateStart,
 		dateEnd: client.data.dateEnd,
 		linkedCompany: client.data.linkedCompany,
-		clientDescription: client.data.clientDescription,
-		keyAchievement: client.data.keyAchievement,
 	},
 }));
 
@@ -110,23 +106,3 @@ const itemsJson = JSON.stringify(allItems);
 		</div>
 	</div>
 </section>
-
-<style>
-	.info-button {
-		backdrop-filter: blur(10px);
-	}
-
-	/* Ensure smooth transitions */
-	.group:hover .info-button {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
-	/* Mobile touch support */
-	@media (max-width: 768px) {
-		.info-button {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-</style>

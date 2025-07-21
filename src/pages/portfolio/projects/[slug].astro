@@ -73,6 +73,20 @@ try {
 	console.error('Error fetching linked companies/clients:', error);
 }
 
+// Helper to get company name from frontmatter or fallback to first heading in markdown
+function getCompanyName(company) {
+	if (company.data.name && company.data.name.trim() !== '') {
+		return company.data.name;
+	}
+	// Try to extract from markdown content (first # heading)
+	const match = company.body.match(/^#\s+(.+)$/m);
+	if (match && match[1]) {
+		return match[1].trim();
+	}
+	// Fallback to filename minus .md
+	return company.id.replace('.md', '');
+}
+
 const pageTitle = data.name + ' Project - bangsluke Portfolio';
 const description = processedShortDescription;
 const ogimage = {
@@ -206,13 +220,13 @@ const ogimage = {
 				data.linkedCompany.length > 0 &&
 				(linkedCompanies.length > 0 || linkedClients.length > 0) && (
 					<section class="mb-12">
-						<h2 class="text-3xl font-bold mb-6 text-theme-100">
+						<h2 class="text-3xl font-bold mb-6 text-theme-100 text-center">
 							Developed For
 						</h2>
-						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
 							{linkedCompanies.map(company => (
 								<CustomerAndClientCarouselItem
-									name={company.slug}
+									name={getCompanyName(company)}
 									logoURL={company.data.logoURL || undefined}
 									dateStart={company.data.dateStart}
 									dateEnd={company.data.dateEnd}

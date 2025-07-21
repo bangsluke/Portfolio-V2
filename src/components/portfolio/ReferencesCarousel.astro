@@ -3,16 +3,24 @@ import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { processObsidianLink } from '../../utils/content-processor';
 import Heading from '../ui/Heading.astro';
-import ReferenceItem from './ReferenceItem.astro';
+import ReferencesCarouselComponent from './ReferencesCarouselComponent.tsx';
 
 // Get all references, companies, and clients from the local content folders
 const references = await getCollection('references');
 const companies = await getCollection('companies');
 const clients = await getCollection('clients');
 
-// Sort references alphabetically by name
+// Sort references by portfolioOrder, then alphabetically by name
 const sortedReferences = references.sort((a, b) => {
-	// Sort alphabetically by slug (filename)
+	// First sort by portfolioOrder (lower numbers first)
+	const orderA = a.data.portfolioOrder ?? Number.MAX_SAFE_INTEGER;
+	const orderB = b.data.portfolioOrder ?? Number.MAX_SAFE_INTEGER;
+
+	if (orderA !== orderB) {
+		return orderA - orderB;
+	}
+
+	// If portfolioOrder is the same or not set, sort alphabetically by slug
 	return a.slug.localeCompare(b.slug);
 });
 
@@ -55,36 +63,28 @@ const processedReferences = sortedReferences.map(reference => {
 ---
 
 <section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="references">
-	<div class="flex flex-col pt-8 max-w-4xl mx-auto">
+	<div class="flex flex-col pt-8 max-w-6xl mx-auto">
 		<div class="flex gap-4 items-center justify-center">
 			<Icon class="text-3xl dark:text-white text-blacktext" name="sun" />
 			<Heading text="" textGradient="References" level={2} />
 		</div>
 
 		<div class="relative max-md:mt-0 mt-8" aria-label="References">
-			<ol class="relative mt-10">
-				{
-					processedReferences.map((reference, index) => (
-						<li>
-							<article
-								role="article"
-								aria-labelledby={`reference-title-${index}`}>
-								<div
-									class="flex flex-col gap-2 text-zinc-00 dark:text-zinc-300 md:col-span-3"
-									aria-describedby={`reference-title-${index}`}>
-									<ReferenceItem
-										{...reference.data}
-										name={
-											reference.data.name || reference.id.replace('.md', '')
-										}
-										companyLogoURL={reference.companyLogoURL}
-									/>
-								</div>
-							</article>
-						</li>
-					))
-				}
-			</ol>
+			<ReferencesCarouselComponent
+				references={processedReferences.map(ref => ({
+					id: ref.id,
+					name: ref.data.name || ref.id.replace('.md', ''),
+					title: ref.data.referenceRole || '',
+					email: ref.data.referenceEmail || '',
+					phone: ref.data.referenceNumber || '',
+					company: ref.data.linkedCompany
+						? processObsidianLink(ref.data.linkedCompany[0])
+						: '',
+					logoURL: ref.companyLogoURL,
+					address: ref.data.referenceAddress || '',
+				}))}
+				client:only="preact"
+			/>
 		</div>
 	</div>
 </section>

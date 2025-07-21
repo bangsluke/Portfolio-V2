@@ -118,28 +118,6 @@ function CompanyCard({
 							</div>
 						)}
 					</div>
-
-					{/* Bottom section with info button */}
-					<div className="flex justify-end">
-						<button
-							className="info-button opacity-0 group-hover:opacity-100 transition-all duration-300 bg-theme-400 hover:bg-theme-500 text-black rounded-full p-3 shadow-lg transform translate-y-2 group-hover:translate-y-0"
-							aria-label={`View details for ${item.title}`}
-							title={`View details for ${item.title}`}
-							onClick={showCompanyModal}>
-							<svg
-								className="w-5 h-5"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24">
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth="2"
-									d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-								/>
-							</svg>
-						</button>
-					</div>
 				</div>
 			</div>
 

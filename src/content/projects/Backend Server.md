@@ -5,8 +5,8 @@ tags:
   - notes
   - project/active
 created: 2025-06-23 13:36
-modified: 2025-07-19T09:42:21+01:00
-viewCount: 13
+modified: 2025-07-21T08:50:04+01:00
+viewCount: 15
 aliases:
   - backend-server
 projectURL: https://bangsluke-backend-server-221df04e1ad6.herokuapp.com/
@@ -46,17 +46,21 @@ lessonsLearned: "Taught me about setting up a <span class=\"theme-link\">Flask</
 > [!back] Link back to <span class="theme-link">Projects</span>
 
 >[!website-link] Links
+>
 > ```dataview
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
+
 >```
 >```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
+
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
+
 >```
 >```dataview
 TABLE WITHOUT ID this.deploymentServiceURL as "Deployment Service Link"

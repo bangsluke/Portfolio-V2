@@ -423,6 +423,10 @@ const SkillsBubbleChart = ({
 					<div className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
 						{tooltip.skill.name}
 					</div>
+					<div className="text-xs text-theme-500 mb-1 font-medium">
+						Used in {tooltip.skill.projectCount} project
+						{tooltip.skill.projectCount === 1 ? '' : 's'}
+					</div>
 					<div className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
 						{tooltip.skill.description}
 					</div>

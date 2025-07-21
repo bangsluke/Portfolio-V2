@@ -18,6 +18,257 @@
 
 ## Auto Log
 
+## 2025-01-16 18:30 [main] - Added comprehensive GitHub statistics with new metrics
+- Enhanced GitHubContributions.tsx with additional GitHub metrics
+  - Added "Active Since" card showing account age in years/months
+  - Added "Top Repo Stars" card linking to most starred repository
+  - Added "Contributions (1Y)" card showing estimated yearly contributions
+  - Added "Avg Commits/Day" card showing daily commit average
+  - Updated GitHubStats interface to include accountAge, mostStarredRepo, contributionsLastYear, and averageCommitsPerDay
+  - Enhanced data fetching to sort repositories by stars and calculate account age
+  - Expanded stats grid to 8 cards (2x4 layout) to accommodate new metrics
+  - Made most starred repo card clickable to link directly to the repository
+  - Maintained consistent styling and hover effects across all stat cards
+
+## 2025-01-16 18:25 [main] - Enhanced GitHub stats cards with links and reduced height
+- Updated GitHubContributions.tsx stats cards for better UX
+  - Reduced card height by changing padding from p-3 to p-2
+  - Decreased font size from text-2xl to text-xl for more compact display
+  - Reduced gap between cards from gap-4 to gap-3 for tighter layout
+  - Converted all stat cards to clickable links to GitHub profile sections
+  - Added specific tab parameters: stars, repositories, followers, following
+  - Implemented hover effects (hover:bg-white/20) for better interactivity
+  - Added cursor-pointer and transition-colors for smooth interactions
+  - Maintained accessibility with proper target="_blank" and rel attributes
+
+## 2025-01-16 18:20 [main] - Increased GitHub Contributions and Skills section heights
+- Enhanced CodingSection.astro layout for better visual balance
+  - Increased GitHub Contributions section to span 2 rows (md:row-span-2)
+  - Matched Skills section height by ensuring both sections have equal vertical space
+  - Adjusted Most Common Techs section to row-start-3 to accommodate new layout
+  - Updated grid from md:grid-rows-2 to md:grid-rows-3 for proper spacing
+  - Improved overall section proportions and visual hierarchy
+
+## 2025-01-16 18:15 [main] - Cleaned up CustomerAndClientCarousel styling and schema
+- Removed unused info button styles from CustomerAndClientCarousel.astro
+  - Eliminated .info-button CSS styles that were no longer needed
+  - Removed references to non-existent clientDescription and keyAchievement properties
+  - Fixed TypeScript errors by aligning with actual clients collection schema
+  - Maintained clean card display without info button functionality
+  - Improved code maintainability by removing dead code
+
+## 2025-01-16 18:10 [main] - Simplified References carousel arrow styling
+- Updated ReferencesCarouselComponent.tsx to remove duplicate arrow styling
+  - Removed Flicking Arrow plugin to eliminate orange styled arrows
+  - Kept custom white styled arrows with circular transparent background
+  - Maintained pagination and autoplay functionality
+  - Cleaned up imports by removing unused Arrow plugin import
+  - Improved visual consistency with single arrow style
+
+## 2025-01-16 18:05 [main] - Implemented portfolioOrder sorting for References carousel
+- Enhanced References carousel with custom ordering functionality
+  - Added portfolioOrder property to referencesCollection schema in config.ts
+  - Updated ReferencesCarousel.astro to sort by portfolioOrder first, then alphabetically
+  - References without portfolioOrder fall back to alphabetical sorting
+  - Lower portfolioOrder values appear first in the carousel
+  - Maintained backward compatibility for existing references without portfolioOrder
+
+## 2025-01-16 18:00 [main] - Added background hover effects to References carousel contact fields
+- Enhanced ReferencesCarouselComponent.tsx with background hover effects
+  - Added white background (bg-white/20) on hover for email and phone text
+  - Matches the copy-to-clipboard icon's hover background effect
+  - Added padding (px-1 py-1) and rounded corners for better visual definition
+  - Changed transition from transition-colors to transition-all for smooth background animation
+  - Created consistent visual feedback across all interactive contact elements
+
+## 2025-01-16 17:55 [main] - Enhanced hover effects for References carousel contact fields
+- Updated ReferencesCarouselComponent.tsx with improved hover interactions
+  - Added hover highlighting to email and phone text fields
+  - Text now transitions from text-white/90 to text-white on hover
+  - Matches the visual feedback of the copy-to-clipboard icons
+  - Added smooth transition-colors duration-200 for consistent animation
+  - Enhanced user experience with clear visual feedback for interactive elements
+
+## 2025-01-16 17:50 [main] - Fixed email truncation in References carousel
+- Updated ReferencesCarouselComponent.tsx to resolve email display issues
+  - Increased max-width from max-w-32 to max-w-40 for email and phone text fields
+  - Resolved truncation of longer email addresses like "tauchecorne@opus2.com"
+  - Maintained truncate functionality for extremely long contact information
+  - Ensured consistent width across both email and phone fields
+
+## 2025-01-16 17:45 [main] - Repositioned copy icons in References carousel
+- Updated ReferencesCarouselComponent.tsx copy icon positioning
+  - Moved copy-to-clipboard icons to the left side of email and phone text
+  - Maintained right-aligned layout for contact information
+  - Preserved hover functionality and visual feedback for copy actions
+  - Improved visual flow with icons appearing before text content
+
+## 2025-01-16 17:40 [main] - Refined References carousel display and navigation updates
+- Updated ReferencesCarouselComponent.tsx for cleaner contact display
+  - Removed "Email:", "Phone:", and "Address:" labels from reference cards
+  - Right-aligned all contact information fields (email, phone, address)
+  - Simplified Flicking component props to resolve TypeScript errors
+  - Maintained copy-to-clipboard functionality for email and phone
+  - Improved visual hierarchy with cleaner, more minimal design
+
+## 2025-01-16 17:35 [main] - Updated header navigation with complete section list
+- Enhanced Navigation.astro with comprehensive section coverage
+  - Added "Clients" navigation linking to /site/#customers-and-clients
+  - Added "Education" navigation linking to /site/#education  
+  - Added "References" navigation linking to /site/#references
+  - Updated menu structure to include all 8 sections: Home, Projects, Coding, Experience, Clients, Education, References, About Me
+- Updated Header.astro to include all navigation items
+  - Modified navItems array to include all requested sections
+  - Ensures both desktop and mobile navigation show complete menu
+  - Maintains existing functionality for active route detection
+
+## 2025-01-16 17:30 [main] - Enhanced Work Experience, Education, and References sections
+- Updated WorkExperienceItem.astro to display "Present" for ongoing roles
+  - Modified date formatting logic to show "MMM YYYY - Present" when dateStart exists but no dateEnd
+  - Improved date range handling for better user experience
+- Removed fade out effect from WorkExperienceTimeline.astro
+  - Eliminated gradient overlay that was hiding content at the bottom
+  - Simplified "See more items" button layout for cleaner appearance
+- Replaced References timeline with Flicking carousel component
+  - Created new ReferencesCarouselComponent.tsx with square card design
+  - Implemented Flicking carousel with pagination and arrow navigation
+  - Added copy-to-clipboard functionality for email and phone numbers
+  - Designed square cards (256x256px) with company logo backgrounds
+  - Added hover effects and visual feedback for copy actions
+  - Included AutoPlay plugin with 5-second intervals and hover pause
+  - Enhanced accessibility with proper ARIA labels and keyboard navigation
+
+## 2025-01-16 17:25 [main] - Filtered hosting and security skills from Most Common Techs
+- Updated MostCommonTechs.astro to exclude hosting and security technologies
+  - Added skills collection import to access skill tags
+  - Created excludedSkillNames set containing skills with "hosting" or "security" tags
+  - Modified technology counting logic to skip excluded skills
+  - Improved filtering to focus on core development technologies
+  - Enhanced component to show more relevant tech stack information
+
+## 2025-01-16 17:20 [main] - Enhanced GitHub contributions component with profile link and stats
+- Enhanced GitHubContributions.tsx component with comprehensive GitHub integration
+  - Added hyperlink over entire contributions graph area for better UX
+  - Integrated GitHub API to fetch user statistics (stars, repositories, followers, following)
+  - Added error handling and loading states for API calls
+  - Implemented fallback display when GitHub calendar component is unavailable
+  - Added debug styles to ensure calendar visibility on desktop
+  - Enhanced styling with hover effects and proper color theming
+  - Added "View Profile" link in header with external link icon
+  - Created stats grid showing GitHub metrics below contributions calendar
+  - Improved accessibility with proper ARIA labels and keyboard navigation
+
+## 2025-01-16 17:15 [main] - Limited education timeline and fixed content parsing
+- Limited education timeline to display only 2 items instead of 3
+  - Updated displayedEducation slice from 0,3 to 0,2 in EducationTimeline.astro
+  - Removed hasMoreItems variable and related fade out functionality
+  - Eliminated fade effect overlay and "See more items" button
+  - Simplified timeline component structure for cleaner appearance
+- Fixed additionalDetails content parsing in content-processor.ts
+  - Added newline to <br> tag conversion for proper HTML rendering
+  - Fixed issue where newlines in additionalDetails were not being rendered as line breaks
+  - Improved content display for education timeline items with multi-line descriptions
+  - Enhanced readability of education details with proper HTML formatting
+- Re-added "See more items" button for education timeline
+  - Restored hasMoreItems variable to check if more than 2 education items exist
+  - Added "See more items" button that appears when there are additional education entries
+  - Button links to /education page for full education timeline view
+  - Removed fade effect overlay for cleaner appearance
+- Added logic to hide "n/a" content in education timeline
+  - Added shouldShowQualifications and shouldShowAdditionalDetails checks in EducationTimelineItem.astro
+  - Sections with "n/a" content (case-insensitive) are now hidden from display
+  - Improved content filtering to prevent empty or placeholder content from showing
+  - Enhanced user experience by only showing meaningful education information
+- Updated skills bubble chart tooltip to use skill ID instead of skill name
+  - Modified bubble data creation to use skill.id.replace(/\.md$/, '') for tooltip display
+  - Tooltips now show the skill filename (minus .md extension) instead of skill name
+  - Improved consistency by using the actual skill identifier in tooltips
+  - Maintains existing functionality while changing only the displayed name
+
+## 2025-01-16 17:00 [main] - Created interactive bubble chart for skills display
+- Created new SkillsBubbleChart.tsx Preact component for interactive skills visualization
+  - Bubbles sized based on skillRating value (20-60px radius range)
+  - Color-coded bubbles based on skill tags (framework, language, tool, database, cloud, design)
+  - Background images use skill logos from /icons/ directory
+  - Hover and click interactions for tooltips with skill details
+  - Mobile touch support for bubble interactions
+  - Dropdown filter to show skills by tag category
+  - Tooltips display skill name, rating, project count, and description
+  - Legend showing color coding for different skill types
+- Updated SkillsBubbles.astro to use new bubble chart component
+  - Replaced grid layout with interactive bubble chart
+  - Added projects collection import for skill-project relationship counting
+  - Passes sorted skills and projects to SkillsBubbleChart component
+  - Uses client:only="preact" directive for interactive Preact component
+- Updated content config to include tags field in skills schema
+  - Added tags array field to skillsCollection schema in config.ts
+  - Enables filtering and color coding based on skill tags
+- Fixed React hooks error by switching to Preact hooks
+  - Changed import from 'react' to 'preact/hooks' for useState, useMemo, useRef
+  - Updated client directive to use Preact instead of React
+  - Resolves "Invalid hook call" error by using correct framework
+- Enhanced bubble chart layout and configuration
+  - Improved force-directed layout algorithm for better bubble positioning
+  - Bubbles now group together in the center of the container
+  - Removed background gradient for cleaner appearance
+  - Fixed logo display with proper background blend mode (multiply)
+  - Added SKILLS_FILTER_OPTIONS configuration to repoConfig.js
+  - Filter dropdown now uses predefined options from configuration
+  - Dynamic scaling of bubbles based on container space
+  - Better collision detection and spacing between bubbles
+- Replaced custom bubble chart with professional D3.js implementation
+  - Installed D3.js library for advanced data visualization
+  - Implemented force-directed bubble chart with physics simulation
+  - Dynamic bubble sizing based on skill rating and project count
+  - Smooth animations and transitions with D3's transition system
+  - Professional zoom and pan functionality with D3.zoom
+  - Drag behavior for individual bubbles with force simulation
+  - Enhanced visual design with drop shadows and proper styling
+  - Improved tooltip system with detailed skill information
+  - Better performance with optimized D3 rendering
+  - Responsive design that adapts to container size changes
+- Fixed logo display in D3.js bubble chart
+  - Updated logo loading to use correct path from src/icons folder
+  - Added proper icon name resolution using getSkillIconName utility
+  - Improved logo positioning and sizing within bubbles
+  - Enhanced visual integration with mix-blend-mode multiply
+  - Better opacity and layering for logo visibility
+- Improved skills bubble chart layout and styling
+  - Removed instructions text for cleaner appearance
+  - Moved filter dropdown to align with Skills section heading
+  - Removed chart background to maximize width within parent card
+  - Eliminated padding and margins to use full available space
+  - Simplified component structure for better integration
+  - Enhanced visual hierarchy with dropdown positioned next to heading
+- Fixed D3.js chart flashing issue in development mode
+  - Added proper simulation cleanup with useRef to prevent memory leaks
+  - Optimized useEffect dependencies to only re-render when bubbleData changes
+  - Added useCallback for helper functions to prevent unnecessary re-renders
+  - Improved simulation lifecycle management with proper stop/restart logic
+  - Enhanced performance by reducing unnecessary chart re-renders
+  - Fixed development mode flashing by preventing constant chart recreation
+- Added fullscreen modal functionality for skills bubble chart
+  - Added fullscreen button next to filter dropdown in Skills section
+  - Created modal overlay with 95% screen coverage and blackout background
+  - Implemented modal with dropdown filter and close button
+  - Added keyboard support (Escape key) and click-outside-to-close functionality
+  - Enhanced mobile experience with responsive modal sizing
+  - Fixed SVG logo loading by using canvas-generated fallback images
+  - Improved TypeScript compatibility with proper event handling
+- Added interactive tooltips to skills bubble chart
+  - Implemented hover tooltips for desktop with skill name, description, and rating
+  - Added click/touch tooltips for mobile devices with touchstart event handling
+  - Created floating tooltip with arrow pointer positioned near cursor/touch point
+  - Added click-outside-to-close functionality for tooltip dismissal
+  - Enhanced tooltip styling with dark mode support and responsive design
+  - Improved accessibility with proper z-index layering and pointer events
+  - Maintained existing detailed tooltip for selected skills below chart
+- Bubble chart features:
+  - Fluid layout with collision detection for bubble positioning
+  - Responsive design that adapts to container size
+  - Smooth animations and transitions for interactions
+  - Dark mode support with appropriate color schemes
+  - Project count calculation by matching skill names in project technologies
 ## 2025-01-16 16:40 [main] - Fixed section extraction not working for projects
 - Fixed getContentType function in sync.js to return folder names directly
   - Previous function returned singular content types (e.g., 'project') but CONTENT_TYPE_MAPPINGS uses plural keys (e.g., 'projects')
