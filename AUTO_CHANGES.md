@@ -18,6 +18,71 @@
 
 ## Auto Log
 
+## 2025-01-16 18:10 [main] - Simplified References carousel arrow styling
+- Updated ReferencesCarouselComponent.tsx to remove duplicate arrow styling
+  - Removed Flicking Arrow plugin to eliminate orange styled arrows
+  - Kept custom white styled arrows with circular transparent background
+  - Maintained pagination and autoplay functionality
+  - Cleaned up imports by removing unused Arrow plugin import
+  - Improved visual consistency with single arrow style
+
+## 2025-01-16 18:05 [main] - Implemented portfolioOrder sorting for References carousel
+- Enhanced References carousel with custom ordering functionality
+  - Added portfolioOrder property to referencesCollection schema in config.ts
+  - Updated ReferencesCarousel.astro to sort by portfolioOrder first, then alphabetically
+  - References without portfolioOrder fall back to alphabetical sorting
+  - Lower portfolioOrder values appear first in the carousel
+  - Maintained backward compatibility for existing references without portfolioOrder
+
+## 2025-01-16 18:00 [main] - Added background hover effects to References carousel contact fields
+- Enhanced ReferencesCarouselComponent.tsx with background hover effects
+  - Added white background (bg-white/20) on hover for email and phone text
+  - Matches the copy-to-clipboard icon's hover background effect
+  - Added padding (px-1 py-1) and rounded corners for better visual definition
+  - Changed transition from transition-colors to transition-all for smooth background animation
+  - Created consistent visual feedback across all interactive contact elements
+
+## 2025-01-16 17:55 [main] - Enhanced hover effects for References carousel contact fields
+- Updated ReferencesCarouselComponent.tsx with improved hover interactions
+  - Added hover highlighting to email and phone text fields
+  - Text now transitions from text-white/90 to text-white on hover
+  - Matches the visual feedback of the copy-to-clipboard icons
+  - Added smooth transition-colors duration-200 for consistent animation
+  - Enhanced user experience with clear visual feedback for interactive elements
+
+## 2025-01-16 17:50 [main] - Fixed email truncation in References carousel
+- Updated ReferencesCarouselComponent.tsx to resolve email display issues
+  - Increased max-width from max-w-32 to max-w-40 for email and phone text fields
+  - Resolved truncation of longer email addresses like "tauchecorne@opus2.com"
+  - Maintained truncate functionality for extremely long contact information
+  - Ensured consistent width across both email and phone fields
+
+## 2025-01-16 17:45 [main] - Repositioned copy icons in References carousel
+- Updated ReferencesCarouselComponent.tsx copy icon positioning
+  - Moved copy-to-clipboard icons to the left side of email and phone text
+  - Maintained right-aligned layout for contact information
+  - Preserved hover functionality and visual feedback for copy actions
+  - Improved visual flow with icons appearing before text content
+
+## 2025-01-16 17:40 [main] - Refined References carousel display and navigation updates
+- Updated ReferencesCarouselComponent.tsx for cleaner contact display
+  - Removed "Email:", "Phone:", and "Address:" labels from reference cards
+  - Right-aligned all contact information fields (email, phone, address)
+  - Simplified Flicking component props to resolve TypeScript errors
+  - Maintained copy-to-clipboard functionality for email and phone
+  - Improved visual hierarchy with cleaner, more minimal design
+
+## 2025-01-16 17:35 [main] - Updated header navigation with complete section list
+- Enhanced Navigation.astro with comprehensive section coverage
+  - Added "Clients" navigation linking to /site/#customers-and-clients
+  - Added "Education" navigation linking to /site/#education  
+  - Added "References" navigation linking to /site/#references
+  - Updated menu structure to include all 8 sections: Home, Projects, Coding, Experience, Clients, Education, References, About Me
+- Updated Header.astro to include all navigation items
+  - Modified navItems array to include all requested sections
+  - Ensures both desktop and mobile navigation show complete menu
+  - Maintains existing functionality for active route detection
+
 ## 2025-01-16 17:30 [main] - Enhanced Work Experience, Education, and References sections
 - Updated WorkExperienceItem.astro to display "Present" for ongoing roles
   - Modified date formatting logic to show "MMM YYYY - Present" when dateStart exists but no dateEnd

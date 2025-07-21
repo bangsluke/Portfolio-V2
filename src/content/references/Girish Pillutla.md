@@ -1,30 +1,36 @@
 ---
 tags:
+  - tag
   - person
   - colleague
-  - reference
+  - work
   - portfolio
-  - tag
-modified: 2025-07-07T19:31:31+01:00
-viewCount: 17
-aliases: 
-birthday: ""
-died: ""
-partneredWith: 
-marriageDate: ""
-relatedTo: 
-friendOf: 
+  - reference
+modified: 2025-07-21T11:14:32+01:00
+viewCount: 4
+aliases:
+  - Girish
+birthday: 
+died: 
+partneredWith: Raji
+marriageDate: 
+relatedTo:
+  - Meirav
+friendOf:
+  - "[[Luke Bangs]]"
 education: 
 linkedCompany:
-  - "[[Opus 2 International]]"
-referenceRole: Head of Client Services
-referenceEmail: tauchecorne@opus2.com
-referenceNumber: 07912 945265
-referenceAddress: London, EC4A 3BF
-portfolioOrder: 4
+  - "[[RLE International]]"
+  - "[[RLE UK]]"
+  - Waymo
+referenceRole: Lead Engineer
+referenceEmail: Girish.Pillutla@gmail.com
+referenceNumber: "+16693429918"
+referenceAddress: RLE UK, Essex
+portfolioOrder: 3
 ---
 
-# Taryn Auchecorne
+# Girish Pillutla
 
 > [!back] Link back to <span class="theme-link">People Notes</span>
 

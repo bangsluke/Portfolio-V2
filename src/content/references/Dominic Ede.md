@@ -1,30 +1,34 @@
 ---
 tags:
+  - tag
   - person
   - colleague
-  - reference
+  - work
   - portfolio
-  - tag
-modified: 2025-07-07T19:31:31+01:00
-viewCount: 17
-aliases: 
-birthday: ""
-died: ""
+  - reference
+modified: 2025-07-09T22:02:48+01:00
+viewCount: 4
+aliases:
+  - Dom Ede
+  - Dom
+birthday: 
+died: 
 partneredWith: 
-marriageDate: ""
+marriageDate: 
 relatedTo: 
 friendOf: 
 education: 
 linkedCompany:
-  - "[[Opus 2 International]]"
-referenceRole: Head of Client Services
-referenceEmail: tauchecorne@opus2.com
-referenceNumber: 07912 945265
-referenceAddress: London, EC4A 3BF
-portfolioOrder: 4
+  - "[[RLE International]]"
+  - "[[RLE UK]]"
+referenceRole: Senior Project Consultant
+referenceEmail: dominic.ede@icloud.com
+referenceNumber: +44 7989 423267
+referenceAddress: RLE UK, Essex
+portfolioOrder: 1
 ---
 
-# Taryn Auchecorne
+# Dominic Ede
 
 > [!back] Link back to <span class="theme-link">People Notes</span>
 

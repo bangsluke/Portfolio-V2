@@ -1,6 +1,4 @@
-import { Arrow, AutoPlay, Pagination } from '@egjs/flicking-plugins';
-import '@egjs/flicking-plugins/dist/arrow.css';
-import '@egjs/flicking-plugins/dist/pagination.css';
+import { AutoPlay } from '@egjs/flicking-plugins';
 import '@egjs/flicking/dist/flicking.css';
 import Flicking from '@egjs/preact-flicking';
 import { useRef, useState } from 'preact/hooks';
@@ -39,7 +37,6 @@ const ReferencesCarouselComponent = ({
 	const plugins = [
 		new AutoPlay({ duration: 5000, direction: 'NEXT', stopOnHover: true }),
 		new Pagination({ type: 'bullet' }),
-		new Arrow({ moveCount: 1 }),
 	];
 
 	return (
@@ -50,16 +47,11 @@ const ReferencesCarouselComponent = ({
 				className="flicking-viewport"
 				circular={true}
 				adaptive={true}
-				renderOnlyVisible={true}
 				align="center"
 				bound={false}
 				preventClickOnDrag={true}
 				preventDefaultOnDrag={true}
-				noPanelStyleOverride={false}
-				useFindDOMNode={false}
-				renderExternal={false}
-				firstPanelSize="280px"
-				panelEffect={(x: number) => 1 - Math.pow(1 - x, 3)}>
+				firstPanelSize="280px">
 				{references.map(reference => (
 					<div key={reference.id} className="flicking-panel px-2">
 						<div className="relative w-64 h-64 rounded-2xl overflow-hidden group cursor-pointer transition-transform duration-300 hover:scale-105">
@@ -96,12 +88,8 @@ const ReferencesCarouselComponent = ({
 								{/* Contact Information */}
 								<div className="space-y-2">
 									{reference.email && (
-										<div className="flex items-center justify-between group/contact">
-											<span className="text-xs text-white/70">Email:</span>
+										<div className="flex items-center justify-end group/contact">
 											<div className="flex items-center gap-2">
-												<span className="text-xs text-white/90 truncate max-w-32">
-													{reference.email}
-												</span>
 												<button
 													onClick={e => {
 														e.stopPropagation();
@@ -133,17 +121,16 @@ const ReferencesCarouselComponent = ({
 														</svg>
 													)}
 												</button>
+												<span className="text-xs text-white/90 truncate max-w-40 group-hover/contact:text-white group-hover/contact:bg-white/20 transition-all duration-200 px-1 py-1 rounded">
+													{reference.email}
+												</span>
 											</div>
 										</div>
 									)}
 
 									{reference.phone && (
-										<div className="flex items-center justify-between group/contact">
-											<span className="text-xs text-white/70">Phone:</span>
+										<div className="flex items-center justify-end group/contact">
 											<div className="flex items-center gap-2">
-												<span className="text-xs text-white/90 truncate max-w-32">
-													{reference.phone}
-												</span>
 												<button
 													onClick={e => {
 														e.stopPropagation();
@@ -175,14 +162,18 @@ const ReferencesCarouselComponent = ({
 														</svg>
 													)}
 												</button>
+												<span className="text-xs text-white/90 truncate max-w-40 group-hover/contact:text-white group-hover/contact:bg-white/20 transition-all duration-200 px-1 py-1 rounded">
+													{reference.phone}
+												</span>
 											</div>
 										</div>
 									)}
 
 									{reference.address && (
-										<div className="text-xs text-white/70 mt-2">
-											<span className="block font-medium mb-1">Address:</span>
-											<span className="text-white/90">{reference.address}</span>
+										<div className="text-right">
+											<span className="text-xs text-white/90">
+												{reference.address}
+											</span>
 										</div>
 									)}
 								</div>
@@ -191,9 +182,6 @@ const ReferencesCarouselComponent = ({
 					</div>
 				))}
 			</Flicking>
-
-			{/* Pagination container - Flicking will populate this */}
-			<div className="flicking-pagination mt-6" />
 
 			{/* Custom Arrow Buttons */}
 			<button

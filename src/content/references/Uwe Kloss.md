@@ -7,7 +7,7 @@ tags:
   - reference
   - portfolio
 modified: 2025-07-16T09:47:51+01:00
-viewCount: 6
+viewCount: 8
 aliases:
   - Uwe
 birthday: 
@@ -25,6 +25,7 @@ referenceRole: Head of Digital Engineering
 referenceEmail: uwe.kloss@rle.de
 referenceNumber: +49 (172) 3180-304
 referenceAddress: RLE International, Germany
+portfolioOrder: 2
 ---
 
 # Uwe Kloss

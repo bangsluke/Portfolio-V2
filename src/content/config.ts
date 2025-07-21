@@ -142,6 +142,7 @@ const referencesCollection = defineCollection({
 		referenceEmail: z.string().optional(),
 		referenceNumber: z.string().optional(),
 		referenceAddress: z.string().optional(),
+		portfolioOrder: z.union([z.number(), z.null()]).optional(),
 	}),
 });
 
