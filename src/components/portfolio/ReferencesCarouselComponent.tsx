@@ -36,7 +36,6 @@ const ReferencesCarouselComponent = ({
 
 	const plugins = [
 		new AutoPlay({ duration: 5000, direction: 'NEXT', stopOnHover: true }),
-		new Pagination({ type: 'bullet' }),
 	];
 
 	return (

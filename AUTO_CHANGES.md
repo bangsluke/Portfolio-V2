@@ -18,6 +18,14 @@
 
 ## Auto Log
 
+## 2025-01-16 18:15 [main] - Cleaned up CustomerAndClientCarousel styling and schema
+- Removed unused info button styles from CustomerAndClientCarousel.astro
+  - Eliminated .info-button CSS styles that were no longer needed
+  - Removed references to non-existent clientDescription and keyAchievement properties
+  - Fixed TypeScript errors by aligning with actual clients collection schema
+  - Maintained clean card display without info button functionality
+  - Improved code maintainability by removing dead code
+
 ## 2025-01-16 18:10 [main] - Simplified References carousel arrow styling
 - Updated ReferencesCarouselComponent.tsx to remove duplicate arrow styling
   - Removed Flicking Arrow plugin to eliminate orange styled arrows
