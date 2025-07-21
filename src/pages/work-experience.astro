@@ -130,12 +130,7 @@ const ogimage = {
 											aria-describedby={`experience-title-${index}`}>
 											<WorkExperienceItem
 												{...role.data}
-												name={
-													role.data.name ||
-													role.slug
-														.replace(/-/g, ' ')
-														.replace(/\b\w/g, l => l.toUpperCase())
-												}
+												name={role.data.name || role.id.replace('.md', '')}
 												processedLinkedCompany={role.processedLinkedCompany}
 												companyLogoURL={role.companyLogoURL}
 												allCompanyLogos={role.allCompanyLogos}

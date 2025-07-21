@@ -85,19 +85,18 @@ if (formattedDateStart && formattedDateEnd) {
 			{/* Company logos card */}
 			{
 				allCompanyLogos && allCompanyLogos.length > 0 && (
-					<div class="mt-3 flex flex-wrap gap-2">
+					<div class="mt-3 flex flex-wrap gap-3">
 						{allCompanyLogos.map(company => {
 							console.log(
 								`Rendering company logo for: ${company.name}, logoURL: ${company.logoURL}`
 							);
 							return company.logoURL ? (
-								<div class="w-8 h-8 rounded-lg overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20">
-									<img
-										src={company.logoURL}
-										alt={`${company.name} logo`}
-										class="w-full h-full object-contain p-1"
-									/>
-								</div>
+								<img
+									src={company.logoURL}
+									alt={`${company.name} logo`}
+									title={company.name}
+									class="w-24 h-24 object-contain hover:scale-110 transition-transform duration-200"
+								/>
 							) : null;
 						})}
 					</div>

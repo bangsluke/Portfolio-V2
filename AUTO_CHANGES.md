@@ -1482,3 +1482,6 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - Fixed company name extraction to remove Obsidian link brackets [[Company Name]] and extract just the company name
 - Optimized company logo lookup by pre-fetching companies collection instead of individual getCollection calls
 - Added debugging console.log statements to troubleshoot logo display issues in WorkExperienceTimeline and WorkExperienceItem
+- Made company logos larger (12x12) without container styling and added tooltips showing company names
+- Fixed role name casing to preserve original format (e.g., "TVM Engineer" instead of "Tvm Engineer")
+- Increased company logo size to 24x24 pixels (100% larger) for better visibility
