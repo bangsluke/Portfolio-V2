@@ -1453,3 +1453,49 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - `linkedCompany` can now be: `string`, `string[]`, or `null`
 - Array values are converted to comma-separated strings for display
 - Clients can use either `imageURL` or `logoURL`
+
+## 2025-01-16 18:35 [main] - Added Download CV button and placeholder PDF
+- Created public/CV-placeholder.pdf as a downloadable placeholder CV
+- Added Download CV button to ReferencesCarousel.astro
+  - On desktop: button appears alongside the References section header
+  - On mobile: button appears below the References carousel
+- Button uses Tailwind styling and includes a download icon
+- Verified download functionality with placeholder file
+
+## 2025-01-16 18:40 [main] - Moved Download CV button to contact section
+- Removed Download CV button from References section header and below carousel
+- Added Download CV button to the right of the Email Me button in the bottom contact section (Contact.astro)
+- Used existing 'download' icon for the button
+- Button links to /CV-placeholder.pdf and uses Button.astro for consistent styling
+- Changed button variant from 'big' to 'dark' to match About Me button styling in HeroSection
+- Updated icon from 'download' to 'briefcase' for better visual consistency
+- Changed Contact Me button back to 'big' variant with custom height classes to match Download CV button size while keeping gradient background
+- Removed container-level hover effects and added individual hover effects to each button for independent scaling
+
+## 2025-01-16 18:45 [main] - Updated work experience timeline company display
+- Modified WorkExperienceTimeline.astro to display only the first company name from linkedCompany array
+- Added company logo processing logic to fetch logos for all companies in linkedCompany array
+- Updated WorkExperienceItem.astro to show a small card with company logos below the date string
+- Added allCompanyLogos prop to WorkExperienceItem interface for passing processed logo data
+- Updated work-experience.astro page to use the same company processing logic
+- Company logos are displayed as small 8x8 rounded cards with backdrop blur and border styling
+- Fixed company name extraction to remove Obsidian link brackets [[Company Name]] and extract just the company name
+- Optimized company logo lookup by pre-fetching companies collection instead of individual getCollection calls
+- Added debugging console.log statements to troubleshoot logo display issues in WorkExperienceTimeline and WorkExperienceItem
+- Made company logos larger (12x12) without container styling and added tooltips showing company names
+- Fixed role name casing to preserve original format (e.g., "TVM Engineer" instead of "Tvm Engineer")
+- Increased company logo size to 24x24 pixels (100% larger) for better visibility
+- Debugged sync.js script for Sydney link processing issue in Loughborough University education note
+- Added and then removed debugging code to investigate Obsidian link processing
+- Confirmed sync process is working correctly - Sydney links are converted to theme-link spans since Sydney is not a project name
+- Cleaned up debugging code to maintain script quality
+- Fixed sync.js processing order to handle Obsidian links in extracted sections correctly
+- Added Back to Home button to MarkdownAbout layout with home icon and theme-consistent styling
+- Added syncPortfolioAboutMe function to sync.js to specifically target "Portfolio About Me.md" from Obsidian vault and copy it to src/pages/about-me.md with Obsidian link processing
+- Enhanced syncPortfolioAboutMe function with recursive file search to find "Portfolio About Me.md" in any subfolder within the Obsidian vault
+- Successfully tested recursive search functionality - found and synced file from "01 Notes/02 Areas/Work Notes/Portfolio About Me.md"
+- Added removeAboutMeFromFrontmatter function to clean "about-me-" strings from frontmatter during sync process
+- Fixed people.svg icon to use currentColor instead of hardcoded fill colors, allowing text-white class to properly color the icon white
+- Replaced Icon component with direct SVG in ReferencesCarousel.astro to ensure text-white class properly colors the people icon white
+- Fixed SVG sizing in ReferencesCarousel.astro by removing explicit w-16 h-16 classes to match other icons using text-4xl
+- Replaced complex people SVG with simple 15x15 viewBox person icon to match standard icon sizing in section headings

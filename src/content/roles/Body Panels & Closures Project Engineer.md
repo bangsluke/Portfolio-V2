@@ -4,16 +4,18 @@ tags:
   - role
   - portfolio
 created: 2025-07-16T09:36:00
-modified: 2025-07-16T09:41:27+01:00
-viewCount: 2
+modified: 2025-07-21T18:28:31+01:00
+viewCount: 3
 dateStart: 2015-07-01
 dateEnd: 2016-02-01
 linkedCompany:
   - "[[RLE International]]"
+  - "[[McLaren Automotive]]"
 roleDescription: "After re-locating to the customer’s location, I assumed a larger number of responsibilities including the delivery of an engineered automotive solution for a new super series car dihedral door system. I worked directly with several suppliers, managing budgets and delivery plans from development phase into prototype build."
 keyAchievement: "TBC"
 ---
-# Graduate Engineer
+
+# Body Panels & Closures Project Engineer
 
 > [!back] Link back to <span class="theme-link">Role Notes</span>
 

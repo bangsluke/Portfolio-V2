@@ -38,6 +38,7 @@ shortDescription: "The automation file to convert the <span class=\"theme-link\"
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
+
 # Cost Model Translation File
 
 > [!back] Link back to <span class="theme-link">Projects</span>

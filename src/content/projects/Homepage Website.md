@@ -40,6 +40,7 @@ shortDescription: "An early site built as a homepage for storing links to all my
 longDescription: "A single point of focus for where the links to all my projects were stored, as well as a weather widget for my area."
 lessonsLearned: "Main lesson was understanding and adjusting an existing codebase and learning how to correctly modify an online widget to receive my location and correct styling."
 ---
+
 # Homepage Website
 
 > [!back] Link back to <span class="theme-link">Projects</span>

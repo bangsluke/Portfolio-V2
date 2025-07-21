@@ -10,8 +10,10 @@ dateStart: 2014-03-03
 dateEnd: 2014-07-25
 linkedCompany:
   - "[[Opus 2 International]]"
+roleDescription: "For the final few months at <span class=\"theme-link\">Opus 2</span> I was involved in programme bug testing the software and reviewing the sites applications for users."
 keyAchievement: "Finding several front end bugs and developing a reporting structure for developers to understand easily"
 ---
+
 # Bug Tester
 
 > [!back] Link back to <span class="theme-link">Opus 2</span> I was involved in programme bug testing the software and reviewing the sites applications for users.

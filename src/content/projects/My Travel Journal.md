@@ -40,6 +40,7 @@ shortDescription: "A website built to display the notes I had taken across vario
 longDescription: "A site dedicated to my travel explorations, providing details on what my wife and I did whilst abroad for several holidays with a picture from each trip."
 lessonsLearned: "This site taught me a few extra skills such as working with <span class=\"theme-link\">Markdown</span> data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the <a href=\"/portfolio/projects/Travel Website\" class=\"theme-link\">Travel Website</a> which dynamically loads in data via a <span class=\"theme-link\">Neo4j</span> graph."
 ---
+
 # My Travel Journal
 
 > [!back] Link back to <span class="theme-link">Projects</span>

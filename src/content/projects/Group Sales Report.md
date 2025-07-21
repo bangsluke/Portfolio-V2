@@ -40,6 +40,7 @@ shortDescription: "The report section for the <a href=\"/portfolio/projects/Fina
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
+
 # Group Sales Report
 
 > [!back] Link back to <span class="theme-link">Projects</span>

@@ -4,18 +4,22 @@ tags:
   - role
   - portfolio
 created: 2025-07-16T09:36:00
-modified: 2025-07-16T09:40:21+01:00
-viewCount: 2
+modified: 2025-07-21T18:30:34+01:00
+viewCount: 3
 dateStart: 2016-02-01
 dateEnd: 2018-06-01
 linkedCompany:
   - "[[RLE International]]"
+  - "[[Ford]]"
 roleDescription: "Development of lightweight rear closure door hinges to replace a high-volume multinational OEM’s overly complex design for a weight and cost saving. Steel cast hinges incorporated with a new check arm design that became common across all commercial vehicle variants. Cross-continental implementation in three production plants achieved through managing multiple supply chain costs and timing. Continued interaction with suppliers to find cost down opportunities, functionally test the designed system and improve assembly processes for enhanced part quality."
 keyAchievement: "TBC"
 ---
-# Project Engineer
+
+# TVM Engineer
 
 > [!back] Link back to <span class="theme-link">Role Notes</span>
+
+> Total Value Management
 
 ## Table of Contents
 ```table-of-contents

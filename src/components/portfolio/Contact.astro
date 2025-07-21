@@ -24,13 +24,22 @@ if (!staticData) {
 						level={2}
 					/>
 				</div>
-				<div
-					class="transition-all duration-500 group-hover:animate-jump group-hover:animate-duration-[300ms] group-hover:animate-ease-in-out group-hover:scale-105 hover:scale-125">
+				<div class="flex gap-4">
 					<Button
 						variant="big"
 						link={`mailto:${staticData.data.email}`}
 						text={staticData.data.contactSectionButtonText}
 						iconName={staticData.data.contactSectionButtonIcon}
+						class="!py-4 !text-lg max-xl:!text-base max-sm:!text-sm transition-all duration-500 hover:scale-110"
+					/>
+					<Button
+						variant="dark"
+						link="/Luke-Bangs-CV-Nov22.pdf"
+						text="Download CV"
+						iconName="document"
+						isExternal={false}
+						ariaLabel="Download CV"
+						class="transition-all duration-500 hover:scale-110"
 					/>
 				</div>
 			</div>

@@ -43,6 +43,7 @@ shortDescription: "Full financial reporting on the progress of projects."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
+
 # Financial Tracker
 
 > [!back] Link back to <span class="theme-link">Projects</span>

@@ -14,6 +14,7 @@ linkedCompany:
 roleDescription: "Lead engineer for the Body Closures function group for a low production build taking designs from concept to production. I also owned systems within Body Exteriors and Interiors and designed an <span class=\"theme-link\">Excel</span> <span class=\"theme-link\">BoM</span> management tool on <span class=\"theme-link\">SharePoint</span> to track team costs, weights and timings for all systems. Design proposals presented and justified to management to confirm system functionality for financial sign off. Robust resolution plans developed where required to meet extended targets."
 keyAchievement: "TBC"
 ---
+
 # Body Closures & Exteriors Engineer
 
 > [!back] Link back to <span class="theme-link">Role Notes</span>

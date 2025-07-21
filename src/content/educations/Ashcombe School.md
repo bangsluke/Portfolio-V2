@@ -14,6 +14,7 @@ imageURL: https://www.ashcombe.surrey.sch.uk/Admissions/23_07_13_Ashcombe_Facade
 qualifications: "9½ GCSE's all at grade B or higher"
 additionalDetails: "9½ GCSE's:  3 A*s (Incl. Mathematics), 5 A's (Incl. English Literature), 1½ B's (Incl. English Language)"
 ---
+
 # Ashcombe School
 
 > [!back] Link back to <span class="theme-link">Education Notes</span>
