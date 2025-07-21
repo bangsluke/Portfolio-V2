@@ -33,7 +33,9 @@ const hasMoreItems = sortedRoles.length > 3;
 			<Heading text="Work" textGradient="Experience" level={2} />
 		</div>
 
-		<div class="relative max-md:mt-0 mt-8 group" aria-label="Professional experience">
+		<div
+			class="relative max-md:mt-0 mt-8 group"
+			aria-label="Professional experience">
 			<ol class="relative mt-10">
 				{
 					displayedRoles.map((role, index) => (
@@ -46,10 +48,7 @@ const hasMoreItems = sortedRoles.length > 3;
 									aria-describedby={`experience-title-${index}`}>
 									<WorkExperienceItem
 										{...role.data}
-										name={
-											role.data.name ||
-											role.id.replace('.md', '')
-										}
+										name={role.data.name || role.id.replace('.md', '')}
 									/>
 								</div>
 							</article>
@@ -57,27 +56,30 @@ const hasMoreItems = sortedRoles.length > 3;
 					))
 				}
 			</ol>
-			
-			{hasMoreItems && (
-				<>
-					<!-- Fade effect -->
-					<div class="pointer-events-none w-full h-32 -mt-32 relative z-10 transition-opacity duration-300 group-hover:opacity-0">
-						<div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-[#121516] dark:via-[#121516]/80"></div>
-					</div>
-					<!-- See more button below fade -->
-					<div class="flex justify-center mt-2 z-20 relative">
-						<a 
-							href="/work-experience" 
-							class="inline-flex items-center px-6 py-3 bg-theme-400 hover:bg-theme-500 text-black font-semibold rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-						>
+
+			{
+				hasMoreItems && (
+					<div class="flex justify-center mt-4">
+						<a
+							href="/work-experience"
+							class="inline-flex items-center px-6 py-3 bg-theme-400 hover:bg-theme-500 text-black font-semibold rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
 							See more items
-							<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+							<svg
+								class="w-5 h-5 ml-2"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M17 8l4 4m0 0l-4 4m4-4H3"
+								/>
 							</svg>
 						</a>
 					</div>
-				</>
-			)}
+				)
+			}
 		</div>
 	</div>
 </section>

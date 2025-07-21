@@ -46,10 +46,18 @@ function formatDate(date: string | Date | null | undefined): string {
 
 const formattedDateStart = formatDate(dateStart);
 const formattedDateEnd = formatDate(dateEnd);
-const dateRange =
-	formattedDateStart && formattedDateEnd
-		? `${formattedDateStart} - ${formattedDateEnd}`
-		: formattedDateStart || formattedDateEnd || '';
+
+// Handle date range formatting
+let dateRange = '';
+if (formattedDateStart && formattedDateEnd) {
+	dateRange = `${formattedDateStart} - ${formattedDateEnd}`;
+} else if (formattedDateStart && !dateEnd) {
+	dateRange = `${formattedDateStart} - Present`;
+} else if (formattedDateStart) {
+	dateRange = formattedDateStart;
+} else if (formattedDateEnd) {
+	dateRange = formattedDateEnd;
+}
 ---
 
 <div
