@@ -94,10 +94,6 @@ export const languages: Record<string, Language> = {
 		name: 'Gatsby',
 		iconName: 'gatsby',
 	},
-	windsurf: {
-		name: 'Windsurf',
-		iconName: 'windsurf-logo',
-	},
 	cursor: {
 		name: 'Cursor',
 		iconName: 'cursor-ia',

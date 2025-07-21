@@ -7,7 +7,7 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-07-21T11:34:57+01:00
+modified: 2025-07-21T19:37:05+01:00
 viewCount: 54
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
@@ -118,21 +118,7 @@ An updated personal portfolio website for displaying my skills and past projects
 
 #### About Me Short
 
-Testing hello
-
-TBC - Write more
-
-Don't replace
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-#### About Me Long
-
-Long long
-
-TBC - Write more
-
-Don't replace
+An enthusiastic individual with a strong automotive background seeking a stimulating role in which to utilise organisational skills, apply logical intuition and help build long term success within an exciting environment
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

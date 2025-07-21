@@ -1495,3 +1495,7 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - Enhanced syncPortfolioAboutMe function with recursive file search to find "Portfolio About Me.md" in any subfolder within the Obsidian vault
 - Successfully tested recursive search functionality - found and synced file from "01 Notes/02 Areas/Work Notes/Portfolio About Me.md"
 - Added removeAboutMeFromFrontmatter function to clean "about-me-" strings from frontmatter during sync process
+- Fixed people.svg icon to use currentColor instead of hardcoded fill colors, allowing text-white class to properly color the icon white
+- Replaced Icon component with direct SVG in ReferencesCarousel.astro to ensure text-white class properly colors the people icon white
+- Fixed SVG sizing in ReferencesCarousel.astro by removing explicit w-16 h-16 classes to match other icons using text-4xl
+- Replaced complex people SVG with simple 15x15 viewBox person icon to match standard icon sizing in section headings
