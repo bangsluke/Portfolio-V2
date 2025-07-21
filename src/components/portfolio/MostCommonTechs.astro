@@ -2,10 +2,26 @@
 import { getCollection } from 'astro:content';
 import SkillPill from '../ui/SkillPill.astro';
 
-// Get all projects
+// Get all projects and skills
 const projects = await getCollection('projects');
+const skills = await getCollection('skills');
 
-// Count technology usage across all projects
+// Create a set of skill names that have "hosting" or "security" tags
+const excludedSkillNames = new Set<string>();
+
+skills.forEach(skill => {
+	if (
+		skill.data.tags &&
+		(skill.data.tags.includes('hosting') ||
+			skill.data.tags.includes('security'))
+	) {
+		// Add the skill name to the excluded set
+		const skillName = skill.data.name || skill.slug;
+		excludedSkillNames.add(skillName.toLowerCase()); // Store in lowercase for case-insensitive comparison
+	}
+});
+
+// Count technology usage across all projects, excluding hosting/security skills
 const techCount: Record<string, number> = {};
 
 projects.forEach(project => {
@@ -13,6 +29,11 @@ projects.forEach(project => {
 		project.data.technologies.forEach((tech: string) => {
 			// Clean the technology name by removing Obsidian brackets
 			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
+
+			// Skip if this technology corresponds to a hosting or security skill (case-insensitive)
+			if (excludedSkillNames.has(cleanTech.toLowerCase())) {
+				return;
+			}
 
 			// Increment count for this technology
 			techCount[cleanTech] = (techCount[cleanTech] || 0) + 1;
