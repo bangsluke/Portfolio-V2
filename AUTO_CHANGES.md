@@ -1489,3 +1489,9 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - Added and then removed debugging code to investigate Obsidian link processing
 - Confirmed sync process is working correctly - Sydney links are converted to theme-link spans since Sydney is not a project name
 - Cleaned up debugging code to maintain script quality
+- Fixed sync.js processing order to handle Obsidian links in extracted sections correctly
+- Added Back to Home button to MarkdownAbout layout with home icon and theme-consistent styling
+- Added syncPortfolioAboutMe function to sync.js to specifically target "Portfolio About Me.md" from Obsidian vault and copy it to src/pages/about-me.md with Obsidian link processing
+- Enhanced syncPortfolioAboutMe function with recursive file search to find "Portfolio About Me.md" in any subfolder within the Obsidian vault
+- Successfully tested recursive search functionality - found and synced file from "01 Notes/02 Areas/Work Notes/Portfolio About Me.md"
+- Added removeAboutMeFromFrontmatter function to clean "about-me-" strings from frontmatter during sync process

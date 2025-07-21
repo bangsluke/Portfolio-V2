@@ -1,12 +1,6 @@
 ---
-import { processContent } from '../utils/content-processor';
-import { getCollection } from 'astro:content';
 import Layout from './Layout.astro';
-import { processObsidianLink } from '../utils/content-processor';
-import MostCommonTechs from '../components/portfolio/MostCommonTechs.astro';
-import { Icon } from 'astro-icon/components';
 import Heading from '../components/ui/Heading.astro';
-import WorkExperienceTimeline from '../components/portfolio/WorkExperienceTimeline.astro';
 import NavArticle from '../components/layout/NavArticle.astro';
 import Contact from '../components/portfolio/Contact.astro';
 const { frontmatter } = Astro.props;
@@ -21,7 +15,7 @@ const { frontmatter } = Astro.props;
 </script>
 
 <Layout
-	pageTitle={frontmatter.title}
+	pageTitle={frontmatter.aboutMeTitle}
 	description={frontmatter.description}
 	ogimage={frontmatter.image}>
 	<section
@@ -81,24 +75,28 @@ const { frontmatter } = Astro.props;
 		</article>
 		<NavArticle title={frontmatter.title} />
 	</section>
-	<section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="experience">
-		<div class="flex flex-col gap-8 pt-8 max-w-4xl mx-auto">
-			<div class="flex gap-4 items-center justify-center">
-				<Icon class="text-3xl text-white" name="briefcase" />
-				<Heading text="Experience" textGradient="Work" level={2} />
-			</div>
 
-			<WorkExperienceTimeline />
-		</div>
-	</section>
-	<section class="py-8 px-8 max-md:py-4 mt-10 mb-20 scroll-m-16" id="sttack">
-		<div class="flex flex-col gap-8 max-w-3xl justify-center mx-auto">
-			<div class="flex gap-4 items-center justify-center">
-				<Icon class="text-3xl text-white" name="dashboard" />
-				<Heading text="Stack" textGradient="Technological" level={2} />
-			</div>
-			<MostCommonTechs />
-		</div>
-	</section>
+	<!-- Back to Home Button -->
+	<div class="w-full flex justify-center mb-8">
+		<a
+			href="/"
+			class="inline-flex items-center gap-2 px-6 py-3 bg-theme-500 hover:bg-theme-600 dark:bg-theme-400 dark:hover:bg-theme-300 text-white dark:text-theme-900 font-semibold rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
+			<svg
+				class="w-5 h-5"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg">
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+				</path>
+			</svg>
+			Back to Home
+		</a>
+	</div>
+
 	<Contact />
 </Layout>

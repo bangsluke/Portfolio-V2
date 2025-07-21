@@ -1081,6 +1081,117 @@ async function sendEmailNotification() {
 	}
 }
 
+// Sync Portfolio About Me file specifically
+function syncPortfolioAboutMe() {
+	try {
+		// Search for the file recursively in the Obsidian vault
+		const aboutMePath = findFileRecursively(
+			OBSIDIAN_VAULT_PATH,
+			'Portfolio About Me.md'
+		);
+		const targetAboutMePath = path.join(__dirname, '../src/pages/about-me.md');
+
+		if (!aboutMePath) {
+			console.warn(
+				SPACING_LEVEL_2 +
+					`⚠️  Portfolio About Me file not found in Obsidian vault: ${OBSIDIAN_VAULT_PATH}`
+			);
+			return;
+		}
+
+		// Read content from Obsidian
+		let content = fs.readFileSync(aboutMePath, 'utf8');
+
+		// Process Obsidian links in the content
+		content = processObsidianLinks(content);
+
+		// Remove "about-me-" from frontmatter
+		content = removeAboutMeFromFrontmatter(content);
+
+		// Write content to Astro
+		fs.writeFileSync(targetAboutMePath, content, 'utf8');
+		console.log(
+			SPACING_LEVEL_2 +
+				`✅ Synced Portfolio About Me file from: ${aboutMePath} to: ${targetAboutMePath}`
+		);
+	} catch (error) {
+		console.error(
+			SPACING_LEVEL_2 +
+				`❌ Error syncing Portfolio About Me file: ${error.message}`
+		);
+		syncErrors.errors.push({
+			file: 'Portfolio About Me sync',
+			error: `Failed to sync Portfolio About Me file: ${error.message}`,
+			timestamp: new Date().toISOString(),
+		});
+		syncErrors.summary.errors++;
+	}
+}
+
+// Helper function to find a file recursively
+function findFileRecursively(dirPath, fileName) {
+	try {
+		const items = fs.readdirSync(dirPath);
+
+		for (const item of items) {
+			const fullPath = path.join(dirPath, item);
+			const stat = fs.statSync(fullPath);
+
+			if (stat.isDirectory()) {
+				// Skip protected directories
+				if (
+					item.startsWith('03 Attachments') ||
+					item.startsWith('04 Templates')
+				) {
+					continue;
+				}
+
+				// Recursively search in subdirectories
+				const found = findFileRecursively(fullPath, fileName);
+				if (found) {
+					return found;
+				}
+			} else if (item === fileName) {
+				return fullPath;
+			}
+		}
+	} catch (error) {
+		if (DEBUG_MODE) {
+			console.log(
+				`⚠️  Error searching in directory ${dirPath}: ${error.message}`
+			);
+		}
+	}
+
+	return null;
+}
+
+// Remove "about-me-" from frontmatter
+function removeAboutMeFromFrontmatter(content) {
+	// Split content into frontmatter and body
+	const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n/;
+	const match = content.match(frontmatterRegex);
+
+	if (!match) {
+		return content; // No frontmatter found, return as is
+	}
+
+	const frontmatter = match[1];
+	const body = content.substring(match[0].length);
+
+	// Remove "about-me-" from frontmatter lines
+	const cleanedFrontmatter = frontmatter
+		.split('\n')
+		.map(line => {
+			// Remove "about-me-" from the entire line
+			return line.replace(/about-me-/g, '');
+		})
+		.join('\n');
+
+	// Reconstruct the content with cleaned frontmatter
+	return `---\n${cleanedFrontmatter}\n---\n${body}`;
+}
+
 // Main sync function
 async function main() {
 	try {
@@ -1152,6 +1263,10 @@ async function main() {
 		// Update icon-utils with current icons (always run)
 		console.log('🎨 Updating icon-utils with current icons...');
 		updateIconUtils();
+
+		// Sync Portfolio About Me file specifically
+		console.log('📄 Syncing Portfolio About Me file...');
+		syncPortfolioAboutMe();
 
 		// Post-process content (only for production mode)
 		if (SYNC_MODE === 'production') {
