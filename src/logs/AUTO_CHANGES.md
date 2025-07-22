@@ -18,6 +18,23 @@
 
 ## Auto Log
 
+## 2025-01-16 17:50 [main] - Enhanced Most Common Techs with multi-select filtering and improved mobile experience
+- Updated MostCommonTechs.astro with comprehensive multi-select filtering and improved functionality
+  - Replaced single-select dropdown with multi-select dropdown using predefined SKILLS_FILTER_OPTIONS
+  - Added filter options: framework, library, language, database, design (from repoConfig.js)
+  - Implemented smart filter logic: "All Categories" unchecks others, individual categories uncheck "All"
+  - Added dropdown toggle with arrow rotation and click-outside-to-close functionality
+  - Fixed project counting to show accurate number of linked projects for each technology
+  - Enhanced tooltips to display project names and count with better formatting
+  - Made skill pills clickable on mobile to show tooltips (group-active/tech class)
+  - Added JavaScript filtering functionality with proper TypeScript typing
+  - Improved tooltip content with project list and "and X more" indicator
+- Enhanced WorkExperienceItem.astro mobile layout
+  - Reduced gap between date and description on mobile (added mb-2 md:mb-0 to time element)
+  - Made text wider on mobile screens (max-sm:col-span-full max-sm:w-full)
+  - Improved text sizing on mobile (max-sm:text-sm for processed content)
+  - Better responsive design for mobile work experience timeline
+
 ## 2025-01-16 17:40 [main] - Enhanced work experience timeline with client logo support
 - Updated WorkExperienceTimeline.astro to support client logos in addition to company logos
   - Added clients collection import alongside companies collection

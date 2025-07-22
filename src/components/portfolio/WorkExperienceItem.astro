@@ -89,7 +89,7 @@ if (formattedDateStart && formattedDateEnd) {
 			</h4>
 			<time
 				datetime={dateStart?.toString()}
-				class="text-sm text-zinc-600/80 dark:text-white/80">
+				class="text-sm text-zinc-600/80 dark:text-white/80 mb-2 md:mb-0">
 				{dateRange}
 			</time>
 
@@ -113,8 +113,11 @@ if (formattedDateStart && formattedDateEnd) {
 		</div>
 	</div>
 	<div
-		class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3">
-		<div class="processed-content" set:html={processedRoleDescription} />
+		class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3 max-sm:col-span-full max-sm:w-full">
+		<div
+			class="processed-content max-sm:text-sm"
+			set:html={processedRoleDescription}
+		/>
 		{
 			processedKeyAchievement && (
 				<div class="mt-2">
