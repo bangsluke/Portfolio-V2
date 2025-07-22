@@ -18,6 +18,23 @@
 
 ## Auto Log
 
+## 2025-01-16 17:40 [main] - Enhanced work experience timeline with client logo support
+- Updated WorkExperienceTimeline.astro to support client logos in addition to company logos
+  - Added clients collection import alongside companies collection
+  - Modified logo lookup logic to first check companies, then fallback to clients
+  - Work experience timeline now displays logos from both companies and clients
+  - Maintains existing functionality while adding client logo support
+- Updated work-experience.astro page to support client logos in addition to company logos
+  - Added clients collection import alongside companies collection
+  - Applied same logo lookup logic as WorkExperienceTimeline component
+  - Both main timeline and voluntary roles section now support client logos
+  - Ensures consistent client logo support across all work experience views
+- Enhanced logo retrieval system for linkedCompany values in work experience
+  - linkedCompany can now reference either companies or clients
+  - System first checks companies collection, then falls back to clients collection
+  - Maintains backward compatibility with existing company-only references
+  - Improves flexibility for roles linked to clients
+
 ## 2025-01-16 17:35 [main] - Implemented voluntary roles filtering and separate section
 - Updated WorkExperienceTimeline.astro to filter out roles with "voluntary" tag
   - Added filtering logic to exclude roles containing "voluntary" in tags array

@@ -4,16 +4,16 @@ tags:
   - role
   - portfolio
 created: 2025-07-13T14:35:00
-modified: 2025-07-22T17:18:12+01:00
+modified: 2025-07-22T18:29:35+01:00
 viewCount: 2
 dateStart: 2023-01-01
 dateEnd: 2024-07-31
 linkedCompany:
   - "[[RLE International]]"
   - "[[CEER Automotive]]"
-shortRoleDescription: "TBC"
-fullRoleDescription: "Started the role by developing a <span class=\"theme-link\">VBA</span> script to loop through the created data list and generate hyperlinked and navigable <span class=\"theme-link\">PowerPoint</span> slides showing workflows, whilst simultaneously generating <span class=\"theme-link\">Visio</span> workflows and an exported PDF for mapping out a full Automotive workflow process for the development of a vehicle for an overseas customer.\nTBC"
-keyAchievement: "- TBC"
+shortRoleDescription: "Became <span class=\"theme-link\">DevOps</span> lead for a new internal branch within the company, known as <span class=\"theme-link\">GPMO</span>, managing and supporting the development of a wide range of internal tracking tools throughout a project's lifecycle."
+fullRoleDescription: "Started the role by developing a <span class=\"theme-link\">VBA</span> script to loop through the created data list and generate hyperlinked and navigable <span class=\"theme-link\">PowerPoint</span> slides showing workflows, whilst simultaneously generating <span class=\"theme-link\">Visio</span> workflows and an exported PDF for mapping out a full Automotive workflow process for the development of a vehicle for an overseas customer.\nFrom the work done and also through various other company influences, a new internal <span class=\"theme-link\">GPMO</span> (Global Program Management Office) team was formed of which I was involved. This led to the development of several tools, under the <span class=\"theme-link\">GPMO</span> domain, utilising technologies such as <span class=\"theme-link\">Power Apps</span>, <span class=\"theme-link\">Power BI</span> and <span class=\"theme-link\">Excel</span> to create a start-to-end process for a project lifecycle;\n- <a href=\"/portfolio/projects/Project Pipeline\" class=\"theme-link\">Project Pipeline</a>\n- <a href=\"/portfolio/projects/Pipeline App User Report\" class=\"theme-link\">Pipeline App User Report</a>\n- <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Financial Tracker</a>\n- <span class=\"theme-link\">Financial Tracker Lite</span>\n- <a href=\"/portfolio/projects/Cost Model\" class=\"theme-link\">Cost Model</a>\n- <a href=\"/portfolio/projects/Cost Model Translation File\" class=\"theme-link\">Cost Model Translation File</a>\n- <a href=\"/portfolio/projects/Project Finance Data Manager\" class=\"theme-link\">Project Finance Data Manager</a>\n- <a href=\"/portfolio/projects/Project Finance Tracking Report\" class=\"theme-link\">Project Finance Tracking Report</a>\n- <a href=\"/portfolio/projects/Group Sales Report\" class=\"theme-link\">Group Sales Report</a>\n- <a href=\"/portfolio/projects/GPMO Reports\" class=\"theme-link\">GPMO Reports</a>\n- <a href=\"/portfolio/projects/GPMO Documentation Site\" class=\"theme-link\">GPMO Documentation Site</a>\nThe role dropped me fully into a <span class=\"theme-link\">DevOps</span> role, where I created the development process and set up the <span class=\"theme-link\">Azure</span> <span class=\"theme-link\">DevOps</span> system we used for all of the tools. I became <span class=\"theme-link\">DevOps</span> lead, managing sprints whilst simultaneously supporting development of the tools."
+keyAchievement: "The development and implementation of several <span class=\"theme-link\">Microsoft</span> based tools that were used internally company wide for managing projects and reporting finances to a single global operations team."
 ---
 
 # Digital Engineering Specialist
@@ -26,7 +26,7 @@ keyAchievement: "- TBC"
 
 ## Short Role Description
 
-TBC
+Became <span class="theme-link">DevOps</span> lead for a new internal branch within the company, known as <span class="theme-link">GPMO</span>, managing and supporting the development of a wide range of internal tracking tools throughout a project's lifecycle.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -34,13 +34,27 @@ TBC
 
 Started the role by developing a <span class="theme-link">VBA</span> script to loop through the created data list and generate hyperlinked and navigable <span class="theme-link">PowerPoint</span> slides showing workflows, whilst simultaneously generating <span class="theme-link">Visio</span> workflows and an exported PDF for mapping out a full Automotive workflow process for the development of a vehicle for an overseas customer.
 
-TBC
+From the work done and also through various other company influences, a new internal <span class="theme-link">GPMO</span> (Global Program Management Office) team was formed of which I was involved. This led to the development of several tools, under the <span class="theme-link">GPMO</span> domain, utilising technologies such as <span class="theme-link">Power Apps</span>, <span class="theme-link">Power BI</span> and <span class="theme-link">Excel</span> to create a start-to-end process for a project lifecycle;
+
+- <a href="/portfolio/projects/Project Pipeline" class="theme-link">Project Pipeline</a>
+- <a href="/portfolio/projects/Pipeline App User Report" class="theme-link">Pipeline App User Report</a>
+- <a href="/portfolio/projects/Financial Tracker" class="theme-link">Financial Tracker</a>
+- <span class="theme-link">Financial Tracker Lite</span>
+- <a href="/portfolio/projects/Cost Model" class="theme-link">Cost Model</a>
+- <a href="/portfolio/projects/Cost Model Translation File" class="theme-link">Cost Model Translation File</a>
+- <a href="/portfolio/projects/Project Finance Data Manager" class="theme-link">Project Finance Data Manager</a>
+- <a href="/portfolio/projects/Project Finance Tracking Report" class="theme-link">Project Finance Tracking Report</a>
+- <a href="/portfolio/projects/Group Sales Report" class="theme-link">Group Sales Report</a>
+- <a href="/portfolio/projects/GPMO Reports" class="theme-link">GPMO Reports</a>
+- <a href="/portfolio/projects/GPMO Documentation Site" class="theme-link">GPMO Documentation Site</a>
+
+The role dropped me fully into a <span class="theme-link">DevOps</span> role, where I created the development process and set up the <span class="theme-link">Azure</span> <span class="theme-link">DevOps</span> system we used for all of the tools. I became <span class="theme-link">DevOps</span> lead, managing sprints whilst simultaneously supporting development of the tools.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Key Achievement
 
-- TBC
+The development and implementation of several <span class="theme-link">Microsoft</span> based tools that were used internally company wide for managing projects and reporting finances to a single global operations team. 
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

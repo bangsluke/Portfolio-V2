@@ -5,9 +5,10 @@ import { processObsidianLink } from '../../utils/content-processor';
 import Heading from '../ui/Heading.astro';
 import WorkExperienceItem from './WorkExperienceItem.astro';
 
-// Get all roles and companies from the local content folder
+// Get all roles, companies, and clients from the local content folder
 const roles = await getCollection('roles');
 const companies = await getCollection('companies');
+const clients = await getCollection('clients');
 
 // Process company data for each role
 const rolesWithCompanyData = await Promise.all(
@@ -20,25 +21,34 @@ const rolesWithCompanyData = await Promise.all(
 			// Process the first company for display
 			processedLinkedCompany = processObsidianLink(role.data.linkedCompany[0]);
 
-			// Get company logos for all companies
+			// Get company/client logos for all linked entities
 			allCompanyLogos = await Promise.all(
 				role.data.linkedCompany.map(async companyLink => {
 					let logoURL: string | null = null;
-					// Extract company name from Obsidian link format [[Company Name]]
-					const companyName = companyLink.replace(/\[\[(.*?)\]\]/, '$1');
+					// Extract company/client name from Obsidian link format [[Company Name]]
+					const entityName = companyLink.replace(/\[\[(.*?)\]\]/, '$1');
 
-					// Find company in the pre-fetched companies collection
+					// First try to find in companies collection
 					const company = companies.find(
-						company => company.id === companyName.replace('.md', '')
+						company => company.id === entityName.replace('.md', '')
 					);
 
 					if (company && company.data.logoURL) {
 						logoURL = company.data.logoURL;
+					} else {
+						// If not found in companies, try clients collection
+						const client = clients.find(
+							client => client.id === entityName.replace('.md', '')
+						);
+
+						if (client && client.data.logoURL) {
+							logoURL = client.data.logoURL;
+						}
 					}
 
 					return {
 						logoURL,
-						name: companyName,
+						name: entityName,
 					};
 				})
 			);
