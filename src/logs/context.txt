@@ -1,6 +1,6 @@
 - This project is not trying to sell the tool, it is for my own personal use so no need to try and encourage others to use it
 - When writing commands, always write to work with PowerShell
-- Whenever you make a change, add a very brief summary of what the change was to the "AUTO_CHANGES.md" as a log list with a time stamp. There is an example Log to explain the required layout and grouping of problems under a timestamp to the nearest minute
+- Whenever you make a change, add a very brief summary of what the change was to the "src/logs/AUTO_CHANGES.md" as a log list with a time stamp. There is an example Log to explain the required layout and grouping of problems under a timestamp to the nearest minute
 - If the change made is a significant change to how the site is set up, or how a developer would need to set up the site themselves, also update the README.md file. And always ensure there is a `> [Back to Table of Contents](#table-of-contents)` at the end of each section. Do not update the README for minor fixes
 - If you think writing a markdown file will help as a guide, don't do it in a separate file, fit it into the README in a relevant section
 - Whenever updating the README.md file, always add `> [Back to Table of Contents](#table-of-contents)` between sections
