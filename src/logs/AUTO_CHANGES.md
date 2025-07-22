@@ -1607,3 +1607,46 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - Build tested and confirmed working
 
 > [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 15:21 - Projects Gallery Improvements
+
+### Layout and Spacing
+- **Increased Projects header gap** in `src/components/portfolio/ProjectsGallery.astro`:
+  - Changed `pt-8` to `pt-16` for more spacing between header and gallery
+
+### Mobile Experience Enhancements
+- **Fixed mobile project selection behavior** in `src/components/portfolio/ProjectCard.astro`:
+  - **Persistent selection**: Cards now stay bright/selected until another card is clicked
+  - **Proper deselection**: Only one card can be selected at a time
+  - **Click outside to deselect**: Tapping outside deselects the current card
+
+- **Fixed mobile tooltip behavior**:
+  - **Persistent tooltips**: Information tooltips now stay visible until clicked off
+  - **Removed auto-hide**: Removed 3-second auto-hide timer
+  - **Click outside to close**: Tooltips close when clicking outside the tooltip area
+
+- **Fixed mobile "See more detail" section**:
+  - **Proper event handling**: Added `event.stopPropagation()` to prevent card deselection
+  - **Working links**: "See more detail..." links now work correctly without deselecting cards
+
+### Desktop Experience Enhancements
+- **Added desktop card selection functionality**:
+  - **Clickable cards**: Cards are now clickable on desktop with `cursor-pointer`
+  - **Visual feedback**: Selected cards show border, shadow, and scale effects
+  - **"Show more details" text**: Appears at bottom when card is selected
+  - **Smooth transitions**: Opacity transitions for detail link appearance
+
+### Technical Implementation
+- **Unified event handling**: Single click handler for both mobile and desktop
+- **Responsive design**: Different behaviors for mobile vs desktop
+- **Event propagation control**: Proper handling of link clicks vs card clicks
+- **CSS animations**: Smooth slide-in animations for detail links
+- **State management**: Proper tracking of selected card state
+
+### User Experience Improvements
+- **Consistent behavior**: Cards behave predictably across devices
+- **Visual feedback**: Clear indication of selected state
+- **Accessibility**: Proper event handling and keyboard support
+- **Performance**: Efficient event listeners and state management
+
+> [Back to Table of Contents](#table-of-contents)

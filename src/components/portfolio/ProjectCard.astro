@@ -54,7 +54,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 ---
 
 <article
-	class="project-card group bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg p-0 flex flex-col overflow-hidden transition-transform hover:scale-105 duration-300 min-h-[420px]"
+	class="project-card group bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg p-0 flex flex-col overflow-hidden transition-transform hover:scale-105 duration-300 min-h-[420px] cursor-pointer"
 	data-slug={projectSlug}>
 	<div class="relative w-full h-48">
 		<img
@@ -70,7 +70,8 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 			href={`/portfolio/projects/${projectSlug}`}
 			class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 bg-theme-400 hover:bg-theme-500 text-black rounded-full p-2 shadow-lg z-10 flex items-center justify-center"
 			aria-label={`View details for ${name}`}
-			title={`View details for ${name}`}>
+			title={`View details for ${name}`}
+			onclick="event.stopPropagation();">
 			<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
 				><path
 					stroke-linecap="round"
@@ -148,7 +149,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 							</span>
 						</span>
 						{companyLogoURL && (
-							<div class="absolute bottom-full left-0 mb-2 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-20">
+							<div class="absolute bottom-full left-0 mb-2 opacity-0 group-hover/tooltip:opacity-100 group-active/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-20">
 								<div class="global-tooltip">
 									<div class="global-tooltip-content">
 										<div class="flex items-center gap-3">
@@ -175,8 +176,31 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 			class="mobile-detail-link hidden md:hidden mt-4 pt-4 border-t border-zinc-700">
 			<a
 				href={`/portfolio/projects/${projectSlug}`}
-				class="flex items-center justify-center gap-2 text-theme-400 hover:text-theme-300 transition-colors text-sm font-medium">
+				class="flex items-center justify-center gap-2 text-theme-400 hover:text-theme-300 transition-colors text-sm font-medium"
+				onclick="event.stopPropagation();">
 				<span>See more detail...</span>
+				<svg
+					class="w-4 h-4"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M9 5l7 7-7 7"></path>
+				</svg>
+			</a>
+		</div>
+
+		<!-- Desktop "Show more details" link -->
+		<div
+			class="desktop-detail-link hidden md:block mt-4 pt-4 border-t border-zinc-700 opacity-0 transition-opacity duration-300">
+			<a
+				href={`/portfolio/projects/${projectSlug}`}
+				class="flex items-center justify-center gap-2 text-theme-400 hover:text-theme-300 transition-colors text-sm font-medium"
+				onclick="event.stopPropagation();">
+				<span>Show more details</span>
 				<svg
 					class="w-4 h-4"
 					fill="none"
@@ -194,51 +218,74 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 </article>
 
 <script>
-	// Handle mobile touch events for project cards
+	// Handle mobile and desktop events for project cards
 	document.addEventListener('DOMContentLoaded', function () {
 		const projectCards = document.querySelectorAll('.project-card');
 		let selectedCard: HTMLElement | null = null;
+		let isMobile = window.innerWidth <= 768;
+
+		// Update mobile detection on resize
+		window.addEventListener('resize', () => {
+			isMobile = window.innerWidth <= 768;
+		});
 
 		projectCards.forEach(card => {
-			// Handle touch start for card selection
-			card.addEventListener(
-				'touchstart',
-				function (this: HTMLElement, e: Event) {
-					e.preventDefault();
+			// Handle card selection (both mobile and desktop)
+			card.addEventListener('click', function (this: HTMLElement, e: Event) {
+				// Don't handle if clicking on links
+				if ((e.target as HTMLElement).closest('a')) {
+					return;
+				}
 
-					// Deselect previously selected card
-					if (selectedCard && selectedCard !== this) {
-						selectedCard.classList.remove('card-selected');
-						const prevDetailLink = selectedCard.querySelector(
-							'.mobile-detail-link'
-						);
-						if (prevDetailLink) {
-							prevDetailLink.classList.add('hidden');
-						}
+				// Deselect previously selected card
+				if (selectedCard && selectedCard !== this) {
+					selectedCard.classList.remove('card-selected');
+					const prevMobileLink = selectedCard.querySelector(
+						'.mobile-detail-link'
+					);
+					const prevDesktopLink = selectedCard.querySelector(
+						'.desktop-detail-link'
+					);
+					if (prevMobileLink) {
+						prevMobileLink.classList.add('hidden');
 					}
-
-					// Toggle selection for current card
-					if (this.classList.contains('card-selected')) {
-						// Deselect
-						this.classList.remove('card-selected');
-						const detailLink = this.querySelector('.mobile-detail-link');
-						if (detailLink) {
-							detailLink.classList.add('hidden');
-						}
-						selectedCard = null;
-					} else {
-						// Select
-						this.classList.add('card-selected');
-						const detailLink = this.querySelector('.mobile-detail-link');
-						if (detailLink) {
-							detailLink.classList.remove('hidden');
-						}
-						selectedCard = this;
+					if (prevDesktopLink) {
+						prevDesktopLink.classList.remove('opacity-100');
+						prevDesktopLink.classList.add('opacity-0');
 					}
 				}
-			);
 
-			// Handle mouse leave (for desktop)
+				// Toggle selection for current card
+				if (this.classList.contains('card-selected')) {
+					// Deselect
+					this.classList.remove('card-selected');
+					const mobileLink = this.querySelector('.mobile-detail-link');
+					const desktopLink = this.querySelector('.desktop-detail-link');
+					if (mobileLink) {
+						mobileLink.classList.add('hidden');
+					}
+					if (desktopLink) {
+						desktopLink.classList.remove('opacity-100');
+						desktopLink.classList.add('opacity-0');
+					}
+					selectedCard = null;
+				} else {
+					// Select
+					this.classList.add('card-selected');
+					const mobileLink = this.querySelector('.mobile-detail-link');
+					const desktopLink = this.querySelector('.desktop-detail-link');
+					if (mobileLink) {
+						mobileLink.classList.remove('hidden');
+					}
+					if (desktopLink) {
+						desktopLink.classList.remove('opacity-0');
+						desktopLink.classList.add('opacity-100');
+					}
+					selectedCard = this;
+				}
+			});
+
+			// Handle mouse leave (for desktop hover effects)
 			card.addEventListener('mouseleave', function (this: HTMLElement) {
 				this.classList.remove('group-hover');
 			});
@@ -266,12 +313,6 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 						// Show tooltip
 						this.classList.add('group-active/tooltip');
 						tooltipActive = true;
-
-						// Hide tooltip after 3 seconds
-						setTimeout(() => {
-							this.classList.remove('group-active/tooltip');
-							tooltipActive = false;
-						}, 3000);
 					}
 				}
 			);
@@ -291,9 +332,16 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 			if (!target.closest('.project-card')) {
 				if (selectedCard) {
 					selectedCard.classList.remove('card-selected');
-					const detailLink = selectedCard.querySelector('.mobile-detail-link');
-					if (detailLink) {
-						detailLink.classList.add('hidden');
+					const mobileLink = selectedCard.querySelector('.mobile-detail-link');
+					const desktopLink = selectedCard.querySelector(
+						'.desktop-detail-link'
+					);
+					if (mobileLink) {
+						mobileLink.classList.add('hidden');
+					}
+					if (desktopLink) {
+						desktopLink.classList.remove('opacity-100');
+						desktopLink.classList.add('opacity-0');
 					}
 					selectedCard = null;
 				}
@@ -318,7 +366,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 		opacity: 1 !important;
 	}
 
-	/* Card selection styles for mobile */
+	/* Card selection styles for mobile and desktop */
 	.card-selected {
 		transform: scale(1.02) !important;
 		box-shadow: 0 0 20px rgba(49, 214, 154, 0.3) !important;
@@ -335,6 +383,11 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 
 	/* Mobile detail link animation */
 	.mobile-detail-link {
+		animation: slideIn 0.3s ease-out;
+	}
+
+	/* Desktop detail link animation */
+	.desktop-detail-link {
 		animation: slideIn 0.3s ease-out;
 	}
 
