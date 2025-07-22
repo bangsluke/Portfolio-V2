@@ -7,10 +7,10 @@ tags:
   - portfolio
 created: 2025-07-20T07:44:00
 modified: 2025-07-20T07:43:48+01:00
-viewCount: 2
+viewCount: 3
 skillRating: 0
 skillDescription: n/a
-logoFileName:
+logoFileName: zod.svg
 ---
 
 # Zod

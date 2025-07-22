@@ -6,11 +6,11 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-05T06:52:14+01:00
-viewCount: 7
+viewCount: 8
 aliases:
   - Algolia Docsearch
-skillRating: 0
-skillDescription: TBC
+skillRating: 30
+skillDescription: Set up an Algolia index and search on my documentation site but never explored it's full value.
 logoFileName: algolia.svg
 ---
 

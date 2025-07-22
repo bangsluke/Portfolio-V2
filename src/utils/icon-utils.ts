@@ -178,7 +178,7 @@ const skillIconMapping: Record<string, string> = {
 	'Vite.js': 'vitejs',
 	'VS Code': 'vs_code',
 	'Yarn': 'yarn',
-	'Zod': '---',
+	'Zod': 'zod',
 };
 
 /**

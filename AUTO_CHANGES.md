@@ -18,6 +18,26 @@
 
 ## Auto Log
 
+## 2025-01-16 08:05 [main] - Added Jest testing framework with comprehensive unit tests
+- Installed Jest testing framework with TypeScript support
+  - Added jest, @types/jest, ts-jest, and @testing-library/jest-dom as dev dependencies
+  - Created jest.config.mjs with ES module support and TypeScript configuration
+  - Set up test environment for Node.js with proper file matching patterns
+- Created comprehensive unit tests for utility functions
+  - Added tests for date-formatter.ts with 38 test cases covering all scenarios
+  - Added tests for languages.ts with language lookup and fallback functionality
+  - Added tests for content-processor.ts with Obsidian link and markdown processing
+  - All tests pass successfully with 100% coverage of tested functions
+- Integrated tests into build process
+  - Modified package.json build script to run tests before build: "npm run test && npm run update-readme-links && astro build"
+  - Added test scripts: test, test:watch, and test:coverage
+  - Tests now run automatically before every build to ensure code quality
+- Set up test infrastructure and configuration
+  - Created src/__tests__/jest.setup.ts for global test configuration
+  - Configured Jest to handle ES modules and TypeScript properly
+  - Added test coverage reporting with HTML, text, and lcov formats
+  - Set up proper test file organization with __tests__ directories
+
 ## 2025-01-16 18:30 [main] - Added comprehensive GitHub statistics with new metrics
 - Enhanced GitHubContributions.tsx with additional GitHub metrics
   - Added "Active Since" card showing account age in years/months

@@ -7,7 +7,7 @@ tags:
   - coding
   - work
 created: 2025-05-30 09:57
-modified: 2025-07-19T09:42:58+01:00
+modified: 2025-07-22T09:09:03+01:00
 viewCount: 13
 aliases: 
 projectURL: TBC
@@ -38,7 +38,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 2
-shortDescription: "TBC"
+shortDescription: "A full documentation site for all tools developed by the <span class=\"theme-link\">GPMO</span> team, using <span class=\"theme-link\">Docusaurus</span> and static <span class=\"theme-link\">Markdown</span> files maintained by the tool developers."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 ---
@@ -76,7 +76,7 @@ WHERE file = this.file
 
 ## Short Description
 
-TBC
+A full documentation site for all tools developed by the <span class="theme-link">GPMO</span> team, using <span class="theme-link">Docusaurus</span> and static <span class="theme-link">Markdown</span> files maintained by the tool developers.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

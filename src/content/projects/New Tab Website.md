@@ -9,14 +9,14 @@ created: 2025-05-29 17:42
 modified: 2025-07-19T09:38:40+01:00
 aliases:
   - New Tab
-viewCount: 16
+viewCount: 17
 projectURL: https://bangsluke.github.io/pages/NewTab.html
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
 deploymentServiceURL: https://github.com/bangsluke
 folderURL: n/a
 logoURL: n/a
-imageURL: 
+imageURL: https://i.imgur.com/2WGZP2P.png
 dateStart: 2021-01-15
 dateEnd: 2021-01-24
 technologies:
