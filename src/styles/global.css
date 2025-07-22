@@ -19,17 +19,17 @@
 	--color-theme-900: #054f3c;
 	--color-theme-950: #012d22;
 
-	--color-riptide-50: #f0fdfa;
-	--color-riptide-100: #cbfcf1;
-	--color-riptide-200: #96f7e4;
-	--color-riptide-300: #5cecd5;
-	--color-riptide-400: #2bd6c1;
-	--color-riptide-500: #12baa8;
-	--color-riptide-600: #0b9689;
-	--color-riptide-700: #0e776f;
-	--color-riptide-800: #105f5a;
-	--color-riptide-900: #124f4b;
-	--color-riptide-950: #03302f;
+	--color-light-theme-accent-50: #f0fdfa;
+	--color-light-theme-accent-100: #cbfcf1;
+	--color-light-theme-accent-200: #96f7e4;
+	--color-light-theme-accent-300: #5cecd5;
+	--color-light-theme-accent-400: #2bd6c1;
+	--color-light-theme-accent-500: #12baa8;
+	--color-light-theme-accent-600: #0b9689;
+	--color-light-theme-accent-700: #0e776f;
+	--color-light-theme-accent-800: #105f5a;
+	--color-light-theme-accent-900: #124f4b;
+	--color-light-theme-accent-950: #03302f;
 
 	--animate-rotate: rotate 10s linear infinite;
 
