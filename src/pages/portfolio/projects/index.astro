@@ -43,10 +43,8 @@ const sortedProjects = projects.sort((a, b) => {
 const processedProjects = sortedProjects.map(project => {
 	let companyLogoURL: string | null = null;
 
-	// Generate name from filename if not provided in frontmatter
-	const projectName =
-		project.data.name ||
-		project.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+	// Use original filename for display (not capitalized)
+	const projectName = project.data.name || project.slug.replace(/-/g, ' ');
 
 	// If project has linkedCompany, find the company or client and get its logoURL
 	if (project.data.linkedCompany && project.data.linkedCompany.length > 0) {
@@ -208,7 +206,7 @@ const ogimage = {
 									id="startDateInput"
 									min={`${minYear}-01-01`}
 									max={`${maxYear}-12-31`}
-									class="global-form-element bg-transparent text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none"
+									class="global-form-element bg-transparent text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert"
 									placeholder="Start Date"
 								/>
 								<span class="text-theme-100">-</span>
@@ -217,11 +215,18 @@ const ogimage = {
 									id="endDateInput"
 									min={`${minYear}-01-01`}
 									max={`${maxYear}-12-31`}
-									class="global-form-element bg-transparent text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none"
+									class="global-form-element bg-transparent text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert"
 									placeholder="End Date"
 								/>
 							</div>
 						</div>
+
+						<!-- Clear Filters Button -->
+						<button
+							id="clearFilters"
+							class="px-4 py-2 bg-theme-400 hover:bg-theme-500 text-black font-medium rounded-lg transition-colors duration-300">
+							Clear Filters
+						</button>
 
 						<!-- Project Count -->
 						<div class="text-theme-100 font-medium whitespace-nowrap">
@@ -260,7 +265,7 @@ const ogimage = {
 									id="startDateInputMobile"
 									min={`${minYear}-01-01`}
 									max={`${maxYear}-12-31`}
-									class="flex-1 global-form-element bg-transparent text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none"
+									class="flex-1 global-form-element bg-transparent text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert"
 									placeholder="Start Date"
 								/>
 								<span class="text-theme-100">-</span>
@@ -269,11 +274,18 @@ const ogimage = {
 									id="endDateInputMobile"
 									min={`${minYear}-01-01`}
 									max={`${maxYear}-12-31`}
-									class="flex-1 global-form-element bg-transparent text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none"
+									class="flex-1 global-form-element bg-transparent text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert"
 									placeholder="End Date"
 								/>
 							</div>
 						</div>
+
+						<!-- Clear Filters Button -->
+						<button
+							id="clearFiltersMobile"
+							class="px-4 py-2 bg-theme-400 hover:bg-theme-500 text-black font-medium rounded-lg transition-colors duration-300">
+							Clear Filters
+						</button>
 
 						<!-- Project Count -->
 						<div class="text-theme-100 font-medium text-center">
@@ -292,19 +304,23 @@ const ogimage = {
 					class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 					{
 						processedProjects.map(project => {
-							const startYear = project.data.dateStart
-								? new Date(project.data.dateStart).getFullYear()
+							const startDate = project.data.dateStart
+								? new Date(project.data.dateStart)
 								: null;
-							const endYear = project.data.dateEnd
-								? new Date(project.data.dateEnd).getFullYear()
+							const endDate = project.data.dateEnd
+								? new Date(project.data.dateEnd)
 								: null;
-							const projectYear = endYear || startYear;
 
 							return (
 								<div
 									class="project-card"
 									data-category={project.data.projectCategory || ''}
-									data-year={projectYear || ''}>
+									data-start-date={
+										startDate ? startDate.toISOString().split('T')[0] : ''
+									}
+									data-end-date={
+										endDate ? endDate.toISOString().split('T')[0] : ''
+									}>
 									<ProjectCard
 										name={project.data.name ?? project.id.replace('.md', '')}
 										imageURL={project.data.imageURL}
@@ -366,6 +382,9 @@ const ogimage = {
 		const endDateInput = document.getElementById(
 			'endDateInput'
 		) as HTMLInputElement;
+		const clearFilters = document.getElementById(
+			'clearFilters'
+		) as HTMLButtonElement;
 
 		// Filter elements (Mobile)
 		const categoryFilterMobile = document.getElementById(
@@ -378,11 +397,29 @@ const ogimage = {
 		const endDateInputMobile = document.getElementById(
 			'endDateInputMobile'
 		) as HTMLInputElement;
+		const clearFiltersMobile = document.getElementById(
+			'clearFiltersMobile'
+		) as HTMLButtonElement;
 
 		// Pre-fill category filter from URL parameter (both desktop and mobile)
 		if (categoryParam) {
 			if (categoryFilter) categoryFilter.value = categoryParam;
 			if (categoryFilterMobile) categoryFilterMobile.value = categoryParam;
+		}
+
+		function clearAllFilters() {
+			// Clear desktop filters
+			if (categoryFilter) categoryFilter.value = '';
+			if (startDateInput) startDateInput.value = '';
+			if (endDateInput) endDateInput.value = '';
+
+			// Clear mobile filters
+			if (categoryFilterMobile) categoryFilterMobile.value = '';
+			if (startDateInputMobile) startDateInputMobile.value = '';
+			if (endDateInputMobile) endDateInputMobile.value = '';
+
+			// Re-filter
+			filterProjects();
 		}
 
 		function filterProjects() {
@@ -402,19 +439,39 @@ const ogimage = {
 
 			projectCards.forEach(card => {
 				const cardCategory = card.dataset.category;
-				const cardYear = parseInt(card.dataset.year || '0');
-				const cardDate = cardYear ? new Date(cardYear, 0, 1) : null; // January 1st of the year
+				const cardStartDate = card.dataset.startDate
+					? new Date(card.dataset.startDate)
+					: null;
+				const cardEndDate = card.dataset.endDate
+					? new Date(card.dataset.endDate)
+					: null;
 
 				const categoryMatch =
 					!selectedCategory || cardCategory === selectedCategory;
 
-				// Date filtering logic
+				// Date filtering logic - check if project date range overlaps with filter date range
 				let dateMatch = true;
-				if (startDate && cardDate) {
-					dateMatch = dateMatch && cardDate >= startDate;
-				}
-				if (endDate && cardDate) {
-					dateMatch = dateMatch && cardDate <= endDate;
+				if (startDate || endDate) {
+					// If we have a filter date range, check for overlap
+					if (startDate && endDate) {
+						// Filter range: startDate to endDate
+						// Project range: cardStartDate to cardEndDate
+						// Check if there's any overlap
+						const projectStart = cardStartDate || cardEndDate || new Date(0);
+						const projectEnd =
+							cardEndDate || cardStartDate || new Date(9999, 11, 31);
+
+						dateMatch = projectStart <= endDate && projectEnd >= startDate;
+					} else if (startDate) {
+						// Only start date filter - check if project ends after or on start date
+						const projectEnd =
+							cardEndDate || cardStartDate || new Date(9999, 11, 31);
+						dateMatch = projectEnd >= startDate;
+					} else if (endDate) {
+						// Only end date filter - check if project starts before or on end date
+						const projectStart = cardStartDate || cardEndDate || new Date(0);
+						dateMatch = projectStart <= endDate;
+					}
 				}
 
 				const shouldShow = categoryMatch && dateMatch;
@@ -443,6 +500,9 @@ const ogimage = {
 		if (endDateInput) {
 			endDateInput.addEventListener('input', filterProjects);
 		}
+		if (clearFilters) {
+			clearFilters.addEventListener('click', clearAllFilters);
+		}
 
 		// Add event listeners for mobile
 		if (categoryFilterMobile) {
@@ -453,6 +513,9 @@ const ogimage = {
 		}
 		if (endDateInputMobile) {
 			endDateInputMobile.addEventListener('input', filterProjects);
+		}
+		if (clearFiltersMobile) {
+			clearFiltersMobile.addEventListener('click', clearAllFilters);
 		}
 
 		// Initialize filters on page load

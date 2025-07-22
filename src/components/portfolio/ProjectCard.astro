@@ -42,6 +42,9 @@ if (linkedCompany && linkedCompany.length > 0) {
 
 const projectSlug = slug || getSlug(name);
 
+// Use original filename for display (not capitalized)
+const displayName = name || projectSlug.replace(/-/g, ' ');
+
 // Process technologies for display
 const MAX_VISIBLE_SKILLS = 5;
 const visibleTechnologies = technologies
@@ -83,7 +86,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 		</a>
 	</div>
 	<div class="flex flex-col flex-1 p-6">
-		<h2 class="text-2xl font-bold text-theme-100 mb-3">{name}</h2>
+		<h2 class="text-2xl font-bold text-theme-100 mb-3">{displayName}</h2>
 		<div class="flex flex-wrap gap-2 mb-4">
 			{
 				visibleTechnologies &&
@@ -223,6 +226,9 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 		const projectCards = document.querySelectorAll('.project-card');
 		let selectedCard: HTMLElement | null = null;
 		let isMobile = window.innerWidth <= 768;
+		let isGalleryPage = window.location.pathname.includes(
+			'/portfolio/projects'
+		);
 
 		// Update mobile detection on resize
 		window.addEventListener('resize', () => {
@@ -234,6 +240,11 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 			card.addEventListener('click', function (this: HTMLElement, e: Event) {
 				// Don't handle if clicking on links
 				if ((e.target as HTMLElement).closest('a')) {
+					return;
+				}
+
+				// On gallery page, only enable selection on mobile
+				if (isGalleryPage && !isMobile) {
 					return;
 				}
 

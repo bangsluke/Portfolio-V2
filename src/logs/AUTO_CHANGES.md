@@ -1650,3 +1650,58 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - **Performance**: Efficient event listeners and state management
 
 > [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 17:25 - Skill Pill and Project Gallery Enhancements
+
+### Skill Pill Mobile Tooltip
+- **Added mobile tooltip functionality** in `src/components/ui/SkillPill.astro`:
+  - **Click to show skill name**: Tapping skill pills on mobile now shows the original filename
+  - **Original filename display**: Shows the skill name without capitalization, minus file extension
+  - **Persistent tooltips**: Tooltips stay visible until clicked off
+  - **Click outside to close**: Tooltips close when clicking outside the skill pill area
+  - **Mobile-only behavior**: Tooltips only appear on mobile devices (hidden on desktop)
+
+### Project Card Title Fix
+- **Fixed card title capitalization** in `src/components/portfolio/ProjectCard.astro`:
+  - **Original filename display**: Cards now show the original filename without capitalization
+  - **Consistent naming**: Uses `projectSlug.replace(/-/g, ' ')` instead of capitalized version
+  - **Better readability**: Maintains original project naming conventions
+
+### Full Project Gallery Improvements
+- **Enhanced mobile project selection** in `src/pages/portfolio/projects/index.astro`:
+  - **Mobile-only selection**: Project selection only works on mobile devices
+  - **Persistent selection**: Cards stay bright/selected until another card is clicked
+  - **Proper deselection**: Only one card can be selected at a time
+  - **Click outside to deselect**: Tapping outside deselects the current card
+
+- **Fixed date picker styling**:
+  - **White calendar icons**: Added `[&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert` classes
+  - **Consistent appearance**: Date picker icons now match the theme on both desktop and mobile
+
+- **Improved filtering logic**:
+  - **Proper date range filtering**: Now checks if project date range overlaps with user's selected date range
+  - **Overlap detection**: Projects are shown if their date range (start to end) overlaps with the filter range
+  - **Flexible date handling**: Works with projects that have only start dates, only end dates, or both
+  - **Better data attributes**: Uses `data-start-date` and `data-end-date` instead of year-only filtering
+
+- **Added clear filters functionality**:
+  - **Clear filters button**: Added "Clear Filters" button for both desktop and mobile layouts
+  - **Reset all filters**: Clears category selection and date range inputs
+  - **Immediate update**: Project count and display update immediately when filters are cleared
+  - **Consistent styling**: Matches theme colors and hover effects
+
+### Technical Implementation
+- **Enhanced skill pill structure**: Wrapped in relative container with mobile-specific tooltip
+- **Improved date filtering algorithm**: Proper overlap detection for date ranges
+- **Responsive design**: Different behaviors for mobile vs desktop
+- **Event handling**: Proper touch events for mobile tooltips
+- **State management**: Efficient tracking of selected cards and active tooltips
+
+### User Experience Improvements
+- **Better mobile interaction**: Skill pills now provide useful information on mobile
+- **Consistent project naming**: Original filenames maintain project identity
+- **Improved filtering**: More accurate date range filtering for better project discovery
+- **Enhanced usability**: Clear filters button makes it easy to reset search criteria
+- **Visual consistency**: White date picker icons match the overall theme
+
+> [Back to Table of Contents](#table-of-contents)
