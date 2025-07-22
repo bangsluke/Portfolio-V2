@@ -8,11 +8,11 @@ tags:
   - notes
 created: 2023-08-18T15:45:00
 modified: 2025-07-02T14:22:46+01:00
-viewCount: 8
+viewCount: 9
 aliases:
   - Apple Shortcut
-skillRating: 0
-skillDescription: TBC
+skillRating: 70
+skillDescription: Several shortcuts set up on my iPhone for automating life actions and remotely updating online data sources for my own personal health tracking.
 logoFileName: apple_shortcuts.svg
 ---
 

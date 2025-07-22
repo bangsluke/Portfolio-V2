@@ -9,14 +9,14 @@ created: 2025-05-29 17:09
 modified: 2025-07-19T12:20:01+01:00
 aliases:
   - Homepage
-viewCount: 18
+viewCount: 19
 projectURL: https://bangsluke.github.io/Homepage.html
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
 deploymentServiceURL: https://github.com/bangsluke
 folderURL: n/a
 logoURL: n/a
-imageURL: 
+imageURL: https://i.imgur.com/BI2UQRk.png
 dateStart: 2021-01-15
 dateEnd: 2021-01-24
 technologies:
