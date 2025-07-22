@@ -3,8 +3,8 @@ tags:
   - notes
   - portfolio
 created: 2025-07-21T19:17:10+01:00
-modified: 2025-07-21T19:28:39+01:00
-viewCount: 2
+modified: 2025-07-22T18:38:17+01:00
+viewCount: 3
 layout: /src/layouts/MarkdownAbout.astro
 title: Luke Bangs | My portfolio site | bangsluke
 description: Web developer, technology enthusiast, and event organizer. From my beginnings in development to creating communities and impactful projects, here I share my journey, experiences, and learnings. 🚀☕
@@ -15,6 +15,26 @@ image-alt: Photo of Luke Bangs
 # Portfolio About Me
 
 TESTING
+
+I am a relatively new developer, having just started to learn coding at the start of 2021. I'm keen to find a challenging role in a workplace with creative room to support my strength of innovative problem solving.
+
+My career started in Automotive Engineering, but after five years of working as an engineer across a number of OEMs, I've found myself in a developing software team, building software tools ([SDP](https://sdp.rle.de/#home) and a new DVP tool) to support Automotive processes. Luckily this has allowed me many opportunities to develop my coding interests.
+
+I'm interested in developing a few personal projects on the side. I started out with a fun web page for my mates, building on our competitive nature and creating a site that ranks each of us at various sports and skills. Most recently I've launched a stats website for my amateur football club ([Dorkinian FC](http://www.dorkiniansfcstats.co.uk/)), allowing players to see their performance stats such as minutes played, goals and assists etc. on which I've written a brief [article](https://dev.to/bangsluke/building-a-stats-website-for-a-sports-club-4g5m) on Dev.
+
+## FURTHER EXPERIENCE
+
+During my time as a project engineer I have gained experience working with a wide range of materials and manufacturing techniques including injection moulding plastics, hand lay-up composites, compression moulding composites, forging metals and die casting metals. I have implemented these processes to support both high volume and prototype build phases and have hands on build experience during launch. I have been responsible for writing and maintaining Technical Specifications, Design Validation Plans and DFMEAs for the systems I owned. I've built several projects using HTML, CSS and JavaScript, with further experience in React, Next.JS and Node.JS. I have database experience using MySQL and Neo4j with GraphQL calls to return data. Experienced with an extended range of Microsoft programmes, including Visual Basic Application. Trained in MATLAB, Siemens Teamcenter PLM and SAP, with reviewer training in NX Unigraphics and Catia V5. 
+
+I consider myself to work strongly and positively in a team environment, easily able to adapt to both the roles of leader or member when required. I am able to listen to other views, take on suggestions, motivate colleagues and resolve differences between members to maximise a team's efficiency.
+
+## INTERESTS AND SKILLS
+
+I am interested in taking on a challenging role to further develop my own skills, inherit a greater level of responsibility and work for a company I can be passionate about growing. I am a quick leaner, keen to understand new processes and programs and understand the reasoning behind each step. My inquisitive nature pushes me to logically apply my knowledge to solve complex technical problems as efficiently as possible.
+
+I'm an active member of a town football club of 8 men’s teams, involved in organising and helping develop the growing club base. In my spare time, I have created and maintained a statistics document for the club which reads data directly from the FA website, displays the player’s statistics on a self-designed web page and outputs infographics for social media, based on team and player performances.
+
+OLD TEXT below
 
 I started developing my first commercial projects as a web developer in 2017. Although I've been passionate about technology for as long as I can remember. I discovered the internet at age 6, and along with it, I learned to use **Paint** 🎨 and play **Pinball** on a **Windows XP** computer that my cousins had. Years passed, and I discovered there was a cyber café near my house, so accompanied by my older brother, I spent a lot of time there, watching others play **Age of Empires** ⚔️. When I could, I also played on the computers and investigated how those games worked. But above all, I remember that while sitting there, I watched the owner, Alfredo, the good <a href="https://fred.cpp.mx/" target="_blank" rel="noopener noreferrer">Fred</a>, while he programmed and modeled game maps, or at least that's what I remember. That made me want to try doing the same. I found it incredible how so many things happened on his screen that, although I couldn't understand them, looked amazing. Without a doubt, he was my first influence to get into programming.
 

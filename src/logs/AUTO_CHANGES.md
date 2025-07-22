@@ -18,7 +18,52 @@
 
 ## Auto Log
 
-## 2025-01-16 08:05 [main] - Added Jest testing framework with comprehensive unit tests
+## 2025-01-16 17:50 [main] - Enhanced Most Common Techs with multi-select filtering and improved mobile experience
+- Updated MostCommonTechs.astro with comprehensive multi-select filtering and improved functionality
+  - Replaced single-select dropdown with multi-select dropdown using predefined SKILLS_FILTER_OPTIONS
+  - Added filter options: framework, library, language, database, design (from repoConfig.js)
+  - Implemented smart filter logic: "All Categories" unchecks others, individual categories uncheck "All"
+  - Added dropdown toggle with arrow rotation and click-outside-to-close functionality
+  - Fixed project counting to show accurate number of linked projects for each technology
+  - Enhanced tooltips to display project names and count with better formatting
+  - Made skill pills clickable on mobile to show tooltips (group-active/tech class)
+  - Added JavaScript filtering functionality with proper TypeScript typing
+  - Improved tooltip content with project list and "and X more" indicator
+- Enhanced WorkExperienceItem.astro mobile layout
+  - Reduced gap between date and description on mobile (added mb-2 md:mb-0 to time element)
+  - Made text wider on mobile screens (max-sm:col-span-full max-sm:w-full)
+  - Improved text sizing on mobile (max-sm:text-sm for processed content)
+  - Better responsive design for mobile work experience timeline
+
+## 2025-01-16 17:40 [main] - Enhanced work experience timeline with client logo support
+- Updated WorkExperienceTimeline.astro to support client logos in addition to company logos
+  - Added clients collection import alongside companies collection
+  - Modified logo lookup logic to first check companies, then fallback to clients
+  - Work experience timeline now displays logos from both companies and clients
+  - Maintains existing functionality while adding client logo support
+- Updated work-experience.astro page to support client logos in addition to company logos
+  - Added clients collection import alongside companies collection
+  - Applied same logo lookup logic as WorkExperienceTimeline component
+  - Both main timeline and voluntary roles section now support client logos
+  - Ensures consistent client logo support across all work experience views
+- Enhanced logo retrieval system for linkedCompany values in work experience
+  - linkedCompany can now reference either companies or clients
+  - System first checks companies collection, then falls back to clients collection
+  - Maintains backward compatibility with existing company-only references
+  - Improves flexibility for roles linked to clients
+
+## 2025-01-16 17:35 [main] - Implemented voluntary roles filtering and separate section
+- Updated WorkExperienceTimeline.astro to filter out roles with "voluntary" tag
+  - Added filtering logic to exclude roles containing "voluntary" in tags array
+  - Maintains existing sorting and display functionality for non-voluntary roles
+  - Ensures only professional work experience appears on main portfolio page
+- Enhanced work-experience.astro page with voluntary roles section
+  - Filtered main timeline to exclude voluntary roles for cleaner professional experience
+  - Added separate "Voluntary Roles" section below main timeline with distinct styling
+  - Created jump button in header to navigate directly to voluntary roles section
+  - Added border separator and different icon (people) for voluntary section
+  - Voluntary roles maintain same timeline format and company integration
+  - Section only appears if voluntary roles exist in the collection
 - Installed Jest testing framework with TypeScript support
   - Added jest, @types/jest, ts-jest, and @testing-library/jest-dom as dev dependencies
   - Created jest.config.mjs with ES module support and TypeScript configuration
@@ -1648,5 +1693,157 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - **Visual feedback**: Clear indication of selected state
 - **Accessibility**: Proper event handling and keyboard support
 - **Performance**: Efficient event listeners and state management
+
+> [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 17:25 - Skill Pill and Project Gallery Enhancements
+
+### Skill Pill Mobile Tooltip
+- **Added mobile tooltip functionality** in `src/components/ui/SkillPill.astro`:
+  - **Click to show skill name**: Tapping skill pills on mobile now shows the original filename
+  - **Original filename display**: Shows the skill name without capitalization, minus file extension
+  - **Persistent tooltips**: Tooltips stay visible until clicked off
+  - **Click outside to close**: Tooltips close when clicking outside the skill pill area
+  - **Mobile-only behavior**: Tooltips only appear on mobile devices (hidden on desktop)
+
+### Project Card Title Fix
+- **Fixed card title capitalization** in `src/components/portfolio/ProjectCard.astro`:
+  - **Original filename display**: Cards now show the original filename without capitalization
+  - **Consistent naming**: Uses `projectSlug.replace(/-/g, ' ')` instead of capitalized version
+  - **Better readability**: Maintains original project naming conventions
+
+### Full Project Gallery Improvements
+- **Enhanced mobile project selection** in `src/pages/portfolio/projects/index.astro`:
+  - **Mobile-only selection**: Project selection only works on mobile devices
+  - **Persistent selection**: Cards stay bright/selected until another card is clicked
+  - **Proper deselection**: Only one card can be selected at a time
+  - **Click outside to deselect**: Tapping outside deselects the current card
+
+- **Fixed date picker styling**:
+  - **White calendar icons**: Added `[&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert` classes
+  - **Consistent appearance**: Date picker icons now match the theme on both desktop and mobile
+
+- **Improved filtering logic**:
+  - **Proper date range filtering**: Now checks if project date range overlaps with user's selected date range
+  - **Overlap detection**: Projects are shown if their date range (start to end) overlaps with the filter range
+  - **Flexible date handling**: Works with projects that have only start dates, only end dates, or both
+  - **Better data attributes**: Uses `data-start-date` and `data-end-date` instead of year-only filtering
+
+- **Added clear filters functionality**:
+  - **Clear filters button**: Added "Clear Filters" button for both desktop and mobile layouts
+  - **Reset all filters**: Clears category selection and date range inputs
+  - **Immediate update**: Project count and display update immediately when filters are cleared
+  - **Consistent styling**: Matches theme colors and hover effects
+
+### Technical Implementation
+- **Enhanced skill pill structure**: Wrapped in relative container with mobile-specific tooltip
+- **Improved date filtering algorithm**: Proper overlap detection for date ranges
+- **Responsive design**: Different behaviors for mobile vs desktop
+- **Event handling**: Proper touch events for mobile tooltips
+- **State management**: Efficient tracking of selected cards and active tooltips
+
+### User Experience Improvements
+- **Better mobile interaction**: Skill pills now provide useful information on mobile
+- **Consistent project naming**: Original filenames maintain project identity
+- **Improved filtering**: More accurate date range filtering for better project discovery
+- **Enhanced usability**: Clear filters button makes it easy to reset search criteria
+- **Visual consistency**: White date picker icons match the overall theme
+
+> [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 17:45 - Project Slug Page and Skills Bubble Enhancements
+
+### Project Slug Page Improvements
+- **Fixed "Developed For" section layout** in `src/pages/portfolio/projects/[slug].astro`:
+  - **Centered layout**: Changed from grid to flex layout with `justify-center` for better alignment
+  - **Company name display**: Updated to use original filename minus extension instead of slug
+  - **Consistent naming**: Both companies and clients now use the same `getCompanyName()` function
+  - **Better visual hierarchy**: Improved spacing and alignment for company/client cards
+
+- **Fixed project title capitalization**:
+  - **Original filename display**: Project titles now show the original filename without capitalization
+  - **Consistent naming**: Uses `project.slug.replace(/-/g, ' ')` instead of capitalized version
+  - **Better readability**: Maintains original project naming conventions across the site
+
+### Coding Section Layout Improvements
+- **Enhanced spacing and mobile layout** in `src/components/portfolio/CodingSection.astro`:
+  - **Header spacing**: Added `mb-8` to the coding header for better visual separation
+  - **Mobile spacing**: Added clear space below the coding section on mobile with `max-sm:h-8`
+  - **Skills bubble container**: Made skills bubble section a big square container on mobile with `max-sm:aspect-square`
+  - **Better mobile experience**: Improved spacing and proportions for mobile devices
+
+### Multi-Select Skills Filter
+- **Replaced single-select with multi-select dropdown**:
+  - **Checkbox-based selection**: Users can now select multiple skill categories simultaneously
+  - **Smart selection logic**: "All Skills" option works as a toggle with other options
+  - **Visual feedback**: Shows "All Skills", single filter name, or "X Filters" in the button text
+  - **Consistent styling**: Uses the same `global-form-element` styling as other form elements
+  - **Dropdown behavior**: Closes when clicking outside, proper keyboard navigation
+
+### Skills Bubble Chart Enhancements
+- **Improved project counting logic** in `src/components/portfolio/SkillsBubbleChart.tsx`:
+  - **Better matching**: Now checks for exact matches, partial matches, and pipe aliases
+  - **Obsidian link handling**: Properly cleans technology names by removing `[[]]` brackets
+  - **Multiple match strategies**: Compares skill name, skill ID, and extracted path names
+  - **Accurate counts**: More precise project usage counting for each skill
+
+- **Enhanced filtering system**:
+  - **Multi-select support**: Skills bubble chart now supports multiple selected filters
+  - **Event-driven updates**: Uses custom events to sync filter state between components
+  - **Real-time filtering**: Chart updates immediately when filters change
+  - **Filter synchronization**: Main filter and modal filter stay in sync
+
+### Fullscreen Modal Improvements
+- **Added filter to fullscreen modal** in `src/components/portfolio/SkillsBubbles.astro`:
+  - **Modal filter dropdown**: Fullscreen modal now includes the same multi-select filter
+  - **Synchronized state**: Modal filter stays in sync with the main filter
+  - **Consistent UX**: Same filtering behavior in both main view and fullscreen view
+  - **Better accessibility**: Proper ARIA labels and keyboard navigation
+
+### Technical Implementation
+- **Enhanced event handling**: Custom events for filter synchronization between components
+- **Improved TypeScript**: Better type safety and error handling
+- **Responsive design**: Mobile-first approach with proper aspect ratios
+- **Performance optimization**: Efficient filtering and rendering logic
+- **State management**: Proper cleanup and event listener management
+
+### User Experience Improvements
+- **Better project discovery**: More accurate project counting helps users understand skill usage
+- **Enhanced filtering**: Multi-select filters provide more granular control over displayed skills
+- **Improved mobile experience**: Better spacing and layout on mobile devices
+- **Consistent interface**: Unified filtering experience across main view and fullscreen modal
+- **Better visual hierarchy**: Improved spacing and alignment throughout the site
+
+> [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 18:06 - Project Slug Page Layout Width Standardization
+
+### Layout Width Consistency
+- **Updated project slug page layout** in `src/pages/portfolio/projects/[slug].astro`:
+  - **Consistent content width**: Added `max-w-4xl mx-auto` container to match WorkExperience page
+  - **Proper padding structure**: Added `px-8` horizontal padding to all sections
+  - **Background consistency**: Added `bg-white dark:bg-gray-900` to match other pages
+  - **Structured layout**: Each section now has proper container and padding structure
+
+### Layout Improvements
+- **Top back button section**: Added proper padding and container structure
+- **Project image section**: Updated to use full width within max-w-4xl container
+- **Project details section**: Consistent padding and container structure
+- **Content sections**: Description, lessons learned, and company sections all use consistent layout
+- **Project links section**: Proper container and padding structure
+- **Bottom back button**: Consistent layout with other sections
+
+### Visual Consistency
+- **Unified page width**: All content now uses the same max-width as WorkExperience page
+- **Consistent spacing**: Proper padding and margins throughout the page
+- **Better readability**: Content is properly constrained and centered
+- **Responsive design**: Layout works well on all screen sizes
+- **Professional appearance**: Consistent with the overall site design
+
+### Technical Implementation
+- **Container structure**: Each section wrapped in `max-w-4xl mx-auto` container
+- **Padding consistency**: All sections use `px-8` for horizontal padding
+- **Background matching**: Added proper background colors to match site theme
+- **Responsive behavior**: Layout adapts properly to different screen sizes
 
 > [Back to Table of Contents](#table-of-contents)

@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { SKILLS_FILTER_OPTIONS } from '../../../scripts/repoConfig.js';
 import SkillPill from '../ui/SkillPill.astro';
 
 // Get all projects and skills
@@ -21,8 +22,12 @@ skills.forEach(skill => {
 	}
 });
 
+// Use predefined filter options from repoConfig.js
+const availableTags = SKILLS_FILTER_OPTIONS.filter(tag => tag !== 'all');
+
 // Count technology usage across all projects, excluding hosting/security skills
 const techCount: Record<string, number> = {};
+const techProjects: Record<string, string[]> = {}; // Track which projects use each tech
 
 projects.forEach(project => {
 	if (project.data.technologies) {
@@ -37,6 +42,12 @@ projects.forEach(project => {
 
 			// Increment count for this technology
 			techCount[cleanTech] = (techCount[cleanTech] || 0) + 1;
+
+			// Track which projects use this tech
+			if (!techProjects[cleanTech]) {
+				techProjects[cleanTech] = [];
+			}
+			techProjects[cleanTech].push(project.data.name || project.slug);
 		});
 	}
 });
@@ -45,7 +56,11 @@ projects.forEach(project => {
 const topTechs = Object.entries(techCount)
 	.sort(([, a], [, b]) => b - a) // Sort by count descending
 	.slice(0, 10) // Get top 10
-	.map(([tech, count]) => ({ tech, count }));
+	.map(([tech, count]) => ({
+		tech,
+		count,
+		projects: techProjects[tech] || [],
+	}));
 
 type TechVariant = 'default' | 'center';
 
@@ -64,34 +79,243 @@ const { variant = 'default', size = 'md' } = Astro.props;
 const classes = `${baseClasses} ${variantClasses[variant as TechVariant]}`;
 ---
 
-<div class={classes}>
-	{
-		topTechs.map(({ tech, count }, index) => (
-			<div class="relative group/tech">
-				<SkillPill
-					skillName={tech}
-					variant="default"
-					size={size === 'xs' ? 'xs' : 'md'}
-				/>
-				{/* Tooltip showing usage count - positioned above or below based on row */}
-				<div
-					class={`absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 ${
-						index < 5 ? 'top-full mt-2' : 'bottom-full mb-2'
-					}`}>
-					<div class="global-tooltip">
-						<div class="global-tooltip-content">
-							Used in {count} project{count > 1 ? 's' : ''}
-						</div>
-						<div
-							class={`absolute left-1/2 transform -translate-x-1/2 global-tooltip-arrow ${
-								index < 5
-									? 'global-tooltip-arrow-top'
-									: 'global-tooltip-arrow-bottom'
-							}`}
-						/>
+<div class="flex flex-col gap-4">
+	<!-- Filter Multi-Select -->
+	<div class="flex justify-end">
+		<div class="relative">
+			<button
+				id="filter-toggle"
+				class="global-form-element text-sm px-3 py-2 rounded-lg border border-theme-400/30 bg-white/10 backdrop-blur-sm text-zinc-700 dark:text-zinc-300 flex items-center gap-2 cursor-pointer"
+				aria-label="Filter technologies by category">
+				<span id="filter-text">All Categories</span>
+				<svg
+					class="w-4 h-4 transition-transform"
+					id="filter-arrow"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M19 9l-7 7-7-7"></path>
+				</svg>
+			</button>
+			<div
+				id="filter-dropdown"
+				class="absolute right-0 top-full mt-1 bg-white dark:bg-zinc-800 border border-theme-400/30 rounded-lg shadow-lg z-50 min-w-[200px] hidden">
+				<div class="p-2">
+					<div
+						class="text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-2 px-2">
+						Filter by category:
 					</div>
+					<label
+						class="flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-zinc-700 rounded cursor-pointer">
+						<input
+							type="checkbox"
+							value="all"
+							class="filter-checkbox"
+							checked
+						/>
+						<span class="text-sm">All Categories</span>
+					</label>
+					{
+						availableTags.map(tag => (
+							<label class="flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-zinc-700 rounded cursor-pointer">
+								<input type="checkbox" value={tag} class="filter-checkbox" />
+								<span class="text-sm">
+									{tag.charAt(0).toUpperCase() + tag.slice(1)}
+								</span>
+							</label>
+						))
+					}
 				</div>
 			</div>
-		))
-	}
+		</div>
+	</div>
+
+	<!-- Technologies Grid -->
+	<div class={classes} id="techs-grid">
+		{
+			topTechs.map(({ tech, count, projects }, index) => (
+				<div
+					class="relative group/tech"
+					data-tags={
+						skills
+							.find(s => (s.data.name || s.slug) === tech)
+							?.data.tags?.join(' ') || ''
+					}>
+					<SkillPill
+						skillName={tech}
+						variant="default"
+						size={size === 'xs' ? 'xs' : 'md'}
+					/>
+					{/* Tooltip showing usage count and projects - positioned above or below based on row */}
+					<div
+						class={`absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover/tech:opacity-100 group-active/tech:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 ${
+							index < 5 ? 'top-full mt-2' : 'bottom-full mb-2'
+						}`}>
+						<div class="global-tooltip max-w-xs">
+							<div class="global-tooltip-content">
+								<div class="text-sm font-medium mb-1">
+									Used in {count} project{count > 1 ? 's' : ''}
+								</div>
+								{projects.length > 0 && (
+									<div class="text-xs text-zinc-300">
+										<div class="font-medium mb-1">Projects:</div>
+										<div class="space-y-1">
+											{projects.slice(0, 3).map(project => (
+												<div class="truncate">• {project}</div>
+											))}
+											{projects.length > 3 && (
+												<div class="text-zinc-400">
+													... and {projects.length - 3} more
+												</div>
+											)}
+										</div>
+									</div>
+								)}
+							</div>
+							<div
+								class={`absolute left-1/2 transform -translate-x-1/2 global-tooltip-arrow ${
+									index < 5
+										? 'global-tooltip-arrow-top'
+										: 'global-tooltip-arrow-bottom'
+								}`}
+							/>
+						</div>
+					</div>
+				</div>
+			))
+		}
+	</div>
 </div>
+
+<script>
+	// Handle multi-select filtering functionality
+	document.addEventListener('DOMContentLoaded', function () {
+		const filterToggle = document.getElementById(
+			'filter-toggle'
+		) as HTMLButtonElement;
+		const filterDropdown = document.getElementById(
+			'filter-dropdown'
+		) as HTMLDivElement;
+		const filterArrow = document.getElementById('filter-arrow') as SVGElement;
+		const filterText = document.getElementById(
+			'filter-text'
+		) as HTMLSpanElement;
+		const filterCheckboxes = document.querySelectorAll(
+			'.filter-checkbox'
+		) as NodeListOf<HTMLInputElement>;
+		const techGrid = document.getElementById('techs-grid');
+
+		if (!filterToggle || !filterDropdown || !techGrid) return;
+
+		let selectedFilters: string[] = ['all'];
+
+		// Toggle dropdown
+		filterToggle.addEventListener('click', function (e) {
+			e.stopPropagation();
+			const isHidden = filterDropdown.classList.contains('hidden');
+
+			if (isHidden) {
+				filterDropdown.classList.remove('hidden');
+				filterArrow.style.transform = 'rotate(180deg)';
+			} else {
+				filterDropdown.classList.add('hidden');
+				filterArrow.style.transform = 'rotate(0deg)';
+			}
+		});
+
+		// Close dropdown when clicking outside
+		document.addEventListener('click', function (e) {
+			if (
+				!filterToggle.contains(e.target as Node) &&
+				!filterDropdown.contains(e.target as Node)
+			) {
+				filterDropdown.classList.add('hidden');
+				filterArrow.style.transform = 'rotate(0deg)';
+			}
+		});
+
+		// Handle checkbox changes
+		filterCheckboxes.forEach(checkbox => {
+			checkbox.addEventListener('change', function () {
+				const value = this.value;
+
+				if (value === 'all') {
+					// If "All Categories" is checked, uncheck others and show all
+					if (this.checked) {
+						filterCheckboxes.forEach(cb => {
+							if (cb.value !== 'all') {
+								cb.checked = false;
+							}
+						});
+						selectedFilters = ['all'];
+					} else {
+						// If "All Categories" is unchecked, check the first other option
+						const otherCheckboxes = Array.from(filterCheckboxes).filter(
+							cb => cb.value !== 'all'
+						);
+						if (otherCheckboxes.length > 0) {
+							otherCheckboxes[0].checked = true;
+							selectedFilters = [otherCheckboxes[0].value];
+						}
+					}
+				} else {
+					// If other option is checked, uncheck "All Categories"
+					const allCheckbox = document.querySelector(
+						'.filter-checkbox[value="all"]'
+					) as HTMLInputElement;
+					if (allCheckbox) {
+						allCheckbox.checked = false;
+					}
+
+					// Update selected filters
+					selectedFilters = Array.from(filterCheckboxes)
+						.filter(cb => cb.checked && cb.value !== 'all')
+						.map(cb => cb.value);
+
+					// If no filters selected, default to "All Categories"
+					if (selectedFilters.length === 0) {
+						allCheckbox.checked = true;
+						selectedFilters = ['all'];
+					}
+				}
+
+				updateFilterText();
+				filterTechs();
+			});
+		});
+
+		function updateFilterText() {
+			if (selectedFilters.includes('all')) {
+				filterText.textContent = 'All Categories';
+			} else if (selectedFilters.length === 1) {
+				filterText.textContent =
+					selectedFilters[0].charAt(0).toUpperCase() +
+					selectedFilters[0].slice(1);
+			} else {
+				filterText.textContent = `${selectedFilters.length} Categories`;
+			}
+		}
+
+		function filterTechs() {
+			const techItems = techGrid!.querySelectorAll('.group\\/tech');
+
+			techItems.forEach(item => {
+				const tags = item.getAttribute('data-tags') || '';
+				const element = item as HTMLElement;
+
+				if (
+					selectedFilters.includes('all') ||
+					selectedFilters.some(filter => tags.includes(filter))
+				) {
+					element.style.display = 'block';
+				} else {
+					element.style.display = 'none';
+				}
+			});
+		}
+	});
+</script>

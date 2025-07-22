@@ -4,15 +4,15 @@ tags:
   - role
   - portfolio
 created: 2025-07-15T14:35:00
-modified: 2025-07-22T14:46:56+01:00
+modified: 2025-07-22T17:36:28+01:00
 viewCount: 2
 dateStart: 2015-07-01
 dateEnd: 2019-07-01
 linkedCompany:
   - "[[RLE International]]"
-shortRoleDescription: "TBC"
-fullRoleDescription: "Internally I have been responsible for the creation of numerous project\ntracking documents for the organisation and a range of customers through.\n<span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> coding. Projects included timesheet & holiday\nmanagement, cost & resource estimating, warehouse storage tracking and\na technical documentation library."
-keyAchievement: "TBC"
+shortRoleDescription: "Internal project tracking and delivery process improvements through tools built with <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span>."
+fullRoleDescription: "Internally I have been responsible for the creation of numerous project\ntracking documents for the organisation and a range of customers through <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> coding. Projects included timesheet & holiday\nmanagement, cost & resource estimating, warehouse storage tracking and\na technical documentation library."
+keyAchievement: "Updating and maintaining the main cost and quoting model used within the <span class=\"theme-link\">RLE UK</span> business."
 ---
 
 # Process Development
@@ -25,16 +25,14 @@ keyAchievement: "TBC"
 
 ## Short Role Description
 
-TBC
+Internal project tracking and delivery process improvements through tools built with <span class="theme-link">Excel</span> and <span class="theme-link">VBA</span>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Full Role Description
 
 Internally I have been responsible for the creation of numerous project
-tracking documents for the organisation and a range of customers through.
-
-<span class="theme-link">Excel</span> and <span class="theme-link">VBA</span> coding. Projects included timesheet & holiday
+tracking documents for the organisation and a range of customers through <span class="theme-link">Excel</span> and <span class="theme-link">VBA</span> coding. Projects included timesheet & holiday
 management, cost & resource estimating, warehouse storage tracking and
 a technical documentation library.
 
@@ -42,7 +40,7 @@ a technical documentation library.
 
 ## Key Achievement
 
-TBC
+Updating and maintaining the main cost and quoting model used within the <span class="theme-link">RLE UK</span> business.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

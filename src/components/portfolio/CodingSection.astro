@@ -26,7 +26,7 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 	class="scroll-m-16 px-8 max-sm:px-4 py-8"
 	id="coding"
 	aria-label="Coding section">
-	<div class="flex gap-4 items-center justify-center">
+	<div class="flex gap-4 items-center justify-center mb-8">
 		<Icon class="text-3xl dark:text-white text-blacktext" name="code" />
 		<Heading text="" textGradient="Coding " level={2} />
 	</div>
@@ -54,7 +54,7 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 
 		<!-- Skills Bubble -->
 		<div
-			class="col-span-2 row-span-1 row-start-1 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 p-[.2rem] hover:to-theme-300/30 dark:hover:to-theme-600/30 md:col-start-1 md:row-start-1 md:row-span-2">
+			class="col-span-2 row-span-1 row-start-1 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 p-[.2rem] hover:to-theme-300/30 dark:hover:to-theme-600/30 md:col-start-1 md:row-start-1 md:row-span-2 max-sm:aspect-square">
 			<article
 				class="group relative flex h-full flex-col justify-start overflow-hidden rounded-2xl bg-linear-to-br from-riptide-100 to-white dark:from-theme-950 dark:to-zinc-950 p-8 transition-all hover:shadow-[0_20px_50px_rgba(13,188,130,0.4)] max-md:p-6 dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-1/2 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-70 before:transition before:-z-0 hover:before:animate-pulse xl:before:bottom-2/5">
 				<div class="flex items-center justify-between gap-4 max-md:gap-2 mb-2">
@@ -67,19 +67,46 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 						<Heading text="Skills" textGradient="" level={3} />
 					</div>
 					<div class="flex items-center gap-2">
-						<select
-							id="skills-filter"
-							class="global-form-element bg-transparent px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-theme-400 focus:border-transparent">
-							{
-								filterOptions.map(tag => (
-									<option value={tag}>
-										{tag === 'all'
-											? 'All Skills'
-											: tag.charAt(0).toUpperCase() + tag.slice(1)}
-									</option>
-								))
-							}
-						</select>
+						<!-- Multi-select dropdown -->
+						<div class="relative">
+							<button
+								id="skills-filter-btn"
+								class="global-form-element bg-transparent px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-theme-400 focus:border-transparent flex items-center gap-2 min-w-[120px]">
+								<span id="skills-filter-text">All Skills</span>
+								<svg
+									class="w-4 h-4"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M19 9l-7 7-7-7"></path>
+								</svg>
+							</button>
+							<div
+								id="skills-filter-dropdown"
+								class="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-50 hidden max-h-60 overflow-y-auto">
+								{
+									filterOptions.map(tag => (
+										<label class="flex items-center px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+											<input
+												type="checkbox"
+												value={tag}
+												class="skills-filter-checkbox mr-2 rounded border-gray-300 dark:border-gray-600 text-theme-400 focus:ring-theme-400"
+												checked={tag === 'all'}
+											/>
+											<span class="text-sm text-gray-900 dark:text-gray-100">
+												{tag === 'all'
+													? 'All Skills'
+													: tag.charAt(0).toUpperCase() + tag.slice(1)}
+											</span>
+										</label>
+									))
+								}
+							</div>
+						</div>
 						<button
 							id="fullscreen-skills-btn"
 							class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
@@ -124,3 +151,101 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 		</div>
 	</div>
 </section>
+
+<!-- Clear space below coding section on mobile -->
+<div class="max-sm:h-8"></div>
+
+<script>
+	// Multi-select dropdown functionality
+	document.addEventListener('DOMContentLoaded', () => {
+		const filterBtn = document.getElementById('skills-filter-btn');
+		const dropdown = document.getElementById('skills-filter-dropdown');
+		const filterText = document.getElementById('skills-filter-text');
+		const checkboxes = document.querySelectorAll('.skills-filter-checkbox');
+		let selectedFilters = ['all'];
+
+		// Toggle dropdown
+		if (filterBtn && dropdown) {
+			filterBtn.addEventListener('click', e => {
+				e.stopPropagation();
+				dropdown.classList.toggle('hidden');
+			});
+		}
+
+		// Close dropdown when clicking outside
+		document.addEventListener('click', () => {
+			if (dropdown) {
+				dropdown.classList.add('hidden');
+			}
+		});
+
+		// Handle checkbox changes
+		checkboxes.forEach(checkbox => {
+			checkbox.addEventListener('change', e => {
+				const target = e.target as HTMLInputElement;
+				const value = target.value;
+
+				if (value === 'all') {
+					// If "All Skills" is selected, unselect others
+					if (target.checked) {
+						checkboxes.forEach(cb => {
+							if (cb !== target) {
+								(cb as HTMLInputElement).checked = false;
+							}
+						});
+						selectedFilters = ['all'];
+					} else {
+						// If "All Skills" is unchecked, select the first other option
+						const firstOtherCheckbox = Array.from(checkboxes).find(
+							cb => (cb as HTMLInputElement).value !== 'all'
+						) as HTMLInputElement;
+						if (firstOtherCheckbox) {
+							firstOtherCheckbox.checked = true;
+							selectedFilters = [firstOtherCheckbox.value];
+						}
+					}
+				} else {
+					// If other option is selected, unselect "All Skills"
+					const allCheckbox = Array.from(checkboxes).find(
+						cb => (cb as HTMLInputElement).value === 'all'
+					) as HTMLInputElement;
+					if (allCheckbox) {
+						allCheckbox.checked = false;
+					}
+
+					if (target.checked) {
+						selectedFilters.push(value);
+					} else {
+						selectedFilters = selectedFilters.filter(f => f !== value);
+					}
+
+					// If no filters selected, select "All Skills"
+					if (selectedFilters.length === 0) {
+						allCheckbox.checked = true;
+						selectedFilters = ['all'];
+					}
+				}
+
+				// Update display text
+				if (filterText) {
+					if (selectedFilters.includes('all') || selectedFilters.length === 0) {
+						filterText.textContent = 'All Skills';
+					} else if (selectedFilters.length === 1) {
+						const filter = selectedFilters[0];
+						filterText.textContent =
+							filter.charAt(0).toUpperCase() + filter.slice(1);
+					} else {
+						filterText.textContent = `${selectedFilters.length} Filters`;
+					}
+				}
+
+				// Dispatch custom event for the Preact component
+				window.dispatchEvent(
+					new CustomEvent('skillsFilterChange', {
+						detail: { filters: selectedFilters },
+					})
+				);
+			});
+		});
+	});
+</script>

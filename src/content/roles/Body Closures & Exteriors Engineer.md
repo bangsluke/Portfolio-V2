@@ -4,16 +4,16 @@ tags:
   - role
   - portfolio
 created: 2025-07-16T09:36:00
-modified: 2025-07-22T14:44:52+01:00
+modified: 2025-07-22T17:44:22+01:00
 viewCount: 6
 dateStart: 2018-06-01
 dateEnd: 2019-07-01
 linkedCompany:
   - "[[RLE International]]"
   - "[[Dyson]]"
-shortRoleDescription: "Lead engineer for the Body Closures function group for a low production build taking designs from concept to production. I also owned systems within Body Exteriors and Interiors and designed an <span class=\"theme-link\">Excel</span> <span class=\"theme-link\">BoM</span> management tool on <span class=\"theme-link\">SharePoint</span> to track team costs, weights and timings for all systems. Design proposals presented and justified to management to confirm system functionality for financial sign off. Robust resolution plans developed where required to meet extended targets."
-fullRoleDescription: "TBC"
-keyAchievement: "TBC"
+shortRoleDescription: "Lead engineer for the Body Closures function group for a low production build taking designs from concept to production, and development of an <span class=\"theme-link\">Excel</span> <span class=\"theme-link\">BoM</span> management tool on <span class=\"theme-link\">SharePoint</span> to track team costs, weights and timings for all systems."
+fullRoleDescription: "Lead engineer for the Body Closures function group for a low production build taking designs from concept to production. I also owned systems within Body Exteriors and Interiors and designed an <span class=\"theme-link\">Excel</span> <span class=\"theme-link\">BoM</span> management tool on <span class=\"theme-link\">SharePoint</span> to track team costs, weights and timings for all systems. Design proposals presented and justified to management to confirm system functionality for financial sign off. Robust resolution plans developed where required to meet extended targets.\nI also supported guiding two graduates starting with our company with their initial development in Engineering."
+keyAchievement: "Management of all Body Closures prototype designs from concept to pre-build, including the development of a <span class=\"theme-link\">BoM</span> management tool for the wider team."
 ---
 
 # Body Closures & Exteriors Engineer
@@ -26,19 +26,21 @@ keyAchievement: "TBC"
 
 ## Short Role Description
 
-Lead engineer for the Body Closures function group for a low production build taking designs from concept to production. I also owned systems within Body Exteriors and Interiors and designed an <span class="theme-link">Excel</span> <span class="theme-link">BoM</span> management tool on <span class="theme-link">SharePoint</span> to track team costs, weights and timings for all systems. Design proposals presented and justified to management to confirm system functionality for financial sign off. Robust resolution plans developed where required to meet extended targets.
+Lead engineer for the Body Closures function group for a low production build taking designs from concept to production, and development of an <span class="theme-link">Excel</span> <span class="theme-link">BoM</span> management tool on <span class="theme-link">SharePoint</span> to track team costs, weights and timings for all systems.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Full Role Description
 
-TBC
+Lead engineer for the Body Closures function group for a low production build taking designs from concept to production. I also owned systems within Body Exteriors and Interiors and designed an <span class="theme-link">Excel</span> <span class="theme-link">BoM</span> management tool on <span class="theme-link">SharePoint</span> to track team costs, weights and timings for all systems. Design proposals presented and justified to management to confirm system functionality for financial sign off. Robust resolution plans developed where required to meet extended targets.
+
+I also supported guiding two graduates starting with our company with their initial development in Engineering.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Key Achievement
 
-TBC
+Management of all Body Closures prototype designs from concept to pre-build, including the development of a <span class="theme-link">BoM</span> management tool for the wider team.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

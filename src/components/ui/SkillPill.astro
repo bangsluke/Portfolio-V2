@@ -40,6 +40,22 @@ function cleanSkillName(skillName: string) {
 	};
 }
 
+// Get the original filename for tooltip display
+function getOriginalFileName(skillName: string) {
+	// Remove Obsidian link brackets
+	let cleaned = skillName.replace(/\[\[|\]\]/g, '');
+
+	// Handle pipe aliases: use the part before the pipe
+	if (cleaned.includes('|')) {
+		const [skillPath] = cleaned.split('|');
+		// Extract just the filename from the path (last part after /)
+		const skillNameFromPath = skillPath.split('/').pop() || skillPath;
+		return skillNameFromPath;
+	}
+
+	return cleaned;
+}
+
 // Get the icon name for the skill by looking up the skill in the skills collection
 async function findIconForSkill(skillName: string) {
 	// Clean the skill name and get lookup/display names
@@ -94,6 +110,7 @@ async function findIconForSkill(skillName: string) {
 
 const cleanedSkill = cleanSkillName(skillName);
 const iconName = await findIconForSkill(skillName);
+const originalFileName = getOriginalFileName(skillName);
 
 // Ensure icon name is lowercase for the Icon component
 const finalIconName = iconName ? iconName.toLowerCase() : null;
@@ -134,21 +151,75 @@ const baseClasses =
 const containerClasses = `${baseClasses} ${sizeClasses[size].container} ${variantClasses[variant]} ${className}`;
 ---
 
-<span class={containerClasses} title={cleanedSkill.displayName}>
-	{
-		finalIconName ? (
-			<Icon
-				name={finalIconName}
-				class={`${sizeClasses[size].icon} text-gray-600`}
-			/>
-		) : (
-			<div
-				class={`${sizeClasses[size].icon} bg-gray-300 rounded-full flex items-center justify-center text-gray-500 text-xs`}>
-				?
-			</div>
-		)
-	}
-	<span class={`${sizeClasses[size].text} font-medium`}>
-		{cleanedSkill.displayName}
+<div class="relative group/skill">
+	<span class={containerClasses} title={originalFileName}>
+		{
+			finalIconName ? (
+				<Icon
+					name={finalIconName}
+					class={`${sizeClasses[size].icon} text-gray-600`}
+				/>
+			) : (
+				<div
+					class={`${sizeClasses[size].icon} bg-gray-300 rounded-full flex items-center justify-center text-gray-500 text-xs`}>
+					?
+				</div>
+			)
+		}
+		<span class={`${sizeClasses[size].text} font-medium`}>
+			{cleanedSkill.displayName}
+		</span>
 	</span>
-</span>
+
+	<!-- Mobile tooltip -->
+	<div
+		class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover/skill:opacity-100 group-active/skill:opacity-100 transition-opacity duration-200 pointer-events-none z-50 md:hidden">
+		<div class="global-tooltip">
+			<div class="global-tooltip-content">
+				{originalFileName}
+			</div>
+			<div
+				class="absolute left-1/2 transform -translate-x-1/2 global-tooltip-arrow global-tooltip-arrow-top">
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	// Handle mobile touch events for skill pills
+	document.addEventListener('DOMContentLoaded', function () {
+		const skillPills = document.querySelectorAll('.group\\/skill');
+
+		skillPills.forEach(pill => {
+			let tooltipActive = false;
+
+			// Handle touch start for tooltip
+			pill.addEventListener(
+				'touchstart',
+				function (this: HTMLElement, e: Event) {
+					const touchEvent = e as TouchEvent;
+					touchEvent.preventDefault();
+					touchEvent.stopPropagation();
+
+					if (tooltipActive) {
+						// Hide tooltip if already active
+						this.classList.remove('group-active/skill');
+						tooltipActive = false;
+					} else {
+						// Show tooltip
+						this.classList.add('group-active/skill');
+						tooltipActive = true;
+					}
+				}
+			);
+
+			// Handle click outside to close tooltip
+			document.addEventListener('click', function (e: Event) {
+				if (!pill.contains(e.target as Node)) {
+					pill.classList.remove('group-active/skill');
+					tooltipActive = false;
+				}
+			});
+		});
+	});
+</script>
