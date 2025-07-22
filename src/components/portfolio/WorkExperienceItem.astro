@@ -8,11 +8,14 @@ interface Props {
 	dateEnd?: string | Date | null;
 	logoURL?: string | null;
 	linkedCompany?: string[];
+	shortRoleDescription?: string;
+	fullRoleDescription?: string;
 	roleDescription?: string;
 	keyAchievement?: string;
 	processedLinkedCompany?: string;
 	companyLogoURL?: string | null;
 	allCompanyLogos?: { logoURL: string | null; name: string }[];
+	useShort?: boolean;
 }
 
 const {
@@ -22,15 +25,23 @@ const {
 	dateEnd,
 	logoURL,
 	linkedCompany,
+	shortRoleDescription,
+	fullRoleDescription,
 	roleDescription,
 	keyAchievement,
 	processedLinkedCompany,
 	companyLogoURL,
 	allCompanyLogos,
+	useShort = false,
 } = Astro.props;
 
+// Pick the correct description
+const descriptionToShow = useShort
+	? shortRoleDescription || roleDescription
+	: fullRoleDescription || roleDescription;
+
 // Process content to handle Obsidian links and markdown
-const processedRoleDescription = processContent(roleDescription);
+const processedRoleDescription = processContent(descriptionToShow);
 const processedKeyAchievement = processContent(keyAchievement);
 
 // Format dates in "MMM YYYY - MMM YYYY" format

@@ -1519,3 +1519,134 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - Replaced Icon component with direct SVG in ReferencesCarousel.astro to ensure text-white class properly colors the people icon white
 - Fixed SVG sizing in ReferencesCarousel.astro by removing explicit w-16 h-16 classes to match other icons using text-4xl
 - Replaced complex people SVG with simple 15x15 viewBox person icon to match standard icon sizing in section headings
+
+## 2024-12-19 14:36 - Complete Tooltip and Form Element Standardization
+
+### Problems Fixed:
+- **MostCommonTechs.astro**: Tooltips were using custom gray styling instead of global tooltip classes
+- **Projects index page**: Dropdown selects had inconsistent styling across desktop and mobile
+- **SkillsBubbleChart.tsx**: Filter dropdown used different styling than other form elements
+- **CodingSection.astro**: Skills filter dropdown had inconsistent styling
+- **Form elements**: No standardized styling for dropdowns and inputs across the site
+
+### Changes Made:
+- Updated MostCommonTechs tooltips to use global-tooltip classes with proper arrow positioning
+- Created global-form-element class for consistent form styling across the site
+- Updated all dropdown selects to use global-form-element styling:
+  - Projects index page category and date filters (desktop and mobile)
+  - SkillsBubbleChart filter dropdown
+  - CodingSection skills filter dropdown
+- Added global-form-element CSS class with same styling as tooltips but with pointer-events: auto
+
+### Technical Details:
+- **Global Tooltip Classes**: `.global-tooltip`, `.global-tooltip-content`, `.global-tooltip-arrow*`
+- **Global Form Element Class**: `.global-form-element` with same visual styling as tooltips
+- **Background Color**: Dark red (#9e4933) for both tooltips and form elements
+- **Border**: Theme-colored thin border (rgb(108 233 183 / 0.3))
+- **Border Radius**: 0.5rem for consistent rounded corners
+- **Box Shadow**: Subtle shadow for depth and visual separation
+
+### Result:
+- ✅ All tooltips now use consistent global styling
+- ✅ All dropdown selects have standardized appearance
+- ✅ Visual consistency across the entire site
+- ✅ Maintained functionality while improving design coherence
+- ✅ Dark red background with theme-colored borders throughout
+
+## 2024-12-19 14:50 - Icon Tooltip Standardization
+
+### Problems Fixed:
+- **SkillItem.astro**: Icons were using browser default title tooltips instead of global styling
+- **ScrollToTop.astro**: Button was using browser default title tooltip
+- **Share.astro**: Share buttons were using browser default title tooltips
+- **MostCommonTechs.astro**: Already updated in previous session
+
+### Changes Made:
+- Updated SkillItem icons to use custom tooltip divs with global-tooltip classes
+- Updated ScrollToTop button to use custom tooltip with global styling
+- Updated Share component buttons to use custom tooltips with global styling
+- All tooltips now use consistent dark red background (#9e4933) with theme-colored borders
+
+### Technical Details:
+- Replaced simple `title` attributes with custom tooltip divs
+- Used `group/tooltip` classes for hover functionality
+- Positioned tooltips above elements with proper arrow indicators
+- Maintained accessibility with `aria-label` attributes
+
+### Result:
+- ✅ All icon tooltips now use consistent global styling
+- ✅ Improved visual consistency across the site
+- ✅ Better user experience with styled tooltips instead of browser defaults
+- ✅ Maintained all functionality while enhancing design
+
+## 2024-12-19 15:11 - Mobile Menu and Header Icon Improvements
+
+### Mobile Menu Enhancements
+- **Enhanced mobile menu functionality** in `src/scripts/menu.js`:
+  - Added `closeMobileMenu()` and `openMobileMenu()` functions for better control
+  - **Close menu on navigation link click**: Menu now closes when user clicks any navigation link
+  - **Close menu on click outside**: Menu closes when clicking outside the menu area
+  - **Close menu on escape key**: Added keyboard support to close menu with Escape key
+  - **Event propagation control**: Prevented hamburger click from bubbling to document
+
+### Header Icon Hover Effects
+- **Logo hover effects** in `src/components/ui/Logo.astro`:
+  - Added theme color change on hover (`hover:text-theme-300`)
+  - Added scale transform on hover (`hover:scale-150`)
+  - Added smooth transitions (`transition-all`)
+
+- **Theme icon hover effects** in `src/components/ui/ThemeIcon.astro`:
+  - Added scale transform on hover (`hover:scale-150`)
+  - Maintained existing theme color change on hover
+  - Added smooth transitions (`transition-all`)
+
+### Technical Details
+- All hover effects use `scale-150` (1.5x) to match existing Social component styling
+- Transitions use `transition-all` for smooth animations
+- Mobile menu improvements maintain existing functionality while adding better UX
+- Build tested and confirmed working
+
+> [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 15:21 - Projects Gallery Improvements
+
+### Layout and Spacing
+- **Increased Projects header gap** in `src/components/portfolio/ProjectsGallery.astro`:
+  - Changed `pt-8` to `pt-16` for more spacing between header and gallery
+
+### Mobile Experience Enhancements
+- **Fixed mobile project selection behavior** in `src/components/portfolio/ProjectCard.astro`:
+  - **Persistent selection**: Cards now stay bright/selected until another card is clicked
+  - **Proper deselection**: Only one card can be selected at a time
+  - **Click outside to deselect**: Tapping outside deselects the current card
+
+- **Fixed mobile tooltip behavior**:
+  - **Persistent tooltips**: Information tooltips now stay visible until clicked off
+  - **Removed auto-hide**: Removed 3-second auto-hide timer
+  - **Click outside to close**: Tooltips close when clicking outside the tooltip area
+
+- **Fixed mobile "See more detail" section**:
+  - **Proper event handling**: Added `event.stopPropagation()` to prevent card deselection
+  - **Working links**: "See more detail..." links now work correctly without deselecting cards
+
+### Desktop Experience Enhancements
+- **Added desktop card selection functionality**:
+  - **Clickable cards**: Cards are now clickable on desktop with `cursor-pointer`
+  - **Visual feedback**: Selected cards show border, shadow, and scale effects
+  - **"Show more details" text**: Appears at bottom when card is selected
+  - **Smooth transitions**: Opacity transitions for detail link appearance
+
+### Technical Implementation
+- **Unified event handling**: Single click handler for both mobile and desktop
+- **Responsive design**: Different behaviors for mobile vs desktop
+- **Event propagation control**: Proper handling of link clicks vs card clicks
+- **CSS animations**: Smooth slide-in animations for detail links
+- **State management**: Proper tracking of selected card state
+
+### User Experience Improvements
+- **Consistent behavior**: Cards behave predictably across devices
+- **Visual feedback**: Clear indication of selected state
+- **Accessibility**: Proper event handling and keyboard support
+- **Performance**: Efficient event listeners and state management
+
+> [Back to Table of Contents](#table-of-contents)

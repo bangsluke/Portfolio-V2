@@ -75,17 +75,21 @@ const classes = `${baseClasses} ${variantClasses[variant as TechVariant]}`;
 				/>
 				{/* Tooltip showing usage count - positioned above or below based on row */}
 				<div
-					class={`absolute left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 ${
+					class={`absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 ${
 						index < 5 ? 'top-full mt-2' : 'bottom-full mb-2'
 					}`}>
-					Used in {count} project{count > 1 ? 's' : ''}
-					<div
-						class={`absolute left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-transparent ${
-							index < 5
-								? 'top-0 -mt-1 border-t-2 border-t-gray-900'
-								: 'bottom-0 -mb-1 border-b-2 border-b-gray-900'
-						}`}
-					/>
+					<div class="global-tooltip">
+						<div class="global-tooltip-content">
+							Used in {count} project{count > 1 ? 's' : ''}
+						</div>
+						<div
+							class={`absolute left-1/2 transform -translate-x-1/2 global-tooltip-arrow ${
+								index < 5
+									? 'global-tooltip-arrow-top'
+									: 'global-tooltip-arrow-bottom'
+							}`}
+						/>
+					</div>
 				</div>
 			</div>
 		))

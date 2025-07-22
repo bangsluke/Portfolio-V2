@@ -32,7 +32,17 @@ function extractSectionsToFrontmatter(content) {
 	const sectionsToExtract = [
 		// Role-specific sections
 		{
-			name: 'Role Description',
+			name: 'Short Role Description',
+			property: 'shortRoleDescription',
+			contentType: 'role',
+		},
+		{
+			name: 'Full Role Description',
+			property: 'fullRoleDescription',
+			contentType: 'role',
+		},
+		{
+			name: 'Role Description', // legacy fallback
 			property: 'roleDescription',
 			contentType: 'role',
 		},
@@ -357,4 +367,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 	main();
 }
 
-export { processObsidianSyntax, processMarkdownFile, processDirectory };
+export { processDirectory, processMarkdownFile, processObsidianSyntax };
