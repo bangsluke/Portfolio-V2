@@ -1705,3 +1705,100 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - **Visual consistency**: White date picker icons match the overall theme
 
 > [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 17:45 - Project Slug Page and Skills Bubble Enhancements
+
+### Project Slug Page Improvements
+- **Fixed "Developed For" section layout** in `src/pages/portfolio/projects/[slug].astro`:
+  - **Centered layout**: Changed from grid to flex layout with `justify-center` for better alignment
+  - **Company name display**: Updated to use original filename minus extension instead of slug
+  - **Consistent naming**: Both companies and clients now use the same `getCompanyName()` function
+  - **Better visual hierarchy**: Improved spacing and alignment for company/client cards
+
+- **Fixed project title capitalization**:
+  - **Original filename display**: Project titles now show the original filename without capitalization
+  - **Consistent naming**: Uses `project.slug.replace(/-/g, ' ')` instead of capitalized version
+  - **Better readability**: Maintains original project naming conventions across the site
+
+### Coding Section Layout Improvements
+- **Enhanced spacing and mobile layout** in `src/components/portfolio/CodingSection.astro`:
+  - **Header spacing**: Added `mb-8` to the coding header for better visual separation
+  - **Mobile spacing**: Added clear space below the coding section on mobile with `max-sm:h-8`
+  - **Skills bubble container**: Made skills bubble section a big square container on mobile with `max-sm:aspect-square`
+  - **Better mobile experience**: Improved spacing and proportions for mobile devices
+
+### Multi-Select Skills Filter
+- **Replaced single-select with multi-select dropdown**:
+  - **Checkbox-based selection**: Users can now select multiple skill categories simultaneously
+  - **Smart selection logic**: "All Skills" option works as a toggle with other options
+  - **Visual feedback**: Shows "All Skills", single filter name, or "X Filters" in the button text
+  - **Consistent styling**: Uses the same `global-form-element` styling as other form elements
+  - **Dropdown behavior**: Closes when clicking outside, proper keyboard navigation
+
+### Skills Bubble Chart Enhancements
+- **Improved project counting logic** in `src/components/portfolio/SkillsBubbleChart.tsx`:
+  - **Better matching**: Now checks for exact matches, partial matches, and pipe aliases
+  - **Obsidian link handling**: Properly cleans technology names by removing `[[]]` brackets
+  - **Multiple match strategies**: Compares skill name, skill ID, and extracted path names
+  - **Accurate counts**: More precise project usage counting for each skill
+
+- **Enhanced filtering system**:
+  - **Multi-select support**: Skills bubble chart now supports multiple selected filters
+  - **Event-driven updates**: Uses custom events to sync filter state between components
+  - **Real-time filtering**: Chart updates immediately when filters change
+  - **Filter synchronization**: Main filter and modal filter stay in sync
+
+### Fullscreen Modal Improvements
+- **Added filter to fullscreen modal** in `src/components/portfolio/SkillsBubbles.astro`:
+  - **Modal filter dropdown**: Fullscreen modal now includes the same multi-select filter
+  - **Synchronized state**: Modal filter stays in sync with the main filter
+  - **Consistent UX**: Same filtering behavior in both main view and fullscreen view
+  - **Better accessibility**: Proper ARIA labels and keyboard navigation
+
+### Technical Implementation
+- **Enhanced event handling**: Custom events for filter synchronization between components
+- **Improved TypeScript**: Better type safety and error handling
+- **Responsive design**: Mobile-first approach with proper aspect ratios
+- **Performance optimization**: Efficient filtering and rendering logic
+- **State management**: Proper cleanup and event listener management
+
+### User Experience Improvements
+- **Better project discovery**: More accurate project counting helps users understand skill usage
+- **Enhanced filtering**: Multi-select filters provide more granular control over displayed skills
+- **Improved mobile experience**: Better spacing and layout on mobile devices
+- **Consistent interface**: Unified filtering experience across main view and fullscreen modal
+- **Better visual hierarchy**: Improved spacing and alignment throughout the site
+
+> [Back to Table of Contents](#table-of-contents)
+
+## 2024-12-19 18:06 - Project Slug Page Layout Width Standardization
+
+### Layout Width Consistency
+- **Updated project slug page layout** in `src/pages/portfolio/projects/[slug].astro`:
+  - **Consistent content width**: Added `max-w-4xl mx-auto` container to match WorkExperience page
+  - **Proper padding structure**: Added `px-8` horizontal padding to all sections
+  - **Background consistency**: Added `bg-white dark:bg-gray-900` to match other pages
+  - **Structured layout**: Each section now has proper container and padding structure
+
+### Layout Improvements
+- **Top back button section**: Added proper padding and container structure
+- **Project image section**: Updated to use full width within max-w-4xl container
+- **Project details section**: Consistent padding and container structure
+- **Content sections**: Description, lessons learned, and company sections all use consistent layout
+- **Project links section**: Proper container and padding structure
+- **Bottom back button**: Consistent layout with other sections
+
+### Visual Consistency
+- **Unified page width**: All content now uses the same max-width as WorkExperience page
+- **Consistent spacing**: Proper padding and margins throughout the page
+- **Better readability**: Content is properly constrained and centered
+- **Responsive design**: Layout works well on all screen sizes
+- **Professional appearance**: Consistent with the overall site design
+
+### Technical Implementation
+- **Container structure**: Each section wrapped in `max-w-4xl mx-auto` container
+- **Padding consistency**: All sections use `px-8` for horizontal padding
+- **Background matching**: Added proper background colors to match site theme
+- **Responsive behavior**: Layout adapts properly to different screen sizes
+
+> [Back to Table of Contents](#table-of-contents)

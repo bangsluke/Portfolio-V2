@@ -39,7 +39,15 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 		const modal = document.getElementById('skills-fullscreen-modal');
 		const closeBtn = document.getElementById('close-skills-modal');
 		const modalOverlay = document.getElementById('skills-modal-overlay');
-		const skillsFilter = document.getElementById('skills-filter');
+		const modalFilterBtn = document.getElementById('modal-skills-filter-btn');
+		const modalDropdown = document.getElementById(
+			'modal-skills-filter-dropdown'
+		);
+		const modalFilterText = document.getElementById('modal-skills-filter-text');
+		const modalCheckboxes = document.querySelectorAll(
+			'.modal-skills-filter-checkbox'
+		);
+		let selectedFilters = ['all'];
 
 		if (fullscreenBtn) {
 			fullscreenBtn.addEventListener('click', () => {
@@ -72,19 +80,114 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 			}
 		});
 
-		// Sync filter between main and modal
-		if (skillsFilter) {
-			skillsFilter.addEventListener('change', e => {
-				const target = e.target as HTMLSelectElement;
-				const selectedValue = target.value;
-				// Dispatch custom event for the Preact component to listen to
+		// Modal filter functionality
+		if (modalFilterBtn && modalDropdown) {
+			modalFilterBtn.addEventListener('click', e => {
+				e.stopPropagation();
+				modalDropdown.classList.toggle('hidden');
+			});
+		}
+
+		// Close modal dropdown when clicking outside
+		document.addEventListener('click', () => {
+			if (modalDropdown) {
+				modalDropdown.classList.add('hidden');
+			}
+		});
+
+		// Handle modal checkbox changes
+		modalCheckboxes.forEach(checkbox => {
+			checkbox.addEventListener('change', e => {
+				const target = e.target as HTMLInputElement;
+				const value = target.value;
+
+				if (value === 'all') {
+					// If "All Skills" is selected, unselect others
+					if (target.checked) {
+						modalCheckboxes.forEach(cb => {
+							if (cb !== target) {
+								(cb as HTMLInputElement).checked = false;
+							}
+						});
+						selectedFilters = ['all'];
+					} else {
+						// If "All Skills" is unchecked, select the first other option
+						const firstOtherCheckbox = Array.from(modalCheckboxes).find(
+							cb => (cb as HTMLInputElement).value !== 'all'
+						) as HTMLInputElement;
+						if (firstOtherCheckbox) {
+							firstOtherCheckbox.checked = true;
+							selectedFilters = [firstOtherCheckbox.value];
+						}
+					}
+				} else {
+					// If other option is selected, unselect "All Skills"
+					const allCheckbox = Array.from(modalCheckboxes).find(
+						cb => (cb as HTMLInputElement).value === 'all'
+					) as HTMLInputElement;
+					if (allCheckbox) {
+						allCheckbox.checked = false;
+					}
+
+					if (target.checked) {
+						selectedFilters.push(value);
+					} else {
+						selectedFilters = selectedFilters.filter(f => f !== value);
+					}
+
+					// If no filters selected, select "All Skills"
+					if (selectedFilters.length === 0) {
+						allCheckbox.checked = true;
+						selectedFilters = ['all'];
+					}
+				}
+
+				// Update display text
+				if (modalFilterText) {
+					if (selectedFilters.includes('all') || selectedFilters.length === 0) {
+						modalFilterText.textContent = 'All Skills';
+					} else if (selectedFilters.length === 1) {
+						const filter = selectedFilters[0];
+						modalFilterText.textContent =
+							filter.charAt(0).toUpperCase() + filter.slice(1);
+					} else {
+						modalFilterText.textContent = `${selectedFilters.length} Filters`;
+					}
+				}
+
+				// Dispatch custom event for the Preact component
 				window.dispatchEvent(
 					new CustomEvent('skillsFilterChange', {
-						detail: { filter: selectedValue },
+						detail: { filters: selectedFilters },
 					})
 				);
 			});
-		}
+		});
+
+		// Listen for filter changes from main component
+		window.addEventListener('skillsFilterChange', (e: any) => {
+			const { filters } = e.detail;
+			selectedFilters = filters;
+
+			// Update modal checkboxes to match main filter
+			modalCheckboxes.forEach(checkbox => {
+				const target = checkbox as HTMLInputElement;
+				target.checked = selectedFilters.includes(target.value);
+			});
+
+			// Update modal filter text
+			if (modalFilterText) {
+				if (selectedFilters.includes('all') || selectedFilters.length === 0) {
+					modalFilterText.textContent = 'All Skills';
+				} else if (selectedFilters.length === 1) {
+					const filter = selectedFilters[0];
+					modalFilterText.textContent =
+						filter.charAt(0).toUpperCase() + filter.slice(1);
+				} else {
+					modalFilterText.textContent = `${selectedFilters.length} Filters`;
+				}
+			}
+		});
 	});
 </script>
 
@@ -102,22 +205,62 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">
 						Skills Bubble Chart
 					</h3>
-					<button
-						id="close-skills-modal"
-						class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
-						aria-label="Close fullscreen view">
-						<svg
-							class="w-6 h-6"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24">
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M6 18L18 6M6 6l12 12"></path>
-						</svg>
-					</button>
+					<div class="flex items-center gap-4">
+						<!-- Modal Multi-select dropdown -->
+						<div class="relative">
+							<button
+								id="modal-skills-filter-btn"
+								class="global-form-element bg-transparent px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-theme-400 focus:border-transparent flex items-center gap-2 min-w-[120px]">
+								<span id="modal-skills-filter-text">All Skills</span>
+								<svg
+									class="w-4 h-4"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M19 9l-7 7-7-7"></path>
+								</svg>
+							</button>
+							<div
+								id="modal-skills-filter-dropdown"
+								class="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-50 hidden max-h-60 overflow-y-auto">
+								{
+									filteredOptions.map(option => (
+										<label class="flex items-center px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+											<input
+												type="checkbox"
+												value={option.value}
+												class="modal-skills-filter-checkbox mr-2 rounded border-gray-300 dark:border-gray-600 text-theme-400 focus:ring-theme-400"
+												checked={option.value === 'all'}
+											/>
+											<span class="text-sm text-gray-900 dark:text-gray-100">
+												{option.label}
+											</span>
+										</label>
+									))
+								}
+							</div>
+						</div>
+						<button
+							id="close-skills-modal"
+							class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+							aria-label="Close fullscreen view">
+							<svg
+								class="w-6 h-6"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M6 18L18 6M6 6l12 12"></path>
+							</svg>
+						</button>
+					</div>
 				</div>
 				<div class="flex-1 overflow-hidden">
 					<SkillsBubbleChart

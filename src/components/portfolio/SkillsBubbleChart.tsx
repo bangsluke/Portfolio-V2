@@ -53,15 +53,16 @@ interface TooltipData {
 const SkillsBubbleChart = ({
 	skills,
 	projects,
-	selectedFilter = 'all',
-	onFilterChange,
-	filterOptions = [],
-	isFullscreen = false,
-	onClose,
+	selectedFilter: _selectedFilter = 'all',
+	onFilterChange: _onFilterChange,
+	filterOptions: _filterOptions = [],
+	isFullscreen: _isFullscreen = false,
+	onClose: _onClose,
 }: SkillsBubbleChartProps) => {
 	const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
-	const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+	const [_hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 	const [tooltip, setTooltip] = useState<TooltipData | null>(null);
+	const [selectedFilters, setSelectedFilters] = useState<string[]>(['all']);
 	const svgRef = useRef<SVGSVGElement>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const simulationRef = useRef<d3.Simulation<BubbleData, undefined> | null>(
@@ -105,23 +106,58 @@ const SkillsBubbleChart = ({
 		}
 	}, []);
 
-	// Calculate project count for each skill
+	// Calculate project count for each skill - improved logic
 	const getProjectCount = useCallback(
-		(skillName: string): number => {
-			return projects.filter(project =>
-				project.data.technologies?.some((tech: string) =>
-					tech.toLowerCase().includes(skillName.toLowerCase())
-				)
-			).length;
+		(skillName: string, skillId: string): number => {
+			return projects.filter(project => {
+				const technologies = project.data.technologies || [];
+				return technologies.some((tech: string) => {
+					// Clean the technology name (remove Obsidian brackets)
+					const cleanTech = tech.replace(/\[\[|\]\]/g, '');
+
+					// Check for exact match with skill name or skill ID
+					if (
+						cleanTech.toLowerCase() === skillName.toLowerCase() ||
+						cleanTech.toLowerCase() === skillId.toLowerCase()
+					) {
+						return true;
+					}
+
+					// Check for partial match (skill name contains tech or vice versa)
+					if (
+						cleanTech.toLowerCase().includes(skillName.toLowerCase()) ||
+						skillName.toLowerCase().includes(cleanTech.toLowerCase())
+					) {
+						return true;
+					}
+
+					// Handle pipe aliases in tech names
+					if (cleanTech.includes('|')) {
+						const [techPath, _techDisplay] = cleanTech.split('|');
+						const techName = techPath.split('/').pop() || techPath;
+
+						if (
+							techName.toLowerCase() === skillName.toLowerCase() ||
+							techName.toLowerCase() === skillId.toLowerCase()
+						) {
+							return true;
+						}
+					}
+
+					return false;
+				});
+			}).length;
 		},
 		[projects]
 	);
 
-	// Filter skills based on selected filter
+	// Filter skills based on selected filters
 	const filteredSkills = useMemo(() => {
-		if (selectedFilter === 'all') return skills;
-		return skills.filter(skill => skill.data.tags?.includes(selectedFilter));
-	}, [skills, selectedFilter]);
+		if (selectedFilters.includes('all')) return skills;
+		return skills.filter(skill =>
+			skill.data.tags?.some(tag => selectedFilters.includes(tag))
+		);
+	}, [skills, selectedFilters]);
 
 	// Process skills into bubble data
 	const bubbleData = useMemo((): BubbleData[] => {
@@ -130,7 +166,7 @@ const SkillsBubbleChart = ({
 			const skillId = skill.id.replace(/\.md$/, '');
 			const skillName = skill.data.name || skill.slug;
 			const rating = skill.data.skillRating || 0;
-			const projectCount = getProjectCount(skillName);
+			const projectCount = getProjectCount(skillName, skillId);
 			const iconName = getSkillIconName(skill.data.logoFileName || null);
 
 			// Calculate bubble size based on rating and project count
@@ -153,6 +189,20 @@ const SkillsBubbleChart = ({
 			};
 		});
 	}, [filteredSkills, getProjectCount, getSkillColor, getSkillGroup]);
+
+	// Listen for filter changes from parent components
+	useEffect(() => {
+		const handleFilterChange = (e: Event) => {
+			const customEvent = e as CustomEvent;
+			const { filters } = customEvent.detail;
+			setSelectedFilters(filters);
+		};
+
+		window.addEventListener('skillsFilterChange', handleFilterChange);
+		return () => {
+			window.removeEventListener('skillsFilterChange', handleFilterChange);
+		};
+	}, []);
 
 	// D3 Bubble Chart
 	useEffect(() => {
@@ -201,344 +251,145 @@ const SkillsBubbleChart = ({
 			.append('g')
 			.attr('class', 'bubble')
 			.style('cursor', 'pointer')
+			.on('click', (event, d) => {
+				setSelectedSkill(selectedSkill === d.id ? null : d.id);
+			})
 			.on('mouseenter', (event, d) => {
 				setHoveredSkill(d.id);
-				setTooltip({
-					skill: d,
-					x: event.clientX,
-					y: event.clientY,
-				});
-				d3.select(event.currentTarget)
-					.select('circle')
-					.transition()
-					.duration(200)
-					.attr('r', d.radius * 1.1);
+				const [x, y] = d3.pointer(event);
+				setTooltip({ skill: d, x, y });
 			})
-			.on('mouseleave', (event, d) => {
+			.on('mouseleave', () => {
 				setHoveredSkill(null);
 				setTooltip(null);
-				d3.select(event.currentTarget)
-					.select('circle')
-					.transition()
-					.duration(200)
-					.attr('r', d.radius);
-			})
-			.on('click', (event, d) => {
-				event.stopPropagation();
-				setSelectedSkill(selectedSkill === d.id ? null : d.id);
-				// Show tooltip on click for mobile
-				setTooltip({
-					skill: d,
-					x: event.clientX,
-					y: event.clientY,
-				});
-			})
-			.on('touchstart', (event, d) => {
-				event.preventDefault();
-				const touch = event.touches[0];
-				setSelectedSkill(selectedSkill === d.id ? null : d.id);
-				setTooltip({
-					skill: d,
-					x: touch.clientX,
-					y: touch.clientY,
-				});
 			});
 
-		// Add clip path for each bubble
-		bubbles.each(function (d: any) {
-			const bubbleGroup = d3.select(this);
-			const clipId = `clip-${d.id}`;
-
-			// Create clip path
-			svg
-				.append('defs')
-				.append('clipPath')
-				.attr('id', clipId)
-				.append('circle')
-				.attr('r', d.radius)
-				.attr('cx', 0)
-				.attr('cy', 0);
-
-			// Apply clip path to the bubble group
-			bubbleGroup.attr('clip-path', `url(#${clipId})`);
-		});
-
-		// Add circles with gradient backgrounds
+		// Add circles
 		bubbles
 			.append('circle')
 			.attr('r', (d: any) => d.radius)
-			.style('fill', '#ffffff')
-			.style('stroke', (d: any) => d.color)
-			.style('stroke-width', 1.5)
-			.style('opacity', 0.9)
-			.style('filter', 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))')
-			.transition()
-			.duration(1000)
-			.style('opacity', 1);
-
-		// Add SVG icons as background using data URLs
-		bubbles
-			.append('image')
-			.attr('x', (d: any) => -d.radius * 0.8)
-			.attr('y', (d: any) => -d.radius * 0.8)
-			.attr('width', (d: any) => d.radius * 1.6)
-			.attr('height', (d: any) => d.radius * 1.6)
-			.attr('href', (d: any) => {
-				if (d.logoFileName) {
-					// Load SVG from the icons directory
-					return `/src/icons/${d.logoFileName}`;
-				}
-				return '';
-			})
+			.attr('fill', (d: any) => d.color)
+			.attr('stroke', '#ffffff')
+			.attr('stroke-width', 2)
 			.style('opacity', 0.8)
+			.style('transition', 'opacity 0.3s ease');
+
+		// Add skill icons
+		bubbles
+			.filter((d: any) => d.iconName)
+			.append('image')
+			.attr('href', (d: any) => `/icons/${d.iconName}.svg`)
+			.attr('width', (d: any) => Math.min(d.radius * 0.6, 24))
+			.attr('height', (d: any) => Math.min(d.radius * 0.6, 24))
+			.attr('x', (d: any) => -Math.min(d.radius * 0.3, 12))
+			.attr('y', (d: any) => -Math.min(d.radius * 0.3, 12))
+			.style('filter', 'brightness(0) invert(1)');
+
+		// Add skill names (for larger bubbles)
+		bubbles
+			.filter((d: any) => d.radius > 25)
+			.append('text')
+			.text((d: any) => d.name)
+			.attr('text-anchor', 'middle')
+			.attr('dy', '0.35em')
+			.attr('fill', '#ffffff')
+			.style(
+				'font-size',
+				(d: any) => Math.max(10, Math.min(14, d.radius * 0.2)) + 'px'
+			)
+			.style('font-weight', 'bold')
 			.style('pointer-events', 'none');
 
 		// Update positions on simulation tick
 		simulation.on('tick', () => {
-			bubbles.attr('transform', d => `translate(${d.x}, ${d.y})`);
+			bubbles.attr('transform', (d: any) => `translate(${d.x},${d.y})`);
 		});
-
-		// Add zoom behavior
-		const zoom = d3
-			.zoom()
-			.scaleExtent([0.5, 3])
-			.on('zoom', event => {
-				svg
-					.selectAll('.bubble')
-					.attr(
-						'transform',
-						(d: any) =>
-							`translate(${event.transform.applyX(d.x)}, ${event.transform.applyY(d.y)})`
-					);
-			});
-
-		svg.call(zoom as any);
-
-		// Add drag behavior
-		const drag = d3
-			.drag()
-			.on('start', (event, d: any) => {
-				if (!event.active) simulation.alphaTarget(0.3).restart();
-				d.fx = d.x;
-				d.fy = d.y;
-			})
-			.on('drag', (event, d: any) => {
-				d.fx = event.x;
-				d.fy = event.y;
-			})
-			.on('end', (event, d: any) => {
-				if (!event.active) simulation.alphaTarget(0);
-				d.fx = null;
-				d.fy = null;
-			});
-
-		bubbles.call(drag as any);
 
 		// Cleanup function
 		return () => {
 			if (simulationRef.current) {
 				simulationRef.current.stop();
-				simulationRef.current = null;
 			}
 		};
-	}, [bubbleData]); // Only depend on bubbleData, not selectedSkill
+	}, [bubbleData]);
 
-	// Close tooltip when clicking outside
+	// Handle click outside to deselect
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
-			if (tooltip && !containerRef.current?.contains(event.target as Node)) {
-				setTooltip(null);
+			if (selectedSkill && !(event.target as Element).closest('.bubble')) {
+				setSelectedSkill(null);
 			}
 		};
 
 		document.addEventListener('click', handleClickOutside);
-		return () => document.removeEventListener('click', handleClickOutside);
-	}, [tooltip]);
-
-	const chartHeight = isFullscreen ? 'h-[90vh]' : 'h-[600px]';
+		return () => {
+			document.removeEventListener('click', handleClickOutside);
+		};
+	}, [selectedSkill]);
 
 	return (
-		<div className="w-full">
-			{/* Filter Dropdown (only show in fullscreen mode) */}
-			{isFullscreen && onFilterChange && (
-				<div className="mb-4 flex justify-between items-center">
-					<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-						Skills Bubble Chart
-					</h3>
-					<div className="flex items-center gap-4">
-						<select
-							value={selectedFilter}
-							onChange={e => onFilterChange(e.currentTarget.value)}
-							className="global-form-element bg-transparent px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-							{filterOptions.map(option => (
-								<option key={option.value} value={option.value}>
-									{option.label}
-								</option>
-							))}
-						</select>
-						{onClose && (
-							<button
-								onClick={onClose}
-								className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
-								aria-label="Close fullscreen view">
-								<svg
-									className="w-6 h-6"
-									fill="none"
-									stroke="currentColor"
-									viewBox="0 0 24 24">
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth={2}
-										d="M6 18L18 6M6 6l12 12"
-									/>
-								</svg>
-							</button>
-						)}
-					</div>
-				</div>
-			)}
-
-			{/* Bubble Chart Container */}
-			<div
-				ref={containerRef}
-				className={`relative w-full ${chartHeight} rounded-xl overflow-hidden`}>
-				<svg
-					ref={svgRef}
-					className="w-full h-full"
-					style={{ userSelect: 'none' }}
-				/>
-			</div>
+		<div class="relative w-full h-full" ref={containerRef}>
+			<svg ref={svgRef} class="w-full h-full" />
 
 			{/* Tooltip */}
 			{tooltip && (
 				<div
-					className="fixed z-50 max-w-xs pointer-events-none global-tooltip"
+					class="absolute pointer-events-none z-50"
 					style={{
-						left: `${Math.min(tooltip.x + 10, window.innerWidth - 300)}px`,
-						top: `${Math.max(tooltip.y - 10, 10)}px`,
-						transform:
-							tooltip.y > window.innerHeight / 2 ? 'translateY(-100%)' : 'none',
+						left: tooltip.x + 10,
+						top: tooltip.y - 10,
 					}}>
-					<div className="global-tooltip-content">
-						<div className="font-semibold text-lg mb-2 text-white">
-							{tooltip.skill.name}
+					<div class="global-tooltip">
+						<div class="global-tooltip-content">
+							<div class="font-bold text-white mb-1">{tooltip.skill.name}</div>
+							<div class="text-sm text-gray-200 mb-2">
+								{tooltip.skill.description}
+							</div>
+							<div class="text-xs text-gray-300">
+								Rating: {tooltip.skill.rating}/100
+							</div>
+							<div class="text-xs text-gray-300">
+								Used in {tooltip.skill.projectCount} project
+								{tooltip.skill.projectCount !== 1 ? 's' : ''}
+							</div>
+							<div class="text-xs text-gray-300">
+								Group: {tooltip.skill.group}
+							</div>
 						</div>
-						<div className="text-xs text-theme-500 mb-1 font-medium">
-							Used in {tooltip.skill.projectCount} project
-							{tooltip.skill.projectCount === 1 ? '' : 's'}
-						</div>
-						<div className="text-sm text-gray-300 leading-relaxed">
-							{tooltip.skill.description}
-						</div>
-					</div>
-					{/* Arrow pointing to bubble */}
-					<div
-						className="absolute w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-white dark:border-t-gray-800"
-						style={{
-							left: '10px',
-							bottom: tooltip.y > window.innerHeight / 2 ? '-8px' : 'auto',
-							top: tooltip.y > window.innerHeight / 2 ? 'auto' : '-8px',
-							borderTop:
-								tooltip.y > window.innerHeight / 2 ? '8px solid white' : 'none',
-							borderBottom:
-								tooltip.y > window.innerHeight / 2 ? 'none' : '8px solid white',
-							borderColor:
-								tooltip.y > window.innerHeight / 2
-									? 'transparent'
-									: 'transparent',
-						}}
-					/>
-				</div>
-			)}
-
-			{/* Detailed Tooltip (for selected skills) */}
-			{(hoveredSkill || selectedSkill) && !tooltip && (
-				<div className="mt-4 global-tooltip">
-					<div className="global-tooltip-content">
-						{bubbleData.find(b => b.id === (hoveredSkill || selectedSkill)) && (
-							<>
-								<div className="font-semibold text-lg mb-2">
-									{
-										bubbleData.find(
-											b => b.id === (hoveredSkill || selectedSkill)
-										)?.name
-									}
-								</div>
-								<div className="grid grid-cols-2 gap-4 text-sm">
-									<div>
-										<span className="font-medium">Rating:</span>{' '}
-										{
-											bubbleData.find(
-												b => b.id === (hoveredSkill || selectedSkill)
-											)?.rating
-										}
-										/100
-									</div>
-									<div>
-										<span className="font-medium">Projects:</span>{' '}
-										{
-											bubbleData.find(
-												b => b.id === (hoveredSkill || selectedSkill)
-											)?.projectCount
-										}
-									</div>
-									<div>
-										<span className="font-medium">Category:</span>{' '}
-										{
-											bubbleData.find(
-												b => b.id === (hoveredSkill || selectedSkill)
-											)?.group
-										}
-									</div>
-									<div>
-										<span className="font-medium">Tags:</span>{' '}
-										{bubbleData
-											.find(b => b.id === (hoveredSkill || selectedSkill))
-											?.tags.slice(0, 3)
-											.join(', ')}
-									</div>
-								</div>
-								<div className="mt-3 text-sm text-gray-300">
-									{
-										bubbleData.find(
-											b => b.id === (hoveredSkill || selectedSkill)
-										)?.description
-									}
-								</div>
-							</>
-						)}
+						<div class="absolute left-1/2 transform -translate-x-1/2 global-tooltip-arrow global-tooltip-arrow-top" />
 					</div>
 				</div>
 			)}
 
-			{/* Legend */}
-			<div className="mt-4 flex flex-wrap justify-center gap-4 text-xs">
-				<div className="flex items-center gap-2">
-					<div className="w-3 h-3 rounded-full bg-blue-500" />
-					<span>Frameworks & Libraries</span>
+			{/* Selected Skill Details */}
+			{selectedSkill && (
+				<div class="absolute bottom-4 left-4 right-4 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
+					<div class="flex items-center justify-between mb-2">
+						<h3 class="text-lg font-bold text-gray-900 dark:text-white">
+							{bubbleData.find(d => d.id === selectedSkill)?.name}
+						</h3>
+						<button
+							onClick={() => setSelectedSkill(null)}
+							class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+							<svg
+								class="w-5 h-5"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M6 18L18 6M6 6l12 12"
+								/>
+							</svg>
+						</button>
+					</div>
+					<p class="text-sm text-gray-600 dark:text-gray-300">
+						{bubbleData.find(d => d.id === selectedSkill)?.description}
+					</p>
 				</div>
-				<div className="flex items-center gap-2">
-					<div className="w-3 h-3 rounded-full bg-green-500" />
-					<span>Languages</span>
-				</div>
-				<div className="flex items-center gap-2">
-					<div className="w-3 h-3 rounded-full bg-purple-500" />
-					<span>Tools & Platforms</span>
-				</div>
-				<div className="flex items-center gap-2">
-					<div className="w-3 h-3 rounded-full bg-orange-500" />
-					<span>Databases</span>
-				</div>
-				<div className="flex items-center gap-2">
-					<div className="w-3 h-3 rounded-full bg-indigo-500" />
-					<span>Cloud & DevOps</span>
-				</div>
-				<div className="flex items-center gap-2">
-					<div className="w-3 h-3 rounded-full bg-pink-500" />
-					<span>Design</span>
-				</div>
-			</div>
+			)}
 		</div>
 	);
 };
