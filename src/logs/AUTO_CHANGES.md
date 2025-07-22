@@ -1519,3 +1519,62 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - Replaced Icon component with direct SVG in ReferencesCarousel.astro to ensure text-white class properly colors the people icon white
 - Fixed SVG sizing in ReferencesCarousel.astro by removing explicit w-16 h-16 classes to match other icons using text-4xl
 - Replaced complex people SVG with simple 15x15 viewBox person icon to match standard icon sizing in section headings
+
+## 2024-12-19 14:36 - Complete Tooltip and Form Element Standardization
+
+### Problems Fixed:
+- **MostCommonTechs.astro**: Tooltips were using custom gray styling instead of global tooltip classes
+- **Projects index page**: Dropdown selects had inconsistent styling across desktop and mobile
+- **SkillsBubbleChart.tsx**: Filter dropdown used different styling than other form elements
+- **CodingSection.astro**: Skills filter dropdown had inconsistent styling
+- **Form elements**: No standardized styling for dropdowns and inputs across the site
+
+### Changes Made:
+- Updated MostCommonTechs tooltips to use global-tooltip classes with proper arrow positioning
+- Created global-form-element class for consistent form styling across the site
+- Updated all dropdown selects to use global-form-element styling:
+  - Projects index page category and date filters (desktop and mobile)
+  - SkillsBubbleChart filter dropdown
+  - CodingSection skills filter dropdown
+- Added global-form-element CSS class with same styling as tooltips but with pointer-events: auto
+
+### Technical Details:
+- **Global Tooltip Classes**: `.global-tooltip`, `.global-tooltip-content`, `.global-tooltip-arrow*`
+- **Global Form Element Class**: `.global-form-element` with same visual styling as tooltips
+- **Background Color**: Dark red (#9e4933) for both tooltips and form elements
+- **Border**: Theme-colored thin border (rgb(108 233 183 / 0.3))
+- **Border Radius**: 0.5rem for consistent rounded corners
+- **Box Shadow**: Subtle shadow for depth and visual separation
+
+### Result:
+- ✅ All tooltips now use consistent global styling
+- ✅ All dropdown selects have standardized appearance
+- ✅ Visual consistency across the entire site
+- ✅ Maintained functionality while improving design coherence
+- ✅ Dark red background with theme-colored borders throughout
+
+## 2024-12-19 14:50 - Icon Tooltip Standardization
+
+### Problems Fixed:
+- **SkillItem.astro**: Icons were using browser default title tooltips instead of global styling
+- **ScrollToTop.astro**: Button was using browser default title tooltip
+- **Share.astro**: Share buttons were using browser default title tooltips
+- **MostCommonTechs.astro**: Already updated in previous session
+
+### Changes Made:
+- Updated SkillItem icons to use custom tooltip divs with global-tooltip classes
+- Updated ScrollToTop button to use custom tooltip with global styling
+- Updated Share component buttons to use custom tooltips with global styling
+- All tooltips now use consistent dark red background (#9e4933) with theme-colored borders
+
+### Technical Details:
+- Replaced simple `title` attributes with custom tooltip divs
+- Used `group/tooltip` classes for hover functionality
+- Positioned tooltips above elements with proper arrow indicators
+- Maintained accessibility with `aria-label` attributes
+
+### Result:
+- ✅ All icon tooltips now use consistent global styling
+- ✅ Improved visual consistency across the site
+- ✅ Better user experience with styled tooltips instead of browser defaults
+- ✅ Maintained all functionality while enhancing design

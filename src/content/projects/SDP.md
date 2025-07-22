@@ -4,10 +4,10 @@ tags:
   - portfolio
   - notes
 created: 2025-06-27 10:45
-modified: 2025-07-19T10:01:44+01:00
+modified: 2025-07-22T09:21:04+01:00
 aliases:
   - Scalable Development Plan
-viewCount: 12
+viewCount: 13
 projectURL: TBC
 codeURL: TBC
 codeMultipleRepos: false
@@ -125,7 +125,6 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 ## Other Links
 
 - <a href="/portfolio/projects/SDP Consultant Pages" class="theme-link">SDP Consultant Pages</a>
-- <a href="/portfolio/projects/SDP Encyclopaedia" class="theme-link">SDP Encyclopaedia</a>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

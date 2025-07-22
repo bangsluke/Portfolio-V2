@@ -107,22 +107,24 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 							</span>
 						</div>
 						<div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover/tooltip:opacity-100 group-active/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-50 w-[250px] max-w-[90vw]">
-							<div class="bg-[#1a232a] border border-theme-400/30 rounded-lg p-3 shadow-lg w-full">
-								<div class="text-xs text-theme-400 font-medium mb-2">
-									Additional technologies:
-								</div>
-								<div class="flex flex-wrap gap-2">
-									{hiddenTechnologies.map((tech: string) => {
-										const cleanTech = tech.replace(/\[|\]/g, '');
-										return (
-											<SkillPill
-												skillName={cleanTech}
-												variant="dark"
-												size="sm"
-												className="shadow hover:bg-theme-700/30"
-											/>
-										);
-									})}
+							<div class="global-tooltip w-full">
+								<div class="global-tooltip-content">
+									<div class="text-xs text-theme-400 font-medium mb-2">
+										Additional technologies:
+									</div>
+									<div class="flex flex-wrap gap-2">
+										{hiddenTechnologies.map((tech: string) => {
+											const cleanTech = tech.replace(/\[|\]/g, '');
+											return (
+												<SkillPill
+													skillName={cleanTech}
+													variant="dark"
+													size="sm"
+													className="shadow hover:bg-theme-700/30"
+												/>
+											);
+										})}
+									</div>
 								</div>
 							</div>
 						</div>
@@ -147,16 +149,18 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 						</span>
 						{companyLogoURL && (
 							<div class="absolute bottom-full left-0 mb-2 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-20">
-								<div class="bg-[#1a232a] border border-theme-400/30 rounded-lg p-3 shadow-lg">
-									<div class="flex items-center gap-3">
-										<img
-											src={companyLogoURL}
-											alt={`${companyName} logo`}
-											class="w-12 h-12 object-contain rounded"
-										/>
-										<span class="text-white font-medium text-sm whitespace-nowrap">
-											{companyName}
-										</span>
+								<div class="global-tooltip">
+									<div class="global-tooltip-content">
+										<div class="flex items-center gap-3">
+											<img
+												src={companyLogoURL}
+												alt={`${companyName} logo`}
+												class="w-12 h-12 object-contain rounded"
+											/>
+											<span class="text-white font-medium text-sm whitespace-nowrap">
+												{companyName}
+											</span>
+										</div>
 									</div>
 								</div>
 							</div>

@@ -6,10 +6,9 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 18:03
-modified: 2025-07-19T10:13:21+01:00
-aliases:
-  - Tits Group Page
-viewCount: 4
+modified: 2025-07-22T09:29:13+01:00
+aliases: []
+viewCount: 5
 projectURL: https://group-page.netlify.app/
 codeURL: https://github.com/bangsluke/Group-Page
 codeMultipleRepos: false
@@ -36,9 +35,9 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 6
-shortDescription: "TBC"
-longDescription: "TBC"
-lessonsLearned: "TBC"
+shortDescription: "An early site that I built as a laugh for my friends displaying statistics for each person to fuel our competitive nature."
+longDescription: "My first real project with multiple pages and functionalities, the site was designed for a laugh amongst my friendship group given our high levels of competitiveness.\nThe data was stored in manageable <span class=\"theme-link\">Google Sheets</span> which I could update easily after any sports or competitions we did as a group and this would generate an overall ranking for the group.\nThe site also contained features such as a shared calendar embedded for us to send events to and help plan get togethers."
+lessonsLearned: "This site helped me start processing external data into a front end, which I did rather inefficiently using papa parse to gather the <span class=\"theme-link\">CSV</span> data.\nIt also taught me how to embed components like Google Calendar and widgets, and allowed me to understand theme switching for <span class=\"theme-link\">CSS</span>."
 ---
 
 # Group Page
@@ -74,13 +73,17 @@ WHERE file = this.file
 
 ## Short Description
 
-TBC
+An early site that I built as a laugh for my friends displaying statistics for each person to fuel our competitive nature.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-TBC
+My first real project with multiple pages and functionalities, the site was designed for a laugh amongst my friendship group given our high levels of competitiveness.
+
+The data was stored in manageable <span class="theme-link">Google Sheets</span> which I could update easily after any sports or competitions we did as a group and this would generate an overall ranking for the group.
+
+The site also contained features such as a shared calendar embedded for us to send events to and help plan get togethers.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -123,7 +126,9 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Lessons Learned
 
-TBC
+This site helped me start processing external data into a front end, which I did rather inefficiently using papa parse to gather the <span class="theme-link">CSV</span> data.
+
+It also taught me how to embed components like Google Calendar and widgets, and allowed me to understand theme switching for <span class="theme-link">CSS</span>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

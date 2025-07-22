@@ -369,7 +369,7 @@ const SkillsBubbleChart = ({
 						<select
 							value={selectedFilter}
 							onChange={e => onFilterChange(e.currentTarget.value)}
-							className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+							className="global-form-element bg-transparent px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent">
 							{filterOptions.map(option => (
 								<option key={option.value} value={option.value}>
 									{option.label}
@@ -413,22 +413,24 @@ const SkillsBubbleChart = ({
 			{/* Tooltip */}
 			{tooltip && (
 				<div
-					className="fixed z-50 px-4 py-3 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 max-w-xs pointer-events-none"
+					className="fixed z-50 max-w-xs pointer-events-none global-tooltip"
 					style={{
 						left: `${Math.min(tooltip.x + 10, window.innerWidth - 300)}px`,
 						top: `${Math.max(tooltip.y - 10, 10)}px`,
 						transform:
 							tooltip.y > window.innerHeight / 2 ? 'translateY(-100%)' : 'none',
 					}}>
-					<div className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-						{tooltip.skill.name}
-					</div>
-					<div className="text-xs text-theme-500 mb-1 font-medium">
-						Used in {tooltip.skill.projectCount} project
-						{tooltip.skill.projectCount === 1 ? '' : 's'}
-					</div>
-					<div className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-						{tooltip.skill.description}
+					<div className="global-tooltip-content">
+						<div className="font-semibold text-lg mb-2 text-white">
+							{tooltip.skill.name}
+						</div>
+						<div className="text-xs text-theme-500 mb-1 font-medium">
+							Used in {tooltip.skill.projectCount} project
+							{tooltip.skill.projectCount === 1 ? '' : 's'}
+						</div>
+						<div className="text-sm text-gray-300 leading-relaxed">
+							{tooltip.skill.description}
+						</div>
 					</div>
 					{/* Arrow pointing to bubble */}
 					<div
@@ -452,57 +454,61 @@ const SkillsBubbleChart = ({
 
 			{/* Detailed Tooltip (for selected skills) */}
 			{(hoveredSkill || selectedSkill) && !tooltip && (
-				<div className="mt-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-					{bubbleData.find(b => b.id === (hoveredSkill || selectedSkill)) && (
-						<>
-							<div className="font-semibold text-lg mb-2">
-								{
-									bubbleData.find(b => b.id === (hoveredSkill || selectedSkill))
-										?.name
-								}
-							</div>
-							<div className="grid grid-cols-2 gap-4 text-sm">
-								<div>
-									<span className="font-medium">Rating:</span>{' '}
+				<div className="mt-4 global-tooltip">
+					<div className="global-tooltip-content">
+						{bubbleData.find(b => b.id === (hoveredSkill || selectedSkill)) && (
+							<>
+								<div className="font-semibold text-lg mb-2">
 									{
 										bubbleData.find(
 											b => b.id === (hoveredSkill || selectedSkill)
-										)?.rating
+										)?.name
 									}
-									/100
 								</div>
-								<div>
-									<span className="font-medium">Projects:</span>{' '}
+								<div className="grid grid-cols-2 gap-4 text-sm">
+									<div>
+										<span className="font-medium">Rating:</span>{' '}
+										{
+											bubbleData.find(
+												b => b.id === (hoveredSkill || selectedSkill)
+											)?.rating
+										}
+										/100
+									</div>
+									<div>
+										<span className="font-medium">Projects:</span>{' '}
+										{
+											bubbleData.find(
+												b => b.id === (hoveredSkill || selectedSkill)
+											)?.projectCount
+										}
+									</div>
+									<div>
+										<span className="font-medium">Category:</span>{' '}
+										{
+											bubbleData.find(
+												b => b.id === (hoveredSkill || selectedSkill)
+											)?.group
+										}
+									</div>
+									<div>
+										<span className="font-medium">Tags:</span>{' '}
+										{bubbleData
+											.find(b => b.id === (hoveredSkill || selectedSkill))
+											?.tags.slice(0, 3)
+											.join(', ')}
+									</div>
+								</div>
+								<div className="mt-3 text-sm text-gray-300">
 									{
 										bubbleData.find(
 											b => b.id === (hoveredSkill || selectedSkill)
-										)?.projectCount
+										)?.description
 									}
 								</div>
-								<div>
-									<span className="font-medium">Category:</span>{' '}
-									{
-										bubbleData.find(
-											b => b.id === (hoveredSkill || selectedSkill)
-										)?.group
-									}
-								</div>
-								<div>
-									<span className="font-medium">Tags:</span>{' '}
-									{bubbleData
-										.find(b => b.id === (hoveredSkill || selectedSkill))
-										?.tags.slice(0, 3)
-										.join(', ')}
-								</div>
-							</div>
-							<div className="mt-3 text-sm text-gray-600 dark:text-gray-400">
-								{
-									bubbleData.find(b => b.id === (hoveredSkill || selectedSkill))
-										?.description
-								}
-							</div>
-						</>
-					)}
+							</>
+						)}
+					</div>
 				</div>
 			)}
 

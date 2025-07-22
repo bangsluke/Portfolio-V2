@@ -672,3 +672,85 @@ a.theme-link:hover {
 		height: 250px;
 	}
 }
+
+/* Global Tooltip Styles */
+.global-tooltip {
+	background-color: #9e4933;
+	border: 1px solid rgb(108 233 183 / 0.3);
+	border-radius: 0.5rem;
+	box-shadow:
+		0 10px 15px -3px rgb(0 0 0 / 0.1),
+		0 4px 6px -4px rgb(0 0 0 / 0.1);
+	z-index: 50;
+	pointer-events: none;
+}
+
+/* Global Form Element Styles */
+.global-form-element {
+	background-color: #9e4933;
+	border: 1px solid rgb(108 233 183 / 0.3);
+	border-radius: 0.5rem;
+	box-shadow:
+		0 10px 15px -3px rgb(0 0 0 / 0.1),
+		0 4px 6px -4px rgb(0 0 0 / 0.1);
+	z-index: 50;
+	pointer-events: auto;
+}
+
+/* Global Tooltip for Form Elements (allows interaction) */
+.global-tooltip:has(select),
+.global-tooltip:has(input),
+.global-tooltip:has(textarea) {
+	pointer-events: auto;
+}
+
+.global-tooltip-content {
+	padding: 0.75rem;
+	color: rgb(212 212 212);
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+}
+
+.global-tooltip-arrow {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border: 8px solid transparent;
+}
+
+.global-tooltip-arrow-top {
+	bottom: -8px;
+	border-top-color: #1a232a;
+	border-bottom: none;
+}
+
+.global-tooltip-arrow-bottom {
+	top: -8px;
+	border-bottom-color: #1a232a;
+	border-top: none;
+}
+
+.global-tooltip-arrow-left {
+	right: -8px;
+	border-left-color: #1a232a;
+	border-right: none;
+}
+
+.global-tooltip-arrow-right {
+	left: -8px;
+	border-right-color: #1a232a;
+	border-left: none;
+}
+
+/* Mobile Overflow Prevention */
+@media (max-width: 768px) {
+	html,
+	body {
+		overflow-x: hidden;
+		max-width: 100vw;
+	}
+
+	* {
+		max-width: 100%;
+	}
+}

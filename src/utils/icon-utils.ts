@@ -143,6 +143,7 @@ const skillIconMapping: Record<string, string> = {
 	'HTML': 'html',
 	'Java': 'java',
 	'JavaScript': 'javascript',
+	'Jest': '---',
 	'Markdown': 'markdown',
 	'Neo4j Aura': 'neo4j_cypher',
 	'Neo4j': 'neo4j',

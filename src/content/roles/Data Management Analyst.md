@@ -4,8 +4,8 @@ tags:
   - role
   - portfolio
 created: 2025-07-15T14:35:00
-modified: 2025-07-15T15:32:33+01:00
-viewCount: 2
+modified: 2025-07-22T14:13:25+01:00
+viewCount: 1
 dateStart: 2019-07-01
 dateEnd: 2022-07-01
 linkedCompany:
