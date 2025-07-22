@@ -4,13 +4,14 @@ tags:
   - role
   - portfolio
 created: 2025-07-15T14:35:00
-modified: 2025-07-15T15:31:13+01:00
+modified: 2025-07-22T14:46:56+01:00
 viewCount: 2
 dateStart: 2015-07-01
 dateEnd: 2019-07-01
 linkedCompany:
   - "[[RLE International]]"
-roleDescription: "Internally I have been responsible for the creation of numerous project\ntracking documents for the organisation and a range of customers through.\n<span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> coding. Projects included timesheet & holiday\nmanagement, cost & resource estimating, warehouse storage tracking and\na technical documentation library."
+shortRoleDescription: "TBC"
+fullRoleDescription: "Internally I have been responsible for the creation of numerous project\ntracking documents for the organisation and a range of customers through.\n<span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> coding. Projects included timesheet & holiday\nmanagement, cost & resource estimating, warehouse storage tracking and\na technical documentation library."
 keyAchievement: "TBC"
 ---
 
@@ -22,7 +23,13 @@ keyAchievement: "TBC"
 ```table-of-contents
 ```
 
-## Role Description
+## Short Role Description
+
+TBC
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Full Role Description
 
 Internally I have been responsible for the creation of numerous project
 tracking documents for the organisation and a range of customers through.

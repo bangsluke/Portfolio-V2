@@ -111,7 +111,9 @@ const rolesCollection = defineCollection({
 		dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
 		linkedCompany: z.array(z.string()).optional(),
 		// Extracted section content
-		roleDescription: z.string().optional(),
+		shortRoleDescription: z.string().optional(),
+		fullRoleDescription: z.string().optional(),
+		roleDescription: z.string().optional(), // legacy, for migration
 		keyAchievement: z.string().optional(),
 	}),
 });

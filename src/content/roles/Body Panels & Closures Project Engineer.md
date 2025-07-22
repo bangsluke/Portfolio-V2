@@ -4,14 +4,15 @@ tags:
   - role
   - portfolio
 created: 2025-07-16T09:36:00
-modified: 2025-07-21T18:28:31+01:00
+modified: 2025-07-22T14:45:28+01:00
 viewCount: 5
 dateStart: 2015-07-01
 dateEnd: 2016-02-01
 linkedCompany:
   - "[[RLE International]]"
   - "[[McLaren Automotive]]"
-roleDescription: "After re-locating to the customer’s location, I assumed a larger number of responsibilities including the delivery of an engineered automotive solution for a new super series car dihedral door system. I worked directly with several suppliers, managing budgets and delivery plans from development phase into prototype build."
+shortRoleDescription: "TBC"
+fullRoleDescription: "After re-locating to the customer’s location, I assumed a larger number of responsibilities including the delivery of an engineered automotive solution for a new super series car dihedral door system. I worked directly with several suppliers, managing budgets and delivery plans from development phase into prototype build."
 keyAchievement: "TBC"
 ---
 
@@ -23,7 +24,13 @@ keyAchievement: "TBC"
 ```table-of-contents
 ```
 
-## Role Description
+## Short Role Description
+
+TBC
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Full Role Description
 
 After re-locating to the customer’s location, I assumed a larger number of responsibilities including the delivery of an engineered automotive solution for a new super series car dihedral door system. I worked directly with several suppliers, managing budgets and delivery plans from development phase into prototype build.
 

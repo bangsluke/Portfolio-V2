@@ -4,19 +4,26 @@ tags:
   - role
   - portfolio
 created: 2025-02-04 18:53
-modified: 2025-07-13T14:32:55+01:00
+modified: 2025-07-22T14:45:51+01:00
 viewCount: 9
 dateStart: 2014-03-03
 dateEnd: 2014-07-25
 linkedCompany:
   - "[[Opus 2 International]]"
-roleDescription: "For the final few months at <span class=\"theme-link\">Opus 2</span> I was involved in programme bug testing the software and reviewing the sites applications for users."
+shortRoleDescription: "For the final few months at <span class=\"theme-link\">Opus 2</span> I was involved in programme bug testing the software and reviewing the sites applications for users."
+fullRoleDescription: "TBC"
 keyAchievement: "Finding several front end bugs and developing a reporting structure for developers to understand easily"
 ---
 
 # Bug Tester
 
 > [!back] Link back to <span class="theme-link">Opus 2</span> I was involved in programme bug testing the software and reviewing the sites applications for users.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Full Role Description
+
+TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -4,14 +4,16 @@ tags:
   - role
   - portfolio
 created: 2025-07-13T14:35:00
-modified: 2025-07-15T15:33:26+01:00
-viewCount: 1
-dateStart: 2022-07-01
-dateEnd: ""
+modified: 2025-07-22T14:46:35+01:00
+viewCount: 2
+dateStart: 2023-01-01
+dateEnd: 2024-07-31
 linkedCompany:
   - "[[RLE International]]"
-roleDescription: "Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using <span class=\"theme-link\">Next.js</span>, <span class=\"theme-link\">Nest.js</span>, a <span class=\"theme-link\">Neo4j</span> database and a <span class=\"theme-link\">Flask</span> <span class=\"theme-link\">API</span> to call a <span class=\"theme-link\">Python</span> algorithm. The tool collects inputs from a user, calculates several optimal <span class=\"theme-link\">DVP</span> plans and then presents the options in several ways to enable further user decisions."
-keyAchievement: "TBC"
+  - "[[CEER Automotive]]"
+shortRoleDescription: "TBC"
+fullRoleDescription: "Started the role by developing a <span class=\"theme-link\">VBA</span> script to loop through the created data list and generate hyperlinked and navigable <span class=\"theme-link\">PowerPoint</span> slides showing workflows, whilst simultaneously generating <span class=\"theme-link\">Visio</span> workflows and an exported PDF for mapping out a full Automotive workflow process for the development of a vehicle for an overseas customer.\nTBC"
+keyAchievement: "- TBC"
 ---
 
 # Digital Engineering Specialist
@@ -22,15 +24,23 @@ keyAchievement: "TBC"
 ```table-of-contents
 ```
 
-## Role Description
+## Short Role Description
 
-Development of online web-based applications for automotive problems. Following a couple of months of 1:1 mentoring with a senior developer, I have developed an MVP dashboard tool, built using <span class="theme-link">Next.js</span>, <span class="theme-link">Nest.js</span>, a <span class="theme-link">Neo4j</span> database and a <span class="theme-link">Flask</span> <span class="theme-link">API</span> to call a <span class="theme-link">Python</span> algorithm. The tool collects inputs from a user, calculates several optimal <span class="theme-link">DVP</span> plans and then presents the options in several ways to enable further user decisions.
+TBC
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Full Role Description
+
+Started the role by developing a <span class="theme-link">VBA</span> script to loop through the created data list and generate hyperlinked and navigable <span class="theme-link">PowerPoint</span> slides showing workflows, whilst simultaneously generating <span class="theme-link">Visio</span> workflows and an exported PDF for mapping out a full Automotive workflow process for the development of a vehicle for an overseas customer.
+
+TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Key Achievement
 
-TBC
+- TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
