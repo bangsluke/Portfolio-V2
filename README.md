@@ -69,6 +69,7 @@
   - [Development](#development-1)
     - [Tech Stack](#tech-stack)
     - [Scripts](#scripts)
+    - [Testing](#testing)
     - [Styling](#styling)
   - [License](#license)
 
@@ -780,7 +781,40 @@ npm run lint                   # Run ESLint
 npm run lint:fix               # Fix ESLint issues
 npm run format                 # Format with Prettier
 npm run format:check           # Check formatting without fixing
+
+# Testing
+npm run test                   # Run all tests
+npm run test:watch             # Run tests in watch mode
+npm run test:coverage          # Run tests with coverage report
 ```
+
+### Testing
+
+The project includes a comprehensive Jest testing framework with TypeScript support:
+
+- **Test Framework**: [Jest](https://jestjs.io/) with [ts-jest](https://kulshekhar.github.io/ts-jest/) for TypeScript support
+- **Test Environment**: Node.js environment with ES module support
+- **Coverage**: HTML, text, and lcov coverage reports
+- **Test Organization**: Tests located in `src/__tests__/` directories alongside source files
+
+#### Test Files
+
+- **Date Formatter Tests**: [`src/utils/__tests__/date-formatter.test.ts`](./src/utils/__tests__/date-formatter.test.ts) - Tests for date formatting utilities
+- **Languages Utility Tests**: [`src/utils/__tests__/languages.test.ts`](./src/utils/__tests__/languages.test.ts) - Tests for language lookup and fallback functionality
+- **Content Processor Tests**: [`src/utils/__tests__/content-processor.test.ts`](./src/utils/__tests__/content-processor.test.ts) - Tests for Obsidian link and markdown processing
+- **Test Configuration**: [`jest.config.mjs`](./jest.config.mjs) - Jest configuration with ES module support
+- **Test Setup**: [`src/__tests__/jest.setup.ts`](./src/__tests__/jest.setup.ts) - Global test configuration and utilities
+
+#### Test Integration
+
+Tests are automatically run before every build to ensure code quality:
+
+- Build process: `npm run test && npm run update-readme-links && astro build`
+- 38 test cases covering utility functions with 100% coverage
+- Tests validate date formatting, language lookups, and content processing
+- Prevents regressions and ensures reliable functionality
+
+> [Back to Table of Contents](#table-of-contents)
 
 ### Styling
 
