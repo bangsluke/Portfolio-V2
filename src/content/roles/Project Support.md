@@ -4,41 +4,27 @@ tags:
   - role
   - portfolio
 created: 2025-07-16T09:36:00
-modified: 2025-07-22T14:47:15+01:00
+modified: 2025-07-22T17:24:52+01:00
 viewCount: 5
 dateStart: 2014-09-01
 dateEnd: 2015-07-01
 linkedCompany:
   - "[[RLE International]]"
   - "[[McLaren Automotive]]"
-shortRoleDescription: "I began in a graduate support role at a high-end low volume sports car manufacturer, familiarising myself with the processes of OEMs and developing project planning tools for mapping project resources using <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> macros."
-fullRoleDescription: "TBC"
-keyAchievement: "TBC"
+shortRoleDescription: "Development of project planning tools for mapping project resources for a high-end low volume sports car manufacturer using <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> macros."
+fullRoleDescription: "I began at <span class=\"theme-link\">RLE</span> in a graduate support role for a high-end low volume sports car manufacturer, familiarising myself with the processes of <span class=\"theme-link\">OEMs</span> and developing project planning tools for mapping project resources using <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> macros."
+keyAchievement: "Creation of a project tracking document later adopted by the client."
 ---
 
 # Project Support
 
-> [!back] Link back to <span class="theme-link">Role Notes</span>
-
-## Table of Contents
-```table-of-contents
-```
-
-## Short Role Description
-
-I began in a graduate support role at a high-end low volume sports car manufacturer, familiarising myself with the processes of OEMs and developing project planning tools for mapping project resources using <span class="theme-link">Excel</span> and <span class="theme-link">VBA</span> macros.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Full Role Description
-
-TBC
+> [!back] Link back to <span class="theme-link">RLE</span> in a graduate support role for a high-end low volume sports car manufacturer, familiarising myself with the processes of <span class="theme-link">OEMs</span> and developing project planning tools for mapping project resources using <span class="theme-link">Excel</span> and <span class="theme-link">VBA</span> macros.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Key Achievement
 
-TBC
+Creation of a project tracking document later adopted by the client.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

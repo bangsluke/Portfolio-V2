@@ -18,7 +18,18 @@
 
 ## Auto Log
 
-## 2025-01-16 08:05 [main] - Added Jest testing framework with comprehensive unit tests
+## 2025-01-16 17:35 [main] - Implemented voluntary roles filtering and separate section
+- Updated WorkExperienceTimeline.astro to filter out roles with "voluntary" tag
+  - Added filtering logic to exclude roles containing "voluntary" in tags array
+  - Maintains existing sorting and display functionality for non-voluntary roles
+  - Ensures only professional work experience appears on main portfolio page
+- Enhanced work-experience.astro page with voluntary roles section
+  - Filtered main timeline to exclude voluntary roles for cleaner professional experience
+  - Added separate "Voluntary Roles" section below main timeline with distinct styling
+  - Created jump button in header to navigate directly to voluntary roles section
+  - Added border separator and different icon (people) for voluntary section
+  - Voluntary roles maintain same timeline format and company integration
+  - Section only appears if voluntary roles exist in the collection
 - Installed Jest testing framework with TypeScript support
   - Added jest, @types/jest, ts-jest, and @testing-library/jest-dom as dev dependencies
   - Created jest.config.mjs with ES module support and TypeScript configuration

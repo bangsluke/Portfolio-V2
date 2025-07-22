@@ -58,8 +58,13 @@ const rolesWithCompanyData = await Promise.all(
 	})
 );
 
+// Filter out roles with "voluntary" tag
+const nonVoluntaryRoles = rolesWithCompanyData.filter(
+	role => !role.data.tags || !role.data.tags.includes('voluntary')
+);
+
 // Sort roles by dateStart date (newest first)
-const sortedRoles = rolesWithCompanyData.sort((a, b) => {
+const sortedRoles = nonVoluntaryRoles.sort((a, b) => {
 	// Sort by dateStart date, fallback to dateEnd date, then alphabetically
 	const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
 	const dateB = b.data.dateStart || b.data.dateEnd || new Date(0);

@@ -59,8 +59,32 @@ const rolesWithCompanyData = await Promise.all(
 	})
 );
 
-// Sort roles by dateStart date (newest first)
-const sortedRoles = rolesWithCompanyData.sort((a, b) => {
+// Filter out roles with "voluntary" tag for main timeline
+const nonVoluntaryRoles = rolesWithCompanyData.filter(
+	role => !role.data.tags || !role.data.tags.includes('voluntary')
+);
+
+// Filter roles with "voluntary" tag for voluntary section
+const voluntaryRoles = rolesWithCompanyData.filter(
+	role => role.data.tags && role.data.tags.includes('voluntary')
+);
+
+// Sort non-voluntary roles by dateStart date (newest first)
+const sortedRoles = nonVoluntaryRoles.sort((a, b) => {
+	// Sort by dateStart date, fallback to dateEnd date, then alphabetically
+	const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
+	const dateB = b.data.dateStart || b.data.dateEnd || new Date(0);
+
+	if (dateA instanceof Date && dateB instanceof Date) {
+		return dateB.getTime() - dateA.getTime();
+	}
+
+	// Fallback to alphabetical sorting by slug (filename)
+	return a.slug.localeCompare(b.slug);
+});
+
+// Sort voluntary roles by dateStart date (newest first)
+const sortedVoluntaryRoles = voluntaryRoles.sort((a, b) => {
 	// Sort by dateStart date, fallback to dateEnd date, then alphabetically
 	const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
 	const dateB = b.data.dateStart || b.data.dateEnd || new Date(0);
@@ -93,7 +117,7 @@ const ogimage = {
 				<p class="text-white/90 text-lg max-w-2xl mx-auto">
 					Complete timeline of my professional experience and career journey
 				</p>
-				<div class="mt-6">
+				<div class="mt-6 flex flex-wrap gap-4 justify-center">
 					<a
 						href="/site"
 						class="inline-flex items-center px-4 py-2 bg-white/20 hover:bg-white/30 text-white font-medium rounded-lg transition-colors duration-300">
@@ -110,6 +134,27 @@ const ogimage = {
 						</svg>
 						Back to Portfolio
 					</a>
+					{
+						sortedVoluntaryRoles.length > 0 && (
+							<a
+								href="#voluntary-roles"
+								class="inline-flex items-center px-4 py-2 bg-white/20 hover:bg-white/30 text-white font-medium rounded-lg transition-colors duration-300">
+								<svg
+									class="w-4 h-4 mr-2"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M19 14l-7 7m0 0l-7-7m7 7V3"
+									/>
+								</svg>
+								View Voluntary Roles
+							</a>
+						)
+					}
 				</div>
 			</div>
 		</div>
@@ -142,6 +187,51 @@ const ogimage = {
 						}
 					</ol>
 				</div>
+
+				{/* Voluntary Roles Section */}
+				{
+					sortedVoluntaryRoles.length > 0 && (
+						<div
+							class="mt-16 pt-16 border-t border-gray-200 dark:border-gray-700"
+							id="voluntary-roles">
+							<div class="text-center mb-12">
+								<div class="flex gap-4 items-center justify-center mb-4">
+									<Icon class="text-3xl text-theme-400" name="people" />
+									<Heading text="Voluntary" textGradient="Roles" level={2} />
+								</div>
+								<p class="text-zinc-600 dark:text-zinc-400 text-lg max-w-2xl mx-auto">
+									Roles and positions I've taken on voluntarily to support
+									organizations and communities
+								</p>
+							</div>
+
+							<div class="relative" aria-label="Voluntary roles experience">
+								<ol class="relative mt-10">
+									{sortedVoluntaryRoles.map((role, index) => (
+										<li>
+											<article
+												role="article"
+												aria-labelledby={`voluntary-title-${index}`}>
+												<div
+													class="flex flex-col gap-2 text-zinc-700 dark:text-zinc-300 md:col-span-3"
+													aria-describedby={`voluntary-title-${index}`}>
+													<WorkExperienceItem
+														{...role.data}
+														name={role.data.name || role.id.replace('.md', '')}
+														processedLinkedCompany={role.processedLinkedCompany}
+														companyLogoURL={role.companyLogoURL}
+														allCompanyLogos={role.allCompanyLogos}
+													/>
+												</div>
+											</article>
+										</li>
+									))}
+								</ol>
+							</div>
+						</div>
+					)
+				}
+
 				<!-- Bottom Back to Portfolio Button -->
 				<div class="flex justify-center mt-16">
 					<a
