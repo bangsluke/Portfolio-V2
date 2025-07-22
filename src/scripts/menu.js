@@ -12,15 +12,60 @@ document.addEventListener('DOMContentLoaded', () => {
 		return;
 	}
 
-	hamburger.addEventListener('click', () => {
+	// Function to close the mobile menu
+	function closeMobileMenu() {
+		navLinks.classList.remove('expanded');
+		hamburger.classList.remove('active');
+		console.log('Mobile menu closed');
+	}
+
+	// Function to open the mobile menu
+	function openMobileMenu() {
+		navLinks.classList.add('expanded');
+		hamburger.classList.add('active');
+		console.log('Mobile menu opened');
+	}
+
+	// Function to toggle the mobile menu
+	function toggleMobileMenu() {
+		if (navLinks.classList.contains('expanded')) {
+			closeMobileMenu();
+		} else {
+			openMobileMenu();
+		}
+	}
+
+	hamburger.addEventListener('click', e => {
+		e.stopPropagation(); // Prevent event from bubbling to document
 		console.log('Hamburger clicked');
+		toggleMobileMenu();
+	});
 
-		// Toggle the 'expanded' class to show or hide the menu
-		navLinks.classList.toggle('expanded');
-		console.log('Nav links expanded:', navLinks.classList.contains('expanded'));
+	// Close menu when clicking on navigation links
+	navLinks.addEventListener('click', e => {
+		if (e.target.tagName === 'A') {
+			console.log('Navigation link clicked, closing menu');
+			closeMobileMenu();
+		}
+	});
 
-		// Toggle the 'active' class for the hamburger icon
-		hamburger.classList.toggle('active');
-		console.log('Hamburger active:', hamburger.classList.contains('active'));
+	// Close menu when clicking outside
+	document.addEventListener('click', e => {
+		if (
+			navLinks.classList.contains('expanded') &&
+			!hamburger.contains(e.target) &&
+			!navLinks.contains(e.target)
+		) {
+			console.log('Clicked outside menu, closing');
+			closeMobileMenu();
+		}
+	});
+
+	// Close menu on escape key
+	document.addEventListener('keydown', e => {
+		if (e.key === 'Escape' && navLinks.classList.contains('expanded')) {
+			console.log('Escape key pressed, closing menu');
+			closeMobileMenu();
+		}
 	});
 });

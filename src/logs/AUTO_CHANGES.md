@@ -1578,3 +1578,32 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - ✅ Improved visual consistency across the site
 - ✅ Better user experience with styled tooltips instead of browser defaults
 - ✅ Maintained all functionality while enhancing design
+
+## 2024-12-19 15:11 - Mobile Menu and Header Icon Improvements
+
+### Mobile Menu Enhancements
+- **Enhanced mobile menu functionality** in `src/scripts/menu.js`:
+  - Added `closeMobileMenu()` and `openMobileMenu()` functions for better control
+  - **Close menu on navigation link click**: Menu now closes when user clicks any navigation link
+  - **Close menu on click outside**: Menu closes when clicking outside the menu area
+  - **Close menu on escape key**: Added keyboard support to close menu with Escape key
+  - **Event propagation control**: Prevented hamburger click from bubbling to document
+
+### Header Icon Hover Effects
+- **Logo hover effects** in `src/components/ui/Logo.astro`:
+  - Added theme color change on hover (`hover:text-theme-300`)
+  - Added scale transform on hover (`hover:scale-150`)
+  - Added smooth transitions (`transition-all`)
+
+- **Theme icon hover effects** in `src/components/ui/ThemeIcon.astro`:
+  - Added scale transform on hover (`hover:scale-150`)
+  - Maintained existing theme color change on hover
+  - Added smooth transitions (`transition-all`)
+
+### Technical Details
+- All hover effects use `scale-150` (1.5x) to match existing Social component styling
+- Transitions use `transition-all` for smooth animations
+- Mobile menu improvements maintain existing functionality while adding better UX
+- Build tested and confirmed working
+
+> [Back to Table of Contents](#table-of-contents)
