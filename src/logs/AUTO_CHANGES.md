@@ -1,5 +1,20 @@
 # Auto Changes Log
 
+## 2025-01-16 19:30 [main] - Fixed references carousel hover scaling issue
+- Updated ReferencesCarouselComponent.tsx to prevent hover scaling cutoff
+  - Added fixed height (300px) and overflow: visible to Flicking container
+  - Set specific panel dimensions (260px width, 280px height) with proper margins
+  - Changed card dimensions from fixed w-64 h-64 to w-full h-full to fill panel
+  - Applied same height and overflow fixes used in client carousel
+  - Prevents top and bottom edges from being cut off when items scale on hover
+
+## 2025-01-16 19:25 [main] - Added light mode filter to hero profile picture
+- Updated HeroIndex.astro profile picture styling
+  - Added brightness-120 filter to lighten image by 20% in light mode
+  - Applied dark:brightness-100 to reset filter in dark mode (no effect)
+  - Simple lightening effect that improves profile picture visibility in light mode
+  - Maintains original appearance in dark mode
+
 ## 2025-01-16 19:20 [main] - Implemented simplified theme logic with OS preference on first visit
 - Updated ThemeIcon.astro to implement new theme logic
   - On site load: Check OS theme preference, apply theme, but don't store in localStorage

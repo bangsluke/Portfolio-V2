@@ -57,8 +57,9 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 ---
 
 <article
-	class="project-card group bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg p-0 flex flex-col overflow-hidden transition-transform hover:scale-105 duration-300 min-h-[420px] cursor-pointer"
+	class="project-card group bg-linear-to-br from-light-theme-accent-100 to-white dark:from-theme-950 dark:to-zinc-950 rounded-2xl shadow-lg p-0 flex flex-col overflow-hidden transition-transform hover:scale-105 duration-300 min-h-[420px] cursor-pointer"
 	data-slug={projectSlug}>
+	<!-- Div holding the image, image filter, and link to project details -->
 	<div class="relative w-full h-48">
 		<img
 			src={imageURL || '/images/imagedefault.webp'}
@@ -67,7 +68,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 			loading="lazy"
 		/>
 		<div
-			class="absolute inset-0 bg-black/70 group-hover:bg-transparent transition-all duration-300 pointer-events-none">
+			class="absolute inset-0 bg-black/20 dark:bg-black/50 group-hover:bg-black/5 transition-all duration-300 pointer-events-none">
 		</div>
 		<a
 			href={`/portfolio/projects/${projectSlug}`}
@@ -86,7 +87,9 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 		</a>
 	</div>
 	<div class="flex flex-col flex-1 p-6">
-		<h2 class="text-2xl font-bold text-theme-100 mb-3">{displayName}</h2>
+		<h2 class="text-2xl font-bold text-theme-400 dark:text-theme-100 mb-3">
+			{displayName}
+		</h2>
 		<div class="flex flex-wrap gap-2 mb-4">
 			{
 				visibleTechnologies &&
@@ -95,7 +98,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 						return (
 							<SkillPill
 								skillName={cleanTech}
-								variant="dark"
+								variant="theme"
 								size="sm"
 								className="shadow hover:bg-theme-700/30"
 							/>
@@ -137,7 +140,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 			}
 		</div>
 		<div
-			class="text-zinc-300 text-base flex-1 mb-4 processed-content"
+			class="text-zinc-00 dark:text-zinc-300 text-base flex-1 mb-4 processed-content"
 			set:html={processedShortDescription}
 		/>
 
@@ -145,7 +148,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 			companyName && (
 				<div class="mt-auto pt-4 border-t border-zinc-700">
 					<div class="relative group/tooltip">
-						<span class="text-sm text-zinc-300">
+						<span class="text-sm text-zinc-00 dark:text-zinc-300">
 							Developed for:{' '}
 							<span class="text-theme-400 hover:text-theme-300 transition-colors cursor-help">
 								{companyName}

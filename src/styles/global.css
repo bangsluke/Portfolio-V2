@@ -677,6 +677,14 @@ a.theme-link:hover {
 	}
 }
 
+/* Global Dropdown Styles */
+.global-dropdown {
+	background-color: #9e4933;
+	border: 1px solid rgb(108 233 183 / 0.3);
+	border-radius: 0.5rem;
+	z-index: 50;
+}
+
 /* Global Tooltip Styles */
 .global-tooltip {
 	background-color: #9e4933;

@@ -147,7 +147,7 @@ const classes = `${baseClasses} ${variantClasses[variant as TechVariant]}`;
 					}>
 					<SkillPill
 						skillName={tech}
-						variant="default"
+						variant="theme"
 						size={size === 'xs' ? 'xs' : 'md'}
 					/>
 					{/* Tooltip showing usage count and projects - positioned above or below based on row */}
@@ -200,7 +200,9 @@ const classes = `${baseClasses} ${variantClasses[variant as TechVariant]}`;
 		const filterDropdown = document.getElementById(
 			'filter-dropdown'
 		) as HTMLDivElement;
-		const filterArrow = document.getElementById('filter-arrow') as SVGElement;
+		const filterArrow = document.getElementById(
+			'filter-arrow'
+		) as unknown as SVGElement;
 		const filterText = document.getElementById(
 			'filter-text'
 		) as HTMLSpanElement;

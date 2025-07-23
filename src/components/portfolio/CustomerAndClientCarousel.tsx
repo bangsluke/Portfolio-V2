@@ -107,7 +107,7 @@ function CompanyCard({
 					<div
 						className={`absolute inset-0 transition-all duration-300 ${
 							hasBackground
-								? 'bg-black/70 group-hover:bg-black/30'
+								? 'bg-black/20 dark:bg-black/50 group-hover:bg-black/5'
 								: fallbackColor + ' group-hover:opacity-80'
 						}`}
 					/>

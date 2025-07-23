@@ -78,11 +78,18 @@ const ReferencesCarouselComponent = ({
 				preventClickOnDrag={false}
 				preventDefaultOnDrag={true}
 				firstPanelSize="280px"
-				style={{ width: '100vw' }}>
+				style={{
+					width: '100vw',
+					height: '300px',
+					overflow: 'visible',
+				}}>
 				{references.map(reference => (
-					<div key={reference.id} className="flicking-panel px-2">
+					<div
+						key={reference.id}
+						className="flicking-panel px-2"
+						style={{ width: '300px', height: '280px', margin: '0 20px' }}>
 						<div
-							className={`relative w-64 h-64 rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-105 ${
+							className={`relative w-full h-full rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-105 ${
 								selectedItem === reference.id
 									? 'ring-4 ring-theme-400 scale-105 brightness-110'
 									: ''
@@ -102,8 +109,8 @@ const ReferencesCarouselComponent = ({
 							<div
 								className={`absolute inset-0 transition-colors duration-300 ${
 									selectedItem === reference.id
-										? 'bg-black/30'
-										: 'bg-black/70 group-hover:bg-black/50'
+										? 'bg-black/5 dark:bg-black/5'
+										: 'bg-black/20 dark:bg-black/50 group-hover:bg-black/5'
 								}`}
 							/>
 
