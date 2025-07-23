@@ -1,5 +1,62 @@
 # Auto Changes Log
 
+## 2025-01-16 19:20 [main] - Implemented simplified theme logic with OS preference on first visit
+- Updated ThemeIcon.astro to implement new theme logic
+  - On site load: Check OS theme preference, apply theme, but don't store in localStorage
+  - On first click: Switch theme and store the result in localStorage for ongoing use
+  - From then on: Only alternate between light and dark based on localStorage
+  - Removed system theme concept - now just light/dark toggle after first interaction
+- Updated Layout.astro flash prevention script
+  - Applied same logic: use OS preference on first visit without storing
+  - Use localStorage if user has already made a choice
+  - Prevents theme flash while respecting the new logic
+- Updated ThemeDisplay.astro to handle simplified theme states
+  - Shows current OS preference (light/dark) on first visit
+  - Shows stored preference (light/dark) after user has made a choice
+  - Removed system theme display logic
+- Improved user experience flow
+  - First visit: Respects OS preference without storing anything
+  - First click: User makes their choice and it's remembered
+  - Subsequent visits: Uses stored preference, toggle only between light/dark
+  - Cleaner, more predictable behavior
+
+## 2025-01-16 19:15 [main] - Simplified system theme icon to show actual OS preference
+- Updated ThemeIcon.astro to remove separate computer icon for system mode
+  - Removed computer icon and related CSS classes
+  - System mode now shows sun or moon icon based on actual OS preference
+  - Icon automatically updates when OS theme changes (sun for light OS, moon for dark OS)
+  - Removed system-theme CSS class management
+- Updated Layout.astro flash prevention script
+  - Removed system-theme class management to match ThemeIcon changes
+  - Simplified theme detection logic while maintaining functionality
+- Improved user experience for system theme mode
+  - Users can now see exactly what their OS preference is through the icon
+  - No confusion with a third icon - just sun/moon based on actual system state
+  - Icon updates in real-time when OS theme changes
+  - Cleaner, more intuitive interface
+
+## 2025-01-16 19:10 [main] - Implemented three-way theme toggle system following Tailwind documentation
+- Updated ThemeIcon.astro to support light, dark, and system theme modes
+  - Added computer icon for system theme state
+  - Implemented cycling through themes: light -> dark -> system -> light
+  - Added system-theme CSS class to show appropriate icon for system mode
+  - Used Tailwind's recommended localStorage.theme approach instead of localStorage.getItem()
+  - Implemented proper system preference detection with window.matchMedia()
+- Enhanced Layout.astro flash prevention script
+  - Updated to use same three-way theme logic as ThemeIcon component
+  - Applied Tailwind's recommended theme detection approach
+  - Added system-theme class management for consistent icon display
+- Updated ThemeDisplay.astro to handle system theme state
+  - Shows "system (dark)" or "system (light)" when using system preference
+  - Displays explicit theme names (light/dark) when user has set preference
+  - Properly updates when system preference changes
+- Implemented complete three-way theme system
+  - Light mode: localStorage.theme = "light"
+  - Dark mode: localStorage.theme = "dark"  
+  - System mode: localStorage.removeItem("theme") (respects OS preference)
+  - Automatic system preference detection and updates
+  - Proper icon cycling and visual feedback
+
 ## 2025-01-16 19:05 [main] - Streamlined theme system in Layout.astro to work with ThemeIcon component
 - Removed duplicate theme detection script from Layout.astro
   - Eliminated conflicting theme initialization logic that was duplicating ThemeIcon functionality

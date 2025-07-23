@@ -25,7 +25,9 @@ const SEO = {
 const twitterimage = `${siteUrl}${ogimage.url}`;
 ---
 
-<html lang="en" class="bg-theme-50/5 font-montserrat scroll-smooth">
+<html
+	lang="en"
+	class="dark:bg-dark-background bg-theme-50/5 font-montserrat scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -38,16 +40,19 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 				try {
 					if (typeof window === 'undefined') return;
 
-					const storedTheme = localStorage.getItem('theme');
-					const prefersDark = window.matchMedia(
-						'(prefers-color-scheme: dark)'
-					).matches;
-					const theme = storedTheme || (prefersDark ? 'dark' : 'light');
-
-					if (theme === 'dark') {
-						document.documentElement.classList.add('dark');
+					// Check if user has already made a choice (stored in localStorage)
+					if ('theme' in localStorage) {
+						// User has made a choice before, use their stored preference
+						document.documentElement.classList.toggle(
+							'dark',
+							localStorage.theme === 'dark'
+						);
 					} else {
-						document.documentElement.classList.remove('dark');
+						// First time visit - use OS preference but don't store it
+						const prefersDark = window.matchMedia(
+							'(prefers-color-scheme: dark)'
+						).matches;
+						document.documentElement.classList.toggle('dark', prefersDark);
 					}
 				} catch (error) {
 					console.error('Theme flash prevention error:', error);
