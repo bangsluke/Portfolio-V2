@@ -670,7 +670,7 @@ function processObsidianLinksInContentOnly(content) {
 function checkMissingSvgFiles() {
 	try {
 		const skillsPath = path.join(ASTRO_CONTENT_PATH, 'skills');
-		const iconsPath = path.join(__dirname, '../src/icons');
+		const iconsPath = path.join(__dirname, '../public/icons');
 
 		if (!fs.existsSync(skillsPath)) {
 			console.log('📁 Skills directory does not exist, skipping SVG check');
@@ -814,7 +814,7 @@ function createSkillIconMapping() {
 // Update icon-utils with current icons from the icons directory
 function updateIconUtils() {
 	try {
-		const iconsDir = path.join(__dirname, '../src/icons');
+		const iconsDir = path.join(__dirname, '../public/icons');
 		const iconUtilsFile = path.join(__dirname, '../src/utils/icon-utils.ts');
 
 		// Check if icons directory exists

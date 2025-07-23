@@ -7,8 +7,8 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-07-22T18:36:31+01:00
-viewCount: 56
+modified: 2025-07-23T08:51:37+01:00
+viewCount: 52
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -31,6 +31,7 @@ technologies:
   - "[[Preact]]"
   - "[[Neo4j Aura]]"
   - "[[Zod]]"
+  - "[[Jest]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a
