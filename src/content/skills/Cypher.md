@@ -11,8 +11,8 @@ created: 2025-06-13T08:16:00
 modified: 2025-07-02T14:20:29+01:00
 viewCount: 9
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 50
+skillDescription: Able to write basic and more advanced queries for interacting with Neo4j data.
 logoFileName: neo4j_cypher.svg
 ---
 

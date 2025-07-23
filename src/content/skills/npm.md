@@ -5,11 +5,11 @@ tags:
   - packageManagement
   - skill
   - portfolio
-viewCount: 4
+viewCount: 5
 modified: 2025-07-18T12:28:57+01:00
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 60
+skillDescription: Comfortable using the package manager for small to medium projects and is my go to choice.
 logoFileName: npm.svg
 ---
 

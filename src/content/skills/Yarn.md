@@ -5,11 +5,11 @@ tags:
   - packageManagement
   - skill
   - portfolio
-viewCount: 3
+viewCount: 4
 modified: 2025-07-18T12:29:22+01:00
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 50
+skillDescription: Comfortable using the package manager for small to medium projects.
 logoFileName: yarn.svg
 ---
 

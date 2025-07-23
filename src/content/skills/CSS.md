@@ -9,11 +9,11 @@ tags:
   - notes
 created: 2023-10-13T07:43:00
 modified: 2025-07-02T14:20:20+01:00
-viewCount: 4
+viewCount: 5
 aliases:
   - Cascading Sheet Styles
-skillRating: 0
-skillDescription: TBC
+skillRating: 60
+skillDescription: Competent at building full sites using CSS and utilising modules for scoped rules.
 logoFileName: css.svg
 ---
 

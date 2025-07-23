@@ -9,8 +9,8 @@ tags:
 modified: 2025-07-18T12:36:44+01:00
 viewCount: 7
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 60
+skillDescription: Enjoyed using frequently for writing code until Cursor arrived.
 logoFileName: codeium.svg
 ---
 

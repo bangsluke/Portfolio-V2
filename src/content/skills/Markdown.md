@@ -9,11 +9,11 @@ tags:
   - notes
 created: 2023-08-18T15:44:00
 modified: 2025-07-02T14:21:19+01:00
-viewCount: 7
+viewCount: 8
 aliases:
   - md
-skillRating: 0
-skillDescription: TBC
+skillRating: 85
+skillDescription: My go to language for note taking given its usefulness and compatibility across so many applications.
 logoFileName: markdown.svg
 ---
 

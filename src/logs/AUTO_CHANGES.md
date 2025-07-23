@@ -1,5 +1,19 @@
 # Auto Changes Log
 
+## 2025-01-16 18:50 [main] - Fixed scroll to top button for mobile devices
+- Removed tooltip from ScrollToTop.astro component to prevent mobile interaction issues
+  - Removed tooltip div and group/tooltip classes that were interfering with touch events
+  - Simplified component structure to just the button element
+- Enhanced button styling and interaction for better mobile experience
+  - Added active:bg-theme-600 and active:shadow-2xl for better touch feedback
+  - Added active:scale-95 for visual feedback on press
+  - Added touch-manipulation class for better touch handling
+- Improved event handling for cross-platform compatibility
+  - Added proper TypeScript typing for event parameter
+  - Added touchstart and touchend event listeners with passive: false option
+  - Added preventDefault() and stopPropagation() to avoid event conflicts
+  - Button now works consistently on both desktop (click) and mobile (touch/press)
+
 ## Example Log
 
 ### 2024-06-09 08:47 [main] - Tailwind CSS v4 Compatibility Fixes
