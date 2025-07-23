@@ -21,6 +21,8 @@
 	--color-theme-900: #054f3c;
 	--color-theme-950: #012d22;
 
+	--color-dark-background: #0e0e11;
+
 	--color-light-theme-accent-50: #f0fdfa;
 	--color-light-theme-accent-100: #cbfcf1;
 	--color-light-theme-accent-200: #96f7e4;
@@ -673,6 +675,14 @@ a.theme-link:hover {
 		width: 200px;
 		height: 250px;
 	}
+}
+
+/* Global Dropdown Styles */
+.global-dropdown {
+	background-color: #9e4933;
+	border: 1px solid rgb(108 233 183 / 0.3);
+	border-radius: 0.5rem;
+	z-index: 50;
 }
 
 /* Global Tooltip Styles */

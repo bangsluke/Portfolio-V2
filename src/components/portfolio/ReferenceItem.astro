@@ -1,55 +1,28 @@
 ---
-import {
-	processContent,
-	processObsidianLink,
-} from '../../utils/content-processor';
+import { processObsidianLink } from '../../utils/content-processor';
 
 interface Props {
 	name: string;
-	tags?: string[];
-	birthday?: string | Date | null;
-	died?: string | Date | null;
-	partneredWith?: string | null;
-	marriageDate?: string | Date | null;
-	relatedTo?: string | null;
-	friendOf?: string[];
-	education?: string[];
 	linkedCompany?: string[];
 	referenceRole?: string;
 	referenceEmail?: string;
 	referenceNumber?: string;
 	referenceAddress?: string;
-	referenceDescription?: string;
-	keyAchievement?: string;
 	companyLogoURL?: string | null;
 }
 
 const {
 	name,
-	tags,
-	birthday,
-	died,
-	partneredWith,
-	marriageDate,
-	relatedTo,
-	friendOf,
-	education,
 	linkedCompany,
 	referenceRole,
 	referenceEmail,
 	referenceNumber,
 	referenceAddress,
-	referenceDescription,
-	keyAchievement,
 	companyLogoURL,
 } = Astro.props;
 
 // Process content to handle Obsidian links and markdown
 const processedLinkedCompany = processObsidianLink(linkedCompany);
-const processedReferenceDescription = processContent(
-	referenceDescription || ''
-);
-const processedKeyAchievement = processContent(keyAchievement || '');
 
 // console.log(name);
 ---
@@ -121,22 +94,8 @@ const processedKeyAchievement = processContent(keyAchievement || '');
 	<div
 		class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3">
 		{
-			processedReferenceDescription && (
-				<div
-					class="processed-content"
-					set:html={processedReferenceDescription}
-				/>
-			)
-		}
-		{
-			processedKeyAchievement && (
-				<div class="mt-4">
-					<strong>Key Achievement:</strong>
-					<div
-						class="processed-content mt-2"
-						set:html={processedKeyAchievement}
-					/>
-				</div>
+			referenceAddress && (
+				<div class="processed-content" set:html={referenceAddress} />
 			)
 		}
 	</div>

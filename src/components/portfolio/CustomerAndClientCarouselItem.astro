@@ -1,46 +1,11 @@
 ---
-import {
-	processContent,
-	processObsidianLink,
-} from '../../utils/content-processor';
-
 interface Props {
 	name: string;
-	tags?: string[];
-	dateStart?: string | Date | null;
-	dateEnd?: string | Date | null;
-	imageURL?: string | null;
-	linkedCompany?: string;
-	clientDescription?: string;
-	keyAchievement?: string;
 	logoURL?: string;
-	description?: string;
-	slug?: string;
 	dateString?: string;
-	type?: 'company' | 'client';
 }
 
-const {
-	name,
-	tags,
-	dateStart,
-	dateEnd,
-	imageURL,
-	linkedCompany,
-	clientDescription,
-	keyAchievement,
-	logoURL,
-	description,
-	slug,
-	dateString,
-	type,
-} = Astro.props;
-
-// Process content to handle Obsidian links and markdown
-const processedLinkedCompany = processObsidianLink(linkedCompany);
-const processedClientDescription = processContent(clientDescription || '');
-const processedKeyAchievement = processContent(keyAchievement || '');
-const processedDescription = processContent(description || '');
+const { name, logoURL, dateString } = Astro.props;
 
 // Generate a fallback background color if no logo
 const fallbackColor = 'bg-gradient-to-br from-blue-500 to-purple-600';
@@ -53,16 +18,13 @@ const hasLogo = logoURL && logoURL.trim() !== '';
 		? `background-image: url('${logoURL}'); background-size: cover; background-position: center;`
 		: ''}
 	data-company-name={name}
-	data-company-description={processedDescription}
 	data-company-date={dateString}
-	data-company-linked={processedLinkedCompany}
-	data-company-achievement={processedKeyAchievement}
 	data-company-logo={logoURL}>
 	<!-- Darkened overlay that lightens on hover -->
 	<div
 		class={`absolute inset-0 transition-all duration-300 ${
 			hasLogo
-				? 'bg-black/70 group-hover:bg-black/30'
+				? 'bg-black/20 dark:bg-black/50 group-hover:bg-black/10'
 				: fallbackColor + ' group-hover:opacity-80'
 		}`}>
 	</div>
