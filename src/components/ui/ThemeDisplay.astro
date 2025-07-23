@@ -1,0 +1,66 @@
+---
+// No props needed for this component
+---
+
+<div
+	id="theme-display"
+	class="w-full py-2 px-4 text-center text-sm font-medium transition-colors duration-300 bg-theme-50/10 dark:bg-theme-900/20 border-b border-theme-200/50 dark:border-theme-700/50">
+	<span class="text-theme-700 dark:text-theme-300">
+		Current theme: <span
+			id="theme-value"
+			class="font-semibold text-theme-800 dark:text-theme-200">Loading...</span
+		>
+	</span>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const themeValue = document.getElementById('theme-value');
+
+		if (!themeValue) return;
+
+		// Function to update theme display
+		function updateThemeDisplay() {
+			if (!themeValue) return;
+			const currentTheme = localStorage.getItem('theme') || 'light';
+			themeValue.textContent = currentTheme;
+		}
+
+		// Update on page load
+		updateThemeDisplay();
+
+		// Listen for theme initialization event from ThemeIcon
+		window.addEventListener('themeInitialized', function (e) {
+			updateThemeDisplay();
+		});
+
+		// Listen for theme change events from ThemeIcon
+		window.addEventListener('themeChanged', function (e) {
+			updateThemeDisplay();
+		});
+
+		// Listen for theme changes (if theme toggle is used elsewhere)
+		window.addEventListener('storage', function (e) {
+			if (e.key === 'theme') {
+				updateThemeDisplay();
+			}
+		});
+
+		// Also listen for theme class changes on the document
+		const observer = new MutationObserver(function (mutations) {
+			mutations.forEach(function (mutation) {
+				if (
+					mutation.type === 'attributes' &&
+					mutation.attributeName === 'class'
+				) {
+					updateThemeDisplay();
+				}
+			});
+		});
+
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ['class'],
+		});
+	});
+</script>
