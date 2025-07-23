@@ -1913,3 +1913,39 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
   - Updated education.astro with max-sm:max-w-full containers
   - Improved header and timeline sections for mobile viewing
   - Maintained consistent spacing and typography across devices
+
+## 2025-01-16 18:25 [main] - Enhanced references section with full width and selection functionality
+- Updated ReferencesCarousel.astro for improved layout
+  - Changed section padding from px-8 to px-0 for full width display
+  - Updated container from max-w-6xl to w-full for full page width
+  - Increased space between header and content with mb-12
+  - Enhanced carousel container with w-full class
+- Enhanced ReferencesCarouselComponent.tsx with selection functionality
+  - Added selectedItem state to track highlighted cards
+  - Implemented handleItemClick function for card selection
+  - Added click-outside-to-deselect functionality with useEffect
+  - Enhanced visual feedback with ring-4 ring-theme-400 and brightness-110 for selected items
+  - Updated overlay opacity based on selection state
+  - Added theme color transition for selected card titles
+  - Made carousel full width with 100vw style
+  - Improved arrow button accessibility with cursor-pointer class
+  - Set preventClickOnDrag to false for better interaction
+
+## 2025-01-16 18:20 [main] - Improved contact section mobile responsiveness
+- Enhanced Contact.astro component for better mobile layout
+  - Added max-sm:flex-col and max-sm:w-full to button container
+  - Applied max-sm:!w-full to both Contact Me and Download CV buttons
+  - Ensured consistent button sizing on mobile devices
+  - Maintained existing hover effects and transitions
+
+## 2025-01-16 18:15 [main] - Enhanced footer logo and text hover effects
+- Updated Footer.astro with improved hover interactions
+  - Enhanced logo container with hover:text-theme-400 and hover:scale-125
+  - Added transition-all duration-300 for smooth animations
+  - Updated "Developed by" text with hover:text-theme-400 and hover:scale-110
+  - Added individual hover effect to bangsluke text with hover:text-theme-400
+  - Improved visual feedback with consistent theme color usage
+- Enhanced Logo.astro component styling
+  - Updated hover color from theme-300 to theme-400 for consistency
+  - Changed scale from 150% to 125% for more subtle effect
+  - Added duration-300 for smoother transitions

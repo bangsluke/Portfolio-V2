@@ -1,7 +1,7 @@
 import { AutoPlay } from '@egjs/flicking-plugins';
 import '@egjs/flicking/dist/flicking.css';
 import Flicking from '@egjs/preact-flicking';
-import { useRef, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 
 interface Reference {
 	id: string;
@@ -23,6 +23,7 @@ const ReferencesCarouselComponent = ({
 }: ReferencesCarouselComponentProps) => {
 	const flickingRef = useRef<any>(null);
 	const [copiedField, setCopiedField] = useState<string | null>(null);
+	const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
 	const copyToClipboard = async (text: string, field: string) => {
 		try {
@@ -38,8 +39,34 @@ const ReferencesCarouselComponent = ({
 		new AutoPlay({ duration: 5000, direction: 'NEXT', stopOnHover: true }),
 	];
 
+	// Handle item selection
+	const handleItemClick = (itemId: string) => {
+		setSelectedItem(selectedItem === itemId ? null : itemId);
+
+		// Snap to the clicked item
+		if (flickingRef.current) {
+			const itemIndex = references.findIndex(item => item.id === itemId);
+			if (itemIndex !== -1) {
+				flickingRef.current.moveTo(itemIndex, true);
+			}
+		}
+	};
+
+	// Handle click outside to deselect
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			const target = event.target as HTMLElement;
+			if (!target.closest('.flicking-panel')) {
+				setSelectedItem(null);
+			}
+		};
+
+		document.addEventListener('click', handleClickOutside);
+		return () => document.removeEventListener('click', handleClickOutside);
+	}, []);
+
 	return (
-		<div className="relative">
+		<div className="relative w-full">
 			<Flicking
 				ref={flickingRef}
 				plugins={plugins}
@@ -48,12 +75,19 @@ const ReferencesCarouselComponent = ({
 				adaptive={true}
 				align="center"
 				bound={false}
-				preventClickOnDrag={true}
+				preventClickOnDrag={false}
 				preventDefaultOnDrag={true}
-				firstPanelSize="280px">
+				firstPanelSize="280px"
+				style={{ width: '100vw' }}>
 				{references.map(reference => (
 					<div key={reference.id} className="flicking-panel px-2">
-						<div className="relative w-64 h-64 rounded-2xl overflow-hidden group cursor-pointer transition-transform duration-300 hover:scale-105">
+						<div
+							className={`relative w-64 h-64 rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-105 ${
+								selectedItem === reference.id
+									? 'ring-4 ring-theme-400 scale-105 brightness-110'
+									: ''
+							}`}
+							onClick={() => handleItemClick(reference.id)}>
 							{/* Background Image */}
 							{reference.logoURL ? (
 								<div
@@ -65,13 +99,26 @@ const ReferencesCarouselComponent = ({
 							)}
 
 							{/* Dark Overlay */}
-							<div className="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-colors duration-300" />
+							<div
+								className={`absolute inset-0 transition-colors duration-300 ${
+									selectedItem === reference.id
+										? 'bg-black/30'
+										: 'bg-black/70 group-hover:bg-black/50'
+								}`}
+							/>
 
 							{/* Content */}
 							<div className="relative z-10 h-full flex flex-col justify-between p-6 text-white">
 								{/* Top Section */}
 								<div>
-									<h3 className="text-xl font-bold mb-1">{reference.name}</h3>
+									<h3
+										className={`text-xl font-bold mb-1 transition-colors duration-300 ${
+											selectedItem === reference.id
+												? 'text-theme-400'
+												: 'text-white'
+										}`}>
+										{reference.name}
+									</h3>
 									{reference.title && (
 										<p className="text-sm text-white/80 mb-2">
 											{reference.title}
@@ -184,7 +231,7 @@ const ReferencesCarouselComponent = ({
 
 			{/* Custom Arrow Buttons */}
 			<button
-				className="flicking-arrow flicking-arrow-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors duration-200 backdrop-blur-sm"
+				className="flicking-arrow flicking-arrow-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors duration-200 backdrop-blur-sm cursor-pointer"
 				onClick={() => flickingRef.current?.prev()}>
 				<svg
 					className="w-5 h-5"
@@ -201,7 +248,7 @@ const ReferencesCarouselComponent = ({
 			</button>
 
 			<button
-				className="flicking-arrow flicking-arrow-next absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors duration-200 backdrop-blur-sm"
+				className="flicking-arrow flicking-arrow-next absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors duration-200 backdrop-blur-sm cursor-pointer"
 				onClick={() => flickingRef.current?.next()}>
 				<svg
 					className="w-5 h-5"
