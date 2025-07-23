@@ -280,26 +280,10 @@ const SkillsBubbleChart = ({
 			.filter((d: any) => d.iconName)
 			.append('image')
 			.attr('href', (d: any) => `/icons/${d.iconName}.svg`)
-			.attr('width', (d: any) => Math.min(d.radius * 0.6, 24))
-			.attr('height', (d: any) => Math.min(d.radius * 0.6, 24))
-			.attr('x', (d: any) => -Math.min(d.radius * 0.3, 12))
-			.attr('y', (d: any) => -Math.min(d.radius * 0.3, 12))
-			.style('filter', 'brightness(0) invert(1)');
-
-		// Add skill names (for larger bubbles)
-		bubbles
-			.filter((d: any) => d.radius > 25)
-			.append('text')
-			.text((d: any) => d.name)
-			.attr('text-anchor', 'middle')
-			.attr('dy', '0.35em')
-			.attr('fill', '#ffffff')
-			.style(
-				'font-size',
-				(d: any) => Math.max(10, Math.min(14, d.radius * 0.2)) + 'px'
-			)
-			.style('font-weight', 'bold')
-			.style('pointer-events', 'none');
+			.attr('width', (d: any) => Math.min(d.radius * 1.0, d.radius * 1.0))
+			.attr('height', (d: any) => Math.min(d.radius * 1.0, d.radius * 1.0))
+			.attr('x', (d: any) => -Math.min(d.radius * 0.5, d.radius * 0.5))
+			.attr('y', (d: any) => -Math.min(d.radius * 0.5, d.radius * 0.5));
 
 		// Update positions on simulation tick
 		simulation.on('tick', () => {

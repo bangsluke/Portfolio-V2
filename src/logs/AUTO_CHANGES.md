@@ -1993,3 +1993,31 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
   - Tooltips, hover effects, and styling remain unchanged
   - Fallback question mark display for missing icons preserved
   - Mobile touch interactions continue to work properly
+
+## 2025-01-16 19:15 [main] - Fixed skills bubble chart icon display and removed skill names
+- Removed white filter from skill icons in SkillsBubbleChart
+  - Removed 'brightness(0) invert(1)' filter that was making icons appear white
+  - Icons now display in their original colors as intended
+  - SVG logos now show proper brand colors and styling
+- Hidden skill names from bubble chart display
+  - Removed text elements that displayed skill names on larger bubbles
+  - Cleaner visual appearance with only colored icons visible
+  - Skill information still available via tooltips and selection
+- Improved visual clarity of skills bubble chart
+  - Icons now properly represent their brand colors and identities
+  - Reduced visual clutter by removing overlapping text
+  - Maintains all interactive functionality (tooltips, selection, filtering)
+
+## 2025-01-16 19:20 [main] - Increased SVG icon size in skills bubble chart
+- Maximized icon size within skill bubbles
+  - Increased icon size from 60% to 100% of bubble radius
+  - Removed 24px maximum size limit to allow full bubble utilization
+  - Icons now use 100% of available bubble space for maximum visibility
+- Improved icon positioning for larger sizes
+  - Updated positioning calculations to center larger icons properly
+  - Icons remain perfectly centered within each bubble
+  - Maintains visual balance across all bubble sizes
+- Enhanced visual impact of skills bubble chart
+  - Larger icons are more recognizable and easier to identify
+  - Better brand visibility for technology logos
+  - Improved overall chart readability and professional appearance
