@@ -78,6 +78,7 @@ let knownIconsCache: string[] = [
 	'tailwind',
 	'typescript',
 	'vba',
+	'vercel',
 	'visio',
 	'vitejs',
 	'vs_code',
