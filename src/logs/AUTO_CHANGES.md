@@ -1,5 +1,55 @@
 # Auto Changes Log
 
+## 2025-01-16 19:05 [main] - Streamlined theme system in Layout.astro to work with ThemeIcon component
+- Removed duplicate theme detection script from Layout.astro
+  - Eliminated conflicting theme initialization logic that was duplicating ThemeIcon functionality
+  - Removed complex theme detection and storage logic that was causing conflicts
+  - Removed debug logging that was cluttering the console
+- Added minimal theme flash prevention script to Layout.astro
+  - Simple script that applies theme immediately on page load to prevent flash
+  - Works in harmony with ThemeIcon component without conflicts
+  - Only handles initial theme application, leaving full control to ThemeIcon
+- Improved theme system architecture
+  - Layout.astro now only prevents theme flash on initial load
+  - ThemeIcon component handles all theme detection, storage, and toggling
+  - HTML class is now properly toggled by ThemeIcon button without conflicts
+  - Cleaner separation of concerns between components
+
+## 2025-01-16 19:00 [main] - Enhanced theme initialization and synchronization between ThemeIcon and ThemeDisplay
+- Updated ThemeIcon.astro to handle initial theme detection and storage
+  - Added initializeTheme() function that runs on page load
+  - Checks localStorage first, then falls back to system preference
+  - Automatically stores detected theme in localStorage with key "theme"
+  - Triggers custom events (themeInitialized, themeChanged) for component communication
+  - Ensures theme is properly stored even when using system preference
+- Enhanced ThemeDisplay.astro to listen for ThemeIcon events
+  - Added event listeners for 'themeInitialized' and 'themeChanged' custom events
+  - Improved synchronization between ThemeIcon and ThemeDisplay components
+  - Added null check for themeValue element to fix TypeScript error
+  - Component now updates immediately when theme is initialized or changed
+- Improved theme system workflow
+  - On initial load: ThemeIcon detects preference → stores in localStorage → ThemeDisplay shows value
+  - On theme toggle: ThemeIcon updates localStorage → triggers event → ThemeDisplay updates
+  - On system preference change: ThemeIcon updates localStorage → triggers event → ThemeDisplay updates
+  - All components now properly synchronized for consistent theme display
+
+## 2025-01-16 18:55 [main] - Added theme display component to site page
+- Created ThemeDisplay.astro component in src/components/ui/
+  - Displays current theme value from localStorage with "Current theme: [value]" format
+  - Uses Tailwind CSS for light and dark theming with proper color transitions
+  - Light theme: bg-theme-50/10 background with theme-700/800 text colors
+  - Dark theme: bg-theme-900/20 background with theme-300/200 text colors
+  - Includes subtle border styling that adapts to theme changes
+- Added JavaScript functionality for real-time theme updates
+  - Reads theme from localStorage on page load
+  - Listens for storage events to update when theme changes
+  - Uses MutationObserver to detect document class changes
+  - Provides fallback to "light" theme if localStorage is empty
+- Integrated component into site.astro page
+  - Imported ThemeDisplay component and placed it above HeroIndex
+  - Component appears at the top of the site page as requested
+  - Maintains responsive design and proper spacing
+
 ## 2025-01-16 18:50 [main] - Fixed scroll to top button for mobile devices
 - Removed tooltip from ScrollToTop.astro component to prevent mobile interaction issues
   - Removed tooltip div and group/tooltip classes that were interfering with touch events

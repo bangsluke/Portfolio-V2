@@ -7,6 +7,7 @@ import HeroIndex from '../components/portfolio/HeroIndex.astro';
 import ProjectsGallery from '../components/portfolio/ProjectsGallery.astro';
 import ReferencesCarousel from '../components/portfolio/ReferencesCarousel.astro';
 import WorkExperienceTimeline from '../components/portfolio/WorkExperienceTimeline.astro';
+import ThemeDisplay from '../components/ui/ThemeDisplay.astro';
 import Layout from '../layouts/Layout.astro';
 const pageTitle = 'bangsluke Portfolio';
 const description = 'My portfolio site';
@@ -17,6 +18,7 @@ const ogimage = {
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
+	<ThemeDisplay />
 	<HeroIndex />
 	<ProjectsGallery />
 	<CodingSection />
