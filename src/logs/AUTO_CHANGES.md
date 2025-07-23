@@ -18,6 +18,32 @@
 
 ## Auto Log
 
+## 2025-01-16 18:45 [main] - Refactored filename extension removal with utility function
+- Created extractNameFromFilename utility function in src/utils/filename-utils.ts
+  - Added regex-based function that removes .md extension from filenames
+  - Added string-based alternative function for comparison
+  - Function handles edge cases like empty strings, multiple .md occurrences, and case sensitivity
+- Created comprehensive unit tests in src/__tests__/filename-utils.test.ts
+  - Added 12 test cases covering all scenarios including edge cases
+  - Tests both regex and string-based implementations
+  - Verified functions produce same results for simple cases but differ for multiple .md occurrences
+- Replaced all .replace('.md', '') and .replace(/\.md$/, '') instances with utility function
+  - Updated SkillsBubbleChart.tsx to use extractNameFromFilename
+  - Updated ProjectsGallery.astro to use extractNameFromFilename for company and client name extraction
+  - Updated ReferencesCarousel.astro to use extractNameFromFilename for reference name processing
+  - Updated WorkExperienceTimeline.astro to use extractNameFromFilename for role name extraction
+  - Updated EducationTimeline.astro to use extractNameFromFilename for education name extraction
+  - Updated CustomerAndClientCarousel.astro and CustomerAndClientCarousel.tsx to use extractNameFromFilename
+  - Updated SkillPill.astro to use extractNameFromFilename for skill name matching
+  - Updated work-experience.astro page to use extractNameFromFilename for role name display
+  - Updated portfolio project pages ([slug].astro and index.astro) to use extractNameFromFilename
+  - Updated sync.js script to use extractNameFromFilename for project and skill name processing
+- Improved code maintainability and consistency
+  - Centralized filename processing logic in reusable utility function
+  - Eliminated code duplication across multiple components and pages
+  - Made filename extension removal behavior consistent throughout the codebase
+  - All tests pass successfully with 50/50 tests passing
+
 ## 2025-01-16 17:50 [main] - Enhanced Most Common Techs with multi-select filtering and improved mobile experience
 - Updated MostCommonTechs.astro with comprehensive multi-select filtering and improved functionality
   - Replaced single-select dropdown with multi-select dropdown using predefined SKILLS_FILTER_OPTIONS
@@ -1847,3 +1873,87 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - **Responsive behavior**: Layout adapts properly to different screen sizes
 
 > [Back to Table of Contents](#table-of-contents)
+
+## 2025-01-16 18:20 [main] - Enhanced CustomerAndClientCarousel with infinite loop and mobile improvements
+- Implemented infinite loop functionality for carousel
+  - Removed TODO comments for pagination and infinite loop fixes
+  - Enhanced circular mode with proper center alignment
+  - Added preventClickOnDrag: false for better touch interaction
+- Made carousel full width on screen
+  - Changed section padding from px-8 to px-0 for full width
+  - Updated container from max-w-7xl to w-full
+  - Added CSS for 100vw width and max-width
+  - Enhanced mobile responsiveness with larger cards (280x300px)
+- Enhanced focused carousel item brightness
+  - Added brightness-110 class to selected items
+  - Improved visual feedback for selected state
+- Implemented mobile-specific interactions
+  - Added mobile detection (touch device or small screen)
+  - Mobile clicks show detailed modal instead of selection
+  - Desktop clicks maintain selection behavior
+  - Added "Tap for details" indicator on mobile cards
+- Enhanced modal with more information
+  - Added duration and type information to modal
+  - Improved modal content structure and readability
+- Made carousel swipeable on all devices
+  - Enabled touch/swipe functionality across all screen sizes
+  - Maintained click-to-select on desktop
+  - Added proper touch event handling
+
+## 2025-01-16 18:15 [main] - Improved education timeline mobile responsiveness
+- Enhanced EducationTimelineItem.astro mobile layout
+  - Added max-sm:col-span-full and max-sm:w-full for full width on mobile
+  - Added max-sm:px-4 for better mobile padding
+  - Reduced date margin with max-sm:mb-1 for tighter spacing
+  - Adjusted text sizes: qualifications to max-sm:text-lg, details to max-sm:text-sm
+- Updated EducationTimeline.astro container
+  - Added max-sm:max-w-full for full width on mobile
+  - Reduced top margin with max-sm:mt-6 for better spacing
+- Enhanced full education page mobile layout
+  - Updated education.astro with max-sm:max-w-full containers
+  - Improved header and timeline sections for mobile viewing
+  - Maintained consistent spacing and typography across devices
+
+## 2025-01-16 18:25 [main] - Enhanced references section with full width and selection functionality
+- Updated ReferencesCarousel.astro for improved layout
+  - Changed section padding from px-8 to px-0 for full width display
+  - Updated container from max-w-6xl to w-full for full page width
+  - Increased space between header and content with mb-12
+  - Enhanced carousel container with w-full class
+- Enhanced ReferencesCarouselComponent.tsx with selection functionality
+  - Added selectedItem state to track highlighted cards
+  - Implemented handleItemClick function for card selection
+  - Added click-outside-to-deselect functionality with useEffect
+  - Enhanced visual feedback with ring-4 ring-theme-400 and brightness-110 for selected items
+  - Updated overlay opacity based on selection state
+  - Added theme color transition for selected card titles
+  - Made carousel full width with 100vw style
+  - Improved arrow button accessibility with cursor-pointer class
+  - Set preventClickOnDrag to false for better interaction
+
+## 2025-01-16 18:20 [main] - Improved contact section mobile responsiveness
+- Enhanced Contact.astro component for better mobile layout
+  - Added max-sm:flex-col and max-sm:w-full to button container
+  - Applied max-sm:!w-full to both Contact Me and Download CV buttons
+  - Ensured consistent button sizing on mobile devices
+  - Maintained existing hover effects and transitions
+
+## 2025-01-16 18:15 [main] - Enhanced footer logo and text hover effects
+- Updated Footer.astro with improved hover interactions
+  - Enhanced logo container with hover:text-theme-400 and hover:scale-125
+  - Added transition-all duration-300 for smooth animations
+  - Updated "Developed by" text with hover:text-theme-400 and hover:scale-110
+  - Added individual hover effect to bangsluke text with hover:text-theme-400
+  - Improved visual feedback with consistent theme color usage
+- Enhanced Logo.astro component styling
+  - Updated hover color from theme-300 to theme-400 for consistency
+  - Changed scale from 150% to 125% for more subtle effect
+  - Added duration-300 for smoother transitions
+
+## 2025-01-16 18:30 [main] - Fixed sync script import error
+- Updated scripts/sync.js to include filename utility function directly
+  - Removed problematic import of TypeScript file '../src/utils/filename-utils.ts'
+  - Added extractNameFromFilename function directly in sync script
+  - Resolved ERR_UNKNOWN_FILE_EXTENSION error when running sync:dev
+  - Fixed Node.js compatibility issue with TypeScript imports
+  - Ensured proper module resolution without external dependencies

@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { processObsidianLink } from '../../utils/content-processor';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 import Heading from '../ui/Heading.astro';
 import ReferencesCarouselComponent from './ReferencesCarouselComponent.tsx';
 
@@ -36,7 +37,7 @@ const processedReferences = sortedReferences.map(reference => {
 
 		// First try to find in companies collection
 		const company = companies.find(company => {
-			const companyName = company.id.replace('.md', ''); // Remove .md extension
+			const companyName = extractNameFromFilename(company.id);
 			return companyName === linkedCompanyName;
 		});
 
@@ -45,7 +46,7 @@ const processedReferences = sortedReferences.map(reference => {
 		} else {
 			// If not found in companies, try clients collection
 			const client = clients.find(client => {
-				const clientName = client.id.replace('.md', ''); // Remove .md extension
+				const clientName = extractNameFromFilename(client.id);
 				return clientName === linkedCompanyName;
 			});
 
@@ -62,18 +63,18 @@ const processedReferences = sortedReferences.map(reference => {
 });
 ---
 
-<section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="references">
-	<div class="flex flex-col pt-8 max-w-6xl mx-auto">
-		<div class="flex gap-4 items-center justify-center">
+<section class="py-8 px-0 max-md:py-4 mb-4 scroll-m-16" id="references">
+	<div class="flex flex-col pt-8 w-full">
+		<div class="flex gap-4 items-center justify-center mb-12">
 			<Icon class="text-3xl dark:text-white text-blacktext" name="people" />
 			<Heading text="" textGradient="References" level={2} />
 		</div>
 
-		<div class="relative max-md:mt-0 mt-8" aria-label="References">
+		<div class="relative w-full" aria-label="References">
 			<ReferencesCarouselComponent
 				references={processedReferences.map(ref => ({
 					id: ref.id,
-					name: ref.data.name || ref.id.replace('.md', ''),
+					name: ref.data.name || extractNameFromFilename(ref.id),
 					title: ref.data.referenceRole || '',
 					email: ref.data.referenceEmail || '',
 					phone: ref.data.referenceNumber || '',

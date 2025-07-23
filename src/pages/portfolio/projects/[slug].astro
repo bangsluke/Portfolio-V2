@@ -7,6 +7,7 @@ import {
 	processContent,
 	processObsidianLink,
 } from '../../../utils/content-processor';
+import { extractNameFromFilename } from '../../../utils/filename-utils';
 
 export async function getStaticPaths() {
 	const projects = await getCollection('projects');
@@ -51,7 +52,7 @@ try {
 
 		// First try to find in companies
 		const company = companies.find(
-			company => company.id.replace('.md', '') === linkedName
+			company => extractNameFromFilename(company.id) === linkedName
 		);
 
 		if (company) {
@@ -59,7 +60,7 @@ try {
 		} else {
 			// If not found in companies, try clients
 			const client = clients.find(
-				client => client.id.replace('.md', '') === linkedName
+				client => extractNameFromFilename(client.id) === linkedName
 			);
 
 			if (client) {
@@ -77,7 +78,7 @@ function getCompanyName(company: any) {
 		return company.data.name;
 	}
 	// Fallback to filename minus .md extension
-	return company.id.replace('.md', '');
+	return extractNameFromFilename(company.id);
 }
 
 const pageTitle = data.name + ' Project - bangsluke Portfolio';

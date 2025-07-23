@@ -3,9 +3,7 @@ import '@egjs/flicking-plugins/dist/pagination.css';
 import '@egjs/flicking/dist/flicking.css';
 import Flicking from '@egjs/preact-flicking';
 import { useEffect, useRef, useState } from 'preact/hooks';
-
-// TODO: Fix the pagination bullet points
-// TODO: Fix the inifinite loop
+import { extractNameFromFilename } from '../../utils/filename-utils';
 
 interface Company {
 	id: string;
@@ -77,18 +75,33 @@ function CompanyCard({
 		document.body.style.overflow = '';
 	};
 
+	// Handle card click - on mobile, show modal; on desktop, select item
+	const handleCardClick = (e: MouseEvent) => {
+		e.preventDefault();
+		e.stopPropagation();
+
+		// Check if it's mobile (touch device or small screen)
+		const isMobile = 'ontouchstart' in window || window.innerWidth <= 768;
+
+		if (isMobile) {
+			showCompanyModal();
+		} else {
+			onClick();
+		}
+	};
+
 	return (
 		<>
 			<div
 				className={`relative w-full h-full rounded-lg overflow-hidden group cursor-pointer transition-all duration-300 transform hover:scale-105 ${
-					isSelected ? 'ring-4 ring-theme-400 scale-105' : ''
+					isSelected ? 'ring-4 ring-theme-400 scale-105 brightness-110' : ''
 				}`}
 				style={
 					hasBackground
 						? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center;`
 						: ''
 				}
-				onClick={onClick}>
+				onClick={handleCardClick}>
 				{/* Darkened overlay that lightens on hover - removed when selected */}
 				{!isSelected && (
 					<div
@@ -118,10 +131,15 @@ function CompanyCard({
 							</div>
 						)}
 					</div>
+
+					{/* Mobile tap indicator */}
+					<div className="md:hidden text-xs text-white/60 text-center mt-2">
+						Tap for details
+					</div>
 				</div>
 			</div>
 
-			{/* Modal for company/client details */}
+			{/* Enhanced Modal for company/client details */}
 			{showModal && (
 				<div
 					className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
@@ -163,9 +181,13 @@ function CompanyCard({
 							</div>
 							{item.dateString && (
 								<div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-									{item.dateString}
+									<strong>Duration:</strong> {item.dateString}
 								</div>
 							)}
+							<div className="text-sm text-gray-600 dark:text-gray-400">
+								<strong>Type:</strong>{' '}
+								{item.type === 'company' ? 'Company' : 'Client'}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -197,7 +219,7 @@ export default function ClientAndCustomerCarousel({
 					let item: CarouselItem;
 					if (company.type === 'company') {
 						const companyName =
-							company.data.name || company.id.replace('.md', '');
+							company.data.name || extractNameFromFilename(company.id);
 						const dateStart = company.data.dateStart;
 						const dateEnd = company.data.dateEnd;
 						let dateString = '';
@@ -233,7 +255,7 @@ export default function ClientAndCustomerCarousel({
 						};
 					} else if (company.type === 'client') {
 						const clientName =
-							company.data.name || company.id.replace('.md', '');
+							company.data.name || extractNameFromFilename(company.id);
 						const dateStart = company.data.dateStart;
 						const dateEnd = company.data.dateEnd;
 						let dateString = '';
@@ -287,16 +309,6 @@ export default function ClientAndCustomerCarousel({
 		}
 	}, [companies]);
 
-	// Check circular mode status
-	useEffect(() => {
-		if (flickingRef.current && carouselItems.length > 0) {
-			const flicking = flickingRef.current;
-			// console.log('Circular mode enabled:', flicking.circularEnabled);
-			// console.log('Total panels:', carouselItems.length);
-			// console.log('Viewport width:', flicking.viewport?.width);
-		}
-	}, [carouselItems]);
-
 	const plugins = [
 		new AutoPlay({ duration: 3000, direction: 'NEXT', stopOnHover: false }),
 		new Pagination({ type: 'bullet' }),
@@ -342,7 +354,7 @@ export default function ClientAndCustomerCarousel({
 	}
 
 	return (
-		<section className="py-8 px-8 max-sm:px-4">
+		<section className="py-8 px-0 max-sm:px-0">
 			<style
 				dangerouslySetInnerHTML={{
 					__html: `
@@ -371,10 +383,25 @@ export default function ClientAndCustomerCarousel({
 					.flicking-pagination-bullet:hover {
 						background-color: rgb(107 114 128) !important;
 					}
+					
+					/* Full width carousel */
+					.flicking-viewport {
+						width: 100vw !important;
+						max-width: 100vw !important;
+					}
+					
+					/* Enhanced mobile responsiveness */
+					@media (max-width: 768px) {
+						.plugins-panel {
+							width: 280px !important;
+							height: 300px !important;
+							margin: 0 10px !important;
+						}
+					}
 				`,
 				}}
 			/>
-			<div className="mx-auto max-w-7xl">
+			<div className="w-full">
 				{carouselItems.length === 0 ? (
 					<div className="text-center py-8">
 						<p className="text-gray-600 dark:text-gray-400 mb-4">Loading...</p>
@@ -387,16 +414,17 @@ export default function ClientAndCustomerCarousel({
 							className="flicking-viewport"
 							style={{
 								height: '300px',
-								width: '100%',
+								width: '100vw',
 								overflow: 'visible',
 							}}
 							options={{
-								align: 'prev',
+								align: 'center',
 								circular: true,
 								gap: 40,
 								bound: false,
 								adaptive: false,
 								renderOnlyVisible: false,
+								preventClickOnDrag: false,
 							}}>
 							{carouselItems.map(item => (
 								<div

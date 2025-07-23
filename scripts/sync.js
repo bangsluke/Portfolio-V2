@@ -15,6 +15,10 @@ import {
 	SPACING_LEVEL_2,
 	SPACING_LEVEL_3,
 } from './repoConfig.js';
+// Utility function for extracting name from filename
+function extractNameFromFilename(filename) {
+	return filename.replace(/\.md$/, '');
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -564,10 +568,10 @@ function getProjectNameToSlugMappings() {
 			const nameMatch = content.match(/^#\s*(.+)$/m);
 			const projectName = nameMatch
 				? nameMatch[1].trim()
-				: projectFile.replace('.md', '');
+				: extractNameFromFilename(projectFile);
 
 			// Generate slug from filename (remove .md extension)
-			const slug = projectFile.replace('.md', '');
+			const slug = extractNameFromFilename(projectFile);
 
 			mappings[projectName] = slug;
 		});
@@ -689,7 +693,7 @@ function checkMissingSvgFiles() {
 				// Check if the SVG file exists
 				const svgPath = path.join(iconsPath, logoFileName);
 				if (!fs.existsSync(svgPath)) {
-					const skillName = skillFile.replace('.md', '');
+					const skillName = extractNameFromFilename(skillFile);
 					missingSvgFiles.push({
 						skill: skillName,
 						logoFileName: logoFileName,
@@ -754,7 +758,7 @@ function createSkillIconMapping() {
 			const nameMatch = content.match(/^#\s*(.+)$/m);
 			const skillName = nameMatch
 				? nameMatch[1].trim()
-				: skillFile.replace('.md', '');
+				: extractNameFromFilename(skillFile);
 
 			// Extract logoFileName from frontmatter
 			const logoFileNameMatch = content.match(/logoFileName:\s*(.+)/);

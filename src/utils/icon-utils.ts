@@ -55,6 +55,7 @@ let knownIconsCache: string[] = [
 	'instagram',
 	'java',
 	'javascript',
+	'jest',
 	'json',
 	'linkedin',
 	'logo',
