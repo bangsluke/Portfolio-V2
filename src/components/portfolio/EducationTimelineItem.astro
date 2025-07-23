@@ -67,24 +67,27 @@ const dateRange =
 			</h3>
 			<time
 				datetime={dateStart?.toString()}
-				class="text-sm text-zinc-600/80 dark:text-white/80">
+				class="text-sm text-zinc-600/80 dark:text-white/80 max-sm:mb-1">
 				{dateRange}
 			</time>
 		</div>
 	</div>
 	<div
-		class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3">
+		class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3 max-sm:col-span-full max-sm:w-full max-sm:px-4">
 		{
 			shouldShowQualifications && processedQualifications && (
 				<h4
-					class="text-xl font-semibold text-zinc-600 dark:text-white processed-content"
+					class="text-xl font-semibold text-zinc-600 dark:text-white processed-content max-sm:text-lg"
 					set:html={processedQualifications}
 				/>
 			)
 		}
 		{
 			shouldShowAdditionalDetails && processedAdditionalDetails && (
-				<div class="processed-content" set:html={processedAdditionalDetails} />
+				<div
+					class="processed-content max-sm:text-sm"
+					set:html={processedAdditionalDetails}
+				/>
 			)
 		}
 	</div>

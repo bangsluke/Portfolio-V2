@@ -1873,3 +1873,43 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 - **Responsive behavior**: Layout adapts properly to different screen sizes
 
 > [Back to Table of Contents](#table-of-contents)
+
+## 2025-01-16 18:20 [main] - Enhanced CustomerAndClientCarousel with infinite loop and mobile improvements
+- Implemented infinite loop functionality for carousel
+  - Removed TODO comments for pagination and infinite loop fixes
+  - Enhanced circular mode with proper center alignment
+  - Added preventClickOnDrag: false for better touch interaction
+- Made carousel full width on screen
+  - Changed section padding from px-8 to px-0 for full width
+  - Updated container from max-w-7xl to w-full
+  - Added CSS for 100vw width and max-width
+  - Enhanced mobile responsiveness with larger cards (280x300px)
+- Enhanced focused carousel item brightness
+  - Added brightness-110 class to selected items
+  - Improved visual feedback for selected state
+- Implemented mobile-specific interactions
+  - Added mobile detection (touch device or small screen)
+  - Mobile clicks show detailed modal instead of selection
+  - Desktop clicks maintain selection behavior
+  - Added "Tap for details" indicator on mobile cards
+- Enhanced modal with more information
+  - Added duration and type information to modal
+  - Improved modal content structure and readability
+- Made carousel swipeable on all devices
+  - Enabled touch/swipe functionality across all screen sizes
+  - Maintained click-to-select on desktop
+  - Added proper touch event handling
+
+## 2025-01-16 18:15 [main] - Improved education timeline mobile responsiveness
+- Enhanced EducationTimelineItem.astro mobile layout
+  - Added max-sm:col-span-full and max-sm:w-full for full width on mobile
+  - Added max-sm:px-4 for better mobile padding
+  - Reduced date margin with max-sm:mb-1 for tighter spacing
+  - Adjusted text sizes: qualifications to max-sm:text-lg, details to max-sm:text-sm
+- Updated EducationTimeline.astro container
+  - Added max-sm:max-w-full for full width on mobile
+  - Reduced top margin with max-sm:mt-6 for better spacing
+- Enhanced full education page mobile layout
+  - Updated education.astro with max-sm:max-w-full containers
+  - Improved header and timeline sections for mobile viewing
+  - Maintained consistent spacing and typography across devices
