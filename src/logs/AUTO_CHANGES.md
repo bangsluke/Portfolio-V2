@@ -1949,3 +1949,11 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
   - Updated hover color from theme-300 to theme-400 for consistency
   - Changed scale from 150% to 125% for more subtle effect
   - Added duration-300 for smoother transitions
+
+## 2025-01-16 18:30 [main] - Fixed sync script import error
+- Updated scripts/sync.js to include filename utility function directly
+  - Removed problematic import of TypeScript file '../src/utils/filename-utils.ts'
+  - Added extractNameFromFilename function directly in sync script
+  - Resolved ERR_UNKNOWN_FILE_EXTENSION error when running sync:dev
+  - Fixed Node.js compatibility issue with TypeScript imports
+  - Ensured proper module resolution without external dependencies

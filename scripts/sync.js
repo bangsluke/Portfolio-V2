@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { extractNameFromFilename } from '../src/utils/filename-utils.js';
 import { emailService } from './email-service.js';
 import {
 	CONTENT_TYPE_MAPPINGS,
@@ -16,6 +15,10 @@ import {
 	SPACING_LEVEL_2,
 	SPACING_LEVEL_3,
 } from './repoConfig.js';
+// Utility function for extracting name from filename
+function extractNameFromFilename(filename) {
+	return filename.replace(/\.md$/, '');
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
