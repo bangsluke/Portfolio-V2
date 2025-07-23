@@ -10,8 +10,8 @@ modified: 2025-07-18T12:36:59+01:00
 viewCount: 5
 aliases:
   - dependabot
-skillRating: 0
-skillDescription: TBC
+skillRating: 50
+skillDescription: Set up as one of my default actions when initialising a project.
 logoFileName: dependabot.svg
 ---
 

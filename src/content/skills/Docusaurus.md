@@ -8,8 +8,8 @@ tags:
 modified: 2025-07-05T07:01:48+01:00
 viewCount: 6
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 70
+skillDescription: Proficient in building and maintaining sites using Docusaurus with many of their features explored and utilised.
 logoFileName: docusaurus.svg
 ---
 

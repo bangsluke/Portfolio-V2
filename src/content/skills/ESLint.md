@@ -5,11 +5,11 @@ tags:
   - coding
   - skill
   - portfolio
-modified: 2025-07-18T13:20:20+01:00
-viewCount: 4
+modified: 2025-07-23T14:20:14+01:00
+viewCount: 5
 aliases: 
 skillRating: 50
-skillDescription: TBC
+skillDescription: Used on each and every project I build following basic configuration.
 logoFileName: eslint.svg
 ---
 

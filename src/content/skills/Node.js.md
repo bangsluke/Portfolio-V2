@@ -8,11 +8,11 @@ tags:
   - portfolio
 created: 2023-08-18T15:51:00
 modified: 2025-07-07T22:00:55+01:00
-viewCount: 6
+viewCount: 7
 aliases:
   - Node
-skillRating: 0
-skillDescription: TBC
+skillRating: 50
+skillDescription: Confident in using Node.js for backend work and setting up scripts for automating development steps.
 logoFileName: nodejs.svg
 ---
 

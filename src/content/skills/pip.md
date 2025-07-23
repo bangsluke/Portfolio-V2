@@ -8,8 +8,8 @@ tags:
 modified: 2025-07-18T12:29:05+01:00
 viewCount: 5
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 40
+skillDescription: Comfortable using the package manager for small to medium projects.
 logoFileName: pip.svg
 ---
 

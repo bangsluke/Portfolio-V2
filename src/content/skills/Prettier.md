@@ -8,8 +8,8 @@ tags:
 modified: 2025-07-18T12:44:19+01:00
 viewCount: 6
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 50
+skillDescription: Used on each and every project I build following basic configuration.
 logoFileName: prettier.svg
 ---
 
