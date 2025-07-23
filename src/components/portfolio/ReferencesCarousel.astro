@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { processObsidianLink } from '../../utils/content-processor';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 import Heading from '../ui/Heading.astro';
 import ReferencesCarouselComponent from './ReferencesCarouselComponent.tsx';
 
@@ -36,7 +37,7 @@ const processedReferences = sortedReferences.map(reference => {
 
 		// First try to find in companies collection
 		const company = companies.find(company => {
-			const companyName = company.id.replace('.md', ''); // Remove .md extension
+			const companyName = extractNameFromFilename(company.id);
 			return companyName === linkedCompanyName;
 		});
 
@@ -45,7 +46,7 @@ const processedReferences = sortedReferences.map(reference => {
 		} else {
 			// If not found in companies, try clients collection
 			const client = clients.find(client => {
-				const clientName = client.id.replace('.md', ''); // Remove .md extension
+				const clientName = extractNameFromFilename(client.id);
 				return clientName === linkedCompanyName;
 			});
 
@@ -73,7 +74,7 @@ const processedReferences = sortedReferences.map(reference => {
 			<ReferencesCarouselComponent
 				references={processedReferences.map(ref => ({
 					id: ref.id,
-					name: ref.data.name || ref.id.replace('.md', ''),
+					name: ref.data.name || extractNameFromFilename(ref.id),
 					title: ref.data.referenceRole || '',
 					email: ref.data.referenceEmail || '',
 					phone: ref.data.referenceNumber || '',

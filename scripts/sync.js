@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { extractNameFromFilename } from '../src/utils/filename-utils.js';
 import { emailService } from './email-service.js';
 import {
 	CONTENT_TYPE_MAPPINGS,
@@ -564,10 +565,10 @@ function getProjectNameToSlugMappings() {
 			const nameMatch = content.match(/^#\s*(.+)$/m);
 			const projectName = nameMatch
 				? nameMatch[1].trim()
-				: projectFile.replace('.md', '');
+				: extractNameFromFilename(projectFile);
 
 			// Generate slug from filename (remove .md extension)
-			const slug = projectFile.replace('.md', '');
+			const slug = extractNameFromFilename(projectFile);
 
 			mappings[projectName] = slug;
 		});
@@ -689,7 +690,7 @@ function checkMissingSvgFiles() {
 				// Check if the SVG file exists
 				const svgPath = path.join(iconsPath, logoFileName);
 				if (!fs.existsSync(svgPath)) {
-					const skillName = skillFile.replace('.md', '');
+					const skillName = extractNameFromFilename(skillFile);
 					missingSvgFiles.push({
 						skill: skillName,
 						logoFileName: logoFileName,
@@ -754,7 +755,7 @@ function createSkillIconMapping() {
 			const nameMatch = content.match(/^#\s*(.+)$/m);
 			const skillName = nameMatch
 				? nameMatch[1].trim()
-				: skillFile.replace('.md', '');
+				: extractNameFromFilename(skillFile);
 
 			// Extract logoFileName from frontmatter
 			const logoFileNameMatch = content.match(/logoFileName:\s*(.+)/);

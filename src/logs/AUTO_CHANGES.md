@@ -18,6 +18,32 @@
 
 ## Auto Log
 
+## 2025-01-16 18:45 [main] - Refactored filename extension removal with utility function
+- Created extractNameFromFilename utility function in src/utils/filename-utils.ts
+  - Added regex-based function that removes .md extension from filenames
+  - Added string-based alternative function for comparison
+  - Function handles edge cases like empty strings, multiple .md occurrences, and case sensitivity
+- Created comprehensive unit tests in src/__tests__/filename-utils.test.ts
+  - Added 12 test cases covering all scenarios including edge cases
+  - Tests both regex and string-based implementations
+  - Verified functions produce same results for simple cases but differ for multiple .md occurrences
+- Replaced all .replace('.md', '') and .replace(/\.md$/, '') instances with utility function
+  - Updated SkillsBubbleChart.tsx to use extractNameFromFilename
+  - Updated ProjectsGallery.astro to use extractNameFromFilename for company and client name extraction
+  - Updated ReferencesCarousel.astro to use extractNameFromFilename for reference name processing
+  - Updated WorkExperienceTimeline.astro to use extractNameFromFilename for role name extraction
+  - Updated EducationTimeline.astro to use extractNameFromFilename for education name extraction
+  - Updated CustomerAndClientCarousel.astro and CustomerAndClientCarousel.tsx to use extractNameFromFilename
+  - Updated SkillPill.astro to use extractNameFromFilename for skill name matching
+  - Updated work-experience.astro page to use extractNameFromFilename for role name display
+  - Updated portfolio project pages ([slug].astro and index.astro) to use extractNameFromFilename
+  - Updated sync.js script to use extractNameFromFilename for project and skill name processing
+- Improved code maintainability and consistency
+  - Centralized filename processing logic in reusable utility function
+  - Eliminated code duplication across multiple components and pages
+  - Made filename extension removal behavior consistent throughout the codebase
+  - All tests pass successfully with 50/50 tests passing
+
 ## 2025-01-16 17:50 [main] - Enhanced Most Common Techs with multi-select filtering and improved mobile experience
 - Updated MostCommonTechs.astro with comprehensive multi-select filtering and improved functionality
   - Replaced single-select dropdown with multi-select dropdown using predefined SKILLS_FILTER_OPTIONS

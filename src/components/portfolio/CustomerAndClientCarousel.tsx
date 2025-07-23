@@ -3,6 +3,7 @@ import '@egjs/flicking-plugins/dist/pagination.css';
 import '@egjs/flicking/dist/flicking.css';
 import Flicking from '@egjs/preact-flicking';
 import { useEffect, useRef, useState } from 'preact/hooks';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 
 // TODO: Fix the pagination bullet points
 // TODO: Fix the inifinite loop
@@ -197,7 +198,7 @@ export default function ClientAndCustomerCarousel({
 					let item: CarouselItem;
 					if (company.type === 'company') {
 						const companyName =
-							company.data.name || company.id.replace('.md', '');
+							company.data.name || extractNameFromFilename(company.id);
 						const dateStart = company.data.dateStart;
 						const dateEnd = company.data.dateEnd;
 						let dateString = '';
@@ -233,7 +234,7 @@ export default function ClientAndCustomerCarousel({
 						};
 					} else if (company.type === 'client') {
 						const clientName =
-							company.data.name || company.id.replace('.md', '');
+							company.data.name || extractNameFromFilename(company.id);
 						const dateStart = company.data.dateStart;
 						const dateEnd = company.data.dateEnd;
 						let dateString = '';

@@ -5,6 +5,7 @@ import {
 	getPortfolioConfigValue,
 	processObsidianLink,
 } from '../../utils/content-processor';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 import Heading from '../ui/Heading.astro';
 import ProjectCard from './ProjectCard.astro';
 
@@ -63,7 +64,7 @@ const processedProjects = sortedProjects.map(project => {
 
 		// First try to find in companies collection
 		const company = companies.find(company => {
-			const companyName = company.id.replace('.md', ''); // Remove .md extension
+			const companyName = extractNameFromFilename(company.id);
 			return companyName === linkedCompanyName;
 		});
 
@@ -72,7 +73,7 @@ const processedProjects = sortedProjects.map(project => {
 		} else {
 			// If not found in companies, try clients collection
 			const client = clients.find(client => {
-				const clientName = client.id.replace('.md', ''); // Remove .md extension
+				const clientName = extractNameFromFilename(client.id);
 				return clientName === linkedCompanyName;
 			});
 
@@ -105,7 +106,7 @@ const displayedProjects = processedProjects.slice(0, maxProjectsDisplay);
 				{
 					displayedProjects.map(project => (
 						<ProjectCard
-							name={project.data.name ?? project.id.replace('.md', '')}
+							name={project.data.name ?? extractNameFromFilename(project.id)}
 							imageURL={project.data.imageURL}
 							technologies={project.data.technologies}
 							shortDescription={project.data.shortDescription}

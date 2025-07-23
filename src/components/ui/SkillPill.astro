@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { getSkillIconName } from '../../utils/icon-utils';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 
 interface Props {
 	skillName: string;
@@ -66,7 +67,7 @@ async function findIconForSkill(skillName: string) {
 		const skills = await getCollection('skills');
 		const skill = skills.find(s => {
 			// Check if skill name matches (from frontmatter or filename)
-			const skillNameFromData = s.data.name || s.id.replace('.md', '');
+			const skillNameFromData = s.data.name || extractNameFromFilename(s.id);
 			return skillNameFromData === skillNameForLookup;
 		});
 

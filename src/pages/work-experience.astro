@@ -5,6 +5,7 @@ import WorkExperienceItem from '../components/portfolio/WorkExperienceItem.astro
 import Heading from '../components/ui/Heading.astro';
 import Layout from '../layouts/Layout.astro';
 import { processObsidianLink } from '../utils/content-processor';
+import { extractNameFromFilename } from '../utils/filename-utils';
 
 // Get all roles, companies, and clients from the local content folder
 const roles = await getCollection('roles');
@@ -185,7 +186,9 @@ const ogimage = {
 											aria-describedby={`experience-title-${index}`}>
 											<WorkExperienceItem
 												{...role.data}
-												name={role.data.name || role.id.replace('.md', '')}
+												name={
+													role.data.name || extractNameFromFilename(role.id)
+												}
 												processedLinkedCompany={role.processedLinkedCompany}
 												companyLogoURL={role.companyLogoURL}
 												allCompanyLogos={role.allCompanyLogos}
@@ -227,7 +230,9 @@ const ogimage = {
 													aria-describedby={`voluntary-title-${index}`}>
 													<WorkExperienceItem
 														{...role.data}
-														name={role.data.name || role.id.replace('.md', '')}
+														name={
+															role.data.name || extractNameFromFilename(role.id)
+														}
 														processedLinkedCompany={role.processedLinkedCompany}
 														companyLogoURL={role.companyLogoURL}
 														allCompanyLogos={role.allCompanyLogos}

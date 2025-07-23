@@ -6,6 +6,7 @@ import {
 	useRef,
 	useState,
 } from 'preact/hooks';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 import { getSkillIconName } from '../../utils/icon-utils';
 
 interface Skill {
@@ -163,7 +164,7 @@ const SkillsBubbleChart = ({
 	const bubbleData = useMemo((): BubbleData[] => {
 		return filteredSkills.map(skill => {
 			// Use skill ID (minus file extension) for tooltip name
-			const skillId = skill.id.replace(/\.md$/, '');
+			const skillId = extractNameFromFilename(skill.id);
 			const skillName = skill.data.name || skill.slug;
 			const rating = skill.data.skillRating || 0;
 			const projectCount = getProjectCount(skillName, skillId);

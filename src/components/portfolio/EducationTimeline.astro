@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 import Heading from '../ui/Heading.astro';
 import EducationTimelineItem from './EducationTimelineItem.astro';
 
@@ -49,7 +50,8 @@ const hasMoreItems = sortedEducation.length > 2;
 									<EducationTimelineItem
 										{...education.data}
 										name={
-											education.data.name || education.id.replace('.md', '')
+											education.data.name ||
+											extractNameFromFilename(education.id)
 										}
 									/>
 								</div>

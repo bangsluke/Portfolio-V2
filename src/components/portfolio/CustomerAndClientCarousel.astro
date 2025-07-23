@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 import Heading from '../ui/Heading.astro';
 import ClientAndCustomerCarousel from './CustomerAndClientCarousel.tsx';
 
@@ -52,7 +53,7 @@ const cleanedCompanies = companiesWithLogos.map(company => ({
 	slug: company.slug,
 	type: 'company' as const,
 	data: {
-		name: company.id.replace('.md', ''), // Use filename without extension
+		name: extractNameFromFilename(company.id), // Use filename without extension
 		logoURL: company.data.logoURL,
 		dateStart: company.data.dateStart,
 		dateEnd: company.data.dateEnd,
@@ -65,7 +66,7 @@ const cleanedClients = clientsWithLogos.map(client => ({
 	slug: client.slug,
 	type: 'client' as const,
 	data: {
-		name: client.data.name || client.id.replace('.md', ''), // Use filename without extension if no name
+		name: client.data.name || extractNameFromFilename(client.id), // Use filename without extension if no name
 		logoURL: client.data.logoURL, // Use logoURL directly
 		dateStart: client.data.dateStart,
 		dateEnd: client.data.dateEnd,

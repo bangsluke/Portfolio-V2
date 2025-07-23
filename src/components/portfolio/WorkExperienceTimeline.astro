@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { processObsidianLink } from '../../utils/content-processor';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 import Heading from '../ui/Heading.astro';
 import WorkExperienceItem from './WorkExperienceItem.astro';
 
@@ -30,7 +31,7 @@ const rolesWithCompanyData = await Promise.all(
 
 					// First try to find in companies collection
 					const company = companies.find(
-						company => company.id === entityName.replace('.md', '')
+						company => company.id === extractNameFromFilename(entityName)
 					);
 
 					if (company && company.data.logoURL) {
@@ -38,7 +39,7 @@ const rolesWithCompanyData = await Promise.all(
 					} else {
 						// If not found in companies, try clients collection
 						const client = clients.find(
-							client => client.id === entityName.replace('.md', '')
+							client => client.id === extractNameFromFilename(entityName)
 						);
 
 						if (client && client.data.logoURL) {
@@ -114,7 +115,7 @@ const hasMoreItems = sortedRoles.length > 3;
 									aria-describedby={`experience-title-${index}`}>
 									<WorkExperienceItem
 										{...role.data}
-										name={role.data.name || role.id.replace('.md', '')}
+										name={role.data.name || extractNameFromFilename(role.id)}
 										processedLinkedCompany={role.processedLinkedCompany}
 										companyLogoURL={role.companyLogoURL}
 										allCompanyLogos={role.allCompanyLogos}
