@@ -1,30 +1,34 @@
 ---
 tags:
-  - synced
-  - coding
-  - skill
-  - notes
   - tag
   - software
+  - coding
   - testing
+  - skill
   - portfolio
-created: 2025-05-16T15:38:00
-modified: 2025-07-22T09:47:54+01:00
-viewCount: 7
-aliases: 
-skillRating: 10
-skillDescription: Can set up basic unit tests and automate the running during development or during deployment checks.
-logoFileName: jest.svg
+modified: 2025-07-23T09:01:58+01:00
+viewCount: 6
+skillRating: 0
+skillDescription: n/a
+logoFileName: 
 ---
 
-# Jest
+# Cypress
 
 > [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-## Table of Contents 
+> <span class="theme-link">JavaScript</span> E2E testing library
+
+## Table of Contents
 
 ```table-of-contents
 ```
+
+## Links
+
+- n/a
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Skill
 

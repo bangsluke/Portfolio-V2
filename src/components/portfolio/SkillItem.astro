@@ -1,5 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components';
 import { processContent } from '../../utils/content-processor';
 import { getSkillIconName } from '../../utils/icon-utils';
 
@@ -32,7 +31,11 @@ const processedSkillDescription = processContent(skillDescription || '');
 						if (iconName) {
 							return (
 								<div class="relative group/tooltip">
-									<Icon name={iconName} class="w-8 h-8 cursor-help" />
+									<img
+										src={`/icons/${iconName}.svg`}
+										alt={`${name} icon`}
+										class="w-8 h-8 cursor-help"
+									/>
 									<div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
 										<div class="global-tooltip">
 											<div class="global-tooltip-content">{name}</div>

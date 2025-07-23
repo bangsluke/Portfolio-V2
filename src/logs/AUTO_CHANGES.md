@@ -1957,3 +1957,67 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
   - Resolved ERR_UNKNOWN_FILE_EXTENSION error when running sync:dev
   - Fixed Node.js compatibility issue with TypeScript imports
   - Ensured proper module resolution without external dependencies
+
+## 2025-01-16 18:45 [main] - Updated icon paths to use public/icons folder
+- Updated SkillsBubbleChart component to use public icons path
+  - Changed icon href from '../icons/${d.iconName}.svg' to '/icons/${d.iconName}.svg'
+  - Icons now load from public/icons directory for proper URL access
+  - Fixed SVG background images not displaying in skills bubbles
+- Updated sync scripts to reference public/icons directory
+  - Modified scripts/sync.js to check for missing SVG files in public/icons
+  - Updated scripts/update-icons.cjs to read from public/icons directory
+  - Ensures sync process validates icons in correct location
+- Updated icon-utils.ts documentation
+  - Changed comment to reflect public/icons directory location
+  - Fixed linter error by prefixing unused skillIconMapping with underscore
+  - Maintains compatibility with existing icon lookup functions
+- Resolved skills bubble SVG background image loading issues
+  - Icons now properly display in both development and production environments
+  - Fixed path resolution for client-side D3.js component
+  - Ensures consistent icon loading across all environments
+
+## 2025-01-16 19:00 [main] - Fixed neo4j icon error by updating components to use public icons
+- Updated SkillPill component to use img tags instead of Icon component
+  - Replaced Icon component with img tag pointing to /icons/${finalIconName}.svg
+  - Removed astro-icon import since icons are now in public directory
+  - Added proper alt text for accessibility
+- Updated SkillItem component to use img tags instead of Icon component
+  - Replaced Icon component with img tag pointing to /icons/${iconName}.svg
+  - Maintains tooltip functionality and styling
+  - Added proper alt text for accessibility
+- Resolved "Unable to locate neo4j icon" error
+  - Fixed astro-icon integration issue when icons moved to public directory
+  - Components now load icons directly from public/icons via URL
+  - Ensures consistent icon loading across all environments
+- Maintained all existing functionality
+  - Tooltips, hover effects, and styling remain unchanged
+  - Fallback question mark display for missing icons preserved
+  - Mobile touch interactions continue to work properly
+
+## 2025-01-16 19:15 [main] - Fixed skills bubble chart icon display and removed skill names
+- Removed white filter from skill icons in SkillsBubbleChart
+  - Removed 'brightness(0) invert(1)' filter that was making icons appear white
+  - Icons now display in their original colors as intended
+  - SVG logos now show proper brand colors and styling
+- Hidden skill names from bubble chart display
+  - Removed text elements that displayed skill names on larger bubbles
+  - Cleaner visual appearance with only colored icons visible
+  - Skill information still available via tooltips and selection
+- Improved visual clarity of skills bubble chart
+  - Icons now properly represent their brand colors and identities
+  - Reduced visual clutter by removing overlapping text
+  - Maintains all interactive functionality (tooltips, selection, filtering)
+
+## 2025-01-16 19:20 [main] - Increased SVG icon size in skills bubble chart
+- Maximized icon size within skill bubbles
+  - Increased icon size from 60% to 100% of bubble radius
+  - Removed 24px maximum size limit to allow full bubble utilization
+  - Icons now use 100% of available bubble space for maximum visibility
+- Improved icon positioning for larger sizes
+  - Updated positioning calculations to center larger icons properly
+  - Icons remain perfectly centered within each bubble
+  - Maintains visual balance across all bubble sizes
+- Enhanced visual impact of skills bubble chart
+  - Larger icons are more recognizable and easier to identify
+  - Better brand visibility for technology logos
+  - Improved overall chart readability and professional appearance

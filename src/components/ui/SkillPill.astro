@@ -1,5 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { getSkillIconName } from '../../utils/icon-utils';
 import { extractNameFromFilename } from '../../utils/filename-utils';
@@ -156,8 +155,9 @@ const containerClasses = `${baseClasses} ${sizeClasses[size].container} ${varian
 	<span class={containerClasses} title={originalFileName}>
 		{
 			finalIconName ? (
-				<Icon
-					name={finalIconName}
+				<img
+					src={`/icons/${finalIconName}.svg`}
+					alt={`${cleanedSkill.displayName} icon`}
 					class={`${sizeClasses[size].icon} text-gray-600`}
 				/>
 			) : (
