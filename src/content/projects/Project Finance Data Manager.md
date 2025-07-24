@@ -6,7 +6,7 @@ tags:
   - portfolio
   - project/completed/work
 modified: 2025-07-19T10:07:51+01:00
-viewCount: 8
+viewCount: 9
 aliases:
   - PFDM
 projectURL: 
@@ -16,8 +16,8 @@ deploymentServiceURL: n/a
 folderURL: 
 logoURL: https://i.imgur.com/Jsm73YL.png
 imageURL: 
-dateStart: 
-dateEnd: 
+dateStart: 2024-01-01
+dateEnd: 2024-07-31
 technologies:
   - "[[Power Apps]]"
   - "[[Power BI]]"

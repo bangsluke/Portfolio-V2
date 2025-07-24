@@ -7,10 +7,10 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-19T16:06:07+01:00
-viewCount: 7
+viewCount: 1
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 65
+skillDescription: Used widely across my projects for identifying and correcting security concerns and vulnerabilities.
 logoFileName: snyk.svg
 ---
 

@@ -10,7 +10,7 @@ created: 2025-05-30 09:57
 modified: 2025-07-19T10:13:59+01:00
 aliases:
   - interview-test Repo
-viewCount: 15
+viewCount: 16
 projectURL: TBC
 codeURL: https://github.com/bangsluke/interview-test
 codeMultipleRepos: false
@@ -18,8 +18,8 @@ deploymentServiceURL: TBC
 folderURL: n/a
 logoURL: n/a
 imageURL: 
-dateStart: ""
-dateEnd: ""
+dateStart: 2022-05-01
+dateEnd: 2022-05-31
 technologies:
   - "[[React]]"
   - "[[GitHub]]"

@@ -6,7 +6,7 @@ tags:
   - portfolio
   - project/completed/work
 modified: 2025-07-19T10:07:05+01:00
-viewCount: 7
+viewCount: 8
 aliases: 
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/4800ac5b-36e5-4818-9c5a-38b19965e578/ReportSectiondd4069f533edc22c8a48?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
 codeURL: 
@@ -15,8 +15,8 @@ deploymentServiceURL: n/a
 folderURL: 
 logoURL: https://i.imgur.com/SFb7UNB.png
 imageURL: 
-dateStart: 
-dateEnd: 
+dateStart: 2023-07-01
+dateEnd: 2024-07-31
 technologies:
   - "[[Power BI]]"
   - "[[Power Query]]"

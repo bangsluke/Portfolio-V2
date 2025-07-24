@@ -6,7 +6,7 @@ tags:
   - portfolio
   - project/completed/work
 modified: 2025-07-19T10:13:05+01:00
-viewCount: 7
+viewCount: 8
 aliases:
   - Sales Chatbot
 projectURL: https://rle-sales-details.netlify.app/
@@ -16,8 +16,8 @@ deploymentServiceURL: https://app.netlify.com/projects/rle-sales-details/overvie
 folderURL: n/a
 logoURL: https://i.imgur.com/13pPwzp.png
 imageURL: https://i.imgur.com/yJOei4e.png
-dateStart: 
-dateEnd: 
+dateStart: 2023-04-01
+dateEnd: 2023-04-30
 technologies:
   - "[[Vite.js]]"
   - "[[OpenAI]]"

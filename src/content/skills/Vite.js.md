@@ -7,12 +7,12 @@ tags:
   - skill
   - portfolio
 created: 2023-08-18T15:51:00
-modified: 2025-07-02T14:19:48+01:00
-viewCount: 5
+modified: 2025-07-24T07:27:22+01:00
+viewCount: 6
 aliases:
   - Vite
-skillRating: 0
-skillDescription: TBC
+skillRating: 70
+skillDescription: Used as my go to starting point for most projects and able to configure multiple set ups.
 logoFileName: vitejs.svg
 ---
 
