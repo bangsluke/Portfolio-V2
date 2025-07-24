@@ -8,8 +8,8 @@ viewCount: 3
 modified: 2025-07-18T12:24:49+01:00
 aliases:
   - Microsoft PowerPoint
-skillRating: 0
-skillDescription: TBC
+skillRating: 85
+skillDescription: Skilled in developing high quality presentations, creating master templates and manipulating PowerPoint with VBA.
 logoFileName: powerpoint.svg
 ---
 

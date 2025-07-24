@@ -5,13 +5,13 @@ tags:
   - portfolio
   - skill
 created: 2023-10-13T07:46:00
-modified: 2025-07-20T11:50:03+01:00
-viewCount: 8
+modified: 2025-07-24T07:29:22+01:00
+viewCount: 5
 aliases:
   - Google Cloud Platform
   - GCP
-skillRating: 0
-skillDescription: TBC
+skillRating: 85
+skillDescription: Built several large applications off of Google Sheets data, utilising its API and GAS functionalities.
 logoFileName: google_cloud.svg
 ---
 

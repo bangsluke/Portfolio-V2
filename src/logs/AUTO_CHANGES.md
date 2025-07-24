@@ -1,5 +1,187 @@
 # Auto Changes Log
 
+## 2025-01-16 21:45 [main] - Extracted common project count logic to ensure consistency
+- Created shared utility functions for project counting across components
+  - Created `src/utils/project-count-utils.ts` with `getProjectCount` and `getProjectsUsingSkill` functions
+  - Updated SkillsBubbleChart.tsx to use the common utility function instead of local implementation
+  - Updated MostCommonTechs.astro to use the same exact matching logic with pipe alias support
+  - Ensures both components use identical logic for counting project usage
+  - Maintains exact matching, pipe alias handling, and case-insensitive comparison
+  - Eliminates potential discrepancies between skills bubble chart and most common techs display
+
+## 2025-01-16 21:40 [main] - Removed overflow and maximized Most Common Techs skill pill section
+- Updated Most Common Techs card to fill available space without overflow
+  - Removed `overflow-y-auto` wrapper from CodingSection.astro container
+  - Changed container to `h-full flex flex-col` to maximize height usage
+  - Updated MostCommonTechs.astro to use `h-full` and `flex-1` classes
+  - Added `items-center content-center` to base classes for proper flex layout and vertical centering
+  - Skill pills now fill the entire card area without scrollbars and are vertically centered
+  - Maintains responsive design while maximizing space utilization
+
+## 2025-01-16 21:35 [main] - Added debugging logs for skills filtering
+- Added console logging to track filter changes and data flow
+  - Added logging in SkillsBubbleChart to show when filter events are received
+  - Added logging to show filtered skills count and selected filters
+  - Added logging in CodingSection to show when filter events are dispatched
+  - This will help debug why the dropdown filtering isn't working properly
+
+## 2025-01-16 21:30 [main] - Fixed project count logic in SkillsBubbleChart.tsx
+- Removed partial matching from project count calculation
+  - Removed logic that checked if skill name contains tech name or vice versa
+  - Now only uses exact matches between skill names/IDs and project technologies
+  - This prevents incorrect project counts from partial string matches
+  - Maintains pipe alias handling for tech names with display text
+
+## 2025-01-16 21:25 [main] - Fixed skills dropdown functionality in CodingSection.astro
+- Added event listeners to prevent dropdowns from closing when clicking inside them
+  - Added `stopPropagation()` to both skills and tech dropdown click events
+  - Fixed issue where dropdown would close immediately when trying to select options
+  - Ensured dropdowns only close when clicking outside or on the toggle button
+  - Skills filter dropdown now properly stays open for user interaction
+
+## 2025-01-16 21:20 [main] - Fixed TypeScript syntax error in CodingSection.astro
+- Fixed missing closing parenthesis in techCheckboxes.forEach event listener
+  - Added missing `});` to properly close the forEach function call
+  - Resolved TypeScript compilation error that was preventing the site from building
+  - Error was causing "Expected ")" but found "}" at line 238
+
+## 2025-01-16 21:15 [main] - Moved Categories dropdown to Most Common Techs header
+- Moved Categories dropdown from MostCommonTechs.astro component to CodingSection.astro header
+  - Dropdown now positioned in the same row as "Most Common Techs" header for consistency
+  - Added tech filter dropdown with same styling as Skills filter dropdown
+  - Updated JavaScript to handle tech filter functionality in CodingSection.astro
+  - Added custom event 'techFilterChange' for communication between components
+  - Simplified MostCommonTechs.astro component by removing dropdown and related JavaScript
+  - Maintained all existing filtering functionality with cleaner component separation
+  - Consistent UI pattern across Skills and Most Common Techs sections
+
+## 2025-01-16 21:00 [main] - Moved Reset and Toggle buttons to Skills header alongside dropdown
+- Moved Reset and Toggle buttons from SkillsBubbleChart component to CodingSection.astro header
+  - Buttons now positioned before the Skills dropdown for better UX flow
+  - Added Reset button functionality to clear filters, reset toggle, and center graph
+  - Added Toggle button functionality to switch between skill rating and project count sizing
+  - Updated both main view and fullscreen modal to include the same buttons
+  - Maintained consistent styling and functionality across both views
+  - Added custom event listeners for skillsReset and skillsToggle events
+  - Removed buttons from SkillsBubbleChart component to clean up the chart area
+  - Buttons now properly sync between main view and fullscreen modal
+
+## 2025-01-16 20:45 [main] - Fixed reset button zoom to properly show all bubbles
+- Updated SkillsBubbleChart.tsx reset function to calculate proper zoom level
+  - Modified handleReset to calculate bounds of all bubbles and fit them in view
+  - Added proper zoom calculation with padding similar to initial zoom logic
+  - Fixed TypeScript error by properly typing SVG element as SVGGElement
+  - Reset now properly zooms out to show all bubbles instead of just centering
+  - Maintains smooth 1-second transition when resetting zoom level
+
+## 2025-01-16 20:40 [main] - Added reset button to SkillsBubbleChart and improved UI
+- Updated SkillsBubbleChart.tsx to include reset functionality
+  - Added reset button in center-top position that clears all filters and resets to skill rating mode
+  - Removed "View:" prefix from current mode display for cleaner look
+  - Reset button clears selected skill, tooltip, and centers the graph with smooth transition
+  - Added zoom reference storage to enable programmatic zoom control
+  - Reset function resets filters to 'all', toggle to skill rating, and centers graph
+  - Button includes helpful tooltip explaining its functionality
+
+## 2025-01-16 20:35 [main] - Fixed skill rating sizing logic in SkillsBubbleChart
+- Updated SkillsBubbleChart.tsx to improve bubble sizing accuracy
+  - Increased base radius range from 15-50px to 20-60px for better visual distinction
+  - Reduced project bonus impact from 10px max to 5px max in skill rating mode
+  - Reduced rating bonus impact from 10px max to 5px max in project count mode
+  - Now skill rating is the primary factor when in skill rating mode
+  - Prevents high-project-count skills from appearing larger than high-rating skills
+  - Ensures visual hierarchy matches the selected sizing mode
+
+## 2025-01-16 20:30 [main] - Added current view mode display to SkillsBubbleChart
+- Updated SkillsBubbleChart.tsx to show current sizing mode
+  - Added view mode indicator in top-left corner showing "View: Skill Rating" or "View: Project Count"
+  - Matches styling of toggle button for visual consistency
+  - Provides clear indication of which sizing mode is currently active
+  - Helps users understand what the bubble sizes represent at a glance
+
+## 2025-01-16 20:25 [main] - Hide skills from bubble chart that aren't used in any projects
+- Updated SkillsBubbleChart.tsx to filter out unused skills
+  - Added null check in bubble data processing to skip skills with projectCount === 0
+  - Added filter to remove null values from final bubble data array
+  - TypeScript type guard ensures proper typing after filtering
+  - Now only skills that are actually used in projects will appear in the visualization
+  - Improves chart clarity by focusing on practical, utilized skills
+
+## 2025-01-16 20:20 [main] - Added toggle button to switch bubble sizing between skill rating and project count
+- Updated SkillsBubbleChart.tsx to include bubble sizing toggle functionality
+  - Added sizeByRating state to track current sizing mode (defaults to skill rating)
+  - Modified bubble data calculation to use different sizing logic based on toggle state
+  - When sizeByRating is true: bubbles sized primarily by skill rating with project count bonus
+  - When sizeByRating is false: bubbles sized primarily by project count with skill rating bonus
+  - Added toggle button in top-right corner with dynamic text and tooltip
+  - Button text shows "Toggle: Skill Rating" or "Toggle: Project Count"
+  - Tooltip explains each mode: "Skill bubbles sized based on my self assessed skill rating" or "Skill bubbles sized based on the number of projects used on"
+  - Button styling matches existing design with hover effects and dark mode support
+
+## 2025-01-16 20:15 [main] - Added initial zoom out to SkillsBubbleChart to show all bubbles
+- Updated SkillsBubbleChart.tsx to include D3 zoom functionality
+  - Added zoom behavior with scale extent from 0.1x to 3x zoom
+  - Created bubble group wrapper to apply zoom transformations
+  - Added simulation.on('end') callback to calculate initial zoom level
+  - Calculates bounds of all bubbles and scales to fit with 50px padding
+  - Applies smooth 1-second transition to initial zoom level
+  - Prevents zooming in beyond 1x scale to maintain readability
+  - Users can now see all bubbles initially and zoom in/out as needed
+
+## 2025-01-16 20:10 [main] - Updated SkillsBubbleChart to maximize size within parent component
+- Updated SkillsBubbles.astro wrapper to use full height
+  - Changed section class from `w-full` to `w-full h-full`
+  - Allows SkillsBubbleChart component to expand to 100% height and width of its parent
+  - SkillsBubbleChart already had `w-full h-full` classes but was constrained by parent
+  - Now the chart will utilize the full available space in the coding section card
+
+## 2025-01-16 20:05 [main] - Fixed GitHub calendar dark mode CSS selector issue
+- Updated GitHubContributions.tsx CSS to use direct html.dark selector instead of :global(.dark)
+  - Replaced all `:global(.dark)` selectors with `html.dark` for more reliable targeting
+  - The :global(.dark) selector was not working properly in the component's scoped CSS
+  - Using `html.dark` directly targets the dark class on the HTML element more reliably
+  - This should fix the issue where dark mode styles weren't being applied to calendar text
+  - Maintains all existing specificity and attribute selectors for maximum compatibility
+
+## 2025-01-16 20:00 [main] - Enhanced GitHub calendar dark mode CSS specificity
+- Updated GitHubContributions.tsx CSS to override inline styles from the component
+  - Added `[style*="fill"]` attribute selector to override any inline styles set by the component
+  - Added broader `svg text` selector to target all text elements within the calendar
+  - These selectors have higher specificity to override the component's default styling
+  - Ensures month labels and other text elements properly respond to theme changes
+  - Maintains all existing theme-specific selectors for maximum compatibility
+
+## 2025-01-16 19:50 [main] - Fixed GitHub calendar dark mode selector conflict
+- Removed conflicting CSS rule from GitHubContributions.tsx that was overriding theme detection
+  - Removed `text.github-calendar__graph-label` rule that was forcing white text in all themes
+  - This rule was preventing the `:global(.dark)` selector from working properly
+  - Now the theme-specific selectors work correctly: black text in light mode, white in dark mode
+  - Maintains all the enhanced selectors for proper theme compatibility
+
+## 2025-01-16 19:45 [main] - Enhanced GitHub calendar label styling for better theme compatibility
+- Updated GitHubContributions.tsx CSS for .github-calendar__graph-label elements
+  - Added multiple CSS selectors with increasing specificity to ensure styles are applied
+  - Added both `fill` and `color` properties for maximum compatibility
+  - Added specific selectors for SVG text elements within the component
+  - Enhanced dark mode targeting with `:global(.dark)` syntax
+  - Ensures month labels (Aug, Sep, Oct, etc.) are properly visible in both themes
+  - Added fallback selectors to handle dynamically rendered components
+
+## 2025-01-16 19:40 [main] - Fixed GitHub calendar labels for proper light/dark mode styling
+- Updated GitHubContributions.tsx CSS for .github-calendar__graph-label elements
+  - Fixed light mode styling to use `fill: #000 !important;` for black text
+  - Fixed dark mode styling to use `fill: #fff !important;` for white text
+  - Removed incorrect `color` property and commented-out code
+  - Cleaned up CSS formatting and indentation
+  - Ensures month labels (Aug, Sep, Oct, etc.) are properly visible in both themes
+
+## 2025-01-16 19:35 [main] - Fixed GitHub contributions text color in dark mode
+- Updated GitHubContributions.tsx CSS selector for dark mode
+  - Changed from `#github-contributions .dark *` to `:global(.dark) #github-contributions *`
+  - Fixed selector to properly target dark mode when applied to html/body element
+  - Ensures all text within #github-contributions becomes white (#fff) in dark mode
+  - Uses Astro's :global() syntax to target global dark mode class
+
 ## 2025-01-16 19:30 [main] - Fixed references carousel hover scaling issue
 - Updated ReferencesCarouselComponent.tsx to prevent hover scaling cutoff
   - Added fixed height (300px) and overflow: visible to Flicking container

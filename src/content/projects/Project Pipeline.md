@@ -6,7 +6,7 @@ tags:
   - portfolio
   - project/completed/work
 modified: 2025-07-19T10:08:46+01:00
-viewCount: 7
+viewCount: 8
 aliases:
   - Pipeline
 projectURL: 
@@ -16,8 +16,8 @@ deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Project%20Pipeline?csf=1&web=1&e=nVEm7I
 logoURL: https://i.imgur.com/RoBXXlo.png
 imageURL: 
-dateStart: 
-dateEnd: 
+dateStart: 2023-05-01
+dateEnd: 2024-07-31
 technologies:
   - "[[Power Apps]]"
   - "[[Power BI]]"

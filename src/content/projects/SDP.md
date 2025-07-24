@@ -7,7 +7,7 @@ created: 2025-06-27 10:45
 modified: 2025-07-22T09:21:04+01:00
 aliases:
   - Scalable Development Plan
-viewCount: 13
+viewCount: 14
 projectURL: TBC
 codeURL: TBC
 codeMultipleRepos: false
@@ -15,8 +15,8 @@ deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: n/a
 imageURL: 
-dateStart: ""
-dateEnd: ""
+dateStart: 2019-07-01
+dateEnd: 2022-05-30
 technologies:
   - "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]"
   - "[[React]]"

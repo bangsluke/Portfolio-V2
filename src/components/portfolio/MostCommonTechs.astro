@@ -2,6 +2,10 @@
 import { getCollection } from 'astro:content';
 import { SKILLS_FILTER_OPTIONS } from '../../../scripts/repoConfig.js';
 import SkillPill from '../ui/SkillPill.astro';
+import {
+	getProjectCount,
+	getProjectsUsingSkill,
+} from '../../utils/project-count-utils';
 
 // Get all projects and skills
 const projects = await getCollection('projects');
@@ -29,6 +33,8 @@ const availableTags = SKILLS_FILTER_OPTIONS.filter(tag => tag !== 'all');
 const techCount: Record<string, number> = {};
 const techProjects: Record<string, string[]> = {}; // Track which projects use each tech
 
+// Get all unique technologies from projects
+const allTechnologies = new Set<string>();
 projects.forEach(project => {
 	if (project.data.technologies) {
 		project.data.technologies.forEach((tech: string) => {
@@ -40,16 +46,18 @@ projects.forEach(project => {
 				return;
 			}
 
-			// Increment count for this technology
-			techCount[cleanTech] = (techCount[cleanTech] || 0) + 1;
-
-			// Track which projects use this tech
-			if (!techProjects[cleanTech]) {
-				techProjects[cleanTech] = [];
-			}
-			techProjects[cleanTech].push(project.data.name || project.slug);
+			allTechnologies.add(cleanTech);
 		});
 	}
+});
+
+// Use the common project count logic for each technology
+allTechnologies.forEach(tech => {
+	const count = getProjectCount(tech, tech, projects);
+	const projectsList = getProjectsUsingSkill(tech, tech, projects);
+
+	techCount[tech] = count;
+	techProjects[tech] = projectsList;
 });
 
 // Sort technologies by usage count (descending) and get top 10
@@ -65,7 +73,8 @@ const topTechs = Object.entries(techCount)
 type TechVariant = 'default' | 'center';
 
 // Base classes that are common to all variants
-const baseClasses = 'flex flex-wrap gap-4 max-lg:gap-1 grid-auto-efe';
+const baseClasses =
+	'flex flex-wrap gap-4 max-lg:gap-1 grid-auto-efe items-center content-center';
 
 // Variant-specific classes
 const variantClasses: Record<TechVariant, string> = {
@@ -79,63 +88,9 @@ const { variant = 'default', size = 'md' } = Astro.props;
 const classes = `${baseClasses} ${variantClasses[variant as TechVariant]}`;
 ---
 
-<div class="flex flex-col gap-4">
-	<!-- Filter Multi-Select -->
-	<div class="flex justify-end">
-		<div class="relative">
-			<button
-				id="filter-toggle"
-				class="global-form-element text-sm px-3 py-2 rounded-lg border border-theme-400/30 bg-white/10 backdrop-blur-sm text-zinc-700 dark:text-zinc-300 flex items-center gap-2 cursor-pointer"
-				aria-label="Filter technologies by category">
-				<span id="filter-text">All Categories</span>
-				<svg
-					class="w-4 h-4 transition-transform"
-					id="filter-arrow"
-					fill="none"
-					stroke="currentColor"
-					viewBox="0 0 24 24">
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M19 9l-7 7-7-7"></path>
-				</svg>
-			</button>
-			<div
-				id="filter-dropdown"
-				class="absolute right-0 top-full mt-1 bg-white dark:bg-zinc-800 border border-theme-400/30 rounded-lg shadow-lg z-50 min-w-[200px] hidden">
-				<div class="p-2">
-					<div
-						class="text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-2 px-2">
-						Filter by category:
-					</div>
-					<label
-						class="flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-zinc-700 rounded cursor-pointer">
-						<input
-							type="checkbox"
-							value="all"
-							class="filter-checkbox"
-							checked
-						/>
-						<span class="text-sm">All Categories</span>
-					</label>
-					{
-						availableTags.map(tag => (
-							<label class="flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-zinc-700 rounded cursor-pointer">
-								<input type="checkbox" value={tag} class="filter-checkbox" />
-								<span class="text-sm">
-									{tag.charAt(0).toUpperCase() + tag.slice(1)}
-								</span>
-							</label>
-						))
-					}
-				</div>
-			</div>
-		</div>
-	</div>
-
+<div class="flex flex-col gap-4 h-full">
 	<!-- Technologies Grid -->
-	<div class={classes} id="techs-grid">
+	<div class={`${classes} h-full flex-1`} id="techs-grid">
 		{
 			topTechs.map(({ tech, count, projects }, index) => (
 				<div
@@ -194,113 +149,18 @@ const classes = `${baseClasses} ${variantClasses[variant as TechVariant]}`;
 <script>
 	// Handle multi-select filtering functionality
 	document.addEventListener('DOMContentLoaded', function () {
-		const filterToggle = document.getElementById(
-			'filter-toggle'
-		) as HTMLButtonElement;
-		const filterDropdown = document.getElementById(
-			'filter-dropdown'
-		) as HTMLDivElement;
-		const filterArrow = document.getElementById(
-			'filter-arrow'
-		) as unknown as SVGElement;
-		const filterText = document.getElementById(
-			'filter-text'
-		) as HTMLSpanElement;
-		const filterCheckboxes = document.querySelectorAll(
-			'.filter-checkbox'
-		) as NodeListOf<HTMLInputElement>;
 		const techGrid = document.getElementById('techs-grid');
 
-		if (!filterToggle || !filterDropdown || !techGrid) return;
+		if (!techGrid) return;
 
 		let selectedFilters: string[] = ['all'];
 
-		// Toggle dropdown
-		filterToggle.addEventListener('click', function (e) {
-			e.stopPropagation();
-			const isHidden = filterDropdown.classList.contains('hidden');
-
-			if (isHidden) {
-				filterDropdown.classList.remove('hidden');
-				filterArrow.style.transform = 'rotate(180deg)';
-			} else {
-				filterDropdown.classList.add('hidden');
-				filterArrow.style.transform = 'rotate(0deg)';
-			}
+		// Listen for filter changes from parent component
+		window.addEventListener('techFilterChange', function (e: any) {
+			const { filters } = e.detail;
+			selectedFilters = filters;
+			filterTechs();
 		});
-
-		// Close dropdown when clicking outside
-		document.addEventListener('click', function (e) {
-			if (
-				!filterToggle.contains(e.target as Node) &&
-				!filterDropdown.contains(e.target as Node)
-			) {
-				filterDropdown.classList.add('hidden');
-				filterArrow.style.transform = 'rotate(0deg)';
-			}
-		});
-
-		// Handle checkbox changes
-		filterCheckboxes.forEach(checkbox => {
-			checkbox.addEventListener('change', function () {
-				const value = this.value;
-
-				if (value === 'all') {
-					// If "All Categories" is checked, uncheck others and show all
-					if (this.checked) {
-						filterCheckboxes.forEach(cb => {
-							if (cb.value !== 'all') {
-								cb.checked = false;
-							}
-						});
-						selectedFilters = ['all'];
-					} else {
-						// If "All Categories" is unchecked, check the first other option
-						const otherCheckboxes = Array.from(filterCheckboxes).filter(
-							cb => cb.value !== 'all'
-						);
-						if (otherCheckboxes.length > 0) {
-							otherCheckboxes[0].checked = true;
-							selectedFilters = [otherCheckboxes[0].value];
-						}
-					}
-				} else {
-					// If other option is checked, uncheck "All Categories"
-					const allCheckbox = document.querySelector(
-						'.filter-checkbox[value="all"]'
-					) as HTMLInputElement;
-					if (allCheckbox) {
-						allCheckbox.checked = false;
-					}
-
-					// Update selected filters
-					selectedFilters = Array.from(filterCheckboxes)
-						.filter(cb => cb.checked && cb.value !== 'all')
-						.map(cb => cb.value);
-
-					// If no filters selected, default to "All Categories"
-					if (selectedFilters.length === 0) {
-						allCheckbox.checked = true;
-						selectedFilters = ['all'];
-					}
-				}
-
-				updateFilterText();
-				filterTechs();
-			});
-		});
-
-		function updateFilterText() {
-			if (selectedFilters.includes('all')) {
-				filterText.textContent = 'All Categories';
-			} else if (selectedFilters.length === 1) {
-				filterText.textContent =
-					selectedFilters[0].charAt(0).toUpperCase() +
-					selectedFilters[0].slice(1);
-			} else {
-				filterText.textContent = `${selectedFilters.length} Categories`;
-			}
-		}
 
 		function filterTechs() {
 			const techItems = techGrid!.querySelectorAll('.group\\/tech');

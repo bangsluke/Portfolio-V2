@@ -10,7 +10,7 @@ created: 2025-05-29 18:05
 modified: 2025-07-19T09:58:59+01:00
 aliases:
   - DVP Prototype
-viewCount: 14
+viewCount: 15
 projectURL: https://dvp-fe.icypebble-0bf96993.germanywestcentral
 codeURL: TBC
 codeMultipleRepos: false
@@ -18,8 +18,8 @@ deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: n/a
 imageURL: 
-dateStart: ""
-dateEnd: ""
+dateStart: 2022-06-01
+dateEnd: 2022-12-31
 technologies:
   - "[[React]]"
   - "[[JavaScript]]"

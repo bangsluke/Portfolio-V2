@@ -17,6 +17,7 @@ let knownIconsCache: string[] = [
 	'css',
 	'cursor',
 	'cursor-ia',
+	'cypress',
 	'deepseek',
 	'dependabot',
 	'docker',

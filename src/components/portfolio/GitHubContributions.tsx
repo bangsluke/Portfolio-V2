@@ -26,6 +26,7 @@ export default function GitHubContributions() {
 	const username = 'bangsluke';
 	const githubUrl = `https://github.com/${username}`;
 
+	// Fetch GitHub stats
 	useEffect(() => {
 		const fetchGitHubStats = async () => {
 			try {
@@ -107,23 +108,9 @@ export default function GitHubContributions() {
 	const isGitHubCalendarAvailable = typeof GitHubCalendar !== 'undefined';
 
 	return (
-		<section id="github-contributions" class="flex flex-col gap-4 w-full">
-			{/* GitHub Profile Link */}
-			<div class="flex items-center justify-between">
-				<h4 class="text-lg font-semibold text-white">GitHub Activity</h4>
-				<a
-					href={githubUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="text-theme-300 hover:text-theme-200 transition-colors text-sm flex items-center gap-2">
-					View Profile
-					<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-						<path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-						<path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-					</svg>
-				</a>
-			</div>
-
+		<section
+			id="github-contributions"
+			class="flex flex-col gap-4 w-full text-black dark:text-white">
 			{/* GitHub Contributions Calendar */}
 			<div class="flex justify-center overflow-y-auto w-full">
 				{isGitHubCalendarAvailable ? (
@@ -173,75 +160,39 @@ export default function GitHubContributions() {
 
 			{/* GitHub Stats */}
 			{!loading && !error && githubStats && (
-				<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+				<div class="grid grid-cols-3 md:grid-cols-3 gap-3 mt-4">
 					<a
-						href={`${githubUrl}?tab=stars`}
+						href={githubUrl}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-xl font-bold text-theme-300">
-							{githubStats.stars}
+						<div class="text-center p-2">
+							<div class="text-xs text-white/70">Active </div>
+							<div class="text-sm font-bold text-theme-300">
+								{githubStats.accountAge}
+							</div>
 						</div>
-						<div class="text-xs text-white/70">Stars</div>
-					</a>
-					<a
-						href={`${githubUrl}?tab=repositories`}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-xl font-bold text-theme-300">
-							{githubStats.repositories}
-						</div>
-						<div class="text-xs text-white/70">Repositories</div>
 					</a>
 					<a
 						href={`${githubUrl}?tab=followers`}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-xl font-bold text-theme-300">
+						<div class="text-xs text-white/70">Followers</div>
+						<div class="text-sm font-bold text-theme-300">
 							{githubStats.followers}
 						</div>
-						<div class="text-xs text-white/70">Followers</div>
 					</a>
 					<a
 						href={`${githubUrl}?tab=following`}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-xl font-bold text-theme-300">
+						<div class="text-xs text-white/70">Following</div>
+						<div class="text-sm font-bold text-theme-300">
 							{githubStats.following}
 						</div>
-						<div class="text-xs text-white/70">Following</div>
 					</a>
-					<div class="text-center p-2 bg-white/10 rounded-lg">
-						<div class="text-lg font-bold text-theme-300">
-							{githubStats.accountAge}
-						</div>
-						<div class="text-xs text-white/70">Active Since</div>
-					</div>
-					<a
-						href={githubStats.mostStarredRepo.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-lg font-bold text-theme-300">
-							{githubStats.mostStarredRepo.stars}
-						</div>
-						<div class="text-xs text-white/70">Top Repo Stars</div>
-					</a>
-					<div class="text-center p-2 bg-white/10 rounded-lg">
-						<div class="text-lg font-bold text-theme-300">
-							{githubStats.contributionsLastYear}
-						</div>
-						<div class="text-xs text-white/70">Contributions (1Y)</div>
-					</div>
-					<div class="text-center p-2 bg-white/10 rounded-lg">
-						<div class="text-lg font-bold text-theme-300">
-							{githubStats.averageCommitsPerDay}
-						</div>
-						<div class="text-xs text-white/70">Avg Commits/Day</div>
-					</div>
 				</div>
 			)}
 
@@ -265,9 +216,56 @@ export default function GitHubContributions() {
 			)}
 
 			<style>{`
-        #github-contributions * {
-          color: #fff !important;
-        }
+				/* GitHub Calendar Label Styling for Theme Support */
+				.github-calendar__graph-label {
+					fill: #000 !important;
+					color: #000 !important;
+				}
+
+				/* Dark mode styles using html.dark selector */
+				html.dark .github-calendar__graph-label {
+					fill: #fff !important;
+					color: #fff !important;
+				}
+
+				/* Ensure the styles work even if the component is rendered dynamically */
+				#github-contributions .github-calendar__graph-label {
+					fill: #000 !important;
+					color: #000 !important;
+				}
+
+				html.dark #github-contributions .github-calendar__graph-label {
+					fill: #fff !important;
+					color: #fff !important;
+				}
+
+				/* Additional specificity for SVG text elements */
+				#github-contributions svg text.github-calendar__graph-label {
+					fill: #000 !important;
+				}
+
+				html.dark #github-contributions svg text.github-calendar__graph-label {
+					fill: #fff !important;
+				}
+
+				/* Force override for any inline styles from the component */
+				#github-contributions .github-calendar__graph-label[style*="fill"] {
+					fill: #000 !important;
+				}
+
+				html.dark #github-contributions .github-calendar__graph-label[style*="fill"] {
+					fill: #fff !important;
+				}
+
+				/* Target all text elements within the calendar */
+				#github-contributions svg text {
+					fill: #000 !important;
+				}
+
+				html.dark #github-contributions svg text {
+					fill: #fff !important;
+				}
+
         .github-calendar__graph-footer {
           display: none !important;
         }
@@ -285,9 +283,6 @@ export default function GitHubContributions() {
         .github-calendar {
           width: 100% !important;
         }
-        .github-calendar__graph-label {
-          fill: #fff !important;
-        }
         .github-calendar__graph rect {
           stroke: rgba(255, 255, 255, 0.1) !important;
         }
@@ -300,7 +295,6 @@ export default function GitHubContributions() {
         /* Debug styles to ensure visibility */
         #github-contributions {
           min-height: 200px !important;
-          border: 1px solid rgba(255, 255, 255, 0.1) !important;
         }
       `}</style>
 		</section>

@@ -8,6 +8,7 @@ import {
 } from 'preact/hooks';
 import { extractNameFromFilename } from '../../utils/filename-utils';
 import { getSkillIconName } from '../../utils/icon-utils';
+import { getProjectCount } from '../../utils/project-count-utils';
 
 interface Skill {
 	id: string;
@@ -64,6 +65,8 @@ const SkillsBubbleChart = ({
 	const [_hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 	const [tooltip, setTooltip] = useState<TooltipData | null>(null);
 	const [selectedFilters, setSelectedFilters] = useState<string[]>(['all']);
+	const [sizeByRating, setSizeByRating] = useState<boolean>(true);
+	const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
 	const svgRef = useRef<SVGSVGElement>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const simulationRef = useRef<d3.Simulation<BubbleData, undefined> | null>(
@@ -107,47 +110,10 @@ const SkillsBubbleChart = ({
 		}
 	}, []);
 
-	// Calculate project count for each skill - improved logic
-	const getProjectCount = useCallback(
+	// Use the common project count utility function
+	const getProjectCountForSkill = useCallback(
 		(skillName: string, skillId: string): number => {
-			return projects.filter(project => {
-				const technologies = project.data.technologies || [];
-				return technologies.some((tech: string) => {
-					// Clean the technology name (remove Obsidian brackets)
-					const cleanTech = tech.replace(/\[\[|\]\]/g, '');
-
-					// Check for exact match with skill name or skill ID
-					if (
-						cleanTech.toLowerCase() === skillName.toLowerCase() ||
-						cleanTech.toLowerCase() === skillId.toLowerCase()
-					) {
-						return true;
-					}
-
-					// Check for partial match (skill name contains tech or vice versa)
-					if (
-						cleanTech.toLowerCase().includes(skillName.toLowerCase()) ||
-						skillName.toLowerCase().includes(cleanTech.toLowerCase())
-					) {
-						return true;
-					}
-
-					// Handle pipe aliases in tech names
-					if (cleanTech.includes('|')) {
-						const [techPath, _techDisplay] = cleanTech.split('|');
-						const techName = techPath.split('/').pop() || techPath;
-
-						if (
-							techName.toLowerCase() === skillName.toLowerCase() ||
-							techName.toLowerCase() === skillId.toLowerCase()
-						) {
-							return true;
-						}
-					}
-
-					return false;
-				});
-			}).length;
+			return getProjectCount(skillName, skillId, projects);
 		},
 		[projects]
 	);
@@ -155,53 +121,143 @@ const SkillsBubbleChart = ({
 	// Filter skills based on selected filters
 	const filteredSkills = useMemo(() => {
 		if (selectedFilters.includes('all')) return skills;
-		return skills.filter(skill =>
+		const filtered = skills.filter(skill =>
 			skill.data.tags?.some(tag => selectedFilters.includes(tag))
 		);
+		console.log(
+			'Filtered skills:',
+			selectedFilters,
+			filtered.length,
+			'of',
+			skills.length
+		);
+		return filtered;
 	}, [skills, selectedFilters]);
 
 	// Process skills into bubble data
 	const bubbleData = useMemo((): BubbleData[] => {
-		return filteredSkills.map(skill => {
-			// Use skill ID (minus file extension) for tooltip name
-			const skillId = extractNameFromFilename(skill.id);
-			const skillName = skill.data.name || skill.slug;
-			const rating = skill.data.skillRating || 0;
-			const projectCount = getProjectCount(skillName, skillId);
-			const iconName = getSkillIconName(skill.data.logoFileName || null);
+		return filteredSkills
+			.map(skill => {
+				// Use skill ID (minus file extension) for tooltip name
+				const skillId = extractNameFromFilename(skill.id);
+				const skillName = skill.data.name || skill.slug;
+				const rating = skill.data.skillRating || 0;
+				const projectCount = getProjectCountForSkill(skillName, skillId);
+				const iconName = getSkillIconName(skill.data.logoFileName || null);
 
-			// Calculate bubble size based on rating and project count
-			const baseRadius = Math.max(15, Math.min(50, 15 + (rating / 100) * 35));
-			const projectBonus = Math.min(10, projectCount * 2);
-			const radius = baseRadius + projectBonus;
+				// Skip skills that aren't used in any projects
+				if (projectCount === 0) {
+					return null;
+				}
 
-			return {
-				id: skill.slug,
-				name: skillId, // Use skill ID for tooltip display
-				rating,
-				description: skill.data.skillDescription || 'No description available',
-				logoFileName: skill.data.logoFileName || null,
-				iconName,
-				tags: skill.data.tags || [],
-				projectCount,
-				radius,
-				color: getSkillColor(skill.data.tags || []),
-				group: getSkillGroup(skill.data.tags || []),
-			};
-		});
-	}, [filteredSkills, getProjectCount, getSkillColor, getSkillGroup]);
+				// Calculate bubble size based on toggle state
+				let radius: number;
+				if (sizeByRating) {
+					// Size based on skill rating (primary) with minimal project bonus
+					radius = Math.max(20, Math.min(60, 20 + (rating / 100) * 40));
+				} else {
+					// Size based on project count (primary) with minimal rating bonus
+					radius = Math.max(20, Math.min(60, 20 + projectCount * 4));
+				}
+
+				return {
+					id: skill.slug,
+					name: skillId, // Use skill ID for tooltip display
+					rating,
+					description:
+						skill.data.skillDescription || 'No description available',
+					logoFileName: skill.data.logoFileName || null,
+					iconName,
+					tags: skill.data.tags || [],
+					projectCount,
+					radius,
+					color: getSkillColor(skill.data.tags || []),
+					group: getSkillGroup(skill.data.tags || []),
+				};
+			})
+			.filter((skill): skill is BubbleData => skill !== null);
+	}, [
+		filteredSkills,
+		getProjectCountForSkill,
+		getSkillColor,
+		getSkillGroup,
+		sizeByRating,
+	]);
 
 	// Listen for filter changes from parent components
 	useEffect(() => {
 		const handleFilterChange = (e: Event) => {
 			const customEvent = e as CustomEvent;
 			const { filters } = customEvent.detail;
+			console.log('Skills filter change received:', filters);
 			setSelectedFilters(filters);
 		};
 
+		const handleReset = (e: Event) => {
+			const customEvent = e as CustomEvent;
+			const { sizeByRating: resetSizeByRating } = customEvent.detail;
+			setSelectedFilters(['all']);
+			setSizeByRating(resetSizeByRating);
+			setSelectedSkill(null);
+			setTooltip(null);
+
+			// Reset zoom to fit all bubbles
+			if (zoomRef.current && svgRef.current && containerRef.current) {
+				const svg = d3.select(svgRef.current);
+				const container = containerRef.current;
+				const containerRect = container.getBoundingClientRect();
+				const width = containerRect.width;
+				const height = containerRect.height;
+
+				// Get the bubble group to calculate bounds
+				const bubbleGroup = svg.select('.bubble-group');
+				if (!bubbleGroup.empty()) {
+					const bubbleGroupNode = bubbleGroup.node() as SVGGElement;
+					if (bubbleGroupNode) {
+						const bounds = bubbleGroupNode.getBBox();
+						const bubbleWidth = bounds.width;
+						const bubbleHeight = bounds.height;
+
+						// Calculate scale to fit all bubbles with some padding
+						const padding = 50;
+						const scaleX = (width - padding) / bubbleWidth;
+						const scaleY = (height - padding) / bubbleHeight;
+						const scale = Math.min(scaleX, scaleY, 1); // Don't zoom in beyond 1x
+
+						// Calculate center translation
+						const translateX =
+							width / 2 - (bounds.x + bounds.width / 2) * scale;
+						const translateY =
+							height / 2 - (bounds.y + bounds.height / 2) * scale;
+
+						// Apply reset zoom
+						const transform = d3.zoomIdentity
+							.translate(translateX, translateY)
+							.scale(scale);
+
+						svg
+							.transition()
+							.duration(1000)
+							.call(zoomRef.current.transform as any, transform);
+					}
+				}
+			}
+		};
+
+		const handleToggle = (e: Event) => {
+			const customEvent = e as CustomEvent;
+			const { sizeByRating: newSizeByRating } = customEvent.detail;
+			setSizeByRating(newSizeByRating);
+		};
+
 		window.addEventListener('skillsFilterChange', handleFilterChange);
+		window.addEventListener('skillsReset', handleReset);
+		window.addEventListener('skillsToggle', handleToggle);
+
 		return () => {
 			window.removeEventListener('skillsFilterChange', handleFilterChange);
+			window.removeEventListener('skillsReset', handleReset);
+			window.removeEventListener('skillsToggle', handleToggle);
 		};
 	}, []);
 
@@ -244,8 +300,11 @@ const SkillsBubbleChart = ({
 
 		simulationRef.current = simulation;
 
+		// Create a group for all bubbles to apply zoom to
+		const bubbleGroup = svg.append('g').attr('class', 'bubble-group');
+
 		// Create bubble groups
-		const bubbles = svg
+		const bubbles = bubbleGroup
 			.selectAll('.bubble')
 			.data(bubbleData)
 			.enter()
@@ -288,6 +347,48 @@ const SkillsBubbleChart = ({
 		// Update positions on simulation tick
 		simulation.on('tick', () => {
 			bubbles.attr('transform', (d: any) => `translate(${d.x},${d.y})`);
+		});
+
+		// Set up zoom behavior
+		const zoom = d3
+			.zoom<SVGSVGElement, unknown>()
+			.scaleExtent([0.1, 3]) // Min zoom 0.1x, max zoom 3x
+			.on('zoom', event => {
+				bubbleGroup.attr('transform', event.transform);
+			});
+
+		zoomRef.current = zoom;
+		svg.call(zoom);
+
+		// Calculate initial zoom to fit all bubbles
+		simulation.on('end', () => {
+			// Get the bounds of all bubbles
+			const bubbleGroupNode = bubbleGroup.node();
+			if (!bubbleGroupNode) return;
+
+			const bounds = bubbleGroupNode.getBBox();
+			const bubbleWidth = bounds.width;
+			const bubbleHeight = bounds.height;
+
+			// Calculate scale to fit all bubbles with some padding
+			const padding = 50;
+			const scaleX = (width - padding) / bubbleWidth;
+			const scaleY = (height - padding) / bubbleHeight;
+			const scale = Math.min(scaleX, scaleY, 1); // Don't zoom in beyond 1x
+
+			// Calculate center translation
+			const translateX = width / 2 - (bounds.x + bounds.width / 2) * scale;
+			const translateY = height / 2 - (bounds.y + bounds.height / 2) * scale;
+
+			// Apply initial zoom
+			const transform = d3.zoomIdentity
+				.translate(translateX, translateY)
+				.scale(scale);
+
+			svg
+				.transition()
+				.duration(1000)
+				.call(zoom.transform as any, transform);
 		});
 
 		// Cleanup function
