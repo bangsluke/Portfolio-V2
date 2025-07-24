@@ -244,8 +244,11 @@ const SkillsBubbleChart = ({
 
 		simulationRef.current = simulation;
 
+		// Create a group for all bubbles to apply zoom to
+		const bubbleGroup = svg.append('g').attr('class', 'bubble-group');
+
 		// Create bubble groups
-		const bubbles = svg
+		const bubbles = bubbleGroup
 			.selectAll('.bubble')
 			.data(bubbleData)
 			.enter()
@@ -288,6 +291,47 @@ const SkillsBubbleChart = ({
 		// Update positions on simulation tick
 		simulation.on('tick', () => {
 			bubbles.attr('transform', (d: any) => `translate(${d.x},${d.y})`);
+		});
+
+		// Set up zoom behavior
+		const zoom = d3
+			.zoom<SVGSVGElement, unknown>()
+			.scaleExtent([0.1, 3]) // Min zoom 0.1x, max zoom 3x
+			.on('zoom', event => {
+				bubbleGroup.attr('transform', event.transform);
+			});
+
+		svg.call(zoom);
+
+		// Calculate initial zoom to fit all bubbles
+		simulation.on('end', () => {
+			// Get the bounds of all bubbles
+			const bubbleGroupNode = bubbleGroup.node();
+			if (!bubbleGroupNode) return;
+
+			const bounds = bubbleGroupNode.getBBox();
+			const bubbleWidth = bounds.width;
+			const bubbleHeight = bounds.height;
+
+			// Calculate scale to fit all bubbles with some padding
+			const padding = 50;
+			const scaleX = (width - padding) / bubbleWidth;
+			const scaleY = (height - padding) / bubbleHeight;
+			const scale = Math.min(scaleX, scaleY, 1); // Don't zoom in beyond 1x
+
+			// Calculate center translation
+			const translateX = width / 2 - (bounds.x + bounds.width / 2) * scale;
+			const translateY = height / 2 - (bounds.y + bounds.height / 2) * scale;
+
+			// Apply initial zoom
+			const transform = d3.zoomIdentity
+				.translate(translateX, translateY)
+				.scale(scale);
+
+			svg
+				.transition()
+				.duration(1000)
+				.call(zoom.transform as any, transform);
 		});
 
 		// Cleanup function

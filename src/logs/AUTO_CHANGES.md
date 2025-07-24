@@ -1,5 +1,22 @@
 # Auto Changes Log
 
+## 2025-01-16 20:15 [main] - Added initial zoom out to SkillsBubbleChart to show all bubbles
+- Updated SkillsBubbleChart.tsx to include D3 zoom functionality
+  - Added zoom behavior with scale extent from 0.1x to 3x zoom
+  - Created bubble group wrapper to apply zoom transformations
+  - Added simulation.on('end') callback to calculate initial zoom level
+  - Calculates bounds of all bubbles and scales to fit with 50px padding
+  - Applies smooth 1-second transition to initial zoom level
+  - Prevents zooming in beyond 1x scale to maintain readability
+  - Users can now see all bubbles initially and zoom in/out as needed
+
+## 2025-01-16 20:10 [main] - Updated SkillsBubbleChart to maximize size within parent component
+- Updated SkillsBubbles.astro wrapper to use full height
+  - Changed section class from `w-full` to `w-full h-full`
+  - Allows SkillsBubbleChart component to expand to 100% height and width of its parent
+  - SkillsBubbleChart already had `w-full h-full` classes but was constrained by parent
+  - Now the chart will utilize the full available space in the coding section card
+
 ## 2025-01-16 20:05 [main] - Fixed GitHub calendar dark mode CSS selector issue
 - Updated GitHubContributions.tsx CSS to use direct html.dark selector instead of :global(.dark)
   - Replaced all `:global(.dark)` selectors with `html.dark` for more reliable targeting
