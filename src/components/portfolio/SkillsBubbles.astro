@@ -47,7 +47,10 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 		const modalCheckboxes = document.querySelectorAll(
 			'.modal-skills-filter-checkbox'
 		);
+		const modalResetBtn = document.getElementById('modal-skills-reset-btn');
+		const modalToggleBtn = document.getElementById('modal-skills-toggle-btn');
 		let selectedFilters = ['all'];
+		let sizeByRating = true;
 
 		if (fullscreenBtn) {
 			fullscreenBtn.addEventListener('click', () => {
@@ -164,6 +167,67 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 			});
 		});
 
+		// Modal Reset button functionality
+		if (modalResetBtn) {
+			modalResetBtn.addEventListener('click', () => {
+				// Reset filters to 'all'
+				selectedFilters = ['all'];
+				modalCheckboxes.forEach(checkbox => {
+					const target = checkbox as HTMLInputElement;
+					target.checked = target.value === 'all';
+				});
+
+				// Reset toggle to skill rating
+				sizeByRating = true;
+				if (modalToggleBtn) {
+					modalToggleBtn.textContent = 'Toggle: Skill Rating';
+					modalToggleBtn.title =
+						'Skill bubbles sized based on my self assessed skill rating';
+				}
+
+				// Update modal filter text
+				if (modalFilterText) {
+					modalFilterText.textContent = 'All Skills';
+				}
+
+				// Dispatch events for the Preact component
+				window.dispatchEvent(
+					new CustomEvent('skillsFilterChange', {
+						detail: { filters: selectedFilters },
+					})
+				);
+				window.dispatchEvent(
+					new CustomEvent('skillsReset', {
+						detail: { sizeByRating },
+					})
+				);
+			});
+		}
+
+		// Modal Toggle button functionality
+		if (modalToggleBtn) {
+			modalToggleBtn.addEventListener('click', () => {
+				sizeByRating = !sizeByRating;
+
+				if (sizeByRating) {
+					modalToggleBtn.textContent = 'Toggle: Skill Rating';
+					modalToggleBtn.title =
+						'Skill bubbles sized based on my self assessed skill rating';
+				} else {
+					modalToggleBtn.textContent = 'Toggle: Project Count';
+					modalToggleBtn.title =
+						'Skill bubbles sized based on the number of projects used on';
+				}
+
+				// Dispatch event for the Preact component
+				window.dispatchEvent(
+					new CustomEvent('skillsToggle', {
+						detail: { sizeByRating },
+					})
+				);
+			});
+		}
+
 		// Listen for filter changes from main component
 		window.addEventListener('skillsFilterChange', (e: any) => {
 			const { filters } = e.detail;
@@ -206,6 +270,22 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 						Skills Bubble Chart
 					</h3>
 					<div class="flex items-center gap-4">
+						<!-- Modal Reset Button -->
+						<button
+							id="modal-skills-reset-btn"
+							class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+							title="Reset to default view - clear filters, reset to skill rating, and center graph">
+							Reset
+						</button>
+
+						<!-- Modal Toggle Button -->
+						<button
+							id="modal-skills-toggle-btn"
+							class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+							title="Toggle between skill rating and project count sizing">
+							Toggle: Skill Rating
+						</button>
+
 						<!-- Modal Multi-select dropdown -->
 						<div class="relative">
 							<button

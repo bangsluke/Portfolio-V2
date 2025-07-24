@@ -1,5 +1,84 @@
 # Auto Changes Log
 
+## 2025-01-16 21:20 [main] - Fixed TypeScript syntax error in CodingSection.astro
+- Fixed missing closing parenthesis in techCheckboxes.forEach event listener
+  - Added missing `});` to properly close the forEach function call
+  - Resolved TypeScript compilation error that was preventing the site from building
+  - Error was causing "Expected ")" but found "}" at line 238
+
+## 2025-01-16 21:15 [main] - Moved Categories dropdown to Most Common Techs header
+- Moved Categories dropdown from MostCommonTechs.astro component to CodingSection.astro header
+  - Dropdown now positioned in the same row as "Most Common Techs" header for consistency
+  - Added tech filter dropdown with same styling as Skills filter dropdown
+  - Updated JavaScript to handle tech filter functionality in CodingSection.astro
+  - Added custom event 'techFilterChange' for communication between components
+  - Simplified MostCommonTechs.astro component by removing dropdown and related JavaScript
+  - Maintained all existing filtering functionality with cleaner component separation
+  - Consistent UI pattern across Skills and Most Common Techs sections
+
+## 2025-01-16 21:00 [main] - Moved Reset and Toggle buttons to Skills header alongside dropdown
+- Moved Reset and Toggle buttons from SkillsBubbleChart component to CodingSection.astro header
+  - Buttons now positioned before the Skills dropdown for better UX flow
+  - Added Reset button functionality to clear filters, reset toggle, and center graph
+  - Added Toggle button functionality to switch between skill rating and project count sizing
+  - Updated both main view and fullscreen modal to include the same buttons
+  - Maintained consistent styling and functionality across both views
+  - Added custom event listeners for skillsReset and skillsToggle events
+  - Removed buttons from SkillsBubbleChart component to clean up the chart area
+  - Buttons now properly sync between main view and fullscreen modal
+
+## 2025-01-16 20:45 [main] - Fixed reset button zoom to properly show all bubbles
+- Updated SkillsBubbleChart.tsx reset function to calculate proper zoom level
+  - Modified handleReset to calculate bounds of all bubbles and fit them in view
+  - Added proper zoom calculation with padding similar to initial zoom logic
+  - Fixed TypeScript error by properly typing SVG element as SVGGElement
+  - Reset now properly zooms out to show all bubbles instead of just centering
+  - Maintains smooth 1-second transition when resetting zoom level
+
+## 2025-01-16 20:40 [main] - Added reset button to SkillsBubbleChart and improved UI
+- Updated SkillsBubbleChart.tsx to include reset functionality
+  - Added reset button in center-top position that clears all filters and resets to skill rating mode
+  - Removed "View:" prefix from current mode display for cleaner look
+  - Reset button clears selected skill, tooltip, and centers the graph with smooth transition
+  - Added zoom reference storage to enable programmatic zoom control
+  - Reset function resets filters to 'all', toggle to skill rating, and centers graph
+  - Button includes helpful tooltip explaining its functionality
+
+## 2025-01-16 20:35 [main] - Fixed skill rating sizing logic in SkillsBubbleChart
+- Updated SkillsBubbleChart.tsx to improve bubble sizing accuracy
+  - Increased base radius range from 15-50px to 20-60px for better visual distinction
+  - Reduced project bonus impact from 10px max to 5px max in skill rating mode
+  - Reduced rating bonus impact from 10px max to 5px max in project count mode
+  - Now skill rating is the primary factor when in skill rating mode
+  - Prevents high-project-count skills from appearing larger than high-rating skills
+  - Ensures visual hierarchy matches the selected sizing mode
+
+## 2025-01-16 20:30 [main] - Added current view mode display to SkillsBubbleChart
+- Updated SkillsBubbleChart.tsx to show current sizing mode
+  - Added view mode indicator in top-left corner showing "View: Skill Rating" or "View: Project Count"
+  - Matches styling of toggle button for visual consistency
+  - Provides clear indication of which sizing mode is currently active
+  - Helps users understand what the bubble sizes represent at a glance
+
+## 2025-01-16 20:25 [main] - Hide skills from bubble chart that aren't used in any projects
+- Updated SkillsBubbleChart.tsx to filter out unused skills
+  - Added null check in bubble data processing to skip skills with projectCount === 0
+  - Added filter to remove null values from final bubble data array
+  - TypeScript type guard ensures proper typing after filtering
+  - Now only skills that are actually used in projects will appear in the visualization
+  - Improves chart clarity by focusing on practical, utilized skills
+
+## 2025-01-16 20:20 [main] - Added toggle button to switch bubble sizing between skill rating and project count
+- Updated SkillsBubbleChart.tsx to include bubble sizing toggle functionality
+  - Added sizeByRating state to track current sizing mode (defaults to skill rating)
+  - Modified bubble data calculation to use different sizing logic based on toggle state
+  - When sizeByRating is true: bubbles sized primarily by skill rating with project count bonus
+  - When sizeByRating is false: bubbles sized primarily by project count with skill rating bonus
+  - Added toggle button in top-right corner with dynamic text and tooltip
+  - Button text shows "Toggle: Skill Rating" or "Toggle: Project Count"
+  - Tooltip explains each mode: "Skill bubbles sized based on my self assessed skill rating" or "Skill bubbles sized based on the number of projects used on"
+  - Button styling matches existing design with hover effects and dark mode support
+
 ## 2025-01-16 20:15 [main] - Added initial zoom out to SkillsBubbleChart to show all bubbles
 - Updated SkillsBubbleChart.tsx to include D3 zoom functionality
   - Added zoom behavior with scale extent from 0.1x to 3x zoom
