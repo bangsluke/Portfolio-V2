@@ -1,5 +1,52 @@
 # Auto Changes Log
 
+## 2025-01-16 20:05 [main] - Fixed GitHub calendar dark mode CSS selector issue
+- Updated GitHubContributions.tsx CSS to use direct html.dark selector instead of :global(.dark)
+  - Replaced all `:global(.dark)` selectors with `html.dark` for more reliable targeting
+  - The :global(.dark) selector was not working properly in the component's scoped CSS
+  - Using `html.dark` directly targets the dark class on the HTML element more reliably
+  - This should fix the issue where dark mode styles weren't being applied to calendar text
+  - Maintains all existing specificity and attribute selectors for maximum compatibility
+
+## 2025-01-16 20:00 [main] - Enhanced GitHub calendar dark mode CSS specificity
+- Updated GitHubContributions.tsx CSS to override inline styles from the component
+  - Added `[style*="fill"]` attribute selector to override any inline styles set by the component
+  - Added broader `svg text` selector to target all text elements within the calendar
+  - These selectors have higher specificity to override the component's default styling
+  - Ensures month labels and other text elements properly respond to theme changes
+  - Maintains all existing theme-specific selectors for maximum compatibility
+
+## 2025-01-16 19:50 [main] - Fixed GitHub calendar dark mode selector conflict
+- Removed conflicting CSS rule from GitHubContributions.tsx that was overriding theme detection
+  - Removed `text.github-calendar__graph-label` rule that was forcing white text in all themes
+  - This rule was preventing the `:global(.dark)` selector from working properly
+  - Now the theme-specific selectors work correctly: black text in light mode, white in dark mode
+  - Maintains all the enhanced selectors for proper theme compatibility
+
+## 2025-01-16 19:45 [main] - Enhanced GitHub calendar label styling for better theme compatibility
+- Updated GitHubContributions.tsx CSS for .github-calendar__graph-label elements
+  - Added multiple CSS selectors with increasing specificity to ensure styles are applied
+  - Added both `fill` and `color` properties for maximum compatibility
+  - Added specific selectors for SVG text elements within the component
+  - Enhanced dark mode targeting with `:global(.dark)` syntax
+  - Ensures month labels (Aug, Sep, Oct, etc.) are properly visible in both themes
+  - Added fallback selectors to handle dynamically rendered components
+
+## 2025-01-16 19:40 [main] - Fixed GitHub calendar labels for proper light/dark mode styling
+- Updated GitHubContributions.tsx CSS for .github-calendar__graph-label elements
+  - Fixed light mode styling to use `fill: #000 !important;` for black text
+  - Fixed dark mode styling to use `fill: #fff !important;` for white text
+  - Removed incorrect `color` property and commented-out code
+  - Cleaned up CSS formatting and indentation
+  - Ensures month labels (Aug, Sep, Oct, etc.) are properly visible in both themes
+
+## 2025-01-16 19:35 [main] - Fixed GitHub contributions text color in dark mode
+- Updated GitHubContributions.tsx CSS selector for dark mode
+  - Changed from `#github-contributions .dark *` to `:global(.dark) #github-contributions *`
+  - Fixed selector to properly target dark mode when applied to html/body element
+  - Ensures all text within #github-contributions becomes white (#fff) in dark mode
+  - Uses Astro's :global() syntax to target global dark mode class
+
 ## 2025-01-16 19:30 [main] - Fixed references carousel hover scaling issue
 - Updated ReferencesCarouselComponent.tsx to prevent hover scaling cutoff
   - Added fixed height (300px) and overflow: visible to Flicking container
