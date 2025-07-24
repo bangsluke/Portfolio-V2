@@ -226,7 +226,7 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 						</div>
 					</div>
 				</div>
-				<div class="overflow-y-auto">
+				<div class="h-full flex flex-col">
 					<MostCommonTechs />
 				</div>
 			</article>
@@ -259,6 +259,13 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 			filterBtn.addEventListener('click', e => {
 				e.stopPropagation();
 				dropdown.classList.toggle('hidden');
+			});
+		}
+
+		// Prevent dropdown from closing when clicking inside it
+		if (dropdown) {
+			dropdown.addEventListener('click', e => {
+				e.stopPropagation();
 			});
 		}
 
@@ -330,6 +337,7 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 				}
 
 				// Dispatch custom event for the Preact component
+				console.log('Dispatching skills filter change:', selectedFilters);
 				window.dispatchEvent(
 					new CustomEvent('skillsFilterChange', {
 						detail: { filters: selectedFilters },
@@ -404,6 +412,13 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 			techFilterBtn.addEventListener('click', e => {
 				e.stopPropagation();
 				techDropdown.classList.toggle('hidden');
+			});
+		}
+
+		// Prevent tech dropdown from closing when clicking inside it
+		if (techDropdown) {
+			techDropdown.addEventListener('click', e => {
+				e.stopPropagation();
 			});
 		}
 

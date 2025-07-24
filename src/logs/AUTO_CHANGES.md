@@ -1,5 +1,44 @@
 # Auto Changes Log
 
+## 2025-01-16 21:45 [main] - Extracted common project count logic to ensure consistency
+- Created shared utility functions for project counting across components
+  - Created `src/utils/project-count-utils.ts` with `getProjectCount` and `getProjectsUsingSkill` functions
+  - Updated SkillsBubbleChart.tsx to use the common utility function instead of local implementation
+  - Updated MostCommonTechs.astro to use the same exact matching logic with pipe alias support
+  - Ensures both components use identical logic for counting project usage
+  - Maintains exact matching, pipe alias handling, and case-insensitive comparison
+  - Eliminates potential discrepancies between skills bubble chart and most common techs display
+
+## 2025-01-16 21:40 [main] - Removed overflow and maximized Most Common Techs skill pill section
+- Updated Most Common Techs card to fill available space without overflow
+  - Removed `overflow-y-auto` wrapper from CodingSection.astro container
+  - Changed container to `h-full flex flex-col` to maximize height usage
+  - Updated MostCommonTechs.astro to use `h-full` and `flex-1` classes
+  - Added `items-center content-center` to base classes for proper flex layout and vertical centering
+  - Skill pills now fill the entire card area without scrollbars and are vertically centered
+  - Maintains responsive design while maximizing space utilization
+
+## 2025-01-16 21:35 [main] - Added debugging logs for skills filtering
+- Added console logging to track filter changes and data flow
+  - Added logging in SkillsBubbleChart to show when filter events are received
+  - Added logging to show filtered skills count and selected filters
+  - Added logging in CodingSection to show when filter events are dispatched
+  - This will help debug why the dropdown filtering isn't working properly
+
+## 2025-01-16 21:30 [main] - Fixed project count logic in SkillsBubbleChart.tsx
+- Removed partial matching from project count calculation
+  - Removed logic that checked if skill name contains tech name or vice versa
+  - Now only uses exact matches between skill names/IDs and project technologies
+  - This prevents incorrect project counts from partial string matches
+  - Maintains pipe alias handling for tech names with display text
+
+## 2025-01-16 21:25 [main] - Fixed skills dropdown functionality in CodingSection.astro
+- Added event listeners to prevent dropdowns from closing when clicking inside them
+  - Added `stopPropagation()` to both skills and tech dropdown click events
+  - Fixed issue where dropdown would close immediately when trying to select options
+  - Ensured dropdowns only close when clicking outside or on the toggle button
+  - Skills filter dropdown now properly stays open for user interaction
+
 ## 2025-01-16 21:20 [main] - Fixed TypeScript syntax error in CodingSection.astro
 - Fixed missing closing parenthesis in techCheckboxes.forEach event listener
   - Added missing `});` to properly close the forEach function call

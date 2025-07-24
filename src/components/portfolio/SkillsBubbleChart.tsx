@@ -8,6 +8,7 @@ import {
 } from 'preact/hooks';
 import { extractNameFromFilename } from '../../utils/filename-utils';
 import { getSkillIconName } from '../../utils/icon-utils';
+import { getProjectCount } from '../../utils/project-count-utils';
 
 interface Skill {
 	id: string;
@@ -109,47 +110,10 @@ const SkillsBubbleChart = ({
 		}
 	}, []);
 
-	// Calculate project count for each skill - improved logic
-	const getProjectCount = useCallback(
+	// Use the common project count utility function
+	const getProjectCountForSkill = useCallback(
 		(skillName: string, skillId: string): number => {
-			return projects.filter(project => {
-				const technologies = project.data.technologies || [];
-				return technologies.some((tech: string) => {
-					// Clean the technology name (remove Obsidian brackets)
-					const cleanTech = tech.replace(/\[\[|\]\]/g, '');
-
-					// Check for exact match with skill name or skill ID
-					if (
-						cleanTech.toLowerCase() === skillName.toLowerCase() ||
-						cleanTech.toLowerCase() === skillId.toLowerCase()
-					) {
-						return true;
-					}
-
-					// Check for partial match (skill name contains tech or vice versa)
-					if (
-						cleanTech.toLowerCase().includes(skillName.toLowerCase()) ||
-						skillName.toLowerCase().includes(cleanTech.toLowerCase())
-					) {
-						return true;
-					}
-
-					// Handle pipe aliases in tech names
-					if (cleanTech.includes('|')) {
-						const [techPath, _techDisplay] = cleanTech.split('|');
-						const techName = techPath.split('/').pop() || techPath;
-
-						if (
-							techName.toLowerCase() === skillName.toLowerCase() ||
-							techName.toLowerCase() === skillId.toLowerCase()
-						) {
-							return true;
-						}
-					}
-
-					return false;
-				});
-			}).length;
+			return getProjectCount(skillName, skillId, projects);
 		},
 		[projects]
 	);
@@ -157,9 +121,17 @@ const SkillsBubbleChart = ({
 	// Filter skills based on selected filters
 	const filteredSkills = useMemo(() => {
 		if (selectedFilters.includes('all')) return skills;
-		return skills.filter(skill =>
+		const filtered = skills.filter(skill =>
 			skill.data.tags?.some(tag => selectedFilters.includes(tag))
 		);
+		console.log(
+			'Filtered skills:',
+			selectedFilters,
+			filtered.length,
+			'of',
+			skills.length
+		);
+		return filtered;
 	}, [skills, selectedFilters]);
 
 	// Process skills into bubble data
@@ -170,7 +142,7 @@ const SkillsBubbleChart = ({
 				const skillId = extractNameFromFilename(skill.id);
 				const skillName = skill.data.name || skill.slug;
 				const rating = skill.data.skillRating || 0;
-				const projectCount = getProjectCount(skillName, skillId);
+				const projectCount = getProjectCountForSkill(skillName, skillId);
 				const iconName = getSkillIconName(skill.data.logoFileName || null);
 
 				// Skip skills that aren't used in any projects
@@ -206,7 +178,7 @@ const SkillsBubbleChart = ({
 			.filter((skill): skill is BubbleData => skill !== null);
 	}, [
 		filteredSkills,
-		getProjectCount,
+		getProjectCountForSkill,
 		getSkillColor,
 		getSkillGroup,
 		sizeByRating,
@@ -217,6 +189,7 @@ const SkillsBubbleChart = ({
 		const handleFilterChange = (e: Event) => {
 			const customEvent = e as CustomEvent;
 			const { filters } = customEvent.detail;
+			console.log('Skills filter change received:', filters);
 			setSelectedFilters(filters);
 		};
 
