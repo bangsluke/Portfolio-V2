@@ -1,5 +1,15 @@
 # Auto Changes Log
 
+## 2025-01-16 22:05 [main] - Fixed Hero section background blur z-index issue
+- Fixed visual bug where background blur was appearing through the Hero section
+  - Updated blur-circle z-index from -1 to -2 in global.css to ensure proper layering
+  - Updated dark mode blur-circle z-index from -1 to -2 for consistency
+  - Increased Hero section main container z-index from z-0 to z-10 for proper stacking context
+  - Updated profile image container z-index from z-10 to z-20 for proper layering
+  - Updated profile image z-index from z-20 to z-30 to maintain hierarchy
+  - Ensures blur-circle background elements stay behind Hero section content
+  - Resolves visual regression caused by recent color theme changes
+
 ## 2025-01-16 22:00 [main] - Replaced hardcoded rgba/rgb values with CSS custom properties
 - Added comprehensive rgba theme variables to global.css for common use cases
   - Created --color-theme-*-rgba-* variables for different opacity levels (01, 02, 03, 04, 05, 025, 029, 095)

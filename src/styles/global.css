@@ -698,7 +698,7 @@ a.theme-link:hover {
 	bottom: -400px;
 	right: -300px;
 	position: fixed;
-	z-index: -1;
+	z-index: -2;
 	border-radius: 50%;
 	filter: blur(159px);
 }
@@ -714,7 +714,7 @@ a.theme-link:hover {
 	border-radius: 999px;
 	filter: blur(150px);
 	overflow: hidden;
-	z-index: -1;
+	z-index: -2;
 }
 
 .dark .blur-circle::after {
@@ -727,7 +727,7 @@ a.theme-link:hover {
 	bottom: -150px;
 	right: -150px;
 	position: absolute;
-	z-index: -1;
+	z-index: -2;
 	border-radius: 50%;
 	filter: blur(10px);
 }
