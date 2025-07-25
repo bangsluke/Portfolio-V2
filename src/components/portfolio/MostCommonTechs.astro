@@ -169,13 +169,25 @@ const classes = `${baseClasses} ${variantClasses[variant as TechVariant]}`;
 				const tags = item.getAttribute('data-tags') || '';
 				const element = item as HTMLElement;
 
-				if (
-					selectedFilters.includes('all') ||
-					selectedFilters.some(filter => tags.includes(filter))
-				) {
+				if (selectedFilters.includes('all')) {
 					element.style.display = 'block';
 				} else {
-					element.style.display = 'none';
+					const shouldShow = selectedFilters.some(filter => {
+						if (filter === 'framework') {
+							// Framework filter should include both framework and library tags
+							return tags.includes('framework') || tags.includes('library');
+						} else if (filter === 'language') {
+							// Language filter should include both language and framework/library tags
+							return (
+								tags.includes('language') ||
+								tags.includes('framework') ||
+								tags.includes('library')
+							);
+						}
+						return tags.includes(filter);
+					});
+
+					element.style.display = shouldShow ? 'block' : 'none';
 				}
 			});
 		}

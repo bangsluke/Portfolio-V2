@@ -98,7 +98,11 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 											<span class="text-sm text-gray-900 dark:text-gray-100">
 												{tag === 'all'
 													? 'All Skills'
-													: tag.charAt(0).toUpperCase() + tag.slice(1)}
+													: tag === 'framework'
+														? 'Frameworks and Libraries'
+														: tag === 'other'
+															? 'Other'
+															: tag.charAt(0).toUpperCase() + tag.slice(1)}
 											</span>
 										</label>
 									))
@@ -202,24 +206,26 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 										>
 									</label>
 									{
-										[
-											'framework',
-											'library',
-											'language',
-											'database',
-											'design',
-										].map(tag => (
-											<label class="flex items-center px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
-												<input
-													type="checkbox"
-													value={tag}
-													class="tech-filter-checkbox mr-2 rounded border-gray-300 dark:border-gray-600 text-theme-400 focus:ring-theme-400"
-												/>
-												<span class="text-sm text-gray-900 dark:text-gray-100">
-													{tag.charAt(0).toUpperCase() + tag.slice(1)}
-												</span>
-											</label>
-										))
+										filterOptions
+											.filter(tag => tag !== 'all')
+											.map(tag => (
+												<label class="flex items-center px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+													<input
+														type="checkbox"
+														value={tag}
+														class="tech-filter-checkbox mr-2 rounded border-gray-300 dark:border-gray-600 text-theme-400 focus:ring-theme-400"
+													/>
+													<span class="text-sm text-gray-900 dark:text-gray-100">
+														{tag === 'framework'
+															? 'Frameworks and Libraries'
+															: tag === 'language'
+																? 'Languages & Frameworks'
+																: tag === 'other'
+																	? 'Other'
+																	: tag.charAt(0).toUpperCase() + tag.slice(1)}
+													</span>
+												</label>
+											))
 									}
 								</div>
 							</div>
@@ -479,7 +485,13 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 					} else if (selectedTechFilters.length === 1) {
 						const filter = selectedTechFilters[0];
 						techFilterText.textContent =
-							filter.charAt(0).toUpperCase() + filter.slice(1);
+							filter === 'framework'
+								? 'Frameworks and Libraries'
+								: filter === 'language'
+									? 'Languages & Frameworks'
+									: filter === 'other'
+										? 'Other'
+										: filter.charAt(0).toUpperCase() + filter.slice(1);
 					} else {
 						techFilterText.textContent = `${selectedTechFilters.length} Filters`;
 					}
