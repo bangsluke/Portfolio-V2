@@ -7,8 +7,8 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-07-23T08:51:37+01:00
-viewCount: 54
+modified: 2025-07-24T15:26:47+01:00
+viewCount: 56
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -107,6 +107,8 @@ An updated personal portfolio website for displaying my skills and past projects
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Portfolio Site Text Content
+
+> Portfolio colour scheme primary theme value: \#8962E8
 
 #### Portfolio Config Options
 

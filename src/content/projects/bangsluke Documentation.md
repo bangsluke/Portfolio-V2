@@ -10,14 +10,14 @@ modified: 2025-07-19T09:52:56+01:00
 aliases:
   - Documentation Site
   - bangsluke-documentation
-viewCount: 17
+viewCount: 18
 projectURL: https://bangsluke-documentation.netlify.app/
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-documentation/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/p74w0Rd.png
+imageURL: https://i.imgur.com/fWB09PQ.png
 dateStart: 2023-06-04
 dateEnd: 2024-07-14
 technologies:
@@ -123,7 +123,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- https://docusaurus.io/
+- <https://docusaurus.io/>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

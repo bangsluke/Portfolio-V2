@@ -6,8 +6,8 @@ tags:
   - work
   - portfolio
   - reference
-modified: 2025-07-09T22:02:48+01:00
-viewCount: 4
+modified: 2025-07-24T14:31:29+01:00
+viewCount: 5
 aliases:
   - Dom Ede
   - Dom
@@ -15,7 +15,9 @@ birthday:
 died: 
 partneredWith: 
 marriageDate: 
-relatedTo: 
+relatedTo:
+  - Sophie
+  - Seb
 friendOf: 
 education: 
 linkedCompany:
