@@ -40,6 +40,7 @@ portfolioOrder: 1
 shortDescription: "The backend server and source of data for several of my projects, allowing a singular point of management and maintenance."
 longDescription: "The source of data for several projects including my <a href=\"/portfolio/projects/Travel Website\" class=\"theme-link\">Travel Website</a> and <a href=\"/portfolio/projects/Portfolio Site V2\" class=\"theme-link\">Portfolio Site V2</a>, providing a route for data retrieval from a <span class=\"theme-link\">Neo4j</span> graph using <span class=\"theme-link\">GraphQL</span> queries."
 lessonsLearned: "Taught me about setting up a <span class=\"theme-link\">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class=\"theme-link\">Python</span> code in a growing codebase given my past experience with <span class=\"theme-link\">Python</span> had been for single script projects.\nTBC"
+name: "Backend Server"
 ---
 
 # Backend Server

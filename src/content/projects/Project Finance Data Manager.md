@@ -41,6 +41,7 @@ portfolioOrder: 4
 shortDescription: "Data input for financial tracking of <span class=\"theme-link\">RLE International</span> projects."
 longDescription: "TBC\nPulled in timesheet data and financial information from various <span class=\"theme-link\">RLE International</span> region sources such as <span class=\"theme-link\">Paycor</span>, <span class=\"theme-link\">T-Sheet</span> and <span class=\"theme-link\">Iplicit</span>."
 lessonsLearned: "TBC"
+name: "Project Finance Data Manager"
 ---
 
 # Project Finance Data Manager

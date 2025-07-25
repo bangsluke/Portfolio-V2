@@ -42,6 +42,7 @@ portfolioOrder: 4
 shortDescription: "Full financial reporting on the progress of projects."
 longDescription: "TBC"
 lessonsLearned: "TBC"
+name: "Financial Tracker"
 ---
 
 # Financial Tracker

@@ -41,6 +41,7 @@ portfolioOrder: 2
 shortDescription: "A full documentation site for all tools developed by the <span class=\"theme-link\">GPMO</span> team, using <span class=\"theme-link\">Docusaurus</span> and static <span class=\"theme-link\">Markdown</span> files maintained by the tool developers."
 longDescription: "TBC"
 lessonsLearned: "TBC"
+name: "GPMO Documentation Site"
 ---
 
 # GPMO Documentation Site

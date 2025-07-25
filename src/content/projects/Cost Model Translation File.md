@@ -37,6 +37,7 @@ portfolioOrder: 4
 shortDescription: "The automation file to convert the <span class=\"theme-link\">Finance Tracker</span>."
 longDescription: "TBC"
 lessonsLearned: "TBC"
+name: "Cost Model Translation File"
 ---
 
 # Cost Model Translation File

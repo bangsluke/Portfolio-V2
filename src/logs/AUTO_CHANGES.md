@@ -1,5 +1,13 @@
 # Auto Changes Log
 
+## 2025-01-16 22:10 [main] - Enhanced project slug page image alignment and sizing
+- Updated project slug page image to ensure top is always visible and increased dimensions by 10%
+  - Changed object-center to object-top to align image top instead of center
+  - Increased height from h-96 (384px) to h-[422px] (422.4px) for 10% height increase
+  - Increased max-width from max-w-4xl to max-w-[110%] for 10% width increase
+  - Ensures image top is always visible regardless of aspect ratio
+  - Maintains responsive design while providing larger image display
+
 ## 2025-01-16 22:05 [main] - Fixed Hero section background blur z-index issue
 - Fixed visual bug where background blur was appearing through the Hero section
   - Updated blur-circle z-index from -1 to -2 in global.css to ensure proper layering
