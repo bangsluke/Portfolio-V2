@@ -35,6 +35,7 @@ portfolioOrder: 4
 shortDescription: "TBC\nthe next version of the <span class=\"theme-link\">Dorkinians FC</span> website, following on from <a href=\"/portfolio/projects/Dorkinians Website\" class=\"theme-link\">Dorkinians Website</a>"
 longDescription: "TBC"
 lessonsLearned: "TBC"
+name: "Dorkinians Website V2"
 ---
 
 # Dorkinians Website V2

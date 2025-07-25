@@ -40,6 +40,7 @@ portfolioOrder: 3
 shortDescription: "A landing page for showcasing a new Automotive Consultancy branch of <span class=\"theme-link\">RLE</span>, known as <span class=\"theme-link\">Centre of Excellence</span>."
 longDescription: "A basic landing page for showcasing a new Automotive Consultancy branch of <span class=\"theme-link\">RLE</span>, known as <span class=\"theme-link\">Centre of Excellence</span> ready for prospective clients to view and see the services we provide."
 lessonsLearned: "Main lesson was creating the automatic video background of the site along with a subtle purple filter across it which ended up looking pretty good. Sadly the site wasn’t finished as the requirements for the company changed."
+name: "CoE Landing Page"
 ---
 
 # CoE Landing Page

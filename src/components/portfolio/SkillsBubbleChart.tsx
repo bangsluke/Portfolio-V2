@@ -81,11 +81,11 @@ const SkillsBubbleChart = ({
 			return '#10b981'; // green-500
 		} else if (tags.includes('tool') || tags.includes('platform')) {
 			return '#8b5cf6'; // purple-500
-		} else if (tags.includes('database')) {
+		} else if (tags.includes('testing')) {
 			return '#f97316'; // orange-500
-		} else if (tags.includes('cloud') || tags.includes('devops')) {
+		} else if (tags.includes('database')) {
 			return '#6366f1'; // indigo-500
-		} else if (tags.includes('design')) {
+		} else if (tags.includes('hosting')) {
 			return '#ec4899'; // pink-500
 		} else {
 			return '#6b7280'; // gray-500
@@ -103,8 +103,8 @@ const SkillsBubbleChart = ({
 			return 'Databases';
 		} else if (tags.includes('cloud') || tags.includes('devops')) {
 			return 'Cloud & DevOps';
-		} else if (tags.includes('design')) {
-			return 'Design';
+		} else if (tags.includes('hosting')) {
+			return 'Hosting';
 		} else {
 			return 'Other';
 		}
@@ -121,9 +121,23 @@ const SkillsBubbleChart = ({
 	// Filter skills based on selected filters
 	const filteredSkills = useMemo(() => {
 		if (selectedFilters.includes('all')) return skills;
-		const filtered = skills.filter(skill =>
-			skill.data.tags?.some(tag => selectedFilters.includes(tag))
-		);
+		const filtered = skills.filter(skill => {
+			const tags = skill.data.tags || [];
+			return selectedFilters.some(filter => {
+				if (filter === 'framework') {
+					// Framework filter should include both framework and library tags
+					return tags.includes('framework') || tags.includes('library');
+				} else if (filter === 'language') {
+					// Language filter should include both language and framework/library tags
+					return (
+						tags.includes('language') ||
+						tags.includes('framework') ||
+						tags.includes('library')
+					);
+				}
+				return tags.includes(filter);
+			});
+		});
 		console.log(
 			'Filtered skills:',
 			selectedFilters,

@@ -36,6 +36,7 @@ portfolioOrder: 4
 shortDescription: "A unified cost model template and approach for costing projects - feeds into the <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Finance Tracker</a>."
 longDescription: "TBC"
 lessonsLearned: "TBC"
+name: "Cost Model"
 ---
 
 # Cost Model

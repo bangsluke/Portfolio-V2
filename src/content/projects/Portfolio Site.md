@@ -40,6 +40,7 @@ portfolioOrder: 3
 shortDescription: "The portfolio site was my initial attempt at creating a marketing page for myself as a developer, showcasing my skills and contact information."
 longDescription: "The portfolio site showcased all the information I believed to be relevant for possible hirers, clients or collaborators, providing details on my ambitions, my self-assessed skill level in several languages and technologies, my education and former work experience and finally my contact details."
 lessonsLearned: "The key lesson learned for this project was how useful it is to create re-usable components for a site - a skill I only began using after building this site. As such, this site became a challenge to maintain and ultimately broke, leading me to the decision to rebuild it entirely."
+name: "Portfolio Site"
 ---
 
 # Portfolio Site

@@ -36,6 +36,7 @@ portfolioOrder: 3
 shortDescription: "A simplified portfolio idea to show just a single card of my contact details."
 longDescription: "TBC"
 lessonsLearned: "TBC"
+name: "Portfolio Card"
 ---
 
 # Portfolio Card

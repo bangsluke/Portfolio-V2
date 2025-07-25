@@ -40,6 +40,7 @@ portfolioOrder: 3
 shortDescription: "An early website I developed to be my new tab page across browsers, providing me fast links to my key sites and a link back to my <a href=\"/portfolio/projects/Homepage Website\" class=\"theme-link\">Homepage Website</a>."
 longDescription: "A site that opens up for new tabs across my browsers, developed from a theme I found online which stores my key site links and several images I have saved on the page in a masonry layout."
 lessonsLearned: "This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the <span class=\"theme-link\">CSS</span> file from online) and then making it my own."
+name: "New Tab Website"
 ---
 
 # New Tab Website

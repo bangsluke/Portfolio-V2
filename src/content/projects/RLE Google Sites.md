@@ -34,6 +34,7 @@ portfolioOrder: 4
 shortDescription: "A internal site providing links to key sites needed by employees."
 longDescription: "A site providing links to key sites needed by employees, a tools library of useful documents and templates and a lessons learned page for end-of project.\nThis provided a structure for engineers to work with on a day to day basis to ensure consistency with work output quality."
 lessonsLearned: "This taught me how to use basic website building tools such as <span class=\"theme-link\">Google Sites</span> to quickly create a website structure using drag and drop components."
+name: "RLE Google Sites"
 ---
 
 # RLE Google Sites

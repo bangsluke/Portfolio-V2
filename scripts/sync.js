@@ -20,6 +20,57 @@ function extractNameFromFilename(filename) {
 	return filename.replace(/\.md$/, '');
 }
 
+// Add name property to project frontmatter
+function addProjectNameToFrontmatter(content, fileName) {
+	// Extract the name from filename (remove .md extension)
+	const projectName = extractNameFromFilename(fileName);
+
+	// Check if name property already exists in frontmatter
+	const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
+
+	if (frontmatterMatch) {
+		const existingFrontmatter = frontmatterMatch[1];
+
+		// Check if name property already exists
+		if (existingFrontmatter.includes('name:')) {
+			if (DEBUG_MODE) {
+				console.log(
+					SPACING_LEVEL_3 +
+						`⏭️ Project already has name property in frontmatter`
+				);
+			}
+			return content;
+		}
+
+		// Add name property to existing frontmatter
+		const newFrontmatter = existingFrontmatter + `\nname: "${projectName}"`;
+		content = content.replace(
+			/^---\s*\n([\s\S]*?)\n---\s*\n/,
+			`---\n${newFrontmatter}\n---\n`
+		);
+
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_3 +
+					`✅ Added name property to project frontmatter: "${projectName}"`
+			);
+		}
+	} else {
+		// No existing frontmatter, create new one
+		const newFrontmatter = `name: "${projectName}"`;
+		content = `---\n${newFrontmatter}\n---\n\n${content}`;
+
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_3 +
+					`✅ Created new frontmatter with name property: "${projectName}"`
+			);
+		}
+	}
+
+	return content;
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -438,6 +489,11 @@ function processMarkdownFile(filePath, relativePath) {
 				SPACING_LEVEL_3 +
 					`⏭️ 7. No section extraction needed for this content type`
 			);
+		}
+
+		// Add name property to project frontmatter if it's a project and doesn't already have one
+		if (targetFolder === 'projects') {
+			content = addProjectNameToFrontmatter(content, fileName);
 		}
 
 		if (DEBUG_MODE) {
