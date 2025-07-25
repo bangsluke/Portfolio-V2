@@ -10,14 +10,14 @@ created: 2025-06-02 17:16
 modified: 2025-07-19T10:10:51+01:00
 aliases:
   - SDP Dev Sites
-viewCount: 17
+viewCount: 19
 projectURL: https://sdp-dev-sites.netlify.app/pages/sdp-acronyms
 codeURL: TBC
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/sdp-dev-sites/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/GoZ1rp5.png
+imageURL: https://i.imgur.com/57VSthu.png
 dateStart: 2021-03-01
 dateEnd: 2021-03-31
 technologies:

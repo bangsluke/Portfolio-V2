@@ -7,7 +7,7 @@ tags:
   - project/completed/work
   - coding
 created: 2025-05-29 18:05
-modified: 2025-07-19T09:58:59+01:00
+modified: 2025-07-24T15:22:49+01:00
 aliases:
   - DVP Prototype
 viewCount: 15
@@ -28,6 +28,7 @@ technologies:
   - "[[Azure]]"
   - "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]"
   - "[[Next.js]]"
+  - "[[Nest.JS]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

@@ -369,19 +369,19 @@ export default function ClientAndCustomerCarousel({
 						width: 12px;
 						height: 12px;
 						border-radius: 50%;
-						background-color: rgb(156 163 175);
+						background-color: var(--color-theme-300);
 						border: none;
 						cursor: pointer;
 						transition: all 0.3s ease;
 					}
 					
 					.flicking-pagination-bullet.flicking-pagination-bullet-active {
-						background-color: rgb(52 211 153) !important;
+						background-color: var(--color-theme-400) !important;
 						transform: scale(1.2);
 					}
 					
 					.flicking-pagination-bullet:hover {
-						background-color: rgb(107 114 128) !important;
+						background-color: var(--color-theme-500) !important;
 					}
 					
 					/* Full width carousel */

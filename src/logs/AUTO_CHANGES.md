@@ -1,5 +1,59 @@
 # Auto Changes Log
 
+## 2025-01-16 22:05 [main] - Fixed Hero section background blur z-index issue
+- Fixed visual bug where background blur was appearing through the Hero section
+  - Updated blur-circle z-index from -1 to -2 in global.css to ensure proper layering
+  - Updated dark mode blur-circle z-index from -1 to -2 for consistency
+  - Increased Hero section main container z-index from z-0 to z-10 for proper stacking context
+  - Updated profile image container z-index from z-10 to z-20 for proper layering
+  - Updated profile image z-index from z-20 to z-30 to maintain hierarchy
+  - Ensures blur-circle background elements stay behind Hero section content
+  - Resolves visual regression caused by recent color theme changes
+
+## 2025-01-16 22:00 [main] - Replaced hardcoded rgba/rgb values with CSS custom properties
+- Added comprehensive rgba theme variables to global.css for common use cases
+  - Created --color-theme-*-rgba-* variables for different opacity levels (01, 02, 03, 04, 05, 025, 029, 095)
+  - Added variables for theme colors with specific alpha values (e.g., --color-theme-500-rgba-04)
+- Updated all hardcoded rgba/rgb values throughout codebase to use CSS custom properties
+  - Modified gradient backgrounds in global.css to use var(--color-theme-500-rgba-*) variables
+  - Updated markdown hr color to use var(--color-theme-300-rgba-05)
+  - Changed blockquote background to use var(--color-theme-950-rgba-02)
+  - Updated blur circle colors to use theme variables
+  - Modified global dropdown/tooltip borders to use var(--color-theme-300-rgba-03)
+  - Updated nav-links expanded background to use var(--color-theme-950-rgba-095)
+  - Replaced hardcoded values in Layout.astro, Navigation.astro, NavigationArticles.astro
+  - Updated ProjectCard.astro box-shadow and border colors
+  - Modified GitHubContributions.tsx stroke color
+  - Updated CustomerAndClientCarousel.tsx pagination bullet colors
+  - Replaced rgba values in HeroIndex.astro shadows and gradients
+  - Updated CodingSection.astro hover shadows and radial gradients
+- All color references now use consistent CSS custom properties for better maintainability
+
+## 2025-01-16 21:55 [main] - Applied purple theme to all active color references in global.css
+- Updated all active color references throughout global.css to use purple theme
+  - Changed selection background from #0dbc82 to #8962e8
+  - Updated scrollbar colors to use purple theme (#c4b5fd for thumb, #f5f3ff/#2e1065 for track)
+  - Modified gradient backgrounds to use rgba(137, 98, 232, ...) instead of green values
+  - Updated markdown link colors: #8962e8 for links, #a78bfa for hover
+  - Changed processed content links to use #a78bfa and #c4b5fd
+  - Updated theme-link colors throughout all variations (light/dark, processed content)
+  - Modified markdown hr color to rgba(196, 181, 253, 0.5)
+  - Updated blockquote styling: #8962e8 border, #f5f3ff background, #c4b5fd dark text
+  - Changed task list checkbox accent color to #c4b5fd and checked text to #7c3aed
+  - Updated blur circle colors to use purple theme (#a78bfa40, rgba(167, 139, 250, 0.29))
+  - Modified global dropdown/tooltip/form element colors to #4c1d95 background with #c4b5fd borders
+  - Updated tooltip arrow colors to #4c1d95
+  - All original green theme colors are now commented out with purple alternatives active
+  - Complete transition from green (#0dbc82) to purple (#8962e8) theme throughout the site
+
+## 2025-01-16 21:50 [main] - Updated commented color themes to use purple palette
+- Updated commented out color themes in global.css to use #8962E8 as base color
+  - Changed --color-theme-500 from #0dbc82 to #8962E8 in commented section
+  - Generated purple color palette for all --color-theme-* values (50-950)
+  - Updated --color-light-theme-accent-* values to complement purple theme
+  - Maintains existing active green theme while providing purple alternative option
+  - All commented colors now use consistent purple-based color scheme
+
 ## 2025-01-16 21:45 [main] - Extracted common project count logic to ensure consistency
 - Created shared utility functions for project counting across components
   - Created `src/utils/project-count-utils.ts` with `getProjectCount` and `getProjectsUsingSkill` functions

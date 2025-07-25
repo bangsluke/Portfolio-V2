@@ -284,7 +284,7 @@ export default function GitHubContributions() {
           width: 100% !important;
         }
         .github-calendar__graph rect {
-          stroke: rgba(255, 255, 255, 0.1) !important;
+          stroke: var(--color-theme-950-rgba-02) !important;
         }
         /* Ensure calendar is visible */
         .github-calendar__graph svg {

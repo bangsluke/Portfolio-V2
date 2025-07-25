@@ -7,15 +7,15 @@ tags:
   - coding
 created: 2025-05-29 18:03
 modified: 2025-07-22T09:29:13+01:00
-aliases: []
-viewCount: 5
+aliases: 
+viewCount: 7
 projectURL: https://group-page.netlify.app/
 codeURL: https://github.com/bangsluke/Group-Page
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/group-page/overview
 folderURL: https://drive.google.com/drive/folders/1wnM7858WTLTL7RqmvdoRSki5CHLn8V19?usp=drive_link
 logoURL: n/a
-imageURL: https://i.imgur.com/8C8TZpB.png
+imageURL: https://i.imgur.com/QWmSObb.png
 dateStart: 2022-04-09
 dateEnd: 2023-10-30
 technologies:

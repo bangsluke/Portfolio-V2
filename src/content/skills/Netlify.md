@@ -8,7 +8,7 @@ tags:
   - portfolio
   - notes
 modified: 2025-07-02T14:24:33+01:00
-viewCount: 6
+viewCount: 7
 aliases: 
 skillRating: 70
 skillDescription: Hosted the majority of my applications via Netlify, using its connectivity with GitHub to automate deployment across several framework and function configurations.
