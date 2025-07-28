@@ -60,6 +60,7 @@ let knownIconsCache: string[] = [
 	'openai',
 	'php',
 	'pip',
+	'pnpm',
 	'power_apps',
 	'power_automate',
 	'power_bi',

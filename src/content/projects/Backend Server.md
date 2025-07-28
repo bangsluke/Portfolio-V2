@@ -5,8 +5,8 @@ tags:
   - notes
   - project/active
 created: 2025-06-23 13:36
-modified: 2025-07-21T08:50:04+01:00
-viewCount: 15
+modified: 2025-07-28T07:17:54+01:00
+viewCount: 13
 aliases:
   - backend-server
 projectURL: https://bangsluke-backend-server-221df04e1ad6.herokuapp.com/
@@ -39,7 +39,7 @@ version: 1
 portfolioOrder: 1
 shortDescription: "The backend server and source of data for several of my projects, allowing a singular point of management and maintenance."
 longDescription: "The source of data for several projects including my <a href=\"/portfolio/projects/Travel Website\" class=\"theme-link\">Travel Website</a> and <a href=\"/portfolio/projects/Portfolio Site V2\" class=\"theme-link\">Portfolio Site V2</a>, providing a route for data retrieval from a <span class=\"theme-link\">Neo4j</span> graph using <span class=\"theme-link\">GraphQL</span> queries."
-lessonsLearned: "Taught me about setting up a <span class=\"theme-link\">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class=\"theme-link\">Python</span> code in a growing codebase given my past experience with <span class=\"theme-link\">Python</span> had been for single script projects.\nTBC"
+lessonsLearned: "Taught me about setting up a <span class=\"theme-link\">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class=\"theme-link\">Python</span> code in a growing codebase given my past experience with <span class=\"theme-link\">Python</span> had been for single script projects.\nAlso forced me into developing debugging documentation for myself after making the same mistakes twice and ensuring a third time never happened by writing a checklist for understanding why the backend server crashed."
 name: "Backend Server"
 ---
 
@@ -124,9 +124,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 ## Other Links
 
 - <a href="/portfolio/projects/Travel Website" class="theme-link">Travel Website</a>
-- <a href="/portfolio/projects/Portfolio Site V2" class="theme-link">Portfolio Site V2</a>
 - [Heroku Test Scheduler](https://dashboard.heroku.com/apps/bangsluke-backend-server/scheduler)
-- TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -134,7 +132,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 Taught me about setting up a <span class="theme-link">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class="theme-link">Python</span> code in a growing codebase given my past experience with <span class="theme-link">Python</span> had been for single script projects.
 
-TBC
+Also forced me into developing debugging documentation for myself after making the same mistakes twice and ensuring a third time never happened by writing a checklist for understanding why the backend server crashed.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

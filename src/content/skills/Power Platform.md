@@ -5,12 +5,12 @@ tags:
   - skill
   - portfolio
 created: 2025-06-02T18:33:00
-modified: 2025-07-18T12:24:28+01:00
+modified: 2025-07-28T08:10:01+01:00
 viewCount: 3
 aliases:
   - Microsoft Power Platform
-skillRating: 0
-skillDescription: TBC
+skillRating: 55
+skillDescription: Competent in a range of the suite's tools, able to develop custom applications for business needs.
 logoFileName: power_platform.svg
 ---
 
@@ -18,7 +18,7 @@ logoFileName: power_platform.svg
 
 > [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="theme-link">Microsoft</span> Power Platform
+> <span class="theme-link">Microsoft</span> Power Platform - a suite of low-code tools that allows users to build custom business applications, automate workflows, analyse data, and create chatbots. Includes <span class="theme-link">Power Apps</span>, <span class="theme-link">Power BI</span>, <span class="theme-link">Power Automate</span> and Dataverse
 
 ## Table of Contents
 

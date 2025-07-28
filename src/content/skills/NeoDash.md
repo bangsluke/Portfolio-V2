@@ -8,8 +8,8 @@ tags:
 modified: 2025-07-18T12:43:22+01:00
 viewCount: 6
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 25
+skillDescription: Created an analysis dashboard for querying data to find missing information for a single project.
 logoFileName: neo4j.svg
 ---
 

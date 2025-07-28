@@ -1,5 +1,11 @@
 # Auto Changes Log
 
+## 2025-01-16 22:15 [main] - Removed unexpected focusable attribute from SVG
+- Removed `focusable="false"` attribute from `src/icons/tech.svg` file
+  - The focusable attribute is not a valid SVG attribute and was causing validation warnings
+  - SVG now uses only valid attributes: fill, width, height, viewBox, role, aria-hidden, and xmlns
+  - Maintains accessibility with role="img" and aria-hidden="true" attributes
+
 ## 2025-01-16 22:10 [main] - Enhanced project slug page image alignment and sizing
 - Updated project slug page image to ensure top is always visible and increased dimensions by 10%
   - Changed object-center to object-top to align image top instead of center

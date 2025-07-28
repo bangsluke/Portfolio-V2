@@ -21,6 +21,7 @@ education:
 linkedCompany:
   - "[[RLE International]]"
   - "[[RLE Germany]]"
+  - "[[Digital Engineering]]"
 referenceRole: Head of Digital Engineering
 referenceEmail: uwe.kloss@rle.de
 referenceNumber: +49 (172) 3180-304

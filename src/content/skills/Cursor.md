@@ -9,8 +9,8 @@ tags:
 modified: 2025-07-12T19:11:39+01:00
 viewCount: 4
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 60
+skillDescription: Used daily as part of my workflow process, handing over basic tasks to the integrated AI agent.
 logoFileName: cursor.svg
 ---
 

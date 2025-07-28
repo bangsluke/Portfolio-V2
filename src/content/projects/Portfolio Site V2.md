@@ -7,8 +7,8 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-07-24T15:26:47+01:00
-viewCount: 56
+modified: 2025-07-28T08:12:29+01:00
+viewCount: 58
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -122,7 +122,7 @@ An updated personal portfolio website for displaying my skills and past projects
 
 #### About Me Short
 
-An enthusiastic individual with a strong automotive background seeking a stimulating role in which to utilise organisational skills, apply logical intuition and help build long term success within an exciting environment
+An enthusiastic individual with a strong automotive background seeking a stimulating role in which to utilise organisational skills, apply logical intuition and help build long term success within an exciting environment - TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

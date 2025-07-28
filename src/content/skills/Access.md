@@ -4,20 +4,21 @@ tags:
   - software
   - skill
   - portfolio
-modified: 2025-07-02T15:57:36+01:00
+created: 2025-06-02T17:12:00
+modified: 2025-07-26T08:35:18+01:00
 viewCount: 3
 aliases:
-  - Microsoft Power Query
-skillRating: 30
-skillDescription: Able to create basic data flows from sources such as SharePoint and Excel into visualisation tools.
-logoFileName: power_query.svg
+  - Microsoft Access
+skillRating: 20
+skillDescription: Have come across and helped maintain a couple of Access databases without fully setting up or owning my own.
+logoFileName: 
 ---
 
-# Power Query
+# Access
 
 > [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="theme-link">Microsoft</span> Power Query
+> <span class="theme-link">Microsoft</span> Access
 
 ## Table of Contents
 

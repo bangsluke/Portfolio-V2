@@ -8,10 +8,10 @@ tags:
   - notes
   - portfolio
 modified: 2025-07-18T12:38:29+01:00
-viewCount: 7
+viewCount: 8
 aliases: 
 skillRating: 60
-skillDescription: TBC
+skillDescription: Hosted a couple of projects in Heroku, using its features for both front end and back end hosting.
 logoFileName: heroku.svg
 ---
 

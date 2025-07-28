@@ -4,7 +4,7 @@ tags:
   - software
   - skill
   - portfolio
-viewCount: 3
+viewCount: 4
 aliases:
   - Microsoft Excel
 modified: 2025-07-18T12:16:41+01:00

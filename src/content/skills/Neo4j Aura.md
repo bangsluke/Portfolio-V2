@@ -9,8 +9,8 @@ modified: 2025-07-18T12:43:15+01:00
 viewCount: 6
 aliases:
   - Aura
-skillRating: 0
-skillDescription: TBC
+skillRating: 30
+skillDescription: Set up a single instance within which I manage the data across multiple projects.
 logoFileName: neo4j_cypher.svg
 ---
 

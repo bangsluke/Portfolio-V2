@@ -2,22 +2,22 @@
 tags:
   - tag
   - software
+  - packageManagement
   - skill
   - portfolio
-modified: 2025-07-02T15:57:36+01:00
-viewCount: 3
-aliases:
-  - Microsoft Power Query
-skillRating: 30
-skillDescription: Able to create basic data flows from sources such as SharePoint and Excel into visualisation tools.
-logoFileName: power_query.svg
+modified: 2025-07-28T07:37:17+01:00
+viewCount: 6
+aliases: 
+skillRating: 15
+skillDescription: Understanding of the differences to npm and Yarn without utilising within a project yet.
+logoFileName: pnpm.svg
 ---
 
-# Power Query
+# pnpm
 
 > [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="theme-link">Microsoft</span> Power Query
+> <span class="theme-link">JavaScript</span> package manager
 
 ## Table of Contents
 

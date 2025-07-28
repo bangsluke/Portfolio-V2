@@ -9,8 +9,8 @@ viewCount: 4
 aliases:
   - Microsoft Azure
 modified: 2025-07-20T12:55:58+01:00
-skillRating: 0
-skillDescription: TBC
+skillRating: 20
+skillDescription: Have utilised Azure hosting in a couple of projects for work without exploring the full features of the software.
 logoFileName: azure.svg
 ---
 
