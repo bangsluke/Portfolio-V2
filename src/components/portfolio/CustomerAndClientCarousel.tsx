@@ -1,5 +1,4 @@
-import { AutoPlay, Pagination } from '@egjs/flicking-plugins';
-import '@egjs/flicking-plugins/dist/pagination.css';
+import { AutoPlay } from '@egjs/flicking-plugins';
 import '@egjs/flicking/dist/flicking.css';
 import Flicking from '@egjs/preact-flicking';
 import { useEffect, useRef, useState } from 'preact/hooks';
@@ -117,19 +116,21 @@ function CompanyCard({
 				<div className="relative z-10 flex flex-col justify-between h-full p-6 text-white">
 					{/* Top section with title and date */}
 					<div className="flex-1">
-						<h3
-							className={`text-xl font-bold mb-2 transition-colors duration-300 ${
-								isSelected
-									? 'text-theme-400'
-									: 'text-white group-hover:text-theme-400'
-							}`}>
-							{item.title}
-						</h3>
-						{item.dateString && (
-							<div className="text-sm text-white/80 group-hover:text-white transition-colors duration-300">
-								{item.dateString}
-							</div>
-						)}
+						<div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 -m-3">
+							<h3
+								className={`text-xl font-bold mb-2 transition-colors duration-300 ${
+									isSelected
+										? 'text-theme-400'
+										: 'text-white group-hover:text-theme-400'
+								}`}>
+								{item.title}
+							</h3>
+							{item.dateString && (
+								<div className="text-sm text-white/80 group-hover:text-white transition-colors duration-300">
+									{item.dateString}
+								</div>
+							)}
+						</div>
 					</div>
 
 					{/* Mobile tap indicator */}
@@ -309,14 +310,27 @@ export default function ClientAndCustomerCarousel({
 		}
 	}, [companies]);
 
-	const plugins = [
-		new AutoPlay({ duration: 3000, direction: 'NEXT', stopOnHover: false }),
-		new Pagination({ type: 'bullet' }),
-	];
+	const autoPlayPlugin = new AutoPlay({
+		duration: 3000,
+		direction: 'NEXT',
+		stopOnHover: true,
+	});
+
+	const plugins = [autoPlayPlugin];
 
 	// Handle item selection
 	const handleItemClick = (itemId: string) => {
-		setSelectedItem(selectedItem === itemId ? null : itemId);
+		const newSelectedItem = selectedItem === itemId ? null : itemId;
+		setSelectedItem(newSelectedItem);
+
+		// Stop auto-play when an item is selected, resume when deselected
+		if (flickingRef.current && autoPlayPlugin) {
+			if (newSelectedItem) {
+				autoPlayPlugin.stop();
+			} else {
+				autoPlayPlugin.play();
+			}
+		}
 
 		// Snap to the clicked item
 		if (flickingRef.current) {
@@ -358,32 +372,6 @@ export default function ClientAndCustomerCarousel({
 			<style
 				dangerouslySetInnerHTML={{
 					__html: `
-					.flicking-pagination {
-						margin-top: 1rem;
-						display: flex;
-						justify-content: center;
-						gap: 0.5rem;
-					}
-					
-					.flicking-pagination-bullet {
-						width: 12px;
-						height: 12px;
-						border-radius: 50%;
-						background-color: var(--color-theme-300);
-						border: none;
-						cursor: pointer;
-						transition: all 0.3s ease;
-					}
-					
-					.flicking-pagination-bullet.flicking-pagination-bullet-active {
-						background-color: var(--color-theme-400) !important;
-						transform: scale(1.2);
-					}
-					
-					.flicking-pagination-bullet:hover {
-						background-color: var(--color-theme-500) !important;
-					}
-					
 					/* Full width carousel */
 					.flicking-viewport {
 						width: 100vw !important;
@@ -439,9 +427,6 @@ export default function ClientAndCustomerCarousel({
 								</div>
 							))}
 						</Flicking>
-
-						{/* Pagination container - Flicking will populate this */}
-						<div className="flicking-pagination mt-4" />
 					</div>
 				)}
 			</div>

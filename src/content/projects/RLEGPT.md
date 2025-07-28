@@ -5,12 +5,12 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-19T10:13:05+01:00
-viewCount: 8
+modified: 2025-07-28T08:19:44+01:00
+viewCount: 9
 aliases:
   - Sales Chatbot
 projectURL: https://rle-sales-details.netlify.app/
-codeURL: TBC
+codeURL: https://github.com/bangsluke/rle-sales-details
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/rle-sales-details/overview
 folderURL: n/a
@@ -37,8 +37,8 @@ powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
 shortDescription: "A chat bot that takes on content such as an <span class=\"theme-link\">RFQ</span> block of text and then allows the user to query the text via chat."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+longDescription: "A simple website, demonstrating the power of integrating <span class=\"theme-link\">AI</span> into Automotive processes and day to day workflows, providing a simple interface for using a chat bot for quickly summarising the content of an <span class=\"theme-link\">RFQ</span> or querying information or extractions of logic from it."
+lessonsLearned: "This project was a test of using <span class=\"theme-link\">OpenAI</span>'s <span class=\"theme-link\">API</span> and the setup process involving tokens and cost behind it.\nIt also was my first integration of a chat bot component into a project."
 name: "RLEGPT"
 ---
 
@@ -81,17 +81,17 @@ A chat bot that takes on content such as an <span class="theme-link">RFQ</span> 
 
 ## Long Description
 
-TBC
+A simple website, demonstrating the power of integrating <span class="theme-link">AI</span> into Automotive processes and day to day workflows, providing a simple interface for using a chat bot for quickly summarising the content of an <span class="theme-link">RFQ</span> or querying information or extractions of logic from it. 
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: TBC
-- Back end/Datasource: TBC
-- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories))
+- Front end: <span class="theme-link">React</span>, <span class="theme-link">Vite.js</span>
+- Back end/Datasource: <span class="theme-link">OpenAI</span>
+- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories))
 - Security: n/a
-- Authentication: TBC
+- Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -118,13 +118,15 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- TBC
+- <span class="theme-link">GPMO</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-TBC
+This project was a test of using <span class="theme-link">OpenAI</span>'s <span class="theme-link">API</span> and the setup process involving tokens and cost behind it.
+
+It also was my first integration of a chat bot component into a project.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

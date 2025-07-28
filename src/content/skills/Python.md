@@ -9,10 +9,10 @@ tags:
   - notes
 created: 2023-08-18T15:45:00
 modified: 2025-07-02T14:21:26+01:00
-viewCount: 7
+viewCount: 6
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 55
+skillDescription: Written several scripts ranging from basic automation of daily tasks up to data processing in both graph and table format databases.
 logoFileName: python.svg
 ---
 

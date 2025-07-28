@@ -9,8 +9,8 @@ tags:
 modified: 2025-07-18T12:43:41+01:00
 viewCount: 6
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 15
+skillDescription: Set up and used for a single project with a couple of different service providers.
 logoFileName: nextauth.svg
 ---
 

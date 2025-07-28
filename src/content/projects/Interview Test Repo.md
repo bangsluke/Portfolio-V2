@@ -7,14 +7,14 @@ tags:
   - coding
   - work
 created: 2025-05-30 09:57
-modified: 2025-07-19T10:13:59+01:00
+modified: 2025-07-28T07:35:11+01:00
 aliases:
   - interview-test Repo
-viewCount: 18
+viewCount: 19
 projectURL: TBC
 codeURL: https://github.com/bangsluke/interview-test
 codeMultipleRepos: false
-deploymentServiceURL: TBC
+deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: n/a
 imageURL: 
@@ -36,8 +36,8 @@ powerShellAlias: n/a
 version: 1
 portfolioOrder: 8
 shortDescription: "An interview test written for possibly hiring a <span class=\"theme-link\">RLE</span> with <span class=\"theme-link\">Uwe Kloss</span>."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+longDescription: "A simple <span class=\"theme-link\">React</span> website that contained several <span class=\"theme-link\">React</span> development challenges for giving to potential hires to test their skills within the interview process.\nThe site was provided to a few possible <span class=\"theme-link\">RLE India</span> potential hires when considering upgrading the <a href=\"/portfolio/projects/SDP\" class=\"theme-link\">SDP</a> front end to <span class=\"theme-link\">React</span>."
+lessonsLearned: "This project mainly challenged me to consider what requirements we needed within our <a href=\"/portfolio/projects/SDP\" class=\"theme-link\">SDP</a> project that would challenge possible developers and design a quick test that was clearly documented for remote completion and submission."
 name: "Interview Test Repo"
 ---
 
@@ -80,17 +80,19 @@ An interview test written for possibly hiring a <span class="theme-link">RLE</sp
 
 ## Long Description
 
-TBC
+A simple <span class="theme-link">React</span> website that contained several <span class="theme-link">React</span> development challenges for giving to potential hires to test their skills within the interview process.
+
+The site was provided to a few possible <span class="theme-link">RLE India</span> potential hires when considering upgrading the <a href="/portfolio/projects/SDP" class="theme-link">SDP</a> front end to <span class="theme-link">React</span>.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
 - Front end: <span class="theme-link">React</span>
-- Back end/Datasource: TBC
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), TBC
+- Back end/Datasource: n/a
+- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories))
 - Security: <span class="theme-link">Snyk</span>
-- Authentication: TBC
+- Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -117,13 +119,13 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- TBC
+- <span class="theme-link">Digital Engineering</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-TBC
+This project mainly challenged me to consider what requirements we needed within our <a href="/portfolio/projects/SDP" class="theme-link">SDP</a> project that would challenge possible developers and design a quick test that was clearly documented for remote completion and submission.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

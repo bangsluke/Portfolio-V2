@@ -8,8 +8,8 @@ tags:
   - portfolio
 modified: 2025-07-23T09:01:58+01:00
 viewCount: 7
-skillRating: 0
-skillDescription: n/a
+skillRating: 35
+skillDescription: Implemented several tests within a CI/CD pipeline for a full user workflow testing the front end in one project.
 logoFileName: cypress.svg
 ---
 

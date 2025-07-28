@@ -9,10 +9,10 @@ tags:
   - notes
 created: 2023-10-13T07:43:00
 modified: 2025-07-18T12:05:14+01:00
-viewCount: 6
+viewCount: 7
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 30
+skillDescription: Able to write simple commands for navigating and interacting with folders and files.
 logoFileName: bash.svg
 ---
 
@@ -93,7 +93,7 @@ echo $my_variable
 
 Control flow statements are used to manage the order of execution in shell scripts. The most common ones are:
 
-#### If Statements:
+#### If Statements
 
 ```bash
 if condition
@@ -102,7 +102,7 @@ then
 fi
 ```
 
-#### For Loops:
+#### For Loops
 
 ```bash
 for variable_name in list
@@ -111,7 +111,7 @@ do
 done
 ```
 
-#### While Loops:
+#### While Loops
 
 ```bash
 while condition

@@ -7,9 +7,9 @@ tags:
   - portfolio
 created: 2025-07-20T07:44:00
 modified: 2025-07-20T07:43:48+01:00
-viewCount: 3
-skillRating: 0
-skillDescription: n/a
+viewCount: 1
+skillRating: 15
+skillDescription: Implemented in a single project with limited experience.
 logoFileName: zod.svg
 ---
 

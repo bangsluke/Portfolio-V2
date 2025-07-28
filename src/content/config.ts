@@ -20,7 +20,7 @@ const staticDataCollection = defineCollection({
 		contactSectionSubtitle2: z.string(),
 		contactSectionButtonText: z.string(),
 		contactSectionButtonIcon: z.string(),
-		techsTitle: z.string(),
+		skillsTitle: z.string(),
 		instagramIconName: z.string(),
 		youtubeIconName: z.string(),
 		githubIconName: z.string(),

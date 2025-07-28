@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-19T10:08:46+01:00
-viewCount: 8
+modified: 2025-07-28T07:42:33+01:00
+viewCount: 9
 aliases:
   - Pipeline
 projectURL: 
@@ -20,7 +20,6 @@ dateStart: 2023-05-01
 dateEnd: 2024-07-31
 technologies:
   - "[[Power Apps]]"
-  - "[[Power BI]]"
   - "[[Power Query]]"
   - "[[SharePoint]]"
 projectCategory: Work Project
@@ -87,11 +86,11 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: TBC
-- Back end/Datasource: TBC
-- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories))
+- Front end: <span class="theme-link">Power Apps</span>
+- Back end/Datasource: <span class="theme-link">SharePoint</span>, <span class="theme-link">Power Query</span>
+- Hosting: <span class="theme-link">SharePoint</span>
 - Security: n/a
-- Authentication: TBC
+- Authentication: <span class="theme-link">SharePoint</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

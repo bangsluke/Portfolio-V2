@@ -3,8 +3,8 @@ tags:
   - notes
   - portfolio
 created: 2025-07-21T19:17:10+01:00
-modified: 2025-07-22T18:38:17+01:00
-viewCount: 3
+modified: 2025-07-28T08:12:05+01:00
+viewCount: 1
 layout: /src/layouts/MarkdownAbout.astro
 title: Luke Bangs | My portfolio site | bangsluke
 description: Web developer, technology enthusiast, and event organizer. From my beginnings in development to creating communities and impactful projects, here I share my journey, experiences, and learnings. 🚀☕
@@ -15,6 +15,8 @@ image-alt: Photo of Luke Bangs
 # Portfolio About Me
 
 TESTING
+
+TBC
 
 I am a relatively new developer, having just started to learn coding at the start of 2021. I'm keen to find a challenging role in a workplace with creative room to support my strength of innovative problem solving.
 
@@ -145,7 +147,5 @@ At the end of 2024, after years working in the city council as **_Software Devel
 Today, in 2025, I continue working as **_Software Development Coordinator_** in my municipality, collaborating with my usual clients and launching projects. I love creating things, experimenting with new ideas, and organizing events. I live with the _maker_ spirit: learning, experimenting, and sometimes causing a bit of chaos. But well, everything is forgiven if there's music and coffee involved. ☕🎶
 
 Oh! And I'm an expert at preparing coffee. Seriously, whether it's to start the day or for a creative session, I have the perfect recipe. I'm also pretty good at board games, so if you ever need a partner for a game night, I'm your person! 🎲
-
-I'm **TBC**, and I thank you for reading this.
 
 ## Let's Create Amazing Things! 🚀

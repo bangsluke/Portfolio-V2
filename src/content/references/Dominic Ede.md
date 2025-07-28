@@ -23,6 +23,7 @@ education:
 linkedCompany:
   - "[[RLE International]]"
   - "[[RLE UK]]"
+  - "[[GPMO]]"
 referenceRole: Senior Project Consultant
 referenceEmail: dominic.ede@icloud.com
 referenceNumber: +44 7989 423267

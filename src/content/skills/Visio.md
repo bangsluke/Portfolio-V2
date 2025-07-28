@@ -8,8 +8,8 @@ modified: 2025-07-02T16:02:04+01:00
 viewCount: 3
 aliases:
   - Microsoft Visio
-skillRating: 0
-skillDescription: TBC
+skillRating: 40
+skillDescription: Developed an automation system to process Excel data and produce multiple pages of Visio graphics.
 logoFileName: visio.svg
 ---
 

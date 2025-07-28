@@ -10,9 +10,9 @@ created: 2025-06-02 17:16
 modified: 2025-07-19T09:57:46+01:00
 aliases:
   - Stratamotiv Landing Page
-viewCount: 15
+viewCount: 16
 projectURL: https://stratamotiv.netlify.app/
-codeURL: TBC
+codeURL: https://github.com/bangsluke/CoELandingPage
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/stratamotiv/overview
 folderURL: n/a

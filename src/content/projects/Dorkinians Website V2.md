@@ -7,16 +7,16 @@ tags:
   - sport
   - project/parked
 created: 2025-05-30 09:40
-modified: 2025-07-19T09:39:19+01:00
+modified: 2025-07-28T07:27:27+01:00
 aliases: 
 viewCount: 14
-projectURL: TBC
-codeURL: TBC
+projectURL: TBD
+codeURL: TBD
 codeMultipleRepos: false
-deploymentServiceURL: TBC
+deploymentServiceURL: TBD
 folderURL: n/a
 logoURL: n/a
-imageURL: TBC
+imageURL: 
 dateStart: ""
 dateEnd: ""
 technologies: 
@@ -29,12 +29,12 @@ developers:
 topicTags:
   - "[[Dorkinians FC]]"
   - "[[Football]]"
-powerShellAlias: TBC
+powerShellAlias: TBD
 version: 2
 portfolioOrder: 4
-shortDescription: "TBC\nthe next version of the <span class=\"theme-link\">Dorkinians FC</span> website, following on from <a href=\"/portfolio/projects/Dorkinians Website\" class=\"theme-link\">Dorkinians Website</a>"
-longDescription: "TBC"
-lessonsLearned: "TBC"
+shortDescription: "TBD\nthe next version of the <span class=\"theme-link\">Dorkinians FC</span> website, following on from <a href=\"/portfolio/projects/Dorkinians Website\" class=\"theme-link\">Dorkinians Website</a>"
+longDescription: "TBD"
+lessonsLearned: "TBD"
 name: "Dorkinians Website V2"
 ---
 
@@ -71,7 +71,7 @@ WHERE file = this.file
 
 ## Short Description
 
-TBC
+TBD
 
 the next version of the <span class="theme-link">Dorkinians FC</span> website, following on from <a href="/portfolio/projects/Dorkinians Website" class="theme-link">Dorkinians Website</a>
 
@@ -79,17 +79,17 @@ the next version of the <span class="theme-link">Dorkinians FC</span> website, f
 
 ## Long Description
 
-TBC
+TBD
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: TBC
-- Back end/Datasource: TBC
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), TBC
-- Security: TBC
-- Authentication: TBC
+- Front end: TBD
+- Back end/Datasource: TBD
+- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), TBD
+- Security: TBD
+- Authentication: TBD
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -110,7 +110,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Planning and Design
 
-- TBC
+- TBD
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -156,7 +156,7 @@ Authentication: The site should be secure behind a single password.
 
 - When clicking on a player, in the pop up, show what team(s) they played for that week
 - Have FTP players of the Month below
-- TBC
+- TBD
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -234,7 +234,7 @@ Authentication: The site should be secure behind a single password.
 #### Medium Ideas
 
 - Every time a player, team or club is mentioned on a screen, provide a hyperlink to it
-- Turn into downloadable PWA - https://christianheilmann.com/2022/01/13/turning-a-github-page-into-a-progressive-web-app/
+- Turn into downloadable PWA - <https://christianheilmann.com/2022/01/13/turning-a-github-page-into-a-progressive-web-app/>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -251,16 +251,16 @@ Authentication: The site should be secure behind a single password.
 
 - [Dorkinians Website Tasks](https://todoist.com/app/section/Dorkinians-Website-6C4XfJFRgpfFpJgC) - <span class="theme-link">Todoist</span>
 - [Medium Stories list](https://medium.com/@bangsluke/list/410a590e0a2b)
-- https://dribbble.com/
-- https://mobbin.com/browse/web/apps
-- https://www.awwwards.com/
+- <https://dribbble.com/>
+- <https://mobbin.com/browse/web/apps>
+- <https://www.awwwards.com/>
 - [Reddit research custom feed](https://www.reddit.com/u/bangsy3/s/TH55ZZSU5J)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-TBC
+TBD
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

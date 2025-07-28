@@ -5,8 +5,8 @@ tags:
   - tool
   - project/completed/work
   - portfolio
-modified: 2025-07-19T10:04:36+01:00
-viewCount: 6
+modified: 2025-07-26T08:48:03+01:00
+viewCount: 7
 aliases: 
 projectURL: TBC
 codeURL: n/a
@@ -20,6 +20,7 @@ dateEnd: 2024-07-31
 technologies:
   - "[[Excel]]"
   - "[[VBA]]"
+  - "[[SharePoint]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -35,8 +36,8 @@ powerShellAlias: n/a
 version: 
 portfolioOrder: 4
 shortDescription: "The automation file to convert the <span class=\"theme-link\">Finance Tracker</span>."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+longDescription: "An <span class=\"theme-link\">Excel</span> file that was used as the front end interface for users to upload <a href=\"/portfolio/projects/Cost Model\" class=\"theme-link\">Cost Model</a> data into our <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Financial Tracker</a> system.\n<span class=\"theme-link\">VBA</span> scripts facilitated the selection and upload of a file and processed the data to be stored in <span class=\"theme-link\">SharePoint</span>, ready for tools such as the <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Financial Tracker</a> to utilise."
+lessonsLearned: "This project taught me about the importance of keeping users engaged and informed during the script running process to ensure users were aware that the <span class=\"theme-link\">VBA</span> script was working.\nIt also was an interesting technical consideration on how to create a tool that would work across multiple <span class=\"theme-link\">Microsoft</span> tenants as we have internal offices split across different ones."
 name: "Cost Model Translation File"
 ---
 
@@ -79,17 +80,19 @@ The automation file to convert the <span class="theme-link">Finance Tracker</spa
 
 ## Long Description
 
-TBC
+An <span class="theme-link">Excel</span> file that was used as the front end interface for users to upload <a href="/portfolio/projects/Cost Model" class="theme-link">Cost Model</a> data into our <a href="/portfolio/projects/Financial Tracker" class="theme-link">Financial Tracker</a> system.
+
+<span class="theme-link">VBA</span> scripts facilitated the selection and upload of a file and processed the data to be stored in <span class="theme-link">SharePoint</span>, ready for tools such as the <a href="/portfolio/projects/Financial Tracker" class="theme-link">Financial Tracker</a> to utilise.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: TBC
-- Back end/Datasource: TBC
-- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories))
+- Front end: <span class="theme-link">Excel</span>
+- Back end/Datasource: <span class="theme-link">VBA</span>
+- Hosting: <span class="theme-link">SharePoint</span> (see [Repositories](#repositories))
 - Security: n/a
-- Authentication: TBC
+- Authentication: <span class="theme-link">SharePoint</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -122,7 +125,9 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Lessons Learned
 
-TBC
+This project taught me about the importance of keeping users engaged and informed during the script running process to ensure users were aware that the <span class="theme-link">VBA</span> script was working.
+
+It also was an interesting technical consideration on how to create a tool that would work across multiple <span class="theme-link">Microsoft</span> tenants as we have internal offices split across different ones.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

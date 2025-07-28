@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-19T10:07:51+01:00
-viewCount: 9
+modified: 2025-07-28T07:44:04+01:00
+viewCount: 11
 aliases:
   - PFDM
 projectURL: 
@@ -20,7 +20,6 @@ dateStart: 2024-01-01
 dateEnd: 2024-07-31
 technologies:
   - "[[Power Apps]]"
-  - "[[Power BI]]"
   - "[[Power Query]]"
   - "[[SharePoint]]"
   - "[[SQL]]"
@@ -91,11 +90,11 @@ Pulled in timesheet data and financial information from various <span class="the
 
 ## Architecture and Technologies
 
-- Front end: TBC
-- Back end/Datasource: TBC
-- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories))
+- Front end: <span class="theme-link">Power Apps</span>
+- Back end/Datasource: <span class="theme-link">SharePoint</span>, <span class="theme-link">Power Query</span>, <span class="theme-link">SQL</span>
+- Hosting: <span class="theme-link">SharePoint</span>
 - Security: n/a
-- Authentication: TBC
+- Authentication: <span class="theme-link">SharePoint</span>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

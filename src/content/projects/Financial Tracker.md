@@ -25,6 +25,7 @@ technologies:
   - "[[Power BI]]"
   - "[[SharePoint]]"
   - "[[Power Query]]"
+  - "[[Power Automate]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

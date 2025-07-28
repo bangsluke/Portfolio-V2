@@ -229,8 +229,8 @@ const SkillsBubbleChart = ({
 					const bubbleGroupNode = bubbleGroup.node() as SVGGElement;
 					if (bubbleGroupNode) {
 						const bounds = bubbleGroupNode.getBBox();
-						const bubbleWidth = bounds.width;
-						const bubbleHeight = bounds.height;
+						const bubbleWidth = bounds.width || 1;
+						const bubbleHeight = bounds.height || 1;
 
 						// Calculate scale to fit all bubbles with some padding
 						const padding = 50;
@@ -244,15 +244,18 @@ const SkillsBubbleChart = ({
 						const translateY =
 							height / 2 - (bounds.y + bounds.height / 2) * scale;
 
-						// Apply reset zoom
-						const transform = d3.zoomIdentity
-							.translate(translateX, translateY)
-							.scale(scale);
+						// Check for valid values before applying transform
+						if (!isNaN(translateX) && !isNaN(translateY) && !isNaN(scale)) {
+							// Apply reset zoom
+							const transform = d3.zoomIdentity
+								.translate(translateX, translateY)
+								.scale(scale);
 
-						svg
-							.transition()
-							.duration(1000)
-							.call(zoomRef.current.transform as any, transform);
+							svg
+								.transition()
+								.duration(1000)
+								.call(zoomRef.current.transform as any, transform);
+						}
 					}
 				}
 			}
@@ -360,7 +363,11 @@ const SkillsBubbleChart = ({
 
 		// Update positions on simulation tick
 		simulation.on('tick', () => {
-			bubbles.attr('transform', (d: any) => `translate(${d.x},${d.y})`);
+			bubbles.attr('transform', (d: any) => {
+				const x = d.x ?? 0;
+				const y = d.y ?? 0;
+				return `translate(${x},${y})`;
+			});
 		});
 
 		// Set up zoom behavior
@@ -368,7 +375,11 @@ const SkillsBubbleChart = ({
 			.zoom<SVGSVGElement, unknown>()
 			.scaleExtent([0.1, 3]) // Min zoom 0.1x, max zoom 3x
 			.on('zoom', event => {
-				bubbleGroup.attr('transform', event.transform);
+				// Validate transform values before applying
+				const { k, x, y } = event.transform;
+				if (!isNaN(k) && !isNaN(x) && !isNaN(y)) {
+					bubbleGroup.attr('transform', event.transform);
+				}
 			});
 
 		zoomRef.current = zoom;
@@ -381,8 +392,8 @@ const SkillsBubbleChart = ({
 			if (!bubbleGroupNode) return;
 
 			const bounds = bubbleGroupNode.getBBox();
-			const bubbleWidth = bounds.width;
-			const bubbleHeight = bounds.height;
+			const bubbleWidth = bounds.width || 1;
+			const bubbleHeight = bounds.height || 1;
 
 			// Calculate scale to fit all bubbles with some padding
 			const padding = 50;
@@ -394,15 +405,18 @@ const SkillsBubbleChart = ({
 			const translateX = width / 2 - (bounds.x + bounds.width / 2) * scale;
 			const translateY = height / 2 - (bounds.y + bounds.height / 2) * scale;
 
-			// Apply initial zoom
-			const transform = d3.zoomIdentity
-				.translate(translateX, translateY)
-				.scale(scale);
+			// Check for valid values before applying transform
+			if (!isNaN(translateX) && !isNaN(translateY) && !isNaN(scale)) {
+				// Apply initial zoom
+				const transform = d3.zoomIdentity
+					.translate(translateX, translateY)
+					.scale(scale);
 
-			svg
-				.transition()
-				.duration(1000)
-				.call(zoom.transform as any, transform);
+				svg
+					.transition()
+					.duration(1000)
+					.call(zoom.transform as any, transform);
+			}
 		});
 
 		// Cleanup function

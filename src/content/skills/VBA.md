@@ -9,7 +9,7 @@ tags:
   - portfolio
 created: 2023-08-18T15:45:00
 modified: 2025-07-02T14:22:00+01:00
-viewCount: 7
+viewCount: 6
 aliases:
   - Visual Basic Application
   - Visual Basic

@@ -5,7 +5,7 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-02T14:38:37+01:00
-viewCount: 4
+viewCount: 3
 aliases:
   - Microsoft Power BI
 skillRating: 45

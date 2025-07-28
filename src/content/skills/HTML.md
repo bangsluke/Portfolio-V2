@@ -9,7 +9,7 @@ tags:
   - notes
 viewCount: 5
 created: 2023-10-13T07:43:00
-modified: 2025-07-24T07:30:37+01:00
+modified: 2025-07-28T07:30:20+01:00
 aliases:
   - Hypertext Markup Language
 skillRating: 80
@@ -28,7 +28,7 @@ logoFileName: html.svg
 
 ## Links
 
-- TBC
+- [HTML: HyperText Markup Language \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
