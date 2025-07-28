@@ -1,5 +1,61 @@
 # Auto Changes Log
 
+## 2025-01-16 22:50 [main] - Fixed SkillsBubbleChart transform NaN error
+- Fixed transform attribute error in SkillsBubbleChart.tsx that was causing "translate(NaN,NaN)" errors
+  - Added null coalescing operators (??) to handle undefined x/y values in bubble positioning
+  - Added fallback values for bubbleWidth and bubbleHeight to prevent division by zero
+  - Added NaN checks before applying zoom transform to prevent invalid transform values
+  - Added validation for event.transform values in zoom behavior to prevent NaN propagation
+  - Added safety checks in reset function to prevent invalid transform calculations
+  - Ensures all transform calculations have valid numeric values before being applied to SVG elements
+  - Prevents console errors and improves chart stability during initialization and updates
+
+## 2025-01-16 22:45 [main] - Moved white background from project page to main carousel and added responsive width constraints
+- Removed white background from CustomerAndClientCarouselItem.astro (used on project slug pages)
+  - Removed bg-white/50 backdrop-blur-sm rounded-lg p-3 -m-3 wrapper div
+  - Text now displays directly without background overlay
+  - Maintained all existing styling and hover effects
+- Added responsive width constraints to CustomerAndClientCarouselItem.astro
+  - Changed from w-full to w-1/3 md:w-1/2 for responsive design
+  - Cards now take 1/3 width on desktop and 1/2 width on mobile
+  - Improved layout consistency across different screen sizes
+- Added white background to main carousel title and date text in CustomerAndClientCarousel.tsx
+  - Added bg-white/20 backdrop-blur-sm rounded-lg p-3 -m-3 wrapper to title and date section
+  - Improved text readability over complex background images with subtle transparency
+  - Maintained existing hover effects and selection states
+  - Enhanced visual hierarchy and contrast for better user experience
+
+## 2025-01-16 22:40 [main] - Fixed CustomerAndClientCarouselItem white background z-index issue
+- Updated CustomerAndClientCarouselItem.astro to fix white background visibility
+  - Increased z-index from z-10 to z-20 for content container
+  - White background now appears above the darkened overlay instead of behind it
+  - Maintained all existing styling and functionality
+  - Text should now be clearly readable with visible white background
+
+## 2025-01-16 22:35 [main] - Removed pagination from all carousels and fixed interaction issues
+- Removed pagination from CustomerAndClientCarousel.tsx
+  - Removed Pagination import and plugin from flicking-plugins
+  - Removed pagination CSS import and styling
+  - Removed pagination container div from component
+  - Simplified carousel to only use AutoPlay plugin
+- Enhanced CustomerAndClientCarouselItem.astro text readability
+  - Increased background opacity from bg-white/30 to bg-white/50 for better visibility
+  - Maintained backdrop blur effect and rounded corners for polished appearance
+  - Improved text contrast over light or complex background images
+- Fixed carousel interaction behavior
+  - Set stopOnHover: true in CustomerAndClientCarousel AutoPlay plugin
+  - Maintained stopOnInteraction: true for proper click handling
+  - Carousel now stops on both hover and click interactions
+  - Enhanced user experience by preventing unwanted carousel movement during interaction
+
+## 2025-01-16 22:20 [main] - Reverted References Carousel to always show both navigation arrows
+- Simplified ReferencesCarouselComponent.tsx by removing conditional arrow visibility logic
+  - Removed complex index tracking and debugging code
+  - Set showLeftArrow and showRightArrow to always be true
+  - Kept basic currentIndex state for potential future use (prefixed with underscore)
+  - Maintained all existing functionality including auto-play, pagination, and click-to-snap
+  - Both navigation arrows now always visible for consistent user experience
+
 ## 2025-01-16 22:15 [main] - Removed unexpected focusable attribute from SVG
 - Removed `focusable="false"` attribute from `src/icons/tech.svg` file
   - The focusable attribute is not a valid SVG attribute and was causing validation warnings
