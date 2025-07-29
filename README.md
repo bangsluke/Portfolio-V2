@@ -114,7 +114,7 @@ Portfolio Site V2 is a modern, static portfolio website that combines the power 
 The Portfolio site serves static markdown files and displays the data from within these files. These are the following steps;
 
 - When the user triggers the sync function (can be done during development or remotely) using the defined `npm` scripts in [`package.json`](./package.json), the script copies across all `Markdown` notes tagged as `#portfolio` in the connected `Obsidian` vault (path defined in [`.env`](./.env))
-- These `Markdown` notes are processed within the [`sync.js`](./scripts/sync.js) file in the function ([`processMarkdownFile()`](./scripts/sync.js#L363)) to format the `Markdown` ready for display on the site;
+- These `Markdown` notes are processed within the [`sync.js`](./scripts/sync.js) file in the function ([`processMarkdownFile()`](./scripts/sync.js#L365)) to format the `Markdown` ready for display on the site;
   - Removes images from the `Obsidian` files (as they aren't copied across from the vault as they aren't needed) - done within the [`processMarkdownFile()`](./scripts/sync.js#L304) script
   - In the `Markdown` note content (ignoring the frontmatter) - see ([`processObsidianLinksInContentOnly()`](./scripts/sync.js#L704));
     - Processes internal links to matched Projects with an alt name `[[Project|Alt name]]` ([`processObsidianLinks()`](./scripts/sync.js#L640)) to link to that Project's individual page (whilst displaying the alt name) and styles the resulting text on the site

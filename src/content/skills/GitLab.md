@@ -13,10 +13,9 @@ skillRating: 65
 skillDescription: "\rRun several projects through GitLab including setting up automated pipelines."
 logoFileName: gitlab.svg
 ---
-
 # GitLab
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents
 

@@ -16,10 +16,9 @@ logoURL: https://i.imgur.com/e73shC9.png
 linkedCompany:
   - "[[RLE International]]"
 ---
-
 # McLaren Automotive
 
-> [!back] Link back to <span class="theme-link">Company Notes</span>
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
 >```dataview

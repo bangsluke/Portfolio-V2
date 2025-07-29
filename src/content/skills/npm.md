@@ -12,12 +12,11 @@ skillRating: 60
 skillDescription: Comfortable using the package manager for small to medium projects and is my go to choice.
 logoFileName: npm.svg
 ---
-
 # npm
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">JavaScript</span> package manager
+> [[JavaScript]] package manager
 
 ## Table of Contents
 

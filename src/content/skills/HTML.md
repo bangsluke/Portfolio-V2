@@ -16,10 +16,9 @@ skillRating: 80
 skillDescription: Confident in using HTML to build complex sites and utilising semantics tags correctly.
 logoFileName: html.svg
 ---
-
 # HTML
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents 
 

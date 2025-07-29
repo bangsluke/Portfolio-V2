@@ -12,12 +12,11 @@ skillRating: 35
 skillDescription: Implemented several tests within a CI/CD pipeline for a full user workflow testing the front end in one project.
 logoFileName: cypress.svg
 ---
-
 # Cypress
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">JavaScript</span> E2E testing library
+> [[JavaScript]] E2E testing library
 
 ## Table of Contents
 

@@ -59,7 +59,7 @@ function processContent(content) {
 				(match, projectName, altText) => {
 					const slug = convertProjectNameToSlug(projectName);
 					if (existingProjects.includes(projectName)) {
-						return `<a href="/portfolio/projects/${slug}" class="theme-link" target="_blank" rel="noopener noreferrer">${altText}</a>`;
+						return `<a href="/portfolio/projects/${slug}" class="theme-link">${altText}</a>`;
 					}
 					return `<span class="theme-link">${altText}</span>`;
 				}
@@ -76,7 +76,7 @@ function processContent(content) {
 			.replace(/\[\[([^\]]+)\]\]/g, (match, projectName) => {
 				const slug = convertProjectNameToSlug(projectName);
 				if (existingProjects.includes(projectName)) {
-					return `<a href="/portfolio/projects/${slug}" class="theme-link" target="_blank" rel="noopener noreferrer">${projectName}</a>`;
+					return `<a href="/portfolio/projects/${slug}" class="theme-link">${projectName}</a>`;
 				}
 				return `<span class="theme-link">${projectName}</span>`;
 			})
@@ -103,10 +103,16 @@ function processContent(content) {
 			// Convert newlines to <br> tags for proper HTML rendering (but not for headings)
 			.replace(/\n/g, '<br>')
 			// Finally, convert markdown links to HTML with theme green and underline styling
-			.replace(
-				/\[([^\]]+)\]\(([^)]+)\)/g,
-				'<a href="$2" class="theme-link" target="_blank" rel="noopener noreferrer">$1</a>'
-			)
+			// Only add target="_blank" and rel="noopener noreferrer" for external links
+			.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, linkUrl) => {
+				// Check if it's an external link (starts with http or https)
+				if (linkUrl.startsWith('http://') || linkUrl.startsWith('https://')) {
+					return `<a href="${linkUrl}" class="theme-link" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
+				} else {
+					// Internal link - navigate in same tab
+					return `<a href="${linkUrl}" class="theme-link">${linkText}</a>`;
+				}
+			})
 	);
 }
 

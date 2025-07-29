@@ -457,7 +457,11 @@ const SkillsBubbleChart = ({
 						<div class="global-tooltip-content">
 							<div class="font-bold text-white mb-1">{tooltip.skill.name}</div>
 							<div class="text-sm text-gray-200 mb-2">
-								{tooltip.skill.description}
+								<span
+									dangerouslySetInnerHTML={{
+										__html: tooltip.skill.description,
+									}}
+								/>
 							</div>
 							<div class="text-xs text-gray-300">
 								Rating: {tooltip.skill.rating}/100
@@ -500,7 +504,13 @@ const SkillsBubbleChart = ({
 						</button>
 					</div>
 					<p class="text-sm text-gray-600 dark:text-gray-300">
-						{bubbleData.find(d => d.id === selectedSkill)?.description}
+						<span
+							dangerouslySetInnerHTML={{
+								__html:
+									bubbleData.find(d => d.id === selectedSkill)?.description ||
+									'',
+							}}
+						/>
 					</p>
 				</div>
 			)}

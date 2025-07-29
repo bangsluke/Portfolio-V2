@@ -17,10 +17,9 @@ logoURL: https://i.imgur.com/u0d0rC1.png
 linkedCompany:
   - "[[RLE International]]"
 ---
-
 # CEER Automotive
 
-> [!back] Link back to <span class="theme-link">Company Notes</span>
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
 >```dataview

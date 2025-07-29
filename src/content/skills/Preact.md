@@ -17,12 +17,11 @@ skillRating: 40
 skillDescription: Utilised on a single project to minimise front end size without fully exploring the full functionality.
 logoFileName: preact.svg
 ---
-
 # Preact
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Language: <span class="theme-link">JavaScript</span>. Lightweight version of <span class="theme-link">React</span>
+> Language: [[JavaScript]]. Lightweight version of [[React]]
 
 ## Table of Contents
 

@@ -16,10 +16,9 @@ logoURL: https://i.imgur.com/kHPlATO.png
 linkedCompany:
   - "[[RLE International]]"
 ---
-
 # Odin
 
-> [!back] Link back to <span class="theme-link">Company Notes</span>
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
 >```dataview

@@ -17,12 +17,11 @@ skillRating: 75
 skillDescription: Able to create detailed tools within Excel and write advanced macros for large scale automation.
 logoFileName: vba.svg
 ---
-
 # VBA
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Language behind: <span class="theme-link">Excel</span>
+> Language behind: [[Excel]]
 
 ## Table of Contents
 

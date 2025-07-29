@@ -15,12 +15,11 @@ skillRating: 60
 skillDescription: Set up several projects using GraphQL queries and mutations to interact with a Neo4j graph and developed detailed queries for extracting data for the front end.
 logoFileName: graphql.svg
 ---
-
 # GraphQL
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Language: <span class="theme-link">JavaScript</span>
+> Language: [[JavaScript]]
 
 ## Table of Contents 
 

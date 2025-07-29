@@ -38,14 +38,13 @@ powerShellAlias: backend
 version: 1
 portfolioOrder: 1
 shortDescription: "The backend server and source of data for several of my projects, allowing a singular point of management and maintenance."
-longDescription: "The source of data for several projects including my <a href=\"/portfolio/projects/Travel Website\" class=\"theme-link\">Travel Website</a> and <a href=\"/portfolio/projects/Portfolio Site V2\" class=\"theme-link\">Portfolio Site V2</a>, providing a route for data retrieval from a <span class=\"theme-link\">Neo4j</span> graph using <span class=\"theme-link\">GraphQL</span> queries."
-lessonsLearned: "Taught me about setting up a <span class=\"theme-link\">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class=\"theme-link\">Python</span> code in a growing codebase given my past experience with <span class=\"theme-link\">Python</span> had been for single script projects.\nAlso forced me into developing debugging documentation for myself after making the same mistakes twice and ensuring a third time never happened by writing a checklist for understanding why the backend server crashed."
+longDescription: "The source of data for several projects including my <a href=\"/portfolio/projects/travel-website\" class=\"theme-link\">Travel Website</a> and <a href=\"/portfolio/projects/portfolio-site-v2\" class=\"theme-link\">Portfolio Site V2</a>, providing a route for data retrieval from a <span class=\"theme-link\">Neo4j</span> graph using <span class=\"theme-link\">GraphQL</span> queries."
+lessonsLearned: "Taught me about setting up a <span class=\"theme-link\">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class=\"theme-link\">Python</span> code in a growing codebase given my past experience with <span class=\"theme-link\">Python</span> had been for single script projects.<br>Also forced me into developing debugging documentation for myself after making the same mistakes twice and ensuring a third time never happened by writing a checklist for understanding why the backend server crashed."
 name: "Backend Server"
 ---
-
 # Backend Server
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 >
@@ -86,16 +85,16 @@ The backend server and source of data for several of my projects, allowing a sin
 
 ## Long Description
 
-The source of data for several projects including my <a href="/portfolio/projects/Travel Website" class="theme-link">Travel Website</a> and <a href="/portfolio/projects/Portfolio Site V2" class="theme-link">Portfolio Site V2</a>, providing a route for data retrieval from a <span class="theme-link">Neo4j</span> graph using <span class="theme-link">GraphQL</span> queries.
+The source of data for several projects including my [[Travel Website]] and [[Portfolio Site V2]], providing a route for data retrieval from a [[Neo4j]] graph using [[GraphQL]] queries.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
 - Front end: n/a
-- Back end/Datasource: <span class="theme-link">Neo4j</span>, <span class="theme-link">Neo4j Aura</span>, <span class="theme-link">Cypher</span>, <span class="theme-link">Python</span>, <span class="theme-link">Flask</span>
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), <span class="theme-link">Heroku</span>
-- Security: <span class="theme-link">Snyk</span>
+- Back end/Datasource: [[Neo4j]], [[Neo4j Aura]], [[Cypher]], [[Python]], [[Flask]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Heroku]]
+- Security: [[Snyk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -109,7 +108,7 @@ The source of data for several projects including my <a href="/portfolio/project
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -123,14 +122,14 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <a href="/portfolio/projects/Travel Website" class="theme-link">Travel Website</a>
+- [[Travel Website]]
 - [Heroku Test Scheduler](https://dashboard.heroku.com/apps/bangsluke-backend-server/scheduler)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-Taught me about setting up a <span class="theme-link">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class="theme-link">Python</span> code in a growing codebase given my past experience with <span class="theme-link">Python</span> had been for single script projects.
+Taught me about setting up a [[Flask]] server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage [[Python]] code in a growing codebase given my past experience with [[Python]] had been for single script projects.
 
 Also forced me into developing debugging documentation for myself after making the same mistakes twice and ensuring a third time never happened by writing a checklist for understanding why the backend server crashed.
 

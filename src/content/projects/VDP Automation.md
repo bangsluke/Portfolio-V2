@@ -39,14 +39,13 @@ powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
 shortDescription: "Automation of generating populated <span class=\"theme-link\">PowerPoint</span> and <span class=\"theme-link\">Visio</span> slides from an <span class=\"theme-link\">Excel</span> data source."
-longDescription: "The VDP Automation project was an <span class=\"theme-link\">Excel</span> based data source populated with Automotive deliverables and processes by consultants within <span class=\"theme-link\">RLE International</span>, which then had scripts written by me to run through the data and generate hyperlinked and navigable <span class=\"theme-link\">PowerPoint</span> slides showing workflows, whilst simultaneously generating <span class=\"theme-link\">Visio</span> workflows and an exported PDF for mapping out a full Automotive workflow process for the development of a vehicle.\nThe tool was successful enough to be utilised by a new start-up Automotive company in defining their deliverable and process documentation providing me an opportunity to travel to <span class=\"theme-link\">Saudi Arabia</span> in the process."
+longDescription: "The VDP Automation project was an <span class=\"theme-link\">Excel</span> based data source populated with Automotive deliverables and processes by consultants within <span class=\"theme-link\">RLE International</span>, which then had scripts written by me to run through the data and generate hyperlinked and navigable <span class=\"theme-link\">PowerPoint</span> slides showing workflows, whilst simultaneously generating <span class=\"theme-link\">Visio</span> workflows and an exported PDF for mapping out a full Automotive workflow process for the development of a vehicle.<br>The tool was successful enough to be utilised by a new start-up Automotive company in defining their deliverable and process documentation providing me an opportunity to travel to <span class=\"theme-link\">Saudi Arabia</span> in the process."
 lessonsLearned: "This project taught me a lot about working with the object libraries within <span class=\"theme-link\">PowerPoint</span> and <span class=\"theme-link\">Visio</span> within the <span class=\"theme-link\">VBA</span> environment. It also gave me a great comparison of how powerful <span class=\"theme-link\">Python</span> can be when I was able to re-write a section of my code from <span class=\"theme-link\">VBA</span> to <span class=\"theme-link\">Python</span> and run the script in less than a tenth of the time."
 name: "VDP Automation"
 ---
-
 # VDP Automation
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 > VDP - TBC what it stands for (Vehicle Development Plan?)
 
@@ -79,24 +78,24 @@ WHERE file = this.file
 
 ## Short Description
 
-Automation of generating populated <span class="theme-link">PowerPoint</span> and <span class="theme-link">Visio</span> slides from an <span class="theme-link">Excel</span> data source.
+Automation of generating populated [[PowerPoint]] and [[Visio]] slides from an [[Excel]] data source.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-The VDP Automation project was an <span class="theme-link">Excel</span> based data source populated with Automotive deliverables and processes by consultants within <span class="theme-link">RLE International</span>, which then had scripts written by me to run through the data and generate hyperlinked and navigable <span class="theme-link">PowerPoint</span> slides showing workflows, whilst simultaneously generating <span class="theme-link">Visio</span> workflows and an exported PDF for mapping out a full Automotive workflow process for the development of a vehicle.
+The VDP Automation project was an [[Excel]] based data source populated with Automotive deliverables and processes by consultants within [[RLE International]], which then had scripts written by me to run through the data and generate hyperlinked and navigable [[PowerPoint]] slides showing workflows, whilst simultaneously generating [[Visio]] workflows and an exported PDF for mapping out a full Automotive workflow process for the development of a vehicle.
 
-The tool was successful enough to be utilised by a new start-up Automotive company in defining their deliverable and process documentation providing me an opportunity to travel to <span class="theme-link">Saudi Arabia</span> in the process.
+The tool was successful enough to be utilised by a new start-up Automotive company in defining their deliverable and process documentation providing me an opportunity to travel to [[Saudi Arabia]] in the process.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">PowerPoint</span>, <span class="theme-link">Visio</span>
-- Back end/Datasource: <span class="theme-link">Excel</span>, <span class="theme-link">VBA</span>, <span class="theme-link">Python</span>
+- Front end: [[PowerPoint]], [[Visio]]
+- Back end/Datasource: [[Excel]], [[VBA]], [[Python]]
 - Hosting: n/a
-- Security: <span class="theme-link">VBA</span>
+- Security: [[VBA]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -110,7 +109,7 @@ The tool was successful enough to be utilised by a new start-up Automotive compa
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -130,7 +129,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Lessons Learned
 
-This project taught me a lot about working with the object libraries within <span class="theme-link">PowerPoint</span> and <span class="theme-link">Visio</span> within the <span class="theme-link">VBA</span> environment. It also gave me a great comparison of how powerful <span class="theme-link">Python</span> can be when I was able to re-write a section of my code from <span class="theme-link">VBA</span> to <span class="theme-link">Python</span> and run the script in less than a tenth of the time.
+This project taught me a lot about working with the object libraries within [[PowerPoint]] and [[Visio]] within the [[VBA]] environment. It also gave me a great comparison of how powerful [[Python]] can be when I was able to re-write a section of my code from [[VBA]] to [[Python]] and run the script in less than a tenth of the time.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -13,12 +13,11 @@ skillRating: 55
 skillDescription: Competent in a range of the suite's tools, able to develop custom applications for business needs.
 logoFileName: power_platform.svg
 ---
-
 # Power Platform
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> Power Platform - a suite of low-code tools that allows users to build custom business applications, automate workflows, analyse data, and create chatbots. Includes <span class="theme-link">Power Apps</span>, <span class="theme-link">Power BI</span>, <span class="theme-link">Power Automate</span> and Dataverse
+> [[Microsoft]] Power Platform - a suite of low-code tools that allows users to build custom business applications, automate workflows, analyse data, and create chatbots. Includes [[Power Apps]], [[Power BI]], [[Power Automate]] and Dataverse
 
 ## Table of Contents
 

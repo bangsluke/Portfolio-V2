@@ -1,5 +1,8 @@
 ---
-import { processObsidianLink } from '../../utils/content-processor';
+import {
+	processContent,
+	processObsidianLink,
+} from '../../utils/content-processor';
 
 interface Props {
 	name: string;
@@ -23,6 +26,7 @@ const {
 
 // Process content to handle Obsidian links and markdown
 const processedLinkedCompany = processObsidianLink(linkedCompany);
+const processedReferenceAddress = processContent(referenceAddress);
 
 // console.log(name);
 ---
@@ -95,7 +99,7 @@ const processedLinkedCompany = processObsidianLink(linkedCompany);
 		class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3">
 		{
 			referenceAddress && (
-				<div class="processed-content" set:html={referenceAddress} />
+				<div class="processed-content" set:html={processedReferenceAddress} />
 			)
 		}
 	</div>

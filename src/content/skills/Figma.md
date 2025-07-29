@@ -12,10 +12,9 @@ skillRating: 30
 skillDescription: Able to create basic designs, utilising components to build up more complex designs.
 logoFileName: figma.svg
 ---
-
 # Figma
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents
 

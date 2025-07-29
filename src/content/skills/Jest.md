@@ -16,10 +16,9 @@ skillRating: 10
 skillDescription: Can set up basic unit tests and automate the running during development or during deployment checks.
 logoFileName: jest.svg
 ---
-
 # Jest
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents 
 

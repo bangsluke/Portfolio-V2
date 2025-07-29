@@ -16,12 +16,11 @@ skillRating: 45
 skillDescription: A reasonable understanding and application of TypeScript, with a couple of larger projects built using it.
 logoFileName: typescript.svg
 ---
-
 # Typescript
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Superset language of: <span class="theme-link">JavaScript</span>
+> Superset language of: [[JavaScript]]
 
 ## Table of Contents
 

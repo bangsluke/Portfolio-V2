@@ -12,12 +12,11 @@ skillRating: 20
 skillDescription: Set up and configured for my travel website without much additional exploration.
 logoFileName: apollo.svg
 ---
-
 # Apollo
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Server for <span class="theme-link">GraphQL</span>
+> Server for [[GraphQL]]
 
 ## Table of Contents
 

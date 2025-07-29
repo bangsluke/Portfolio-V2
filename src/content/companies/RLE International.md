@@ -13,10 +13,9 @@ dateStart: 2014-09-01
 dateEnd: ""
 logoURL: https://i.imgur.com/YO94MEL.png
 ---
-
 # RLE International
 
-> [!back] Link back to <span class="theme-link">Company Notes</span>
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
 >```dataview
@@ -30,19 +29,19 @@ WHERE file = this.file
 ## Folder Contents
 
 %% Begin Waypoint %%
-- **<span class="theme-link">RLE International</span>**
-	- <span class="theme-link">Centre of Excellence</span>
-	- <span class="theme-link">Digital Engineering</span>
-	- <span class="theme-link">FutureMotiv</span>
-	- <span class="theme-link">GPMO</span>
-	- <span class="theme-link">Recotech</span>
-	- <span class="theme-link">RLE China</span>
-	- <span class="theme-link">RLE Germany</span>
-	- <span class="theme-link">RLE Iberia</span>
-	- <span class="theme-link">RLE India</span>
-	- <span class="theme-link">RLE UK</span>
-	- <span class="theme-link">RLE USA</span>
-	- <span class="theme-link">VESOFTx</span>
+- **[[RLE International]]**
+	- [[Centre of Excellence]]
+	- [[Digital Engineering]]
+	- [[FutureMotiv]]
+	- [[GPMO]]
+	- [[Recotech]]
+	- [[RLE China]]
+	- [[RLE Germany]]
+	- [[RLE Iberia]]
+	- [[RLE India]]
+	- [[RLE UK]]
+	- [[RLE USA]]
+	- [[VESOFTx]]
 
 %% End Waypoint %%
 

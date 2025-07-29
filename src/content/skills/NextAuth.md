@@ -13,12 +13,11 @@ skillRating: 15
 skillDescription: Set up and used for a single project with a couple of different service providers.
 logoFileName: nextauth.svg
 ---
-
 # NextAuth
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Authentication library for <span class="theme-link">Next.js</span>
+> Authentication library for [[Next.js]]
 
 ## Table of Contents
 

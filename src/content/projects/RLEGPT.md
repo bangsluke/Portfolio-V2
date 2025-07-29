@@ -38,13 +38,12 @@ version: 1
 portfolioOrder: 5
 shortDescription: "A chat bot that takes on content such as an <span class=\"theme-link\">RFQ</span> block of text and then allows the user to query the text via chat."
 longDescription: "A simple website, demonstrating the power of integrating <span class=\"theme-link\">AI</span> into Automotive processes and day to day workflows, providing a simple interface for using a chat bot for quickly summarising the content of an <span class=\"theme-link\">RFQ</span> or querying information or extractions of logic from it."
-lessonsLearned: "This project was a test of using <span class=\"theme-link\">OpenAI</span>'s <span class=\"theme-link\">API</span> and the setup process involving tokens and cost behind it.\nIt also was my first integration of a chat bot component into a project."
+lessonsLearned: "This project was a test of using <span class=\"theme-link\">OpenAI</span>'s <span class=\"theme-link\">API</span> and the setup process involving tokens and cost behind it.<br>It also was my first integration of a chat bot component into a project."
 name: "RLEGPT"
 ---
-
 # RLEGPT
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -75,21 +74,21 @@ WHERE file = this.file
 
 ## Short Description
 
-A chat bot that takes on content such as an <span class="theme-link">RFQ</span> block of text and then allows the user to query the text via chat.
+A chat bot that takes on content such as an [[RFQ]] block of text and then allows the user to query the text via chat.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-A simple website, demonstrating the power of integrating <span class="theme-link">AI</span> into Automotive processes and day to day workflows, providing a simple interface for using a chat bot for quickly summarising the content of an <span class="theme-link">RFQ</span> or querying information or extractions of logic from it. 
+A simple website, demonstrating the power of integrating [[AI]] into Automotive processes and day to day workflows, providing a simple interface for using a chat bot for quickly summarising the content of an [[RFQ]] or querying information or extractions of logic from it. 
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">React</span>, <span class="theme-link">Vite.js</span>
-- Back end/Datasource: <span class="theme-link">OpenAI</span>
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories))
+- Front end: [[React]], [[Vite.js]]
+- Back end/Datasource: [[OpenAI]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: n/a
 
@@ -104,7 +103,7 @@ A simple website, demonstrating the power of integrating <span class="theme-link
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -118,13 +117,13 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <span class="theme-link">GPMO</span>
+- [[GPMO]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This project was a test of using <span class="theme-link">OpenAI</span>'s <span class="theme-link">API</span> and the setup process involving tokens and cost behind it.
+This project was a test of using [[OpenAI]]'s [[API]] and the setup process involving tokens and cost behind it.
 
 It also was my first integration of a chat bot component into a project.
 

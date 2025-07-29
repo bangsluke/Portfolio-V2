@@ -12,12 +12,11 @@ skillRating: 40
 skillDescription: Developed an automation system to process Excel data and produce multiple pages of Visio graphics.
 logoFileName: visio.svg
 ---
-
 # Visio
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> Visio
+> [[Microsoft]] Visio
 
 ## Table of Contents
 

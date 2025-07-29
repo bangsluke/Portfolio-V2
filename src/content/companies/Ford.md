@@ -15,10 +15,9 @@ logoURL: https://i.imgur.com/AFR5EwE.png
 linkedCompany:
   - "[[RLE International]]"
 ---
-
 # Ford
 
-> [!back] Link back to <span class="theme-link">Company Notes</span>
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
 >```dataview

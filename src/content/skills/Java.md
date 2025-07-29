@@ -15,10 +15,9 @@ skillRating: 30
 skillDescription: Capable of writing basic Java functions and able to review and correct more complex code.
 logoFileName: java.svg
 ---
-
 # Java
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents
 

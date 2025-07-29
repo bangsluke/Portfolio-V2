@@ -15,10 +15,9 @@ skillRating: 55
 skillDescription: Written several scripts ranging from basic automation of daily tasks up to data processing in both graph and table format databases.
 logoFileName: python.svg
 ---
-
 # Python
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents
 

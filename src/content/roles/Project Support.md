@@ -15,10 +15,23 @@ shortRoleDescription: "Development of project planning tools for mapping project
 fullRoleDescription: "I began at <span class=\"theme-link\">RLE</span> in a graduate support role for a high-end low volume sports car manufacturer, familiarising myself with the processes of <span class=\"theme-link\">OEMs</span> and developing project planning tools for mapping project resources using <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> macros."
 keyAchievement: "Creation of a project tracking document later adopted by the client."
 ---
-
 # Project Support
 
-> [!back] Link back to <span class="theme-link">RLE</span> in a graduate support role for a high-end low volume sports car manufacturer, familiarising myself with the processes of <span class="theme-link">OEMs</span> and developing project planning tools for mapping project resources using <span class="theme-link">Excel</span> and <span class="theme-link">VBA</span> macros.
+> [!back] Link back to [[Role Notes]]
+
+## Table of Contents
+```table-of-contents
+```
+
+## Short Role Description
+
+Development of project planning tools for mapping project resources for a high-end low volume sports car manufacturer using [[Excel]] and [[VBA]] macros.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Full Role Description
+
+I began at [[RLE International|RLE]] in a graduate support role for a high-end low volume sports car manufacturer, familiarising myself with the processes of [[OEMs]] and developing project planning tools for mapping project resources using [[Excel]] and [[VBA]] macros.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

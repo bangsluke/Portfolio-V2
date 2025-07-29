@@ -15,10 +15,9 @@ skillRating: 50
 skillDescription: Built and maintained a relatively complex SQL database using MySQL writing schema modification statements and automating the population of data.
 logoFileName: sql.svg
 ---
-
 # SQL
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents
 

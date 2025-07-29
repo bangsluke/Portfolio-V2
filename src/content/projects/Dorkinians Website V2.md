@@ -32,15 +32,14 @@ topicTags:
 powerShellAlias: TBD
 version: 2
 portfolioOrder: 4
-shortDescription: "TBD\nthe next version of the <span class=\"theme-link\">Dorkinians FC</span> website, following on from <a href=\"/portfolio/projects/Dorkinians Website\" class=\"theme-link\">Dorkinians Website</a>"
+shortDescription: "TBD<br>the next version of the <span class=\"theme-link\">Dorkinians FC</span> website, following on from <a href=\"/portfolio/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>"
 longDescription: "TBD"
 lessonsLearned: "TBD"
 name: "Dorkinians Website V2"
 ---
-
 # Dorkinians Website V2
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -73,7 +72,7 @@ WHERE file = this.file
 
 TBD
 
-the next version of the <span class="theme-link">Dorkinians FC</span> website, following on from <a href="/portfolio/projects/Dorkinians Website" class="theme-link">Dorkinians Website</a>
+the next version of the [[Dorkinians FC]] website, following on from [[Dorkinians Website]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -87,7 +86,7 @@ TBD
 
 - Front end: TBD
 - Back end/Datasource: TBD
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), TBD
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), TBD
 - Security: TBD
 - Authentication: TBD
 
@@ -102,7 +101,7 @@ TBD
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -139,8 +138,8 @@ Authentication: The site should be secure behind a single password.
 
 - How do I store the stats data ready for the website to quickly retrieve and display the information?
 	- Requirements 
-		- Keep using <span class="theme-link">Google Sheets</span> for stat input 
-		- Automatically update the database daily from the <span class="theme-link">Google Sheets</span>
+		- Keep using [[Google Sheets]] for stat input 
+		- Automatically update the database daily from the [[Google Sheets]]
 - How do I make the website easily packaged and customisable for other clubs?
 	- Config file
 	- Pick a club logo
@@ -162,7 +161,7 @@ Authentication: The site should be secure behind a single password.
 
 #### Player Stats
 
-!<span class="theme-link">20241201 Player Stats Page Design.jpeg</span>
+![[20241201 Player Stats Page Design.jpeg]]
 
 - Two swipable tabs;
 	- This Season 
@@ -190,9 +189,9 @@ Authentication: The site should be secure behind a single password.
 
 #### Club Stats
 
-- Points per game - value between 0 and 3 !<span class="theme-link">20241001 - PointsPerGame.jpeg</span>
+- Points per game - value between 0 and 3 ![[20241001 - PointsPerGame.jpeg]]
 - Top 5 player appearances 
-- Have the below background behind the stats? !<span class="theme-link">20241001 - Stats Background.png</span>
+- Have the below background behind the stats? ![[20241001 - Stats Background.png]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -227,7 +226,7 @@ Authentication: The site should be secure behind a single password.
 		- If player selected, go to that players stats
 		- If no player selected, go to TOTW
 - For stats filtering, follow the guidance in [this article](https://uxmovement.medium.com/how-to-handle-a-massive-filter-with-over-100-options-dc8b1966d3c7) 
-	- !<span class="theme-link">20241001 - Stats Filters.png</span>
+	- ![[20241001 - Stats Filters.png]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -241,15 +240,15 @@ Authentication: The site should be secure behind a single password.
 #### Crazy Ideas
 
 - Show the players that each player has played with most - likely needs a graph db
-- Add a chatbot to the site that allows a user to chat to the database. Write a statement such as "How many times has <span class="theme-link">Kieran Mackrell</span> played against Wandsworth?" and then the text is identified into a cypher query and sent to the database and returns the answer. Should display the generated cypher query for debugging purposes.
-	- Not sure this is possible unless I am able to find a way to use a <span class="theme-link">OpenAI</span> API call to create a <span class="theme-link">GraphQL</span> query in the client
+- Add a chatbot to the site that allows a user to chat to the database. Write a statement such as "How many times has [[Kieran Mackrell]] played against Wandsworth?" and then the text is identified into a cypher query and sent to the database and returns the answer. Should display the generated cypher query for debugging purposes.
+	- Not sure this is possible unless I am able to find a way to use a [[OpenAI]] API call to create a [[GraphQL]] query in the client
 - Have a map component that looks up the locations that each player has played at (using the locations postcodes) to show where the player has played. Bigger circle on the map shows more times played
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- [Dorkinians Website Tasks](https://todoist.com/app/section/Dorkinians-Website-6C4XfJFRgpfFpJgC) - <span class="theme-link">Todoist</span>
+- [Dorkinians Website Tasks](https://todoist.com/app/section/Dorkinians-Website-6C4XfJFRgpfFpJgC) - [[Todoist]]
 - [Medium Stories list](https://medium.com/@bangsluke/list/410a590e0a2b)
 - <https://dribbble.com/>
 - <https://mobbin.com/browse/web/apps>

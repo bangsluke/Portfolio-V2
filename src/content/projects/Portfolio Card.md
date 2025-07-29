@@ -38,10 +38,9 @@ longDescription: "TBC"
 lessonsLearned: "TBC"
 name: "Portfolio Card"
 ---
-
 # Portfolio Card
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -84,10 +83,10 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">React</span>
+- Front end: [[React]]
 - Back end/Datasource: n/a
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories))
-- Security: <span class="theme-link">Snyk</span>
+- Hosting: [[GitHub]] (see [Repositories](#repositories))
+- Security: [[Snyk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -101,7 +100,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -116,8 +115,8 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 ## Other Links
 
 - [Portfolio Site page Todoist list](https://todoist.com/showTask?id=5773759872&sync_id=6506087454)
-- <a href="/portfolio/projects/Portfolio Site" class="theme-link">Portfolio Site</a>
-- <a href="/portfolio/projects/Portfolio Site V2" class="theme-link">Portfolio Site V2</a>
+- [[Portfolio Site]]
+- [[Portfolio Site V2]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

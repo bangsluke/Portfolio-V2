@@ -15,12 +15,11 @@ skillRating: 70
 skillDescription: Several shortcuts set up on my iPhone for automating life actions and remotely updating online data sources for my own personal health tracking.
 logoFileName: apple_shortcuts.svg
 ---
-
 # Apple Shortcuts
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Apple</span>'s <span class="theme-link">iOS</span> automation app
+> [[Apple]]'s [[iOS]] automation app
 
 ## Table of Contents
 

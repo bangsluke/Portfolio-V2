@@ -13,12 +13,11 @@ skillRating: 50
 skillDescription: Able to produce detailed timing plans within Project both manually and through automation.
 logoFileName: project.svg
 ---
-
 # Project
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> Project
+> [[Microsoft]] Project
 
 ## Table of Contents
 

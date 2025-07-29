@@ -14,12 +14,11 @@ skillRating: 65
 skillDescription: Used Next.JS for multiple projects, utilising it's features to create dynamic and rapid applications.
 logoFileName: nextjs.svg
 ---
-
 # Next.js
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Language: <span class="theme-link">JavaScript</span>, built on <span class="theme-link">React</span>
+> Language: [[JavaScript]], built on [[React]]
 
 ## Table of Contents 
 

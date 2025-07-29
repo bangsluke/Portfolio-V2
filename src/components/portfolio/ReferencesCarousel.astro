@@ -1,7 +1,10 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
-import { processObsidianLink } from '../../utils/content-processor';
+import {
+	processContent,
+	processObsidianLink,
+} from '../../utils/content-processor';
 import { extractNameFromFilename } from '../../utils/filename-utils';
 import Heading from '../ui/Heading.astro';
 import ReferencesCarouselComponent from './ReferencesCarouselComponent.tsx';
@@ -82,7 +85,7 @@ const processedReferences = sortedReferences.map(reference => {
 						? processObsidianLink(ref.data.linkedCompany[0])
 						: '',
 					logoURL: ref.companyLogoURL,
-					address: ref.data.referenceAddress || '',
+					address: processContent(ref.data.referenceAddress || ''),
 				}))}
 				client:only="preact"
 			/>

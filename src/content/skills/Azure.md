@@ -13,12 +13,11 @@ skillRating: 20
 skillDescription: Have utilised Azure hosting in a couple of projects for work without exploring the full features of the software.
 logoFileName: azure.svg
 ---
-
 # Azure
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> Azure
+> [[Microsoft]] Azure
 
 ## Table of Contents
 

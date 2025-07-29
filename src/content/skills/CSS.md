@@ -16,10 +16,9 @@ skillRating: 60
 skillDescription: Competent at building full sites using CSS and utilising modules for scoped rules.
 logoFileName: css.svg
 ---
-
 # CSS
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents 
 

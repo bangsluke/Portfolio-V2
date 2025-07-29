@@ -16,12 +16,11 @@ skillRating: 50
 skillDescription: Able to generate lightning fast sites using Astro with a good understanding of the frameworks performant features.
 logoFileName: astro.svg
 ---
-
 # Astro
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-A framework for <span class="theme-link">JavaScript</span>
+A framework for [[JavaScript]]
 
 ## Table of Contents 
 

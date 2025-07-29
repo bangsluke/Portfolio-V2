@@ -15,10 +15,9 @@ skillRating: 5
 skillDescription: Very minor experience in fixing small scripts for developers.
 logoFileName: CPlusPlus.svg
 ---
-
 # C++
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents 
 

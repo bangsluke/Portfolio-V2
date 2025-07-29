@@ -13,12 +13,11 @@ skillRating: 60
 skillDescription: Used daily as part of my workflow process, handing over basic tasks to the integrated AI agent.
 logoFileName: cursor.svg
 ---
-
 # Cursor
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">AI</span> integrated coding IDE
+> [[AI]] integrated coding IDE
 
 ## Table of Contents
 

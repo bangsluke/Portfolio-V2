@@ -15,10 +15,9 @@ shortRoleDescription: "Support for the finances of <span class=\"theme-link\">Do
 fullRoleDescription: "A supporting role, reviewing and managing the finances of <span class=\"theme-link\">Dorkinians FC</span>, providing help to the Treasurer where required."
 keyAchievement: "TBC"
 ---
-
 # Assistant Treasurer
 
-> [!back] Link back to <span class="theme-link">Role Notes</span>
+> [!back] Link back to [[Role Notes]]
 
 ## Table of Contents
 ```table-of-contents
@@ -26,13 +25,13 @@ keyAchievement: "TBC"
 
 ## Short Role Description
 
-Support for the finances of <span class="theme-link">Dorkinians FC</span>.
+Support for the finances of [[Dorkinians FC]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Full Role Description
 
-A supporting role, reviewing and managing the finances of <span class="theme-link">Dorkinians FC</span>, providing help to the Treasurer where required.
+A supporting role, reviewing and managing the finances of [[Dorkinians FC]], providing help to the Treasurer where required.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

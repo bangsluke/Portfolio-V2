@@ -14,10 +14,9 @@ shortRoleDescription: "Responsible for the upload and storage of legal documents
 fullRoleDescription: "Part time role, responsible for uploading and carefully ensuring legal documents were available for clients in a cloud-based structured environment and delivered within strict deadlines. The time I spent here showed me how to correctly conduct myself in a formal office-based job, deal with client requests and helping proactively improve new working processes."
 keyAchievement: "Development of processes to speed up repetitive workflows."
 ---
-
 # Litigation Support Officer
 
-> [!back] Link back to <span class="theme-link">Role Notes</span>
+> [!back] Link back to [[Role Notes]]
 
 ## Table of Contents
 ```table-of-contents

@@ -12,12 +12,11 @@ skillRating: 15
 skillDescription: Understanding of the differences to npm and Yarn without utilising within a project yet.
 logoFileName: pnpm.svg
 ---
-
 # pnpm
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">JavaScript</span> package manager
+> [[JavaScript]] package manager
 
 ## Table of Contents
 
