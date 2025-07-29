@@ -71,7 +71,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 			class="absolute inset-0 bg-black/20 dark:bg-black/50 group-hover:bg-black/5 transition-all duration-300 pointer-events-none">
 		</div>
 		<a
-			href={`/portfolio/projects/${projectSlug}`}
+			href={`/projects/${projectSlug}`}
 			class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 bg-theme-400 hover:bg-theme-500 text-black rounded-full p-2 shadow-lg z-10 flex items-center justify-center"
 			aria-label={`View details for ${name}`}
 			title={`View details for ${name}`}
@@ -181,7 +181,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 		<div
 			class="mobile-detail-link hidden md:hidden mt-4 pt-4 border-t border-zinc-700">
 			<a
-				href={`/portfolio/projects/${projectSlug}`}
+				href={`/projects/${projectSlug}`}
 				class="flex items-center justify-center gap-2 text-theme-400 hover:text-theme-300 transition-colors text-sm font-medium"
 				onclick="event.stopPropagation();">
 				<span>See more detail...</span>
@@ -203,7 +203,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 		<div
 			class="desktop-detail-link hidden md:block mt-4 pt-4 border-t border-zinc-700 opacity-0 transition-opacity duration-300">
 			<a
-				href={`/portfolio/projects/${projectSlug}`}
+				href={`/projects/${projectSlug}`}
 				class="flex items-center justify-center gap-2 text-theme-400 hover:text-theme-300 transition-colors text-sm font-medium"
 				onclick="event.stopPropagation();">
 				<span>Show more details</span>
@@ -229,9 +229,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 		const projectCards = document.querySelectorAll('.project-card');
 		let selectedCard: HTMLElement | null = null;
 		let isMobile = window.innerWidth <= 768;
-		let isGalleryPage = window.location.pathname.includes(
-			'/portfolio/projects'
-		);
+		let isGalleryPage = window.location.pathname.includes('/projects');
 
 		// Update mobile detection on resize
 		window.addEventListener('resize', () => {

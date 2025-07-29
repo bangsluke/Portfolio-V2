@@ -1,5 +1,17 @@
 # Auto Changes Log
 
+## 2025-01-27 14:30
+### Projects Folder Path Update
+- **Updated all project references** across the site:
+  - **Moved projects folder**: From `/pages/portfolio/projects/` to `/pages/projects/`
+  - **Updated content processor**: Modified `src/utils/content-processor.ts` to use new `/projects/` path
+  - **Updated sync scripts**: Modified `scripts/content-processor.js` and `scripts/sync.js` for new path
+  - **Updated components**: Modified `ProjectCard.astro` and `ProjectsGallery.astro` for new path
+  - **Updated test files**: Modified `src/__tests__/content-processor.test.ts` for new path
+  - **Updated content files**: All project markdown files now use `/projects/` links
+  - **Updated about page**: Modified `src/pages/about-me.md` for new project links
+  - **Updated log entries**: Fixed historical log entries to reflect new path structure
+
 ## 2025-01-16 23:00 [main] - Fixed GitHub Actions Obsidian Sync workflow script names, build duplication, and environment variables
 - Updated .github/workflows/obsidian-sync.yml to use correct npm script names
   - Changed sync-obsidian:deploy to sync:prod:deploy to match package.json
@@ -2197,7 +2209,7 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
   - **Better readability**: Maintains original project naming conventions
 
 ### Full Project Gallery Improvements
-- **Enhanced mobile project selection** in `src/pages/portfolio/projects/index.astro`:
+- **Enhanced mobile project selection** in `src/pages/projects/index.astro`:
   - **Mobile-only selection**: Project selection only works on mobile devices
   - **Persistent selection**: Cards stay bright/selected until another card is clicked
   - **Proper deselection**: Only one card can be selected at a time
@@ -2238,7 +2250,7 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 ## 2024-12-19 17:45 - Project Slug Page and Skills Bubble Enhancements
 
 ### Project Slug Page Improvements
-- **Fixed "Developed For" section layout** in `src/pages/portfolio/projects/[slug].astro`:
+- **Fixed "Developed For" section layout** in `src/pages/projects/[slug].astro`:
   - **Centered layout**: Changed from grid to flex layout with `justify-center` for better alignment
   - **Company name display**: Updated to use original filename minus extension instead of slug
   - **Consistent naming**: Both companies and clients now use the same `getCompanyName()` function
@@ -2303,7 +2315,7 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 ## 2024-12-19 18:06 - Project Slug Page Layout Width Standardization
 
 ### Layout Width Consistency
-- **Updated project slug page layout** in `src/pages/portfolio/projects/[slug].astro`:
+- **Updated project slug page layout** in `src/pages/projects/[slug].astro`:
   - **Consistent content width**: Added `max-w-4xl mx-auto` container to match WorkExperience page
   - **Proper padding structure**: Added `px-8` horizontal padding to all sections
   - **Background consistency**: Added `bg-white dark:bg-gray-900` to match other pages

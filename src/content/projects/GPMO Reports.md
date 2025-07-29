@@ -36,7 +36,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
-shortDescription: "The report section for the <a href=\"/portfolio/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a> showing global <span class=\"theme-link\">RLE International</span> data."
+shortDescription: "The report section for the <a href=\"/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a> showing global <span class=\"theme-link\">RLE International</span> data."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 name: "GPMO Reports"

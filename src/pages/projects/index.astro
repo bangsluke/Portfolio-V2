@@ -1,11 +1,11 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import ProjectCard from '../../../components/portfolio/ProjectCard.astro';
-import Heading from '../../../components/ui/Heading.astro';
+import Layout from '../../layouts/Layout.astro';
+import ProjectCard from '../../components/portfolio/ProjectCard.astro';
+import Heading from '../../components/ui/Heading.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
-import { processObsidianLink } from '../../../utils/content-processor';
-import { extractNameFromFilename } from '../../../utils/filename-utils';
+import { processObsidianLink } from '../../utils/content-processor';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 
 // Get all projects, companies, and clients
 const projects = await getCollection('projects');
