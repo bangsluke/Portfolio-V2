@@ -1,5 +1,50 @@
 # Auto Changes Log
 
+## 2025-01-27 15:10
+### Carousel Container and Card Standardization
+- **Standardized carousel dimensions** across both CustomerAndClientCarousel and ReferencesCarouselComponent:
+  - **Updated container heights**: Set both carousel containers to exactly 300px height for consistent sizing
+  - **Standardized card dimensions**: Set all carousel cards to 260px width and 260px height for uniform appearance
+  - **Enhanced hover scaling**: Cards can now scale to 105% on hover/selection while remaining fully visible within 300px container
+  - **Updated global CSS**: Modified `.plugins-panel` and `.flicking-panel` classes to use consistent 260px dimensions
+  - **Improved responsive design**: Updated mobile breakpoints to maintain proportional scaling on smaller screens
+  - **Fixed overflow issues**: Ensured cards don't get cut off when scaled during hover or selection states
+  - **Maintained functionality**: All existing carousel features (auto-play, selection, navigation) work with new dimensions
+- **Aligned carousel structures** for consistency between both components:
+  - **Standardized class names**: Both carousels now use `flicking-panel` class consistently for panel elements
+  - **Unified click outside handlers**: Updated CustomerAndClientCarousel to use `.flicking-panel` selector instead of `.plugins-panel`
+  - **Consistent Flicking options**: Removed `firstPanelSize` prop from ReferencesCarouselComponent to match CustomerAndClientCarousel
+  - **Aligned card structure**: Updated CompanyCard component to use same structure as ReferencesCarouselComponent cards
+  - **Standardized background handling**: Both cards now use separate background image divs with consistent class names
+  - **Unified overlay structure**: Both cards use identical dark overlay implementation with consistent class names
+  - **Consistent content layout**: Both cards use same content container structure with identical class names and styling
+- **Fixed top edge visibility issue** on hover/selection:
+  - **Added container padding**: Added 20px vertical padding to `.carousel-container` and `.flicking-viewport` to accommodate scaled items
+  - **Prevented clipping**: Scaled items (105%) now have sufficient space to display fully without top edge cutoff
+  - **Enhanced mobile support**: Added 15px padding for mobile viewports and 10px padding for very small screens
+  - **Maintained responsive design**: Padding scales appropriately across different screen sizes
+  - **Preserved functionality**: All hover effects, selection states, and carousel interactions work correctly with new padding
+
+## 2025-01-27 15:00
+### ReferencesCarouselComponent Carousel-Item Class Fix
+- **Fixed carousel-item class implementation** in ReferencesCarouselComponent:
+  - **Updated global CSS**: Fixed `.carousel-item` CSS definition to remove duplicate properties and add hover scale effect
+  - **Added missing classes**: Added `group` and `hover:scale-105` classes to the carousel item div
+  - **Ensured consistent behavior**: Both carousels now have proper hover scaling without cutoff
+  - **Fixed CSS conflicts**: Removed duplicate width properties and conflicting styles
+  - **Maintained functionality**: All hover, selection, and interaction effects work correctly
+
+## 2025-01-27 14:50
+### Mobile Horizontal Scroll Prevention
+- **Enhanced mobile overflow prevention** across the site:
+  - **Updated global CSS**: Enhanced mobile overflow rules in `src/styles/global.css` with comprehensive fixes
+  - **Fixed carousel components**: Updated `CustomerAndClientCarousel.tsx` and `ReferencesCarouselComponent.tsx` to use responsive widths instead of `100vw`
+  - **Added overflow constraints**: Applied `overflow-x: hidden` and `max-width: 100%` to prevent horizontal scroll
+  - **Enhanced responsive design**: Added specific fixes for very small screens (480px and below)
+  - **Fixed container constraints**: Ensured all max-width containers are properly constrained on mobile
+  - **Improved carousel behavior**: Changed from `overflow: visible` to `overflow: hidden` to prevent content overflow
+  - **Added comprehensive mobile rules**: Fixed tables, code blocks, images, and positioned elements that might overflow
+
 ## 2025-01-27 14:30
 ### Projects Folder Path Update
 - **Updated all project references** across the site:
@@ -2543,3 +2588,12 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
   - Ensures consistent labeling across all dropdown components
   - Eliminates confusion between separate framework and language options
   - Maintains all existing functionality while simplifying the filter structure
+
+## 2025-01-27 14:50
+### Carousel Card Height Adjustments
+- **Reduced carousel card heights** to prevent cutoff when scaled:
+  - **CustomerAndClientCarousel**: Reverted viewport height to 300px and reduced panel height from 280px to 240px
+  - **ReferencesCarouselComponent**: Reverted viewport height to 300px and reduced panel height from 280px to 240px
+  - **Mobile responsiveness**: Updated mobile breakpoint heights (768px: 260px, 480px: 240px)
+  - **Prevents card cutoff**: Cards now have sufficient space when scaled to 105% on hover/selection
+  - **Maintains original layout**: Carousel containers remain at original heights while cards are smaller

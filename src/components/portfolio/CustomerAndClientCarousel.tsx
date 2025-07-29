@@ -92,29 +92,32 @@ function CompanyCard({
 	return (
 		<>
 			<div
-				className={`relative w-full h-full rounded-lg overflow-hidden group cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+				className={`carousel-item group hover:scale-105 ${
 					isSelected ? 'ring-4 ring-theme-400 scale-105 brightness-110' : ''
 				}`}
-				style={
-					hasBackground
-						? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center;`
-						: ''
-				}
 				onClick={handleCardClick}>
-				{/* Darkened overlay that lightens on hover - removed when selected */}
-				{!isSelected && (
+				{/* Background Image */}
+				{hasBackground ? (
 					<div
-						className={`absolute inset-0 transition-all duration-300 ${
-							hasBackground
-								? 'bg-black/20 dark:bg-black/50 group-hover:bg-black/5'
-								: fallbackColor + ' group-hover:opacity-80'
-						}`}
+						className="absolute inset-0 bg-cover bg-center"
+						style={{ backgroundImage: `url('${backgroundImage}')` }}
 					/>
+				) : (
+					<div className={`absolute inset-0 ${fallbackColor}`} />
 				)}
 
-				{/* Content container */}
-				<div className="relative z-10 flex flex-col justify-between h-full p-6 text-white">
-					{/* Top section with title and date */}
+				{/* Dark Overlay */}
+				<div
+					className={`absolute inset-0 transition-colors duration-300 ${
+						isSelected
+							? 'bg-black/5 dark:bg-black/5'
+							: 'bg-black/20 dark:bg-black/50 group-hover:bg-black/5'
+					}`}
+				/>
+
+				{/* Content */}
+				<div className="relative z-10 h-full flex flex-col justify-between p-6 text-white">
+					{/* Top Section */}
 					<div className="flex-1">
 						<div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 -m-3">
 							<h3
@@ -345,7 +348,7 @@ export default function ClientAndCustomerCarousel({
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			const target = event.target as HTMLElement;
-			if (!target.closest('.plugins-panel')) {
+			if (!target.closest('.flicking-panel')) {
 				setSelectedItem(null);
 			}
 		};
@@ -369,65 +372,39 @@ export default function ClientAndCustomerCarousel({
 
 	return (
 		<section className="py-8 px-0 max-sm:px-0">
-			<style
-				dangerouslySetInnerHTML={{
-					__html: `
-					/* Full width carousel */
-					.flicking-viewport {
-						width: 100vw !important;
-						max-width: 100vw !important;
-					}
-					
-					/* Enhanced mobile responsiveness */
-					@media (max-width: 768px) {
-						.plugins-panel {
-							width: 280px !important;
-							height: 300px !important;
-							margin: 0 10px !important;
-						}
-					}
-				`,
-				}}
-			/>
-			<div className="w-full">
+			<div className="carousel-container" style={{ height: '300px' }}>
 				{carouselItems.length === 0 ? (
 					<div className="text-center py-8">
 						<p className="text-gray-600 dark:text-gray-400 mb-4">Loading...</p>
 					</div>
 				) : (
-					<div className="overflow-visible">
-						<Flicking
-							ref={flickingRef}
-							plugins={plugins}
-							className="flicking-viewport"
-							style={{
-								height: '300px',
-								width: '100vw',
-								overflow: 'visible',
-							}}
-							options={{
-								align: 'center',
-								circular: true,
-								gap: 40,
-								bound: false,
-								adaptive: false,
-								renderOnlyVisible: false,
-								preventClickOnDrag: false,
-							}}>
-							{carouselItems.map(item => (
-								<div
-									key={item.id}
-									className="plugins-panel"
-									style={{ width: '260px', height: '280px', margin: '0 20px' }}>
-									<CompanyCard
-										item={item}
-										isSelected={selectedItem === item.id}
-										onClick={() => handleItemClick(item.id)}
-									/>
-								</div>
-							))}
-						</Flicking>
-					</div>
+					<Flicking
+						ref={flickingRef}
+						plugins={plugins}
+						className="flicking-viewport"
+						style={{ height: '300px' }}
+						options={{
+							align: 'center',
+							circular: true,
+							gap: 40,
+							bound: false,
+							adaptive: false,
+							renderOnlyVisible: false,
+							preventClickOnDrag: false,
+						}}>
+						{carouselItems.map(item => (
+							<div
+								key={item.id}
+								className="flicking-panel"
+								style={{ width: '260px', height: '260px' }}>
+								<CompanyCard
+									item={item}
+									isSelected={selectedItem === item.id}
+									onClick={() => handleItemClick(item.id)}
+								/>
+							</div>
+						))}
+					</Flicking>
 				)}
 			</div>
 		</section>

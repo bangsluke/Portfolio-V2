@@ -66,30 +66,28 @@ const ReferencesCarouselComponent = ({
 	}, []);
 
 	return (
-		<div className="relative w-full">
+		<div className="carousel-container" style={{ height: '300px' }}>
 			<Flicking
 				ref={flickingRef}
 				plugins={plugins}
 				className="flicking-viewport"
-				circular={true}
-				adaptive={true}
-				align="center"
-				bound={false}
-				preventClickOnDrag={false}
-				preventDefaultOnDrag={true}
-				firstPanelSize="280px"
-				style={{
-					width: '100vw',
-					height: '300px',
-					overflow: 'visible',
+				style={{ height: '300px' }}
+				options={{
+					align: 'center',
+					circular: true,
+					gap: 40,
+					bound: false,
+					adaptive: false,
+					renderOnlyVisible: false,
+					preventClickOnDrag: false,
 				}}>
 				{references.map(reference => (
 					<div
 						key={reference.id}
-						className="flicking-panel px-2"
-						style={{ width: '300px', height: '280px', margin: '0 20px' }}>
+						className="flicking-panel"
+						style={{ width: '260px', height: '260px' }}>
 						<div
-							className={`relative w-full h-full rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-105 ${
+							className={`carousel-item group hover:scale-105 ${
 								selectedItem === reference.id
 									? 'ring-4 ring-theme-400 scale-105 brightness-110'
 									: ''

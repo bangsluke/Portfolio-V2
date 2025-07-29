@@ -779,39 +779,6 @@ a.theme-link:hover {
 	filter: blur(10px);
 }
 
-/* Flicking Carousel Styles */
-.flicking-viewport {
-	width: 100%;
-	overflow: hidden;
-}
-
-.plugins-panel {
-	width: 300px;
-	height: 400px;
-	flex-shrink: 0;
-}
-
-.panel-image {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-/* Responsive adjustments for carousel */
-@media (max-width: 768px) {
-	.plugins-panel {
-		width: 250px;
-		height: 300px;
-	}
-}
-
-@media (max-width: 480px) {
-	.plugins-panel {
-		width: 200px;
-		height: 250px;
-	}
-}
-
 /* Global Element Styles - for buttons, dropdowns, etc. */
 .global-element {
 	background-color: var(--color-theme-700);
@@ -989,15 +956,182 @@ a.theme-link:hover {
 	border-left: none;
 }
 
+/* Style the Carousel Containers */
+.carousel-container {
+	width: 100%;
+	position: relative;
+	height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	padding: 20px 0; /* Add padding to accommodate scaled items */
+}
+
+.carousel-item {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 1rem; /* rounded-2xl = 16px */
+	overflow: hidden;
+	cursor: pointer;
+	transition: all 0.3s ease; /* transition-all duration-300 */
+}
+
+.carousel-item:hover {
+	transform: scale(1.05); /* hover:scale-105 */
+}
+
+/* Flicking Carousel Styles */
+.flicking-viewport {
+	width: 100%;
+	height: 300px;
+	overflow: hidden;
+	padding: 20px 0; /* Add padding to accommodate scaled items */
+}
+
+.plugins-panel {
+	width: 260px;
+	height: 260px;
+	flex-shrink: 0;
+	margin: 0 20px;
+}
+
+.flicking-panel {
+	width: 260px;
+	height: 260px;
+	flex-shrink: 0;
+	margin: 0 20px;
+}
+
+.panel-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Responsive adjustments for carousel */
+@media (max-width: 768px) {
+	.plugins-panel,
+	.flicking-panel {
+		width: 260px;
+		height: 260px;
+		margin: 0 10px;
+	}
+}
+
+@media (max-width: 480px) {
+	.plugins-panel,
+	.flicking-panel {
+		width: 250px;
+		height: 250px;
+		margin: 0 5px;
+	}
+}
+
 /* Mobile Overflow Prevention */
 @media (max-width: 768px) {
 	html,
 	body {
 		overflow-x: hidden;
 		max-width: 100vw;
+		width: 100%;
 	}
 
 	* {
 		max-width: 100%;
+		box-sizing: border-box;
+	}
+
+	/* Fix carousel overflow issues */
+	.flicking-viewport {
+		width: 100% !important;
+		max-width: 100% !important;
+		height: 240px !important;
+		overflow: hidden !important;
+		padding: 15px 0 !important; /* Add padding for mobile scaled items */
+	}
+
+	/* Ensure all sections don't overflow */
+	section {
+		overflow-x: hidden;
+		max-width: 100vw;
+	}
+
+	/* Fix any potential table overflow */
+	table {
+		max-width: 100%;
+		overflow-x: auto;
+		display: block;
+	}
+
+	/* Fix code blocks overflow */
+	pre {
+		max-width: 100%;
+		overflow-x: auto;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+	}
+
+	/* Fix image overflow */
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	/* Fix any absolute positioned elements that might overflow */
+	.absolute,
+	.fixed {
+		max-width: 100vw;
+	}
+
+	/* Fix any flex containers that might overflow */
+	.flex {
+		flex-wrap: wrap;
+	}
+
+	/* Fix any grid containers that might overflow */
+	.grid {
+		grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+	}
+}
+
+/* Additional fixes for very small screens */
+@media (max-width: 480px) {
+	html,
+	body {
+		overflow-x: hidden;
+		max-width: 100vw;
+	}
+
+	/* Ensure carousel panels don't overflow on very small screens */
+	.plugins-panel,
+	.flicking-panel {
+		width: 250px !important;
+		height: 250px !important;
+		margin: 0 5px !important;
+		padding: 10px 0 !important; /* Reduced padding for very small screens */
+	}
+
+	/* Fix any padding issues that might cause overflow */
+	.px-8 {
+		padding-left: 1rem !important;
+		padding-right: 1rem !important;
+	}
+
+	/* Ensure all containers are properly constrained */
+	.max-w-7xl,
+	.max-w-6xl,
+	.max-w-5xl,
+	.max-w-4xl,
+	.max-w-3xl,
+	.max-w-2xl,
+	.max-w-xl,
+	.max-w-lg,
+	.max-w-md,
+	.max-w-sm {
+		max-width: calc(100vw - 2rem) !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
 	}
 }
