@@ -301,8 +301,6 @@ a.inline-block.leading-5.pl-12 {
 }
 
 .markdown a {
-	font-size: 1.25rem;
-	font-weight: 600;
 	text-decoration: underline;
 	transition: all 0.3s ease;
 }
