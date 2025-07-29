@@ -6,11 +6,11 @@ tags:
   - coding
   - project/completed
 created: 2024-02-20T09:27:00
-modified: 2025-07-19T09:52:56+01:00
+modified: 2025-07-29T08:08:50+01:00
 aliases:
   - Documentation Site
   - bangsluke-documentation
-viewCount: 18
+viewCount: 20
 projectURL: https://bangsluke-documentation.netlify.app/
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
@@ -41,7 +41,7 @@ powerShellAlias: bangsluke
 version: 1
 portfolioOrder: 3
 shortDescription: "A personal documentation site storing key links to the software I use, articles I find useful, and a section on <span class=\"theme-link\">Homepage</span> and <a href=\"/portfolio/projects/New Tab Website\" class=\"theme-link\">New Tab</a> pages."
-longDescription: "Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment.\nI regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing."
+longDescription: "Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment. It also holds details on the <span class=\"theme-link\">Homepage</span> and <a href=\"/portfolio/projects/New Tab Website\" class=\"theme-link\">New Tab</a> pages as the whole repo is hosted through <span class=\"theme-link\">GitHub</span> pages."
 lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of <span class=\"theme-link\">Markdown</span> and led me to notice how many different softwares either use <span class=\"theme-link\">Docusaurus</span> or a very similar type static site builder for their documentation."
 name: "bangsluke Documentation"
 ---
@@ -85,9 +85,7 @@ A personal documentation site storing key links to the software I use, articles 
 
 ## Long Description
 
-Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment.
-
-I regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing.
+Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment. It also holds details on the <span class="theme-link">Homepage</span> and <a href="/portfolio/projects/New Tab Website" class="theme-link">New Tab</a> pages as the whole repo is hosted through <span class="theme-link">GitHub</span> pages.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

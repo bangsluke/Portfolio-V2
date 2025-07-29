@@ -7,31 +7,29 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-07-28T08:12:29+01:00
+modified: 2025-07-28T17:16:40+01:00
 viewCount: 58
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
-codeMultipleRepos: true
+codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-portfolio/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: 
+imageURL: https://i.imgur.com/MoZ87wL.png
 powerShellAlias: portfolio
 dateStart: 2025-02-01
 dateEnd: ""
 technologies:
-  - "[[Neo4j]]"
-  - "[[GraphQL]]"
   - "[[Obsidian]]"
   - "[[Netlify]]"
   - "[[GitHub]]"
   - "[[Astro]]"
   - "[[Tailwind CSS]]"
   - "[[Preact]]"
-  - "[[Neo4j Aura]]"
   - "[[Zod]]"
   - "[[Jest]]"
+  - "[[Node.js]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a
@@ -42,8 +40,8 @@ topicTags:
   - "[[Work]]"
 version: 2
 portfolioOrder: 2
-shortDescription: "A personal portfolio website for displaying my skills and past projects."
-longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills."
+shortDescription: "This personal portfolio website for displaying my past projects, experience and skills."
+longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills.\nEvery project, skill, role, company, education and reference is stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> notes, processed by <span class=\"theme-link\">Node.js</span> scripts and loaded into the <span class=\"theme-link\">Astro</span> site for display."
 lessonsLearned: "TBC\nInitially I set the project up with an <span class=\"theme-link\">Astro</span> front end and started doing <span class=\"theme-link\">GraphQL</span> calls to my <a href=\"/portfolio/projects/Backend Server\" class=\"theme-link\">Backend Server</a> project to collect the portfolio data I had stored in the <span class=\"theme-link\">Neo4j</span> graph. However I soon realized that I was undoing the speed of <span class=\"theme-link\">Astro</span> and switched to a script that loads the required portfolio data (stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> files) into the portfolio repo and used <span class=\"theme-link\">Astro</span> collections to gather and display the data that way.\nThe project taught me about defining <span class=\"theme-link\">npm</span> functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package."
 name: "Portfolio Site V2"
 ---
@@ -81,7 +79,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A personal portfolio website for displaying my skills and past projects.
+This personal portfolio website for displaying my past projects, experience and skills.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -89,11 +87,7 @@ A personal portfolio website for displaying my skills and past projects.
 
 An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills.
 
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Architecture and Technologies
-
-- Front end: <span class="theme-link">Portfolio Site V2 Canvas</span> for the design
+Every project, skill, role, company, education and reference is stored in <span class="theme-link">Portfolio Site V2 Canvas</span> for the design
 - Also see “Portfolio V2” in Freeform for design ideas
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -122,7 +116,7 @@ An updated personal portfolio website for displaying my skills and past projects
 
 #### About Me Short
 
-An enthusiastic individual with a strong automotive background seeking a stimulating role in which to utilise organisational skills, apply logical intuition and help build long term success within an exciting environment - TBC
+An enthusiastic individual with a passion for software and data seeking a stimulating role in which to utilise organisational skills, apply logical intuition and help build long term success within an exciting environment
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -6,11 +6,11 @@ tags:
   - portfolio
   - project/completed/work
 modified: 2025-07-28T07:42:33+01:00
-viewCount: 9
+viewCount: 10
 aliases:
   - Pipeline
 projectURL: 
-codeURL: 
+codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Project%20Pipeline?csf=1&web=1&e=nVEm7I

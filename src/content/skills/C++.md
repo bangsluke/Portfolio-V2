@@ -1,35 +1,29 @@
 ---
 tags:
-  - tag
-  - software
+  - language
+  - synced
+  - coding
   - skill
+  - notes
+  - tag
   - portfolio
-created: 2025-06-02T17:12:00
-modified: 2025-07-26T08:35:18+01:00
-viewCount: 3
-aliases:
-  - Microsoft Access
-skillRating: 20
-skillDescription: Have come across and helped maintain a couple of Access databases without fully setting up or owning my own.
-logoFileName: access.svg
+created: 2025-05-16T15:38:00
+modified: 2025-07-02T14:20:10+01:00
+viewCount: 7
+aliases: 
+skillRating: 5
+skillDescription: Very minor experience in fixing small scripts for developers.
+logoFileName: CPlusPlus.svg
 ---
 
-# Access
+# C++
 
 > [!back] Link back to <span class="theme-link">Skills Notes</span>
 
-> <span class="theme-link">Microsoft</span> Access
-
-## Table of Contents
+## Table of Contents 
 
 ```table-of-contents
 ```
-
-## Links
-
-- n/a
-
->[!top] [Back to top](#Table%20of%20Contents)
 
 ## Skill
 
