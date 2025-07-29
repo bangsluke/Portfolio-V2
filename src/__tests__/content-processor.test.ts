@@ -15,8 +15,31 @@ describe('processContent', () => {
 		expect(processContent('')).toBe('');
 	});
 
+	test('processes Obsidian links to existing projects with alt text', () => {
+		const input =
+			'Check out [[Homepage Website|this project]] for more details';
+		const expected =
+			'Check out <a href="/portfolio/projects/homepage-website" class="theme-link" target="_blank" rel="noopener noreferrer">this project</a> for more details';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes Obsidian links to existing projects without alt text', () => {
+		const input = 'Check out [[Homepage Website]] for more details';
+		const expected =
+			'Check out <a href="/portfolio/projects/homepage-website" class="theme-link" target="_blank" rel="noopener noreferrer">Homepage Website</a> for more details';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes Obsidian links to existing projects with a predeceding parenthesis', () => {
+		const input = 'Check out ([[Homepage Website]] for more details';
+		const expected =
+			'Check out (<a href="/portfolio/projects/homepage-website" class="theme-link" target="_blank" rel="noopener noreferrer">Homepage Website</a> for more details';
+		expect(processContent(input)).toBe(expected);
+	});
+
 	test('processes Obsidian links with alt text', () => {
-		const input = 'Check out [[Project Name|this project]] for more details';
+		const input =
+			'Check out [[Non Existent Project|this project]] for more details';
 		const expected =
 			'Check out <span class="theme-link">this project</span> for more details';
 		expect(processContent(input)).toBe(expected);
@@ -44,7 +67,7 @@ describe('processContent', () => {
 
 	test('processes multiple transformations in one string', () => {
 		const input =
-			'Check [[Project|this]] and visit [GitHub](https://github.com)\nNew line';
+			'Check [[Non Existent Project|this]] and visit [GitHub](https://github.com)\nNew line';
 		const expected =
 			'Check <span class="theme-link">this</span> and visit <a href="https://github.com" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a><br>New line';
 		expect(processContent(input)).toBe(expected);
@@ -53,6 +76,14 @@ describe('processContent', () => {
 	test('handles existing HTML theme-link tags', () => {
 		const input = '<p class="theme-link">Some link</p>';
 		const expected = '<span class="theme-link">Some link</span>';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes real world example of multiple transformations in one string', () => {
+		const input =
+			'A personal documentation site storing key links to the software I use, articles I find useful, and a section on [[Dorkinians FC]] stats. The repo also contains my [[Homepage Website|Homepage]] and [[New Tab Website|New Tab]] pages.';
+		const expected =
+			'A personal documentation site storing key links to the software I use, articles I find useful, and a section on <span class="theme-link">Dorkinians FC</span> stats. The repo also contains my <a href="/portfolio/projects/homepage-website" class="theme-link" target="_blank" rel="noopener noreferrer">Homepage</a> and <a href="/portfolio/projects/new-tab-website" class="theme-link" target="_blank" rel="noopener noreferrer">New Tab</a> pages.';
 		expect(processContent(input)).toBe(expected);
 	});
 });
@@ -121,5 +152,77 @@ describe('processObsidianLink', () => {
 
 	test('handles empty arrays', () => {
 		expect(processObsidianLink([])).toBe('');
+	});
+});
+
+describe('Portfolio About Me processing', () => {
+	test('processes Portfolio About Me content with existing project links', () => {
+		const input =
+			'I have worked on [[Homepage Website]] and [[New Tab Website]] projects.';
+		const expected =
+			'I have worked on <a href="/portfolio/projects/homepage-website" class="theme-link" target="_blank" rel="noopener noreferrer">Homepage Website</a> and <a href="/portfolio/projects/new-tab-website" class="theme-link" target="_blank" rel="noopener noreferrer">New Tab Website</a> projects.';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes Portfolio About Me content with non-existing project links', () => {
+		const input =
+			'I have worked on [[Non Existent Project]] and [[Another Fake Project]] projects.';
+		const expected =
+			'I have worked on <span class="theme-link">Non Existent Project</span> and <span class="theme-link">Another Fake Project</span> projects.';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes Portfolio About Me content with mixed existing and non-existing project links', () => {
+		const input =
+			'I have worked on [[Homepage Website]] and [[Non Existent Project]] projects.';
+		const expected =
+			'I have worked on <a href="/portfolio/projects/homepage-website" class="theme-link" target="_blank" rel="noopener noreferrer">Homepage Website</a> and <span class="theme-link">Non Existent Project</span> projects.';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes Portfolio About Me content with alt text links', () => {
+		const input =
+			'I have worked on [[Homepage Website|my homepage]] and [[New Tab Website|new tab]] projects.';
+		const expected =
+			'I have worked on <a href="/portfolio/projects/homepage-website" class="theme-link" target="_blank" rel="noopener noreferrer">my homepage</a> and <a href="/portfolio/projects/new-tab-website" class="theme-link" target="_blank" rel="noopener noreferrer">new tab</a> projects.';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes Portfolio About Me content with markdown links', () => {
+		const input =
+			'Check out my [GitHub profile](https://github.com/bangsluke) for more projects.';
+		const expected =
+			'Check out my <a href="https://github.com/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub profile</a> for more projects.';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes Portfolio About Me content with newlines', () => {
+		const input =
+			'I am a developer.\nI work on various projects.\nI love coding.';
+		const expected =
+			'I am a developer.<br>I work on various projects.<br>I love coding.';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes complex Portfolio About Me content with multiple transformations', () => {
+		const input =
+			'I have worked on [[Homepage Website|my homepage]] and [[Non Existent Project]] projects.\nCheck out my [GitHub](https://github.com/bangsluke) for more.';
+		const expected =
+			'I have worked on <a href="/portfolio/projects/homepage-website" class="theme-link" target="_blank" rel="noopener noreferrer">my homepage</a> and <span class="theme-link">Non Existent Project</span> projects.<br>Check out my <a href="https://github.com/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a> for more.';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes external Obsidian images', () => {
+		const input = '![[https://i.imgur.com/AKxdBiC.png]]';
+		const expected =
+			'<img src="https://i.imgur.com/AKxdBiC.png" alt="External Obsidian image">';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes internal Obsidian images', () => {
+		const input = '![[20241201 Player Stats Page Design.jpeg]]';
+		const expected =
+			'<!-- Image removed during sync: 20241201 Player Stats Page Design.jpeg -->';
+		expect(processContent(input)).toBe(expected);
 	});
 });

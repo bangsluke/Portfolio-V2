@@ -6,15 +6,38 @@
 export function processContent(content: string | undefined | null): string {
 	if (!content) return '';
 
+	// Get list of existing project names for link conversion
+	const existingProjects = getExistingProjectNames();
+
 	return (
 		content
-			// First, handle [[Link Name|AltName]] format to extract AltName and make it bold and theme green
+			// First, handle [[Link Name|AltName]] format - check if it's an existing project
 			.replace(
-				/\[\[([^|]+)\|([^\]]+)\]\]/g,
-				'<span class="theme-link">$2</span>'
+				/\[\[([^|\]]+)\|([^\]]+)\]\]/g,
+				(match, projectName, altText) => {
+					const slug = convertProjectNameToSlug(projectName);
+					if (existingProjects.includes(projectName)) {
+						return `<a href="/portfolio/projects/${slug}" class="theme-link" target="_blank" rel="noopener noreferrer">${altText}</a>`;
+					}
+					return `<span class="theme-link">${altText}</span>`;
+				}
 			)
-			// Then handle simple Obsidian links [[text]] -> bold and theme green text
-			.replace(/\[\[([^\]]+)\]\]/g, '<span class="theme-link">$1</span>')
+			// Handle external Obsidian images ![[https://...]] (must be before simple links)
+			.replace(/!\[\[(https?:\/\/[^\]]+)\]\]/g, (match, imageUrl) => {
+				return `<img src="${imageUrl}" alt="External Obsidian image">`;
+			})
+			// Handle internal Obsidian images ![[filename]] (must be before simple links)
+			.replace(/!\[\[([^\]]+)\]\]/g, (match, filename) => {
+				return `<!-- Image removed during sync: ${filename} -->`;
+			})
+			// Then handle simple Obsidian links [[text]] - check if it's an existing project
+			.replace(/\[\[([^\]]+)\]\]/g, (match, projectName) => {
+				const slug = convertProjectNameToSlug(projectName);
+				if (existingProjects.includes(projectName)) {
+					return `<a href="/portfolio/projects/${slug}" class="theme-link" target="_blank" rel="noopener noreferrer">${projectName}</a>`;
+				}
+				return `<span class="theme-link">${projectName}</span>`;
+			})
 			// Handle existing HTML theme-link tags to ensure they're properly styled
 			.replace(
 				/<p class="theme-link">([^<]+)<\/p>/g,
@@ -36,6 +59,32 @@ export function processContent(content: string | undefined | null): string {
 				'<a href="$2" class="theme-link" target="_blank" rel="noopener noreferrer">$1</a>'
 			)
 	);
+}
+
+/**
+ * Get list of existing project names from the projects directory
+ * This is used to determine if an Obsidian link should be converted to a project link
+ */
+function getExistingProjectNames(): string[] {
+	try {
+		const fs = require('fs');
+		const path = require('path');
+
+		// Path to the projects directory
+		const projectsDir = path.join(process.cwd(), 'src', 'content', 'projects');
+
+		// Read all .md files in the projects directory
+		const files = fs.readdirSync(projectsDir);
+		const projectNames = files
+			.filter(file => file.endsWith('.md'))
+			.map(file => file.replace('.md', ''));
+
+		return projectNames;
+	} catch (error) {
+		console.error('Error reading project names:', error);
+		// Fallback to empty array if there's an error
+		return [];
+	}
 }
 
 /**

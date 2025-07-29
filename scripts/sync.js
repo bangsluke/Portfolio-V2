@@ -1142,7 +1142,7 @@ async function sendEmailNotification() {
 }
 
 // Sync Portfolio About Me file specifically
-function syncPortfolioAboutMe() {
+async function syncPortfolioAboutMe() {
 	try {
 		// Search for the file recursively in the Obsidian vault
 		const aboutMePath = findFileRecursively(
@@ -1162,11 +1162,12 @@ function syncPortfolioAboutMe() {
 		// Read content from Obsidian
 		let content = fs.readFileSync(aboutMePath, 'utf8');
 
-		// Process Obsidian links in the content
-		content = processObsidianLinks(content);
+		// Process content using the new content processor (only process the body, not frontmatter)
+		const processedContent =
+			await processObsidianLinksInContentOnlyWithNewProcessor(content);
 
 		// Remove "about-me-" from frontmatter
-		content = removeAboutMeFromFrontmatter(content);
+		content = removeAboutMeFromFrontmatter(processedContent);
 
 		// Write content to Astro
 		fs.writeFileSync(targetAboutMePath, content, 'utf8');
@@ -1185,6 +1186,40 @@ function syncPortfolioAboutMe() {
 			timestamp: new Date().toISOString(),
 		});
 		syncErrors.summary.errors++;
+	}
+}
+
+// Process Obsidian links only in the content body using the new content processor
+async function processObsidianLinksInContentOnlyWithNewProcessor(content) {
+	try {
+		// Import the new content processor
+		const { processContent } = await import('./content-processor.js');
+
+		// Split content into frontmatter and body
+		const frontmatterMatch = content.match(
+			/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/
+		);
+
+		if (frontmatterMatch) {
+			const frontmatter = frontmatterMatch[1];
+			const body = frontmatterMatch[2];
+
+			// Only process Obsidian links in the body, not in frontmatter
+			const processedBody = processContent(body);
+
+			// Reconstruct the content with processed body but unchanged frontmatter
+			return `---\n${frontmatter}\n---\n\n${processedBody}`;
+		} else {
+			// If no frontmatter found, process the entire content
+			return processContent(content);
+		}
+	} catch (error) {
+		console.error(
+			'Error using new content processor, falling back to old method:',
+			error.message
+		);
+		// Fallback to old method if new processor fails
+		return processObsidianLinksInContentOnly(content);
 	}
 }
 
@@ -1326,7 +1361,7 @@ async function main() {
 
 		// Sync Portfolio About Me file specifically
 		console.log('📄 Syncing Portfolio About Me file...');
-		syncPortfolioAboutMe();
+		await syncPortfolioAboutMe();
 
 		// Post-process content (only for production mode)
 		if (SYNC_MODE === 'production') {
