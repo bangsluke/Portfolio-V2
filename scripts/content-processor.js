@@ -59,7 +59,7 @@ function processContent(content) {
 				(match, projectName, altText) => {
 					const slug = convertProjectNameToSlug(projectName);
 					if (existingProjects.includes(projectName)) {
-						return `<a href="/portfolio/projects/${slug}" class="theme-link">${altText}</a>`;
+						return `<a href="/projects/${slug}" class="theme-link">${altText}</a>`;
 					}
 					return `<span class="theme-link">${altText}</span>`;
 				}
@@ -76,7 +76,7 @@ function processContent(content) {
 			.replace(/\[\[([^\]]+)\]\]/g, (match, projectName) => {
 				const slug = convertProjectNameToSlug(projectName);
 				if (existingProjects.includes(projectName)) {
-					return `<a href="/portfolio/projects/${slug}" class="theme-link">${projectName}</a>`;
+					return `<a href="/projects/${slug}" class="theme-link">${projectName}</a>`;
 				}
 				return `<span class="theme-link">${projectName}</span>`;
 			})
@@ -86,13 +86,10 @@ function processContent(content) {
 				'<span class="theme-link">$1</span>'
 			)
 			// Convert hardcoded project links to use slugs
-			.replace(
-				/href="\/portfolio\/projects\/([^"]+)"/g,
-				(match, projectName) => {
-					const slug = convertProjectNameToSlug(projectName);
-					return `href="/portfolio/projects/${slug}"`;
-				}
-			)
+			.replace(/href="\/projects\/([^"]+)"/g, (match, projectName) => {
+				const slug = convertProjectNameToSlug(projectName);
+				return `href="/projects/${slug}"`;
+			})
 			// Convert markdown headings to HTML headings (must be before newline conversion)
 			.replace(/^#{6}\s+(.+)$/gm, '<h6>$1</h6>')
 			.replace(/^#{5}\s+(.+)$/gm, '<h5>$1</h5>')

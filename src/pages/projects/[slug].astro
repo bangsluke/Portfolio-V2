@@ -1,13 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
-import CustomerAndClientCarouselItem from '../../../components/portfolio/CustomerAndClientCarouselItem.astro';
-import SkillPill from '../../../components/ui/SkillPill.astro';
-import Layout from '../../../layouts/Layout.astro';
+import CustomerAndClientCarouselItem from '../../components/portfolio/CustomerAndClientCarouselItem.astro';
+import SkillPill from '../../components/ui/SkillPill.astro';
+import Layout from '../../layouts/Layout.astro';
 import {
 	processContent,
 	processObsidianLink,
-} from '../../../utils/content-processor';
-import { extractNameFromFilename } from '../../../utils/filename-utils';
+} from '../../utils/content-processor';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 
 export async function getStaticPaths() {
 	const projects = await getCollection('projects');
@@ -187,7 +187,7 @@ const ogimage = {
 							<div class="mb-6">
 								<span class="text-lg text-gray-300 mr-3">Category:</span>
 								<a
-									href={`/portfolio/projects?category=${encodeURIComponent(data.projectCategory)}`}
+									href={`/projects?category=${encodeURIComponent(data.projectCategory)}`}
 									class="inline-block bg-theme-400 hover:bg-theme-500 text-black font-bold px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
 									{data.projectCategory}
 								</a>

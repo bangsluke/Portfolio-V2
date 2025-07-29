@@ -17,8 +17,13 @@ if (!staticData) {
 
 // Get filter options, filtered to only show tags that exist in skills
 const existingTags = skills.flatMap(skill => skill.data.tags || []);
+// Normalize tags: treat 'language' as 'framework' to avoid duplicates
+const normalizedTags = existingTags.map(tag =>
+	tag === 'language' ? 'framework' : tag
+);
+const uniqueTags = [...new Set(normalizedTags)];
 const filterOptions = SKILLS_FILTER_OPTIONS.filter(
-	tag => tag === 'all' || existingTags.includes(tag)
+	tag => tag === 'all' || uniqueTags.includes(tag)
 );
 ---
 
@@ -52,7 +57,7 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 						<!-- Reset Button -->
 						<button
 							id="skills-reset-btn"
-							class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1 text-sm text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+							class="global-element global-button"
 							title="Reset to default view - clear filters, reset to skill rating, and center graph">
 							Reset
 						</button>
@@ -60,7 +65,7 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 						<!-- Toggle Button -->
 						<button
 							id="skills-toggle-btn"
-							class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1 text-sm text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+							class="global-element global-button"
 							title="Toggle between skill rating and project count sizing">
 							Toggle: Skill Rating
 						</button>
@@ -69,7 +74,8 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 						<div class="relative">
 							<button
 								id="skills-filter-btn"
-								class="global-form-element bg-transparent px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-theme-400 focus:border-transparent flex items-center gap-2 min-w-[120px]">
+								class="global-element global-form-element"
+								title="Filter skills by category">
 								<span id="skills-filter-text">All Skills</span>
 								<svg
 									class="w-4 h-4"
@@ -85,17 +91,17 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 							</button>
 							<div
 								id="skills-filter-dropdown"
-								class="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-50 hidden max-h-60 overflow-y-auto">
+								class="global-dropdown-menu hidden">
 								{
 									filterOptions.map(tag => (
-										<label class="flex items-center px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+										<label>
 											<input
 												type="checkbox"
 												value={tag}
-												class="skills-filter-checkbox mr-2 rounded border-gray-300 dark:border-gray-600 text-theme-400 focus:ring-theme-400"
+												class="skills-filter-checkbox"
 												checked={tag === 'all'}
 											/>
-											<span class="text-sm text-gray-900 dark:text-gray-100">
+											<span>
 												{tag === 'all'
 													? 'All Skills'
 													: tag === 'framework'
@@ -171,7 +177,8 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 						<div class="relative">
 							<button
 								id="tech-filter-btn"
-								class="global-form-element bg-transparent px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-theme-400 focus:border-transparent flex items-center gap-2 min-w-[120px]">
+								class="global-element global-form-element"
+								title="Filter tech categories">
 								<span id="tech-filter-text">All Categories</span>
 								<svg
 									class="w-4 h-4"
@@ -187,42 +194,36 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 							</button>
 							<div
 								id="tech-filter-dropdown"
-								class="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-50 hidden max-h-60 overflow-y-auto">
-								<div class="p-2">
-									<div
-										class="text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-2 px-2">
+								class="global-dropdown-menu hidden">
+								<div>
+									<div class="text-xs font-medium text-zinc-300 mb-2 px-2">
 										Filter by category:
 									</div>
-									<label
-										class="flex items-center px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+									<label>
 										<input
 											type="checkbox"
 											value="all"
-											class="tech-filter-checkbox mr-2 rounded border-gray-300 dark:border-gray-600 text-theme-400 focus:ring-theme-400"
+											class="tech-filter-checkbox"
 											checked
 										/>
-										<span class="text-sm text-gray-900 dark:text-gray-100"
-											>All Categories</span
-										>
+										<span>All Categories</span>
 									</label>
 									{
 										filterOptions
 											.filter(tag => tag !== 'all')
 											.map(tag => (
-												<label class="flex items-center px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+												<label>
 													<input
 														type="checkbox"
 														value={tag}
-														class="tech-filter-checkbox mr-2 rounded border-gray-300 dark:border-gray-600 text-theme-400 focus:ring-theme-400"
+														class="tech-filter-checkbox"
 													/>
-													<span class="text-sm text-gray-900 dark:text-gray-100">
-														{tag === 'framework'
-															? 'Frameworks and Libraries'
-															: tag === 'language'
-																? 'Languages & Frameworks'
-																: tag === 'other'
-																	? 'Other'
-																	: tag.charAt(0).toUpperCase() + tag.slice(1)}
+													<span>
+														{tag === 'framework' || tag === 'language'
+															? 'Frameworks & Languages'
+															: tag === 'other'
+																? 'Other'
+																: tag.charAt(0).toUpperCase() + tag.slice(1)}
 													</span>
 												</label>
 											))

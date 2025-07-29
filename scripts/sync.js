@@ -679,7 +679,7 @@ function processObsidianLinks(content) {
 			}
 
 			if (slug) {
-				return `<a href="/portfolio/projects/${slug}" class="theme-link">${altText}</a>`;
+				return `<a href="/projects/${slug}" class="theme-link">${altText}</a>`;
 			}
 			// If not a project, keep as bold text
 			return `<span class="theme-link">${altText}</span>`;
@@ -691,7 +691,7 @@ function processObsidianLinks(content) {
 	content = content.replace(/\[\[([^\]]+)\]\]/g, (match, projectName) => {
 		const slug = projectMappings[projectName];
 		if (slug) {
-			return `<a href="/portfolio/projects/${slug}" class="theme-link">${projectName}</a>`;
+			return `<a href="/projects/${slug}" class="theme-link">${projectName}</a>`;
 		}
 		// If not a project, keep as bold text
 		return `<span class="theme-link">${projectName}</span>`;

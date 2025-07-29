@@ -779,68 +779,9 @@ a.theme-link:hover {
 	filter: blur(10px);
 }
 
-/* Flicking Carousel Styles */
-.flicking-viewport {
-	width: 100%;
-	overflow: hidden;
-}
-
-.plugins-panel {
-	width: 300px;
-	height: 400px;
-	flex-shrink: 0;
-}
-
-.panel-image {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-/* Responsive adjustments for carousel */
-@media (max-width: 768px) {
-	.plugins-panel {
-		width: 250px;
-		height: 300px;
-	}
-}
-
-@media (max-width: 480px) {
-	.plugins-panel {
-		width: 200px;
-		height: 250px;
-	}
-}
-
-/* Global Dropdown Styles */
-.global-dropdown {
-	/* background-color: #9e4933; */
-	background-color: #4c1d95;
-	/* border: 1px solid rgb(108 233 183 / 0.3); */
-	border: 1px solid var(--color-theme-300-rgba-03);
-	border-radius: 0.5rem;
-	z-index: 50;
-}
-
-/* Global Tooltip Styles */
-.global-tooltip {
-	/* background-color: #9e4933; */
-	background-color: #4c1d95;
-	/* border: 1px solid rgb(108 233 183 / 0.3); */
-	border: 1px solid var(--color-theme-300-rgba-03);
-	border-radius: 0.5rem;
-	box-shadow:
-		0 10px 15px -3px rgb(0 0 0 / 0.1),
-		0 4px 6px -4px rgb(0 0 0 / 0.1);
-	z-index: 50;
-	pointer-events: none;
-}
-
-/* Global Form Element Styles */
-.global-form-element {
-	/* background-color: #9e4933; */
-	background-color: #4c1d95;
-	/* border: 1px solid rgb(108 233 183 / 0.3); */
+/* Global Element Styles - for buttons, dropdowns, etc. */
+.global-element {
+	background-color: var(--color-theme-700);
 	border: 1px solid var(--color-theme-300-rgba-03);
 	border-radius: 0.5rem;
 	box-shadow:
@@ -848,6 +789,126 @@ a.theme-link:hover {
 		0 4px 6px -4px rgb(0 0 0 / 0.1);
 	z-index: 50;
 	pointer-events: auto;
+	color: white !important;
+	font-size: 0.75rem;
+	line-height: 1.25rem;
+	padding: 0.5rem 1rem;
+	transition: all 0.3s ease;
+	max-height: 2rem;
+	min-height: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.global-element:hover {
+	background-color: var(--color-theme-900);
+	transform: translateY(-1px);
+	box-shadow:
+		0 20px 25px -5px rgb(0 0 0 / 0.1),
+		0 10px 10px -5px rgb(0 0 0 / 0.04);
+}
+
+/* Global Button Styles */
+.global-button {
+	cursor: pointer;
+}
+
+.global-button:hover {
+	background-color: var(--color-theme-900);
+	transform: translateY(-1px);
+	box-shadow:
+		0 20px 25px -5px rgb(0 0 0 / 0.1),
+		0 10px 10px -5px rgb(0 0 0 / 0.04);
+}
+
+/* Global Dropdown Styles */
+.global-dropdown {
+	cursor: pointer;
+}
+
+.global-dropdown-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	margin-top: 0.25rem;
+	width: 12rem;
+	background-color: var(--color-theme-700);
+	border: 1px solid var(--color-theme-300-rgba-03);
+	border-radius: 0.5rem;
+	box-shadow:
+		0 10px 15px -3px rgb(0 0 0 / 0.1),
+		0 4px 6px -4px rgb(0 0 0 / 0.1);
+	z-index: 50;
+	display: block;
+	max-height: 15rem;
+	overflow-y: auto;
+	pointer-events: auto;
+	color: white;
+}
+
+.global-dropdown-menu.hidden {
+	display: none;
+}
+
+.global-dropdown-menu label {
+	display: flex;
+	align-items: center;
+	padding: 0.5rem 0.75rem;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+	pointer-events: auto;
+}
+
+.global-dropdown-menu label:hover {
+	background-color: var(--color-theme-600);
+}
+
+.global-dropdown-menu input[type='checkbox'] {
+	margin-right: 0.5rem;
+	border-radius: 0.25rem;
+	border: 1px solid var(--color-theme-300-rgba-03);
+	background-color: var(--color-theme-800);
+	color: var(--color-theme-400);
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.global-dropdown-menu input[type='checkbox']:focus {
+	ring: 2px;
+	ring-color: var(--color-theme-400);
+	border-color: transparent;
+}
+
+.global-dropdown-menu span {
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	color: white;
+	pointer-events: auto;
+}
+
+.global-dropdown-menu .text-xs {
+	font-size: 0.75rem;
+	line-height: 1rem;
+	color: #d1d5db;
+	pointer-events: none;
+}
+
+/* Global Form Element Styles */
+.global-form-element {
+	cursor: pointer;
+}
+
+/* Global Tooltip Styles */
+.global-tooltip {
+	background-color: var(--color-theme-700);
+	border: 1px solid var(--color-theme-300-rgba-03);
+	border-radius: 0.5rem;
+	box-shadow:
+		0 10px 15px -3px rgb(0 0 0 / 0.1),
+		0 4px 6px -4px rgb(0 0 0 / 0.1);
+	z-index: 50;
+	pointer-events: none;
 }
 
 /* Global Tooltip for Form Elements (allows interaction) */
@@ -873,30 +934,99 @@ a.theme-link:hover {
 
 .global-tooltip-arrow-top {
 	bottom: -8px;
-	/* border-top-color: #1a232a; */
-	border-top-color: #4c1d95;
+	border-top-color: var(--color-theme-900);
 	border-bottom: none;
 }
 
 .global-tooltip-arrow-bottom {
 	top: -8px;
-	/* border-bottom-color: #1a232a; */
-	border-bottom-color: #4c1d95;
+	border-bottom-color: var(--color-theme-900);
 	border-top: none;
 }
 
 .global-tooltip-arrow-left {
 	right: -8px;
-	/* border-left-color: #1a232a; */
-	border-left-color: #4c1d95;
+	border-left-color: var(--color-theme-900);
 	border-right: none;
 }
 
 .global-tooltip-arrow-right {
 	left: -8px;
-	/* border-right-color: #1a232a; */
-	border-right-color: #4c1d95;
+	border-right-color: var(--color-theme-900);
 	border-left: none;
+}
+
+/* Style the Carousel Containers */
+.carousel-container {
+	width: 100%;
+	position: relative;
+	height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	padding: 20px 0; /* Add padding to accommodate scaled items */
+}
+
+.carousel-item {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 1rem; /* rounded-2xl = 16px */
+	overflow: hidden;
+	cursor: pointer;
+	transition: all 0.3s ease; /* transition-all duration-300 */
+}
+
+.carousel-item:hover {
+	transform: scale(1.05); /* hover:scale-105 */
+}
+
+/* Flicking Carousel Styles */
+.flicking-viewport {
+	width: 100%;
+	height: 300px;
+	overflow: hidden;
+	padding: 20px 0; /* Add padding to accommodate scaled items */
+}
+
+.plugins-panel {
+	width: 260px;
+	height: 260px;
+	flex-shrink: 0;
+	margin: 0 20px;
+}
+
+.flicking-panel {
+	width: 260px;
+	height: 260px;
+	flex-shrink: 0;
+	margin: 0 20px;
+}
+
+.panel-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Responsive adjustments for carousel */
+@media (max-width: 768px) {
+	.plugins-panel,
+	.flicking-panel {
+		width: 260px;
+		height: 260px;
+		margin: 0 10px;
+	}
+}
+
+@media (max-width: 480px) {
+	.plugins-panel,
+	.flicking-panel {
+		width: 250px;
+		height: 250px;
+		margin: 0 5px;
+	}
 }
 
 /* Mobile Overflow Prevention */
@@ -905,9 +1035,103 @@ a.theme-link:hover {
 	body {
 		overflow-x: hidden;
 		max-width: 100vw;
+		width: 100%;
 	}
 
 	* {
 		max-width: 100%;
+		box-sizing: border-box;
+	}
+
+	/* Fix carousel overflow issues */
+	.flicking-viewport {
+		width: 100% !important;
+		max-width: 100% !important;
+		height: 240px !important;
+		overflow: hidden !important;
+		padding: 15px 0 !important; /* Add padding for mobile scaled items */
+	}
+
+	/* Ensure all sections don't overflow */
+	section {
+		overflow-x: hidden;
+		max-width: 100vw;
+	}
+
+	/* Fix any potential table overflow */
+	table {
+		max-width: 100%;
+		overflow-x: auto;
+		display: block;
+	}
+
+	/* Fix code blocks overflow */
+	pre {
+		max-width: 100%;
+		overflow-x: auto;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+	}
+
+	/* Fix image overflow */
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	/* Fix any absolute positioned elements that might overflow */
+	.absolute,
+	.fixed {
+		max-width: 100vw;
+	}
+
+	/* Fix any flex containers that might overflow */
+	.flex {
+		flex-wrap: wrap;
+	}
+
+	/* Fix any grid containers that might overflow */
+	.grid {
+		grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+	}
+}
+
+/* Additional fixes for very small screens */
+@media (max-width: 480px) {
+	html,
+	body {
+		overflow-x: hidden;
+		max-width: 100vw;
+	}
+
+	/* Ensure carousel panels don't overflow on very small screens */
+	.plugins-panel,
+	.flicking-panel {
+		width: 250px !important;
+		height: 250px !important;
+		margin: 0 5px !important;
+		padding: 10px 0 !important; /* Reduced padding for very small screens */
+	}
+
+	/* Fix any padding issues that might cause overflow */
+	.px-8 {
+		padding-left: 1rem !important;
+		padding-right: 1rem !important;
+	}
+
+	/* Ensure all containers are properly constrained */
+	.max-w-7xl,
+	.max-w-6xl,
+	.max-w-5xl,
+	.max-w-4xl,
+	.max-w-3xl,
+	.max-w-2xl,
+	.max-w-xl,
+	.max-w-lg,
+	.max-w-md,
+	.max-w-sm {
+		max-width: calc(100vw - 2rem) !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
 	}
 }

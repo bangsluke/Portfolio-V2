@@ -36,7 +36,7 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "The report section for the <a href=\"/portfolio/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a> showing individual <span class=\"theme-link\">RLE International</span> project data."
+shortDescription: "The report section for the <a href=\"/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a> showing individual <span class=\"theme-link\">RLE International</span> project data."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 name: "Project Finance Tracking Report"

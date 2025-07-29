@@ -38,7 +38,7 @@ powerShellAlias: backend
 version: 1
 portfolioOrder: 1
 shortDescription: "The backend server and source of data for several of my projects, allowing a singular point of management and maintenance."
-longDescription: "The source of data for several projects including my <a href=\"/portfolio/projects/travel-website\" class=\"theme-link\">Travel Website</a> and <a href=\"/portfolio/projects/portfolio-site-v2\" class=\"theme-link\">Portfolio Site V2</a>, providing a route for data retrieval from a <span class=\"theme-link\">Neo4j</span> graph using <span class=\"theme-link\">GraphQL</span> queries."
+longDescription: "The source of data for several projects including my <a href=\"/projects/travel-website\" class=\"theme-link\">Travel Website</a> and <a href=\"/projects/portfolio-site-v2\" class=\"theme-link\">Portfolio Site V2</a>, providing a route for data retrieval from a <span class=\"theme-link\">Neo4j</span> graph using <span class=\"theme-link\">GraphQL</span> queries."
 lessonsLearned: "Taught me about setting up a <span class=\"theme-link\">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class=\"theme-link\">Python</span> code in a growing codebase given my past experience with <span class=\"theme-link\">Python</span> had been for single script projects.<br>Also forced me into developing debugging documentation for myself after making the same mistakes twice and ensuring a third time never happened by writing a checklist for understanding why the backend server crashed."
 name: "Backend Server"
 ---

@@ -19,21 +19,21 @@ describe('processContent', () => {
 		const input =
 			'Check out [[Homepage Website|this project]] for more details';
 		const expected =
-			'Check out <a href="/portfolio/projects/homepage-website" class="theme-link">this project</a> for more details';
+			'Check out <a href="/projects/homepage-website" class="theme-link">this project</a> for more details';
 		expect(processContent(input)).toBe(expected);
 	});
 
 	test('processes Obsidian links to existing projects without alt text', () => {
 		const input = 'Check out [[Homepage Website]] for more details';
 		const expected =
-			'Check out <a href="/portfolio/projects/homepage-website" class="theme-link">Homepage Website</a> for more details';
+			'Check out <a href="/projects/homepage-website" class="theme-link">Homepage Website</a> for more details';
 		expect(processContent(input)).toBe(expected);
 	});
 
 	test('processes Obsidian links to existing projects with a predeceding parenthesis', () => {
 		const input = 'Check out ([[Homepage Website]] for more details';
 		const expected =
-			'Check out (<a href="/portfolio/projects/homepage-website" class="theme-link">Homepage Website</a> for more details';
+			'Check out (<a href="/projects/homepage-website" class="theme-link">Homepage Website</a> for more details';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -112,7 +112,7 @@ describe('processContent', () => {
 		const input =
 			'A personal documentation site storing key links to the software I use, articles I find useful, and a section on [[Dorkinians FC]] stats. The repo also contains my [[Homepage Website|Homepage]] and [[New Tab Website|New Tab]] pages.';
 		const expected =
-			'A personal documentation site storing key links to the software I use, articles I find useful, and a section on <span class="theme-link">Dorkinians FC</span> stats. The repo also contains my <a href="/portfolio/projects/homepage-website" class="theme-link">Homepage</a> and <a href="/portfolio/projects/new-tab-website" class="theme-link">New Tab</a> pages.';
+			'A personal documentation site storing key links to the software I use, articles I find useful, and a section on <span class="theme-link">Dorkinians FC</span> stats. The repo also contains my <a href="/projects/homepage-website" class="theme-link">Homepage</a> and <a href="/projects/new-tab-website" class="theme-link">New Tab</a> pages.';
 		expect(processContent(input)).toBe(expected);
 	});
 });
@@ -189,7 +189,7 @@ describe('Portfolio About Me processing', () => {
 		const input =
 			'I have worked on [[Homepage Website]] and [[New Tab Website]] projects.';
 		const expected =
-			'I have worked on <a href="/portfolio/projects/homepage-website" class="theme-link">Homepage Website</a> and <a href="/portfolio/projects/new-tab-website" class="theme-link">New Tab Website</a> projects.';
+			'I have worked on <a href="/projects/homepage-website" class="theme-link">Homepage Website</a> and <a href="/projects/new-tab-website" class="theme-link">New Tab Website</a> projects.';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -205,7 +205,7 @@ describe('Portfolio About Me processing', () => {
 		const input =
 			'I have worked on [[Homepage Website]] and [[Non Existent Project]] projects.';
 		const expected =
-			'I have worked on <a href="/portfolio/projects/homepage-website" class="theme-link">Homepage Website</a> and <span class="theme-link">Non Existent Project</span> projects.';
+			'I have worked on <a href="/projects/homepage-website" class="theme-link">Homepage Website</a> and <span class="theme-link">Non Existent Project</span> projects.';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -213,7 +213,7 @@ describe('Portfolio About Me processing', () => {
 		const input =
 			'I have worked on [[Homepage Website|my homepage]] and [[New Tab Website|new tab]] projects.';
 		const expected =
-			'I have worked on <a href="/portfolio/projects/homepage-website" class="theme-link">my homepage</a> and <a href="/portfolio/projects/new-tab-website" class="theme-link">new tab</a> projects.';
+			'I have worked on <a href="/projects/homepage-website" class="theme-link">my homepage</a> and <a href="/projects/new-tab-website" class="theme-link">new tab</a> projects.';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -237,7 +237,7 @@ describe('Portfolio About Me processing', () => {
 		const input =
 			'I have worked on [[Homepage Website|my homepage]] and [[Non Existent Project]] projects.\nCheck out my [GitHub](https://github.com/bangsluke) for more.';
 		const expected =
-			'I have worked on <a href="/portfolio/projects/homepage-website" class="theme-link">my homepage</a> and <span class="theme-link">Non Existent Project</span> projects.<br>Check out my <a href="https://github.com/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a> for more.';
+			'I have worked on <a href="/projects/homepage-website" class="theme-link">my homepage</a> and <span class="theme-link">Non Existent Project</span> projects.<br>Check out my <a href="https://github.com/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a> for more.';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -281,7 +281,7 @@ describe('Portfolio About Me processing', () => {
 		const input =
 			'# Main Heading\n\nCheck out [[Homepage Website]] and [GitHub](https://github.com)';
 		const expected =
-			'<h1>Main Heading</h1><br><br>Check out <a href="/portfolio/projects/homepage-website" class="theme-link">Homepage Website</a> and <a href="https://github.com" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a>';
+			'<h1>Main Heading</h1><br><br>Check out <a href="/projects/homepage-website" class="theme-link">Homepage Website</a> and <a href="https://github.com" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a>';
 		expect(processContent(input)).toBe(expected);
 	});
 });
@@ -315,7 +315,7 @@ describe('Content processing for different content types', () => {
 		const input =
 			'Led development of [[DVP Tool]] and [[SDP]] projects using [[React]] and [[TypeScript]].';
 		const expected =
-			'Led development of <a href="/portfolio/projects/dvp-tool" class="theme-link">DVP Tool</a> and <a href="/portfolio/projects/sdp" class="theme-link">SDP</a> projects using <span class="theme-link">React</span> and <span class="theme-link">TypeScript</span>.';
+			'Led development of <a href="/projects/dvp-tool" class="theme-link">DVP Tool</a> and <a href="/projects/sdp" class="theme-link">SDP</a> projects using <span class="theme-link">React</span> and <span class="theme-link">TypeScript</span>.';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -331,7 +331,7 @@ describe('Content processing for different content types', () => {
 		const input =
 			'Used extensively in [[Portfolio Site V2]] and [[Travel Website]] projects. Check out my [GitHub](https://github.com/bangsluke) for examples.';
 		const expected =
-			'Used extensively in <a href="/portfolio/projects/portfolio-site-v2" class="theme-link">Portfolio Site V2</a> and <a href="/portfolio/projects/travel-website" class="theme-link">Travel Website</a> projects. Check out my <a href="https://github.com/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a> for examples.';
+			'Used extensively in <a href="/projects/portfolio-site-v2" class="theme-link">Portfolio Site V2</a> and <a href="/projects/travel-website" class="theme-link">Travel Website</a> projects. Check out my <a href="https://github.com/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a> for examples.';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -339,7 +339,7 @@ describe('Content processing for different content types', () => {
 		const input =
 			'I am a [[Frontend Developer]] with experience in [[React]], [[Next.js]], and [[TypeScript]].\n\nCheck out my projects like [[Portfolio Site V2]] and visit my [LinkedIn](https://linkedin.com/in/bangsluke) for more details.';
 		const expected =
-			'I am a <span class="theme-link">Frontend Developer</span> with experience in <span class="theme-link">React</span>, <span class="theme-link">Next.js</span>, and <span class="theme-link">TypeScript</span>.<br><br>Check out my projects like <a href="/portfolio/projects/portfolio-site-v2" class="theme-link">Portfolio Site V2</a> and visit my <a href="https://linkedin.com/in/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">LinkedIn</a> for more details.';
+			'I am a <span class="theme-link">Frontend Developer</span> with experience in <span class="theme-link">React</span>, <span class="theme-link">Next.js</span>, and <span class="theme-link">TypeScript</span>.<br><br>Check out my projects like <a href="/projects/portfolio-site-v2" class="theme-link">Portfolio Site V2</a> and visit my <a href="https://linkedin.com/in/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">LinkedIn</a> for more details.';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -368,9 +368,9 @@ describe('Content processing for different content types', () => {
 
 	test('distinguishes between internal and external links correctly', () => {
 		const input =
-			'Check out my [Portfolio Site V2](/portfolio/projects/portfolio-site-v2) and visit my [GitHub](https://github.com/bangsluke) for more details.';
+			'Check out my [Portfolio Site V2](/projects/portfolio-site-v2) and visit my [GitHub](https://github.com/bangsluke) for more details.';
 		const expected =
-			'Check out my <a href="/portfolio/projects/portfolio-site-v2" class="theme-link">Portfolio Site V2</a> and visit my <a href="https://github.com/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a> for more details.';
+			'Check out my <a href="/projects/portfolio-site-v2" class="theme-link">Portfolio Site V2</a> and visit my <a href="https://github.com/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a> for more details.';
 		expect(processContent(input)).toBe(expected);
 	});
 });

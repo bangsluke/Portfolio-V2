@@ -1,5 +1,62 @@
 # Auto Changes Log
 
+## 2025-01-27 15:10
+### Carousel Container and Card Standardization
+- **Standardized carousel dimensions** across both CustomerAndClientCarousel and ReferencesCarouselComponent:
+  - **Updated container heights**: Set both carousel containers to exactly 300px height for consistent sizing
+  - **Standardized card dimensions**: Set all carousel cards to 260px width and 260px height for uniform appearance
+  - **Enhanced hover scaling**: Cards can now scale to 105% on hover/selection while remaining fully visible within 300px container
+  - **Updated global CSS**: Modified `.plugins-panel` and `.flicking-panel` classes to use consistent 260px dimensions
+  - **Improved responsive design**: Updated mobile breakpoints to maintain proportional scaling on smaller screens
+  - **Fixed overflow issues**: Ensured cards don't get cut off when scaled during hover or selection states
+  - **Maintained functionality**: All existing carousel features (auto-play, selection, navigation) work with new dimensions
+- **Aligned carousel structures** for consistency between both components:
+  - **Standardized class names**: Both carousels now use `flicking-panel` class consistently for panel elements
+  - **Unified click outside handlers**: Updated CustomerAndClientCarousel to use `.flicking-panel` selector instead of `.plugins-panel`
+  - **Consistent Flicking options**: Removed `firstPanelSize` prop from ReferencesCarouselComponent to match CustomerAndClientCarousel
+  - **Aligned card structure**: Updated CompanyCard component to use same structure as ReferencesCarouselComponent cards
+  - **Standardized background handling**: Both cards now use separate background image divs with consistent class names
+  - **Unified overlay structure**: Both cards use identical dark overlay implementation with consistent class names
+  - **Consistent content layout**: Both cards use same content container structure with identical class names and styling
+- **Fixed top edge visibility issue** on hover/selection:
+  - **Added container padding**: Added 20px vertical padding to `.carousel-container` and `.flicking-viewport` to accommodate scaled items
+  - **Prevented clipping**: Scaled items (105%) now have sufficient space to display fully without top edge cutoff
+  - **Enhanced mobile support**: Added 15px padding for mobile viewports and 10px padding for very small screens
+  - **Maintained responsive design**: Padding scales appropriately across different screen sizes
+  - **Preserved functionality**: All hover effects, selection states, and carousel interactions work correctly with new padding
+
+## 2025-01-27 15:00
+### ReferencesCarouselComponent Carousel-Item Class Fix
+- **Fixed carousel-item class implementation** in ReferencesCarouselComponent:
+  - **Updated global CSS**: Fixed `.carousel-item` CSS definition to remove duplicate properties and add hover scale effect
+  - **Added missing classes**: Added `group` and `hover:scale-105` classes to the carousel item div
+  - **Ensured consistent behavior**: Both carousels now have proper hover scaling without cutoff
+  - **Fixed CSS conflicts**: Removed duplicate width properties and conflicting styles
+  - **Maintained functionality**: All hover, selection, and interaction effects work correctly
+
+## 2025-01-27 14:50
+### Mobile Horizontal Scroll Prevention
+- **Enhanced mobile overflow prevention** across the site:
+  - **Updated global CSS**: Enhanced mobile overflow rules in `src/styles/global.css` with comprehensive fixes
+  - **Fixed carousel components**: Updated `CustomerAndClientCarousel.tsx` and `ReferencesCarouselComponent.tsx` to use responsive widths instead of `100vw`
+  - **Added overflow constraints**: Applied `overflow-x: hidden` and `max-width: 100%` to prevent horizontal scroll
+  - **Enhanced responsive design**: Added specific fixes for very small screens (480px and below)
+  - **Fixed container constraints**: Ensured all max-width containers are properly constrained on mobile
+  - **Improved carousel behavior**: Changed from `overflow: visible` to `overflow: hidden` to prevent content overflow
+  - **Added comprehensive mobile rules**: Fixed tables, code blocks, images, and positioned elements that might overflow
+
+## 2025-01-27 14:30
+### Projects Folder Path Update
+- **Updated all project references** across the site:
+  - **Moved projects folder**: From `/pages/portfolio/projects/` to `/pages/projects/`
+  - **Updated content processor**: Modified `src/utils/content-processor.ts` to use new `/projects/` path
+  - **Updated sync scripts**: Modified `scripts/content-processor.js` and `scripts/sync.js` for new path
+  - **Updated components**: Modified `ProjectCard.astro` and `ProjectsGallery.astro` for new path
+  - **Updated test files**: Modified `src/__tests__/content-processor.test.ts` for new path
+  - **Updated content files**: All project markdown files now use `/projects/` links
+  - **Updated about page**: Modified `src/pages/about-me.md` for new project links
+  - **Updated log entries**: Fixed historical log entries to reflect new path structure
+
 ## 2025-01-16 23:00 [main] - Fixed GitHub Actions Obsidian Sync workflow script names, build duplication, and environment variables
 - Updated .github/workflows/obsidian-sync.yml to use correct npm script names
   - Changed sync-obsidian:deploy to sync:prod:deploy to match package.json
@@ -2197,7 +2254,7 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
   - **Better readability**: Maintains original project naming conventions
 
 ### Full Project Gallery Improvements
-- **Enhanced mobile project selection** in `src/pages/portfolio/projects/index.astro`:
+- **Enhanced mobile project selection** in `src/pages/projects/index.astro`:
   - **Mobile-only selection**: Project selection only works on mobile devices
   - **Persistent selection**: Cards stay bright/selected until another card is clicked
   - **Proper deselection**: Only one card can be selected at a time
@@ -2238,7 +2295,7 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 ## 2024-12-19 17:45 - Project Slug Page and Skills Bubble Enhancements
 
 ### Project Slug Page Improvements
-- **Fixed "Developed For" section layout** in `src/pages/portfolio/projects/[slug].astro`:
+- **Fixed "Developed For" section layout** in `src/pages/projects/[slug].astro`:
   - **Centered layout**: Changed from grid to flex layout with `justify-center` for better alignment
   - **Company name display**: Updated to use original filename minus extension instead of slug
   - **Consistent naming**: Both companies and clients now use the same `getCompanyName()` function
@@ -2303,7 +2360,7 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
 ## 2024-12-19 18:06 - Project Slug Page Layout Width Standardization
 
 ### Layout Width Consistency
-- **Updated project slug page layout** in `src/pages/portfolio/projects/[slug].astro`:
+- **Updated project slug page layout** in `src/pages/projects/[slug].astro`:
   - **Consistent content width**: Added `max-w-4xl mx-auto` container to match WorkExperience page
   - **Proper padding structure**: Added `px-8` horizontal padding to all sections
   - **Background consistency**: Added `bg-white dark:bg-gray-900` to match other pages
@@ -2479,3 +2536,64 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
   - Larger icons are more recognizable and easier to identify
   - Better brand visibility for technology logos
   - Improved overall chart readability and professional appearance
+
+## 2025-01-16 23:05 [main] - Fixed SkillsBubbles Reset button red background not showing
+- Updated .global-button CSS rule in global.css to ensure red background displays properly
+  - Added !important to background-color: red to override any conflicting styles
+  - Added !important to color: white to ensure text color is applied
+  - Added hover state with darker red background (#dc2626) and subtle transform effect
+  - Added box-shadow enhancement on hover for better visual feedback
+  - Resolves issue where Reset button wasn't showing red background from global-button class
+  - Ensures consistent styling across all global-button elements
+
+## 2025-01-16 23:10 [main] - Updated CodingSection dropdown to use global CSS styles and fixed functionality
+- Fixed global-dropdown-menu CSS in global.css to properly style dropdown menus
+  - Added proper positioning, sizing, and theming for dropdown containers
+  - Added styles for dropdown labels, checkboxes, and text elements
+  - Ensured consistent color scheme using CSS variables
+  - Added hover effects and proper spacing for dropdown items
+  - Fixed display logic to work with hidden class for proper show/hide functionality
+  - Added pointer-events: auto to ensure click interactions work properly
+- Updated CodingSection.astro dropdown structure to use global CSS classes
+  - Replaced Tailwind classes with global-element and global-form-element classes
+  - Simplified dropdown item structure to use global CSS styling
+  - Added title attribute to filter button for better accessibility
+  - Added hidden class to dropdown initially for proper state management
+  - Maintained all existing JavaScript functionality for dropdown behavior
+  - Ensures consistent styling across all dropdown components in the application
+
+## 2025-01-16 23:15 [main] - Applied global CSS styling to Most Common Techs dropdown
+- Updated tech filter dropdown in CodingSection.astro to use global CSS classes
+  - Replaced Tailwind classes with global-element and global-form-element classes
+  - Changed dropdown container to use global-dropdown-menu class
+  - Simplified dropdown item structure to use global CSS styling
+  - Added title attribute to tech filter button for better accessibility
+  - Added hidden class to dropdown initially for proper state management
+- Enhanced global-dropdown-menu CSS to support header text
+  - Added styles for .text-xs elements within dropdowns for proper visibility
+  - Ensured consistent color scheme and spacing for all dropdown elements
+  - Maintained all existing JavaScript functionality for both dropdowns
+  - Both skills and tech dropdowns now use consistent global styling
+
+## 2025-01-16 23:20 [main] - Removed duplicate filter options by normalizing language and framework tags
+- Updated SKILLS_FILTER_OPTIONS in repoConfig.js to remove duplicate 'language' option
+  - Removed 'language' from the filter options array since it's now combined with 'framework'
+  - Kept 'framework' as the primary option for both frameworks and languages
+- Updated filter logic across all components to normalize 'language' tags to 'framework'
+  - Modified CodingSection.astro to normalize tags before filtering
+  - Updated SkillsBubbles.astro to treat 'language' tags as 'framework' tags
+  - Updated MostCommonTechs.astro to normalize available tags
+  - Added deduplication logic to prevent duplicate filter options
+- Updated display labels to show "Frameworks & Languages" for the combined category
+  - Ensures consistent labeling across all dropdown components
+  - Eliminates confusion between separate framework and language options
+  - Maintains all existing functionality while simplifying the filter structure
+
+## 2025-01-27 14:50
+### Carousel Card Height Adjustments
+- **Reduced carousel card heights** to prevent cutoff when scaled:
+  - **CustomerAndClientCarousel**: Reverted viewport height to 300px and reduced panel height from 280px to 240px
+  - **ReferencesCarouselComponent**: Reverted viewport height to 300px and reduced panel height from 280px to 240px
+  - **Mobile responsiveness**: Updated mobile breakpoint heights (768px: 260px, 480px: 240px)
+  - **Prevents card cutoff**: Cards now have sufficient space when scaled to 105% on hover/selection
+  - **Maintains original layout**: Carousel containers remain at original heights while cards are smaller
