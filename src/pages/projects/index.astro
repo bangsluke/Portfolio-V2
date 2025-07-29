@@ -186,7 +186,7 @@ const ogimage = {
 							>
 							<select
 								id="categoryFilter"
-								class="global-form-element bg-transparent text-theme-100 px-4 py-2 rounded-lg border border-theme-400/30 focus:border-theme-400 focus:outline-none transition-colors">
+								class="global-element global-form-element">
 								<option value="">All Categories</option>
 								{
 									projectCategories.map(category => (
@@ -207,7 +207,7 @@ const ogimage = {
 									id="startDateInput"
 									min={`${minYear}-01-01`}
 									max={`${maxYear}-12-31`}
-									class="global-form-element bg-transparent text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert"
+									class="global-element global-form-element"
 									placeholder="Start Date"
 								/>
 								<span class="text-theme-100">-</span>
@@ -216,16 +216,14 @@ const ogimage = {
 									id="endDateInput"
 									min={`${minYear}-01-01`}
 									max={`${maxYear}-12-31`}
-									class="global-form-element bg-transparent text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert"
+									class="global-element global-form-element"
 									placeholder="End Date"
 								/>
 							</div>
 						</div>
 
 						<!-- Clear Filters Button -->
-						<button
-							id="clearFilters"
-							class="px-4 py-2 bg-theme-400 hover:bg-theme-500 text-black font-medium rounded-lg transition-colors duration-300">
+						<button id="clearFilters" class="global-element global-button">
 							Clear Filters
 						</button>
 
@@ -245,7 +243,7 @@ const ogimage = {
 							>
 							<select
 								id="categoryFilterMobile"
-								class="global-form-element bg-transparent text-theme-100 px-4 py-2 rounded-lg border border-theme-400/30 focus:border-theme-400 focus:outline-none transition-colors">
+								class="global-element global-form-element">
 								<option value="">All Categories</option>
 								{
 									projectCategories.map(category => (
@@ -266,7 +264,7 @@ const ogimage = {
 									id="startDateInputMobile"
 									min={`${minYear}-01-01`}
 									max={`${maxYear}-12-31`}
-									class="flex-1 global-form-element bg-transparent text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert"
+									class="flex-1 global-element global-form-element"
 									placeholder="Start Date"
 								/>
 								<span class="text-theme-100">-</span>
@@ -275,7 +273,7 @@ const ogimage = {
 									id="endDateInputMobile"
 									min={`${minYear}-01-01`}
 									max={`${maxYear}-12-31`}
-									class="flex-1 global-form-element bg-transparent text-theme-100 px-3 py-2 rounded border border-theme-400/30 focus:border-theme-400 focus:outline-none [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert"
+									class="flex-1 global-element global-form-element"
 									placeholder="End Date"
 								/>
 							</div>
@@ -284,7 +282,7 @@ const ogimage = {
 						<!-- Clear Filters Button -->
 						<button
 							id="clearFiltersMobile"
-							class="px-4 py-2 bg-theme-400 hover:bg-theme-500 text-black font-medium rounded-lg transition-colors duration-300">
+							class="global-element global-button">
 							Clear Filters
 						</button>
 
