@@ -1,5 +1,21 @@
 # Auto Changes Log
 
+## 2025-01-16 23:00 [main] - Fixed GitHub Actions Obsidian Sync workflow script names, build duplication, and environment variables
+- Updated .github/workflows/obsidian-sync.yml to use correct npm script names
+  - Changed sync-obsidian:deploy to sync:prod:deploy to match package.json
+  - Changed sync-obsidian to sync:prod to match package.json
+  - Updated mobile sync script from node scripts/sync-mobile.js to npm run sync:mobile
+  - Fixed workflow failures caused by non-existent script names in package.json
+- Fixed duplicate build step issue in workflow
+  - Added conditional logic to only run build step when sync doesn't already build
+  - Prevents double building when sync:prod:deploy is used (which already builds)
+  - Ensures build only runs for scheduled runs or when auto_deploy is false
+  - Resolves potential conflicts from running npm run build twice in same workflow
+- Added missing environment variables to workflow
+  - Added SYNC_MODE: 'production' to main sync job to ensure proper sync mode
+  - Added SYNC_MODE: 'mobile' to mobile sync job for correct mobile sync behavior
+  - Ensures sync scripts run with correct configuration for GitHub Actions environment
+
 ## 2025-01-16 22:50 [main] - Fixed SkillsBubbleChart transform NaN error
 - Fixed transform attribute error in SkillsBubbleChart.tsx that was causing "translate(NaN,NaN)" errors
   - Added null coalescing operators (??) to handle undefined x/y values in bubble positioning

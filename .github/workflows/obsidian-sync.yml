@@ -66,16 +66,18 @@ jobs:
         if: env.SKIP_SYNC != 'true'
         run: |
           if [ "${{ github.event.inputs.auto_deploy }}" == "true" ]; then
-            npm run sync-obsidian:deploy
+            npm run sync:prod:deploy
           else
-            npm run sync-obsidian
+            npm run sync:prod
           fi
         env:
           OBSIDIAN_PATH: ${{ env.OBSIDIAN_PATH }}
           PORTFOLIO_TAG: ${{ env.PORTFOLIO_TAG }}
+          SYNC_MODE: 'production'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build project
+      - name: Build project (if not already built by sync)
+        if: env.SKIP_SYNC == 'true' || github.event.inputs.auto_deploy != 'true'
         run: npm run build
 
       - name: Deploy to Netlify
@@ -131,9 +133,10 @@ jobs:
         run: npm ci
 
       - name: Run mobile sync
-        run: node scripts/sync-mobile.js
+        run: npm run sync:mobile
         env:
           MOBILE: 'true'
+          SYNC_MODE: 'mobile'
           OBSIDIAN_PATH: ${{ github.event.inputs.obsidian_path }}
 
       - name: Upload sync artifacts
