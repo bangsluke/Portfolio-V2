@@ -343,6 +343,29 @@ describe('Content processing for different content types', () => {
 		expect(processContent(input)).toBe(expected);
 	});
 
+	test('processes Obsidian callouts with different types', () => {
+		const input =
+			'> [!note] This is a note callout\n\n> [!warning] This is a warning callout\n\n> [!tip] This is a tip callout';
+		const expected =
+			'<div class="callout bg-blue-50 border-blue-200 text-blue-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">📝</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">note</div><br><div class="text-lg leading-relaxed">This is a note callout</div><br></div><br></div><br></div><br><br><div class="callout bg-yellow-50 border-yellow-200 text-yellow-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">⚠️</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">warning</div><br><div class="text-lg leading-relaxed">This is a warning callout</div><br></div><br></div><br></div><br><br><div class="callout bg-emerald-50 border-emerald-200 text-emerald-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">💡</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">tip</div><br><div class="text-lg leading-relaxed">This is a tip callout</div><br></div><br></div><br></div>';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes simple callouts without type', () => {
+		const input = '> This is a simple callout without a type';
+		const expected =
+			'<div class="callout bg-gray-50 border-gray-200 text-gray-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">💬</span><br><div class="flex-1"><br><div class="text-lg leading-relaxed">This is a simple callout without a type</div><br></div><br></div><br></div>';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes callouts with links inside', () => {
+		const input =
+			'> [!info] Check out this [link](https://example.com) and [[Project Name]]';
+		const expected =
+			'<div class="callout bg-cyan-50 border-cyan-200 text-cyan-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">ℹ️</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">info</div><br><div class="text-lg leading-relaxed">Check out this <a href="https://example.com" class="theme-link" target="_blank" rel="noopener noreferrer">link</a> and <span class="theme-link">Project Name</span></div><br></div><br></div><br></div>';
+		expect(processContent(input)).toBe(expected);
+	});
+
 	test('distinguishes between internal and external links correctly', () => {
 		const input =
 			'Check out my [Portfolio Site V2](/portfolio/projects/portfolio-site-v2) and visit my [GitHub](https://github.com/bangsluke) for more details.';

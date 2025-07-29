@@ -102,6 +102,68 @@ function processContent(content) {
 			.replace(/^#{1}\s+(.+)$/gm, '<h1>$1</h1>')
 			// Convert newlines to <br> tags for proper HTML rendering (but not for headings)
 			.replace(/\n/g, '<br>')
+			// Handle Obsidian callouts (lines starting with >) - must be after newline conversion
+			.replace(
+				/^> \[!(\w+)\]\s*(.+)$/gm,
+				(match, calloutType, calloutContent) => {
+					const type = calloutType.toLowerCase();
+					let bgColor = 'bg-blue-50';
+					let borderColor = 'border-blue-200';
+					let textColor = 'text-blue-800';
+					let icon = '💡';
+
+					// Map callout types to colors and icons
+					switch (type) {
+						case 'note':
+							bgColor = 'bg-blue-50';
+							borderColor = 'border-blue-200';
+							textColor = 'text-blue-800';
+							icon = '📝';
+							break;
+						case 'warning':
+							bgColor = 'bg-yellow-50';
+							borderColor = 'border-yellow-200';
+							textColor = 'text-yellow-800';
+							icon = '⚠️';
+							break;
+						case 'error':
+							bgColor = 'bg-red-50';
+							borderColor = 'border-red-200';
+							textColor = 'text-red-800';
+							icon = '❌';
+							break;
+						case 'success':
+							bgColor = 'bg-green-50';
+							borderColor = 'border-green-200';
+							textColor = 'text-green-800';
+							icon = '✅';
+							break;
+						case 'info':
+							bgColor = 'bg-cyan-50';
+							borderColor = 'border-cyan-200';
+							textColor = 'text-cyan-800';
+							icon = 'ℹ️';
+							break;
+						case 'tip':
+							bgColor = 'bg-emerald-50';
+							borderColor = 'border-emerald-200';
+							textColor = 'text-emerald-800';
+							icon = '💡';
+							break;
+						default:
+							bgColor = 'bg-gray-50';
+							borderColor = 'border-gray-200';
+							textColor = 'text-gray-800';
+							icon = '💬';
+					}
+
+					return `<div class="callout ${bgColor} ${borderColor} ${textColor} border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">${icon}</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">${calloutType}</div><br><div class="text-lg leading-relaxed">${calloutContent}</div><br></div><br></div><br></div>`;
+				}
+			)
+			// Handle simple callouts without type (just > text) - must be after newline conversion
+			.replace(/^>\s*(.+)$/gm, (match, calloutContent) => {
+				return `<div class="callout bg-gray-50 border-gray-200 text-gray-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">💬</span><br><div class="flex-1"><br><div class="text-lg leading-relaxed">${calloutContent}</div><br></div><br></div><br></div>`;
+			})
 			// Finally, convert markdown links to HTML with theme green and underline styling
 			// Only add target="_blank" and rel="noopener noreferrer" for external links
 			.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, linkUrl) => {

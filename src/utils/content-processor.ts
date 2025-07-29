@@ -13,68 +13,147 @@ export function processContent(content: string | undefined | null): string {
 	// Get list of existing project names for link conversion
 	const existingProjects = getExistingProjectNames();
 
-	return (
-		content
-			// First, handle [[Link Name|AltName]] format - check if it's an existing project
-			.replace(
-				/\[\[([^|\]]+)\|([^\]]+)\]\]/g,
-				(match, projectName, altText) => {
-					const slug = convertProjectNameToSlug(projectName);
-					if (existingProjects.includes(projectName)) {
-						return `<a href="/portfolio/projects/${slug}" class="theme-link">${altText}</a>`;
-					}
-					return `<span class="theme-link">${altText}</span>`;
-				}
-			)
-			// Handle external Obsidian images ![[https://...]] (must be before simple links)
-			.replace(/!\[\[(https?:\/\/[^\]]+)\]\]/g, (match, imageUrl) => {
-				return `<img src="${imageUrl}" alt="External Obsidian image">`;
-			})
-			// Handle internal Obsidian images ![[filename]] (must be before simple links)
-			.replace(/!\[\[([^\]]+)\]\]/g, (match, filename) => {
-				return `<!-- Image removed during sync: ${filename} -->`;
-			})
-			// Then handle simple Obsidian links [[text]] - check if it's an existing project
-			.replace(/\[\[([^\]]+)\]\]/g, (match, projectName) => {
-				const slug = convertProjectNameToSlug(projectName);
-				if (existingProjects.includes(projectName)) {
-					return `<a href="/portfolio/projects/${slug}" class="theme-link">${projectName}</a>`;
-				}
-				return `<span class="theme-link">${projectName}</span>`;
-			})
-			// Handle existing HTML theme-link tags to ensure they're properly styled
-			.replace(
-				/<p class="theme-link">([^<]+)<\/p>/g,
-				'<span class="theme-link">$1</span>'
-			)
-			// Convert hardcoded project links to use slugs
-			.replace(
-				/href="\/portfolio\/projects\/([^"]+)"/g,
-				(match, projectName) => {
-					const slug = convertProjectNameToSlug(projectName);
-					return `href="/portfolio/projects/${slug}"`;
-				}
-			)
-			// Convert markdown headings to HTML headings (must be before newline conversion)
-			.replace(/^#{6}\s+(.+)$/gm, '<h6>$1</h6>')
-			.replace(/^#{5}\s+(.+)$/gm, '<h5>$1</h5>')
-			.replace(/^#{4}\s+(.+)$/gm, '<h4>$1</h4>')
-			.replace(/^#{3}\s+(.+)$/gm, '<h3>$1</h3>')
-			.replace(/^#{2}\s+(.+)$/gm, '<h2>$1</h2>')
-			.replace(/^#{1}\s+(.+)$/gm, '<h1>$1</h1>')
-			// Convert newlines to <br> tags for proper HTML rendering (but not for headings)
-			.replace(/\n/g, '<br>')
-			// Finally, convert markdown links to HTML with theme green and underline styling
-			// Only add target="_blank" and rel="noopener noreferrer" for external links
-			.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, linkUrl) => {
-				// Check if it's an external link (starts with http or https)
-				if (linkUrl.startsWith('http://') || linkUrl.startsWith('https://')) {
-					return `<a href="${linkUrl}" class="theme-link" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
-				} else {
-					// Internal link - navigate in same tab
-					return `<a href="${linkUrl}" class="theme-link">${linkText}</a>`;
-				}
-			})
+	let processedContent = content
+		// First, handle [[Link Name|AltName]] format - check if it's an existing project
+		.replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, (match, projectName, altText) => {
+			const slug = convertProjectNameToSlug(projectName);
+			if (existingProjects.includes(projectName)) {
+				return `<a href="/portfolio/projects/${slug}" class="theme-link">${altText}</a>`;
+			}
+			return `<span class="theme-link">${altText}</span>`;
+		})
+		// Handle external Obsidian images ![[https://...]] (must be before simple links)
+		.replace(/!\[\[(https?:\/\/[^\]]+)\]\]/g, (match, imageUrl) => {
+			return `<img src="${imageUrl}" alt="External Obsidian image">`;
+		})
+		// Handle internal Obsidian images ![[filename]] (must be before simple links)
+		.replace(/!\[\[([^\]]+)\]\]/g, (match, filename) => {
+			return `<!-- Image removed during sync: ${filename} -->`;
+		})
+		// Then handle simple Obsidian links [[text]] - check if it's an existing project
+		.replace(/\[\[([^\]]+)\]\]/g, (match, projectName) => {
+			const slug = convertProjectNameToSlug(projectName);
+			if (existingProjects.includes(projectName)) {
+				return `<a href="/portfolio/projects/${slug}" class="theme-link">${projectName}</a>`;
+			}
+			return `<span class="theme-link">${projectName}</span>`;
+		})
+		// Handle existing HTML theme-link tags to ensure they're properly styled
+		.replace(
+			/<p class="theme-link">([^<]+)<\/p>/g,
+			'<span class="theme-link">$1</span>'
+		)
+		// Convert hardcoded project links to use slugs
+		.replace(/href="\/portfolio\/projects\/([^"]+)"/g, (match, projectName) => {
+			const slug = convertProjectNameToSlug(projectName);
+			return `href="/portfolio/projects/${slug}"`;
+		})
+		// Convert markdown headings to HTML headings (must be before newline conversion)
+		.replace(/^#{6}\s+(.+)$/gm, '<h6>$1</h6>')
+		.replace(/^#{5}\s+(.+)$/gm, '<h5>$1</h5>')
+		.replace(/^#{4}\s+(.+)$/gm, '<h4>$1</h4>')
+		.replace(/^#{3}\s+(.+)$/gm, '<h3>$1</h3>')
+		.replace(/^#{2}\s+(.+)$/gm, '<h2>$1</h2>')
+		.replace(/^#{1}\s+(.+)$/gm, '<h1>$1</h1>')
+		// Convert newlines to <br> tags for proper HTML rendering (but not for headings)
+		.replace(/\n/g, '<br>');
+
+	// Process callouts after newline conversion
+	// Handle Obsidian callouts with types (lines starting with > [!type])
+	processedContent = processedContent.replace(
+		/^> \[!(\w+)\]\s*(.+)$/gm,
+		(match, calloutType, calloutContent) => {
+			const type = calloutType.toLowerCase();
+			let bgColor = 'bg-blue-50';
+			let borderColor = 'border-blue-200';
+			let textColor = 'text-blue-800';
+			let icon = '💡';
+
+			// Map callout types to colors and icons
+			switch (type) {
+				case 'note':
+					bgColor = 'bg-blue-50';
+					borderColor = 'border-blue-200';
+					textColor = 'text-blue-800';
+					icon = '📝';
+					break;
+				case 'warning':
+					bgColor = 'bg-yellow-50';
+					borderColor = 'border-yellow-200';
+					textColor = 'text-yellow-800';
+					icon = '⚠️';
+					break;
+				case 'error':
+					bgColor = 'bg-red-50';
+					borderColor = 'border-red-200';
+					textColor = 'text-red-800';
+					icon = '❌';
+					break;
+				case 'success':
+					bgColor = 'bg-green-50';
+					borderColor = 'border-green-200';
+					textColor = 'text-green-800';
+					icon = '✅';
+					break;
+				case 'info':
+					bgColor = 'bg-cyan-50';
+					borderColor = 'border-cyan-200';
+					textColor = 'text-cyan-800';
+					icon = 'ℹ️';
+					break;
+				case 'tip':
+					bgColor = 'bg-emerald-50';
+					borderColor = 'border-emerald-200';
+					textColor = 'text-emerald-800';
+					icon = '💡';
+					break;
+				default:
+					bgColor = 'bg-gray-50';
+					borderColor = 'border-gray-200';
+					textColor = 'text-gray-800';
+					icon = '';
+			}
+
+			return `<div class="callout ${bgColor} ${borderColor} ${textColor} border-l-4 p-4 my-6 rounded-r-lg">
+				<div class="flex items-start gap-3">
+					<span class="text-lg">${icon}</span>
+					<div class="flex-1">
+						<div class="font-semibold mb-2 capitalize">${calloutType}</div>
+						<div class="text-lg leading-relaxed">${calloutContent}</div>
+					</div>
+				</div>
+			</div>`;
+		}
+	);
+
+	// Handle simple callouts without type (just > text) - must be after newline conversion
+	processedContent = processedContent.replace(
+		/^>\s*(.+)$/gm,
+		(match, calloutContent) => {
+			return `<div class="callout bg-gray-50 border-gray-200 text-gray-800 border-l-4 p-4 my-6 rounded-r-lg">
+				<div class="flex items-start gap-3">
+					<span class="text-lg">💬</span>
+					<div class="flex-1">
+						<div class="text-lg leading-relaxed">${calloutContent}</div>
+					</div>
+				</div>
+			</div>`;
+		}
+	);
+
+	// Finally, convert markdown links to HTML with theme green and underline styling
+	// Only add target="_blank" and rel="noopener noreferrer" for external links
+	return processedContent.replace(
+		/\[([^\]]+)\]\(([^)]+)\)/g,
+		(match, linkText, linkUrl) => {
+			// Check if it's an external link (starts with http or https)
+			if (linkUrl.startsWith('http://') || linkUrl.startsWith('https://')) {
+				return `<a href="${linkUrl}" class="theme-link" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
+			} else {
+				// Internal link - navigate in same tab
+				return `<a href="${linkUrl}" class="theme-link">${linkText}</a>`;
+			}
+		}
 	);
 }
 

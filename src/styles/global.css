@@ -179,78 +179,88 @@ a.inline-block.leading-5.pl-12 {
 }
 
 .markdown h2 {
-	color: #171717;
-	font-size: 1.875rem;
-	line-height: 2.25rem;
+	letter-spacing: normal;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 2rem;
 	font-weight: 700;
-	margin-top: 4rem;
-	margin-bottom: 2.5rem;
+	color: #171717;
+	margin-top: 2.5rem;
+	margin-bottom: 0.2rem;
+	line-height: 2.5rem;
 }
 
 .dark .markdown h2 {
-	color: white;
+	color: rgb(229 231 235);
 }
 
 .markdown h3 {
+	letter-spacing: normal;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 1.5rem;
-	line-height: 2rem;
-	font-weight: 700;
+	font-weight: 600;
 	color: #171717;
-	margin-top: 1.5rem;
-	margin-bottom: 1rem;
+	margin-top: 2rem;
+	margin-bottom: 0.5rem;
+	line-height: 2rem;
 }
 
 .dark .markdown h3 {
-	color: white;
+	color: rgb(229 231 235);
 }
 
 .markdown h4 {
+	letter-spacing: normal;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 1.25rem;
-	line-height: 1.75rem;
+	font-weight: 600;
 	color: #171717;
-	font-weight: 700;
 	margin-top: 1.5rem;
-	margin-bottom: 1rem;
+	margin-bottom: 0.5rem;
+	line-height: 1.75rem;
 }
 
 .dark .markdown h4 {
-	color: white;
+	color: rgb(229 231 235);
 }
 
 .markdown h5 {
+	letter-spacing: normal;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 1.125rem;
-	line-height: 1.75rem;
-	font-weight: 700;
+	font-weight: 600;
 	color: #171717;
-	margin-top: 1.5rem;
-	margin-bottom: 1rem;
+	margin-top: 1.25rem;
+	margin-bottom: 0.5rem;
+	line-height: 1.5rem;
 }
 
 .dark .markdown h5 {
-	color: white;
+	color: rgb(229 231 235);
 }
 
 .markdown h6 {
+	letter-spacing: normal;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 1rem;
-	line-height: 1.5rem;
-	font-weight: 700;
+	font-weight: 600;
 	color: #171717;
-	margin-top: 1.5rem;
-	margin-bottom: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+	line-height: 1.5rem;
 }
 
 .dark .markdown h6 {
-	color: white;
+	color: rgb(229 231 235);
 }
 
 .markdown p {
 	letter-spacing: normal;
 	font-family: 'Montserrat', sans-serif;
 	text-wrap: pretty;
-	font-size: 1.25rem;
+	font-size: 1.125rem;
 	color: #171717;
-	margin-bottom: 2rem;
-	line-height: 2rem;
+	margin-bottom: 1.5rem;
+	line-height: 1.75rem;
 }
 
 .dark .markdown p {
@@ -259,8 +269,34 @@ a.inline-block.leading-5.pl-12 {
 
 @media (max-width: 768px) {
 	.markdown p {
-		font-size: 1.125rem;
-		line-height: 1.75rem;
+		font-size: 1rem;
+		line-height: 1.625rem;
+	}
+}
+
+/* Callout styling */
+.markdown .callout {
+	letter-spacing: normal;
+	font-family: 'Montserrat', sans-serif;
+	margin: 1.5rem 0;
+	border-radius: 0.5rem;
+}
+
+.dark .markdown .callout {
+	background-color: rgba(17, 24, 39, 0.8) !important;
+	border-color: rgba(156, 163, 175, 0.3) !important;
+	color: rgb(229, 231, 235) !important;
+}
+
+.markdown .callout .text-lg {
+	font-size: 1.125rem;
+	line-height: 1.75rem;
+}
+
+@media (max-width: 768px) {
+	.markdown .callout .text-lg {
+		font-size: 1rem;
+		line-height: 1.625rem;
 	}
 }
 
