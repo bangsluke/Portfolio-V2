@@ -54,11 +54,9 @@ export function processContent(content: string | undefined | null): string {
 		.replace(/^#{4}\s+(.+)$/gm, '<h4>$1</h4>')
 		.replace(/^#{3}\s+(.+)$/gm, '<h3>$1</h3>')
 		.replace(/^#{2}\s+(.+)$/gm, '<h2>$1</h2>')
-		.replace(/^#{1}\s+(.+)$/gm, '<h1>$1</h1>')
-		// Convert newlines to <br> tags for proper HTML rendering (but not for headings)
-		.replace(/\n/g, '<br>');
+		.replace(/^#{1}\s+(.+)$/gm, '<h1>$1</h1>');
 
-	// Process callouts after newline conversion
+	// Process callouts before newline conversion
 	// Handle Obsidian callouts with types (lines starting with > [!type])
 	processedContent = processedContent.replace(
 		/^> \[!(\w+)\]\s*(.+)$/gm,
@@ -114,32 +112,20 @@ export function processContent(content: string | undefined | null): string {
 					icon = '';
 			}
 
-			return `<div class="callout ${bgColor} ${borderColor} ${textColor} border-l-4 p-4 my-6 rounded-r-lg">
-				<div class="flex items-start gap-3">
-					<span class="text-lg">${icon}</span>
-					<div class="flex-1">
-						<div class="font-semibold mb-2 capitalize">${calloutType}</div>
-						<div class="text-lg leading-relaxed">${calloutContent}</div>
-					</div>
-				</div>
-			</div>`;
+			return `<div class="callout ${bgColor} ${borderColor} ${textColor} border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">${icon}</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">${calloutType}</div><br><div class="text-lg leading-relaxed">${calloutContent}</div><br></div><br></div><br></div>`;
 		}
 	);
 
-	// Handle simple callouts without type (just > text) - must be after newline conversion
+	// Handle simple callouts without type (just > text) - must be before newline conversion
 	processedContent = processedContent.replace(
 		/^>\s*(.+)$/gm,
 		(match, calloutContent) => {
-			return `<div class="callout bg-gray-50 border-gray-200 text-gray-800 border-l-4 p-4 my-6 rounded-r-lg">
-				<div class="flex items-start gap-3">
-					<span class="text-lg">💬</span>
-					<div class="flex-1">
-						<div class="text-lg leading-relaxed">${calloutContent}</div>
-					</div>
-				</div>
-			</div>`;
+			return `<div class="callout bg-gray-50 border-gray-200 text-gray-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">💬</span><br><div class="flex-1"><br><div class="text-lg leading-relaxed">${calloutContent}</div><br></div><br></div><br></div>`;
 		}
 	);
+
+	// Convert newlines to <br> tags for proper HTML rendering (but not for headings)
+	processedContent = processedContent.replace(/\n/g, '<br>');
 
 	// Finally, convert markdown links to HTML with theme green and underline styling
 	// Only add target="_blank" and rel="noopener noreferrer" for external links
