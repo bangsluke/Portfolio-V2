@@ -20,7 +20,11 @@ const processedSkills = skills.map(skill => ({
 // Filter options based on existing skill tags
 const existingTags = new Set();
 skills.forEach(skill => {
-	skill.data.tags?.forEach(tag => existingTags.add(tag));
+	skill.data.tags?.forEach(tag => {
+		// Normalize 'language' tags to 'framework' to avoid duplicates
+		const normalizedTag = tag === 'language' ? 'framework' : tag;
+		existingTags.add(normalizedTag);
+	});
 });
 
 const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
@@ -30,7 +34,9 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 	label:
 		option === 'all'
 			? 'All Skills'
-			: option.charAt(0).toUpperCase() + option.slice(1),
+			: option === 'framework'
+				? 'Frameworks & Languages'
+				: option.charAt(0).toUpperCase() + option.slice(1),
 }));
 ---
 
@@ -284,7 +290,7 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 						<!-- Modal Reset Button -->
 						<button
 							id="modal-skills-reset-btn"
-							class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+							class="global-element global-button"
 							title="Reset to default view - clear filters, reset to skill rating, and center graph">
 							Reset
 						</button>
@@ -292,7 +298,7 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 						<!-- Modal Toggle Button -->
 						<button
 							id="modal-skills-toggle-btn"
-							class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+							class="global-element global-button"
 							title="Toggle between skill rating and project count sizing">
 							Toggle: Skill Rating
 						</button>
@@ -301,7 +307,7 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 						<div class="relative">
 							<button
 								id="modal-skills-filter-btn"
-								class="global-form-element bg-transparent px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-theme-400 focus:border-transparent flex items-center gap-2 min-w-[120px]">
+								class="global-element global-form-element">
 								<span id="modal-skills-filter-text">All Skills</span>
 								<svg
 									class="w-4 h-4"
@@ -338,7 +344,8 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 						<button
 							id="close-skills-modal"
 							class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
-							aria-label="Close fullscreen view">
+							aria-label="Close fullscreen view"
+							title="Close fullscreen view">
 							<svg
 								class="w-6 h-6"
 								fill="none"

@@ -2479,3 +2479,55 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
   - Larger icons are more recognizable and easier to identify
   - Better brand visibility for technology logos
   - Improved overall chart readability and professional appearance
+
+## 2025-01-16 23:05 [main] - Fixed SkillsBubbles Reset button red background not showing
+- Updated .global-button CSS rule in global.css to ensure red background displays properly
+  - Added !important to background-color: red to override any conflicting styles
+  - Added !important to color: white to ensure text color is applied
+  - Added hover state with darker red background (#dc2626) and subtle transform effect
+  - Added box-shadow enhancement on hover for better visual feedback
+  - Resolves issue where Reset button wasn't showing red background from global-button class
+  - Ensures consistent styling across all global-button elements
+
+## 2025-01-16 23:10 [main] - Updated CodingSection dropdown to use global CSS styles and fixed functionality
+- Fixed global-dropdown-menu CSS in global.css to properly style dropdown menus
+  - Added proper positioning, sizing, and theming for dropdown containers
+  - Added styles for dropdown labels, checkboxes, and text elements
+  - Ensured consistent color scheme using CSS variables
+  - Added hover effects and proper spacing for dropdown items
+  - Fixed display logic to work with hidden class for proper show/hide functionality
+  - Added pointer-events: auto to ensure click interactions work properly
+- Updated CodingSection.astro dropdown structure to use global CSS classes
+  - Replaced Tailwind classes with global-element and global-form-element classes
+  - Simplified dropdown item structure to use global CSS styling
+  - Added title attribute to filter button for better accessibility
+  - Added hidden class to dropdown initially for proper state management
+  - Maintained all existing JavaScript functionality for dropdown behavior
+  - Ensures consistent styling across all dropdown components in the application
+
+## 2025-01-16 23:15 [main] - Applied global CSS styling to Most Common Techs dropdown
+- Updated tech filter dropdown in CodingSection.astro to use global CSS classes
+  - Replaced Tailwind classes with global-element and global-form-element classes
+  - Changed dropdown container to use global-dropdown-menu class
+  - Simplified dropdown item structure to use global CSS styling
+  - Added title attribute to tech filter button for better accessibility
+  - Added hidden class to dropdown initially for proper state management
+- Enhanced global-dropdown-menu CSS to support header text
+  - Added styles for .text-xs elements within dropdowns for proper visibility
+  - Ensured consistent color scheme and spacing for all dropdown elements
+  - Maintained all existing JavaScript functionality for both dropdowns
+  - Both skills and tech dropdowns now use consistent global styling
+
+## 2025-01-16 23:20 [main] - Removed duplicate filter options by normalizing language and framework tags
+- Updated SKILLS_FILTER_OPTIONS in repoConfig.js to remove duplicate 'language' option
+  - Removed 'language' from the filter options array since it's now combined with 'framework'
+  - Kept 'framework' as the primary option for both frameworks and languages
+- Updated filter logic across all components to normalize 'language' tags to 'framework'
+  - Modified CodingSection.astro to normalize tags before filtering
+  - Updated SkillsBubbles.astro to treat 'language' tags as 'framework' tags
+  - Updated MostCommonTechs.astro to normalize available tags
+  - Added deduplication logic to prevent duplicate filter options
+- Updated display labels to show "Frameworks & Languages" for the combined category
+  - Ensures consistent labeling across all dropdown components
+  - Eliminates confusion between separate framework and language options
+  - Maintains all existing functionality while simplifying the filter structure

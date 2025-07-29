@@ -110,7 +110,6 @@ export const CONTENT_TYPE_MAPPINGS = {
 export const SKILLS_FILTER_OPTIONS = [
 	'all',
 	'framework',
-	'language',
 	'database',
 	'testing',
 	'hosting',

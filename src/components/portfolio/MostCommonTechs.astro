@@ -26,8 +26,10 @@ skills.forEach(skill => {
 	}
 });
 
-// Use predefined filter options from repoConfig.js
-const availableTags = SKILLS_FILTER_OPTIONS.filter(tag => tag !== 'all');
+// Use predefined filter options from repoConfig.js, normalizing language to framework
+const availableTags = SKILLS_FILTER_OPTIONS.filter(tag => tag !== 'all').map(tag => 
+	tag === 'language' ? 'framework' : tag
+);
 
 // Count technology usage across all projects, excluding hosting/security skills
 const techCount: Record<string, number> = {};

@@ -812,35 +812,9 @@ a.theme-link:hover {
 	}
 }
 
-/* Global Dropdown Styles */
-.global-dropdown {
-	/* background-color: #9e4933; */
-	background-color: #4c1d95;
-	/* border: 1px solid rgb(108 233 183 / 0.3); */
-	border: 1px solid var(--color-theme-300-rgba-03);
-	border-radius: 0.5rem;
-	z-index: 50;
-}
-
-/* Global Tooltip Styles */
-.global-tooltip {
-	/* background-color: #9e4933; */
-	background-color: #4c1d95;
-	/* border: 1px solid rgb(108 233 183 / 0.3); */
-	border: 1px solid var(--color-theme-300-rgba-03);
-	border-radius: 0.5rem;
-	box-shadow:
-		0 10px 15px -3px rgb(0 0 0 / 0.1),
-		0 4px 6px -4px rgb(0 0 0 / 0.1);
-	z-index: 50;
-	pointer-events: none;
-}
-
-/* Global Form Element Styles */
-.global-form-element {
-	/* background-color: #9e4933; */
-	background-color: #4c1d95;
-	/* border: 1px solid rgb(108 233 183 / 0.3); */
+/* Global Element Styles - for buttons, dropdowns, etc. */
+.global-element {
+	background-color: var(--color-theme-700);
 	border: 1px solid var(--color-theme-300-rgba-03);
 	border-radius: 0.5rem;
 	box-shadow:
@@ -848,6 +822,126 @@ a.theme-link:hover {
 		0 4px 6px -4px rgb(0 0 0 / 0.1);
 	z-index: 50;
 	pointer-events: auto;
+	color: white !important;
+	font-size: 0.75rem;
+	line-height: 1.25rem;
+	padding: 0.5rem 1rem;
+	transition: all 0.3s ease;
+	max-height: 2rem;
+	min-height: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.global-element:hover {
+	background-color: var(--color-theme-900);
+	transform: translateY(-1px);
+	box-shadow:
+		0 20px 25px -5px rgb(0 0 0 / 0.1),
+		0 10px 10px -5px rgb(0 0 0 / 0.04);
+}
+
+/* Global Button Styles */
+.global-button {
+	cursor: pointer;
+}
+
+.global-button:hover {
+	background-color: var(--color-theme-900);
+	transform: translateY(-1px);
+	box-shadow:
+		0 20px 25px -5px rgb(0 0 0 / 0.1),
+		0 10px 10px -5px rgb(0 0 0 / 0.04);
+}
+
+/* Global Dropdown Styles */
+.global-dropdown {
+	cursor: pointer;
+}
+
+.global-dropdown-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	margin-top: 0.25rem;
+	width: 12rem;
+	background-color: var(--color-theme-700);
+	border: 1px solid var(--color-theme-300-rgba-03);
+	border-radius: 0.5rem;
+	box-shadow:
+		0 10px 15px -3px rgb(0 0 0 / 0.1),
+		0 4px 6px -4px rgb(0 0 0 / 0.1);
+	z-index: 50;
+	display: block;
+	max-height: 15rem;
+	overflow-y: auto;
+	pointer-events: auto;
+	color: white;
+}
+
+.global-dropdown-menu.hidden {
+	display: none;
+}
+
+.global-dropdown-menu label {
+	display: flex;
+	align-items: center;
+	padding: 0.5rem 0.75rem;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+	pointer-events: auto;
+}
+
+.global-dropdown-menu label:hover {
+	background-color: var(--color-theme-600);
+}
+
+.global-dropdown-menu input[type='checkbox'] {
+	margin-right: 0.5rem;
+	border-radius: 0.25rem;
+	border: 1px solid var(--color-theme-300-rgba-03);
+	background-color: var(--color-theme-800);
+	color: var(--color-theme-400);
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.global-dropdown-menu input[type='checkbox']:focus {
+	ring: 2px;
+	ring-color: var(--color-theme-400);
+	border-color: transparent;
+}
+
+.global-dropdown-menu span {
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	color: white;
+	pointer-events: auto;
+}
+
+.global-dropdown-menu .text-xs {
+	font-size: 0.75rem;
+	line-height: 1rem;
+	color: #d1d5db;
+	pointer-events: none;
+}
+
+/* Global Form Element Styles */
+.global-form-element {
+	cursor: pointer;
+}
+
+/* Global Tooltip Styles */
+.global-tooltip {
+	background-color: var(--color-theme-700);
+	border: 1px solid var(--color-theme-300-rgba-03);
+	border-radius: 0.5rem;
+	box-shadow:
+		0 10px 15px -3px rgb(0 0 0 / 0.1),
+		0 4px 6px -4px rgb(0 0 0 / 0.1);
+	z-index: 50;
+	pointer-events: none;
 }
 
 /* Global Tooltip for Form Elements (allows interaction) */
@@ -873,29 +967,25 @@ a.theme-link:hover {
 
 .global-tooltip-arrow-top {
 	bottom: -8px;
-	/* border-top-color: #1a232a; */
-	border-top-color: #4c1d95;
+	border-top-color: var(--color-theme-900);
 	border-bottom: none;
 }
 
 .global-tooltip-arrow-bottom {
 	top: -8px;
-	/* border-bottom-color: #1a232a; */
-	border-bottom-color: #4c1d95;
+	border-bottom-color: var(--color-theme-900);
 	border-top: none;
 }
 
 .global-tooltip-arrow-left {
 	right: -8px;
-	/* border-left-color: #1a232a; */
-	border-left-color: #4c1d95;
+	border-left-color: var(--color-theme-900);
 	border-right: none;
 }
 
 .global-tooltip-arrow-right {
 	left: -8px;
-	/* border-right-color: #1a232a; */
-	border-right-color: #4c1d95;
+	border-right-color: var(--color-theme-900);
 	border-left: none;
 }
 
