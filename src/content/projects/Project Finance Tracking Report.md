@@ -36,15 +36,14 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "The report section for the <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Financial Tracker</a> showing individual <span class=\"theme-link\">RLE International</span> project data."
+shortDescription: "The report section for the <a href=\"/portfolio/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a> showing individual <span class=\"theme-link\">RLE International</span> project data."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 name: "Project Finance Tracking Report"
 ---
-
 # Project Finance Tracking Report
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -75,7 +74,7 @@ WHERE file = this.file
 
 ## Short Description
 
-The report section for the <a href="/portfolio/projects/Financial Tracker" class="theme-link">Financial Tracker</a> showing individual <span class="theme-link">RLE International</span> project data.
+The report section for the [[Financial Tracker]] showing individual [[RLE International]] project data.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -87,11 +86,11 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">Power BI</span>
-- Back end/Datasource: <span class="theme-link">SharePoint</span>, <span class="theme-link">Power Query</span>, <span class="theme-link">SQL</span>
-- Hosting: <span class="theme-link">SharePoint</span>
+- Front end: [[Power BI]]
+- Back end/Datasource: [[SharePoint]], [[Power Query]], [[SQL]]
+- Hosting: [[SharePoint]]
 - Security: n/a
-- Authentication: <span class="theme-link">SharePoint</span>
+- Authentication: [[SharePoint]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -104,7 +103,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 

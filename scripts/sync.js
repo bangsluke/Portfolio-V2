@@ -165,7 +165,7 @@ function extractSectionContent(content, sectionName, endMarker) {
 }
 
 // Extract sections and add to frontmatter based on content type
-function extractSectionsToFrontmatter(content, contentType) {
+async function extractSectionsToFrontmatter(content, contentType) {
 	// Get sections to extract from config based on content type
 	const contentTypeConfig = CONTENT_TYPE_MAPPINGS[contentType];
 	if (!contentTypeConfig) {
@@ -182,12 +182,15 @@ function extractSectionsToFrontmatter(content, contentType) {
 	const extractedData = {};
 	const endMarker = '>[!top] [Back to top](#Table%20of%20Contents)';
 
+	// Import the new content processor
+	const { processContent } = await import('./content-processor.js');
+
 	// Extract content from each section defined in config
 	sectionsToExtract.forEach(({ name, property }) => {
 		const sectionContent = extractSectionContent(content, name, endMarker);
 		if (sectionContent) {
-			// Process Obsidian links in the extracted section content
-			const processedSectionContent = processObsidianLinks(sectionContent);
+			// Process the extracted section content using the new content processor
+			const processedSectionContent = processContent(sectionContent);
 			extractedData[property] = processedSectionContent;
 			if (DEBUG_MODE) {
 				console.log(
@@ -359,8 +362,7 @@ function getContentType(targetFolder) {
 	return targetFolder || null;
 }
 
-// Process a markdown file
-function processMarkdownFile(filePath, relativePath) {
+async function processMarkdownFile(filePath, relativePath) {
 	try {
 		syncErrors.summary.totalFiles++;
 
@@ -483,7 +485,7 @@ function processMarkdownFile(filePath, relativePath) {
 			);
 		}
 		if (contentType) {
-			content = extractSectionsToFrontmatter(content, contentType);
+			content = await extractSectionsToFrontmatter(content, contentType);
 		} else if (DEBUG_MODE) {
 			console.log(
 				SPACING_LEVEL_3 +
@@ -496,16 +498,14 @@ function processMarkdownFile(filePath, relativePath) {
 			content = addProjectNameToFrontmatter(content, fileName);
 		}
 
+		// NOTE: We no longer process Obsidian links in the content body
+		// This preserves the original Obsidian syntax in the markdown files
+		// The processed HTML is stored in frontmatter properties for display on the website
 		if (DEBUG_MODE) {
 			console.log(
 				SPACING_LEVEL_2 +
-					`🔍 8: Processing Obsidian links (content body only) and skipping if not found...`
+					`⏭️ 8: Skipping content body processing to preserve original Obsidian syntax`
 			);
-		}
-		// Process Obsidian links only in the content body (not in frontmatter)
-		content = processObsidianLinksInContentOnly(content);
-		if (DEBUG_MODE) {
-			console.log(SPACING_LEVEL_3 + `✅ 8. Obsidian links processed`);
 		}
 
 		if (DEBUG_MODE) {
@@ -536,7 +536,7 @@ function processMarkdownFile(filePath, relativePath) {
 }
 
 // Recursively process directory
-function processDirectory(dirPath, relativePath = '') {
+async function processDirectory(dirPath, relativePath = '') {
 	if (DEBUG_MODE) {
 		console.log(`📂 Entering directory: ${relativePath || dirPath}`);
 	}
@@ -572,12 +572,12 @@ function processDirectory(dirPath, relativePath = '') {
 					console.log(`🔍 Found Projects directory: ${itemRelativePath}`);
 				}
 
-				processDirectory(fullPath, itemRelativePath);
+				await processDirectory(fullPath, itemRelativePath);
 			} else if (item.endsWith('.md')) {
 				if (DEBUG_MODE && item.includes('Documentation')) {
 					console.log(`🔍 Found Documentation file: ${itemRelativePath}`);
 				}
-				processMarkdownFile(fullPath, itemRelativePath);
+				await processMarkdownFile(fullPath, itemRelativePath);
 			}
 		}
 	} catch (error) {
@@ -1142,7 +1142,7 @@ async function sendEmailNotification() {
 }
 
 // Sync Portfolio About Me file specifically
-function syncPortfolioAboutMe() {
+async function syncPortfolioAboutMe() {
 	try {
 		// Search for the file recursively in the Obsidian vault
 		const aboutMePath = findFileRecursively(
@@ -1162,11 +1162,12 @@ function syncPortfolioAboutMe() {
 		// Read content from Obsidian
 		let content = fs.readFileSync(aboutMePath, 'utf8');
 
-		// Process Obsidian links in the content
-		content = processObsidianLinks(content);
+		// Process content using the new content processor (only process the body, not frontmatter)
+		const processedContent =
+			await processObsidianLinksInContentOnlyWithNewProcessor(content);
 
 		// Remove "about-me-" from frontmatter
-		content = removeAboutMeFromFrontmatter(content);
+		content = removeAboutMeFromFrontmatter(processedContent);
 
 		// Write content to Astro
 		fs.writeFileSync(targetAboutMePath, content, 'utf8');
@@ -1185,6 +1186,40 @@ function syncPortfolioAboutMe() {
 			timestamp: new Date().toISOString(),
 		});
 		syncErrors.summary.errors++;
+	}
+}
+
+// Process Obsidian links only in the content body using the new content processor
+async function processObsidianLinksInContentOnlyWithNewProcessor(content) {
+	try {
+		// Import the new content processor
+		const { processContent } = await import('./content-processor.js');
+
+		// Split content into frontmatter and body
+		const frontmatterMatch = content.match(
+			/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/
+		);
+
+		if (frontmatterMatch) {
+			const frontmatter = frontmatterMatch[1];
+			const body = frontmatterMatch[2];
+
+			// Only process Obsidian links in the body, not in frontmatter
+			const processedBody = processContent(body);
+
+			// Reconstruct the content with processed body but unchanged frontmatter
+			return `---\n${frontmatter}\n---\n\n${processedBody}`;
+		} else {
+			// If no frontmatter found, process the entire content
+			return processContent(content);
+		}
+	} catch (error) {
+		console.error(
+			'Error using new content processor, falling back to old method:',
+			error.message
+		);
+		// Fallback to old method if new processor fails
+		return processObsidianLinksInContentOnly(content);
 	}
 }
 
@@ -1308,7 +1343,7 @@ async function main() {
 		console.log(
 			SPACING_LEVEL_1 + '📂 Scanning directory structure recursively...'
 		);
-		processDirectory(OBSIDIAN_VAULT_PATH);
+		await processDirectory(OBSIDIAN_VAULT_PATH);
 
 		// Check for missing SVG files (for production mode or when email notifications are enabled)
 		if (SYNC_MODE === 'production' || EMAIL_NOTIFICATIONS) {
@@ -1326,7 +1361,7 @@ async function main() {
 
 		// Sync Portfolio About Me file specifically
 		console.log('📄 Syncing Portfolio About Me file...');
-		syncPortfolioAboutMe();
+		await syncPortfolioAboutMe();
 
 		// Post-process content (only for production mode)
 		if (SYNC_MODE === 'production') {

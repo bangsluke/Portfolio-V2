@@ -37,15 +37,14 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "An early website I developed to be my new tab page across browsers, providing me fast links to my key sites and a link back to my <a href=\"/portfolio/projects/Homepage Website\" class=\"theme-link\">Homepage Website</a>."
+shortDescription: "An early website I developed to be my new tab page across browsers, providing me fast links to my key sites and a link back to my <a href=\"/portfolio/projects/homepage-website\" class=\"theme-link\">Homepage Website</a>."
 longDescription: "A site that opens up for new tabs across my browsers, developed from a theme I found online which stores my key site links and several images I have saved on the page in a masonry layout."
 lessonsLearned: "This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the <span class=\"theme-link\">CSS</span> file from online) and then making it my own."
 name: "New Tab Website"
 ---
-
 # New Tab Website
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -76,7 +75,7 @@ WHERE file = this.file
 
 ## Short Description
 
-An early website I developed to be my new tab page across browsers, providing me fast links to my key sites and a link back to my <a href="/portfolio/projects/Homepage Website" class="theme-link">Homepage Website</a>.
+An early website I developed to be my new tab page across browsers, providing me fast links to my key sites and a link back to my [[Homepage Website]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -88,10 +87,10 @@ A site that opens up for new tabs across my browsers, developed from a theme I f
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">HTML</span>, <span class="theme-link">CSS</span> and <span class="theme-link">JavaScript</span>
+- Front end: [[HTML]], [[CSS]] and [[JavaScript]]
 - Back end/Datasource: n/a
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories))
-- Security: <span class="theme-link">Snyk</span>
+- Hosting: [[GitHub]] (see [Repositories](#repositories))
+- Security: [[Snyk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -105,7 +104,7 @@ A site that opens up for new tabs across my browsers, developed from a theme I f
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -119,13 +118,13 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <a href="/portfolio/projects/Homepage Website" class="theme-link">Homepage Website</a>
+- [[Homepage Website]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the <span class="theme-link">CSS</span> file from online) and then making it my own.
+This was a very early project, with the main lesson being having to read another developers code to understand it (as I copied the [[CSS]] file from online) and then making it my own.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

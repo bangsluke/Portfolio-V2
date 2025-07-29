@@ -6,7 +6,7 @@ tags:
   - portfolio
   - project/completed/work
 modified: 2025-07-28T07:48:41+01:00
-viewCount: 9
+viewCount: 11
 aliases: 
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/efd30e67-8ed4-4807-95cb-11f46a62d7d2/ReportSectiona3c344f318d21cde0ced?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
 codeURL: n/a
@@ -36,15 +36,14 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
-shortDescription: "The report section for the <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Financial Tracker</a> showing global <span class=\"theme-link\">RLE International</span> data."
+shortDescription: "The report section for the <a href=\"/portfolio/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a> showing global <span class=\"theme-link\">RLE International</span> data."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 name: "Group Sales Report"
 ---
-
 # Group Sales Report
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -75,7 +74,7 @@ WHERE file = this.file
 
 ## Short Description
 
-The report section for the <a href="/portfolio/projects/Financial Tracker" class="theme-link">Financial Tracker</a> showing global <span class="theme-link">RLE International</span> data.
+The report section for the [[Financial Tracker]] showing global [[RLE International]] data.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -87,11 +86,11 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">Power BI</span>
-- Back end/Datasource: <span class="theme-link">SharePoint</span>, <span class="theme-link">Power Query</span>, <span class="theme-link">SQL</span>
-- Hosting: <span class="theme-link">SharePoint</span>
+- Front end: [[Power BI]]
+- Back end/Datasource: [[SharePoint]], [[Power Query]], [[SQL]]
+- Hosting: [[SharePoint]]
 - Security: n/a
-- Authentication: <span class="theme-link">SharePoint</span>
+- Authentication: [[SharePoint]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -104,7 +103,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 

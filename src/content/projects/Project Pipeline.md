@@ -6,11 +6,11 @@ tags:
   - portfolio
   - project/completed/work
 modified: 2025-07-28T07:42:33+01:00
-viewCount: 9
+viewCount: 10
 aliases:
   - Pipeline
 projectURL: 
-codeURL: 
+codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Project%20Pipeline?csf=1&web=1&e=nVEm7I
@@ -40,10 +40,9 @@ longDescription: "TBC"
 lessonsLearned: "TBC"
 name: "Project Pipeline"
 ---
-
 # Project Pipeline
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -74,7 +73,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A tool for identifying the progress of global <span class="theme-link">RLE International</span> projects from lead to in-play, through to completion.
+A tool for identifying the progress of global [[RLE International]] projects from lead to in-play, through to completion.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -86,11 +85,11 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">Power Apps</span>
-- Back end/Datasource: <span class="theme-link">SharePoint</span>, <span class="theme-link">Power Query</span>
-- Hosting: <span class="theme-link">SharePoint</span>
+- Front end: [[Power Apps]]
+- Back end/Datasource: [[SharePoint]], [[Power Query]]
+- Hosting: [[SharePoint]]
 - Security: n/a
-- Authentication: <span class="theme-link">SharePoint</span>
+- Authentication: [[SharePoint]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -103,7 +102,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 

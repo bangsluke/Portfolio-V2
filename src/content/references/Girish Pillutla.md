@@ -29,10 +29,9 @@ referenceNumber: "+16693429918"
 referenceAddress: RLE UK, Essex
 portfolioOrder: 3
 ---
-
 # Girish Pillutla
 
-> [!back] Link back to <span class="theme-link">People Notes</span>
+> [!back] Link back to [[People Notes]]
 
 ## Table of Contents 
 

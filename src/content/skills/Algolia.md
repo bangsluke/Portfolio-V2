@@ -13,10 +13,9 @@ skillRating: 30
 skillDescription: Set up an Algolia index and search on my documentation site but never explored it's full value.
 logoFileName: algolia.svg
 ---
-
 # Algolia
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents
 

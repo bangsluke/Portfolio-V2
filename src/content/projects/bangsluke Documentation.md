@@ -6,11 +6,11 @@ tags:
   - coding
   - project/completed
 created: 2024-02-20T09:27:00
-modified: 2025-07-19T09:52:56+01:00
+modified: 2025-07-29T08:08:50+01:00
 aliases:
   - Documentation Site
   - bangsluke-documentation
-viewCount: 18
+viewCount: 20
 projectURL: https://bangsluke-documentation.netlify.app/
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
@@ -40,15 +40,14 @@ topicTags:
 powerShellAlias: bangsluke
 version: 1
 portfolioOrder: 3
-shortDescription: "A personal documentation site storing key links to the software I use, articles I find useful, and a section on <span class=\"theme-link\">Homepage</span> and <a href=\"/portfolio/projects/New Tab Website\" class=\"theme-link\">New Tab</a> pages."
-longDescription: "Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment.\nI regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing."
+shortDescription: "A personal documentation site storing key links to the software I use, articles I find useful, and a section on <span class=\"theme-link\">Dorkinians FC</span> stats. The repo also contains my <a href=\"/portfolio/projects/homepage-website\" class=\"theme-link\">Homepage</a> and <a href=\"/portfolio/projects/new-tab-website\" class=\"theme-link\">New Tab</a> pages."
+longDescription: "Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment. It also holds details on the <span class=\"theme-link\">Dorkinians FC</span> stats and how to maintain them - for handover to others.<br>I regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing.<br>Outside of the documentation section, the repo also contains my <a href=\"/portfolio/projects/homepage-website\" class=\"theme-link\">Homepage</a> and <a href=\"/portfolio/projects/new-tab-website\" class=\"theme-link\">New Tab</a> pages as the whole repo is hosted through <span class=\"theme-link\">GitHub</span> pages."
 lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of <span class=\"theme-link\">Markdown</span> and led me to notice how many different softwares either use <span class=\"theme-link\">Docusaurus</span> or a very similar type static site builder for their documentation."
 name: "bangsluke Documentation"
 ---
-
 # bangsluke Documentation
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -79,24 +78,26 @@ WHERE file = this.file
 
 ## Short Description
 
-A personal documentation site storing key links to the software I use, articles I find useful, and a section on <span class="theme-link">Homepage</span> and <a href="/portfolio/projects/New Tab Website" class="theme-link">New Tab</a> pages.
+A personal documentation site storing key links to the software I use, articles I find useful, and a section on [[Dorkinians FC]] stats. The repo also contains my [[Homepage Website|Homepage]] and [[New Tab Website|New Tab]] pages.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment.
+Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment. It also holds details on the [[Dorkinians FC]] stats and how to maintain them - for handover to others.
 
 I regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing.
+
+Outside of the documentation section, the repo also contains my [[Homepage Website|Homepage]] and [[New Tab Website|New Tab]] pages as the whole repo is hosted through [[GitHub]] pages.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">React</span> using <span class="theme-link">Docusaurus</span>, <span class="theme-link">Algolia</span>
-- Back end/Datasource: <span class="theme-link">Markdown</span>
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), <span class="theme-link">Netlify</span>
-- Security: <span class="theme-link">Snyk</span>
+- Front end: [[React]] using [[Docusaurus]], [[Algolia]]
+- Back end/Datasource: [[Markdown]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
+- Security: [[Snyk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -110,7 +111,7 @@ I regularly keep it updated with new links and processes I find so that it remai
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -118,7 +119,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Planning and Design
 
-- All built and designed using <span class="theme-link">Docusaurus</span> structures with minimal additional styling added.
+- All built and designed using [[Docusaurus]] structures with minimal additional styling added.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -130,7 +131,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Lessons Learned
 
-This project introduced me to the concept of documentation sites, the ease and brilliance of <span class="theme-link">Markdown</span> and led me to notice how many different softwares either use <span class="theme-link">Docusaurus</span> or a very similar type static site builder for their documentation.
+This project introduced me to the concept of documentation sites, the ease and brilliance of [[Markdown]] and led me to notice how many different softwares either use [[Docusaurus]] or a very similar type static site builder for their documentation.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

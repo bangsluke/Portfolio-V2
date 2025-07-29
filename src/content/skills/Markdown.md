@@ -16,10 +16,9 @@ skillRating: 85
 skillDescription: My go to language for note taking given its usefulness and compatibility across so many applications.
 logoFileName: markdown.svg
 ---
-
 # Markdown
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents
 

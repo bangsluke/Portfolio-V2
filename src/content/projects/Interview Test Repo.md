@@ -35,15 +35,14 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 8
-shortDescription: "An interview test written for possibly hiring a <span class=\"theme-link\">RLE</span> with <span class=\"theme-link\">Uwe Kloss</span>."
-longDescription: "A simple <span class=\"theme-link\">React</span> website that contained several <span class=\"theme-link\">React</span> development challenges for giving to potential hires to test their skills within the interview process.\nThe site was provided to a few possible <span class=\"theme-link\">RLE India</span> potential hires when considering upgrading the <a href=\"/portfolio/projects/SDP\" class=\"theme-link\">SDP</a> front end to <span class=\"theme-link\">React</span>."
-lessonsLearned: "This project mainly challenged me to consider what requirements we needed within our <a href=\"/portfolio/projects/SDP\" class=\"theme-link\">SDP</a> project that would challenge possible developers and design a quick test that was clearly documented for remote completion and submission."
+shortDescription: "An interview test written for possibly hiring a <span class=\"theme-link\">React</span> developer when working for <span class=\"theme-link\">Digital Engineering</span> at <span class=\"theme-link\">RLE</span> with <span class=\"theme-link\">Uwe Kloss</span>."
+longDescription: "A simple <span class=\"theme-link\">React</span> website that contained several <span class=\"theme-link\">React</span> development challenges for giving to potential hires to test their skills within the interview process.<br>The site was provided to a few possible <span class=\"theme-link\">RLE India</span> potential hires when considering upgrading the <a href=\"/portfolio/projects/sdp\" class=\"theme-link\">SDP</a> front end to <span class=\"theme-link\">React</span>."
+lessonsLearned: "This project mainly challenged me to consider what requirements we needed within our <a href=\"/portfolio/projects/sdp\" class=\"theme-link\">SDP</a> project that would challenge possible developers and design a quick test that was clearly documented for remote completion and submission."
 name: "Interview Test Repo"
 ---
-
 # Interview Test Repo
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -74,24 +73,24 @@ WHERE file = this.file
 
 ## Short Description
 
-An interview test written for possibly hiring a <span class="theme-link">RLE</span> with <span class="theme-link">Uwe Kloss</span>.
+An interview test written for possibly hiring a [[React]] developer when working for [[Digital Engineering]] at [[RLE International|RLE]] with [[Uwe Kloss]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-A simple <span class="theme-link">React</span> website that contained several <span class="theme-link">React</span> development challenges for giving to potential hires to test their skills within the interview process.
+A simple [[React]] website that contained several [[React]] development challenges for giving to potential hires to test their skills within the interview process.
 
-The site was provided to a few possible <span class="theme-link">RLE India</span> potential hires when considering upgrading the <a href="/portfolio/projects/SDP" class="theme-link">SDP</a> front end to <span class="theme-link">React</span>.
+The site was provided to a few possible [[RLE India]] potential hires when considering upgrading the [[SDP]] front end to [[React]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">React</span>
+- Front end: [[React]]
 - Back end/Datasource: n/a
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories))
-- Security: <span class="theme-link">Snyk</span>
+- Hosting: [[GitHub]] (see [Repositories](#repositories))
+- Security: [[Snyk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -105,7 +104,7 @@ The site was provided to a few possible <span class="theme-link">RLE India</span
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -119,13 +118,13 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <span class="theme-link">Digital Engineering</span>
+- [[Digital Engineering]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This project mainly challenged me to consider what requirements we needed within our <a href="/portfolio/projects/SDP" class="theme-link">SDP</a> project that would challenge possible developers and design a quick test that was clearly documented for remote completion and submission.
+This project mainly challenged me to consider what requirements we needed within our [[SDP]] project that would challenge possible developers and design a quick test that was clearly documented for remote completion and submission.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -7,14 +7,14 @@ tags:
   - project/completed/work
 created: 2025-07-18T08:23:00
 modified: 2025-07-24T15:58:47+01:00
-viewCount: 4
+viewCount: 5
 aliases: 
 projectURL: 
-codeURL: 
+codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: 
-logoURL: 
+logoURL: n/a
 imageURL: 
 dateStart: 2019-09-01
 dateEnd: 2019-12-02
@@ -32,14 +32,13 @@ powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
 shortDescription: "A internal site providing links to key sites needed by employees."
-longDescription: "A site providing links to key sites needed by employees, a tools library of useful documents and templates and a lessons learned page for end-of project.\nThis provided a structure for engineers to work with on a day to day basis to ensure consistency with work output quality."
+longDescription: "A site providing links to key sites needed by employees, a tools library of useful documents and templates and a lessons learned page for end-of project.<br>This provided a structure for engineers to work with on a day to day basis to ensure consistency with work output quality."
 lessonsLearned: "This taught me how to use basic website building tools such as <span class=\"theme-link\">Google Sites</span> to quickly create a website structure using drag and drop components."
 name: "RLE Google Sites"
 ---
-
 # RLE Google Sites
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -84,11 +83,11 @@ This provided a structure for engineers to work with on a day to day basis to en
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">Google Sites</span>
+- Front end: [[Google Sites]]
 - Back end/Datasource: n/a
 - Hosting: n/a
 - Security: n/a
-- Authentication: <span class="theme-link">Google</span>
+- Authentication: [[Google]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -101,7 +100,7 @@ This provided a structure for engineers to work with on a day to day basis to en
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -121,7 +120,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Lessons Learned
 
-This taught me how to use basic website building tools such as <span class="theme-link">Google Sites</span> to quickly create a website structure using drag and drop components.
+This taught me how to use basic website building tools such as [[Google Sites]] to quickly create a website structure using drag and drop components.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

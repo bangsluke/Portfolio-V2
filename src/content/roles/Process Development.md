@@ -11,13 +11,12 @@ dateEnd: 2019-07-01
 linkedCompany:
   - "[[RLE International]]"
 shortRoleDescription: "Internal project tracking and delivery process improvements through tools built with <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span>."
-fullRoleDescription: "Internally I have been responsible for the creation of numerous project\ntracking documents for the organisation and a range of customers through <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> coding. Projects included timesheet & holiday\nmanagement, cost & resource estimating, warehouse storage tracking and\na technical documentation library."
+fullRoleDescription: "Internally I have been responsible for the creation of numerous project<br>tracking documents for the organisation and a range of customers through <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> coding. Projects included timesheet & holiday<br>management, cost & resource estimating, warehouse storage tracking and<br>a technical documentation library."
 keyAchievement: "Updating and maintaining the main cost and quoting model used within the <span class=\"theme-link\">RLE UK</span> business."
 ---
-
 # Process Development
 
-> [!back] Link back to <span class="theme-link">Role Notes</span>
+> [!back] Link back to [[Role Notes]]
 
 ## Table of Contents
 ```table-of-contents
@@ -25,14 +24,14 @@ keyAchievement: "Updating and maintaining the main cost and quoting model used w
 
 ## Short Role Description
 
-Internal project tracking and delivery process improvements through tools built with <span class="theme-link">Excel</span> and <span class="theme-link">VBA</span>.
+Internal project tracking and delivery process improvements through tools built with [[Excel]] and [[VBA]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Full Role Description
 
 Internally I have been responsible for the creation of numerous project
-tracking documents for the organisation and a range of customers through <span class="theme-link">Excel</span> and <span class="theme-link">VBA</span> coding. Projects included timesheet & holiday
+tracking documents for the organisation and a range of customers through [[Excel]] and [[VBA]] coding. Projects included timesheet & holiday
 management, cost & resource estimating, warehouse storage tracking and
 a technical documentation library.
 
@@ -40,7 +39,7 @@ a technical documentation library.
 
 ## Key Achievement
 
-Updating and maintaining the main cost and quoting model used within the <span class="theme-link">RLE UK</span> business.
+Updating and maintaining the main cost and quoting model used within the [[RLE UK]] business.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

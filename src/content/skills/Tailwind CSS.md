@@ -16,12 +16,11 @@ skillRating: 25
 skillDescription: Utilised across my Portfolio and useful for quick prototyping, but end up regularly falling back to CSS.
 logoFileName: tailwind.svg
 ---
-
 # Tailwind CSS
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> A framework for <span class="theme-link">CSS</span>
+> A framework for [[CSS]]
 
 ## Table of Contents
 

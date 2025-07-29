@@ -17,12 +17,11 @@ skillRating: 70
 skillDescription: Able to create more advanced React applications with wide functionality and scalability, utilising hooks and refactoring components down to useable functions
 logoFileName: react.svg
 ---
-
 # React
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Language: <span class="theme-link">JavaScript</span>
+> Language: [[JavaScript]]
 
 ## Table of Contents
 

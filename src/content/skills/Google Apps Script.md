@@ -16,12 +16,11 @@ skillRating: 50
 skillDescription: Written several scripts to automate the manipulation of data in a Google Sheets file to generate data and charts for use in Automated daily emails.
 logoFileName: google_apps_script.svg
 ---
-
 # Google Apps Script
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Language developed by <span class="theme-link">Google</span>. Form of <span class="theme-link">JavaScript</span>
+> Language developed by [[Google]]. Form of [[JavaScript]]
 
 ## Table of Contents
 

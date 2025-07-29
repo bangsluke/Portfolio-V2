@@ -42,10 +42,9 @@ longDescription: "A basic landing page for showcasing a new Automotive Consultan
 lessonsLearned: "Main lesson was creating the automatic video background of the site along with a subtle purple filter across it which ended up looking pretty good. Sadly the site wasn’t finished as the requirements for the company changed."
 name: "CoE Landing Page"
 ---
-
 # CoE Landing Page
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -76,17 +75,23 @@ WHERE file = this.file
 
 ## Short Description
 
-A landing page for showcasing a new Automotive Consultancy branch of <span class="theme-link">RLE</span>, known as <span class="theme-link">RLE</span>, known as <span class="theme-link">Centre of Excellence</span> ready for prospective clients to view and see the services we provide.
+A landing page for showcasing a new Automotive Consultancy branch of [[RLE International|RLE]], known as [[Centre of Excellence]].
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Long Description
+
+A basic landing page for showcasing a new Automotive Consultancy branch of [[RLE International|RLE]], known as [[Centre of Excellence]] ready for prospective clients to view and see the services we provide.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">React</span>
+- Front end: [[React]]
 - Back end/Datasource: n/a
-- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories)), <span class="theme-link">Netlify</span>
+- Hosting: [[GitLab]] (see [Repositories](#repositories)), [[Netlify]]
 - Security: n/a
-- Authentication: <span class="theme-link">Azure</span>
+- Authentication: [[Azure]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -99,7 +104,7 @@ A landing page for showcasing a new Automotive Consultancy branch of <span class
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -113,7 +118,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <span class="theme-link">Centre of Excellence</span>
+- [[Centre of Excellence]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

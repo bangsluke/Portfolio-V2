@@ -12,12 +12,11 @@ skillRating: 15
 skillDescription: Implemented in a single project with limited experience.
 logoFileName: zod.svg
 ---
-
 # Zod
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Typescript</span> type validation library
+> [[Typescript]] type validation library
 
 ## Table of Contents
 

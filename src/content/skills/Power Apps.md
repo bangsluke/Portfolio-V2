@@ -13,12 +13,11 @@ skillRating: 65
 skillDescription: Supported development of several applications for internal financial tracking, providing users minimal inputs to gather the required data.
 logoFileName: power_apps.svg
 ---
-
 # Power Apps
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> Power Apps - Language: <span class="theme-link">JavaScript</span>
+> [[Microsoft]] Power Apps - Language: [[JavaScript]]
 
 ## Table of Contents
 

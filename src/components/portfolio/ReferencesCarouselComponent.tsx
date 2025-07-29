@@ -224,9 +224,10 @@ const ReferencesCarouselComponent = ({
 
 									{reference.address && (
 										<div className="text-right">
-											<span className="text-xs text-white/90">
-												{reference.address}
-											</span>
+											<span
+												className="text-xs text-white/90"
+												dangerouslySetInnerHTML={{ __html: reference.address }}
+											/>
 										</div>
 									)}
 								</div>

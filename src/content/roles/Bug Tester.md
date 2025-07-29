@@ -14,10 +14,23 @@ shortRoleDescription: "Bug testing the cloud software and reviewing the sites fu
 fullRoleDescription: "For the final few months at <span class=\"theme-link\">Opus 2</span> I was involved in programme bug testing the software and reviewing the sites applications for users and the admins using the system."
 keyAchievement: "Finding several front end bugs and developing a reporting structure for developers to understand easily."
 ---
-
 # Bug Tester
 
-> [!back] Link back to <span class="theme-link">Opus 2</span> I was involved in programme bug testing the software and reviewing the sites applications for users and the admins using the system.
+> [!back] Link back to [[Role Notes]]
+
+## Table of Contents
+```table-of-contents
+```
+
+## Short Role Description
+
+Bug testing the cloud software and reviewing the sites functionality for users and admins.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Full Role Description
+
+For the final few months at [[01 Notes/02 Areas/Work Notes/Company Notes/Opus 2 International|Opus 2]] I was involved in programme bug testing the software and reviewing the sites applications for users and the admins using the system.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

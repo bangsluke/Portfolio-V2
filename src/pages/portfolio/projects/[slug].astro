@@ -3,7 +3,10 @@ import { getCollection } from 'astro:content';
 import CustomerAndClientCarouselItem from '../../../components/portfolio/CustomerAndClientCarouselItem.astro';
 import SkillPill from '../../../components/ui/SkillPill.astro';
 import Layout from '../../../layouts/Layout.astro';
-import { processObsidianLink } from '../../../utils/content-processor';
+import {
+	processContent,
+	processObsidianLink,
+} from '../../../utils/content-processor';
 import { extractNameFromFilename } from '../../../utils/filename-utils';
 
 export async function getStaticPaths() {
@@ -30,6 +33,10 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { data } = project;
+
+// Process content to handle Obsidian links and markdown
+const processedLongDescription = processContent(data.longDescription);
+const processedLessonsLearned = processContent(data.lessonsLearned);
 
 // Get linked companies and clients
 let linkedCompanies: any[] = [];
@@ -218,7 +225,7 @@ const ogimage = {
 						<div class="bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl p-8 shadow-lg">
 							<div
 								class="text-lg text-zinc-200 leading-relaxed processed-content"
-								set:html={data.longDescription}
+								set:html={processedLongDescription}
 							/>
 						</div>
 					</div>
@@ -237,7 +244,7 @@ const ogimage = {
 						<div class="bg-gradient-to-br from-[#1a232a] to-[#10151a] rounded-2xl p-8 shadow-lg">
 							<div
 								class="text-lg text-zinc-200 leading-relaxed processed-content"
-								set:html={data.lessonsLearned}
+								set:html={processedLessonsLearned}
 							/>
 						</div>
 					</div>

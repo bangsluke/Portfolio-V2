@@ -11,12 +11,11 @@ skillRating: 30
 skillDescription: Created a basic documentation site within Google Sites for internal employees of our company.
 logoFileName: google_sites.svg
 ---
-
 # Google Sites
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Google</span> Sites
+> [[Google]] Sites
 
 ## Table of Contents
 

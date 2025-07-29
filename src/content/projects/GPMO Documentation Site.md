@@ -43,10 +43,9 @@ longDescription: "TBC"
 lessonsLearned: "TBC"
 name: "GPMO Documentation Site"
 ---
-
 # GPMO Documentation Site
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -77,7 +76,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A full documentation site for all tools developed by the <span class="theme-link">GPMO</span> team, using <span class="theme-link">Docusaurus</span> and static <span class="theme-link">Markdown</span> files maintained by the tool developers.
+A full documentation site for all tools developed by the [[GPMO]] team, using [[Docusaurus]] and static [[Markdown]] files maintained by the tool developers.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -89,9 +88,9 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">React</span>, <span class="theme-link">Docusaurus</span>
-- Back end/Datasource: <span class="theme-link">Markdown</span>
-- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories)), <span class="theme-link">Azure</span> TBC
+- Front end: [[React]], [[Docusaurus]]
+- Back end/Datasource: [[Markdown]]
+- Hosting: [[GitLab]] (see [Repositories](#repositories)), [[Azure]] TBC
 - Security: TBC
 - Authentication: TBC
 
@@ -106,7 +105,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -120,7 +119,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <span class="theme-link">GPMO</span>
+- [[GPMO]]
 - TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)

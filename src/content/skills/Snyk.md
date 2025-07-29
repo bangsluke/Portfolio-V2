@@ -13,12 +13,11 @@ skillRating: 65
 skillDescription: Used widely across my projects for identifying and correcting security concerns and vulnerabilities.
 logoFileName: snyk.svg
 ---
-
 # Snyk
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Codebase security plugin for <span class="theme-link">GitHub</span>
+> Codebase security plugin for [[GitHub]]
 
 ## Table of Contents
 

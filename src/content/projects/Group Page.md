@@ -36,14 +36,13 @@ powerShellAlias: n/a
 version: 1
 portfolioOrder: 6
 shortDescription: "An early site that I built as a laugh for my friends displaying statistics for each person to fuel our competitive nature."
-longDescription: "My first real project with multiple pages and functionalities, the site was designed for a laugh amongst my friendship group given our high levels of competitiveness.\nThe data was stored in manageable <span class=\"theme-link\">Google Sheets</span> which I could update easily after any sports or competitions we did as a group and this would generate an overall ranking for the group.\nThe site also contained features such as a shared calendar embedded for us to send events to and help plan get togethers."
-lessonsLearned: "This site helped me start processing external data into a front end, which I did rather inefficiently using papa parse to gather the <span class=\"theme-link\">CSV</span> data.\nIt also taught me how to embed components like Google Calendar and widgets, and allowed me to understand theme switching for <span class=\"theme-link\">CSS</span>."
+longDescription: "My first real project with multiple pages and functionalities, the site was designed for a laugh amongst my friendship group given our high levels of competitiveness.<br>The data was stored in manageable <span class=\"theme-link\">Google Sheets</span> which I could update easily after any sports or competitions we did as a group and this would generate an overall ranking for the group.<br>The site also contained features such as a shared calendar embedded for us to send events to and help plan get togethers."
+lessonsLearned: "This site helped me start processing external data into a front end, which I did rather inefficiently using papa parse to gather the <span class=\"theme-link\">CSV</span> data.<br>It also taught me how to embed components like Google Calendar and widgets, and allowed me to understand theme switching for <span class=\"theme-link\">CSS</span>."
 name: "Group Page"
 ---
-
 # Group Page
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -82,7 +81,7 @@ An early site that I built as a laugh for my friends displaying statistics for e
 
 My first real project with multiple pages and functionalities, the site was designed for a laugh amongst my friendship group given our high levels of competitiveness.
 
-The data was stored in manageable <span class="theme-link">Google Sheets</span> which I could update easily after any sports or competitions we did as a group and this would generate an overall ranking for the group.
+The data was stored in manageable [[Google Sheets]] which I could update easily after any sports or competitions we did as a group and this would generate an overall ranking for the group.
 
 The site also contained features such as a shared calendar embedded for us to send events to and help plan get togethers.
 
@@ -90,9 +89,9 @@ The site also contained features such as a shared calendar embedded for us to se
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">HTML</span>, <span class="theme-link">CSS</span>, <span class="theme-link">JavaScript</span>
-- Back end/Datasource: <span class="theme-link">Google Sheets</span>
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories))
+- Front end: [[HTML]], [[CSS]], [[JavaScript]]
+- Back end/Datasource: [[Google Sheets]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: Manual
 
@@ -107,7 +106,7 @@ The site also contained features such as a shared calendar embedded for us to se
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -127,9 +126,9 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Lessons Learned
 
-This site helped me start processing external data into a front end, which I did rather inefficiently using papa parse to gather the <span class="theme-link">CSV</span> data.
+This site helped me start processing external data into a front end, which I did rather inefficiently using papa parse to gather the [[CSV]] data.
 
-It also taught me how to embed components like Google Calendar and widgets, and allowed me to understand theme switching for <span class="theme-link">CSS</span>.
+It also taught me how to embed components like Google Calendar and widgets, and allowed me to understand theme switching for [[CSS]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

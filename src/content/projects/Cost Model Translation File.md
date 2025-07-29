@@ -35,15 +35,14 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "The automation file to convert the <span class=\"theme-link\">Finance Tracker</span>."
-longDescription: "An <span class=\"theme-link\">Excel</span> file that was used as the front end interface for users to upload <a href=\"/portfolio/projects/Cost Model\" class=\"theme-link\">Cost Model</a> data into our <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Financial Tracker</a> system.\n<span class=\"theme-link\">VBA</span> scripts facilitated the selection and upload of a file and processed the data to be stored in <span class=\"theme-link\">SharePoint</span>, ready for tools such as the <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Financial Tracker</a> to utilise."
-lessonsLearned: "This project taught me about the importance of keeping users engaged and informed during the script running process to ensure users were aware that the <span class=\"theme-link\">VBA</span> script was working.\nIt also was an interesting technical consideration on how to create a tool that would work across multiple <span class=\"theme-link\">Microsoft</span> tenants as we have internal offices split across different ones."
+shortDescription: "The automation file to convert the <a href=\"/portfolio/projects/cost-model\" class=\"theme-link\">Cost Model</a> into the data format required for the <a href=\"/portfolio/projects/financial-tracker\" class=\"theme-link\">Finance Tracker</a>."
+longDescription: "An <span class=\"theme-link\">Excel</span> file that was used as the front end interface for users to upload <a href=\"/portfolio/projects/cost-model\" class=\"theme-link\">Cost Model</a> data into our <a href=\"/portfolio/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a> system.<br><span class=\"theme-link\">VBA</span> scripts facilitated the selection and upload of a file and processed the data to be stored in <span class=\"theme-link\">SharePoint</span>, ready for tools such as the <a href=\"/portfolio/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a> to utilise."
+lessonsLearned: "This project taught me about the importance of keeping users engaged and informed during the script running process to ensure users were aware that the <span class=\"theme-link\">VBA</span> script was working.<br>It also was an interesting technical consideration on how to create a tool that would work across multiple <span class=\"theme-link\">Microsoft</span> tenants as we have internal offices split across different ones."
 name: "Cost Model Translation File"
 ---
-
 # Cost Model Translation File
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -74,25 +73,25 @@ WHERE file = this.file
 
 ## Short Description
 
-The automation file to convert the <span class="theme-link">Finance Tracker</span>.
+The automation file to convert the [[Cost Model]] into the data format required for the [[Financial Tracker|Finance Tracker]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-An <span class="theme-link">Excel</span> file that was used as the front end interface for users to upload <a href="/portfolio/projects/Cost Model" class="theme-link">Cost Model</a> data into our <a href="/portfolio/projects/Financial Tracker" class="theme-link">Financial Tracker</a> system.
+An [[Excel]] file that was used as the front end interface for users to upload [[Cost Model]] data into our [[Financial Tracker]] system.
 
-<span class="theme-link">VBA</span> scripts facilitated the selection and upload of a file and processed the data to be stored in <span class="theme-link">SharePoint</span>, ready for tools such as the <a href="/portfolio/projects/Financial Tracker" class="theme-link">Financial Tracker</a> to utilise.
+[[VBA]] scripts facilitated the selection and upload of a file and processed the data to be stored in [[SharePoint]], ready for tools such as the [[Financial Tracker]] to utilise.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">Excel</span>
-- Back end/Datasource: <span class="theme-link">VBA</span>
-- Hosting: <span class="theme-link">SharePoint</span> (see [Repositories](#repositories))
+- Front end: [[Excel]]
+- Back end/Datasource: [[VBA]]
+- Hosting: [[SharePoint]] (see [Repositories](#repositories))
 - Security: n/a
-- Authentication: <span class="theme-link">SharePoint</span>
+- Authentication: [[SharePoint]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -105,7 +104,7 @@ An <span class="theme-link">Excel</span> file that was used as the front end int
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -125,9 +124,9 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Lessons Learned
 
-This project taught me about the importance of keeping users engaged and informed during the script running process to ensure users were aware that the <span class="theme-link">VBA</span> script was working.
+This project taught me about the importance of keeping users engaged and informed during the script running process to ensure users were aware that the [[VBA]] script was working.
 
-It also was an interesting technical consideration on how to create a tool that would work across multiple <span class="theme-link">Microsoft</span> tenants as we have internal offices split across different ones.
+It also was an interesting technical consideration on how to create a tool that would work across multiple [[Microsoft]] tenants as we have internal offices split across different ones.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

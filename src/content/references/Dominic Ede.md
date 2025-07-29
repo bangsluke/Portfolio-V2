@@ -30,10 +30,9 @@ referenceNumber: +44 7989 423267
 referenceAddress: RLE UK, Essex
 portfolioOrder: 1
 ---
-
 # Dominic Ede
 
-> [!back] Link back to <span class="theme-link">People Notes</span>
+> [!back] Link back to [[People Notes]]
 
 ## Table of Contents 
 

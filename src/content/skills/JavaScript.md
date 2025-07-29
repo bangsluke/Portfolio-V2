@@ -16,10 +16,9 @@ skillRating: 65
 logoFileName: javascript.svg
 skillDescription: A good understanding of JavaScript concepts to build dynamic pages that respond to user requests and how best to structure large scale JavaScript projects
 ---
-
 # JavaScript
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents 
 

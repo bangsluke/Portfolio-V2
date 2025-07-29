@@ -34,15 +34,14 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "A unified cost model template and approach for costing projects - feeds into the <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Finance Tracker</a>."
-longDescription: "A detailed <span class=\"theme-link\">Excel</span> cost model template, designed for use across all <span class=\"theme-link\">RLE International</span> regions for quoting new projects, which guides the user through completion to gather the required financial inputs needed for submitting a complete and comprehensive quote.\nWhilst certain financial values and targets are set/restricted within the template, users can modify other values within the quotation to meet their regions requirements.\nThe resulting file can then be uploaded into the company system using the <a href=\"/portfolio/projects/Cost Model Translation File\" class=\"theme-link\">Cost Model Translation File</a> ready for visualisation and reporting within the <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Financial Tracker</a>."
-lessonsLearned: "The Cost Model template gave me good experience in trying to keep a complex and detailed <span class=\"theme-link\">Excel</span> sheet lightweight and optimised.\n(Did we use macros?)\nTBC"
+shortDescription: "A unified cost model template and approach for costing projects - feeds into the <a href=\"/portfolio/projects/financial-tracker\" class=\"theme-link\">Finance Tracker</a>."
+longDescription: "A detailed <span class=\"theme-link\">Excel</span> cost model template, designed for use across all <span class=\"theme-link\">RLE International</span> regions for quoting new projects, which guides the user through completion to gather the required financial inputs needed for submitting a complete and comprehensive quote.<br>Whilst certain financial values and targets are set/restricted within the template, users can modify other values within the quotation to meet their regions requirements.<br>The resulting file can then be uploaded into the company system using the <a href=\"/portfolio/projects/cost-model-translation-file\" class=\"theme-link\">Cost Model Translation File</a> ready for visualisation and reporting within the <a href=\"/portfolio/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a>."
+lessonsLearned: "The Cost Model template gave me good experience in trying to keep a complex and detailed <span class=\"theme-link\">Excel</span> sheet lightweight and optimised.<br>(Did we use macros?)<br>TBC"
 name: "Cost Model"
 ---
-
 # Cost Model
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -73,27 +72,27 @@ WHERE file = this.file
 
 ## Short Description
 
-A unified cost model template and approach for costing projects - feeds into the <a href="/portfolio/projects/Financial Tracker" class="theme-link">Finance Tracker</a>.
+A unified cost model template and approach for costing projects - feeds into the [[Financial Tracker|Finance Tracker]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-A detailed <span class="theme-link">Excel</span> cost model template, designed for use across all <span class="theme-link">RLE International</span> regions for quoting new projects, which guides the user through completion to gather the required financial inputs needed for submitting a complete and comprehensive quote.
+A detailed [[Excel]] cost model template, designed for use across all [[RLE International]] regions for quoting new projects, which guides the user through completion to gather the required financial inputs needed for submitting a complete and comprehensive quote.
 
 Whilst certain financial values and targets are set/restricted within the template, users can modify other values within the quotation to meet their regions requirements.
 
-The resulting file can then be uploaded into the company system using the <a href="/portfolio/projects/Cost Model Translation File" class="theme-link">Cost Model Translation File</a> ready for visualisation and reporting within the <a href="/portfolio/projects/Financial Tracker" class="theme-link">Financial Tracker</a>.
+The resulting file can then be uploaded into the company system using the [[Cost Model Translation File]] ready for visualisation and reporting within the [[Financial Tracker]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">Excel</span>
+- Front end: [[Excel]]
 - Back end/Datasource: n/a
-- Hosting: <span class="theme-link">SharePoint</span>
+- Hosting: [[SharePoint]]
 - Security: n/a
-- Authentication: <span class="theme-link">SharePoint</span>
+- Authentication: [[SharePoint]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -106,7 +105,7 @@ The resulting file can then be uploaded into the company system using the <a hre
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -139,13 +138,13 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <span class="theme-link">GPMO</span>
+- [[GPMO]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-The Cost Model template gave me good experience in trying to keep a complex and detailed <span class="theme-link">Excel</span> sheet lightweight and optimised.
+The Cost Model template gave me good experience in trying to keep a complex and detailed [[Excel]] sheet lightweight and optimised.
 
 (Did we use macros?)
 

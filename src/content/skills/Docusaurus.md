@@ -12,12 +12,11 @@ skillRating: 70
 skillDescription: Proficient in building and maintaining sites using Docusaurus with many of their features explored and utilised.
 logoFileName: docusaurus.svg
 ---
-
 # Docusaurus
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Built with: <span class="theme-link">React</span>, language: <span class="theme-link">JavaScript</span>, supporting: <span class="theme-link">Markdown</span>
+> Built with: [[React]], language: [[JavaScript]], supporting: [[Markdown]]
 
 ## Table of Contents
 

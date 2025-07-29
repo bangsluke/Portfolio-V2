@@ -28,10 +28,9 @@ referenceNumber: +49 (172) 3180-304
 referenceAddress: RLE International, Germany
 portfolioOrder: 2
 ---
-
 # Uwe Kloss
 
-> [!back] Link back to <span class="theme-link">People Notes</span>
+> [!back] Link back to [[People Notes]]
 
 ## Table of Contents 
 

@@ -12,12 +12,11 @@ skillRating: 45
 skillDescription: Supported the design and development of several Power BI reports for internal management review.
 logoFileName: power_bi.svg
 ---
-
 # Power BI
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> Power BI
+> [[Microsoft]] Power BI
 
 ## Table of Contents
 

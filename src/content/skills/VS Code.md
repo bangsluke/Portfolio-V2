@@ -13,12 +13,11 @@ skillRating: 60
 skillDescription: Used VS Code for a few years of my coding time, building and utility the environment for fast and optimised development.
 logoFileName: vs_code.svg
 ---
-
 # VS Code
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> VS Code
+> [[Microsoft]] VS Code
 
 ## Table of Contents
 

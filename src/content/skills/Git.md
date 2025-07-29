@@ -12,10 +12,9 @@ skillRating: 70
 skillDescription: Confident in utilising Git both for individual projects and for team development.
 logoFileName: git.svg
 ---
-
 # Git
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 > Software Version Management
 

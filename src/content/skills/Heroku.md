@@ -14,10 +14,9 @@ skillRating: 60
 skillDescription: Hosted a couple of projects in Heroku, using its features for both front end and back end hosting.
 logoFileName: heroku.svg
 ---
-
 # Heroku
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents
 

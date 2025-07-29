@@ -12,12 +12,11 @@ skillRating: 40
 skillDescription: Comfortable using the package manager for small to medium projects.
 logoFileName: pip.svg
 ---
-
 # pip
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Python</span> package manager
+> [[Python]] package manager
 
 ## Table of Contents
 

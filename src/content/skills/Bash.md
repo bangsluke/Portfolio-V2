@@ -15,12 +15,11 @@ skillRating: 30
 skillDescription: Able to write simple commands for navigating and interacting with folders and files.
 logoFileName: bash.svg
 ---
-
 # Bash
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Link: <span class="theme-link">PowerShell</span>
+> Link: [[PowerShell]]
 
 ## Table of Contents 
 

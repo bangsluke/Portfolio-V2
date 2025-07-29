@@ -45,15 +45,14 @@ topicTags:
 powerShellAlias: n/a
 version: 3
 portfolioOrder: 3
-shortDescription: "Scalable Development Plan to automatically building a full development timing plan based on a number of inputs.\nTBC"
+shortDescription: "Scalable Development Plan to automatically building a full development timing plan based on a number of inputs.<br>TBC"
 longDescription: "TBC"
-lessonsLearned: "TBC\nI was fully in charge of the <span class=\"theme-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"theme-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"theme-link\">Excel</span> and then writing a <span class=\"theme-link\">VBA</span> script to automate creating the <span class=\"theme-link\">SQL</span> queries to update the database quickly.\nThis lead to a complete rebuild when our company migrated from <span class=\"theme-link\">Microsoft</span> to <span class=\"theme-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"theme-link\">Google Sheets</span> and use <span class=\"theme-link\">Google Apps Script</span>.\nThere was a brief period where we began consider rebuilding the frontend in <span class=\"theme-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.\nAs well as the main app, we also developed several <span class=\"theme-link\">NeoDash</span> dashboards off of the <span class=\"theme-link\">Neo4j</span> data for ongoing maintenance to check on the data."
+lessonsLearned: "TBC<br>I was fully in charge of the <span class=\"theme-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"theme-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"theme-link\">Excel</span> and then writing a <span class=\"theme-link\">VBA</span> script to automate creating the <span class=\"theme-link\">SQL</span> queries to update the database quickly.<br>This lead to a complete rebuild when our company migrated from <span class=\"theme-link\">Microsoft</span> to <span class=\"theme-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"theme-link\">Google Sheets</span> and use <span class=\"theme-link\">Google Apps Script</span>.<br>There was a brief period where we began consider rebuilding the frontend in <span class=\"theme-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.<br>As well as the main app, we also developed several <span class=\"theme-link\">NeoDash</span> dashboards off of the <span class=\"theme-link\">Neo4j</span> data for ongoing maintenance to check on the data."
 name: "SDP"
 ---
-
 # SDP
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -98,7 +97,11 @@ TBC
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">Java</span>/<span class="theme-link">Java</span>, <span class="theme-link">GCP</span>
+- Front end: [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]/[[React]]
+- Back end/Datasource: [[Neo4j]], [[Cypher]], [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]], [[SQL]], [[Excel]], [[VBA]], [[Google Sheets]], [[Google Apps Script]]
+- Hosting: [[GitLab]] (see [Repositories](#repositories))
+- Security: n/a
+- Authentication: [[Google Cloud|GCP]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -111,7 +114,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -125,7 +128,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <a href="/portfolio/projects/SDP Consultant Pages" class="theme-link">SDP Consultant Pages</a>
+- [[SDP Consultant Pages]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -133,13 +136,13 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 TBC
 
-I was fully in charge of the <span class="theme-link">SQL</span> backend database, meaning I had to learn how to write <span class="theme-link">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class="theme-link">Excel</span> and then writing a <span class="theme-link">VBA</span> script to automate creating the <span class="theme-link">SQL</span> queries to update the database quickly.
+I was fully in charge of the [[SQL]] backend database, meaning I had to learn how to write [[SQL]] queries. I optimised this by storing the data that we collected day to day in [[Excel]] and then writing a [[VBA]] script to automate creating the [[SQL]] queries to update the database quickly.
 
-This lead to a complete rebuild when our company migrated from <span class="theme-link">Microsoft</span> to <span class="theme-link">Google</span>, meaning I had to migrate the data and automations into <span class="theme-link">Google Sheets</span> and use <span class="theme-link">Google Apps Script</span>.
+This lead to a complete rebuild when our company migrated from [[Microsoft]] to [[Google]], meaning I had to migrate the data and automations into [[Google Sheets]] and use [[Google Apps Script]].
 
-There was a brief period where we began consider rebuilding the frontend in <span class="theme-link">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
+There was a brief period where we began consider rebuilding the frontend in [[React]] and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
 
-As well as the main app, we also developed several <span class="theme-link">NeoDash</span> dashboards off of the <span class="theme-link">Neo4j</span> data for ongoing maintenance to check on the data.
+As well as the main app, we also developed several [[NeoDash]] dashboards off of the [[Neo4j]] data for ongoing maintenance to check on the data.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

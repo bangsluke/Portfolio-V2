@@ -15,12 +15,11 @@ skillRating: 50
 skillDescription: Confident in using Node.js for backend work and setting up scripts for automating development steps.
 logoFileName: nodejs.svg
 ---
-
 # Node.js
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Language: <span class="theme-link">JavaScript</span>
+> Language: [[JavaScript]]
 
 ## Table of Contents 
 

@@ -12,12 +12,11 @@ skillRating: 25
 skillDescription: Created an analysis dashboard for querying data to find missing information for a single project.
 logoFileName: neo4j.svg
 ---
-
 # NeoDash
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> A tool for building dashboards on top of <span class="theme-link">Neo4j</span> data - Language: <span class="theme-link">Cypher</span> and <span class="theme-link">React</span>
+> A tool for building dashboards on top of [[Neo4j]] data - Language: [[Cypher]] and [[React]]
 
 ## Table of Contents
 

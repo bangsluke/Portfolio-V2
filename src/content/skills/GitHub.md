@@ -13,10 +13,9 @@ skillRating: 70
 skillDescription: Managed all of my projects via GitHub, setting up security checks and CI/CD actions across required projects
 logoFileName: github.svg
 ---
-
 # GitHub
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents
 

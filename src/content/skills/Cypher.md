@@ -15,10 +15,9 @@ skillRating: 50
 skillDescription: Able to write basic and more advanced queries for interacting with Neo4j data.
 logoFileName: neo4j_cypher.svg
 ---
-
 # Cypher
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents 
 

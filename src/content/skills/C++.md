@@ -1,38 +1,28 @@
 ---
 tags:
-  - tag
-  - coding
   - language
-  - software
+  - synced
+  - coding
   - skill
   - notes
+  - tag
   - portfolio
-modified: 2025-07-18T12:12:54+01:00
-created: 2023-08-18T15:44:00
+created: 2025-05-16T15:38:00
+modified: 2025-07-02T14:20:10+01:00
 viewCount: 7
-aliases:
-  - TS
-skillRating: 45
-skillDescription: A reasonable understanding and application of TypeScript, with a couple of larger projects built using it.
-logoFileName: typescript.svg
+aliases: 
+skillRating: 5
+skillDescription: Very minor experience in fixing small scripts for developers.
+logoFileName: CPlusPlus.svg
 ---
-# Typescript
+# C++
 
 > [!back] Link back to [[Skills Notes]]
 
-> Superset language of: [[JavaScript]]
-
-## Table of Contents
+## Table of Contents 
 
 ```table-of-contents
 ```
-
-## Links
-
-- [TypeScript Site](https://www.typescriptlang.org/)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
-
->[!top] [Back to top](#Table%20of%20Contents)
 
 ## Skill
 

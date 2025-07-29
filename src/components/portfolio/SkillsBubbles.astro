@@ -1,10 +1,21 @@
 ---
 import { getCollection } from 'astro:content';
+import { processContent } from '../../utils/content-processor';
 import SkillsBubbleChart from './SkillsBubbleChart';
 import { SKILLS_FILTER_OPTIONS } from '../../../scripts/repoConfig.js';
 
+// Get all skills and projects from the local content folders
 const skills = await getCollection('skills');
 const projects = await getCollection('projects');
+
+// Process skills to include processed descriptions
+const processedSkills = skills.map(skill => ({
+	...skill,
+	data: {
+		...skill.data,
+		skillDescription: processContent(skill.data.skillDescription || ''),
+	},
+}));
 
 // Filter options based on existing skill tags
 const existingTags = new Set();
@@ -26,7 +37,7 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 <section class="w-full h-full">
 	<SkillsBubbleChart
 		client:only="preact"
-		skills={skills}
+		skills={processedSkills}
 		projects={projects}
 		filterOptions={filteredOptions}
 	/>
@@ -345,7 +356,7 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 				<div class="flex-1 overflow-hidden">
 					<SkillsBubbleChart
 						client:only="preact"
-						skills={skills}
+						skills={processedSkills}
 						projects={projects}
 						filterOptions={filteredOptions}
 						isFullscreen={true}

@@ -12,12 +12,11 @@ skillRating: 30
 skillDescription: Able to create basic data flows from sources such as SharePoint and Excel into visualisation tools.
 logoFileName: power_query.svg
 ---
-
 # Power Query
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> Power Query
+> [[Microsoft]] Power Query
 
 ## Table of Contents
 

@@ -11,14 +11,13 @@ aliases:
   - Microsoft Access
 skillRating: 20
 skillDescription: Have come across and helped maintain a couple of Access databases without fully setting up or owning my own.
-logoFileName: 
+logoFileName: access.svg
 ---
-
 # Access
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> Access
+> [[Microsoft]] Access
 
 ## Table of Contents
 

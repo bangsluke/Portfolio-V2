@@ -14,10 +14,9 @@ skillRating: 70
 skillDescription: Hosted the majority of my applications via Netlify, using its connectivity with GitHub to automate deployment across several framework and function configurations.
 logoFileName: netlify.svg
 ---
-
 # Netlify
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents
 

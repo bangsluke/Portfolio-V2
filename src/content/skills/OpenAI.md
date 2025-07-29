@@ -14,10 +14,9 @@ skillDescription: Single test app built using the OpenAI API to understand how t
 logoFileName: openai.svg
 banner: https://blogs.swarthmore.edu/its/wp-content/uploads/2022/05/openai.jpg
 ---
-
 # OpenAI
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents
 
@@ -27,8 +26,8 @@ banner: https://blogs.swarthmore.edu/its/wp-content/uploads/2022/05/openai.jpg
 ## Folder Contents
 
 %% Begin Waypoint %%
-- **<span class="theme-link">OpenAI</span>**
-	- <span class="theme-link">ChatGPT</span>
+- **[[OpenAI]]**
+	- [[ChatGPT]]
 
 %% End Waypoint %%
 

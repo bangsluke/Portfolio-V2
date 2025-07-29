@@ -14,12 +14,11 @@ skillRating: 85
 skillDescription: Built several large applications off of Google Sheets data, utilising its API and GAS functionalities.
 logoFileName: google_cloud.svg
 ---
-
 # Google Cloud
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Google</span>'s cloud service
+> [[Google]]'s cloud service
 
 ## Table of Contents
 
