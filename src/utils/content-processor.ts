@@ -3,6 +3,10 @@
  * This function handles Obsidian links, markdown links, and other content transformations
  * Use this function for all content that needs to be processed before rendering
  */
+
+import fs from 'fs';
+import path from 'path';
+
 export function processContent(content: string | undefined | null): string {
 	if (!content) return '';
 
@@ -51,7 +55,14 @@ export function processContent(content: string | undefined | null): string {
 					return `href="/portfolio/projects/${slug}"`;
 				}
 			)
-			// Convert newlines to <br> tags for proper HTML rendering
+			// Convert markdown headings to HTML headings (must be before newline conversion)
+			.replace(/^#{6}\s+(.+)$/gm, '<h6>$1</h6>')
+			.replace(/^#{5}\s+(.+)$/gm, '<h5>$1</h5>')
+			.replace(/^#{4}\s+(.+)$/gm, '<h4>$1</h4>')
+			.replace(/^#{3}\s+(.+)$/gm, '<h3>$1</h3>')
+			.replace(/^#{2}\s+(.+)$/gm, '<h2>$1</h2>')
+			.replace(/^#{1}\s+(.+)$/gm, '<h1>$1</h1>')
+			// Convert newlines to <br> tags for proper HTML rendering (but not for headings)
 			.replace(/\n/g, '<br>')
 			// Finally, convert markdown links to HTML with theme green and underline styling
 			.replace(
@@ -67,17 +78,14 @@ export function processContent(content: string | undefined | null): string {
  */
 function getExistingProjectNames(): string[] {
 	try {
-		const fs = require('fs');
-		const path = require('path');
-
 		// Path to the projects directory
 		const projectsDir = path.join(process.cwd(), 'src', 'content', 'projects');
 
 		// Read all .md files in the projects directory
 		const files = fs.readdirSync(projectsDir);
 		const projectNames = files
-			.filter(file => file.endsWith('.md'))
-			.map(file => file.replace('.md', ''));
+			.filter((file: string) => file.endsWith('.md'))
+			.map((file: string) => file.replace('.md', ''));
 
 		return projectNames;
 	} catch (error) {

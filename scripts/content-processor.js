@@ -93,7 +93,14 @@ function processContent(content) {
 					return `href="/portfolio/projects/${slug}"`;
 				}
 			)
-			// Convert newlines to <br> tags for proper HTML rendering
+			// Convert markdown headings to HTML headings (must be before newline conversion)
+			.replace(/^#{6}\s+(.+)$/gm, '<h6>$1</h6>')
+			.replace(/^#{5}\s+(.+)$/gm, '<h5>$1</h5>')
+			.replace(/^#{4}\s+(.+)$/gm, '<h4>$1</h4>')
+			.replace(/^#{3}\s+(.+)$/gm, '<h3>$1</h3>')
+			.replace(/^#{2}\s+(.+)$/gm, '<h2>$1</h2>')
+			.replace(/^#{1}\s+(.+)$/gm, '<h1>$1</h1>')
+			// Convert newlines to <br> tags for proper HTML rendering (but not for headings)
 			.replace(/\n/g, '<br>')
 			// Finally, convert markdown links to HTML with theme green and underline styling
 			.replace(

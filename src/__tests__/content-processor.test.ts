@@ -225,4 +225,34 @@ describe('Portfolio About Me processing', () => {
 			'<!-- Image removed during sync: 20241201 Player Stats Page Design.jpeg -->';
 		expect(processContent(input)).toBe(expected);
 	});
+
+	test('processes markdown headings', () => {
+		const input = '# Main Heading\n## Sub Heading\n### Section Heading';
+		const expected =
+			'<h1>Main Heading</h1><br><h2>Sub Heading</h2><br><h3>Section Heading</h3>';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes markdown headings with content', () => {
+		const input =
+			'# Portfolio About Me\n\nThis is some content.\n\n## My Beginnings\n\nMore content here.';
+		const expected =
+			'<h1>Portfolio About Me</h1><br><br>This is some content.<br><br><h2>My Beginnings</h2><br><br>More content here.';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes all heading levels', () => {
+		const input = '# H1\n## H2\n### H3\n#### H4\n##### H5\n###### H6';
+		const expected =
+			'<h1>H1</h1><br><h2>H2</h2><br><h3>H3</h3><br><h4>H4</h4><br><h5>H5</h5><br><h6>H6</h6>';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('processes headings with links', () => {
+		const input =
+			'# Main Heading\n\nCheck out [[Homepage Website]] and [GitHub](https://github.com)';
+		const expected =
+			'<h1>Main Heading</h1><br><br>Check out <a href="/portfolio/projects/homepage-website" class="theme-link" target="_blank" rel="noopener noreferrer">Homepage Website</a> and <a href="https://github.com" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a>';
+		expect(processContent(input)).toBe(expected);
+	});
 });
