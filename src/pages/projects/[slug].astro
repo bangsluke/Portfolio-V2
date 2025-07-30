@@ -126,6 +126,7 @@ const ogimage = {
 			<div class="max-w-4xl mx-auto">
 				<div class="text-center">
 					<a
+						id="back-to-projects-top"
 						href="/site#projects"
 						class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
 						<svg
@@ -349,6 +350,7 @@ const ogimage = {
 			<div class="max-w-4xl mx-auto">
 				<div class="text-center">
 					<a
+						id="back-to-projects-bottom"
 						href="/site#projects"
 						class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
 						<svg
@@ -369,3 +371,50 @@ const ogimage = {
 		</div>
 	</div>
 </Layout>
+
+<script>
+	// Handle intelligent "Back to Projects" navigation
+	document.addEventListener('DOMContentLoaded', function () {
+		const backButtons = [
+			document.getElementById('back-to-projects-top'),
+			document.getElementById('back-to-projects-bottom'),
+		];
+
+		// Get the referrer URL
+		const referrer = document.referrer;
+
+		// Determine the correct back URL based on referrer
+		let backUrl = '/site#projects'; // Default fallback
+
+		if (referrer) {
+			const referrerUrl = new URL(referrer);
+
+			// If user came from the main site with projects anchor
+			if (
+				referrerUrl.pathname === '/site' &&
+				referrerUrl.hash === '#projects'
+			) {
+				backUrl = '/site#projects';
+			}
+			// If user came from the projects page
+			else if (referrerUrl.pathname === '/projects') {
+				backUrl = '/projects';
+			}
+			// If user came from another project page (projects/[slug])
+			else if (referrerUrl.pathname.startsWith('/projects/')) {
+				backUrl = '/projects';
+			}
+			// For any other case, default to main site projects section
+			else {
+				backUrl = '/site#projects';
+			}
+		}
+
+		// Update both back buttons with the correct URL
+		backButtons.forEach(button => {
+			if (button) {
+				button.href = backUrl;
+			}
+		});
+	});
+</script>

@@ -61,8 +61,6 @@ const SkillsBubbleChart = ({
 	isFullscreen: _isFullscreen = false,
 	onClose: _onClose,
 }: SkillsBubbleChartProps) => {
-	const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
-	const [_hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 	const [tooltip, setTooltip] = useState<TooltipData | null>(null);
 	const [selectedFilters, setSelectedFilters] = useState<string[]>(['all']);
 	const [sizeByRating, setSizeByRating] = useState<boolean>(true);
@@ -329,16 +327,25 @@ const SkillsBubbleChart = ({
 			.attr('class', 'bubble')
 			.style('cursor', 'pointer')
 			.on('click', (event, d) => {
-				setSelectedSkill(selectedSkill === d.id ? null : d.id);
+				const [x, y] = d3.pointer(event);
+				setTooltip({ skill: d, x, y });
 			})
 			.on('mouseenter', (event, d) => {
-				setHoveredSkill(d.id);
 				const [x, y] = d3.pointer(event);
 				setTooltip({ skill: d, x, y });
 			})
 			.on('mouseleave', () => {
-				setHoveredSkill(null);
 				setTooltip(null);
+			})
+			.on('touchstart', (event, d) => {
+				event.preventDefault();
+				const touch = event.touches[0];
+				const rect = svg.node()?.getBoundingClientRect();
+				if (rect) {
+					const x = touch.clientX - rect.left;
+					const y = touch.clientY - rect.top;
+					setTooltip({ skill: d, x, y });
+				}
 			});
 
 		// Add circles
@@ -427,19 +434,28 @@ const SkillsBubbleChart = ({
 		};
 	}, [bubbleData]);
 
-	// Handle click outside to deselect
+	// Handle click outside to close tooltip
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
-			if (selectedSkill && !(event.target as Element).closest('.bubble')) {
-				setSelectedSkill(null);
+			if (tooltip && !(event.target as Element).closest('.bubble')) {
+				setTooltip(null);
+			}
+		};
+
+		const handleTouchOutside = (event: TouchEvent) => {
+			if (tooltip && !(event.target as Element).closest('.bubble')) {
+				setTooltip(null);
 			}
 		};
 
 		document.addEventListener('click', handleClickOutside);
+		document.addEventListener('touchstart', handleTouchOutside);
+
 		return () => {
 			document.removeEventListener('click', handleClickOutside);
+			document.removeEventListener('touchstart', handleTouchOutside);
 		};
-	}, [selectedSkill]);
+	}, [tooltip]);
 
 	return (
 		<div class="relative w-full h-full" ref={containerRef}>
@@ -476,42 +492,6 @@ const SkillsBubbleChart = ({
 						</div>
 						<div class="absolute left-1/2 transform -translate-x-1/2 global-tooltip-arrow global-tooltip-arrow-top" />
 					</div>
-				</div>
-			)}
-
-			{/* Selected Skill Details */}
-			{selectedSkill && (
-				<div class="absolute bottom-4 left-4 right-4 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
-					<div class="flex items-center justify-between mb-2">
-						<h3 class="text-lg font-bold text-gray-900 dark:text-white">
-							{bubbleData.find(d => d.id === selectedSkill)?.name}
-						</h3>
-						<button
-							onClick={() => setSelectedSkill(null)}
-							class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-							<svg
-								class="w-5 h-5"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M6 18L18 6M6 6l12 12"
-								/>
-							</svg>
-						</button>
-					</div>
-					<p class="text-sm text-gray-600 dark:text-gray-300">
-						<span
-							dangerouslySetInnerHTML={{
-								__html:
-									bubbleData.find(d => d.id === selectedSkill)?.description ||
-									'',
-							}}
-						/>
-					</p>
 				</div>
 			)}
 		</div>
