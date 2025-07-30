@@ -12,30 +12,6 @@
 	--color-blacktext: #171717;
 	--color-dark-background: #0e0e11;
 
-	/* --color-theme-50: #ecfdf5;
-	--color-theme-100: #d0fbe5;
-	--color-theme-200: #a4f4cf;
-	--color-theme-300: #6ce9b7;
-	--color-theme-400: #31d69a;
-	--color-theme-500: #0dbc82;
-	--color-theme-600: #03986a;
-	--color-theme-700: #027a58;
-	--color-theme-800: #056047;
-	--color-theme-900: #054f3c;
-	--color-theme-950: #012d22;
-
-	--color-light-theme-accent-50: #f0fdfa;
-	--color-light-theme-accent-100: #cbfcf1;
-	--color-light-theme-accent-200: #96f7e4;
-	--color-light-theme-accent-300: #5cecd5;
-	--color-light-theme-accent-400: #2bd6c1;
-	--color-light-theme-accent-500: #12baa8;
-	--color-light-theme-accent-600: #0b9689;
-	--color-light-theme-accent-700: #0e776f;
-	--color-light-theme-accent-800: #105f5a;
-	--color-light-theme-accent-900: #124f4b;
-	--color-light-theme-accent-950: #03302f; */
-
 	--color-theme-50: #f5f3ff;
 	--color-theme-100: #ede9fe;
 	--color-theme-200: #ddd6fe;
@@ -60,7 +36,6 @@
 	--color-light-theme-accent-900: #581c87;
 	--color-light-theme-accent-950: #3b0764;
 
-	/* Additional rgba theme variables for common use cases */
 	--color-theme-300-rgba-05: rgba(196, 181, 253, 0.5);
 	--color-theme-400-rgba-03: rgba(167, 139, 250, 0.3);
 	--color-theme-400-rgba-02: rgba(167, 139, 250, 0.2);
@@ -78,8 +53,8 @@
 	--color-theme-400-rgba-04: rgba(167, 139, 250, 0.4);
 
 	--animate-rotate: rotate 10s linear infinite;
-
 	--animate-rotate-border: border-rotate 3s linear infinite;
+
 	@keyframes border-rotate {
 		to {
 			--border-angle: 360deg;
@@ -95,20 +70,19 @@
 
 ::selection {
 	color: white;
-	/* background-color: #0dbc82; */
 	background-color: #8962e8;
 }
 
 *::-webkit-scrollbar-thumb {
 	border-radius: 20px;
 }
+
 .dark * {
-	/* scrollbar-color: #6ce9b7 #012d22; */
 	scrollbar-color: #c4b5fd #2e1065;
 	scrollbar-width: thin;
 }
+
 * {
-	/* scrollbar-color: #6ce9b7 #d0fbe5; */
 	scrollbar-color: #c4b5fd #f5f3ff;
 	scrollbar-width: thin;
 	box-sizing: border-box;
@@ -124,20 +98,12 @@ pre,
 	0% {
 		transform: rotate(0deg) scale(10);
 	}
-
 	100% {
 		transform: rotate(-360deg) scale(10);
 	}
 }
 
-/* Theme-aware gradient backgrounds */
 .bg-gradient-light {
-	/* background: linear-gradient(
-		45deg,
-		rgba(96, 250, 155, 0) 10.79%,
-		rgba(96, 250, 170, 0.03) 40.92%,
-		rgba(96, 250, 155, 0) 90.35%
-	); */
 	background: linear-gradient(
 		45deg,
 		var(--color-theme-500-rgba-001) 10.79%,
@@ -147,12 +113,6 @@ pre,
 }
 
 .bg-gradient-dark {
-	/* background: linear-gradient(
-		45deg,
-		rgba(96, 250, 155, 0) 10.79%,
-		rgba(96, 250, 170, 0.01) 40.92%,
-		rgba(96, 250, 155, 0) 90.35%
-	); */
 	background: linear-gradient(
 		45deg,
 		var(--color-theme-500-rgba-001) 10.79%,
@@ -274,7 +234,6 @@ a.inline-block.leading-5.pl-12 {
 	}
 }
 
-/* Callout styling */
 .markdown .callout {
 	letter-spacing: normal;
 	font-family: 'Montserrat', sans-serif;
@@ -306,89 +265,69 @@ a.inline-block.leading-5.pl-12 {
 }
 
 .dark .markdown a {
-	/* color: #5cecd5; */
 	color: #c4b5fd;
 }
 
 .markdown a {
-	/* color: #0dbc82; */
 	color: #8962e8;
 }
 
 .markdown a:hover {
-	/* color: #2bd6c1; */
 	color: #a78bfa;
 }
 
-/* Styling for processed content links (from Obsidian/markdown processing) */
 .processed-content a {
-	/* color: #31d69a !important; */
 	color: #a78bfa !important;
 	text-decoration: underline;
 	transition: all 0.3s ease;
 }
 
 .processed-content a:hover {
-	/* color: #6ce9b7 !important; */
 	color: #c4b5fd !important;
 }
 
 .dark .processed-content a {
-	/* color: #31d69a !important; */
 	color: #a78bfa !important;
 }
 
 .dark .processed-content a:hover {
-	/* color: #6ce9b7 !important; */
 	color: #c4b5fd !important;
 }
 
-/* Styling for theme links - different styles for different link types */
-/* Obsidian links (strong tags) - bold, theme-purple, no underline */
 .theme-link {
-	/* color: #31d69a !important; */
 	color: #a78bfa !important;
 	transition: all 0.3s ease;
 }
 
 .theme-link:hover {
-	/* color: #6ce9b7 !important; */
 	color: #c4b5fd !important;
 }
 
-/* Markdown links (anchor tags) - bold, theme-purple, with underline */
 a.theme-link {
 	text-decoration: underline;
 }
 
 a.theme-link:hover {
-	/* color: #6ce9b7 !important; */
 	color: #c4b5fd !important;
 }
 
 .dark .theme-link {
-	/* color: #31d69a !important; */
 	color: #a78bfa !important;
 }
 
 .dark .theme-link:hover {
-	/* color: #6ce9b7 !important; */
 	color: #c4b5fd !important;
 }
 
 .dark a.theme-link {
-	/* color: #31d69a !important; */
 	color: #a78bfa !important;
 }
 
 .dark a.theme-link:hover {
-	/* color: #6ce9b7 !important; */
 	color: #c4b5fd !important;
 }
 
-/* Ensure theme-link styling works in processed content */
 .processed-content .theme-link {
-	/* color: #31d69a !important; */
 	color: #a78bfa !important;
 }
 
@@ -397,32 +336,26 @@ a.theme-link:hover {
 }
 
 .processed-content .theme-link:hover {
-	/* color: #6ce9b7 !important; */
 	color: #c4b5fd !important;
 }
 
 .processed-content a.theme-link:hover {
-	/* color: #6ce9b7 !important; */
 	color: #c4b5fd !important;
 }
 
 .dark .processed-content .theme-link {
-	/* color: #31d69a !important; */
 	color: #a78bfa !important;
 }
 
 .dark .processed-content a.theme-link {
-	/* color: #31d69a !important; */
 	color: #a78bfa !important;
 }
 
 .dark .processed-content .theme-link:hover {
-	/* color: #6ce9b7 !important; */
 	color: #c4b5fd !important;
 }
 
 .dark .processed-content a.theme-link:hover {
-	/* color: #6ce9b7 !important; */
 	color: #c4b5fd !important;
 }
 
@@ -483,7 +416,6 @@ a.theme-link:hover {
 }
 
 .markdown hr {
-	/* color: rgba(108, 233, 183, 0.5); */
 	color: var(--color-theme-300-rgba-05);
 }
 
@@ -495,21 +427,17 @@ a.theme-link:hover {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	border-left-width: 4px;
-	/* border-left-color: #0dbc82; */
 	border-left-color: #8962e8;
 	padding-left: 1rem;
 	font-style: italic;
 	color: #171717;
-	/* background-color: #ecfdf5; */
 	background-color: #f5f3ff;
 	backdrop-filter: blur(8px);
 	margin-bottom: 2rem;
 }
 
 .dark .markdown blockquote {
-	/* color: #6ce9b7; */
 	color: #c4b5fd;
-	/* background-color: rgba(5, 79, 60, 0.2); */
 	background-color: var(--color-theme-950-rgba-02);
 }
 
@@ -570,25 +498,19 @@ a.theme-link:hover {
 	display: flex;
 	transition: all 0.3s ease;
 	opacity: 0;
+	align-items: center;
+	justify-content: center;
 }
 
 .copy-code:hover {
 	background-color: transparent;
+	opacity: 1;
 }
 
 @media (max-width: 768px) {
 	.copy-code {
 		opacity: 1;
 	}
-}
-
-.copy-code:hover {
-	opacity: 1;
-}
-
-.copy-code {
-	align-items: center;
-	justify-content: center;
 }
 
 .contains-task-list {
@@ -606,13 +528,11 @@ a.theme-link:hover {
 .task-list-item input[type='checkbox'] {
 	width: 1.25rem;
 	height: 1.25rem;
-	/* accent-color: #6ce9b7; */
 	accent-color: #c4b5fd;
 }
 
 .task-list-item input[type='checkbox']:checked + span {
 	text-decoration: line-through;
-	/* color: #03986a; */
 	color: #7c3aed;
 }
 
@@ -653,21 +573,20 @@ a.theme-link:hover {
 }
 
 .hamburger .bars-icon {
-	display: block; /* Show 'bars' icon by default */
+	display: block;
 }
 
 .hamburger.active .bars-icon {
-	display: none; /* Hide 'bars' icon when .active is present */
+	display: none;
 }
 
 .hamburger.active .xmark-icon {
-	display: block; /* Show 'xmark' icon when .active is present */
+	display: block;
 }
 
-/* Navigation bar styles */
 .hamburger {
 	cursor: pointer;
-	display: block !important; /* Force show hamburger by default */
+	display: block !important;
 	background: none;
 	border: none;
 	padding: 0.5rem;
@@ -681,23 +600,23 @@ a.theme-link:hover {
 }
 
 .hamburger .bars-icon {
-	display: block !important; /* Show 'bars' icon by default */
+	display: block !important;
 }
 
 .hamburger.active .bars-icon {
-	display: none !important; /* Hide 'bars' icon when .active is present */
+	display: none !important;
 }
 
 .hamburger.active .xmark-icon {
-	display: block !important; /* Show 'xmark' icon when .active is present */
+	display: block !important;
 }
 
 .nav-links {
-	display: none; /* Hidden by default on mobile */
+	display: none;
 }
 
 .nav-links.expanded {
-	display: flex !important; /* Show when expanded class is added */
+	display: flex !important;
 	flex-direction: column;
 	position: absolute;
 	top: 100%;
@@ -721,7 +640,7 @@ a.theme-link:hover {
 
 @media screen and (min-width: 768px) {
 	.nav-links {
-		display: flex !important; /* Always show on desktop */
+		display: flex !important;
 		position: static;
 		background: transparent;
 		border-top: none;
@@ -731,7 +650,7 @@ a.theme-link:hover {
 	}
 
 	.hamburger {
-		display: none !important; /* Hide hamburger on desktop */
+		display: none !important;
 	}
 }
 
@@ -740,7 +659,6 @@ a.theme-link:hover {
 	display: block;
 	width: 400px;
 	height: 400px;
-	/* background: #31d69a40; */
 	background: var(--color-theme-400-rgba-04);
 	bottom: -400px;
 	right: -300px;
@@ -751,12 +669,11 @@ a.theme-link:hover {
 }
 
 .blur-circle {
-	/* background-color: rgba(87, 253, 228, 0.29); */
 	background-color: var(--color-theme-400-rgba-029);
-	position: absolute;
+	position: fixed;
 	width: 200px;
 	height: 200px;
-	top: 100px;
+	top: 50vh;
 	right: 100px;
 	border-radius: 999px;
 	filter: blur(150px);
@@ -769,17 +686,15 @@ a.theme-link:hover {
 	display: block;
 	width: 500px;
 	height: 500px;
-	/* background: #50fd8f25 !important; */
 	background: var(--color-theme-300-rgba-025) !important;
 	bottom: -150px;
 	right: -150px;
-	position: absolute;
+	position: fixed;
 	z-index: -2;
 	border-radius: 50%;
 	filter: blur(10px);
 }
 
-/* Global Element Styles - for buttons, dropdowns, etc. */
 .global-element {
 	background-color: var(--color-theme-700);
 	border: 1px solid var(--color-theme-300-rgba-03);
@@ -809,7 +724,6 @@ a.theme-link:hover {
 		0 10px 10px -5px rgb(0 0 0 / 0.04);
 }
 
-/* Global Button Styles */
 .global-button {
 	cursor: pointer;
 }
@@ -822,7 +736,6 @@ a.theme-link:hover {
 		0 10px 10px -5px rgb(0 0 0 / 0.04);
 }
 
-/* Global Dropdown Styles */
 .global-dropdown {
 	cursor: pointer;
 }
@@ -894,12 +807,10 @@ a.theme-link:hover {
 	pointer-events: none;
 }
 
-/* Global Form Element Styles */
 .global-form-element {
 	cursor: pointer;
 }
 
-/* Global Tooltip Styles */
 .global-tooltip {
 	background-color: var(--color-theme-700);
 	border: 1px solid var(--color-theme-300-rgba-03);
@@ -911,7 +822,6 @@ a.theme-link:hover {
 	pointer-events: none;
 }
 
-/* Global Tooltip for Form Elements (allows interaction) */
 .global-tooltip:has(select),
 .global-tooltip:has(input),
 .global-tooltip:has(textarea) {
@@ -956,7 +866,6 @@ a.theme-link:hover {
 	border-left: none;
 }
 
-/* Style the Carousel Containers */
 .carousel-container {
 	width: 100%;
 	position: relative;
@@ -965,29 +874,28 @@ a.theme-link:hover {
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
-	padding: 20px 0; /* Add padding to accommodate scaled items */
+	padding: 20px 0;
 }
 
 .carousel-item {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	border-radius: 1rem; /* rounded-2xl = 16px */
+	border-radius: 1rem;
 	overflow: hidden;
 	cursor: pointer;
-	transition: all 0.3s ease; /* transition-all duration-300 */
+	transition: all 0.3s ease;
 }
 
 .carousel-item:hover {
-	transform: scale(1.05); /* hover:scale-105 */
+	transform: scale(1.05);
 }
 
-/* Flicking Carousel Styles */
 .flicking-viewport {
 	width: 100%;
 	height: 300px;
 	overflow: hidden;
-	padding: 20px 0; /* Add padding to accommodate scaled items */
+	padding: 20px 0;
 }
 
 .plugins-panel {
@@ -1010,7 +918,6 @@ a.theme-link:hover {
 	object-fit: cover;
 }
 
-/* Responsive adjustments for carousel */
 @media (max-width: 768px) {
 	.plugins-panel,
 	.flicking-panel {
@@ -1029,13 +936,15 @@ a.theme-link:hover {
 	}
 }
 
-/* Mobile Overflow Prevention */
 @media (max-width: 768px) {
 	html,
 	body {
 		overflow-x: hidden;
 		max-width: 100vw;
 		width: 100%;
+		height: 100%;
+		min-height: 100vh;
+		min-height: -webkit-fill-available;
 	}
 
 	* {
@@ -1043,29 +952,27 @@ a.theme-link:hover {
 		box-sizing: border-box;
 	}
 
-	/* Fix carousel overflow issues */
 	.flicking-viewport {
 		width: 100% !important;
 		max-width: 100% !important;
 		height: 240px !important;
 		overflow: hidden !important;
-		padding: 15px 0 !important; /* Add padding for mobile scaled items */
+		padding: 15px 0 !important;
 	}
 
-	/* Ensure all sections don't overflow */
 	section {
 		overflow-x: hidden;
 		max-width: 100vw;
+		position: relative;
+		z-index: 1;
 	}
 
-	/* Fix any potential table overflow */
 	table {
 		max-width: 100%;
 		overflow-x: auto;
 		display: block;
 	}
 
-	/* Fix code blocks overflow */
 	pre {
 		max-width: 100%;
 		overflow-x: auto;
@@ -1073,53 +980,137 @@ a.theme-link:hover {
 		word-wrap: break-word;
 	}
 
-	/* Fix image overflow */
 	img {
 		max-width: 100%;
 		height: auto;
 	}
 
-	/* Fix any absolute positioned elements that might overflow */
 	.absolute,
 	.fixed {
 		max-width: 100vw;
 	}
 
-	/* Fix any flex containers that might overflow */
 	.flex {
 		flex-wrap: wrap;
 	}
 
-	/* Fix any grid containers that might overflow */
-	.grid {
+	.grid:not([class*='grid-cols-']) {
 		grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+	}
+
+	/* Reduce header font sizes on mobile */
+	h1 {
+		font-size: 1.5rem;
+	}
+
+	h2 {
+		font-size: 1.25rem;
+	}
+
+	h3 {
+		font-size: 1rem;
+	}
+
+	h4 {
+		font-size: 0.9rem;
+	}
+
+	p {
+		font-size: 0.8rem;
+	}
+
+	strong {
+		font-size: 0.9rem;
+	}
+
+	.processed-content {
+		font-size: 0.8rem;
+	}
+
+	.div {
+		font-size: 0.8rem;
+	}
+
+	/* Ensure Skills and Most Common Techs headers stay on one line */
+	.flex.items-center.justify-between.gap-4.max-md\\:gap-2 {
+		flex-wrap: nowrap;
+		gap: 0.25rem !important;
+	}
+
+	/* Ensure header controls stay on one line and content fills remaining space */
+	.flex-shrink-0.flex-nowrap {
+		flex-shrink: 0;
+		flex-wrap: nowrap;
+	}
+
+	/* Content area should fill remaining space */
+	.flex-1.min-h-0 {
+		flex: 1;
+		min-height: 0;
+	}
+
+	/* Remove scroll bar from coding section on mobile */
+	#coding-section-layout {
+		overflow: hidden;
+	}
+
+	#coding-section-layout > div {
+		overflow: hidden;
+	}
+
+	/* Make buttons and dropdowns smaller on mobile */
+	.global-element {
+		font-size: 0.7rem !important;
+		padding: 0.25rem 0.5rem !important;
+		max-height: 1.5rem !important;
+		min-height: 1.5rem !important;
+	}
+
+	/* Ensure footer logo aligns with social icons */
+	footer nav {
+		align-items: center;
+	}
+
+	footer nav > div:first-child {
+		display: flex;
+		align-items: center;
 	}
 }
 
-/* Additional fixes for very small screens */
 @media (max-width: 480px) {
 	html,
 	body {
 		overflow-x: hidden;
 		max-width: 100vw;
+		height: 100%;
+		min-height: 100vh;
+		min-height: -webkit-fill-available;
 	}
 
-	/* Ensure carousel panels don't overflow on very small screens */
+	section#home {
+		position: relative;
+		z-index: 1;
+		background: transparent;
+	}
+
+	section {
+		position: relative;
+		z-index: 1;
+	}
+
 	.plugins-panel,
 	.flicking-panel {
 		width: 250px !important;
 		height: 250px !important;
 		margin: 0 5px !important;
-		padding: 10px 0 !important; /* Reduced padding for very small screens */
+		padding: 10px 0 !important;
 	}
 
-	/* Fix any padding issues that might cause overflow */
 	.px-8 {
 		padding-left: 1rem !important;
 		padding-right: 1rem !important;
 	}
 
-	/* Ensure all containers are properly constrained */
 	.max-w-7xl,
 	.max-w-6xl,
 	.max-w-5xl,
@@ -1133,5 +1124,44 @@ a.theme-link:hover {
 		max-width: calc(100vw - 2rem) !important;
 		margin-left: auto !important;
 		margin-right: auto !important;
+	}
+
+	/* Even smaller buttons and text for very small screens */
+	.global-element {
+		font-size: 0.65rem !important;
+		padding: 0.2rem 0.4rem !important;
+		max-height: 1.25rem !important;
+		min-height: 1.25rem !important;
+	}
+
+	/* Ensure Skills and Most Common Techs headers stay on one line on very small screens */
+	.flex.items-center.justify-between.gap-4.max-md\\:gap-2 {
+		gap: 0.125rem !important;
+	}
+
+	/* Ensure header controls stay on one line and content fills remaining space on very small screens */
+	.flex-shrink-0.flex-nowrap {
+		flex-shrink: 0;
+		flex-wrap: nowrap;
+	}
+
+	/* Content area should fill remaining space on very small screens */
+	.flex-1.min-h-0 {
+		flex: 1;
+		min-height: 0;
+	}
+
+	/* Remove scroll bar from coding section on very small screens */
+	#coding-section-layout {
+		overflow: hidden;
+	}
+
+	#coding-section-layout > div {
+		overflow: hidden;
+	}
+
+	/* Make icons smaller on very small screens */
+	.text-3xl.max-md\\:text-2xl.max-sm\\:text-sm {
+		font-size: 0.875rem !important;
 	}
 }

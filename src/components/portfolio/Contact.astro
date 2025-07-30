@@ -24,13 +24,13 @@ if (!staticData) {
 						level={2}
 					/>
 				</div>
-				<div class="flex gap-4 max-sm:flex-col max-sm:w-full">
+				<div class="flex gap-4 max-sm:flex-row max-sm:justify-center">
 					<Button
 						variant="big"
 						link={`mailto:${staticData.data.email}`}
 						text={staticData.data.contactSectionButtonText}
 						iconName={staticData.data.contactSectionButtonIcon}
-						class="!py-4 !text-lg max-xl:!text-base max-sm:!text-sm max-sm:!w-full transition-all duration-500 hover:scale-110"
+						class="!py-4 !text-lg max-xl:!text-base max-sm:!text-sm transition-all duration-500 hover:scale-110"
 					/>
 					<Button
 						variant="dark"
@@ -39,7 +39,7 @@ if (!staticData) {
 						iconName="document"
 						isExternal={false}
 						ariaLabel="Download CV"
-						class="transition-all duration-500 hover:scale-110 max-sm:!w-full"
+						class="!py-4 !text-lg max-xl:!text-base max-sm:!text-sm transition-all duration-500 hover:scale-110"
 					/>
 				</div>
 			</div>

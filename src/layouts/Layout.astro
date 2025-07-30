@@ -30,7 +30,10 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 	class="dark:bg-dark-background bg-theme-50/5 font-montserrat scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no"
+		/>
 		<title>{pageTitle}</title>
 
 		<!-- Prevent theme flash - apply theme immediately -->
@@ -110,7 +113,7 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 		<div class="blur-circle"></div>
 		<div
 			style="background: linear-gradient(45deg, var(--color-theme-500-rgba-001) 10.79%, var(--color-theme-500-rgba-003) 40.92%, var(--color-theme-500-rgba-001) 90.35%)"
-			class="fixed top-0 left-0 w-full h-full pointer-events-none -z-1">
+			class="fixed top-0 left-0 w-full h-screen pointer-events-none -z-10">
 		</div>
 		<Header />
 
