@@ -47,10 +47,12 @@ function CompanyCard({
 	item,
 	isSelected,
 	onClick,
+	isMobile,
 }: {
 	item: CarouselItem;
 	isSelected: boolean;
 	onClick: () => void;
+	isMobile: boolean;
 }) {
 	const [showModal, setShowModal] = useState(false);
 
@@ -75,12 +77,9 @@ function CompanyCard({
 	};
 
 	// Handle card click - on mobile, show modal; on desktop, select item
-	const handleCardClick = (e: MouseEvent) => {
+	const handleCardClick = (e: MouseEvent | TouchEvent) => {
 		e.preventDefault();
 		e.stopPropagation();
-
-		// Check if it's mobile (touch device or small screen)
-		const isMobile = 'ontouchstart' in window || window.innerWidth <= 768;
 
 		if (isMobile) {
 			showCompanyModal();
@@ -89,13 +88,25 @@ function CompanyCard({
 		}
 	};
 
+	// Handle touch events for mobile
+	const handleTouchStart = (e: TouchEvent) => {
+		if (!isMobile) return;
+
+		e.preventDefault();
+		e.stopPropagation();
+
+		// On mobile, show modal immediately on touch
+		showCompanyModal();
+	};
+
 	return (
 		<>
 			<div
 				className={`carousel-item group hover:scale-105 ${
 					isSelected ? 'ring-4 ring-theme-400 scale-105 brightness-110' : ''
 				}`}
-				onClick={handleCardClick}>
+				onClick={handleCardClick}
+				onTouchStart={handleTouchStart}>
 				{/* Background Image */}
 				{hasBackground ? (
 					<div
@@ -201,7 +212,25 @@ export default function ClientAndCustomerCarousel({
 	const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
 	const [error, setError] = useState<string | null>(null);
 	const [selectedItem, setSelectedItem] = useState<string | null>(null);
+	const [isMobile, setIsMobile] = useState(false);
 	const flickingRef = useRef<any>(null);
+
+	// Detect mobile device
+	useEffect(() => {
+		const checkMobile = () => {
+			const mobile =
+				'ontouchstart' in window ||
+				window.innerWidth <= 768 ||
+				/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+					navigator.userAgent
+				);
+			setIsMobile(mobile);
+		};
+
+		checkMobile();
+		window.addEventListener('resize', checkMobile);
+		return () => window.removeEventListener('resize', checkMobile);
+	}, []);
 
 	useEffect(() => {
 		try {
@@ -383,7 +412,9 @@ export default function ClientAndCustomerCarousel({
 						bound: false,
 						adaptive: false,
 						renderOnlyVisible: false,
-						preventClickOnDrag: false,
+						preventClickOnDrag: true,
+						preventDefaultOnDrag: false,
+						threshold: 40,
 					}}>
 					{carouselItems.map(item => (
 						<div key={item.id} className="flicking-panel">
@@ -391,6 +422,7 @@ export default function ClientAndCustomerCarousel({
 								item={item}
 								isSelected={selectedItem === item.id}
 								onClick={() => handleItemClick(item.id)}
+								isMobile={isMobile}
 							/>
 						</div>
 					))}
