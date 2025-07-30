@@ -330,6 +330,8 @@ const ogimage = {
 										companyLogoURL={project.companyLogoURL}
 										linkedCompany={project.data.linkedCompany}
 										projects={projects}
+										dateStart={project.data.dateStart}
+										dateEnd={project.data.dateEnd}
 									/>
 								</div>
 							);
@@ -374,7 +376,7 @@ const ogimage = {
 			'categoryFilter'
 		) as HTMLSelectElement;
 		const projectCards = document.querySelectorAll(
-			'.project-card'
+			'#projectsGrid > div'
 		) as NodeListOf<HTMLElement>;
 		const projectCount = document.getElementById('projectCount');
 		const startDateInput = document.getElementById(
@@ -438,39 +440,36 @@ const ogimage = {
 
 			let visibleCount = 0;
 
-			projectCards.forEach(card => {
-				const cardCategory = card.dataset.category;
-				const cardStartDate = card.dataset.startDate
-					? new Date(card.dataset.startDate)
+			projectCards.forEach(cardWrapper => {
+				const cardCategory = cardWrapper.dataset.category;
+				const cardStartDate = cardWrapper.dataset.startDate
+					? new Date(cardWrapper.dataset.startDate)
 					: null;
-				const cardEndDate = card.dataset.endDate
-					? new Date(card.dataset.endDate)
+				const cardEndDate = cardWrapper.dataset.endDate
+					? new Date(cardWrapper.dataset.endDate)
 					: null;
 
 				const categoryMatch =
 					!selectedCategory || cardCategory === selectedCategory;
 
-				// Date filtering logic - check if project date range overlaps with filter date range
+				// Improved date filtering logic
 				let dateMatch = true;
 				if (startDate || endDate) {
-					// If we have a filter date range, check for overlap
-					if (startDate && endDate) {
-						// Filter range: startDate to endDate
-						// Project range: cardStartDate to cardEndDate
-						// Check if there's any overlap
-						const projectStart = cardStartDate || cardEndDate || new Date(0);
-						const projectEnd =
-							cardEndDate || cardStartDate || new Date(9999, 11, 31);
+					// Get the effective project start and end dates
+					const projectStart = cardStartDate || cardEndDate || new Date(0);
+					const projectEnd =
+						cardEndDate || cardStartDate || new Date(9999, 11, 31);
 
+					if (startDate && endDate) {
+						// Both start and end dates are set - check for overlap
+						// Project overlaps with filter range if:
+						// - Project starts before filter ends AND project ends after filter starts
 						dateMatch = projectStart <= endDate && projectEnd >= startDate;
 					} else if (startDate) {
-						// Only start date filter - check if project ends after or on start date
-						const projectEnd =
-							cardEndDate || cardStartDate || new Date(9999, 11, 31);
+						// Only start date filter - show projects that end on or after the start date
 						dateMatch = projectEnd >= startDate;
 					} else if (endDate) {
-						// Only end date filter - check if project starts before or on end date
-						const projectStart = cardStartDate || cardEndDate || new Date(0);
+						// Only end date filter - show projects that start on or before the end date
 						dateMatch = projectStart <= endDate;
 					}
 				}
@@ -478,10 +477,10 @@ const ogimage = {
 				const shouldShow = categoryMatch && dateMatch;
 
 				if (shouldShow) {
-					card.style.display = 'block';
+					cardWrapper.style.display = 'block';
 					visibleCount++;
 				} else {
-					card.style.display = 'none';
+					cardWrapper.style.display = 'none';
 				}
 			});
 

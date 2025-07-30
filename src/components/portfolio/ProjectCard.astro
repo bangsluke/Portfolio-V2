@@ -14,6 +14,8 @@ const {
 	companyLogoURL,
 	linkedCompany,
 	projects = [],
+	dateStart,
+	dateEnd,
 } = Astro.props;
 
 // Process content to handle Obsidian links and markdown
@@ -55,6 +57,36 @@ const hiddenTechnologies = Array.isArray(technologies)
 	? technologies.slice(MAX_VISIBLE_SKILLS)
 	: [];
 const hasHiddenSkills = hiddenTechnologies.length > 0;
+
+// Format dates for display
+function formatDate(date: string | Date | null | undefined): string {
+	if (!date) return '';
+
+	const dateObj = typeof date === 'string' ? new Date(date) : date;
+	if (isNaN(dateObj.getTime())) return '';
+
+	return dateObj.toLocaleDateString('en-US', {
+		month: 'short',
+		year: 'numeric',
+	});
+}
+
+// Create date range string
+let dateRange = '';
+if (dateStart || dateEnd) {
+	const formattedStart = formatDate(dateStart);
+	const formattedEnd = formatDate(dateEnd);
+
+	if (formattedStart && formattedEnd) {
+		dateRange = `${formattedStart} - ${formattedEnd}`;
+	} else if (formattedStart && !dateEnd) {
+		dateRange = `${formattedStart} - Present`;
+	} else if (formattedStart) {
+		dateRange = formattedStart;
+	} else if (formattedEnd) {
+		dateRange = formattedEnd;
+	}
+}
 ---
 
 <article
@@ -71,21 +103,42 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 		<div
 			class="absolute inset-0 bg-black/20 dark:bg-black/50 group-hover:bg-black/5 transition-all duration-300 pointer-events-none">
 		</div>
-		<a
-			href={`/projects/${projectSlug}`}
-			class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 bg-theme-400 hover:bg-theme-500 text-black rounded-full p-2 shadow-lg z-10 flex items-center justify-center"
-			aria-label={`View details for ${name}`}
-			title={`View details for ${name}`}
-			onclick="event.stopPropagation();">
-			<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-				><path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-				></path></svg
-			>
-		</a>
+		<div
+			class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 z-10">
+			<a
+				href={`/projects/${projectSlug}`}
+				class="relative bg-theme-400 hover:bg-theme-500 text-black rounded-full p-2 shadow-lg flex items-center justify-center group/info"
+				aria-label={`View details for ${name}`}
+				title={`View details for ${name}`}
+				onclick="event.stopPropagation();">
+				<svg
+					class="w-5 h-5"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					><path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+					></path></svg
+				>
+				{
+					dateRange && (
+						<div class="absolute top-full right-0 mt-2 opacity-0 group-hover/info:opacity-100 group-active/info:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
+							<div class="global-tooltip">
+								<div class="global-tooltip-content">
+									<div class="text-xs text-theme-400 font-medium mb-1">
+										Project Duration:
+									</div>
+									<div class="text-white text-sm">{dateRange}</div>
+								</div>
+							</div>
+						</div>
+					)
+				}
+			</a>
+		</div>
 	</div>
 	<div class="flex flex-col flex-1 p-6">
 		<h2 class="text-2xl font-bold text-theme-400 dark:text-theme-100 mb-3">
