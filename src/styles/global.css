@@ -302,6 +302,10 @@ a.inline-block.leading-5.pl-12 {
 	color: #a78bfa;
 }
 
+.processed-content {
+	line-height: 1.6;
+}
+
 .processed-content a {
 	color: #a78bfa !important;
 	text-decoration: underline;
@@ -1137,6 +1141,7 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 
 	.processed-content {
 		font-size: 0.8rem;
+		line-height: 1.5;
 	}
 
 	.div {
@@ -1186,6 +1191,25 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	footer nav > div:first-child {
 		display: flex;
 		align-items: center;
+	}
+
+	/* Prevent logo from showing any border or outline when selected/focused */
+	a[href='/'] svg,
+	a[href='/']:focus,
+	a[href='/']:focus-visible,
+	a[href='/']:active {
+		outline: none !important;
+		border: none !important;
+		box-shadow: none !important;
+	}
+
+	/* Prevent logo icon from showing any border or outline */
+	a[href='/'] svg:focus,
+	a[href='/'] svg:focus-visible,
+	a[href='/'] svg:active {
+		outline: none !important;
+		border: none !important;
+		box-shadow: none !important;
 	}
 }
 

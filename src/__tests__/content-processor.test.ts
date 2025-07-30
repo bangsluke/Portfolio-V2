@@ -90,7 +90,31 @@ describe('processContent', () => {
 
 	test('converts newlines to br tags', () => {
 		const input = 'Line 1\nLine 2\nLine 3';
-		const expected = 'Line 1<br>Line 2<br>Line 3';
+		const expected = 'Line 1<br><br>Line 2<br><br>Line 3';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('converts newlines to br tags in Obsidian markdown content', () => {
+		const input =
+			'This is a paragraph.\n\nThis is another paragraph.\n\nAnd a third paragraph.';
+		const expected =
+			'This is a paragraph.<br><br><br><br>This is another paragraph.<br><br><br><br>And a third paragraph.';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('handles newlines with dashes using single br tag', () => {
+		const input =
+			'First paragraph.\n- List item 1\n- List item 2\nSecond paragraph.';
+		const expected =
+			'First paragraph.<br>- List item 1<br>- List item 2<br><br>Second paragraph.';
+		expect(processContent(input)).toBe(expected);
+	});
+
+	test('handles mixed newlines with and without dashes', () => {
+		const input =
+			'Introduction text.\n\n- First bullet point\n- Second bullet point\n\nConclusion text.\n- Another list item';
+		const expected =
+			'Introduction text.<br><br><br>- First bullet point<br>- Second bullet point<br><br><br><br>Conclusion text.<br>- Another list item';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -98,7 +122,7 @@ describe('processContent', () => {
 		const input =
 			'Check [[Non Existent Project|this]] and visit [GitHub](https://github.com)\nNew line';
 		const expected =
-			'Check <span class="theme-link">this</span> and visit <a href="https://github.com" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a><br>New line';
+			'Check <span class="theme-link">this</span> and visit <a href="https://github.com" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a><br><br>New line';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -229,7 +253,7 @@ describe('Portfolio About Me processing', () => {
 		const input =
 			'I am a developer.\nI work on various projects.\nI love coding.';
 		const expected =
-			'I am a developer.<br>I work on various projects.<br>I love coding.';
+			'I am a developer.<br><br>I work on various projects.<br><br>I love coding.';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -237,7 +261,7 @@ describe('Portfolio About Me processing', () => {
 		const input =
 			'I have worked on [[Homepage Website|my homepage]] and [[Non Existent Project]] projects.\nCheck out my [GitHub](https://github.com/bangsluke) for more.';
 		const expected =
-			'I have worked on <a href="/projects/homepage-website" class="theme-link">my homepage</a> and <span class="theme-link">Non Existent Project</span> projects.<br>Check out my <a href="https://github.com/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a> for more.';
+			'I have worked on <a href="/projects/homepage-website" class="theme-link">my homepage</a> and <span class="theme-link">Non Existent Project</span> projects.<br><br>Check out my <a href="https://github.com/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a> for more.';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -258,7 +282,7 @@ describe('Portfolio About Me processing', () => {
 	test('processes markdown headings', () => {
 		const input = '# Main Heading\n## Sub Heading\n### Section Heading';
 		const expected =
-			'<h1>Main Heading</h1><br><h2>Sub Heading</h2><br><h3>Section Heading</h3>';
+			'<h1>Main Heading</h1><br><br><h2>Sub Heading</h2><br><br><h3>Section Heading</h3>';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -266,14 +290,14 @@ describe('Portfolio About Me processing', () => {
 		const input =
 			'# Portfolio About Me\n\nThis is some content.\n\n## My Beginnings\n\nMore content here.';
 		const expected =
-			'<h1>Portfolio About Me</h1><br><br>This is some content.<br><br><h2>My Beginnings</h2><br><br>More content here.';
+			'<h1>Portfolio About Me</h1><br><br><br><br>This is some content.<br><br><br><br><h2>My Beginnings</h2><br><br><br><br>More content here.';
 		expect(processContent(input)).toBe(expected);
 	});
 
 	test('processes all heading levels', () => {
 		const input = '# H1\n## H2\n### H3\n#### H4\n##### H5\n###### H6';
 		const expected =
-			'<h1>H1</h1><br><h2>H2</h2><br><h3>H3</h3><br><h4>H4</h4><br><h5>H5</h5><br><h6>H6</h6>';
+			'<h1>H1</h1><br><br><h2>H2</h2><br><br><h3>H3</h3><br><br><h4>H4</h4><br><br><h5>H5</h5><br><br><h6>H6</h6>';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -281,7 +305,7 @@ describe('Portfolio About Me processing', () => {
 		const input =
 			'# Main Heading\n\nCheck out [[Homepage Website]] and [GitHub](https://github.com)';
 		const expected =
-			'<h1>Main Heading</h1><br><br>Check out <a href="/projects/homepage-website" class="theme-link">Homepage Website</a> and <a href="https://github.com" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a>';
+			'<h1>Main Heading</h1><br><br><br><br>Check out <a href="/projects/homepage-website" class="theme-link">Homepage Website</a> and <a href="https://github.com" class="theme-link" target="_blank" rel="noopener noreferrer">GitHub</a>';
 		expect(processContent(input)).toBe(expected);
 	});
 });
@@ -307,7 +331,7 @@ describe('Content processing for different content types', () => {
 		const input =
 			'Contact me at [[RLE International]] or visit my [LinkedIn profile](https://linkedin.com/in/bangsluke).\nBased in London, UK.';
 		const expected =
-			'Contact me at <span class="theme-link">RLE International</span> or visit my <a href="https://linkedin.com/in/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>.<br>Based in London, UK.';
+			'Contact me at <span class="theme-link">RLE International</span> or visit my <a href="https://linkedin.com/in/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>.<br><br>Based in London, UK.';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -339,7 +363,7 @@ describe('Content processing for different content types', () => {
 		const input =
 			'I am a [[Frontend Developer]] with experience in [[React]], [[Next.js]], and [[TypeScript]].\n\nCheck out my projects like [[Portfolio Site V2]] and visit my [LinkedIn](https://linkedin.com/in/bangsluke) for more details.';
 		const expected =
-			'I am a <span class="theme-link">Frontend Developer</span> with experience in <span class="theme-link">React</span>, <span class="theme-link">Next.js</span>, and <span class="theme-link">TypeScript</span>.<br><br>Check out my projects like <a href="/projects/portfolio-site-v2" class="theme-link">Portfolio Site V2</a> and visit my <a href="https://linkedin.com/in/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">LinkedIn</a> for more details.';
+			'I am a <span class="theme-link">Frontend Developer</span> with experience in <span class="theme-link">React</span>, <span class="theme-link">Next.js</span>, and <span class="theme-link">TypeScript</span>.<br><br><br><br>Check out my projects like <a href="/projects/portfolio-site-v2" class="theme-link">Portfolio Site V2</a> and visit my <a href="https://linkedin.com/in/bangsluke" class="theme-link" target="_blank" rel="noopener noreferrer">LinkedIn</a> for more details.';
 		expect(processContent(input)).toBe(expected);
 	});
 
@@ -347,7 +371,7 @@ describe('Content processing for different content types', () => {
 		const input =
 			'> [!note] This is a note callout\n\n> [!warning] This is a warning callout\n\n> [!tip] This is a tip callout';
 		const expected =
-			'<div class="callout bg-blue-50 border-blue-200 text-blue-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">📝</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">note</div><br><div class="text-lg leading-relaxed">This is a note callout</div><br></div><br></div><br></div><br><br><div class="callout bg-yellow-50 border-yellow-200 text-yellow-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">⚠️</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">warning</div><br><div class="text-lg leading-relaxed">This is a warning callout</div><br></div><br></div><br></div><br><br><div class="callout bg-emerald-50 border-emerald-200 text-emerald-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">💡</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">tip</div><br><div class="text-lg leading-relaxed">This is a tip callout</div><br></div><br></div><br></div>';
+			'<div class="callout bg-blue-50 border-blue-200 text-blue-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">📝</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">note</div><br><div class="text-lg leading-relaxed">This is a note callout</div><br></div><br></div><br></div><br><br><br><br><div class="callout bg-yellow-50 border-yellow-200 text-yellow-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">⚠️</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">warning</div><br><div class="text-lg leading-relaxed">This is a warning callout</div><br></div><br></div><br></div><br><br><br><br><div class="callout bg-emerald-50 border-emerald-200 text-emerald-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">💡</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">tip</div><br><div class="text-lg leading-relaxed">This is a tip callout</div><br></div><br></div><br></div>';
 		expect(processContent(input)).toBe(expected);
 	});
 

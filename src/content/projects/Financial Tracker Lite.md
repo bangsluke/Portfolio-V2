@@ -3,31 +3,32 @@ tags:
   - tag
   - work
   - tool
-  - portfolio
   - project/completed/work
-modified: 2025-07-28T07:44:04+01:00
-viewCount: 11
+  - portfolio
+modified: 2025-07-30T18:28:21+01:00
+viewCount: 10
 aliases:
-  - PFDM
-projectURL: 
-codeURL: 
+  - Financial Tracking
+  - FTL
+projectURL: https://apps.powerapps.com/play/e/9cb5bfc9-13df-e75e-98ff-a4782f9d0f48/a/0f4944ff-c216-417f-9c3f-0a1caa4d9940?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4&hint=4806e425-29da-4f17-aa45-7a1d3e37666b&sourcetime=1701763414195
+codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
-folderURL: 
-logoURL: https://i.imgur.com/Jsm73YL.png
+folderURL: n/a
+logoURL: https://i.imgur.com/SFb7UNB.png
 imageURL: 
-dateStart: 2024-01-01
-dateEnd: 2024-07-31
+dateStart: 2023-11-27
+dateEnd: 2024-07-30
 technologies:
   - "[[Power Apps]]"
   - "[[Power Query]]"
   - "[[SharePoint]]"
-  - "[[SQL]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
 toolOwner: "[[Dominic Ede]]"
 developers:
+  - "[[Nilesh Mistry]]"
   - "[[Alex Sheers]]"
   - "[[Luke Bangs]]"
 topicTags:
@@ -37,12 +38,12 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "Data input for financial tracking of <span class=\"theme-link\">RLE International</span> projects."
-longDescription: "TBC<br><br>Pulled in timesheet data and financial information from various <span class=\"theme-link\">RLE International</span> region sources such as <span class=\"theme-link\">Paycor</span>, <span class=\"theme-link\">T-Sheet</span> and <span class=\"theme-link\">Iplicit</span>."
+shortDescription: "A simplified version of the <a href=\"/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a>."
+longDescription: "TBC"
 lessonsLearned: "TBC"
-name: "Project Finance Data Manager"
+name: "Financial Tracker Lite"
 ---
-# Project Finance Data Manager
+# Financial Tracker Lite
 
 > [!back] Link back to [[01 Projects|Projects]]
 
@@ -73,9 +74,15 @@ WHERE file = this.file
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
+## Introduction
+
+TBC
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
 ## Short Description
 
-Data input for financial tracking of [[RLE International]] projects.
+A simplified version of the [[Financial Tracker]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -83,14 +90,12 @@ Data input for financial tracking of [[RLE International]] projects.
 
 TBC
 
-Pulled in timesheet data and financial information from various [[RLE International]] region sources such as [[Paycor]], [[T-Sheet]] and [[Iplicit]].
-
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
 - Front end: [[Power Apps]]
-- Back end/Datasource: [[SharePoint]], [[Power Query]], [[SQL]]
+- Back end/Datasource: [[SharePoint]], [[Power Query]]
 - Hosting: [[SharePoint]]
 - Security: n/a
 - Authentication: [[SharePoint]]

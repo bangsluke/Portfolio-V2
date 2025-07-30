@@ -11,7 +11,7 @@ dateEnd: 2019-07-01
 linkedCompany:
   - "[[RLE International]]"
 shortRoleDescription: "Internal project tracking and delivery process improvements through tools built with <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span>."
-fullRoleDescription: "Internally I have been responsible for the creation of numerous project<br>tracking documents for the organisation and a range of customers through <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> coding. Projects included timesheet & holiday<br>management, cost & resource estimating, warehouse storage tracking and<br>a technical documentation library."
+fullRoleDescription: "Internally I have been responsible for the creation of numerous project<br><br>tracking documents for the organisation and a range of customers through <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> coding. Projects included timesheet & holiday<br><br>management, cost & resource estimating, warehouse storage tracking and<br><br>a technical documentation library."
 keyAchievement: "Updating and maintaining the main cost and quoting model used within the <span class=\"theme-link\">RLE UK</span> business."
 ---
 # Process Development

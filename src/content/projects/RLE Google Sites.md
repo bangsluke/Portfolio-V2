@@ -7,7 +7,7 @@ tags:
   - project/completed/work
 created: 2025-07-18T08:23:00
 modified: 2025-07-24T15:58:47+01:00
-viewCount: 5
+viewCount: 6
 aliases: 
 projectURL: 
 codeURL: n/a
@@ -32,7 +32,7 @@ powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
 shortDescription: "A internal site providing links to key sites needed by employees."
-longDescription: "A site providing links to key sites needed by employees, a tools library of useful documents and templates and a lessons learned page for end-of project.<br>This provided a structure for engineers to work with on a day to day basis to ensure consistency with work output quality."
+longDescription: "A site providing links to key sites needed by employees, a tools library of useful documents and templates and a lessons learned page for end-of project.<br><br>This provided a structure for engineers to work with on a day to day basis to ensure consistency with work output quality."
 lessonsLearned: "This taught me how to use basic website building tools such as <span class=\"theme-link\">Google Sites</span> to quickly create a website structure using drag and drop components."
 name: "RLE Google Sites"
 ---

@@ -124,8 +124,10 @@ export function processContent(content: string | undefined | null): string {
 		}
 	);
 
-	// Convert newlines to <br> tags for proper HTML rendering (but not for headings)
-	processedContent = processedContent.replace(/\n/g, '<br>');
+	// Convert newlines to <br> tags for proper HTML rendering
+	// If a newline is followed by a dash, use a single <br>, otherwise use double <br><br>
+	processedContent = processedContent.replace(/\n-/g, '<br>-');
+	processedContent = processedContent.replace(/\n/g, '<br><br>');
 
 	// Finally, convert markdown links to HTML with theme green and underline styling
 	// Only add target="_blank" and rel="noopener noreferrer" for external links
