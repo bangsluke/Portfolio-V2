@@ -1,5 +1,15 @@
 # Auto Changes Log
 
+## 2025-01-27 16:00
+### Shiki to Prism.js Migration
+- **Replaced Shiki with Prism.js** for syntax highlighting:
+  - **Resolved WASM module errors**: Fixed "Cannot find module 'shiki/dist/wasm.mjs'" errors by switching to Prism.js
+  - **Updated Astro configuration**: Changed `syntaxHighlight: 'prism'` in astro.config.mjs
+  - **Removed Shiki dependency**: Uninstalled shiki package from package.json
+  - **Updated documentation**: Changed README.md references from Shiki to Prism.js
+  - **Maintained functionality**: All code blocks still have syntax highlighting, just using a different engine
+  - **Eliminated build errors**: Site now builds successfully without Shiki WASM module resolution issues
+
 ## 2025-01-27 15:40
 ### Project Card Selection Class Fix
 - **Fixed card selection class application** in ProjectCard.astro:
