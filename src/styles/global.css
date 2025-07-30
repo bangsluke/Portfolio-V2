@@ -61,6 +61,11 @@
 			--border-angle: 360deg;
 		}
 	}
+
+	--carousel-height: 320px;
+	--carousel-height-mobile: 280px;
+	--carousel-item-height: 260px;
+	--carousel-item-height-mobile: 220px;
 }
 
 @property --border-angle {
@@ -152,6 +157,11 @@ a.inline-block.leading-5.pl-12 {
 		padding-left: 1rem; /* 16px */
 		padding-right: 1rem; /* 16px */
 	}
+}
+
+.main-section-carousel {
+	padding-left: 0rem;
+	padding-right: 0rem;
 }
 
 .markdown h2 {
@@ -927,14 +937,14 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 }
 
 .carousel-container {
-	width: 100%;
+	width: 100vw;
 	position: relative;
-	height: 300px;
+	height: var(--carousel-height, 320px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
-	padding: 20px 0;
+	padding: 10px 0;
 }
 
 .carousel-item {
@@ -952,24 +962,47 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 }
 
 .flicking-viewport {
-	width: 100%;
-	height: 300px;
+	width: 100vw;
+	height: var(--carousel-height, 320px);
 	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	padding: 20px 0;
+	flex-direction: row;
+}
+
+@media (max-width: 768px) {
+	.flicking-viewport {
+		width: 100%;
+		height: var(--carousel-height-mobile, 280px);
+		overflow: hidden;
+		padding: 10px 0;
+	}
 }
 
 .plugins-panel {
-	width: 260px;
-	height: 260px;
+	width: var(--carousel-item-height, 260px);
+	height: var(--carousel-item-height, 260px);
 	flex-shrink: 0;
 	margin: 0 20px;
 }
 
 .flicking-panel {
-	width: 260px;
-	height: 260px;
+	width: var(--carousel-item-height, 260px);
+	height: var(--carousel-item-height, 260px);
 	flex-shrink: 0;
 	margin: 0 20px;
+	align-self: center;
+}
+
+@media (max-width: 768px) {
+	.flicking-panel {
+		width: var(--carousel-item-height-mobile, 200px);
+		height: var(--carousel-item-height-mobile, 200px);
+		flex-shrink: 0;
+		margin: 0 10px;
+	}
 }
 
 .panel-image {
@@ -981,8 +1014,8 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 @media (max-width: 768px) {
 	.plugins-panel,
 	.flicking-panel {
-		width: 260px;
-		height: 260px;
+		width: var(--carousel-item-height, 260px);
+		height: var(--carousel-item-height, 260px);
 		margin: 0 10px;
 	}
 }
@@ -990,8 +1023,8 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 @media (max-width: 480px) {
 	.plugins-panel,
 	.flicking-panel {
-		width: 250px;
-		height: 250px;
+		width: var(--carousel-item-height-mobile, 250px);
+		height: var(--carousel-item-height-mobile, 250px);
 		margin: 0 5px;
 	}
 }
@@ -1015,7 +1048,7 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	.flicking-viewport {
 		width: 100% !important;
 		max-width: 100% !important;
-		height: 240px !important;
+		height: var(--carousel-height-mobile, 240px) !important;
 		overflow: hidden !important;
 		padding: 15px 0 !important;
 	}
@@ -1179,8 +1212,8 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 
 	.plugins-panel,
 	.flicking-panel {
-		width: 250px !important;
-		height: 250px !important;
+		width: var(--carousel-item-height-mobile, 250px) !important;
+		height: var(--carousel-item-height-mobile, 250px) !important;
 		margin: 0 5px !important;
 		padding: 10px 0 !important;
 	}
