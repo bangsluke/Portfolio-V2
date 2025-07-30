@@ -1,5 +1,68 @@
 # Auto Changes Log
 
+## 2025-01-27 15:40
+### Project Card Selection Class Fix
+- **Fixed card selection class application** in ProjectCard.astro:
+  - **Removed old ring class references**: Cleaned up JavaScript code that was still trying to remove `ring-4` and `ring-theme-400` classes
+  - **Simplified deselection logic**: Now only removes `card-selected` class instead of multiple non-existent classes
+  - **Consistent class management**: Ensures proper application of the `card-selected` class for the box-shadow border styling
+  - **Debugged selection issues**: Fixed the root cause of why the `card-selected` class wasn't being applied correctly on the project gallery page
+
+## 2025-01-27 15:35
+### Project Card Spacing and Border Styling Improvements
+- **Reduced spacing** in ProjectCard.astro:
+  - **Tighter layout**: Changed short description margin from `mb-4` to `mb-2`
+  - **Better visual flow**: Reduced gap between description and "Show more details" link
+  - **Improved card density**: More compact layout while maintaining readability
+
+- **Updated selection border styling** in ProjectCard.astro:
+  - **Reverted to box-shadow styling**: Removed Tailwind `ring-4 ring-theme-400` classes and restored `box-shadow: 0 0 0 4px var(--color-theme-400) !important;`
+  - **Consistent with site page**: Now matches the styling used in the ProjectsGallery component on the `/site` page
+  - **Simplified JavaScript**: Removed dynamic ring class management, using CSS-only approach
+  - **Unified design**: Same ProjectCard component used across both `/projects` and `/site` pages
+
+## 2025-01-27 15:30
+### Project Card Link Behavior and Text Truncation Improvements
+- **Enhanced "Show more details" link behavior** in ProjectCard.astro:
+  - **Conditional clickability**: Links are now unclickable until the card is selected (using `pointer-events-none` by default)
+  - **Dynamic pointer events**: JavaScript enables `pointer-events-auto` when card is selected, disables when deselected
+  - **Consistent behavior**: Applied to both mobile and desktop detail links
+  - **Improved user experience**: Prevents accidental navigation before user intentionally selects a card
+
+- **Improved text truncation** in ProjectCard.astro:
+  - **Replaced hard cutoff**: Changed from `max-h-44 overflow-hidden` to `line-clamp-6`
+  - **Elegant truncation**: Text now shows ellipsis (...) when it exceeds 6 lines instead of abrupt cutoff
+  - **Better readability**: Maintains visual consistency while providing clear indication of truncated content
+  - **Built-in Tailwind utility**: Uses native line-clamp functionality from Tailwind CSS v4
+
+## 2025-01-27 15:25
+### Project Card Description Height Limitation
+- **Limited short description height** in ProjectCard.astro:
+  - **Added height constraint**: Applied `max-h-32 overflow-hidden` to the short description div
+  - **Ensured visibility**: "Show more details" and "Developed for" sections now remain visible regardless of description length
+  - **Improved layout consistency**: Prevents long descriptions from pushing important UI elements out of view
+  - **Maintained readability**: Text is truncated with overflow hidden when it exceeds the maximum height
+
+## 2025-01-27 15:20
+### Project Card Visual Improvements
+- **Enhanced selection styling** in ProjectCard.astro:
+  - **Light border effect**: Changed from solid border to light ring effect using box-shadow for consistent styling with carousel components
+  - **Unified visual language**: Selection now matches the `ring-4 ring-theme-400` pattern used in CustomerAndClientCarousel and ReferencesCarouselComponent
+  - **Improved visual feedback**: Light border provides better contrast and modern appearance
+- **Standardized card heights**:
+  - **Fixed height**: Changed from `min-h-[420px]` to `h-[520px]` for consistent card heights across all projects
+  - **Better grid alignment**: All project cards now have uniform height, creating a cleaner, more professional layout
+  - **Maintained content flow**: Flexbox layout ensures content is properly distributed within the fixed height
+
+## 2025-01-27 15:15
+### Project Gallery Card Selection Enhancement
+- **Enabled desktop card selection** in ProjectCard.astro for project gallery page:
+  - **Removed mobile-only restriction**: Removed condition that prevented desktop selection on gallery page
+  - **Unified selection behavior**: Cards now select/highlight on both desktop and mobile consistently
+  - **Maintained existing functionality**: All existing selection features (visual feedback, detail links) work on both platforms
+  - **Consistent user experience**: Project cards now behave the same way across all pages and devices
+  - **Preserved link handling**: Clicking on links still navigates properly without triggering card selection
+
 ## 2025-01-27 15:10
 ### Carousel Container and Card Standardization
 - **Standardized carousel dimensions** across both CustomerAndClientCarousel and ReferencesCarouselComponent:
