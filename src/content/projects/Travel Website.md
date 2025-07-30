@@ -48,7 +48,7 @@ version: 2
 portfolioOrder: 1
 shortDescription: "A website to show details of my travels across the world."
 longDescription: "A visualisation and analysis of the travelling I have done, providing descriptions of my trips and a level of analysis on top of this such as most visited places, most common travel companions and other stats."
-lessonsLearned: "The biggest challenge for this project was setting up the <span class=\"theme-link\">Apollo</span> backend server and getting the connection to the front end.<br>I also learned a lot about the page routing in <span class=\"theme-link\">Next.js</span> to develop the various page types on the site."
+lessonsLearned: "The biggest challenge for this project was setting up the <span class=\"theme-link\">Apollo</span> backend server and getting the connection to the front end.<br><br>I also learned a lot about the page routing in <span class=\"theme-link\">Next.js</span> to develop the various page types on the site."
 name: "Travel Website"
 ---
 # Travel Website

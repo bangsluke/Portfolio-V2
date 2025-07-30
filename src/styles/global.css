@@ -61,6 +61,11 @@
 			--border-angle: 360deg;
 		}
 	}
+
+	--carousel-height: 320px;
+	--carousel-height-mobile: 280px;
+	--carousel-item-height: 260px;
+	--carousel-item-height-mobile: 220px;
 }
 
 @property --border-angle {
@@ -137,6 +142,26 @@ a.inline-block.leading-5.pl-12 {
 
 #toc-list a[href='#'] {
 	color: #171717;
+}
+
+/* Style the main sections on the homepage */
+
+.main-section {
+	padding-left: 2rem; /* 32px */
+	padding-right: 2rem; /* 32px */
+	scroll-margin: 4rem; /* 64px */
+}
+
+@media (max-width: 767px) {
+	.main-section {
+		padding-left: 1rem; /* 16px */
+		padding-right: 1rem; /* 16px */
+	}
+}
+
+.main-section-carousel {
+	padding-left: 0rem;
+	padding-right: 0rem;
 }
 
 .markdown h2 {
@@ -275,6 +300,10 @@ a.inline-block.leading-5.pl-12 {
 
 .markdown a:hover {
 	color: #a78bfa;
+}
+
+.processed-content {
+	line-height: 1.6;
 }
 
 .processed-content a {
@@ -727,6 +756,10 @@ a.theme-link:hover {
 	cursor: pointer;
 }
 
+.global-clear-button {
+	background-color: var(--color-theme-950);
+}
+
 .global-button:hover {
 	background-color: var(--color-theme-900);
 	transform: translateY(-1px);
@@ -908,14 +941,14 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 }
 
 .carousel-container {
-	width: 100%;
+	width: 100vw;
 	position: relative;
-	height: 300px;
+	height: var(--carousel-height, 320px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
-	padding: 20px 0;
+	padding: 10px 0;
 }
 
 .carousel-item {
@@ -933,24 +966,47 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 }
 
 .flicking-viewport {
-	width: 100%;
-	height: 300px;
+	width: 100vw;
+	height: var(--carousel-height, 320px);
 	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	padding: 20px 0;
+	flex-direction: row;
+}
+
+@media (max-width: 768px) {
+	.flicking-viewport {
+		width: 100%;
+		height: var(--carousel-height-mobile, 280px);
+		overflow: hidden;
+		padding: 10px 0;
+	}
 }
 
 .plugins-panel {
-	width: 260px;
-	height: 260px;
+	width: var(--carousel-item-height, 260px);
+	height: var(--carousel-item-height, 260px);
 	flex-shrink: 0;
 	margin: 0 20px;
 }
 
 .flicking-panel {
-	width: 260px;
-	height: 260px;
+	width: var(--carousel-item-height, 260px);
+	height: var(--carousel-item-height, 260px);
 	flex-shrink: 0;
 	margin: 0 20px;
+	align-self: center;
+}
+
+@media (max-width: 768px) {
+	.flicking-panel {
+		width: var(--carousel-item-height-mobile, 200px);
+		height: var(--carousel-item-height-mobile, 200px);
+		flex-shrink: 0;
+		margin: 0 10px;
+	}
 }
 
 .panel-image {
@@ -962,8 +1018,8 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 @media (max-width: 768px) {
 	.plugins-panel,
 	.flicking-panel {
-		width: 260px;
-		height: 260px;
+		width: var(--carousel-item-height, 260px);
+		height: var(--carousel-item-height, 260px);
 		margin: 0 10px;
 	}
 }
@@ -971,8 +1027,8 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 @media (max-width: 480px) {
 	.plugins-panel,
 	.flicking-panel {
-		width: 250px;
-		height: 250px;
+		width: var(--carousel-item-height-mobile, 250px);
+		height: var(--carousel-item-height-mobile, 250px);
 		margin: 0 5px;
 	}
 }
@@ -996,7 +1052,7 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	.flicking-viewport {
 		width: 100% !important;
 		max-width: 100% !important;
-		height: 240px !important;
+		height: var(--carousel-height-mobile, 240px) !important;
 		overflow: hidden !important;
 		padding: 15px 0 !important;
 	}
@@ -1085,6 +1141,7 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 
 	.processed-content {
 		font-size: 0.8rem;
+		line-height: 1.5;
 	}
 
 	.div {
@@ -1135,6 +1192,25 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 		display: flex;
 		align-items: center;
 	}
+
+	/* Prevent logo from showing any border or outline when selected/focused */
+	a[href='/'] svg,
+	a[href='/']:focus,
+	a[href='/']:focus-visible,
+	a[href='/']:active {
+		outline: none !important;
+		border: none !important;
+		box-shadow: none !important;
+	}
+
+	/* Prevent logo icon from showing any border or outline */
+	a[href='/'] svg:focus,
+	a[href='/'] svg:focus-visible,
+	a[href='/'] svg:active {
+		outline: none !important;
+		border: none !important;
+		box-shadow: none !important;
+	}
 }
 
 @media (max-width: 480px) {
@@ -1160,8 +1236,8 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 
 	.plugins-panel,
 	.flicking-panel {
-		width: 250px !important;
-		height: 250px !important;
+		width: var(--carousel-item-height-mobile, 250px) !important;
+		height: var(--carousel-item-height-mobile, 250px) !important;
 		margin: 0 5px !important;
 		padding: 10px 0 !important;
 	}
@@ -1239,4 +1315,82 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 		display: block !important;
 		visibility: visible !important;
 	}
+}
+
+/* Mobile-specific carousel improvements */
+@media (max-width: 768px) {
+	.carousel-item {
+		touch-action: manipulation;
+		-webkit-tap-highlight-color: transparent;
+		user-select: none;
+		-webkit-user-select: none;
+	}
+
+	.carousel-item.ring-4 {
+		box-shadow: 0 0 0 4px var(--color-theme-400) !important;
+		transform: scale(1.05) !important;
+		filter: brightness(1.1) !important;
+		z-index: 10;
+		position: relative;
+	}
+
+	/* Ensure selected state is visible on mobile */
+	.flicking-panel .carousel-item.ring-4 {
+		box-shadow: 0 0 0 4px var(--color-theme-400) !important;
+	}
+
+	/* Improve touch targets */
+	.flicking-panel {
+		touch-action: pan-y pinch-zoom;
+	}
+
+	/* Prevent text selection on touch */
+	.carousel-item * {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+}
+
+/* Ensure selected border is always visible */
+.carousel-item.ring-4 {
+	box-shadow: 0 0 0 4px var(--color-theme-400) !important;
+	transform: scale(1.05) !important;
+	filter: brightness(1.1) !important;
+	z-index: 10;
+	position: relative;
+}
+
+/* Mobile modal improvements */
+@media (max-width: 768px) {
+	/* Ensure modal is properly positioned on mobile */
+	.fixed.inset-0 {
+		position: fixed !important;
+		top: 0 !important;
+		left: 0 !important;
+		right: 0 !important;
+		bottom: 0 !important;
+		z-index: 9999 !important;
+	}
+
+	/* Improve modal content on mobile */
+	.bg-white.rounded-lg.max-w-md {
+		max-width: 90vw !important;
+		margin: 1rem !important;
+		max-height: 80vh !important;
+	}
+}
+
+/* Improve touch feedback */
+.carousel-item:active {
+	transform: scale(0.98) !important;
+	transition: transform 0.1s ease !important;
+}
+
+/* Ensure selected state overrides active state */
+.carousel-item.ring-4:active {
+	transform: scale(1.05) !important;
 }

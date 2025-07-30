@@ -66,12 +66,11 @@ const ReferencesCarouselComponent = ({
 	}, []);
 
 	return (
-		<div className="carousel-container" style={{ height: '300px' }}>
+		<div className="carousel-container">
 			<Flicking
 				ref={flickingRef}
 				plugins={plugins}
 				className="flicking-viewport"
-				style={{ height: '300px' }}
 				options={{
 					align: 'center',
 					circular: true,

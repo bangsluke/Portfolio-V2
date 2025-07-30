@@ -595,7 +595,7 @@ The sync system automatically converts Obsidian-specific syntax:
 - **Tags**: `#tag` → Preserved for filtering and categorization
 - **Callouts**: `> [!note]` → HTML blockquotes with styling
 - **Frontmatter**: YAML metadata preserved and enhanced with [Zod](https://zod.dev) validation
-- **Code Blocks**: Syntax highlighting with Shiki (Astro's default)
+- **Code Blocks**: Syntax highlighting with Prism.js
 - **Images**: Automatic image processing and optimization
 - **Obsidian Syntax**: Handles Obsidian-specific features like dataview and meta-bind
 - **Content Extraction**: Automatically extracts sections like descriptions, achievements, and lessons learned
@@ -743,7 +743,7 @@ jobs:
 - **GitHub Integration**: [GitHub Calendar](https://github.com/Bloggify/github-calendar) - GitHub contribution visualization
 - **Email**: [Nodemailer](https://nodemailer.com/) - Email notifications for sync operations
 - **Deployment**: [Netlify](https://netlify.com) with GitHub Actions for CI/CD
-- **Code Highlighting**: [Shiki](https://shiki.matsu.io/) - Syntax highlighting via Astro's markdown processing
+- **Code Highlighting**: [Prism.js](https://prismjs.com/) - Syntax highlighting via Astro's markdown processing
 
 ### Scripts
 

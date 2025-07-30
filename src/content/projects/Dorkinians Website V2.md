@@ -32,7 +32,7 @@ topicTags:
 powerShellAlias: TBD
 version: 2
 portfolioOrder: 4
-shortDescription: "TBD<br>the next version of the <span class=\"theme-link\">Dorkinians FC</span> website, following on from <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>"
+shortDescription: "TBD<br><br>the next version of the <span class=\"theme-link\">Dorkinians FC</span> website, following on from <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>"
 longDescription: "TBD"
 lessonsLearned: "TBD"
 name: "Dorkinians Website V2"

@@ -98,7 +98,8 @@ function processContent(content) {
 			.replace(/^#{2}\s+(.+)$/gm, '<h2>$1</h2>')
 			.replace(/^#{1}\s+(.+)$/gm, '<h1>$1</h1>')
 			// Convert newlines to <br> tags for proper HTML rendering (but not for headings)
-			.replace(/\n/g, '<br>')
+			.replace(/\n-/g, '<br>-')
+			.replace(/\n/g, '<br><br>')
 			// Handle Obsidian callouts (lines starting with >) - must be after newline conversion
 			.replace(
 				/^> \[!(\w+)\]\s*(.+)$/gm,

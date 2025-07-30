@@ -93,15 +93,15 @@ const itemsJson = JSON.stringify(allItems);
 ---
 
 <section
-	class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16"
+	class="main-section main-section-carousel pt-8 pb-12 md:pt-12"
 	id="customers-and-clients">
-	<div class="flex flex-col pt-8 w-[90vw] mx-auto">
-		<div class="flex gap-4 items-center justify-center">
+	<div class="flex flex-col w-full">
+		<div class="flex gap-4 items-center justify-center mb-6">
 			<Icon class="text-3xl dark:text-white text-blacktext" name="company" />
 			<Heading text="Customers and " textGradient="Clients" level={2} />
 		</div>
 
-		<div class="relative">
+		<div class="relative w-full" aria-label="Customers and Clients">
 			<ClientAndCustomerCarousel companies={itemsJson} client:load />
 		</div>
 	</div>
