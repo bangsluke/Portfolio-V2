@@ -286,7 +286,7 @@ if (dateStart || dateEnd) {
 	// Handle mobile and desktop events for project cards
 	document.addEventListener('DOMContentLoaded', function () {
 		const projectCards = document.querySelectorAll('article.project-card');
-		let selectedCard = null;
+		let selectedCard: HTMLElement | null = null;
 		let isMobile = window.innerWidth <= 768;
 		let isGalleryPage = window.location.pathname.includes('/projects');
 
@@ -295,16 +295,17 @@ if (dateStart || dateEnd) {
 			isMobile = window.innerWidth <= 768;
 		});
 
-		projectCards.forEach(card => {
+		projectCards.forEach((card: Element) => {
 			// Handle card selection (both mobile and desktop)
-			card.addEventListener('click', function (e) {
+			card.addEventListener('click', (e: Event) => {
 				// Don't handle if clicking on links
-				if (e.target.closest('a')) {
+				const target = e.target as HTMLElement;
+				if (target?.closest('a')) {
 					return;
 				}
 
 				// Deselect previously selected card
-				if (selectedCard && selectedCard !== this) {
+				if (selectedCard && selectedCard !== card) {
 					selectedCard.classList.remove('card-selected');
 					const prevMobileLink = selectedCard.querySelector(
 						'.mobile-detail-link'
@@ -322,11 +323,11 @@ if (dateStart || dateEnd) {
 				}
 
 				// Toggle selection for current card
-				if (this.classList.contains('card-selected')) {
+				if (card.classList.contains('card-selected')) {
 					// Deselect
-					this.classList.remove('card-selected');
-					const mobileLink = this.querySelector('.mobile-detail-link');
-					const desktopLink = this.querySelector('.desktop-detail-link');
+					card.classList.remove('card-selected');
+					const mobileLink = card.querySelector('.mobile-detail-link');
+					const desktopLink = card.querySelector('.desktop-detail-link');
 					if (mobileLink) {
 						mobileLink.classList.add('hidden');
 						// Disable pointer events for the mobile link when card is deselected
@@ -349,9 +350,9 @@ if (dateStart || dateEnd) {
 					selectedCard = null;
 				} else {
 					// Select
-					this.classList.add('card-selected');
-					const mobileLink = this.querySelector('.mobile-detail-link');
-					const desktopLink = this.querySelector('.desktop-detail-link');
+					card.classList.add('card-selected');
+					const mobileLink = card.querySelector('.mobile-detail-link');
+					const desktopLink = card.querySelector('.desktop-detail-link');
 					if (mobileLink) {
 						mobileLink.classList.remove('hidden');
 						// Enable pointer events for the mobile link when card is selected
@@ -371,13 +372,13 @@ if (dateStart || dateEnd) {
 							link.classList.add('pointer-events-auto');
 						}
 					}
-					selectedCard = this;
+					selectedCard = card as HTMLElement;
 				}
 			});
 
 			// Handle mouse leave (for desktop hover effects)
-			card.addEventListener('mouseleave', function () {
-				this.classList.remove('group-hover');
+			card.addEventListener('mouseleave', () => {
+				card.classList.remove('group-hover');
 			});
 		});
 
@@ -388,25 +389,26 @@ if (dateStart || dateEnd) {
 			let tooltipActive = false;
 
 			// Handle touch start for tooltip
-			trigger.addEventListener('touchstart', function (e) {
-				const touchEvent = e;
+			trigger.addEventListener('touchstart', (e: Event) => {
+				const touchEvent = e as TouchEvent;
 				touchEvent.preventDefault();
 				touchEvent.stopPropagation();
 
 				if (tooltipActive) {
 					// Hide tooltip if already active
-					this.classList.remove('group-active/tooltip');
+					trigger.classList.remove('group-active/tooltip');
 					tooltipActive = false;
 				} else {
 					// Show tooltip
-					this.classList.add('group-active/tooltip');
+					trigger.classList.add('group-active/tooltip');
 					tooltipActive = true;
 				}
 			});
 
 			// Handle click outside to close tooltip
-			document.addEventListener('click', function (e) {
-				if (!trigger.contains(e.target)) {
+			document.addEventListener('click', (e: Event) => {
+				const target = e.target as Node;
+				if (!trigger.contains(target)) {
 					trigger.classList.remove('group-active/tooltip');
 					tooltipActive = false;
 				}
@@ -414,9 +416,9 @@ if (dateStart || dateEnd) {
 		});
 
 		// Handle click outside to deselect cards
-		document.addEventListener('click', function (e) {
-			const target = e.target;
-			if (!target.closest('article.project-card')) {
+		document.addEventListener('click', function (e: Event) {
+			const target = e.target as HTMLElement;
+			if (!target?.closest('article.project-card')) {
 				if (selectedCard) {
 					selectedCard.classList.remove('card-selected');
 					const mobileLink = selectedCard.querySelector('.mobile-detail-link');

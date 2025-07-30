@@ -12,6 +12,8 @@
 		"test:coverage": "jest --coverage",
 		"lint": "eslint . --ext .js,.ts,.jsx,.tsx,.astro",
 		"lint:fix": "eslint . --ext .js,.ts,.jsx,.tsx,.astro --fix",
+		"lint:css": "stylelint src/styles/global.css",
+		"lint:css:fix": "stylelint src/styles/global.css --fix",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
 		"sync": "node scripts/sync.js",
@@ -70,6 +72,9 @@
 		"jest": "^30.0.5",
 		"prettier": "^3.6.2",
 		"prettier-plugin-astro": "^0.14.1",
+		"stylelint": "^16.23.0",
+		"stylelint-config-standard": "^39.0.0",
+		"stylelint-config-tailwindcss": "^1.0.0",
 		"tailwindcss-animated": "^2.0.0",
 		"ts-jest": "^29.4.0",
 		"typescript-eslint": "^8.37.0"
