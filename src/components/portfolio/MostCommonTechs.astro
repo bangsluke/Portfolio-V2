@@ -27,8 +27,8 @@ skills.forEach(skill => {
 });
 
 // Use predefined filter options from repoConfig.js, normalizing language to framework
-const availableTags = SKILLS_FILTER_OPTIONS.filter(tag => tag !== 'all').map(tag => 
-	tag === 'language' ? 'framework' : tag
+const availableTags = SKILLS_FILTER_OPTIONS.filter(tag => tag !== 'all').map(
+	tag => (tag === 'language' ? 'framework' : tag)
 );
 
 // Count technology usage across all projects, excluding hosting/security skills
@@ -38,6 +38,10 @@ const techProjects: Record<string, string[]> = {}; // Track which projects use e
 // Get all unique technologies from projects
 const allTechnologies = new Set<string>();
 projects.forEach(project => {
+	// Add null checking for project and project.data
+	if (!project || !project.data) {
+		return;
+	}
 	if (project.data.technologies) {
 		project.data.technologies.forEach((tech: string) => {
 			// Clean the technology name by removing Obsidian brackets
@@ -55,6 +59,13 @@ projects.forEach(project => {
 
 // Use the common project count logic for each technology
 allTechnologies.forEach(tech => {
+	// Add safety check for projects array
+	if (!projects || !Array.isArray(projects)) {
+		techCount[tech] = 0;
+		techProjects[tech] = [];
+		return;
+	}
+
 	const count = getProjectCount(tech, tech, projects);
 	const projectsList = getProjectsUsingSkill(tech, tech, projects);
 
@@ -106,6 +117,7 @@ const classes = `${baseClasses} ${variantClasses[variant as TechVariant]}`;
 						skillName={tech}
 						variant="theme"
 						size={size === 'xs' ? 'xs' : 'md'}
+						projects={projects}
 					/>
 					{/* Tooltip showing usage count and projects - positioned above or below based on row */}
 					<div

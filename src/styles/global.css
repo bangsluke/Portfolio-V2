@@ -2,6 +2,7 @@
 
 @import 'tailwindcss';
 
+/* stylelint-disable-next-line at-rule-no-unknown */
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -559,8 +560,8 @@ a.theme-link:hover {
 	color: rgb(212 212 212);
 	background: linear-gradient(to top, white, rgba(255, 255, 255, 0.9));
 	backdrop-filter: blur(8px);
-	backdrop-saturate: 100%;
-	backdrop-contrast: 100%;
+	/* backdrop-saturate: 100%; */
+	/* backdrop-contrast: 100%; */
 }
 
 .dark .expanded {
@@ -629,8 +630,6 @@ a.theme-link:hover {
 	padding: 1rem;
 	gap: 0.5rem;
 	backdrop-filter: blur(8px);
-	backdrop-saturate: 100%;
-	backdrop-contrast: 100%;
 }
 
 .dark .nav-links.expanded {
@@ -788,8 +787,6 @@ a.theme-link:hover {
 }
 
 .global-dropdown-menu input[type='checkbox']:focus {
-	ring: 2px;
-	ring-color: var(--color-theme-400);
 	border-color: transparent;
 }
 
@@ -809,6 +806,50 @@ a.theme-link:hover {
 
 .global-form-element {
 	cursor: pointer;
+}
+
+/* Date picker icon styling for light/dark mode */
+input[type='date']::-webkit-calendar-picker-indicator {
+	filter: invert(0);
+	opacity: 0.7;
+	cursor: pointer;
+	transition: opacity 0.2s ease;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator:hover {
+	opacity: 1;
+}
+
+/* Dark mode date picker icon */
+.dark input[type='date']::-webkit-calendar-picker-indicator {
+	filter: invert(1);
+	opacity: 0.7;
+}
+
+.dark input[type='date']::-webkit-calendar-picker-indicator:hover {
+	opacity: 1;
+}
+
+/* Firefox date picker icon styling */
+input[type='date']::-moz-calendar-picker-indicator {
+	filter: invert(0);
+	opacity: 0.7;
+	cursor: pointer;
+	transition: opacity 0.2s ease;
+}
+
+input[type='date']::-moz-calendar-picker-indicator:hover {
+	opacity: 1;
+}
+
+/* Dark mode Firefox date picker icon */
+.dark input[type='date']::-moz-calendar-picker-indicator {
+	filter: invert(1);
+	opacity: 0.7;
+}
+
+.dark input[type='date']::-moz-calendar-picker-indicator:hover {
+	opacity: 1;
 }
 
 .global-tooltip {
@@ -985,9 +1026,24 @@ a.theme-link:hover {
 		height: auto;
 	}
 
-	.absolute,
-	.fixed {
+	.absolute:not(#scroll-to-top),
+	.fixed:not(#scroll-to-top) {
 		max-width: 100vw;
+	}
+
+	/* Ensure scroll-to-top button is always visible on mobile */
+	#scroll-to-top {
+		z-index: 9999 !important;
+		position: fixed !important;
+		bottom: 5% !important;
+		right: 5% !important;
+		max-width: none !important;
+		width: auto !important;
+		height: auto !important;
+		opacity: 1 !important;
+		pointer-events: auto !important;
+		display: block !important;
+		visibility: visible !important;
 	}
 
 	.flex {
@@ -1017,6 +1073,10 @@ a.theme-link:hover {
 
 	p {
 		font-size: 0.8rem;
+	}
+
+	span {
+		font-size: 0.7rem;
 	}
 
 	strong {
@@ -1163,5 +1223,20 @@ a.theme-link:hover {
 	/* Make icons smaller on very small screens */
 	.text-3xl.max-md\\:text-2xl.max-sm\\:text-sm {
 		font-size: 0.875rem !important;
+	}
+
+	/* Ensure scroll-to-top button is always visible on very small screens */
+	#scroll-to-top {
+		z-index: 9999 !important;
+		position: fixed !important;
+		bottom: 5% !important;
+		right: 5% !important;
+		max-width: none !important;
+		width: auto !important;
+		height: auto !important;
+		opacity: 1 !important;
+		pointer-events: auto !important;
+		display: block !important;
+		visibility: visible !important;
 	}
 }

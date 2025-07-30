@@ -34,6 +34,9 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { data } = project;
 
+// Get all projects for SkillPill tooltips
+const allProjects = await getCollection('projects');
+
 // Process content to handle Obsidian links and markdown
 const processedLongDescription = processContent(data.longDescription);
 const processedLessonsLearned = processContent(data.lessonsLearned);
@@ -207,6 +210,7 @@ const ogimage = {
 											variant="theme"
 											size="md"
 											className="shadow-lg"
+											projects={allProjects}
 										/>
 									);
 								})
