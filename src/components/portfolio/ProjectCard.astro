@@ -8,11 +8,12 @@ import SkillPill from '../ui/SkillPill.astro';
 const {
 	name,
 	imageURL,
-	technologies,
+	technologies = [],
 	shortDescription,
 	slug,
 	companyLogoURL,
 	linkedCompany,
+	projects = [],
 } = Astro.props;
 
 // Process content to handle Obsidian links and markdown
@@ -47,10 +48,10 @@ const displayName = name;
 
 // Process technologies for display
 const MAX_VISIBLE_SKILLS = 5;
-const visibleTechnologies = technologies
+const visibleTechnologies = Array.isArray(technologies)
 	? technologies.slice(0, MAX_VISIBLE_SKILLS)
 	: [];
-const hiddenTechnologies = technologies
+const hiddenTechnologies = Array.isArray(technologies)
 	? technologies.slice(MAX_VISIBLE_SKILLS)
 	: [];
 const hasHiddenSkills = hiddenTechnologies.length > 0;
@@ -93,6 +94,7 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 		<div class="flex flex-wrap gap-2 mb-4">
 			{
 				visibleTechnologies &&
+					visibleTechnologies.length > 0 &&
 					visibleTechnologies.map((tech: string) => {
 						const cleanTech = tech.replace(/\[|\]/g, '');
 						return (
@@ -101,42 +103,46 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 								variant="theme"
 								size="sm"
 								className="shadow hover:bg-theme-700/30"
+								projects={projects}
 							/>
 						);
 					})
 			}
 			{
-				hasHiddenSkills && (
-					<div class="relative group/tooltip">
-						<div class="flex items-center justify-center w-8 h-8 bg-theme-400/20 border border-theme-400/30 rounded-full text-theme-400 hover:bg-theme-400/30 transition-colors duration-200 cursor-help">
-							<span class="text-sm font-medium">
-								+{hiddenTechnologies.length}
-							</span>
-						</div>
-						<div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover/tooltip:opacity-100 group-active/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-50 w-[250px] max-w-[90vw]">
-							<div class="global-tooltip w-full">
-								<div class="global-tooltip-content">
-									<div class="text-xs text-theme-400 font-medium mb-2">
-										Additional technologies:
-									</div>
-									<div class="flex flex-wrap gap-2">
-										{hiddenTechnologies.map((tech: string) => {
-											const cleanTech = tech.replace(/\[|\]/g, '');
-											return (
-												<SkillPill
-													skillName={cleanTech}
-													variant="dark"
-													size="sm"
-													className="shadow hover:bg-theme-700/30"
-												/>
-											);
-										})}
+				hasHiddenSkills &&
+					hiddenTechnologies &&
+					hiddenTechnologies.length > 0 && (
+						<div class="relative group/tooltip">
+							<div class="flex items-center justify-center w-8 h-8 bg-theme-400/20 border border-theme-400/30 rounded-full text-theme-400 hover:bg-theme-400/30 transition-colors duration-200 cursor-help">
+								<span class="text-sm font-medium">
+									+{hiddenTechnologies.length}
+								</span>
+							</div>
+							<div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover/tooltip:opacity-100 group-active/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-50 w-[250px] max-w-[90vw]">
+								<div class="global-tooltip w-full">
+									<div class="global-tooltip-content">
+										<div class="text-xs text-theme-400 font-medium mb-2">
+											Additional technologies:
+										</div>
+										<div class="flex flex-wrap gap-2">
+											{hiddenTechnologies.map((tech: string) => {
+												const cleanTech = tech.replace(/\[|\]/g, '');
+												return (
+													<SkillPill
+														skillName={cleanTech}
+														variant="dark"
+														size="sm"
+														className="shadow hover:bg-theme-700/30"
+														projects={projects}
+													/>
+												);
+											})}
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				)
+					)
 			}
 		</div>
 		<div
@@ -177,14 +183,14 @@ const hasHiddenSkills = hiddenTechnologies.length > 0;
 			)
 		}
 
-		<!-- Mobile "See more detail..." link -->
+		<!-- Mobile "See more details..." link -->
 		<div
 			class="mobile-detail-link hidden md:hidden mt-4 pt-4 border-t border-zinc-700">
 			<a
 				href={`/projects/${projectSlug}`}
 				class="flex items-center justify-center gap-2 text-theme-400 hover:text-theme-300 transition-colors text-sm font-medium"
 				onclick="event.stopPropagation();">
-				<span>See more detail...</span>
+				<span>See more details...</span>
 				<svg
 					class="w-4 h-4"
 					fill="none"

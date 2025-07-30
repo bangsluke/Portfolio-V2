@@ -985,9 +985,24 @@ a.theme-link:hover {
 		height: auto;
 	}
 
-	.absolute,
-	.fixed {
+	.absolute:not(#scroll-to-top),
+	.fixed:not(#scroll-to-top) {
 		max-width: 100vw;
+	}
+
+	/* Ensure scroll-to-top button is always visible on mobile */
+	#scroll-to-top {
+		z-index: 9999 !important;
+		position: fixed !important;
+		bottom: 5% !important;
+		right: 5% !important;
+		max-width: none !important;
+		width: auto !important;
+		height: auto !important;
+		opacity: 1 !important;
+		pointer-events: auto !important;
+		display: block !important;
+		visibility: visible !important;
 	}
 
 	.flex {
@@ -1017,6 +1032,10 @@ a.theme-link:hover {
 
 	p {
 		font-size: 0.8rem;
+	}
+
+	span {
+		font-size: 0.7rem;
 	}
 
 	strong {
@@ -1163,5 +1182,20 @@ a.theme-link:hover {
 	/* Make icons smaller on very small screens */
 	.text-3xl.max-md\\:text-2xl.max-sm\\:text-sm {
 		font-size: 0.875rem !important;
+	}
+
+	/* Ensure scroll-to-top button is always visible on very small screens */
+	#scroll-to-top {
+		z-index: 9999 !important;
+		position: fixed !important;
+		bottom: 5% !important;
+		right: 5% !important;
+		max-width: none !important;
+		width: auto !important;
+		height: auto !important;
+		opacity: 1 !important;
+		pointer-events: auto !important;
+		display: block !important;
+		visibility: visible !important;
 	}
 }

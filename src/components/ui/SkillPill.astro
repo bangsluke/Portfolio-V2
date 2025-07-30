@@ -2,12 +2,14 @@
 import { getCollection } from 'astro:content';
 import { getSkillIconName } from '../../utils/icon-utils';
 import { extractNameFromFilename } from '../../utils/filename-utils';
+import { getProjectCount } from '../../utils/project-count-utils';
 
 interface Props {
 	skillName: string;
 	size?: 'xs' | 'sm' | 'md' | 'lg';
 	variant?: 'default' | 'dark' | 'theme';
 	className?: string;
+	projects?: any[];
 }
 
 const {
@@ -15,6 +17,7 @@ const {
 	size = 'md',
 	variant = 'default',
 	className = '',
+	projects = [],
 } = Astro.props;
 
 // Clean the skill name by removing Obsidian link brackets and handling pipe aliases
@@ -112,6 +115,13 @@ const cleanedSkill = cleanSkillName(skillName);
 const iconName = await findIconForSkill(skillName);
 const originalFileName = getOriginalFileName(skillName);
 
+// Calculate project count for tooltip
+const skillId = extractNameFromFilename(originalFileName);
+const projectCount =
+	projects.length > 0
+		? getProjectCount(cleanedSkill.skillNameForLookup, skillId, projects)
+		: 0;
+
 // Ensure icon name is lowercase for the Icon component
 const finalIconName = iconName ? iconName.toLowerCase() : null;
 
@@ -153,7 +163,11 @@ const containerClasses = `${baseClasses} ${sizeClasses[size].container} ${varian
 ---
 
 <div class="relative group/skill">
-	<span class={containerClasses} title={originalFileName}>
+	<span
+		class={containerClasses}
+		title={projectCount > 0
+			? `Used in ${projectCount} project${projectCount === 1 ? '' : 's'}`
+			: 'Not used in any projects'}>
 		{
 			finalIconName ? (
 				<img
@@ -178,7 +192,11 @@ const containerClasses = `${baseClasses} ${sizeClasses[size].container} ${varian
 		class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover/skill:opacity-100 group-active/skill:opacity-100 transition-opacity duration-200 pointer-events-none z-50 md:hidden">
 		<div class="global-tooltip">
 			<div class="global-tooltip-content">
-				{originalFileName}
+				{
+					projectCount > 0
+						? `Used in ${projectCount} project${projectCount === 1 ? '' : 's'}`
+						: 'Not used in any projects'
+				}
 			</div>
 			<div
 				class="absolute left-1/2 transform -translate-x-1/2 global-tooltip-arrow global-tooltip-arrow-top">

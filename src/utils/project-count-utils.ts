@@ -12,6 +12,10 @@ export function getProjectCount(
 	projects: any[]
 ): number {
 	return projects.filter(project => {
+		// Add null checking for project and project.data
+		if (!project || !project.data) {
+			return false;
+		}
 		const technologies = project.data.technologies || [];
 		return technologies.some((tech: string) => {
 			// Clean the technology name (remove Obsidian brackets)
@@ -55,6 +59,10 @@ export function getProjectsUsingSkill(
 	const projectNames: string[] = [];
 
 	projects.forEach(project => {
+		// Add null checking for project and project.data
+		if (!project || !project.data) {
+			return;
+		}
 		const technologies = project.data.technologies || [];
 		const isUsed = technologies.some((tech: string) => {
 			// Clean the technology name (remove Obsidian brackets)
