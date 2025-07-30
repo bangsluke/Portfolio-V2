@@ -139,6 +139,21 @@ a.inline-block.leading-5.pl-12 {
 	color: #171717;
 }
 
+/* Style the main sections on the homepage */
+
+.main-section {
+	padding-left: 2rem; /* 32px */
+	padding-right: 2rem; /* 32px */
+	scroll-margin: 4rem; /* 64px */
+}
+
+@media (max-width: 767px) {
+	.main-section {
+		padding-left: 1rem; /* 16px */
+		padding-right: 1rem; /* 16px */
+	}
+}
+
 .markdown h2 {
 	letter-spacing: normal;
 	font-family: 'Montserrat', sans-serif;
