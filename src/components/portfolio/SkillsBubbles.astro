@@ -74,6 +74,13 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 				if (modal) {
 					modal.classList.remove('hidden');
 					document.body.style.overflow = 'hidden';
+
+					// Automatically trigger reset functionality to center everything
+					setTimeout(() => {
+						if (modalResetBtn) {
+							modalResetBtn.click();
+						}
+					}, 100); // Small delay to ensure modal is fully rendered
 				}
 			});
 		}
@@ -278,7 +285,8 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 		id="skills-modal-overlay"
 		class="absolute inset-0 bg-black bg-opacity-75">
 	</div>
-	<div class="relative z-10 w-full h-full flex items-center justify-center p-4">
+	<div
+		class="relative z-10 w-full h-full flex items-center justify-center p-4 pt-20">
 		<div
 			class="bg-white dark:bg-gray-900 rounded-xl shadow-2xl w-full h-full max-w-7xl max-h-[95vh] overflow-hidden">
 			<div class="p-6 h-full flex flex-col">
@@ -290,7 +298,7 @@ const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
 						<!-- Modal Reset Button -->
 						<button
 							id="modal-skills-reset-btn"
-							class="global-element global-button"
+							class="global-element global-button global-clear-button"
 							title="Reset to default view - clear filters, reset to skill rating, and center graph">
 							Reset
 						</button>

@@ -727,6 +727,10 @@ a.theme-link:hover {
 	cursor: pointer;
 }
 
+.global-clear-button {
+	background-color: var(--color-theme-950);
+}
+
 .global-button:hover {
 	background-color: var(--color-theme-900);
 	transform: translateY(-1px);
