@@ -48,7 +48,7 @@ Large range of engineering topics, exploring multiple engineering fundamentals f
 
 - First Year
 	- Meeting my incredible wife [[Bryony Lund|Bryony]] and some other decent chaps in [[Matt Dowty|Matt]], [[Andy Taylor|Andy]] and [[Steve Butler|Steve]] in [[Royce Hall Block 14]]
-	- In halls where we had that incredible hot summer when after lectures we’d be drinking outside our halls
+	- In halls where we had that incredible hot summer when after lectures we'd be drinking outside our halls
 	- The winter after where I watched [[Bryony Lund|Bry]] in the freezing snow
 	- Being the first student to get kicked out of a lab session for turning up in flip flops
 	- Having my thermodynamics grade go from 75% to 5% when the lecturer corrected his spreadsheet name error

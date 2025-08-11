@@ -116,8 +116,8 @@ A visualisation and analysis of the travelling I have done, providing descriptio
 ## Repositories
 
 - Main repo: `=this.codeURL`
-- Secondary repo: https://github.com/bangsluke/bangsluke-backend-server - Backend server
-- Archived secondary repo: https://github.com/bangsluke/server-mytraveljournal - Travel backend server
+- Secondary repo: <https://github.com/bangsluke/bangsluke-backend-server> - Backend server
+- Archived secondary repo: <https://github.com/bangsluke/server-mytraveljournal> - Travel backend server
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -142,7 +142,7 @@ To launch the repo, use the [[PowerShell]] alias
 	- Not sure this is possible unless I am able to find a way to use a [[OpenAI]] API call to create a [[GraphQL]] query in the client
 	- <https://www.apollographql.com/docs/apollo-server/schema/directives/>
 - Add back to top Floating Action Button on all pages
-- Add a heading per page in the below style. Add tags to holidays in the same style as the below bubbles for things such as “skiing”
+- Add a heading per page in the below style. Add tags to holidays in the same style as the below bubbles for things such as "skiing"
 - Use suspense in [[React]] for loading faster - [Efficient and Elegant Web Development with Next.js: A Deep Dive into Component Streaming and Chunked Transfer Encoding | by Momen Daoud | Nov, 2023 | Medium](https://medium.com/@momendaoud/efficient-and-elegant-web-development-with-next-js-6087b3fd86e1)
 
 >[!top] [Back to top](#Table%20of%20Contents)

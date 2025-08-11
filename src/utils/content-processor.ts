@@ -58,71 +58,92 @@ export function processContent(content: string | undefined | null): string {
 
 	// Process callouts before newline conversion
 	// Handle Obsidian callouts with types (lines starting with > [!type])
-	processedContent = processedContent.replace(
-		/^> \[!(\w+)\]\s*(.+)$/gm,
-		(match, calloutType, calloutContent) => {
-			const type = calloutType.toLowerCase();
-			let bgColor = 'bg-blue-50';
-			let borderColor = 'border-blue-200';
-			let textColor = 'text-blue-800';
-			let icon = '💡';
+	processedContent = processedContent
+		.replace(
+			/^> \[!(\w+)\]\s*(.+)$/gm,
+			(match, calloutType, calloutContent) => {
+				const type = calloutType.toLowerCase();
+				let bgColor = 'bg-blue-50';
+				let borderColor = 'border-blue-200';
+				let textColor = 'text-blue-800';
+				let icon = '💡';
 
-			// Map callout types to colors and icons
-			switch (type) {
-				case 'note':
-					bgColor = 'bg-blue-50';
-					borderColor = 'border-blue-200';
-					textColor = 'text-blue-800';
-					icon = '📝';
-					break;
-				case 'warning':
-					bgColor = 'bg-yellow-50';
-					borderColor = 'border-yellow-200';
-					textColor = 'text-yellow-800';
-					icon = '⚠️';
-					break;
-				case 'error':
-					bgColor = 'bg-red-50';
-					borderColor = 'border-red-200';
-					textColor = 'text-red-800';
-					icon = '❌';
-					break;
-				case 'success':
-					bgColor = 'bg-green-50';
-					borderColor = 'border-green-200';
-					textColor = 'text-green-800';
-					icon = '✅';
-					break;
-				case 'info':
-					bgColor = 'bg-cyan-50';
-					borderColor = 'border-cyan-200';
-					textColor = 'text-cyan-800';
-					icon = 'ℹ️';
-					break;
-				case 'tip':
-					bgColor = 'bg-emerald-50';
-					borderColor = 'border-emerald-200';
-					textColor = 'text-emerald-800';
-					icon = '💡';
-					break;
-				default:
-					bgColor = 'bg-gray-50';
-					borderColor = 'border-gray-200';
-					textColor = 'text-gray-800';
-					icon = '';
+				// Map callout types to colors and icons
+				switch (type) {
+					case 'note':
+						bgColor = 'bg-blue-50';
+						borderColor = 'border-blue-200';
+						textColor = 'text-blue-800';
+						icon = '📝';
+						break;
+					case 'warning':
+						bgColor = 'bg-yellow-50';
+						borderColor = 'border-yellow-200';
+						textColor = 'text-yellow-800';
+						icon = '⚠️';
+						break;
+					case 'error':
+						bgColor = 'bg-red-50';
+						borderColor = 'border-red-200';
+						textColor = 'text-red-800';
+						icon = '❌';
+						break;
+					case 'success':
+						bgColor = 'bg-green-50';
+						borderColor = 'border-green-200';
+						textColor = 'text-green-800';
+						icon = '✅';
+						break;
+					case 'info':
+						bgColor = 'bg-cyan-50';
+						borderColor = 'border-cyan-200';
+						textColor = 'text-cyan-800';
+						icon = 'ℹ️';
+						break;
+					case 'tip':
+						bgColor = 'bg-emerald-50';
+						borderColor = 'border-emerald-200';
+						textColor = 'text-emerald-800';
+						icon = '💡';
+						break;
+					case 'question':
+						bgColor = 'bg-purple-50';
+						borderColor = 'border-purple-200';
+						textColor = 'text-purple-800';
+						icon = '❓';
+						break;
+					case 'example':
+						bgColor = 'bg-indigo-50';
+						borderColor = 'border-indigo-200';
+						textColor = 'text-indigo-800';
+						icon = '📖';
+						break;
+					case 'bug':
+						bgColor = 'bg-rose-50';
+						borderColor = 'border-rose-200';
+						textColor = 'text-rose-800';
+						icon = '🐛';
+						break;
+					case 'quote':
+						bgColor = 'bg-gray-50';
+						borderColor = 'border-gray-200';
+						textColor = 'text-gray-800';
+						icon = '💬';
+						break;
+					default:
+						bgColor = 'bg-blue-50';
+						borderColor = 'border-blue-200';
+						textColor = 'text-blue-800';
+						icon = '💡';
+				}
+
+				return `<div class="callout ${bgColor} ${borderColor} ${textColor} border-l-4 p-4 my-6 rounded-r-lg"><div class="flex items-start gap-3"><span class="text-lg">${icon}</span><div class="flex-1"><div class="text-lg leading-relaxed">${calloutContent}</div></div></div></div>`;
 			}
-
-			return `<div class="callout ${bgColor} ${borderColor} ${textColor} border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">${icon}</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">${calloutType}</div><br><div class="text-lg leading-relaxed">${calloutContent}</div><br></div><br></div><br></div>`;
-		}
-	);
-
-	// Handle simple callouts without type (just > text) - must be before newline conversion
-	processedContent = processedContent.replace(
-		/^>\s*(.+)$/gm,
-		(match, calloutContent) => {
-			return `<div class="callout bg-gray-50 border-gray-200 text-gray-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">💬</span><br><div class="flex-1"><br><div class="text-lg leading-relaxed">${calloutContent}</div><br></div><br></div><br></div>`;
-		}
-	);
+		)
+		// Handle simple callouts (lines starting with >)
+		.replace(/^>\s*(.+)$/gm, (match, calloutContent) => {
+			return `<div class="callout bg-gray-50 border-gray-200 text-gray-800 border-l-4 p-4 my-6 rounded-r-lg"><div class="flex items-start gap-3"><span class="text-lg">💬</span><div class="flex-1"><div class="text-lg leading-relaxed">${calloutContent}</div></div></div></div>`;
+		});
 
 	// Convert newlines to <br> tags for proper HTML rendering
 	// If a newline is followed by a dash, use a single <br>, otherwise use double <br><br>
