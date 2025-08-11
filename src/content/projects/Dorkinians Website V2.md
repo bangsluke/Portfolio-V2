@@ -9,7 +9,7 @@ tags:
 created: 2025-05-30 09:40
 modified: 2025-07-28T07:27:27+01:00
 aliases: 
-viewCount: 15
+viewCount: 16
 projectURL: TBD
 codeURL: TBD
 codeMultipleRepos: false
@@ -210,7 +210,7 @@ Authentication: The site should be secure behind a single password.
 
 #### Club Information
 
-- Don’t show as full page in main nav, but have it in the expanded sidebar
+- Don't show as full page in main nav, but have it in the expanded sidebar
 - List club captains
 - List awards
 - Have a list dedicated to key links for players

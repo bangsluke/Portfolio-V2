@@ -1169,6 +1169,17 @@ async function syncPortfolioAboutMe() {
 		// Remove "about-me-" from frontmatter
 		content = removeAboutMeFromFrontmatter(processedContent);
 
+		// Remove the first line of about me content (Portfolio About Me heading)
+		// This removes the "<h1>Portfolio About Me</h1><br><br>" line
+		content = content.replace(
+			'<h1>Portfolio About Me</h1><br><br><br><br>',
+			''
+		);
+
+		// Replace four <br> tags with a single <br> tag to stop the spacing on the processed About Me file from being too large
+		// Use global regex to replace all occurrences throughout the file
+		content = content.replace(/<br><br><br>/g, '<br>');
+
 		// Write content to Astro
 		fs.writeFileSync(targetAboutMePath, content, 'utf8');
 		console.log(

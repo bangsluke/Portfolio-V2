@@ -28,7 +28,7 @@ logoFileName: google_sheets.svg
 	- Create the formula in the top cell
 	- Select all cells including the formula cell
 	- Click on the selected cells
-	- Choose ‘Autofill’ (or ‘More’)
+	- Choose 'Autofill' (or 'More')
 
  >[!top] [Back to top](#Table%20of%20Contents)
 

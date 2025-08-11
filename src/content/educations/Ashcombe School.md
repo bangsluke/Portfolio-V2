@@ -48,7 +48,7 @@ WHERE file = this.file
 
 ## Key Memories
 
-- Getting detention every other day for not having my shirt tucked in and then one day at detention during the register read out, hearing [[Ross Bangs|Ross]]’ name read out after mine and being a proud big brother
+- Getting detention every other day for not having my shirt tucked in and then one day at detention during the register read out, hearing [[Ross Bangs|Ross]]' name read out after mine and being a proud big brother
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

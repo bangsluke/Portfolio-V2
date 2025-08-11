@@ -10,7 +10,7 @@ created: 2025-05-29 18:05
 modified: 2025-07-24T15:22:49+01:00
 aliases:
   - DVP Prototype
-viewCount: 15
+viewCount: 16
 projectURL: https://dvp-fe.icypebble-0bf96993.germanywestcentral
 codeURL: TBC
 codeMultipleRepos: false
@@ -44,7 +44,7 @@ powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
 shortDescription: "The <span class=\"theme-link\">DVP</span> project was a short demonstration of using <span class=\"theme-link\">Neo4j</span> graphs for running optimisation calculations for the Automotive industry."
-longDescription: "<span class=\"theme-link\">RLE</span>’s <span class=\"theme-link\">DVP</span> tool was a working demonstration tool for how problems such as automatically generating a vehicle <span class=\"theme-link\">DVP</span> could be done from inputs and running optimisation algorithms to generate a Pareto curve of the importance of each input."
+longDescription: "<span class=\"theme-link\">RLE</span>'s <span class=\"theme-link\">DVP</span> tool was a working demonstration tool for how problems such as automatically generating a vehicle <span class=\"theme-link\">DVP</span> could be done from inputs and running optimisation algorithms to generate a Pareto curve of the importance of each input."
 lessonsLearned: "The lessons learned for me were mainly in data visualisation in the front end, as I received various data points from the backend <span class=\"theme-link\">Neo4j</span> and <span class=\"theme-link\">Java</span> calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.<br><br>It also taught me a lot about passing large objects of states from one page to the next."
 name: "DVP Tool"
 ---
@@ -87,7 +87,7 @@ The [[DVP]] project was a short demonstration of using [[Neo4j]] graphs for runn
 
 ## Long Description
 
-[[RLE International|RLE]]’s [[DVP]] tool was a working demonstration tool for how problems such as automatically generating a vehicle [[DVP]] could be done from inputs and running optimisation algorithms to generate a Pareto curve of the importance of each input.
+[[RLE International|RLE]]'s [[DVP]] tool was a working demonstration tool for how problems such as automatically generating a vehicle [[DVP]] could be done from inputs and running optimisation algorithms to generate a Pareto curve of the importance of each input.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

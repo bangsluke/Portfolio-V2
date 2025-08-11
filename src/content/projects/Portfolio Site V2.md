@@ -7,8 +7,8 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-07-28T17:16:40+01:00
-viewCount: 61
+modified: 2025-08-08T15:17:37+01:00
+viewCount: 60
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -127,19 +127,19 @@ Design initially started from a template project called [NeonMint](https://githu
 
 ### ChatGPT Recommended Architecture 
 
-> See [[ChatGPT]] thread “Portfolio Site V2 Stack”
+> See [[ChatGPT]] thread "Portfolio Site V2 Stack"
 
 - Frontend: [[Astro]] or [[React]]
 - Backend/API: [[Vercel]] Serverless Functions ([[Node.js]])
 - Database: [[Neo4j Aura]] (cloud-hosted graph DB)
-- Auth: Secured via [[Vercel]]’s Environment Variables
+- Auth: Secured via [[Vercel]]'s Environment Variables
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ### Design
 
 - See [[Portfolio Site V2 Canvas.canvas|Portfolio Site V2 Canvas]] for the design
-- Also see “Portfolio V2” in Freeform for design ideas
+- Also see "Portfolio V2" in Freeform for design ideas
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -259,7 +259,7 @@ SORT dateStart ASC
 
 If a `company` or `club` note has tag `client` (and `portfolio`) then they will show up on the Portfolio page as a client
 
-> *Note: don’t use the `organisation` tag as that’s reserved for note structure
+> *Note: don't use the `organisation` tag as that's reserved for note structure
 
 - Clients - see [[Company Notes]]
 	- Example client: [[Dorkinians FC]]

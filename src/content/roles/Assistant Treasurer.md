@@ -5,7 +5,7 @@ tags:
   - portfolio
   - voluntary
 created: 2025-06-09 22:26
-modified: 2025-07-22T18:05:44+01:00
+modified: 2025-08-01T22:31:42+01:00
 viewCount: 2
 dateStart: 2025-06-10
 dateEnd: ""
@@ -13,7 +13,7 @@ linkedCompany:
   - "[[Dorkinians FC]]"
 shortRoleDescription: "Support for the finances of <span class=\"theme-link\">Dorkinians FC</span>."
 fullRoleDescription: "A supporting role, reviewing and managing the finances of <span class=\"theme-link\">Dorkinians FC</span>, providing help to the Treasurer where required."
-keyAchievement: "TBC"
+keyAchievement: "Providing ongoing support for the Treasurer."
 ---
 # Assistant Treasurer
 
@@ -37,7 +37,7 @@ A supporting role, reviewing and managing the finances of [[Dorkinians FC]], pro
 
 ## Key Achievement
 
-TBC
+Providing ongoing support for the Treasurer.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

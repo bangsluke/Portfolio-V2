@@ -38,7 +38,7 @@ powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
 shortDescription: "A quick access, mobile friendly filterable stats site for <span class=\"theme-link\">Dorkinians FC</span> players."
-longDescription: "After creating the initial <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>, I would regularly be asked by players “But how many goals were just in cup games/not friendlies/just league?” Etc etc.<br><br>I therefore decided to play around with creating a filterable site so that players could answer these questions themselves."
+longDescription: "After creating the initial <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>, I would regularly be asked by players \"But how many goals were just in cup games/not friendlies/just league?\" Etc etc.<br><br>I therefore decided to play around with creating a filterable site so that players could answer these questions themselves."
 lessonsLearned: "This project let me design my first filter <span class=\"theme-link\">UI</span> popup using <span class=\"theme-link\">React</span> and taught me methods of filtering the data received from the back end.<br><br>I also tried out a new <span class=\"theme-link\">API</span> method of retrieving data to the front end from <span class=\"theme-link\">Google Sheets</span>, using their available method instead of parsing generated <span class=\"theme-link\">CSV</span> data like I did on the <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>."
 name: "Dorkinians Mobile Site"
 ---
@@ -81,7 +81,7 @@ A quick access, mobile friendly filterable stats site for [[Dorkinians FC]] play
 
 ## Long Description
 
-After creating the initial [[Dorkinians Website]], I would regularly be asked by players “But how many goals were just in cup games/not friendlies/just league?” Etc etc.
+After creating the initial [[Dorkinians Website]], I would regularly be asked by players "But how many goals were just in cup games/not friendlies/just league?" Etc etc.
 
 I therefore decided to play around with creating a filterable site so that players could answer these questions themselves.
 

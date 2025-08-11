@@ -4,6 +4,7 @@
 // Fallback list of known icons (will be replaced at build time)
 let knownIconsCache: string[] = [
 	'CPlusPlus',
+	'access',
 	'algolia',
 	'angular',
 	'apollo',
