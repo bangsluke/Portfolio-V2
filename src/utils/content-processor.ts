@@ -137,12 +137,12 @@ export function processContent(content: string | undefined | null): string {
 						icon = '💡';
 				}
 
-				return `<div class="callout ${bgColor} ${borderColor} ${textColor} border-l-4 p-4 my-6 rounded-r-lg"><div class="flex items-start gap-3"><span class="text-lg">${icon}</span><div class="flex-1"><div class="text-lg leading-relaxed">${calloutContent}</div></div></div></div>`;
+				return `<div class="callout ${bgColor} ${borderColor} ${textColor} border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">${icon}</span><br><div class="flex-1"><br><div class="font-semibold mb-2 capitalize">${type}</div><br><div class="text-lg leading-relaxed">${calloutContent}</div><br></div><br></div><br></div>`;
 			}
 		)
 		// Handle simple callouts (lines starting with >)
 		.replace(/^>\s*(.+)$/gm, (match, calloutContent) => {
-			return `<div class="callout bg-gray-50 border-gray-200 text-gray-800 border-l-4 p-4 my-6 rounded-r-lg"><div class="flex items-start gap-3"><span class="text-lg">💬</span><div class="flex-1"><div class="text-lg leading-relaxed">${calloutContent}</div></div></div></div>`;
+			return `<div class="callout bg-gray-50 border-gray-200 text-gray-800 border-l-4 p-4 my-6 rounded-r-lg"><br><div class="flex items-start gap-3"><br><span class="text-lg">💬</span><br><div class="flex-1"><br><div class="text-lg leading-relaxed">${calloutContent}</div><br></div><br></div><br></div>`;
 		});
 
 	// Convert newlines to <br> tags for proper HTML rendering
