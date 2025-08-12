@@ -2,10 +2,9 @@
 interface Props {
 	name: string;
 	logoURL?: string;
-	dateString?: string;
 }
 
-const { name, logoURL, dateString } = Astro.props;
+const { name, logoURL } = Astro.props;
 
 // Generate a fallback background color if no logo
 const fallbackColor = 'bg-gradient-to-br from-blue-500 to-purple-600';
@@ -18,7 +17,6 @@ const hasLogo = logoURL && logoURL.trim() !== '';
 		? `background-image: url('${logoURL}'); background-size: cover; background-position: center;`
 		: ''}
 	data-company-name={name}
-	data-company-date={dateString}
 	data-company-logo={logoURL}>
 	<!-- Darkened overlay that lightens on hover -->
 	<div
@@ -31,20 +29,10 @@ const hasLogo = logoURL && logoURL.trim() !== '';
 
 	<!-- Content container -->
 	<div
-		class="relative z-20 flex flex-col justify-between h-full p-6 text-white">
-		<!-- Top section with title and date -->
-		<div class="flex-1">
-			<h3
-				class="text-xl font-bold text-white mb-2 group-hover:text-theme-400 transition-colors duration-300">
-				{name}
-			</h3>
-			{
-				dateString && (
-					<div class="text-sm text-white/80 group-hover:text-white transition-colors duration-300">
-						{dateString}
-					</div>
-				)
-			}
-		</div>
+		class="relative z-20 flex flex-col justify-center items-center h-full w-full p-2 md:p-6 text-white text-center">
+		<h3
+			class="text-l font-bold text-white mb-2 group-hover:text-theme-400 transition-colors duration-300 text-center">
+			{name}
+		</h3>
 	</div>
 </div>

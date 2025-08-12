@@ -47,15 +47,11 @@ function CompanyCard({
 	item,
 	isSelected,
 	onClick,
-	isMobile,
 }: {
 	item: CarouselItem;
 	isSelected: boolean;
 	onClick: () => void;
-	isMobile: boolean;
 }) {
-	const [showModal, setShowModal] = useState(false);
-
 	// Handle both companies (logoURL) and clients (imageURL or logoURL)
 	const hasLogo = item.logoURL && item.logoURL.trim() !== '';
 	const backgroundImage = item.logoURL;
@@ -66,37 +62,22 @@ function CompanyCard({
 			? 'bg-gradient-to-br from-green-500 to-teal-600'
 			: 'bg-gradient-to-br from-blue-500 to-purple-600';
 
-	const showCompanyModal = () => {
-		setShowModal(true);
-		document.body.style.overflow = 'hidden';
-	};
-
-	const closeCompanyModal = () => {
-		setShowModal(false);
-		document.body.style.overflow = '';
-	};
-
-	// Handle card click - on mobile, show modal; on desktop, select item
+	// Handle card click - allow selection on all screen sizes
 	const handleCardClick = (e: MouseEvent | TouchEvent) => {
 		e.preventDefault();
 		e.stopPropagation();
 
-		if (isMobile) {
-			showCompanyModal();
-		} else {
-			onClick();
-		}
+		// Always allow selection on all screen sizes
+		onClick();
 	};
 
-	// Handle touch events for mobile
+	// Handle touch events for mobile - allow selection with touch
 	const handleTouchStart = (e: TouchEvent) => {
-		if (!isMobile) return;
-
 		e.preventDefault();
 		e.stopPropagation();
 
-		// On mobile, show modal immediately on touch
-		showCompanyModal();
+		// On touch devices, allow selection
+		onClick();
 	};
 
 	return (
@@ -132,7 +113,7 @@ function CompanyCard({
 					<div className="flex-1">
 						<div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 -m-3">
 							<h3
-								className={`text-xl font-bold mb-2 transition-colors duration-300 ${
+								className={`text-l font-bold mb-2 transition-colors duration-300 ${
 									isSelected
 										? 'text-theme-400'
 										: 'text-white group-hover:text-theme-400'
@@ -148,60 +129,6 @@ function CompanyCard({
 					</div>
 				</div>
 			</div>
-
-			{/* Enhanced Modal for company/client details */}
-			{showModal && (
-				<div
-					className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
-					onClick={closeCompanyModal}>
-					<div
-						className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full max-h-[80vh] overflow-y-auto"
-						onClick={e => e.stopPropagation()}>
-						<div className="p-6">
-							<div className="flex justify-between items-start mb-4">
-								<h3 className="text-xl font-bold text-gray-900 dark:text-white">
-									{item.title}
-								</h3>
-								<button
-									onClick={closeCompanyModal}
-									className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-									<svg
-										className="w-6 h-6"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24">
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth="2"
-											d="M6 18L18 6M6 6l12 12"
-										/>
-									</svg>
-								</button>
-							</div>
-
-							<div className="mb-4">
-								{backgroundImage && (
-									<img
-										src={backgroundImage}
-										alt={`${item.title} logo`}
-										className="w-16 h-16 object-contain rounded"
-									/>
-								)}
-							</div>
-							{item.dateString && (
-								<div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-									<strong>Duration:</strong> {item.dateString}
-								</div>
-							)}
-							<div className="text-sm text-gray-600 dark:text-gray-400">
-								<strong>Type:</strong>{' '}
-								{item.type === 'company' ? 'Company' : 'Client'}
-							</div>
-						</div>
-					</div>
-				</div>
-			)}
 		</>
 	);
 }
@@ -212,25 +139,7 @@ export default function ClientAndCustomerCarousel({
 	const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
 	const [error, setError] = useState<string | null>(null);
 	const [selectedItem, setSelectedItem] = useState<string | null>(null);
-	const [isMobile, setIsMobile] = useState(false);
 	const flickingRef = useRef<any>(null);
-
-	// Detect mobile device
-	useEffect(() => {
-		const checkMobile = () => {
-			const mobile =
-				'ontouchstart' in window ||
-				window.innerWidth <= 768 ||
-				/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-					navigator.userAgent
-				);
-			setIsMobile(mobile);
-		};
-
-		checkMobile();
-		window.addEventListener('resize', checkMobile);
-		return () => window.removeEventListener('resize', checkMobile);
-	}, []);
 
 	useEffect(() => {
 		try {
@@ -337,6 +246,8 @@ export default function ClientAndCustomerCarousel({
 		}
 	}, [companies]);
 
+	console.log(carouselItems);
+
 	const autoPlayPlugin = new AutoPlay({
 		duration: 3000,
 		direction: 'NEXT',
@@ -395,7 +306,7 @@ export default function ClientAndCustomerCarousel({
 	}
 
 	return (
-		<div className="carousel-container">
+		<div className="carousel-container relative">
 			{carouselItems.length === 0 ? (
 				<div className="text-center py-8">
 					<p className="text-gray-600 dark:text-gray-400 mb-4">Loading...</p>
@@ -408,7 +319,10 @@ export default function ClientAndCustomerCarousel({
 					options={{
 						align: 'center',
 						circular: true,
-						gap: 40,
+						circulatePosition: 'center',
+						CIRCULAR_FALLBACK: 'bound',
+						MOVE_TYPE: 'snap',
+						gap: 60,
 						bound: false,
 						adaptive: false,
 						renderOnlyVisible: false,
@@ -422,12 +336,36 @@ export default function ClientAndCustomerCarousel({
 								item={item}
 								isSelected={selectedItem === item.id}
 								onClick={() => handleItemClick(item.id)}
-								isMobile={isMobile}
 							/>
 						</div>
 					))}
 				</Flicking>
 			)}
+
+			{/* Custom Arrow Buttons */}
+			<button
+				className="flicking-arrow flicking-arrow-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors duration-200 backdrop-blur-sm cursor-pointer"
+				onClick={() => flickingRef.current?.prev()}>
+				<svg
+					className="w-5 h-5"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24">
+					<path strokeLinecap="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+				</svg>
+			</button>
+
+			<button
+				className="flicking-arrow flicking-arrow-next absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors duration-200 backdrop-blur-sm cursor-pointer"
+				onClick={() => flickingRef.current?.next()}>
+				<svg
+					className="w-5 h-5"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24">
+					<path strokeLinecap="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+				</svg>
+			</button>
 		</div>
 	);
 }

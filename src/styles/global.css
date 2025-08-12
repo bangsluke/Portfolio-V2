@@ -1017,6 +1017,15 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	}
 }
 
+.flicking-arrow {
+	cursor: pointer;
+	color: #171717;
+}
+
+.dark .flicking-arrow {
+	color: white;
+}
+
 .plugins-panel {
 	width: var(--carousel-item-height, 260px);
 	height: var(--carousel-item-height, 260px);
