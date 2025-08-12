@@ -165,7 +165,7 @@ const ogimage = {
 				</div>
 
 				<p
-					class="text-center mx-auto text-lg max-xl:text-base max-w-2xl text-gray-300 mb-12 leading-6 font-medium">
+					class="text-center mx-auto text-lg max-xl:text-base max-w-2xl text-colour mb-12 leading-6 font-medium">
 					Explore all my <b
 						class="bg-linear-to-r from-light-theme-accent-500 to-theme-500 dark:from-light-theme-accent-300 dark:to-theme-200 text-transparent bg-clip-text"
 						>projects and developments</b
@@ -174,14 +174,14 @@ const ogimage = {
 
 				<!-- Filter Section -->
 				<div
-					class="flex flex-col gap-6 mb-8 p-6 bg-gradient-to-r from-[#1a232a] to-[#10151a] rounded-2xl shadow-lg">
+					class="flex flex-col gap-6 mb-8 p-6 bg-white dark:bg-zinc-900 rounded-2xl shadow-lg">
 					<!-- Desktop Layout: All filters in one row -->
 					<div class="hidden md:flex items-center justify-between gap-6">
 						<!-- Category Filter -->
 						<div class="flex items-center gap-4">
 							<label
 								for="categoryFilter"
-								class="text-theme-100 font-medium whitespace-nowrap"
+								class="text-colour font-medium whitespace-nowrap"
 								>Filter by Category:</label
 							>
 							<select
@@ -198,7 +198,7 @@ const ogimage = {
 
 						<!-- Date Range Filter -->
 						<div class="flex items-center gap-4">
-							<label class="text-theme-100 font-medium whitespace-nowrap"
+							<label class="text-colour font-medium whitespace-nowrap"
 								>Date Range:</label
 							>
 							<div class="flex items-center gap-2">
@@ -210,7 +210,7 @@ const ogimage = {
 									class="global-element global-form-element"
 									placeholder="Start Date"
 								/>
-								<span class="text-theme-100">-</span>
+								<span class="text-colour">-</span>
 								<input
 									type="date"
 									id="endDateInput"
@@ -230,7 +230,7 @@ const ogimage = {
 						</button>
 
 						<!-- Project Count -->
-						<div class="text-theme-100 font-medium whitespace-nowrap">
+						<div class="text-colour font-medium whitespace-nowrap">
 							<span id="projectCount">{processedProjects.length}</span> projects
 						</div>
 					</div>
@@ -239,9 +239,8 @@ const ogimage = {
 					<div class="md:hidden flex flex-col gap-4">
 						<!-- Category Filter -->
 						<div class="flex flex-col gap-2">
-							<label
-								for="categoryFilterMobile"
-								class="text-theme-100 font-medium">Filter by Category:</label
+							<label for="categoryFilterMobile" class="text-colour font-medium"
+								>Filter by Category:</label
 							>
 							<select
 								id="categoryFilterMobile"
@@ -257,7 +256,7 @@ const ogimage = {
 
 						<!-- Date Range Filter -->
 						<div class="flex flex-col gap-2">
-							<label class="text-theme-100 font-medium"
+							<label class="text-colour font-medium"
 								>Filter by Date Range:</label
 							>
 							<div class="flex items-center gap-2">
@@ -269,7 +268,7 @@ const ogimage = {
 									class="flex-1 global-element global-form-element"
 									placeholder="Start Date"
 								/>
-								<span class="text-theme-100">-</span>
+								<span class="text-colour">-</span>
 								<input
 									type="date"
 									id="endDateInputMobile"
@@ -289,7 +288,7 @@ const ogimage = {
 						</button>
 
 						<!-- Project Count -->
-						<div class="text-theme-100 font-medium text-center">
+						<div class="text-colour font-medium text-center">
 							<span id="projectCountMobile">{processedProjects.length}</span> projects
 						</div>
 					</div>
