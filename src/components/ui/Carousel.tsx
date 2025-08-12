@@ -175,26 +175,6 @@ export default function Carousel({
 		return null;
 	};
 
-	// Flicking options based on type
-	const getFlickingOptions = () => {
-		const options = {
-			align: 'center' as const,
-			circular: true,
-			gap: 80,
-			bound: false,
-			adaptive: false,
-			renderOnlyVisible: false,
-			preventClickOnDrag: true,
-			circulatePosition: 'center' as const,
-			CIRCULAR_FALLBACK: 'bound' as const,
-			MOVE_TYPE: 'snap' as const,
-			preventDefaultOnDrag: false,
-			threshold: 40,
-		};
-
-		return options;
-	};
-
 	if (!processedItems || processedItems.length === 0) {
 		return (
 			<div className="text-center py-8">
@@ -209,7 +189,7 @@ export default function Carousel({
 				ref={flickingRef}
 				plugins={plugins}
 				className="flicking-viewport"
-				options={getFlickingOptions()}>
+				circular={true}>
 				{processedItems.map(renderItem)}
 			</Flicking>
 
