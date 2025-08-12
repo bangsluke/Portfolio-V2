@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-28T07:44:04+01:00
-viewCount: 11
+modified: 2025-08-12T11:53:51+01:00
+viewCount: 12
 aliases:
   - PFDM
 projectURL: 
@@ -120,7 +120,9 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- TBC
+- [[GPMO]]
+- [[Cost Model]]
+- [[Project Finance Tracking Report]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

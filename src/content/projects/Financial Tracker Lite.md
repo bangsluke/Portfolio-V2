@@ -5,8 +5,8 @@ tags:
   - tool
   - project/completed/work
   - portfolio
-modified: 2025-07-30T18:28:21+01:00
-viewCount: 10
+modified: 2025-08-12T12:02:36+01:00
+viewCount: 9
 aliases:
   - Financial Tracking
   - FTL
@@ -38,7 +38,7 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "A simplified version of the <a href=\"/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a>."
+shortDescription: "A simplified version of the <span class=\"theme-link\">Financial Tracker</span>."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 name: "Financial Tracker Lite"
@@ -71,12 +71,6 @@ WHERE file = this.file
 
 ```table-of-contents
 ```
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Introduction
-
-TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -125,7 +119,8 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- TBC
+- [[GPMO]]
+- [[Financial Tracker]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

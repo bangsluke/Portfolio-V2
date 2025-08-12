@@ -6,7 +6,7 @@ tags:
   - notes
   - tag
 created: 2025-03-31T23:59:00
-modified: 2025-07-20T19:46:28+01:00
+modified: 2025-08-12T11:49:31+01:00
 viewCount: 9
 dateStart: 1996-09-01
 dateEnd: 2002-07-17
@@ -46,7 +46,10 @@ n/a
 
 ## Key Memories
 
-- TBC
+- Meeting [[Kieran Mackrell|Kieran]] for the first time, both being in art class and drawing/painting the same winter scene, copying each others ideas and then getting let out for break early together for good work
+- Meeting [[Jonny Sourris|Jonny]] and [[Andy Higgins|Andy]] on the walk down to the school when the river had flooded and [[Andrea Bangs|Mum]] offering to drive them
+- Doing May Days around the maypole
+- Going for long walks around the school field with [[Andy Higgins|Andy]] and bleeding our hearts out to each other
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

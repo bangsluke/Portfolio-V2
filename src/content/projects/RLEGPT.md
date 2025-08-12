@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-28T08:19:44+01:00
-viewCount: 9
+modified: 2025-08-12T11:54:36+01:00
+viewCount: 10
 aliases:
   - Sales Chatbot
 projectURL: https://rle-sales-details.netlify.app/

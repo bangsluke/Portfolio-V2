@@ -4,12 +4,12 @@ tags:
   - portfolio
   - notes
 created: 2025-06-27 10:45
-modified: 2025-07-22T09:21:04+01:00
+modified: 2025-08-12T12:09:01+01:00
 aliases:
   - Scalable Development Plan
-viewCount: 14
-projectURL: TBC
-codeURL: TBC
+viewCount: 15
+projectURL: 
+codeURL: 
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
@@ -45,9 +45,9 @@ topicTags:
 powerShellAlias: n/a
 version: 3
 portfolioOrder: 3
-shortDescription: "Scalable Development Plan to automatically building a full development timing plan based on a number of inputs.<br><br>TBC"
+shortDescription: "Scalable Development Plan to automatically build a full development timing plan based on a number of inputs."
 longDescription: "TBC"
-lessonsLearned: "TBC<br><br>I was fully in charge of the <span class=\"theme-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"theme-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"theme-link\">Excel</span> and then writing a <span class=\"theme-link\">VBA</span> script to automate creating the <span class=\"theme-link\">SQL</span> queries to update the database quickly.<br><br>This lead to a complete rebuild when our company migrated from <span class=\"theme-link\">Microsoft</span> to <span class=\"theme-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"theme-link\">Google Sheets</span> and use <span class=\"theme-link\">Google Apps Script</span>.<br><br>There was a brief period where we began consider rebuilding the frontend in <span class=\"theme-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.<br><br>As well as the main app, we also developed several <span class=\"theme-link\">NeoDash</span> dashboards off of the <span class=\"theme-link\">Neo4j</span> data for ongoing maintenance to check on the data."
+lessonsLearned: "I was fully in charge of the <span class=\"theme-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"theme-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"theme-link\">Excel</span> and then writing a <span class=\"theme-link\">VBA</span> script to automate creating the <span class=\"theme-link\">SQL</span> queries to update the database quickly.<br><br>This lead to a complete rebuild when our company migrated from <span class=\"theme-link\">Microsoft</span> to <span class=\"theme-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"theme-link\">Google Sheets</span> and use <span class=\"theme-link\">Google Apps Script</span>.<br><br>There was a brief period where we began consider rebuilding the frontend in <span class=\"theme-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.<br><br>As well as the main app, we also developed several <span class=\"theme-link\">NeoDash</span> dashboards off of the <span class=\"theme-link\">Neo4j</span> data for ongoing maintenance to check on the data.<br><br>TBC"
 name: "SDP"
 ---
 # SDP
@@ -83,9 +83,7 @@ WHERE file = this.file
 
 ## Short Description
 
-Scalable Development Plan to automatically building a full development timing plan based on a number of inputs.
-
-TBC
+Scalable Development Plan to automatically build a full development timing plan based on a number of inputs.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -134,8 +132,6 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-TBC
-
 I was fully in charge of the [[SQL]] backend database, meaning I had to learn how to write [[SQL]] queries. I optimised this by storing the data that we collected day to day in [[Excel]] and then writing a [[VBA]] script to automate creating the [[SQL]] queries to update the database quickly.
 
 This lead to a complete rebuild when our company migrated from [[Microsoft]] to [[Google]], meaning I had to migrate the data and automations into [[Google Sheets]] and use [[Google Apps Script]].
@@ -143,6 +139,8 @@ This lead to a complete rebuild when our company migrated from [[Microsoft]] to 
 There was a brief period where we began consider rebuilding the frontend in [[React]] and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
 
 As well as the main app, we also developed several [[NeoDash]] dashboards off of the [[Neo4j]] data for ongoing maintenance to check on the data.
+
+TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

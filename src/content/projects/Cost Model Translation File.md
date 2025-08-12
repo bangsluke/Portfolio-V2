@@ -5,10 +5,10 @@ tags:
   - tool
   - project/completed/work
   - portfolio
-modified: 2025-07-26T08:48:03+01:00
+modified: 2025-08-12T11:50:30+01:00
 viewCount: 7
 aliases: 
-projectURL: TBC
+projectURL: 
 codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
@@ -35,8 +35,8 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "The automation file to convert the <a href=\"/projects/cost-model\" class=\"theme-link\">Cost Model</a> into the data format required for the <a href=\"/projects/financial-tracker\" class=\"theme-link\">Finance Tracker</a>."
-longDescription: "An <span class=\"theme-link\">Excel</span> file that was used as the front end interface for users to upload <a href=\"/projects/cost-model\" class=\"theme-link\">Cost Model</a> data into our <a href=\"/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a> system.<br><br><span class=\"theme-link\">VBA</span> scripts facilitated the selection and upload of a file and processed the data to be stored in <span class=\"theme-link\">SharePoint</span>, ready for tools such as the <a href=\"/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a> to utilise."
+shortDescription: "The automation file to convert the <a href=\"/projects/cost-model\" class=\"theme-link\">Cost Model</a> into the data format required for the <span class=\"theme-link\">Finance Tracker</span>."
+longDescription: "An <span class=\"theme-link\">Excel</span> file that was used as the front end interface for users to upload <a href=\"/projects/cost-model\" class=\"theme-link\">Cost Model</a> data into our <span class=\"theme-link\">Financial Tracker</span> system.<br><br><span class=\"theme-link\">VBA</span> scripts facilitated the selection and upload of a file and processed the data to be stored in <span class=\"theme-link\">SharePoint</span>, ready for tools such as the <span class=\"theme-link\">Financial Tracker</span> to utilise."
 lessonsLearned: "This project taught me about the importance of keeping users engaged and informed during the script running process to ensure users were aware that the <span class=\"theme-link\">VBA</span> script was working.<br><br>It also was an interesting technical consideration on how to create a tool that would work across multiple <span class=\"theme-link\">Microsoft</span> tenants as we have internal offices split across different ones."
 name: "Cost Model Translation File"
 ---
@@ -118,7 +118,8 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- TBC
+- [[GPMO]]
+- [[Cost Model]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-28T07:42:33+01:00
-viewCount: 10
+modified: 2025-08-12T11:54:29+01:00
+viewCount: 11
 aliases:
   - Pipeline
 projectURL: 
@@ -116,6 +116,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
+- [[GPMO]]
 - [Power Apps](https://apps.powerapps.com/play/e/default-6422ff1a-f3b5-4450-9230-ad4241884bf4/a/bc6bd75e-616c-4523-9aff-ebf895b6a517?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4#)
 - [Power Apps - Testing Environment](https://apps.powerapps.com/play/e/af1a6289-d705-e68c-b420-36d1783eeb48/a/497b2bcd-1042-4ad0-9d36-c3cd000e0a4d?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4&sourcetime=1700652905991&source=portal#)
 - [PowerBI](https://app.powerbi.com/groups/me/reports/4800ac5b-36e5-4818-9c5a-38b19965e578/ReportSection?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi)
