@@ -22,7 +22,7 @@ const portfolioConfig = await getPortfolioConfig();
 ---
 
 <section
-	class="main-section pt-8 pb-12 md:pt-12"
+	class="main-section pt-4 pb-12 md:pt-12"
 	id="home"
 	aria-label="Professional profile and introduction">
 	<div
@@ -53,7 +53,7 @@ const portfolioConfig = await getPortfolioConfig();
 				class="flex h-full w-7/12 flex-col justify-center gap-4 p-4 max-md:w-full max-md:gap-2">
 				{
 					portfolioConfig.lookingForWork && (
-						<span class="relative inline-flex items-center text-xs font-semibold leading-0 text-colour dark:text-zinc-300 max-md:font-medium max-sm:justify-center">
+						<span class="relative inline-flex items-center mb-2 md:mb-0 text-xs font-semibold leading-0 text-colour dark:text-zinc-300 max-md:font-medium max-sm:justify-center">
 							<span class="before:mr-2 before:block before:h-1.5 before:w-1.5 before:rounded-full before:bg-green-400 before:shadow-[0px_0px_0px_3px_var(--color-theme-400-rgba-03)] before:animate-pulse before:content-['']" />
 							Available for work
 						</span>
@@ -61,11 +61,12 @@ const portfolioConfig = await getPortfolioConfig();
 				}
 
 				<h1
-					class="text-4xl font-black leading-none text-colour dark:text-zinc-300 max-xl:text-3xl max-lg:text-2xl max-sm:text-center">
+					class="text-4xl font-black mb-2 md:mb-0 leading-none text-colour dark:text-zinc-300 max-xl:text-3xl max-lg:text-2xl max-sm:text-center">
 					{staticData.data.profileName} 👋
 				</h1>
+
 				<p
-					class="mb-0 text-lg font-semibold leading-8 text-colour dark:text-zinc-300 max-xl:text-base"
+					class="mb-2 md:mb-0 text-lg font-semibold leading-6 md:leading-8 text-colour dark:text-zinc-300 max-xl:text-base"
 					set:html={processContent(heroDescription)}
 				/>
 
