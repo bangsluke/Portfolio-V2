@@ -227,7 +227,7 @@ const ogimage = {
 		<!-- Description Section -->
 		{
 			data.longDescription && (
-				<section class="px-8 mb-12">
+				<section class="px-8 mb-6 md:mb-12 pb-6 md:pb-0">
 					<div class="max-w-4xl mx-auto">
 						<h2 class="text-3xl font-bold mb-6 text-colour">Description</h2>
 						<div class="bg-white dark:bg-zinc-900 rounded-2xl p-8 shadow-lg">
@@ -244,7 +244,7 @@ const ogimage = {
 		<!-- Lessons Learned Section -->
 		{
 			data.lessonsLearned && (
-				<section class="px-8 mb-12">
+				<section class="px-8 mb-6 md:mb-12 pb-6 md:pb-0">
 					<div class="max-w-4xl mx-auto">
 						<h2 class="text-3xl font-bold mb-6 text-colour">Lessons Learned</h2>
 						<div class="bg-white dark:bg-zinc-900 rounded-2xl p-8 shadow-lg">
@@ -263,7 +263,7 @@ const ogimage = {
 			data.linkedCompany &&
 				data.linkedCompany.length > 0 &&
 				(linkedCompanies.length > 0 || linkedClients.length > 0) && (
-					<section class="px-8 mb-12">
+					<section class="px-8 mb-6 md:mb-12">
 						<div class="max-w-4xl mx-auto">
 							<div class="text-center">
 								<h2 class="text-3xl font-bold mb-6 text-colour">
@@ -292,17 +292,17 @@ const ogimage = {
 		<!-- Project Links -->
 		{
 			(data.projectURL || data.codeURL) && (
-				<section class="px-8 mb-12">
+				<section class="px-8 mb-6 md:mb-12">
 					<div class="max-w-4xl mx-auto">
-						<div class="text-center">
-							<span class="text-lg text-colour mr-4">Project Links:</span>
-							<div class="inline-flex flex-wrap gap-4 justify-center">
+						<div class="flex text-center gap-4 justify-center items-center">
+							<span class="text-lg text-colour">Project Links:</span>
+							<div class="flex flex-wrap gap-4 justify-center items-start">
 								{data.projectURL && (
 									<a
 										href={data.projectURL}
 										target="_blank"
 										rel="noopener noreferrer"
-										class="bg-theme-400 hover:bg-theme-500 text-black font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
+										class="bg-theme-400 hover:bg-theme-500 text-black font-bold px-8 py-3 mb-6 md:mb-0 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
 										<svg
 											class="w-5 h-5 mr-2"
 											fill="none"
@@ -347,7 +347,7 @@ const ogimage = {
 		}
 
 		<!-- Bottom Back Button -->
-		<div class="px-8 py-8">
+		<div class="px-8 py-8 pb-8">
 			<div class="max-w-4xl mx-auto">
 				<div class="text-center">
 					<a
