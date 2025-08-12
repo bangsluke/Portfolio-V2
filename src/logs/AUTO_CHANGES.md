@@ -1,5 +1,14 @@
 # Auto Changes Log
 
+## 2025-01-27 16:10
+### Mobile Burger Menu Full Screen Implementation
+- **Changed mobile menu to full screen width** in global.css:
+  - **Full screen coverage**: Changed from `position: absolute` to `position: fixed` with `top: 0`, `left: 0`, `right: 0`, `bottom: 0`
+  - **Full viewport dimensions**: Set `width: 100vw` and `height: 100vh` for complete screen coverage
+  - **Removed header border**: Eliminated `border-top` since menu now covers the entire screen
+  - **Enhanced padding**: Increased top padding to `5rem` to account for header height and provide better spacing
+  - **Improved mobile experience**: Menu now provides a more immersive, app-like navigation experience
+
 ## 2025-01-27 16:05
 ### Mobile Burger Menu Item Borders
 - **Added bottom borders to mobile menu items** in global.css:
