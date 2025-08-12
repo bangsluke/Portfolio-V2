@@ -1,11 +1,5 @@
 import * as d3 from 'd3';
-import {
-	useCallback,
-	useEffect,
-	useMemo,
-	useRef,
-	useState,
-} from 'preact/hooks';
+import { useCallback, useEffect, useRef, useState } from 'preact/hooks';
 import { extractNameFromFilename } from '../../utils/filename-utils';
 import { getSkillIconName } from '../../utils/icon-utils';
 import { getProjectCount } from '../../utils/project-count-utils';
@@ -25,9 +19,6 @@ interface Skill {
 interface SkillsBubbleChartProps {
 	skills: Skill[];
 	projects: any[]; // Projects collection for counting skill usage
-	selectedFilter?: string;
-	onFilterChange?: (filter: string) => void;
-	filterOptions?: { value: string; label: string }[];
 	isFullscreen?: boolean;
 	onClose?: () => void;
 }
@@ -55,14 +46,10 @@ interface TooltipData {
 const SkillsBubbleChart = ({
 	skills,
 	projects,
-	selectedFilter: _selectedFilter = 'all',
-	onFilterChange: _onFilterChange,
-	filterOptions: _filterOptions = [],
 	isFullscreen: _isFullscreen = false,
 	onClose: _onClose,
 }: SkillsBubbleChartProps) => {
 	const [tooltip, setTooltip] = useState<TooltipData | null>(null);
-	const [selectedFilters, setSelectedFilters] = useState<string[]>(['all']);
 	const [sizeByRating, setSizeByRating] = useState<boolean>(true);
 	const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
 	const svgRef = useRef<SVGSVGElement>(null);
@@ -116,39 +103,9 @@ const SkillsBubbleChart = ({
 		[projects]
 	);
 
-	// Filter skills based on selected filters
-	const filteredSkills = useMemo(() => {
-		if (selectedFilters.includes('all')) return skills;
-		const filtered = skills.filter(skill => {
-			const tags = skill.data.tags || [];
-			return selectedFilters.some(filter => {
-				if (filter === 'framework') {
-					// Framework filter should include both framework and library tags
-					return tags.includes('framework') || tags.includes('library');
-				} else if (filter === 'language') {
-					// Language filter should include both language and framework/library tags
-					return (
-						tags.includes('language') ||
-						tags.includes('framework') ||
-						tags.includes('library')
-					);
-				}
-				return tags.includes(filter);
-			});
-		});
-		console.log(
-			'Filtered skills:',
-			selectedFilters,
-			filtered.length,
-			'of',
-			skills.length
-		);
-		return filtered;
-	}, [skills, selectedFilters]);
-
-	// Process skills into bubble data
-	const bubbleData = useMemo((): BubbleData[] => {
-		return filteredSkills
+	// Process skills into bubble data (no filtering)
+	const bubbleData = useCallback((): BubbleData[] => {
+		return skills
 			.map(skill => {
 				// Use skill ID (minus file extension) for tooltip name
 				const skillId = extractNameFromFilename(skill.id);
@@ -189,28 +146,19 @@ const SkillsBubbleChart = ({
 			})
 			.filter((skill): skill is BubbleData => skill !== null);
 	}, [
-		filteredSkills,
+		skills,
 		getProjectCountForSkill,
 		getSkillColor,
 		getSkillGroup,
 		sizeByRating,
 	]);
 
-	// Listen for filter changes from parent components
+	// Listen for events from parent components
 	useEffect(() => {
-		const handleFilterChange = (e: Event) => {
-			const customEvent = e as CustomEvent;
-			const { filters } = customEvent.detail;
-			console.log('Skills filter change received:', filters);
-			setSelectedFilters(filters);
-		};
-
 		const handleReset = (e: Event) => {
 			const customEvent = e as CustomEvent;
 			const { sizeByRating: resetSizeByRating } = customEvent.detail;
-			setSelectedFilters(['all']);
 			setSizeByRating(resetSizeByRating);
-			setSelectedSkill(null);
 			setTooltip(null);
 
 			// Reset zoom to fit all bubbles
@@ -265,12 +213,10 @@ const SkillsBubbleChart = ({
 			setSizeByRating(newSizeByRating);
 		};
 
-		window.addEventListener('skillsFilterChange', handleFilterChange);
 		window.addEventListener('skillsReset', handleReset);
 		window.addEventListener('skillsToggle', handleToggle);
 
 		return () => {
-			window.removeEventListener('skillsFilterChange', handleFilterChange);
 			window.removeEventListener('skillsReset', handleReset);
 			window.removeEventListener('skillsToggle', handleToggle);
 		};
@@ -278,7 +224,12 @@ const SkillsBubbleChart = ({
 
 	// D3 Bubble Chart
 	useEffect(() => {
-		if (!svgRef.current || !containerRef.current || bubbleData.length === 0) {
+		const currentBubbleData = bubbleData();
+		if (
+			!svgRef.current ||
+			!containerRef.current ||
+			currentBubbleData.length === 0
+		) {
 			return;
 		}
 
@@ -303,7 +254,7 @@ const SkillsBubbleChart = ({
 
 		// Create force simulation
 		const simulation = d3
-			.forceSimulation(bubbleData)
+			.forceSimulation(currentBubbleData)
 			.force('charge', d3.forceManyBody().strength(5))
 			.force('center', d3.forceCenter(width / 2, height / 2))
 			.force(
@@ -321,7 +272,7 @@ const SkillsBubbleChart = ({
 		// Create bubble groups
 		const bubbles = bubbleGroup
 			.selectAll('.bubble')
-			.data(bubbleData)
+			.data(currentBubbleData)
 			.enter()
 			.append('g')
 			.attr('class', 'bubble')
