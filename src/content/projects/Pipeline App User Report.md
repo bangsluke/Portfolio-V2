@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-28T07:47:30+01:00
-viewCount: 9
+modified: 2025-08-12T11:53:03+01:00
+viewCount: 10
 aliases: 
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/4800ac5b-36e5-4818-9c5a-38b19965e578/ReportSectiondd4069f533edc22c8a48?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
 codeURL: n/a
@@ -33,7 +33,7 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "The report section for the <a href=\"/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a> showing global <span class=\"theme-link\">RLE International</span> <a href=\"/projects/project-pipeline\" class=\"theme-link\">Project Pipeline</a> data."
+shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing global <span class=\"theme-link\">RLE International</span> <a href=\"/projects/project-pipeline\" class=\"theme-link\">Project Pipeline</a> data."
 longDescription: "TBC"
 lessonsLearned: "TBC"
 name: "Pipeline App User Report"
@@ -114,7 +114,8 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- TBC
+- [[GPMO]]
+- [[Project Pipeline]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

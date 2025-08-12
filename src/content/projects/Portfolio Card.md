@@ -6,9 +6,9 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 18:01
-modified: 2025-07-19T10:00:14+01:00
+modified: 2025-08-12T12:12:40+01:00
 aliases: 
-viewCount: 13
+viewCount: 14
 projectURL: https://bangsluke-portfolio-card.netlify.app/
 codeURL: https://github.com/bangsluke/card-portfolio
 codeMultipleRepos: false
@@ -34,8 +34,8 @@ powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
 shortDescription: "A simplified portfolio idea to show just a single card of my contact details."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+longDescription: "A single static site displaying a high level summary of who I am and how to contact me along with some details on the skills and technologies I have worked with."
+lessonsLearned: "The key lesson learned from this project was learning to work with the d3 chart library in order to create the skill bubble graphic."
 name: "Portfolio Card"
 ---
 # Portfolio Card
@@ -77,7 +77,7 @@ A simplified portfolio idea to show just a single card of my contact details.
 
 ## Long Description
 
-TBC
+A single static site displaying a high level summary of who I am and how to contact me along with some details on the skills and technologies I have worked with.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -122,7 +122,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-TBC
+The key lesson learned from this project was learning to work with the d3 chart library in order to create the skill bubble graphic.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

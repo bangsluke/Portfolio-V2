@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-28T07:25:07+01:00
-viewCount: 10
+modified: 2025-08-12T11:53:34+01:00
+viewCount: 11
 aliases: 
 projectURL: https://rleint.sharepoint.com/:x:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model/GPMO%20Cost%20Model%20V1.xlsx?d=w63d8777e305243178780a626d3abdf07&csf=1&web=1&e=hCf0X0
 codeURL: n/a
@@ -34,8 +34,8 @@ topicTags:
 powerShellAlias: n/a
 version: 
 portfolioOrder: 4
-shortDescription: "A unified cost model template and approach for costing projects - feeds into the <a href=\"/projects/financial-tracker\" class=\"theme-link\">Finance Tracker</a>."
-longDescription: "A detailed <span class=\"theme-link\">Excel</span> cost model template, designed for use across all <span class=\"theme-link\">RLE International</span> regions for quoting new projects, which guides the user through completion to gather the required financial inputs needed for submitting a complete and comprehensive quote.<br><br>Whilst certain financial values and targets are set/restricted within the template, users can modify other values within the quotation to meet their regions requirements.<br><br>The resulting file can then be uploaded into the company system using the <a href=\"/projects/cost-model-translation-file\" class=\"theme-link\">Cost Model Translation File</a> ready for visualisation and reporting within the <a href=\"/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a>."
+shortDescription: "A unified cost model template and approach for costing projects - feeds into the <span class=\"theme-link\">Finance Tracker</span>."
+longDescription: "A detailed <span class=\"theme-link\">Excel</span> cost model template, designed for use across all <span class=\"theme-link\">RLE International</span> regions for quoting new projects, which guides the user through completion to gather the required financial inputs needed for submitting a complete and comprehensive quote.<br><br>Whilst certain financial values and targets are set/restricted within the template, users can modify other values within the quotation to meet their regions requirements.<br><br>The resulting file can then be uploaded into the company system using the <a href=\"/projects/cost-model-translation-file\" class=\"theme-link\">Cost Model Translation File</a> ready for visualisation and reporting within the <span class=\"theme-link\">Financial Tracker</span>."
 lessonsLearned: "The Cost Model template gave me good experience in trying to keep a complex and detailed <span class=\"theme-link\">Excel</span> sheet lightweight and optimised.<br><br>(Did we use macros?)<br><br>TBC"
 name: "Cost Model"
 ---
@@ -139,6 +139,8 @@ To launch the repo, use the [[PowerShell]] alias
 ## Other Links
 
 - [[GPMO]]
+- [[Cost Model Translation File]]
+- [[Project Finance Data Manager]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

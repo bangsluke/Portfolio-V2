@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-28T07:49:15+01:00
-viewCount: 11
+modified: 2025-08-12T12:07:26+01:00
+viewCount: 12
 aliases: 
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/efd30e67-8ed4-4807-95cb-11f46a62d7d2/ReportSectiona3c344f318d21cde0ced?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
 codeURL: n/a
@@ -36,8 +36,8 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
-shortDescription: "The report section for the <a href=\"/projects/financial-tracker\" class=\"theme-link\">Financial Tracker</a> showing global <span class=\"theme-link\">RLE International</span> data."
-longDescription: "TBC"
+shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing global <span class=\"theme-link\">RLE International</span> data."
+longDescription: "A collection of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> projects, focused on analysing the data important to the <span class=\"theme-link\">GPMO</span> team to ensure full data population to provide a full picture to the company's management."
 lessonsLearned: "TBC"
 name: "GPMO Reports"
 ---
@@ -80,7 +80,7 @@ The report section for the [[Financial Tracker]] showing global [[RLE Internatio
 
 ## Long Description
 
-TBC
+A collection of [[Power BI]] reports for global [[RLE International]] projects, focused on analysing the data important to the [[GPMO]] team to ensure full data population to provide a full picture to the company's management.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -117,6 +117,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
+- [[GPMO]]
 - Sub sections:
 	- [[Pipeline App User Report]]
 	- [[Group Sales Report]]
