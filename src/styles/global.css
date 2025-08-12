@@ -1401,6 +1401,11 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 		margin: 1rem !important;
 		max-height: 80vh !important;
 	}
+
+	/* Make SkillPill mobile tooltips 30% larger */
+	.global-tooltip {
+		min-width: 30vw;
+	}
 }
 
 /* Improve touch feedback */

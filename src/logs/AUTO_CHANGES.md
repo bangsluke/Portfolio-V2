@@ -1,5 +1,14 @@
 # Auto Changes Log
 
+## 2025-01-27 16:15
+### SkillPill Mobile Tooltip Size Enhancement
+- **Increased mobile tooltip size by 30%** in global.css:
+  - **Enhanced mobile readability**: Applied `transform: scale(1.3)` to `.global-tooltip` for mobile devices
+  - **Improved positioning**: Set `transform-origin: bottom center` to maintain proper alignment with skill pills
+  - **Better text sizing**: Increased font size to `1.125rem` and line height to `1.5rem` for improved readability
+  - **Enhanced padding**: Increased padding to `1rem` for better touch targets and visual spacing
+  - **Mobile-specific targeting**: Changes only apply to screens below 768px width
+
 ## 2025-01-27 16:10
 ### Mobile Burger Menu Full Screen Implementation
 - **Changed mobile menu to full screen width** in global.css:
