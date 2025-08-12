@@ -68,7 +68,7 @@
 	--carousel-height: 320px;
 	--carousel-height-mobile: 280px;
 	--carousel-item-height: 260px;
-	--carousel-item-height-mobile: 220px;
+	--carousel-item-height-mobile: 240px;
 }
 
 .text-colour {
@@ -1391,4 +1391,13 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	filter: invert(71%) sepia(50%) saturate(959%) hue-rotate(197deg)
 		brightness(106%) contrast(98%);
 	transition: filter 0.3s ease;
+}
+
+/* Specific carousel styling - keep at bottom of file */
+.references-bottom-section {
+	max-height: 40% !important;
+}
+
+.references-bottom-section span {
+	font-size: 0.7rem !important;
 }

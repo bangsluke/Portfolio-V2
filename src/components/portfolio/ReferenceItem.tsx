@@ -72,9 +72,9 @@ export default function ReferenceItem({
 			/>
 
 			{/* Content */}
-			<div className="relative z-10 h-full flex flex-col justify-between p-6 text-white">
-				{/* Top Section */}
-				<div>
+			<div className="relative z-10 h-full flex flex-col justify-between items-center p-6 text-black dark:text-white">
+				{/* Top Section - Reference Name and Title */}
+				<div className="flex-shrink-0 w-full">
 					<h3
 						className={`text-xl font-bold mb-1 transition-colors duration-300 ${
 							isSelected === true ? 'text-theme-400' : 'text-white'
@@ -82,17 +82,19 @@ export default function ReferenceItem({
 						{reference.name}
 					</h3>
 					{reference.title && (
-						<p className="text-sm text-white/80 mb-2">{reference.title}</p>
+						<p className="text-sm font-bold text-white/80 mb-1">
+							{reference.title}
+						</p>
 					)}
 					{reference.company && (
-						<p className="text-sm text-theme-300 font-medium">
+						<p className="text-sm font-bold text-theme-500 dark:text-theme-300">
 							{reference.company}
 						</p>
 					)}
 				</div>
 
-				{/* Contact Information */}
-				<div className="space-y-2">
+				{/* Bottom Section - Contact Information */}
+				<div className="w-full references-bottom-section flex-1 flex flex-col justify-center bg-white/10 backdrop-blur-sm rounded-lg p-2 -m-2">
 					{reference.email && (
 						<div className="flex items-center justify-end group/contact">
 							<div className="flex items-center gap-2">
@@ -102,12 +104,12 @@ export default function ReferenceItem({
 										e.stopPropagation();
 										copyToClipboard(reference.email!, `email-${reference.id}`);
 									}}
-									className="opacity-0 group-hover/contact:opacity-100 transition-opacity duration-200 p-1 hover:bg-white/20 rounded"
+									className="opacity-0 group-hover/contact:opacity-100 transition-opacity duration-200 p-1 hover:bg-white/20 hover:text-theme-400 rounded"
 									title="Copy email"
 									aria-label={`Copy email ${reference.email}`}>
 									{copiedField === `email-${reference.id}` ? (
 										<svg
-											className="w-3 h-3 text-green-400"
+											className="w-3 h-3 text-white"
 											fill="currentColor"
 											viewBox="0 0 20 20">
 											<path
@@ -118,7 +120,7 @@ export default function ReferenceItem({
 										</svg>
 									) : (
 										<svg
-											className="w-3 h-3"
+											className="w-3 h-3 text-white"
 											fill="currentColor"
 											viewBox="0 0 20 20">
 											<path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
@@ -126,7 +128,7 @@ export default function ReferenceItem({
 										</svg>
 									)}
 								</button>
-								<span className="text-xs text-white/90 truncate max-w-40 group-hover/contact:text-white group-hover/contact:bg-white/20 transition-all duration-200 px-1 py-1 rounded">
+								<span className="leading-none text-white/90 max-w-40 group-hover/contact:text-white group-hover/contact:bg-white/20 transition-all duration-200 hover:text-theme-400 rounded">
 									{reference.email}
 								</span>
 							</div>
@@ -147,7 +149,7 @@ export default function ReferenceItem({
 									aria-label={`Copy phone ${reference.phone}`}>
 									{copiedField === `phone-${reference.id}` ? (
 										<svg
-											className="w-3 h-3 text-green-400"
+											className="w-3 h-3 text-white"
 											fill="currentColor"
 											viewBox="0 0 20 20">
 											<path
@@ -158,7 +160,7 @@ export default function ReferenceItem({
 										</svg>
 									) : (
 										<svg
-											className="w-3 h-3"
+											className="w-3 h-3 text-white"
 											fill="currentColor"
 											viewBox="0 0 20 20">
 											<path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
@@ -166,7 +168,7 @@ export default function ReferenceItem({
 										</svg>
 									)}
 								</button>
-								<span className="text-xs text-white/90 truncate max-w-40 group-hover/contact:bg-white/20 transition-all duration-200 px-1 py-1 rounded">
+								<span className="leading-none text-white/90 truncate max-w-40 group-hover/contact:bg-white/20 transition-all duration-200 hover:text-theme-400 rounded">
 									{reference.phone}
 								</span>
 							</div>
@@ -174,8 +176,8 @@ export default function ReferenceItem({
 					)}
 
 					{reference.address && (
-						<div className="text-right">
-							<span className="text-xs text-white/90 whitespace-pre-line">
+						<div className="text-right hidden md:block">
+							<span className="leading-none text-white/90 hover:text-theme-400 whitespace-pre-line">
 								{reference.address}
 							</span>
 						</div>
