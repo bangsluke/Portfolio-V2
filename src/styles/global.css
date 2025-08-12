@@ -68,7 +68,7 @@
 	--carousel-height: 320px;
 	--carousel-height-mobile: 280px;
 	--carousel-item-height: 260px;
-	--carousel-item-height-mobile: 220px;
+	--carousel-item-height-mobile: 240px;
 }
 
 .text-colour {
@@ -973,10 +973,11 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	border-left: none;
 }
 
+/* The top level carousel container */
 .carousel-container {
 	width: 100vw;
 	position: relative;
-	height: var(--carousel-height, 320px);
+	height: calc(var(--carousel-height, 320px) + 20px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -990,7 +991,6 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	height: 100%;
 	border-radius: 1rem;
 	overflow: hidden;
-	cursor: pointer;
 	transition: all 0.3s ease;
 }
 
@@ -1000,46 +1000,41 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 
 .flicking-viewport {
 	width: 100vw;
-	height: var(--carousel-height, 320px);
+	height: calc(var(--carousel-height, 320px) + 10px);
 	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 20px 0;
+	/* padding: 40px 0; */
 	flex-direction: row;
 }
 
-@media (max-width: 768px) {
-	.flicking-viewport {
-		width: 100%;
-		height: var(--carousel-height-mobile, 280px);
-		overflow: hidden;
-		padding: 10px 0;
-	}
-}
-
-.plugins-panel {
-	width: var(--carousel-item-height, 260px);
-	height: var(--carousel-item-height, 260px);
-	flex-shrink: 0;
-	margin: 0 20px;
-}
-
 .flicking-panel {
-	width: var(--carousel-item-height, 260px);
+	width: calc(var(--carousel-item-height, 260px) + 20px);
 	height: var(--carousel-item-height, 260px);
 	flex-shrink: 0;
 	margin: 0 20px;
 	align-self: center;
 }
 
-@media (max-width: 768px) {
-	.flicking-panel {
-		width: var(--carousel-item-height-mobile, 200px);
-		height: var(--carousel-item-height-mobile, 200px);
-		flex-shrink: 0;
-		margin: 0 10px;
-	}
+/* Improve touch feedback */
+.carousel-item:active {
+	transform: scale(0.98) !important;
+	transition: transform 0.1s ease !important;
+}
+
+/* Ensure selected state overrides active state */
+.carousel-item.ring-4:active {
+	transform: scale(1.05) !important;
+}
+
+/* Ensure selected border is always visible */
+.carousel-item.ring-4 {
+	box-shadow: 0 0 0 4px var(--color-theme-400) !important;
+	transform: scale(1.05) !important;
+	filter: brightness(1.1) !important;
+	z-index: 10;
+	position: relative;
 }
 
 .panel-image {
@@ -1049,21 +1044,89 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 }
 
 @media (max-width: 768px) {
-	.plugins-panel,
+	.carousel-container {
+		height: calc(var(--carousel-height-mobile, 280px) + 20px);
+	}
+
+	.flicking-viewport {
+		width: 100% !important;
+		max-width: 100% !important;
+		height: calc(var(--carousel-height-mobile, 280px) + 10px) !important;
+		overflow: hidden !important;
+	}
+
 	.flicking-panel {
-		width: var(--carousel-item-height, 260px);
-		height: var(--carousel-item-height, 260px);
-		margin: 0 10px;
+		width: calc(var(--carousel-item-height-mobile, 200px) + 20px);
+		height: var(--carousel-item-height-mobile, 200px);
+		margin: 0 100px;
+	}
+
+	/* Mobile-specific carousel improvements */
+	.carousel-item {
+		touch-action: manipulation;
+		-webkit-tap-highlight-color: transparent;
+		user-select: none;
+		-webkit-user-select: none;
+	}
+
+	.carousel-item.ring-4 {
+		box-shadow: 0 0 0 4px var(--color-theme-400) !important;
+		transform: scale(1.05) !important;
+		filter: brightness(1.1) !important;
+		z-index: 10;
+		position: relative;
+	}
+
+	/* Ensure selected state is visible on mobile */
+	.flicking-panel .carousel-item.ring-4 {
+		box-shadow: 0 0 0 4px var(--color-theme-400) !important;
+	}
+
+	/* Improve touch targets */
+	.flicking-panel {
+		touch-action: pan-y pinch-zoom;
+	}
+
+	/* Prevent text selection on touch */
+	.carousel-item * {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 }
 
 @media (max-width: 480px) {
-	.plugins-panel,
 	.flicking-panel {
-		width: var(--carousel-item-height-mobile, 250px);
-		height: var(--carousel-item-height-mobile, 250px);
-		margin: 0 5px;
+		width: var(--carousel-item-height-mobile, 250px) !important;
+		height: var(--carousel-item-height-mobile, 250px) !important;
+		margin: 0 15px !important;
+		padding: 0 !important;
 	}
+}
+
+.flicking-arrow {
+	cursor: pointer;
+	color: var(--color-text-colour, #171717);
+}
+
+.dark .flicking-arrow {
+	color: var(--color-text-colour-dark, #e8e8e8);
+}
+
+/* Accessibility: visible focus for keyboard users */
+.flicking-arrow:focus-visible {
+	outline: 2px solid var(--color-theme-400);
+	outline-offset: 2px;
+}
+
+/* Disabled state */
+.flicking-arrow[disabled],
+.flicking-arrow[aria-disabled='true'] {
+	opacity: 0.5;
+	cursor: not-allowed;
 }
 
 @media (max-width: 768px) {
@@ -1080,14 +1143,6 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	* {
 		max-width: 100%;
 		box-sizing: border-box;
-	}
-
-	.flicking-viewport {
-		width: 100% !important;
-		max-width: 100% !important;
-		height: var(--carousel-height-mobile, 240px) !important;
-		overflow: hidden !important;
-		padding: 15px 0 !important;
 	}
 
 	section {
@@ -1247,14 +1302,6 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 		z-index: 1;
 	}
 
-	.plugins-panel,
-	.flicking-panel {
-		width: var(--carousel-item-height-mobile, 250px) !important;
-		height: var(--carousel-item-height-mobile, 250px) !important;
-		margin: 0 5px !important;
-		padding: 10px 0 !important;
-	}
-
 	.px-8 {
 		padding-left: 1rem !important;
 		padding-right: 1rem !important;
@@ -1315,53 +1362,6 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	}
 }
 
-/* Mobile-specific carousel improvements */
-@media (max-width: 768px) {
-	.carousel-item {
-		touch-action: manipulation;
-		-webkit-tap-highlight-color: transparent;
-		user-select: none;
-		-webkit-user-select: none;
-	}
-
-	.carousel-item.ring-4 {
-		box-shadow: 0 0 0 4px var(--color-theme-400) !important;
-		transform: scale(1.05) !important;
-		filter: brightness(1.1) !important;
-		z-index: 10;
-		position: relative;
-	}
-
-	/* Ensure selected state is visible on mobile */
-	.flicking-panel .carousel-item.ring-4 {
-		box-shadow: 0 0 0 4px var(--color-theme-400) !important;
-	}
-
-	/* Improve touch targets */
-	.flicking-panel {
-		touch-action: pan-y pinch-zoom;
-	}
-
-	/* Prevent text selection on touch */
-	.carousel-item * {
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-	}
-}
-
-/* Ensure selected border is always visible */
-.carousel-item.ring-4 {
-	box-shadow: 0 0 0 4px var(--color-theme-400) !important;
-	transform: scale(1.05) !important;
-	filter: brightness(1.1) !important;
-	z-index: 10;
-	position: relative;
-}
-
 /* Mobile modal improvements */
 @media (max-width: 768px) {
 	/* Ensure modal is properly positioned on mobile */
@@ -1387,13 +1387,17 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	}
 }
 
-/* Improve touch feedback */
-.carousel-item:active {
-	transform: scale(0.98) !important;
-	transition: transform 0.1s ease !important;
+.main-logo:hover {
+	filter: invert(71%) sepia(50%) saturate(959%) hue-rotate(197deg)
+		brightness(106%) contrast(98%);
+	transition: filter 0.3s ease;
 }
 
-/* Ensure selected state overrides active state */
-.carousel-item.ring-4:active {
-	transform: scale(1.05) !important;
+/* Specific carousel styling - keep at bottom of file */
+.references-bottom-section {
+	max-height: 40% !important;
+}
+
+.references-bottom-section span {
+	font-size: 0.7rem !important;
 }
