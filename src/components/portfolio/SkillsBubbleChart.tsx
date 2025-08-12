@@ -276,7 +276,7 @@ const SkillsBubbleChart = ({
 			.enter()
 			.append('g')
 			.attr('class', 'bubble')
-			.style('cursor', 'pointer')
+			.style('cursor', 'help')
 			.on('click', (event, d) => {
 				const [x, y] = d3.pointer(event);
 				setTooltip({ skill: d, x, y });
