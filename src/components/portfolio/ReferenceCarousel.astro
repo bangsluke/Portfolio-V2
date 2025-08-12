@@ -6,8 +6,8 @@ import {
 	processObsidianLink,
 } from '../../utils/content-processor';
 import { extractNameFromFilename } from '../../utils/filename-utils';
+import Carousel from '../ui/Carousel.tsx';
 import Heading from '../ui/Heading.astro';
-import ReferencesCarouselComponent from './ReferencesCarouselComponent.tsx';
 
 // Get all references, companies, and clients from the local content folders
 const references = await getCollection('references');
@@ -76,8 +76,8 @@ const processedReferences = sortedReferences.map(reference => {
 		</div>
 
 		<div class="relative w-full" aria-label="References">
-			<ReferencesCarouselComponent
-				references={processedReferences.map(ref => ({
+			<Carousel
+				items={processedReferences.map(ref => ({
 					id: ref.id,
 					name: ref.data.name || extractNameFromFilename(ref.id),
 					title: ref.data.referenceRole || '',
@@ -89,6 +89,9 @@ const processedReferences = sortedReferences.map(reference => {
 					logoURL: ref.companyLogoURL,
 					address: processContent(ref.data.referenceAddress || ''),
 				}))}
+				type="reference"
+				autoPlayDuration={5000}
+				gap={40}
 				client:only="preact"
 			/>
 		</div>

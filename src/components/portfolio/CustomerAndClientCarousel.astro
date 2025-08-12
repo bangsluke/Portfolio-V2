@@ -2,8 +2,8 @@
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { extractNameFromFilename } from '../../utils/filename-utils';
+import Carousel from '../ui/Carousel.tsx';
 import Heading from '../ui/Heading.astro';
-import ClientAndCustomerCarousel from './CustomerAndClientCarousel.tsx';
 
 // Get all companies and clients from the local content folders
 const companies = await getCollection('companies');
@@ -102,7 +102,13 @@ const itemsJson = JSON.stringify(allItems);
 		</div>
 
 		<div class="relative w-full" aria-label="Customers and Clients">
-			<ClientAndCustomerCarousel companies={itemsJson} client:load />
+			<Carousel
+				items={itemsJson}
+				type="customer-client"
+				autoPlayDuration={3000}
+				gap={60}
+				client:load
+			/>
 		</div>
 	</div>
 </section>
