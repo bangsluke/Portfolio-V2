@@ -8,7 +8,7 @@ tags:
   - notes
 created: 2025-02-02T19:03:00
 modified: 2025-08-08T15:17:37+01:00
-viewCount: 60
+viewCount: 61
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
