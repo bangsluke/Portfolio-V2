@@ -660,6 +660,8 @@ a.theme-link:hover {
 	gap: 0.5rem;
 	backdrop-filter: blur(8px);
 	z-index: 110;
+	justify-content: center;
+	align-items: center;
 }
 
 .nav-links.expanded a {
@@ -674,6 +676,8 @@ a.theme-link:hover {
 .dark .nav-links.expanded {
 	background: var(--color-theme-950-rgba-095);
 	border-top: none;
+	justify-content: center;
+	align-items: center;
 }
 
 .dark .nav-links.expanded a {
