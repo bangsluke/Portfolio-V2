@@ -1,209 +1,84 @@
 ---
-import { getCollection } from 'astro:content';
-import { SKILLS_FILTER_OPTIONS } from '../../../scripts/repoConfig.js';
 import SkillPill from '../ui/SkillPill.astro';
-import {
-	getProjectCount,
-	getProjectsUsingSkill,
-} from '../../utils/project-count-utils';
 
-// Get all projects and skills
-const projects = await getCollection('projects');
-const skills = await getCollection('skills');
+interface Props {
+	variant?: 'default' | 'center';
+	size?: 'xs' | 'md';
+	techData: {
+		techs: Array<{
+			name: string;
+			count: number;
+			projects: string[];
+			tags: string[];
+		}>;
+	};
+}
 
-// Create a set of skill names that have "hosting" or "security" tags
-const excludedSkillNames = new Set<string>();
+const { variant = 'default', size = 'md', techData } = Astro.props;
 
-skills.forEach(skill => {
-	if (
-		skill.data.tags &&
-		(skill.data.tags.includes('hosting') ||
-			skill.data.tags.includes('security'))
-	) {
-		// Add the skill name to the excluded set
-		const skillName = skill.data.name || skill.slug;
-		excludedSkillNames.add(skillName.toLowerCase()); // Store in lowercase for case-insensitive comparison
-	}
-});
+// Get initial top 10 (most used)
+const initialTopTechs = techData.techs.slice(0, 10);
 
-// Use predefined filter options from repoConfig.js, normalizing language to framework
-const availableTags = SKILLS_FILTER_OPTIONS.filter(tag => tag !== 'all').map(
-	tag => (tag === 'language' ? 'framework' : tag)
-);
-
-// Count technology usage across all projects, excluding hosting/security skills
-const techCount: Record<string, number> = {};
-const techProjects: Record<string, string[]> = {}; // Track which projects use each tech
-
-// Get all unique technologies from projects
-const allTechnologies = new Set<string>();
-projects.forEach(project => {
-	// Add null checking for project and project.data
-	if (!project || !project.data) {
-		return;
-	}
-	if (project.data.technologies) {
-		project.data.technologies.forEach((tech: string) => {
-			// Clean the technology name by removing Obsidian brackets
-			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
-
-			// Skip if this technology corresponds to a hosting or security skill (case-insensitive)
-			if (excludedSkillNames.has(cleanTech.toLowerCase())) {
-				return;
-			}
-
-			allTechnologies.add(cleanTech);
-		});
-	}
-});
-
-// Use the common project count logic for each technology
-allTechnologies.forEach(tech => {
-	// Add safety check for projects array
-	if (!projects || !Array.isArray(projects)) {
-		techCount[tech] = 0;
-		techProjects[tech] = [];
-		return;
-	}
-
-	const count = getProjectCount(tech, tech, projects);
-	const projectsList = getProjectsUsingSkill(tech, tech, projects);
-
-	techCount[tech] = count;
-	techProjects[tech] = projectsList;
-});
-
-// Sort technologies by usage count (descending) and get top 10
-const topTechs = Object.entries(techCount)
-	.sort(([, a], [, b]) => b - a) // Sort by count descending
-	.slice(0, 10) // Get top 10
-	.map(([tech, count]) => ({
-		tech,
-		count,
-		projects: techProjects[tech] || [],
-	}));
-
-type TechVariant = 'default' | 'center';
-
-// Base classes that are common to all variants
-const baseClasses =
-	'flex flex-wrap gap-4 max-lg:gap-1 grid-auto-efe items-center content-center';
-
-// Variant-specific classes
-const variantClasses: Record<TechVariant, string> = {
+// Base classes
+const baseClasses = 'flex flex-wrap gap-4 max-lg:gap-1 grid-auto-efe items-center content-center';
+const variantClasses = {
 	default: 'cursor-default',
 	center: 'justify-center cursor-default',
 };
-
-const { variant = 'default', size = 'md' } = Astro.props;
-
-// Combine base classes with variant-specific classes
-const classes = `${baseClasses} ${variantClasses[variant as TechVariant]}`;
+const classes = `${baseClasses} ${variantClasses[variant]}`;
 ---
 
 <div class="flex flex-col gap-4 h-full">
 	<!-- Technologies Grid -->
 	<div class={`${classes} h-full flex-1`} id="techs-grid">
-		{
-			topTechs.map(({ tech, count, projects }, index) => (
+		{initialTopTechs.map((tech, index) => (
+			<div class="relative group/tech">
+				<!-- Skill Pill using the SkillPill component -->
+				<SkillPill 
+					skillName={tech.name}
+					size="md"
+					variant="theme"
+					className="cursor-default"
+					projects={tech.projects}
+					disableTooltip={true}
+				/>
+
+				<!-- Enhanced tooltip showing usage count and projects -->
 				<div
-					class="relative group/tech"
-					data-tags={
-						skills
-							.find(s => (s.data.name || s.slug) === tech)
-							?.data.tags?.join(' ') || ''
-					}>
-					<SkillPill
-						skillName={tech}
-						variant="theme"
-						size={size === 'xs' ? 'xs' : 'md'}
-						projects={projects}
-					/>
-					{/* Tooltip showing usage count and projects - positioned above or below based on row */}
-					<div
-						class={`absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover/tech:opacity-100 group-active/tech:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 ${
-							index < 5 ? 'top-full mt-2' : 'bottom-full mb-2'
-						}`}>
-						<div class="global-tooltip max-w-xs">
-							<div class="global-tooltip-content">
-								<div class="text-sm font-medium mb-1">
-									Used in {count} project{count > 1 ? 's' : ''}
-								</div>
-								{projects.length > 0 && (
-									<div class="text-xs text-zinc-300">
-										<div class="font-medium mb-1">Projects:</div>
-										<div class="space-y-1">
-											{projects.slice(0, 3).map(project => (
-												<div class="truncate">• {project}</div>
-											))}
-											{projects.length > 3 && (
-												<div class="text-zinc-400">
-													... and {projects.length - 3} more
-												</div>
-											)}
-										</div>
-									</div>
-								)}
+					class={`absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover/tech:opacity-100 group-active/tech:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 ${
+						index < 5 ? 'top-full mt-2' : 'bottom-full mb-2'
+					}`}>
+					<div class="global-tooltip max-w-xs">
+						<div class="global-tooltip-content">
+							<div class="text-sm font-medium mb-1">
+								Used in {tech.count} project{tech.count > 1 ? 's' : ''}
 							</div>
-							<div
-								class={`absolute left-1/2 transform -translate-x-1/2 global-tooltip-arrow ${
-									index < 5
-										? 'global-tooltip-arrow-top'
-										: 'global-tooltip-arrow-bottom'
-								}`}
-							/>
+							{tech.projects.length > 0 && (
+								<div class="text-xs text-zinc-300">
+									<div class="font-medium mb-1">Projects:</div>
+									<div class="space-y-1">
+										{tech.projects.slice(0, 3).map((project) => (
+											<div class="truncate">• {project}</div>
+										))}
+										{tech.projects.length > 3 && (
+											<div class="text-zinc-400">
+												... and {tech.projects.length - 3} more
+											</div>
+										)}
+									</div>
+								</div>
+							)}
 						</div>
+						<div
+							class={`absolute left-1/2 transform -translate-x-1/2 global-tooltip-arrow ${
+								index < 5
+									? 'global-tooltip-arrow-top'
+									: 'global-tooltip-arrow-bottom'
+							}`}
+						/>
 					</div>
 				</div>
-			))
-		}
+			</div>
+		))}
 	</div>
 </div>
-
-<script>
-	// Handle multi-select filtering functionality
-	document.addEventListener('DOMContentLoaded', function () {
-		const techGrid = document.getElementById('techs-grid');
-
-		if (!techGrid) return;
-
-		let selectedFilters: string[] = ['all'];
-
-		// Listen for filter changes from parent component
-		window.addEventListener('techFilterChange', function (e: any) {
-			const { filters } = e.detail;
-			selectedFilters = filters;
-			filterTechs();
-		});
-
-		function filterTechs() {
-			const techItems = techGrid!.querySelectorAll('.group\\/tech');
-
-			techItems.forEach(item => {
-				const tags = item.getAttribute('data-tags') || '';
-				const element = item as HTMLElement;
-
-				if (selectedFilters.includes('all')) {
-					element.style.display = 'block';
-				} else {
-					const shouldShow = selectedFilters.some(filter => {
-						if (filter === 'framework') {
-							// Framework filter should include both framework and library tags
-							return tags.includes('framework') || tags.includes('library');
-						} else if (filter === 'language') {
-							// Language filter should include both language and framework/library tags
-							return (
-								tags.includes('language') ||
-								tags.includes('framework') ||
-								tags.includes('library')
-							);
-						}
-						return tags.includes(filter);
-					});
-
-					element.style.display = shouldShow ? 'block' : 'none';
-				}
-			});
-		}
-	});
-</script>

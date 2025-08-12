@@ -797,9 +797,9 @@ a.theme-link:hover {
 .global-dropdown-menu {
 	position: absolute;
 	top: 100%;
-	right: 0;
+	left: 0;
 	margin-top: 0.25rem;
-	width: 12rem;
+	width: 24rem;
 	background-color: var(--color-theme-700);
 	border: 1px solid var(--color-theme-300-rgba-03);
 	border-radius: 0.5rem;

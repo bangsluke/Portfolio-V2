@@ -2,11 +2,15 @@
 import { Icon } from 'astro-icon/components';
 import { AstroError } from 'astro/errors';
 import { getCollection } from 'astro:content';
-import { SKILLS_FILTER_OPTIONS } from '../../../scripts/repoConfig.js';
+
 import GitHubContributions from '../portfolio/GitHubContributions.tsx';
 import MostCommonTechs from '../portfolio/MostCommonTechs.astro';
 import SkillsBubbles from '../portfolio/SkillsBubbles.astro';
 import Heading from '../ui/Heading.astro';
+import {
+	getProjectCount,
+	getProjectsUsingSkill,
+} from '../../utils/project-count-utils';
 
 const [staticData] = await getCollection('staticData');
 const skills = await getCollection('skills');
@@ -15,16 +19,105 @@ if (!staticData) {
 	throw new AstroError('JSON data not found');
 }
 
-// Get filter options, filtered to only show tags that exist in skills
-const existingTags = skills.flatMap(skill => skill.data.tags || []);
-// Normalize tags: treat 'language' as 'framework' to avoid duplicates
-const normalizedTags = existingTags.map(tag =>
-	tag === 'language' ? 'framework' : tag
-);
-const uniqueTags = [...new Set(normalizedTags)];
-const filterOptions = SKILLS_FILTER_OPTIONS.filter(
-	tag => tag === 'all' || uniqueTags.includes(tag)
-);
+// Get filter options for skills (only the basic ones needed)
+const filterOptions = ['all', 'framework', 'testing', 'hosting', 'other'];
+
+// Process tech data for MostCommonTechs component
+const projects = await getCollection('projects');
+
+// Create an array of tech objects instead of separate objects
+const techsArray: Array<{
+	name: string;
+	count: number;
+	projects: string[];
+	tags: string[];
+}> = [];
+
+// Get all unique technologies from projects
+const allTechnologies = new Set<string>();
+projects.forEach(project => {
+	if (!project || !project.data) {
+		return;
+	}
+	if (project.data.technologies) {
+		project.data.technologies.forEach((tech: string) => {
+			// Clean the technology name by removing Obsidian brackets
+			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
+			allTechnologies.add(cleanTech);
+		});
+	}
+});
+
+// Count technology usage across all projects and find matching skills
+allTechnologies.forEach(tech => {
+	const count = getProjectCount(tech, tech, projects);
+	const projectsList = getProjectsUsingSkill(tech, tech, projects);
+
+	// Improved skill matching logic
+	let skillData = null;
+	let tags: string[] = [];
+
+	// Try exact match first (case-insensitive)
+	skillData = skills.find(
+		s => (s.data.name || s.slug).toLowerCase() === tech.toLowerCase()
+	);
+
+	// If no exact match, try normalized matches (remove special characters)
+	if (!skillData) {
+		const normalizedTech = tech.toLowerCase().replace(/[^a-z0-9]/g, '');
+		skillData = skills.find(s => {
+			const skillName = (s.data.name || s.slug)
+				.toLowerCase()
+				.replace(/[^a-z0-9]/g, '');
+			return skillName === normalizedTech;
+		});
+	}
+
+	// If still no match, try partial matches
+	if (!skillData) {
+		skillData = skills.find(s => {
+			const skillName = (s.data.name || s.slug).toLowerCase();
+			const techLower = tech.toLowerCase();
+
+			// Check if skill name contains tech or vice versa
+			return skillName.includes(techLower) || techLower.includes(skillName);
+		});
+	}
+
+	// If still no match, try checking aliases
+	if (!skillData) {
+		skillData = skills.find(s => {
+			const aliases = (s.data as any).aliases;
+			return (
+				aliases &&
+				Array.isArray(aliases) &&
+				aliases.some(
+					(alias: string) => alias.toLowerCase() === tech.toLowerCase()
+				)
+			);
+		});
+	}
+
+	if (skillData) {
+		tags = skillData.data.tags || [];
+	}
+
+	// Add to techs array
+	techsArray.push({
+		name: tech,
+		count,
+		projects: projectsList,
+		tags,
+	});
+});
+
+// Sort by count (most used first)
+techsArray.sort((a, b) => b.count - a.count);
+
+// Create the final data structure
+const techData = {
+	techs: techsArray,
+};
 ---
 
 <section
@@ -180,68 +273,10 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 					<Heading text="Most Common" textGradient="Techs" level={3} />
 				</div>
 
-				<!-- Controls row - dropdown filter -->
-				<div class="flex items-center gap-2 mb-4 flex-shrink-0">
-					<!-- Tech Categories Filter -->
-					<div class="relative">
-						<button
-							id="tech-filter-btn"
-							class="global-element global-form-element"
-							title="Filter tech categories">
-							<span id="tech-filter-text">All Categories</span>
-							<svg
-								class="w-4 h-4"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M19 9l-7 7-7-7"></path>
-							</svg>
-						</button>
-						<div id="tech-filter-dropdown" class="global-dropdown-menu hidden">
-							<div>
-								<div class="text-xs font-medium text-zinc-300 mb-2 px-2">
-									Filter by category:
-								</div>
-								<label>
-									<input
-										type="checkbox"
-										value="all"
-										class="tech-filter-checkbox"
-										checked
-									/>
-									<span>All Categories</span>
-								</label>
-								{
-									filterOptions
-										.filter(tag => tag !== 'all')
-										.map(tag => (
-											<label>
-												<input
-													type="checkbox"
-													value={tag}
-													class="tech-filter-checkbox"
-												/>
-												<span>
-													{tag === 'framework' || tag === 'language'
-														? 'Frameworks & Languages'
-														: tag === 'other'
-															? 'Other'
-															: tag.charAt(0).toUpperCase() + tag.slice(1)}
-												</span>
-											</label>
-										))
-								}
-							</div>
-						</div>
-					</div>
-				</div>
+				<!-- No controls needed - static display only -->
 				<!-- Content area - fills remaining space -->
 				<div class="flex-1 min-h-0">
-					<MostCommonTechs />
+					<MostCommonTechs techData={techData} />
 				</div>
 			</article>
 		</div>
@@ -259,13 +294,8 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 		const checkboxes = document.querySelectorAll('.skills-filter-checkbox');
 		const resetBtn = document.getElementById('skills-reset-btn');
 		const toggleBtn = document.getElementById('skills-toggle-btn');
-		const techFilterBtn = document.getElementById('tech-filter-btn');
-		const techDropdown = document.getElementById('tech-filter-dropdown');
-		const techFilterText = document.getElementById('tech-filter-text');
-		const techCheckboxes = document.querySelectorAll('.tech-filter-checkbox');
 		let selectedFilters = ['all'];
 		let sizeByRating = true;
-		let selectedTechFilters = ['all'];
 
 		// Toggle dropdown
 		if (filterBtn && dropdown) {
@@ -419,98 +449,5 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 				);
 			});
 		}
-
-		// Tech filter dropdown functionality
-		if (techFilterBtn && techDropdown) {
-			techFilterBtn.addEventListener('click', e => {
-				e.stopPropagation();
-				techDropdown.classList.toggle('hidden');
-			});
-		}
-
-		// Prevent tech dropdown from closing when clicking inside it
-		if (techDropdown) {
-			techDropdown.addEventListener('click', e => {
-				e.stopPropagation();
-			});
-		}
-
-		// Handle tech checkbox changes
-		techCheckboxes.forEach(checkbox => {
-			checkbox.addEventListener('change', e => {
-				const target = e.target as HTMLInputElement;
-				const value = target.value;
-
-				if (value === 'all') {
-					// If "All Categories" is selected, unselect others
-					if (target.checked) {
-						techCheckboxes.forEach(cb => {
-							if (cb !== target) {
-								(cb as HTMLInputElement).checked = false;
-							}
-						});
-						selectedTechFilters = ['all'];
-					} else {
-						// If "All Categories" is unchecked, select the first other option
-						const firstOtherCheckbox = Array.from(techCheckboxes).find(
-							cb => (cb as HTMLInputElement).value !== 'all'
-						) as HTMLInputElement;
-						if (firstOtherCheckbox) {
-							firstOtherCheckbox.checked = true;
-							selectedTechFilters = [firstOtherCheckbox.value];
-						}
-					}
-				} else {
-					// If other option is selected, unselect "All Categories"
-					const allCheckbox = Array.from(techCheckboxes).find(
-						cb => (cb as HTMLInputElement).value === 'all'
-					) as HTMLInputElement;
-					if (allCheckbox) {
-						allCheckbox.checked = false;
-					}
-
-					if (target.checked) {
-						selectedTechFilters.push(value);
-					} else {
-						selectedTechFilters = selectedTechFilters.filter(f => f !== value);
-					}
-
-					// If no filters selected, select "All Categories"
-					if (selectedTechFilters.length === 0) {
-						allCheckbox.checked = true;
-						selectedTechFilters = ['all'];
-					}
-				}
-
-				// Update display text
-				if (techFilterText) {
-					if (
-						selectedTechFilters.includes('all') ||
-						selectedTechFilters.length === 0
-					) {
-						techFilterText.textContent = 'All Categories';
-					} else if (selectedTechFilters.length === 1) {
-						const filter = selectedTechFilters[0];
-						techFilterText.textContent =
-							filter === 'framework'
-								? 'Frameworks and Libraries'
-								: filter === 'language'
-									? 'Languages & Frameworks'
-									: filter === 'other'
-										? 'Other'
-										: filter.charAt(0).toUpperCase() + filter.slice(1);
-					} else {
-						techFilterText.textContent = `${selectedTechFilters.length} Filters`;
-					}
-				}
-
-				// Dispatch custom event for the MostCommonTechs component
-				window.dispatchEvent(
-					new CustomEvent('techFilterChange', {
-						detail: { filters: selectedTechFilters },
-					})
-				);
-			});
-		});
 	});
 </script>
