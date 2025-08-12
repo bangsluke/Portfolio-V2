@@ -13,6 +13,9 @@
 	--color-blacktext: #171717;
 	--color-dark-background: #0e0e11;
 
+	--color-text-colour: #171717;
+	--color-text-colour-dark: #e8e8e8;
+
 	--color-theme-50: #f5f3ff;
 	--color-theme-100: #ede9fe;
 	--color-theme-200: #ddd6fe;
@@ -66,6 +69,14 @@
 	--carousel-height-mobile: 280px;
 	--carousel-item-height: 260px;
 	--carousel-item-height-mobile: 220px;
+}
+
+.text-colour {
+	color: var(--color-text-colour, #171717);
+}
+
+.dark .text-colour {
+	color: var(--color-text-colour-dark, #e8e8e8);
 }
 
 @property --border-angle {
@@ -1134,7 +1145,7 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	}
 
 	span {
-		font-size: 0.7rem;
+		font-size: 0.8rem;
 	}
 
 	strong {
