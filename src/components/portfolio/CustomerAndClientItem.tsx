@@ -44,7 +44,7 @@ export default function CustomerAndClientItem({
 
 	return (
 		<div
-			className={`carousel-item group hover:scale-105 relative ${
+			className={`carousel-item group relative ${
 				isSelected ? 'ring-4 ring-theme-400 scale-105 brightness-110' : ''
 			}`}
 			role="button"

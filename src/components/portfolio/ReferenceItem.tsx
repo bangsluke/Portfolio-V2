@@ -38,7 +38,7 @@ export default function ReferenceItem({
 
 	return (
 		<div
-			className={`carousel-item group hover:scale-105 ${
+			className={`carousel-item group relative ${
 				isSelected === true
 					? 'ring-4 ring-theme-400 scale-105 brightness-110'
 					: ''
