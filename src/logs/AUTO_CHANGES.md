@@ -1,5 +1,14 @@
 # Auto Changes Log
 
+## 2025-01-27 16:05
+### Mobile Burger Menu Item Borders
+- **Added bottom borders to mobile menu items** in global.css:
+  - **Enhanced visual separation**: Added `border-bottom: 1px solid #e5e7eb` to each menu item in the expanded mobile navigation
+  - **Improved mobile UX**: Each menu item now has a clear visual separator, making it easier to distinguish between options
+  - **Dark theme support**: Added matching dark theme borders using `#374151` color for consistent styling
+  - **Last item exception**: Removed border from the last menu item to avoid unnecessary bottom border
+  - **Enhanced padding**: Added `padding-bottom: 0.75rem` to provide better spacing around the borders
+
 ## 2025-01-27 16:00
 ### Shiki to Prism.js Migration
 - **Replaced Shiki with Prism.js** for syntax highlighting:

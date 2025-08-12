@@ -661,9 +661,27 @@ a.theme-link:hover {
 	backdrop-filter: blur(8px);
 }
 
+.nav-links.expanded a {
+	border-bottom: 1px solid #e5e7eb;
+	padding-bottom: 0.75rem;
+}
+
+.nav-links.expanded a:last-child {
+	border-bottom: none;
+}
+
 .dark .nav-links.expanded {
 	background: var(--color-theme-950-rgba-095);
 	border-top: 1px solid #374151;
+}
+
+.dark .nav-links.expanded a {
+	border-bottom: 1px solid #374151;
+	padding-bottom: 0.75rem;
+}
+
+.dark .nav-links.expanded a:last-child {
+	border-bottom: none;
 }
 
 @media screen and (min-width: 768px) {
