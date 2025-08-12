@@ -5,8 +5,6 @@ import { useEffect, useState } from 'preact/hooks';
 interface GitHubStats {
 	stars: number;
 	repositories: number;
-	followers: number;
-	following: number;
 	accountAge: string;
 	mostStarredRepo: {
 		name: string;
@@ -83,8 +81,6 @@ export default function GitHubContributions() {
 					setGithubStats({
 						stars: totalStars,
 						repositories: userData.public_repos,
-						followers: userData.followers,
-						following: userData.following,
 						accountAge,
 						mostStarredRepo,
 						contributionsLastYear,
@@ -158,39 +154,59 @@ export default function GitHubContributions() {
 				</div>
 			)}
 
-			{/* GitHub Stats */}
+			{/* GitHub Stats and Profile Links */}
 			{!loading && !error && githubStats && (
 				<div class="grid grid-cols-3 md:grid-cols-3 gap-3 mt-4">
 					<a
 						href={githubUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-center p-2">
-							<div class="text-xs text-white/70">Active </div>
-							<div class="text-sm font-bold text-theme-300">
+						class="text-center p-3 bg-gray-100 dark:bg-white/10 rounded-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer">
+						<div class="flex flex-col items-center justify-center h-full">
+							<div class="text-xs text-gray-600 dark:text-white/70 mb-1">
+								Active
+							</div>
+							<div class="text-sm font-bold text-theme-600 dark:text-theme-300">
 								{githubStats.accountAge}
 							</div>
 						</div>
 					</a>
 					<a
-						href={`${githubUrl}?tab=followers`}
+						href="https://dev.to/bangsluke"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-xs text-white/70">Followers</div>
-						<div class="text-sm font-bold text-theme-300">
-							{githubStats.followers}
+						class="text-center p-3 bg-gray-100 dark:bg-white/10 rounded-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer">
+						<div class="flex flex-col items-center justify-center h-full">
+							<img
+								src="/icons/dev.svg"
+								alt="dev.to logo"
+								class="w-6 h-6 mb-2 dark:invert"
+							/>
+							<div class="text-xs text-gray-600 dark:text-white/70 mb-1">
+								dev.to
+							</div>
+							<div class="text-xs font-medium text-theme-600 dark:text-theme-300">
+								@bangsluke
+							</div>
 						</div>
 					</a>
 					<a
-						href={`${githubUrl}?tab=following`}
+						href="https://medium.com/@bangsluke"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-xs text-white/70">Following</div>
-						<div class="text-sm font-bold text-theme-300">
-							{githubStats.following}
+						class="text-center p-3 bg-gray-100 dark:bg-white/10 rounded-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer">
+						<div class="flex flex-col items-center justify-center h-full">
+							<img
+								src="/icons/medium.svg"
+								alt="Medium logo"
+								class="w-6 h-6 mb-2 dark:invert"
+							/>
+							<div class="text-xs text-gray-600 dark:text-white/70 mb-1">
+								Medium
+							</div>
+							<div class="text-xs font-medium text-theme-600 dark:text-theme-300">
+								@bangsluke
+							</div>
 						</div>
 					</a>
 				</div>
