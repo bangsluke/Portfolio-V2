@@ -974,9 +974,11 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 }
 
 .carousel-container {
+	background-color: red;
 	width: 100vw;
 	position: relative;
-	height: var(--carousel-height, 320px);
+	height: 400px;
+	/* height: var(--carousel-height, 320px); */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -998,8 +1000,9 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 }
 
 .flicking-viewport {
+	background-color: blue;
 	width: 100vw;
-	height: var(--carousel-height, 320px);
+	height: calc(var(--carousel-height, 320px) + 20px);
 	overflow: hidden;
 	display: flex;
 	align-items: center;
@@ -1011,7 +1014,7 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 @media (max-width: 768px) {
 	.flicking-viewport {
 		width: 100%;
-		height: var(--carousel-height-mobile, 280px);
+		height: calc(var(--carousel-height-mobile, 280px) + 20px);
 		overflow: hidden;
 		padding: 10px 0;
 	}

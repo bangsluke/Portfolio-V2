@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import CustomerAndClientCarouselItem from '../../components/portfolio/CustomerAndClientCarouselItem.astro';
+import CustomerAndClientCard from './CustomerAndClientCard.astro';
 import SkillPill from '../../components/ui/SkillPill.astro';
 import Layout from '../../layouts/Layout.astro';
 import {
@@ -271,13 +271,13 @@ const ogimage = {
 								</h2>
 								<div class="flex flex-wrap justify-center gap-6">
 									{linkedCompanies.map(company => (
-										<CustomerAndClientCarouselItem
+										<CustomerAndClientCard
 											name={getCompanyName(company)}
 											logoURL={company.data.logoURL || undefined}
 										/>
 									))}
 									{linkedClients.map(client => (
-										<CustomerAndClientCarouselItem
+										<CustomerAndClientCard
 											name={getCompanyName(client)}
 											logoURL={client.data.logoURL || undefined}
 										/>
@@ -413,7 +413,7 @@ const ogimage = {
 
 		// Update both back buttons with the correct URL
 		backButtons.forEach(button => {
-			if (button) {
+			if (button && button instanceof HTMLAnchorElement) {
 				button.href = backUrl;
 			}
 		});

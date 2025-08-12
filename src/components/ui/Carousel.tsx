@@ -177,28 +177,22 @@ export default function Carousel({
 
 	// Flicking options based on type
 	const getFlickingOptions = () => {
-		const baseOptions = {
+		const options = {
 			align: 'center' as const,
 			circular: true,
 			gap: 80,
 			bound: false,
 			adaptive: false,
 			renderOnlyVisible: false,
-			preventClickOnDrag: type === 'customer-client',
+			preventClickOnDrag: true,
+			circulatePosition: 'center' as const,
+			CIRCULAR_FALLBACK: 'bound' as const,
+			MOVE_TYPE: 'snap' as const,
+			preventDefaultOnDrag: false,
+			threshold: 40,
 		};
 
-		if (type === 'customer-client') {
-			return {
-				...baseOptions,
-				circulatePosition: 'center' as const,
-				CIRCULAR_FALLBACK: 'bound' as const,
-				MOVE_TYPE: 'snap' as const,
-				preventDefaultOnDrag: false,
-				threshold: 40,
-			};
-		}
-
-		return baseOptions;
+		return options;
 	};
 
 	if (!processedItems || processedItems.length === 0) {

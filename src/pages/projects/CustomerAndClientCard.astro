@@ -1,0 +1,38 @@
+---
+interface Props {
+	name: string;
+	logoURL?: string;
+}
+
+const { name, logoURL } = Astro.props;
+
+// Generate a fallback background color if no logo
+const fallbackColor = 'bg-gradient-to-br from-blue-500 to-purple-600';
+const hasLogo = logoURL && logoURL.trim() !== '';
+---
+
+<div
+	class="relative w-1/3 md:w-1/2 h-full rounded-lg overflow-hidden group transition-all duration-300 transform hover:scale-105"
+	style={hasLogo
+		? `background-image: url('${logoURL}'); background-size: cover; background-position: center;`
+		: ''}
+	data-company-name={name}
+	data-company-logo={logoURL}>
+	<!-- Darkened overlay that lightens on hover -->
+	<div
+		class={`absolute inset-0 transition-all duration-300 ${
+			hasLogo
+				? 'bg-black/20 dark:bg-black/50 group-hover:bg-black/10'
+				: fallbackColor + ' group-hover:opacity-80'
+		}`}>
+	</div>
+
+	<!-- Content container -->
+	<div
+		class="relative z-20 flex flex-col justify-center items-center h-full w-full p-2 md:p-6 text-white text-center">
+		<h3
+			class="text-l font-bold text-white mb-2 group-hover:text-theme-400 transition-colors duration-300 text-center">
+			{name}
+		</h3>
+	</div>
+</div>

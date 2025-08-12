@@ -71,7 +71,7 @@ export default function CustomerAndClientItem({
 			/>
 
 			{/* Content */}
-			<div className="relative z-10 h-full flex flex-col justify-between p-6 text-white">
+			<div className="relative z-10 h-full flex flex-col justify-between p-6 text-white w-full">
 				{/* Top Section */}
 				<div className="flex-1">
 					<div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 -m-3">
