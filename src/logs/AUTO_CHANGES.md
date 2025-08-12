@@ -1,5 +1,31 @@
 # Auto Changes Log
 
+## 2025-01-27 16:25
+### Mobile Hamburger Menu Z-Index and Close Button Fix
+- **Fixed z-index conflicts and missing close button** in global.css:
+  - **Resolved z-index hierarchy**: Set hamburger menu to `z-index: 10000` and hamburger button to `z-index: 10001`
+  - **Eliminated duplicate z-index**: Removed conflicting `z-index: 50` and `z-index: 110` declarations
+  - **Fixed scroll-to-top overlap**: Menu now appears above scroll-to-top button (`z-index: 100`)
+  - **Restored close button visibility**: Hamburger button now has proper z-index to remain visible above expanded menu
+  - **Proper layering**: Menu (10000) > Scroll-to-top (100) > Other elements
+
+## 2025-01-27 16:20
+### Mobile Hamburger Menu Full Screen Height Fix
+- **Fixed missing height property** in global.css:
+  - **Added missing height**: Added `height: 100vh` to `.nav-links.expanded` to ensure full screen coverage
+  - **Complete viewport coverage**: Menu now covers both full width (100vw) and full height (100vh) of the screen
+  - **Proper full screen behavior**: Mobile menu now extends from top to bottom of the viewport as intended
+  - **Maintained existing functionality**: All other mobile menu features (borders, padding, positioning) remain unchanged
+
+## 2025-01-27 16:15
+### SkillPill Mobile Tooltip Size Enhancement
+- **Increased mobile tooltip size by 30%** in global.css:
+  - **Enhanced mobile readability**: Applied `transform: scale(1.3)` to `.global-tooltip` for mobile devices
+  - **Improved positioning**: Set `transform-origin: bottom center` to maintain proper alignment with skill pills
+  - **Better text sizing**: Increased font size to `1.125rem` and line height to `1.5rem` for improved readability
+  - **Enhanced padding**: Increased padding to `1rem` for better touch targets and visual spacing
+  - **Mobile-specific targeting**: Changes only apply to screens below 768px width
+
 ## 2025-01-27 16:10
 ### Mobile Burger Menu Full Screen Implementation
 - **Changed mobile menu to full screen width** in global.css:
