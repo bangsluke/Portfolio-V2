@@ -1,5 +1,38 @@
 # Auto Changes Log
 
+## 2025-01-27 16:35
+### Scroll-to-Top Button Mobile Visibility and Hamburger Menu Scroll Freeze Fix
+
+**Files Modified:** `src/styles/global.css`, `src/scripts/menu.js`, `src/components/ui/ScrollToTop.astro`
+
+**Changes Made:**
+
+**1. Fixed Scroll-to-Top Button Always Visible on Mobile Issue:**
+- **Removed forced visibility CSS rules**: Eliminated `!important` declarations in `global.css` that were forcing the scroll-to-top button to always be visible on mobile
+- **Restored JavaScript visibility logic**: Button now properly follows the 15% scroll threshold logic as intended
+- **Consistent z-index**: Set to `z-40` across all screen sizes for proper layering
+
+**2. Added Hamburger Menu Scroll Freeze Functionality:**
+- **Scroll freeze on menu open**: Added `overflow: hidden` to both `body` and `documentElement` when hamburger menu is opened
+- **Scroll restore on menu close**: Re-enabled scrolling when menu is closed via any method (click, escape, outside click)
+- **Cleanup functions**: Added event listeners for `beforeunload`, `pagehide`, and `visibilitychange` to ensure scrolling is restored
+- **Enhanced mobile UX**: Users can no longer scroll the background content while the full-screen hamburger menu is open
+
+**3. Restored ScrollToTop Component Z-Index:**
+- **Added missing z-index class**: Restored `z-40` class to ensure proper layering below hamburger menu
+
+**Reason:** The scroll-to-top button was always visible on mobile due to CSS rules with `!important` declarations that overrode the JavaScript visibility logic. Additionally, users could scroll the background content while the hamburger menu was open, which created a poor user experience.
+
+---
+
+## 2025-01-27 16:30
+### Scroll-to-Top Button Z-Index Fix
+- **Fixed z-index conflict with hamburger menu** in ScrollToTop.astro:
+  - **Reduced z-index**: Changed from `z-50` to `z-40` to ensure proper layering below hamburger menu
+  - **Maintained scroll-based visibility**: Button still only appears after scrolling 15% down the page
+  - **Proper stacking order**: Now hamburger menu (z-110) > scroll-to-top (z-40) as intended
+  - **Mobile compatibility**: Works correctly on all screen sizes with proper z-index hierarchy
+
 ## 2025-01-27 16:25
 ### Mobile Hamburger Menu Z-Index and Close Button Fix
 - **Fixed z-index conflicts and missing close button** in global.css:
@@ -2714,3 +2747,30 @@ The clients collection schema expected `linkedCompany` to be a string, but some 
   - **Mobile responsiveness**: Updated mobile breakpoint heights (768px: 260px, 480px: 240px)
   - **Prevents card cutoff**: Cards now have sufficient space when scaled to 105% on hover/selection
   - **Maintains original layout**: Carousel containers remain at original heights while cards are smaller
+
+## 2025-01-27 16:40 - Scroll-to-Top Button Mobile Visibility Fix and Z-Index Improvements
+
+### Files Modified:
+- `src/components/ui/ScrollToTop.astro`
+- `src/styles/global.css`
+
+### Changes Made:
+
+#### ScrollToTop.astro:
+- Simplified scroll detection logic from percentage-based to fixed threshold (200px)
+- Removed complex scroll percentage calculation that was causing issues on mobile
+- Removed redundant touchend event listener
+- Fixed TypeScript type annotation for event parameter
+
+#### global.css:
+- Updated scroll-to-top button z-index from 40 to 125 to appear above hamburger menu (z-index: 120)
+- Added CSS rules to hide scroll-to-top button when hamburger menu is expanded
+- Applied changes to both mobile media queries (768px and 480px)
+
+### Technical Details:
+- **Problem**: Scroll-to-top button was not appearing on mobile due to z-index conflicts and complex scroll detection logic
+- **Solution**: 
+  - Simplified scroll threshold to 200px (consistent across all devices)
+  - Increased z-index to 125 to appear above hamburger menu (120) but below expanded menu
+  - Added CSS rules to hide button when hamburger menu is expanded
+- **Result**: Scroll-to-top button now works consistently on mobile, appearing after 200px scroll and properly layering with hamburger menu

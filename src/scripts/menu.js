@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	function closeMobileMenu() {
 		navLinks.classList.remove('expanded');
 		hamburger.classList.remove('active');
+		// Re-enable scrolling
+		document.body.style.overflow = '';
+		document.documentElement.style.overflow = '';
 		console.log('Mobile menu closed');
 	}
 
@@ -23,6 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	function openMobileMenu() {
 		navLinks.classList.add('expanded');
 		hamburger.classList.add('active');
+		// Freeze scrolling when menu is open
+		document.body.style.overflow = 'hidden';
+		document.documentElement.style.overflow = 'hidden';
 		console.log('Mobile menu opened');
 	}
 
@@ -66,6 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (e.key === 'Escape' && navLinks.classList.contains('expanded')) {
 			console.log('Escape key pressed, closing menu');
 			closeMobileMenu();
+		}
+	});
+
+	// Cleanup function to ensure scrolling is re-enabled
+	function cleanup() {
+		document.body.style.overflow = '';
+		document.documentElement.style.overflow = '';
+	}
+
+	// Re-enable scrolling when page is unloaded or hidden
+	window.addEventListener('beforeunload', cleanup);
+	window.addEventListener('pagehide', cleanup);
+	document.addEventListener('visibilitychange', () => {
+		if (document.hidden) {
+			cleanup();
 		}
 	});
 });
