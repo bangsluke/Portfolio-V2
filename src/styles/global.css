@@ -1019,13 +1019,25 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 
 .flicking-arrow {
 	cursor: pointer;
-	color: #171717;
+	color: var(--color-text-colour, #171717);
 }
 
 .dark .flicking-arrow {
-	color: white;
+	color: var(--color-text-colour-dark, #e8e8e8);
 }
 
+/* Accessibility: visible focus for keyboard users */
+.flicking-arrow:focus-visible {
+	outline: 2px solid var(--color-theme-400);
+	outline-offset: 2px;
+}
+
+/* Disabled state */
+.flicking-arrow[disabled],
+.flicking-arrow[aria-disabled='true'] {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
 .plugins-panel {
 	width: var(--carousel-item-height, 260px);
 	height: var(--carousel-item-height, 260px);

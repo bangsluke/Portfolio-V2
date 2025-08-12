@@ -3,12 +3,12 @@ import { useState } from 'preact/hooks';
 interface Reference {
 	id: string;
 	name: string;
-	title: string;
-	email: string;
-	phone: string;
-	company: string;
-	logoURL: string | null;
-	address: string;
+	title?: string;
+	email?: string;
+	phone?: string;
+	company?: string;
+	logoURL?: string | null;
+	address?: string;
 }
 
 interface ReferenceItemProps {
@@ -28,7 +28,9 @@ export default function ReferenceItem({
 		try {
 			await navigator.clipboard.writeText(text);
 			setCopiedField(field);
-			setTimeout(() => setCopiedField(null), 2000);
+			setTimeout(() => {
+				setCopiedField(curr => (curr === field ? null : curr));
+			}, 2000);
 		} catch (err) {
 			console.error('Failed to copy to clipboard:', err);
 		}
@@ -41,7 +43,15 @@ export default function ReferenceItem({
 					? 'ring-4 ring-theme-400 scale-105 brightness-110'
 					: ''
 			}`}
-			onClick={onClick}>
+			onClick={onClick}
+			role="button"
+			tabIndex={0}
+			onKeyDown={e => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					onClick();
+				}
+			}}>
 			{/* Background Image */}
 			{reference.logoURL ? (
 				<div
@@ -87,12 +97,14 @@ export default function ReferenceItem({
 						<div className="flex items-center justify-end group/contact">
 							<div className="flex items-center gap-2">
 								<button
+									type="button"
 									onClick={e => {
 										e.stopPropagation();
-										copyToClipboard(reference.email, `email-${reference.id}`);
+										copyToClipboard(reference.email!, `email-${reference.id}`);
 									}}
 									className="opacity-0 group-hover/contact:opacity-100 transition-opacity duration-200 p-1 hover:bg-white/20 rounded"
-									title="Copy email">
+									title="Copy email"
+									aria-label={`Copy email ${reference.email}`}>
 									{copiedField === `email-${reference.id}` ? (
 										<svg
 											className="w-3 h-3 text-green-400"
@@ -125,12 +137,14 @@ export default function ReferenceItem({
 						<div className="flex items-center justify-end group/contact">
 							<div className="flex items-center gap-2">
 								<button
+									type="button"
 									onClick={e => {
 										e.stopPropagation();
-										copyToClipboard(reference.phone, `phone-${reference.id}`);
+										copyToClipboard(reference.phone!, `phone-${reference.id}`);
 									}}
 									className="opacity-0 group-hover/contact:opacity-100 transition-opacity duration-200 p-1 hover:bg-white/20 rounded"
-									title="Copy phone">
+									title="Copy phone"
+									aria-label={`Copy phone ${reference.phone}`}>
 									{copiedField === `phone-${reference.id}` ? (
 										<svg
 											className="w-3 h-3 text-green-400"
@@ -161,10 +175,9 @@ export default function ReferenceItem({
 
 					{reference.address && (
 						<div className="text-right">
-							<span
-								className="text-xs text-white/90"
-								dangerouslySetInnerHTML={{ __html: reference.address }}
-							/>
+							<span className="text-xs text-white/90 whitespace-pre-line">
+								{reference.address}
+							</span>
 						</div>
 					)}
 				</div>

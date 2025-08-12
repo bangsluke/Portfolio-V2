@@ -83,15 +83,16 @@ const processedReferences = sortedReferences.map(reference => {
 					title: ref.data.referenceRole || '',
 					email: ref.data.referenceEmail || '',
 					phone: ref.data.referenceNumber || '',
-					company: ref.data.linkedCompany
-						? processObsidianLink(ref.data.linkedCompany[0])
-						: '',
-					logoURL: ref.companyLogoURL,
+					company:
+						Array.isArray(ref.data.linkedCompany) &&
+						ref.data.linkedCompany.length > 0
+							? processObsidianLink(ref.data.linkedCompany[0])
+							: '',
+					logoURL: ref.companyLogoURL || '',
 					address: processContent(ref.data.referenceAddress || ''),
 				}))}
 				type="reference"
 				autoPlayDuration={5000}
-				gap={40}
 				client:only="preact"
 			/>
 		</div>

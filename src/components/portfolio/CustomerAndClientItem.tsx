@@ -18,17 +18,15 @@ export default function CustomerAndClientItem({
 	onClick,
 }: CustomerAndClientItemProps) {
 	// Handle both companies (logoURL) and clients (imageURL or logoURL)
-	const hasLogo = item.logoURL && item.logoURL.trim() !== '';
-	const backgroundImage = item.logoURL;
-	const hasBackground = hasLogo;
-
+	const backgroundImage = item.logoURL?.trim() ?? '';
+	const hasBackground = backgroundImage.length > 0;
 	const fallbackColor =
 		item.type === 'client'
 			? 'bg-gradient-to-br from-green-500 to-teal-600'
 			: 'bg-gradient-to-br from-blue-500 to-purple-600';
 
 	// Handle card click - allow selection on all screen sizes
-	const handleCardClick = (e: MouseEvent | TouchEvent) => {
+	const handleCardClick = (e: any) => {
 		e.preventDefault();
 		e.stopPropagation();
 
@@ -36,22 +34,23 @@ export default function CustomerAndClientItem({
 		onClick();
 	};
 
-	// Handle touch events for mobile - allow selection with touch
-	const handleTouchStart = (e: TouchEvent) => {
-		e.preventDefault();
-		e.stopPropagation();
-
-		// On touch devices, allow selection
-		onClick();
+	// Handle keyboard navigation
+	const handleKeyDown = (e: any) => {
+		if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault();
+			onClick();
+		}
 	};
 
 	return (
 		<div
-			className={`carousel-item group hover:scale-105 ${
+			className={`carousel-item group hover:scale-105 relative ${
 				isSelected ? 'ring-4 ring-theme-400 scale-105 brightness-110' : ''
 			}`}
+			role="button"
+			tabIndex={0}
 			onClick={handleCardClick}
-			onTouchStart={handleTouchStart}>
+			onKeyDown={handleKeyDown}>
 			{/* Background Image */}
 			{hasBackground ? (
 				<div
@@ -77,7 +76,7 @@ export default function CustomerAndClientItem({
 				<div className="flex-1">
 					<div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 -m-3">
 						<h3
-							className={`text-l font-bold mb-2 transition-colors duration-300 ${
+							className={`text-lg font-bold mb-2 transition-colors duration-300 ${
 								isSelected
 									? 'text-theme-400'
 									: 'text-white group-hover:text-theme-400'

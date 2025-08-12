@@ -1,20 +1,19 @@
 import { AutoPlay } from '@egjs/flicking-plugins';
 import '@egjs/flicking/dist/flicking.css';
 import Flicking from '@egjs/preact-flicking';
-import { useEffect, useRef, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import CustomerAndClientItem from '../portfolio/CustomerAndClientItem';
 import ReferenceItem from '../portfolio/ReferenceItem';
 
 // Types for different carousel items
-interface CarouselItem {
+interface CustomerClientItem {
 	id: string;
 	title: string;
 	dateString: string;
-	type: 'customer-client' | 'reference';
 	logoURL?: string;
 }
 
-interface Reference {
+interface ReferenceItemData {
 	id: string;
 	name: string;
 	title: string;
@@ -26,14 +25,13 @@ interface Reference {
 }
 
 // Union type for all possible carousel data
-type CarouselData = CarouselItem[] | Reference[] | string;
+type CarouselData = CustomerClientItem[] | ReferenceItemData[] | string;
 
 // Props for the unified Carousel component
 interface CarouselProps {
 	items: CarouselData;
 	type: 'customer-client' | 'reference';
 	autoPlayDuration?: number;
-	gap?: number;
 	showArrows?: boolean;
 	className?: string;
 }
@@ -42,7 +40,6 @@ export default function Carousel({
 	items,
 	type,
 	autoPlayDuration = 3000,
-	gap = 40,
 	showArrows = true,
 	className = '',
 }: CarouselProps) {
@@ -94,31 +91,35 @@ export default function Carousel({
 				setProcessedItems([]);
 			}
 		} else {
-			setProcessedItems(items as any[]);
+			if (Array.isArray(items)) {
+				setProcessedItems(items);
+			} else {
+				console.error('Invalid items format for type:', type);
+				setProcessedItems([]);
+			}
 		}
 	}, [items, type]);
 
 	// Create AutoPlay plugin
-	const autoPlayPlugin = new AutoPlay({
-		duration: autoPlayDuration,
-		direction: 'NEXT',
-		stopOnHover: true,
-	});
+	const autoPlayPlugin = useRef(
+		new AutoPlay({
+			duration: autoPlayDuration,
+			direction: 'NEXT',
+			stopOnHover: true,
+		})
+	);
 
-	const plugins = [autoPlayPlugin];
+	const plugins = useMemo(() => [autoPlayPlugin.current], []);
 
-	// Handle item selection
 	const handleItemClick = (itemId: string) => {
 		const newSelectedItem = selectedItem === itemId ? null : itemId;
 		setSelectedItem(newSelectedItem);
 
 		// Stop auto-play when an item is selected, resume when deselected
-		if (flickingRef.current && autoPlayPlugin) {
-			if (newSelectedItem) {
-				autoPlayPlugin.stop();
-			} else {
-				autoPlayPlugin.play();
-			}
+		if (flickingRef.current && autoPlayPlugin.current) {
+			autoPlayPlugin.current.stop();
+		} else {
+			autoPlayPlugin.current.play();
 		}
 
 		// Snap to the clicked item
@@ -132,18 +133,21 @@ export default function Carousel({
 		}
 	};
 
-	// Handle click outside to deselect
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			const target = event.target as HTMLElement;
 			if (!target.closest('.flicking-panel')) {
 				setSelectedItem(null);
+				// Resume autoplay when deselecting
+				if (autoPlayPlugin.current) {
+					autoPlayPlugin.current.play();
+				}
 			}
 		};
 
 		document.addEventListener('click', handleClickOutside);
 		return () => document.removeEventListener('click', handleClickOutside);
-	}, []);
+	}, [autoPlayPlugin]);
 
 	// Render item based on type
 	const renderItem = (item: any) => {
@@ -159,10 +163,7 @@ export default function Carousel({
 			);
 		} else if (type === 'reference') {
 			return (
-				<div
-					key={item.id}
-					className="flicking-panel"
-					style={{ width: '260px', height: '260px' }}>
+				<div key={item.id} className="flicking-panel">
 					<ReferenceItem
 						reference={item}
 						isSelected={selectedItem === item.id}
@@ -179,7 +180,7 @@ export default function Carousel({
 		const baseOptions = {
 			align: 'center' as const,
 			circular: true,
-			gap,
+			gap: 80,
 			bound: false,
 			adaptive: false,
 			renderOnlyVisible: false,
@@ -223,12 +224,15 @@ export default function Carousel({
 				<>
 					<button
 						className="flicking-arrow flicking-arrow-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors duration-200 backdrop-blur-sm cursor-pointer"
-						onClick={() => flickingRef.current?.prev()}>
+						onClick={() => flickingRef.current?.prev()}
+						aria-label="Previous item"
+						type="button">
 						<svg
 							className="w-5 h-5"
 							fill="none"
 							stroke="currentColor"
-							viewBox="0 0 24 24">
+							viewBox="0 0 24 24"
+							aria-hidden="true">
 							<path
 								strokeLinecap="round"
 								strokeLinejoin="round"
@@ -240,12 +244,15 @@ export default function Carousel({
 
 					<button
 						className="flicking-arrow flicking-arrow-next absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors duration-200 backdrop-blur-sm cursor-pointer"
-						onClick={() => flickingRef.current?.next()}>
+						onClick={() => flickingRef.current?.next()}
+						aria-label="Next item"
+						type="button">
 						<svg
 							className="w-5 h-5"
 							fill="none"
 							stroke="currentColor"
-							viewBox="0 0 24 24">
+							viewBox="0 0 24 24"
+							aria-hidden="true">
 							<path
 								strokeLinecap="round"
 								strokeLinejoin="round"
