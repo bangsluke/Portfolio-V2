@@ -1397,3 +1397,9 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 .carousel-item.ring-4:active {
 	transform: scale(1.05) !important;
 }
+
+.main-logo:hover {
+	filter: invert(71%) sepia(50%) saturate(959%) hue-rotate(197deg)
+		brightness(106%) contrast(98%);
+	transition: filter 0.3s ease;
+}
