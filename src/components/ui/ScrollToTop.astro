@@ -7,9 +7,13 @@
 	class="fixed bottom-4 right-4 md:bottom-[5%] md:right-[5%] z-[60] opacity-0 pointer-events-none transition-all duration-300 ease-in-out">
 	<button
 		id="scroll-to-top-btn"
-		class="bg-theme-400 hover:bg-theme-500 active:bg-theme-600 text-black w-12 h-12 rounded-full shadow-lg hover:shadow-xl active:shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 flex items-center justify-center touch-manipulation"
+		class="bg-theme-400 hover:bg-theme-500 active:bg-theme-600 text-black w-14 h-14 md:w-12 md:h-12 rounded-full shadow-lg hover:shadow-xl active:shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 flex items-center justify-center touch-manipulation"
 		aria-label="Scroll to top">
-		<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+		<svg
+			class="w-7 h-7 md:w-6 md:h-6"
+			fill="none"
+			stroke="currentColor"
+			viewBox="0 0 24 24">
 			<path
 				stroke-linecap="round"
 				stroke-linejoin="round"
@@ -85,6 +89,7 @@
 
 		// Smooth scroll to top
 		function scrollToTopHandler(event: Event) {
+			console.log('Scroll to top handler');
 			// Prevent default to avoid any potential issues
 			event.preventDefault();
 			event.stopPropagation();
@@ -93,6 +98,14 @@
 				top: 0,
 				behavior: 'smooth',
 			});
+		}
+
+		function scrollToTopHandlerMobile(event: Event) {
+			console.log('Scroll to top handler mobile');
+			event.preventDefault();
+			event.stopPropagation();
+			document.body.scrollTop = 0; // For Safari
+			document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 		}
 
 		// Add event listeners with mobile-friendly options
@@ -122,9 +135,9 @@
 
 		// Handle both click and touch events
 		scrollToTopBtn.addEventListener('click', scrollToTopHandler);
-		scrollToTopBtn.addEventListener('touchstart', scrollToTopHandler, {
-			passive: false,
-		});
+
+		// Touch events for mobile
+		scrollToTopBtn.addEventListener('touchstart', scrollToTopHandlerMobile);
 
 		// Initial check in case page is already scrolled
 		toggleScrollToTop();
