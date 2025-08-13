@@ -1401,3 +1401,14 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 .references-bottom-section span {
 	font-size: 0.7rem !important;
 }
+
+.footer-logo {
+	display: block !important;
+}
+
+/* Mobile modal improvements */
+@media (max-width: 768px) {
+	.footer-logo {
+		display: none !important;
+	}
+}
