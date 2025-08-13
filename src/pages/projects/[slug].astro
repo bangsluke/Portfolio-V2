@@ -128,7 +128,7 @@ const ogimage = {
 				<div class="text-center">
 					<a
 						id="back-to-projects-top"
-						href="/site#projects"
+						href="/#projects"
 						class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
 						<svg
 							class="w-5 h-5 mr-2"
@@ -352,7 +352,7 @@ const ogimage = {
 				<div class="text-center">
 					<a
 						id="back-to-projects-bottom"
-						href="/site#projects"
+						href="/#projects"
 						class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
 						<svg
 							class="w-5 h-5 mr-2"
@@ -385,17 +385,14 @@ const ogimage = {
 		const referrer = document.referrer;
 
 		// Determine the correct back URL based on referrer
-		let backUrl = '/site#projects'; // Default fallback
+		let backUrl = '/#projects'; // Default fallback
 
 		if (referrer) {
 			const referrerUrl = new URL(referrer);
 
 			// If user came from the main site with projects anchor
-			if (
-				referrerUrl.pathname === '/site' &&
-				referrerUrl.hash === '#projects'
-			) {
-				backUrl = '/site#projects';
+			if (referrerUrl.pathname === '/' && referrerUrl.hash === '#projects') {
+				backUrl = '/#projects';
 			}
 			// If user came from the projects page
 			else if (referrerUrl.pathname === '/projects') {
@@ -407,7 +404,7 @@ const ogimage = {
 			}
 			// For any other case, default to main site projects section
 			else {
-				backUrl = '/site#projects';
+				backUrl = '/#projects';
 			}
 		}
 

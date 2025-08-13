@@ -13,24 +13,16 @@ if (!staticData) {
 	throw new AstroError('JSON data not found');
 }
 
-const currentPath = Astro.url.pathname;
-const routes = ['/', '/portfolio', '/about-me'];
-
-// Check if the current route is in the list of routes
-const isActiveRoute = routes.includes(currentPath);
-
-const navItems = isActiveRoute
-	? ['home']
-	: [
-			'home',
-			'projects',
-			'skills',
-			'experience',
-			'clients',
-			'education',
-			'references',
-			'about',
-		];
+const navItems = [
+	'home',
+	'projects',
+	'skills',
+	'experience',
+	'clients',
+	'education',
+	'references',
+	'about',
+];
 ---
 
 <header
