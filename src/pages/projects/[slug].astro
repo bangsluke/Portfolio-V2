@@ -206,18 +206,23 @@ const ogimage = {
 					<div class="flex flex-wrap justify-center gap-3">
 						{
 							data.technologies &&
-								data.technologies.map((tech: string) => {
-									const cleanTech = tech.replace(/\[|\]/g, '');
-									return (
-										<SkillPill
-											skillName={cleanTech}
-											variant="theme"
-											size="md"
-											className="shadow-lg"
-											projects={allProjects}
-										/>
-									);
-								})
+								data.technologies
+									.filter((tech: string) => {
+										const cleanTech = tech.replace(/\[\[|\]\]/g, '');
+										return cleanTech.toLowerCase() !== 'n/a';
+									})
+									.map((tech: string) => {
+										const cleanTech = tech.replace(/\[|\]/g, '');
+										return (
+											<SkillPill
+												skillName={cleanTech}
+												variant="theme"
+												size="md"
+												className="shadow-lg"
+												projects={allProjects}
+											/>
+										);
+									})
 						}
 					</div>
 				</div>

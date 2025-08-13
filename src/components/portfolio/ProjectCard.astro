@@ -50,12 +50,17 @@ const displayName = name;
 
 // Process technologies for display
 const MAX_VISIBLE_SKILLS = 5;
-const visibleTechnologies = Array.isArray(technologies)
-	? technologies.slice(0, MAX_VISIBLE_SKILLS)
+
+// Filter out "n/a" technologies
+const filteredTechnologies = Array.isArray(technologies)
+	? technologies.filter(tech => {
+			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
+			return cleanTech.toLowerCase() !== 'n/a';
+		})
 	: [];
-const hiddenTechnologies = Array.isArray(technologies)
-	? technologies.slice(MAX_VISIBLE_SKILLS)
-	: [];
+
+const visibleTechnologies = filteredTechnologies.slice(0, MAX_VISIBLE_SKILLS);
+const hiddenTechnologies = filteredTechnologies.slice(MAX_VISIBLE_SKILLS);
 const hasHiddenSkills = hiddenTechnologies.length > 0;
 
 // Format dates for display

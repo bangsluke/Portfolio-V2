@@ -37,7 +37,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 
-portfolioOrder: 4
+portfolioOrder: 3
 shortDescription: "A simplified version of the <span class=\"theme-link\">Financial Tracker</span>."
 longDescription: "TBC"
 lessonsLearned: "TBC"
