@@ -29,6 +29,11 @@ export function getProjectCount(
 			// Clean the technology name (remove Obsidian brackets)
 			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
 
+			// Skip "n/a" technologies
+			if (cleanTech.toLowerCase() === 'n/a') {
+				return false;
+			}
+
 			// Check for exact match with skill name or skill ID
 			if (
 				cleanTech.toLowerCase() === skillName.toLowerCase() ||
@@ -75,6 +80,11 @@ export function getProjectsUsingSkill(
 		const isUsed = technologies.some((tech: string) => {
 			// Clean the technology name (remove Obsidian brackets)
 			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
+
+			// Skip "n/a" technologies
+			if (cleanTech.toLowerCase() === 'n/a') {
+				return false;
+			}
 
 			// Check for exact match with skill name or skill ID
 			if (

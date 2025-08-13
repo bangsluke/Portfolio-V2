@@ -5,8 +5,8 @@ tags:
   - notes
   - project/active
 created: 2025-06-23 13:36
-modified: 2025-07-28T07:17:54+01:00
-viewCount: 13
+modified: 2025-08-13T12:13:53+01:00
+viewCount: 14
 aliases:
   - backend-server
 projectURL: https://bangsluke-backend-server-221df04e1ad6.herokuapp.com/
@@ -52,16 +52,18 @@ name: "Backend Server"
 TABLE WITHOUT ID this.projectURL as "Project URL Link"
 WHERE file = this.file
 
+>[!website-link] Links
+> ```dataview
+TABLE WITHOUT ID this.projectURL as "Project URL Link"
+WHERE file = this.file
 >```
 >```dataview
 TABLE WITHOUT ID this.codeURL as "Codebase URL Link"
 WHERE file = this.file
-
 >```
 >```dataview
 TABLE WITHOUT ID choice(this.codeMultipleRepos = true, link("#repositories","True - Click for link"), "False") as "Multiple Repos"
 WHERE file = this.file
-
 >```
 >```dataview
 TABLE WITHOUT ID this.deploymentServiceURL as "Deployment Service Link"

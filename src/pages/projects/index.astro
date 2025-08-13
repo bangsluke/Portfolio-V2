@@ -7,10 +7,11 @@ import { getCollection } from 'astro:content';
 import { processObsidianLink } from '../../utils/content-processor';
 import { extractNameFromFilename } from '../../utils/filename-utils';
 
-// Get all projects, companies, and clients
+// Get all projects, companies, clients, and educations
 const projects = await getCollection('projects');
 const companies = await getCollection('companies');
 const clients = await getCollection('clients');
+const educations = await getCollection('educations');
 
 // Sort projects by portfolioOrder first, then dateStart, then alphabetically
 const sortedProjects = projects.sort((a, b) => {
@@ -70,6 +71,16 @@ const processedProjects = sortedProjects.map(project => {
 
 			if (client && client.data.logoURL) {
 				companyLogoURL = client.data.logoURL;
+			} else {
+				// If not found in clients, try educations collection
+				const education = educations.find(education => {
+					const educationName = extractNameFromFilename(education.id);
+					return educationName === linkedCompanyName;
+				});
+
+				if (education && education.data.logoURL) {
+					companyLogoURL = education.data.logoURL;
+				}
 			}
 		}
 	}

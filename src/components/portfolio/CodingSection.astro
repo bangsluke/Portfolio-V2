@@ -40,6 +40,12 @@ projects.forEach(project => {
 		project.data.technologies.forEach((tech: string) => {
 			// Clean the technology name by removing Obsidian brackets
 			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
+
+			// Skip "n/a" technologies
+			if (cleanTech.toLowerCase() === 'n/a') {
+				return;
+			}
+
 			allTechnologies.add(cleanTech);
 		});
 	}
