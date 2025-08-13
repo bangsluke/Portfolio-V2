@@ -47,7 +47,9 @@ projects.forEach(project => {
 
 // Count technology usage across all projects and find matching skills
 allTechnologies.forEach(tech => {
+	// @ts-expect-error - getProjectCount is not typed
 	const count = getProjectCount(tech, tech, projects);
+	// @ts-expect-error - getProjectsUsingSkill is not typed
 	const projectsList = getProjectsUsingSkill(tech, tech, projects);
 
 	// Improved skill matching logic

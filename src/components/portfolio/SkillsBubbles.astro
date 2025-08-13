@@ -15,19 +15,13 @@ const processedSkills = skills.map(skill => ({
 		skillDescription: processContent(skill.data.skillDescription || ''),
 	},
 }));
-
-// Transform projects to match the expected interface
-const transformedProjects = projects.map(project => ({
-	id: project.id,
-	data: { skills: project.data.tags || [] },
-}));
 ---
 
 <section class="w-full h-full">
 	<SkillsBubbleChart
 		client:only="preact"
 		skills={processedSkills}
-		projects={transformedProjects}
+		projects={projects}
 	/>
 </section>
 
@@ -181,7 +175,7 @@ const transformedProjects = projects.map(project => ({
 					<SkillsBubbleChart
 						client:only="preact"
 						skills={processedSkills}
-						projects={transformedProjects}
+						projects={projects}
 						isFullscreen={true}
 					/>
 				</div>
