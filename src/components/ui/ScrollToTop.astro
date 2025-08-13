@@ -102,19 +102,15 @@
 
 		function scrollToTopHandlerMobile(event: Event) {
 			console.log('Scroll to top handler mobile');
-			event.preventDefault();
+			// Remove preventDefault since we're using passive: true
 			event.stopPropagation();
+
 			document.body.scrollTop = 0; // For Safari
 			document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 		}
 
 		// Add event listeners with mobile-friendly options
 		window.addEventListener('scroll', debouncedScrollHandler, {
-			passive: true,
-		});
-
-		// Mobile-specific scroll detection
-		document.addEventListener('touchmove', debouncedScrollHandler, {
 			passive: true,
 		});
 
@@ -130,14 +126,20 @@
 
 		// Visual viewport change detection for mobile
 		if (window.visualViewport) {
-			window.visualViewport.addEventListener('resize', debouncedScrollHandler);
+			window.visualViewport.addEventListener('resize', debouncedScrollHandler, {
+				passive: true,
+			});
 		}
 
 		// Handle both click and touch events
-		scrollToTopBtn.addEventListener('click', scrollToTopHandler);
+		scrollToTopBtn.addEventListener('click', scrollToTopHandler, {
+			passive: true,
+		});
 
 		// Touch events for mobile
-		scrollToTopBtn.addEventListener('touchstart', scrollToTopHandlerMobile);
+		scrollToTopBtn.addEventListener('touchstart', scrollToTopHandlerMobile, {
+			passive: true,
+		});
 
 		// Initial check in case page is already scrolled
 		toggleScrollToTop();

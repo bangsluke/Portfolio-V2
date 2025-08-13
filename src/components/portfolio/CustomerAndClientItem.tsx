@@ -26,7 +26,7 @@ export default function CustomerAndClientItem({
 			: 'bg-gradient-to-br from-blue-500 to-purple-600';
 
 	// Handle card click - allow selection on all screen sizes
-	const handleCardClick = (e: any) => {
+	const handleCardClick = (e: MouseEvent) => {
 		e.preventDefault();
 		e.stopPropagation();
 
@@ -35,7 +35,7 @@ export default function CustomerAndClientItem({
 	};
 
 	// Handle keyboard navigation
-	const handleKeyDown = (e: any) => {
+	const handleKeyDown = (e: KeyboardEvent) => {
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
 			onClick();
@@ -72,8 +72,8 @@ export default function CustomerAndClientItem({
 
 			{/* Content */}
 			<div className="relative z-10 h-full flex flex-col justify-between p-6 text-white w-full">
-				{/* Top Section */}
-				<div className="flex-1">
+				{/* Detail Section */}
+				<div className="flex-1 w-full justify-center items-center">
 					<div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 -m-3">
 						<h3
 							className={`text-lg font-bold mb-2 transition-colors duration-300 ${

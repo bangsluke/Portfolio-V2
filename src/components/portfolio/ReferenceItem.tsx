@@ -32,6 +32,7 @@ export default function ReferenceItem({
 				setCopiedField(curr => (curr === field ? null : curr));
 			}, 2000);
 		} catch (err) {
+			// eslint-disable-next-line no-console
 			console.error('Failed to copy to clipboard:', err);
 		}
 	};
@@ -66,18 +67,18 @@ export default function ReferenceItem({
 			<div
 				className={`absolute inset-0 transition-colors duration-300 ${
 					isSelected === true
-						? 'bg-black/5 dark:bg-black/5'
+						? 'bg-black/30 dark:bg-black/60'
 						: 'bg-black/20 dark:bg-black/50 group-hover:bg-black/5'
 				}`}
 			/>
 
 			{/* Content */}
-			<div className="relative z-10 h-full flex flex-col justify-between items-center p-6 text-black dark:text-white">
+			<div className="relative z-10 h-full flex flex-col justify-between items-center p-4 text-black dark:text-white">
 				{/* Top Section - Reference Name and Title */}
 				<div className="flex-shrink-0 w-full">
 					<h3
 						className={`text-xl font-bold mb-1 transition-colors duration-300 ${
-							isSelected === true ? 'text-theme-400' : 'text-white'
+							isSelected === true ? 'text-theme-500' : 'text-white'
 						}`}>
 						{reference.name}
 					</h3>
@@ -94,7 +95,10 @@ export default function ReferenceItem({
 				</div>
 
 				{/* Bottom Section - Contact Information */}
-				<div className="w-full references-bottom-section flex-1 flex flex-col justify-center bg-white/10 backdrop-blur-sm rounded-lg p-2 -m-2">
+				<div
+					className={`w-full references-bottom-section flex-1 flex flex-col justify-center bg-white/10 backdrop-blur-sm rounded-lg p-2 -m-2 ${
+						isSelected === true ? 'bg-white text-theme-400' : ''
+					}`}>
 					{reference.email && (
 						<div className="flex items-center justify-end group/contact">
 							<div className="flex items-center gap-2">
@@ -102,7 +106,9 @@ export default function ReferenceItem({
 									type="button"
 									onClick={e => {
 										e.stopPropagation();
-										copyToClipboard(reference.email!, `email-${reference.id}`);
+										if (reference.email) {
+											copyToClipboard(reference.email, `email-${reference.id}`);
+										}
 									}}
 									className="opacity-0 group-hover/contact:opacity-100 transition-opacity duration-200 p-1 hover:bg-white/20 hover:text-theme-400 rounded"
 									title="Copy email"
@@ -128,7 +134,10 @@ export default function ReferenceItem({
 										</svg>
 									)}
 								</button>
-								<span className="leading-none text-white/90 max-w-40 group-hover/contact:text-white group-hover/contact:bg-white/20 transition-all duration-200 hover:text-theme-400 rounded">
+								<span
+									className={`leading-none text-white/90 max-w-40 group-hover/contact:text-white group-hover/contact:bg-white/20 transition-all duration-200 rounded ${
+										isSelected === true ? 'font-bold' : ''
+									}`}>
 									{reference.email}
 								</span>
 							</div>
@@ -142,7 +151,9 @@ export default function ReferenceItem({
 									type="button"
 									onClick={e => {
 										e.stopPropagation();
-										copyToClipboard(reference.phone!, `phone-${reference.id}`);
+										if (reference.phone) {
+											copyToClipboard(reference.phone, `phone-${reference.id}`);
+										}
 									}}
 									className="opacity-0 group-hover/contact:opacity-100 transition-opacity duration-200 p-1 hover:bg-white/20 rounded"
 									title="Copy phone"
@@ -168,7 +179,10 @@ export default function ReferenceItem({
 										</svg>
 									)}
 								</button>
-								<span className="leading-none text-white/90 truncate max-w-40 group-hover/contact:bg-white/20 transition-all duration-200 hover:text-theme-400 rounded">
+								<span
+									className={`leading-none text-white/90 truncate max-w-40 group-hover/contact:bg-white/20 transition-all duration-200 rounded ${
+										isSelected === true ? 'font-bold' : ''
+									}`}>
 									{reference.phone}
 								</span>
 							</div>
@@ -177,7 +191,10 @@ export default function ReferenceItem({
 
 					{reference.address && (
 						<div className="text-right hidden md:block">
-							<span className="leading-none text-white/90 hover:text-theme-400 whitespace-pre-line">
+							<span
+								className={`leading-none text-white/90 whitespace-pre-line ${
+									isSelected === true ? 'font-bold' : ''
+								}`}>
 								{reference.address}
 							</span>
 						</div>

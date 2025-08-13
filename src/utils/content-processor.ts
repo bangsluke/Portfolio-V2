@@ -183,6 +183,7 @@ function getExistingProjectNames(): string[] {
 
 		return projectNames;
 	} catch (error) {
+		// eslint-disable-next-line no-console
 		console.error('Error reading project names:', error);
 		// Fallback to empty array if there's an error
 		return [];
@@ -238,6 +239,7 @@ export async function getHeroDescription(): Promise<string> {
 
 		return '';
 	} catch (error) {
+		// eslint-disable-next-line no-console
 		console.error('Error reading hero description:', error);
 		return '';
 	}
@@ -304,7 +306,7 @@ export async function getPortfolioConfig(): Promise<PortfolioConfig> {
 						value = Number(value);
 					}
 
-					(config as any)[key] = value;
+					(config as Record<string, string | boolean | number>)[key] = value;
 				}
 			}
 
@@ -313,6 +315,7 @@ export async function getPortfolioConfig(): Promise<PortfolioConfig> {
 
 		return {};
 	} catch (error) {
+		// eslint-disable-next-line no-console
 		console.error('Error reading portfolio config:', error);
 		return {};
 	}
@@ -363,7 +366,9 @@ export function testContentProcessor() {
 	const testContent =
 		'built using [[Next.js]], [[Nest.js]], a [[Neo4j]] database and a [[Flask]] [[API]] to call a [[Python]] algorithm';
 	const processed = processContent(testContent);
+	// eslint-disable-next-line no-console
 	console.log('Test content:', testContent);
+	// eslint-disable-next-line no-console
 	console.log('Processed result:', processed);
 	return processed;
 }

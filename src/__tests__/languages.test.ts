@@ -48,9 +48,9 @@ describe('getLanguage', () => {
 	});
 
 	test('handles edge cases', () => {
-		expect(getLanguage(null as any)).toEqual(languages.html);
-		expect(getLanguage(undefined as any)).toEqual(languages.html);
-		expect(getLanguage(123 as any)).toEqual(languages.html);
+		expect(getLanguage(null as unknown as string)).toEqual(languages.html);
+		expect(getLanguage(undefined as unknown as string)).toEqual(languages.html);
+		expect(getLanguage(123 as unknown as string)).toEqual(languages.html);
 	});
 
 	test('returns correct language names', () => {

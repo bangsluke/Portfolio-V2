@@ -11,6 +11,7 @@ interface CustomerClientItem {
 	title: string;
 	dateString: string;
 	logoURL?: string;
+	type?: string;
 }
 
 interface ReferenceItemData {
@@ -44,8 +45,10 @@ export default function Carousel({
 	className = '',
 }: CarouselProps) {
 	const [selectedItem, setSelectedItem] = useState<string | null>(null);
-	const flickingRef = useRef<any>(null);
-	const [processedItems, setProcessedItems] = useState<any[]>([]);
+	const flickingRef = useRef<Flicking | null>(null);
+	const [processedItems, setProcessedItems] = useState<
+		(CustomerClientItem | ReferenceItemData)[]
+	>([]);
 
 	// Process items based on type
 	useEffect(() => {
@@ -53,40 +56,52 @@ export default function Carousel({
 			try {
 				const parsedItems = JSON.parse(items);
 				// Transform the parsed items to match CarouselItem interface
-				const transformed = parsedItems.map((item: any) => ({
-					id: item.id,
-					title: item.data.name || item.id,
-					dateString: (() => {
-						const dateStart = item.data.dateStart;
-						const dateEnd = item.data.dateEnd;
+				const transformed = parsedItems.map(
+					(item: {
+						id: string;
+						data: {
+							name?: string;
+							dateStart?: string | Date;
+							dateEnd?: string | Date;
+							logoURL?: string;
+						};
+						type?: string;
+					}) => ({
+						id: item.id,
+						title: item.data.name || item.id,
+						dateString: (() => {
+							const dateStart = item.data.dateStart;
+							const dateEnd = item.data.dateEnd;
 
-						if (dateStart) {
-							const startDate =
-								dateStart instanceof Date ? dateStart : new Date(dateStart);
-							const startFormatted = startDate.toLocaleDateString('en-US', {
-								month: 'short',
-								year: 'numeric',
-							});
-
-							if (dateEnd && dateEnd !== 'TBD' && dateEnd !== '') {
-								const endDate =
-									dateEnd instanceof Date ? dateEnd : new Date(dateEnd);
-								const endFormatted = endDate.toLocaleDateString('en-US', {
+							if (dateStart) {
+								const startDate =
+									dateStart instanceof Date ? dateStart : new Date(dateStart);
+								const startFormatted = startDate.toLocaleDateString('en-US', {
 									month: 'short',
 									year: 'numeric',
 								});
-								return `${startFormatted} - ${endFormatted}`;
-							} else {
-								return `${startFormatted} - Current`;
+
+								if (dateEnd && dateEnd !== 'TBD' && dateEnd !== '') {
+									const endDate =
+										dateEnd instanceof Date ? dateEnd : new Date(dateEnd);
+									const endFormatted = endDate.toLocaleDateString('en-US', {
+										month: 'short',
+										year: 'numeric',
+									});
+									return `${startFormatted} - ${endFormatted}`;
+								} else {
+									return `${startFormatted} - Current`;
+								}
 							}
-						}
-						return '';
-					})(),
-					type: item.type,
-					logoURL: item.data.logoURL || undefined,
-				}));
+							return '';
+						})(),
+						type: item.type,
+						logoURL: item.data.logoURL || undefined,
+					})
+				);
 				setProcessedItems(transformed);
 			} catch (error) {
+				// eslint-disable-next-line no-console
 				console.error('Error parsing customer-client items:', error);
 				setProcessedItems([]);
 			}
@@ -94,6 +109,7 @@ export default function Carousel({
 			if (Array.isArray(items)) {
 				setProcessedItems(items);
 			} else {
+				// eslint-disable-next-line no-console
 				console.error('Invalid items format for type:', type);
 				setProcessedItems([]);
 			}
@@ -125,10 +141,10 @@ export default function Carousel({
 		// Snap to the clicked item
 		if (flickingRef.current) {
 			const itemIndex = processedItems.findIndex(
-				(item: any) => item.id === itemId
+				(item: CustomerClientItem | ReferenceItemData) => item.id === itemId
 			);
 			if (itemIndex !== -1) {
-				flickingRef.current.moveTo(itemIndex, true);
+				flickingRef.current.moveTo(itemIndex, 0);
 			}
 		}
 	};
@@ -145,17 +161,17 @@ export default function Carousel({
 			}
 		};
 
-		document.addEventListener('click', handleClickOutside);
+		document.addEventListener('click', handleClickOutside, { passive: true });
 		return () => document.removeEventListener('click', handleClickOutside);
 	}, [autoPlayPlugin]);
 
 	// Render item based on type
-	const renderItem = (item: any) => {
+	const renderItem = (item: CustomerClientItem | ReferenceItemData) => {
 		if (type === 'customer-client') {
 			return (
 				<div key={item.id} className="flicking-panel">
 					<CustomerAndClientItem
-						item={item}
+						item={item as CustomerClientItem & { type: 'company' | 'client' }}
 						isSelected={selectedItem === item.id}
 						onClick={() => handleItemClick(item.id)}
 					/>
@@ -165,7 +181,7 @@ export default function Carousel({
 			return (
 				<div key={item.id} className="flicking-panel">
 					<ReferenceItem
-						reference={item}
+						reference={item as ReferenceItemData}
 						isSelected={selectedItem === item.id}
 						onClick={() => handleItemClick(item.id)}
 					/>

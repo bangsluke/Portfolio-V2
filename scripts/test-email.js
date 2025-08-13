@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import dotenv from 'dotenv';
-import { emailService } from './scripts/email-service.js';
+import { emailService } from './email-service.js';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -11,11 +11,14 @@ async function testEmail() {
 
 	const initialized = await emailService.initialize();
 	if (!initialized) {
+		// eslint-disable-next-line no-console
 		console.error('❌ Failed to initialize email service');
+		// eslint-disable-next-line no-console
 		console.log('💡 Check your .env file and Gmail App Password configuration');
 		return;
 	}
 
+	// eslint-disable-next-line no-console
 	console.log('📧 Sending test email...');
 
 	const success = await emailService.sendEmail(
@@ -43,15 +46,19 @@ async function testEmail() {
 	);
 
 	if (success) {
+		// eslint-disable-next-line no-console
 		console.log('✅ Test email sent successfully!');
+		// eslint-disable-next-line no-console
 		console.log('📬 Check your inbox for the test email');
 	} else {
+		// eslint-disable-next-line no-console
 		console.log('❌ Test email failed');
 	}
 }
 
 // Run the test
 testEmail().catch(error => {
+	// eslint-disable-next-line no-console
 	console.error('❌ Test failed with error:', error.message);
 	process.exit(1);
 });

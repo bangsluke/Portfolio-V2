@@ -383,27 +383,31 @@ if (dateStart || dateEnd) {
 		});
 
 		// Handle mobile touch events for tooltips
-		const tooltipTriggers = document.querySelectorAll('.group\/tooltip');
+		const tooltipTriggers = document.querySelectorAll('.group\\/tooltip');
 
 		tooltipTriggers.forEach(trigger => {
 			let tooltipActive = false;
 
 			// Handle touch start for tooltip
-			trigger.addEventListener('touchstart', (e: Event) => {
-				const touchEvent = e as TouchEvent;
-				touchEvent.preventDefault();
-				touchEvent.stopPropagation();
+			trigger.addEventListener(
+				'touchstart',
+				(e: Event) => {
+					const touchEvent = e as TouchEvent;
+					// Remove preventDefault since we're using passive: true
+					touchEvent.stopPropagation();
 
-				if (tooltipActive) {
-					// Hide tooltip if already active
-					trigger.classList.remove('group-active/tooltip');
-					tooltipActive = false;
-				} else {
-					// Show tooltip
-					trigger.classList.add('group-active/tooltip');
-					tooltipActive = true;
-				}
-			});
+					if (tooltipActive) {
+						// Hide tooltip if already active
+						trigger.classList.remove('group-active/tooltip');
+						tooltipActive = false;
+					} else {
+						// Show tooltip
+						trigger.classList.add('group-active/tooltip');
+						tooltipActive = true;
+					}
+				},
+				{ passive: true }
+			);
 
 			// Handle click outside to close tooltip
 			document.addEventListener('click', (e: Event) => {
