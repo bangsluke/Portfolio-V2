@@ -41,15 +41,17 @@ const allProjects = await getCollection('projects');
 const processedLongDescription = processContent(data.longDescription);
 const processedLessonsLearned = processContent(data.lessonsLearned);
 
-// Get linked companies and clients
+// Get linked companies, clients, and educations
 let linkedCompanies: any[] = [];
 let linkedClients: any[] = [];
+let linkedEducations: any[] = [];
 
 try {
 	const companies = await getCollection('companies');
 	const clients = await getCollection('clients');
+	const educations = await getCollection('educations');
 
-	// Check each linked company/client
+	// Check each linked company/client/education
 	(data.linkedCompany || []).forEach(linkedItem => {
 		const linkedName = processObsidianLink(linkedItem);
 
@@ -68,11 +70,20 @@ try {
 
 			if (client) {
 				linkedClients.push(client);
+			} else {
+				// If not found in clients, try educations
+				const education = educations.find(
+					education => extractNameFromFilename(education.id) === linkedName
+				);
+
+				if (education) {
+					linkedEducations.push(education);
+				}
 			}
 		}
 	});
 } catch (error) {
-	console.error('Error fetching linked companies/clients:', error);
+	console.error('Error fetching linked companies/clients/educations:', error);
 }
 
 // Helper to get company name from frontmatter or fallback to filename minus extension
@@ -263,11 +274,13 @@ const ogimage = {
 			)
 		}
 
-		<!-- Linked Company/Client Section -->
+		<!-- Linked Company/Client/Education Section -->
 		{
 			data.linkedCompany &&
 				data.linkedCompany.length > 0 &&
-				(linkedCompanies.length > 0 || linkedClients.length > 0) && (
+				(linkedCompanies.length > 0 ||
+					linkedClients.length > 0 ||
+					linkedEducations.length > 0) && (
 					<section class="px-8 mb-6 md:mb-12">
 						<div class="max-w-4xl mx-auto">
 							<div class="text-center">
@@ -287,6 +300,12 @@ const ogimage = {
 											logoURL={client.data.logoURL || undefined}
 										/>
 									))}
+									{linkedEducations.map(education => (
+										<CustomerAndClientCard
+											name={getCompanyName(education)}
+											logoURL={education.data.logoURL || undefined}
+										/>
+									))}
 								</div>
 							</div>
 						</div>
@@ -296,59 +315,74 @@ const ogimage = {
 
 		<!-- Project Links -->
 		{
-			(data.projectURL || data.codeURL) && (
-				<section class="px-8 mb-6 md:mb-12">
-					<div class="max-w-4xl mx-auto">
-						<div class="flex text-center gap-4 justify-center items-center">
-							<span class="text-lg text-colour">Project Links:</span>
-							<div class="flex flex-wrap gap-4 justify-center items-start">
-								{data.projectURL && (
-									<a
-										href={data.projectURL}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="bg-theme-400 hover:bg-theme-500 text-black font-bold px-8 py-3 mb-6 md:mb-0 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
-										<svg
-											class="w-5 h-5 mr-2"
-											fill="none"
-											stroke="currentColor"
-											viewBox="0 0 24 24">
-											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												stroke-width="2"
-												d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-											/>
-										</svg>
-										Visit Site
-									</a>
-								)}
-								{data.codeURL && (
-									<a
-										href={data.codeURL}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="bg-white dark:bg-zinc-900 hover:bg-theme-700/30 text-colour font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
-										<svg
-											class="w-5 h-5 mr-2"
-											fill="none"
-											stroke="currentColor"
-											viewBox="0 0 24 24">
-											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												stroke-width="2"
-												d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-											/>
-										</svg>
-										View Code
-									</a>
-								)}
+			(() => {
+				// Check if either URL exists and is not blank or "n/a"
+				const hasValidProjectURL =
+					data.projectURL &&
+					data.projectURL.trim() !== '' &&
+					data.projectURL.toLowerCase() !== 'n/a';
+				const hasValidCodeURL =
+					data.codeURL &&
+					data.codeURL.trim() !== '' &&
+					data.codeURL.toLowerCase() !== 'n/a';
+
+				if (hasValidProjectURL || hasValidCodeURL) {
+					return (
+						<section class="px-8 mb-6 md:mb-12">
+							<div class="max-w-4xl mx-auto">
+								<div class="flex text-center gap-4 justify-center items-center">
+									<span class="text-lg text-colour">Project Links:</span>
+									<div class="flex flex-wrap gap-4 justify-center items-start">
+										{hasValidProjectURL && data.projectURL && (
+											<a
+												href={data.projectURL}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="bg-theme-400 hover:bg-theme-500 text-black font-bold px-8 py-3 mb-6 md:mb-0 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
+												<svg
+													class="w-5 h-5 mr-2"
+													fill="none"
+													stroke="currentColor"
+													viewBox="0 0 24 24">
+													<path
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														stroke-width="2"
+														d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+													/>
+												</svg>
+												Visit Site
+											</a>
+										)}
+										{hasValidCodeURL && data.codeURL && (
+											<a
+												href={data.codeURL}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="bg-white dark:bg-zinc-900 hover:bg-theme-700/30 text-colour font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
+												<svg
+													class="w-5 h-5 mr-2"
+													fill="none"
+													stroke="currentColor"
+													viewBox="0 0 24 24">
+													<path
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														stroke-width="2"
+														d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+													/>
+												</svg>
+												View Code
+											</a>
+										)}
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</section>
-			)
+						</section>
+					);
+				}
+				return null;
+			})()
 		}
 
 		<!-- Bottom Back Button -->

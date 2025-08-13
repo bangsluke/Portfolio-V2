@@ -28,7 +28,7 @@ function getSlug(str: string) {
 		.replace(/(^-|-$)/g, '');
 }
 
-// Extract company name from linkedCompany array
+// Extract company/education name from linkedCompany array
 let companyName = null;
 if (linkedCompany && linkedCompany.length > 0) {
 	const linkedCompanyRaw = linkedCompany[0];

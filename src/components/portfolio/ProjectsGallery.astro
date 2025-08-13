@@ -9,10 +9,11 @@ import { extractNameFromFilename } from '../../utils/filename-utils';
 import Heading from '../ui/Heading.astro';
 import ProjectCard from './ProjectCard.astro';
 
-// Get all projects, companies, and clients from the local content folders
+// Get all projects, companies, clients, and educations from the local content folders
 const projects = await getCollection('projects');
 const companies = await getCollection('companies');
 const clients = await getCollection('clients');
+const educations = await getCollection('educations');
 
 // Get portfolio configuration with fallback
 let maxProjectsDisplay = 6;
@@ -52,11 +53,11 @@ const sortedProjects = projects.sort((a, b) => {
 	return a.slug.localeCompare(b.slug);
 });
 
-// Process projects to include company/client logos
+// Process projects to include company/client/education logos
 const processedProjects = sortedProjects.map(project => {
 	let companyLogoURL = null;
 
-	// If project has linkedCompany, find the company or client and get its logoURL
+	// If project has linkedCompany, find the company, client, or education and get its logoURL
 	if (project.data.linkedCompany && project.data.linkedCompany.length > 0) {
 		// Get the first linked company and process Obsidian link format
 		const linkedCompanyRaw = project.data.linkedCompany[0];
@@ -79,6 +80,16 @@ const processedProjects = sortedProjects.map(project => {
 
 			if (client && client.data.logoURL) {
 				companyLogoURL = client.data.logoURL;
+			} else {
+				// If not found in clients, try educations collection
+				const education = educations.find(education => {
+					const educationName = extractNameFromFilename(education.id);
+					return educationName === linkedCompanyName;
+				});
+
+				if (education && education.data.logoURL) {
+					companyLogoURL = education.data.logoURL;
+				}
 			}
 		}
 	}
