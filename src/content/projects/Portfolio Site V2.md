@@ -7,8 +7,8 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-08-08T15:17:37+01:00
-viewCount: 61
+modified: 2025-08-12T18:53:34+01:00
+viewCount: 63
 aliases: 
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -42,7 +42,7 @@ version: 2
 portfolioOrder: 2
 shortDescription: "This personal portfolio website for displaying my past projects, experience and skills."
 longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills.<br><br>Every project, skill, role, company, education and reference is stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> notes, processed by <span class=\"theme-link\">Node.js</span> scripts and loaded into the <span class=\"theme-link\">Astro</span> site for display."
-lessonsLearned: "TBC<br><br>Initially I set the project up with an <span class=\"theme-link\">Astro</span> front end and started doing <span class=\"theme-link\">GraphQL</span> calls to my <a href=\"/projects/backend-server\" class=\"theme-link\">Backend Server</a> project to collect the portfolio data I had stored in the <span class=\"theme-link\">Neo4j</span> graph. However I soon realized that I was undoing the speed of <span class=\"theme-link\">Astro</span> and switched to a script that loads the required portfolio data (stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> files) into the portfolio repo and used <span class=\"theme-link\">Astro</span> collections to gather and display the data that way.<br><br>The project taught me about defining <span class=\"theme-link\">npm</span> functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package."
+lessonsLearned: "TBC<br><br>Initially I set the project up with an <span class=\"theme-link\">Astro</span> front end and started doing <span class=\"theme-link\">GraphQL</span> calls to my <a href=\"/projects/backend-server\" class=\"theme-link\">Backend Server</a> project to collect the portfolio data I had stored in the <span class=\"theme-link\">Neo4j</span> graph. However I soon realized that I was undoing the speed of <span class=\"theme-link\">Astro</span> and switched to a script that loads the required portfolio data (stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> files) into the portfolio repo and used <span class=\"theme-link\">Astro</span> collections to gather and display the data that way.<br><br>The project taught me about defining <span class=\"theme-link\">npm</span> functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package.<br><br>It was also my first taste of <span class=\"theme-link\">Tailwind CSS</span> and although I began to grasp the utility class names towards the end of development, I found it easier in a lot of situations to extract a class and define it in the main <span class=\"theme-link\">CSS</span> file. I see it's benefits for fast prototyping, but I'm not a big fan from what I've seen."
 name: "Portfolio Site V2"
 ---
 # Portfolio Site V2
@@ -424,6 +424,8 @@ TBC
 Initially I set the project up with an [[Astro]] front end and started doing [[GraphQL]] calls to my [[Backend Server]] project to collect the portfolio data I had stored in the [[Neo4j]] graph. However I soon realized that I was undoing the speed of [[Astro]] and switched to a script that loads the required portfolio data (stored in [[Obsidian]] [[Markdown]] files) into the portfolio repo and used [[Astro]] collections to gather and display the data that way.
 
 The project taught me about defining [[npm]] functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package.
+
+It was also my first taste of [[Tailwind CSS]] and although I began to grasp the utility class names towards the end of development, I found it easier in a lot of situations to extract a class and define it in the main [[CSS]] file. I see it's benefits for fast prototyping, but I'm not a big fan from what I've seen. 
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
