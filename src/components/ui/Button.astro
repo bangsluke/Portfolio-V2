@@ -160,7 +160,8 @@ const loadingAriaLabel = isLoading
 		aria-disabled={disabled}
 		aria-busy={isLoading}
 		aria-pressed={isActive}
-		{...externalAttributes}>
+		{...externalAttributes}
+		data-haptic-button>
 		{
 			iconName && (
 				<Icon name={iconName} class={iconClasses[variant]} aria-hidden="true" />
@@ -174,3 +175,49 @@ const loadingAriaLabel = isLoading
 		{loadingText}
 	</a>
 </div>
+
+<script>
+	// Haptic feedback functionality for mobile devices
+	function initHapticFeedback() {
+		// Check if device supports haptic feedback
+		const hasHapticSupport = 'vibrate' in navigator || 'vibrate' in window;
+
+		if (!hasHapticSupport) return;
+
+		// Get all buttons with haptic feedback
+		const hapticButtons = document.querySelectorAll('[data-haptic-button]');
+
+		hapticButtons.forEach(button => {
+			button.addEventListener('click', e => {
+				// Only provide haptic feedback if not disabled
+				if (button.getAttribute('aria-disabled') === 'true') return;
+
+				// Check if it's a mobile device
+				const isMobile =
+					/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+						navigator.userAgent
+					) ||
+					'ontouchstart' in window ||
+					navigator.maxTouchPoints > 0;
+
+				if (isMobile) {
+					// Provide haptic feedback
+					if ('vibrate' in navigator) {
+						// Standard vibration API
+						navigator.vibrate(10); // Short 10ms vibration
+					} else if ('vibrate' in window) {
+						// Fallback for some browsers
+						(window as any).vibrate(10);
+					}
+				}
+			});
+		});
+	}
+
+	// Initialize haptic feedback when DOM is ready
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initHapticFeedback);
+	} else {
+		initHapticFeedback();
+	}
+</script>
