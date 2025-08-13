@@ -7,10 +7,10 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 17:59
-modified: 2025-07-19T10:01:02+01:00
+modified: 2025-08-13T11:44:23+01:00
 aliases: 
-viewCount: 16
-projectURL: https://bangsluke-portfolio.netlify.app/
+viewCount: 17
+projectURL: https://bangsluke-portfolio-v1.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
@@ -99,7 +99,7 @@ The portfolio site showcased all the information I believed to be relevant for p
 
 - Main repo: `=this.codeURL`
 - Secondary repo: n/a
-- [[Netlify]]: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
+- [[Netlify]]: <https://app.netlify.com/projects/bangsluke-portfolio-v1/overview>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

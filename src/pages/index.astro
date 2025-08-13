@@ -1,5 +1,13 @@
 ---
-import Layout from '../layouts/LayoutSinglePage.astro';
+import CodingSection from '../components/portfolio/CodingSection.astro';
+import Contact from '../components/portfolio/Contact.astro';
+import CustomerAndClientCarousel from '../components/portfolio/CustomerAndClientCarousel.astro';
+import EducationTimeline from '../components/portfolio/EducationTimeline.astro';
+import HeroIndex from '../components/portfolio/HeroIndex.astro';
+import ProjectsGallery from '../components/portfolio/ProjectsGallery.astro';
+import ReferenceCarousel from '../components/portfolio/ReferenceCarousel.astro';
+import WorkExperienceTimeline from '../components/portfolio/WorkExperienceTimeline.astro';
+import Layout from '../layouts/Layout.astro';
 const pageTitle = 'bangsluke Portfolio';
 const description = 'My portfolio site';
 const ogimage = {
@@ -9,10 +17,12 @@ const ogimage = {
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
-	<div class="flex flex-col items-center justify-center h-[60vh] md:h-[72vh]">
-		<h1 class="text-4xl font-bold dark:text-white">Coming soon...</h1>
-		<p class="text-gray-500 dark:text-gray-400">
-			Just tidying up some things...
-		</p>
-	</div>
+	<HeroIndex />
+	<ProjectsGallery />
+	<CodingSection />
+	<WorkExperienceTimeline />
+	<CustomerAndClientCarousel />
+	<EducationTimeline />
+	<ReferenceCarousel />
+	<Contact />
 </Layout>
