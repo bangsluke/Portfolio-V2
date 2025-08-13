@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-expect-error - GitHubCalendar is not typed
 import GitHubCalendar from 'preact-github-calendar';
 import { useEffect, useState } from 'preact/hooks';
 
@@ -48,7 +48,8 @@ export default function GitHubContributions() {
 				if (reposResponse.ok) {
 					const repos = await reposResponse.json();
 					const totalStars = repos.reduce(
-						(acc: number, repo: any) => acc + repo.stargazers_count,
+						(acc: number, repo: { stargazers_count: number }) =>
+							acc + repo.stargazers_count,
 						0
 					);
 
@@ -88,6 +89,7 @@ export default function GitHubContributions() {
 					});
 				}
 			} catch (err) {
+				// eslint-disable-next-line no-console
 				console.error('Error fetching GitHub stats:', err);
 				setError(
 					err instanceof Error ? err.message : 'Failed to fetch GitHub data'
@@ -118,7 +120,8 @@ export default function GitHubContributions() {
 						title="Click to view GitHub profile">
 						<GitHubCalendar
 							username={username}
-							onError={(err: any) => {
+							onError={(err: unknown) => {
+								// eslint-disable-next-line no-console
 								console.error('GitHub Calendar error:', err);
 								setCalendarError('Failed to load contributions calendar');
 							}}

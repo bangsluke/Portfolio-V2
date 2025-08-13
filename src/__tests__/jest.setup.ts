@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 // Global test setup
 import '@testing-library/jest-dom';
 

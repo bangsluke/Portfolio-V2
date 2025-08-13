@@ -3,11 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	const navLinks = document.querySelector('.nav-links');
 
 	if (!hamburger) {
+		// eslint-disable-next-line no-console
 		console.error('Hamburger button not found');
 		return;
 	}
 
 	if (!navLinks) {
+		// eslint-disable-next-line no-console
 		console.error('Navigation links not found');
 		return;
 	}
@@ -19,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		// Re-enable scrolling
 		document.body.style.overflow = '';
 		document.documentElement.style.overflow = '';
-		console.log('Mobile menu closed');
 	}
 
 	// Function to open the mobile menu
@@ -29,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		// Freeze scrolling when menu is open
 		document.body.style.overflow = 'hidden';
 		document.documentElement.style.overflow = 'hidden';
-		console.log('Mobile menu opened');
 	}
 
 	// Function to toggle the mobile menu
@@ -43,14 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	hamburger.addEventListener('click', e => {
 		e.stopPropagation(); // Prevent event from bubbling to document
-		console.log('Hamburger clicked');
 		toggleMobileMenu();
 	});
 
 	// Close menu when clicking on navigation links
 	navLinks.addEventListener('click', e => {
 		if (e.target.tagName === 'A') {
-			console.log('Navigation link clicked, closing menu');
 			closeMobileMenu();
 		}
 	});
@@ -62,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			!hamburger.contains(e.target) &&
 			!navLinks.contains(e.target)
 		) {
-			console.log('Clicked outside menu, closing');
 			closeMobileMenu();
 		}
 	});
@@ -70,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Close menu on escape key
 	document.addEventListener('keydown', e => {
 		if (e.key === 'Escape' && navLinks.classList.contains('expanded')) {
-			console.log('Escape key pressed, closing menu');
 			closeMobileMenu();
 		}
 	});

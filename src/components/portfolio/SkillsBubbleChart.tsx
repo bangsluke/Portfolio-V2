@@ -18,7 +18,7 @@ interface Skill {
 
 interface SkillsBubbleChartProps {
 	skills: Skill[];
-	projects: any[]; // Projects collection for counting skill usage
+	projects: Array<{ id: string; data: { skills?: string[] } }>; // Projects collection for counting skill usage
 	isFullscreen?: boolean;
 	onClose?: () => void;
 }
@@ -200,7 +200,15 @@ const SkillsBubbleChart = ({
 							svg
 								.transition()
 								.duration(1000)
-								.call(zoomRef.current.transform as any, transform);
+								.call(
+									zoomRef.current.transform as unknown as (
+										selection:
+											| d3.Selection<SVGSVGElement, unknown, null, undefined>
+											| d3.Transition<SVGSVGElement, unknown, null, undefined>,
+										transform: d3.ZoomTransform
+									) => void,
+									transform
+								);
 						}
 					}
 				}
@@ -259,7 +267,9 @@ const SkillsBubbleChart = ({
 			.force('center', d3.forceCenter(width / 2, height / 2))
 			.force(
 				'collision',
-				d3.forceCollide().radius((d: any) => d.radius + 5)
+				d3
+					.forceCollide()
+					.radius((d: d3.SimulationNodeDatum) => (d as BubbleData).radius + 5)
 			)
 			.force('x', d3.forceX(width / 2).strength(0.1))
 			.force('y', d3.forceY(height / 2).strength(0.1));
@@ -302,8 +312,8 @@ const SkillsBubbleChart = ({
 		// Add circles
 		bubbles
 			.append('circle')
-			.attr('r', (d: any) => d.radius)
-			.attr('fill', (d: any) => d.color)
+			.attr('r', (d: BubbleData) => d.radius)
+			.attr('fill', (d: BubbleData) => d.color)
 			.attr('stroke', '#ffffff')
 			.attr('stroke-width', 2)
 			.style('opacity', 0.8)
@@ -311,17 +321,21 @@ const SkillsBubbleChart = ({
 
 		// Add skill icons
 		bubbles
-			.filter((d: any) => d.iconName)
+			.filter((d: BubbleData) => d.iconName != null)
 			.append('image')
-			.attr('href', (d: any) => `/icons/${d.iconName}.svg`)
-			.attr('width', (d: any) => Math.min(d.radius * 1.0, d.radius * 1.0))
-			.attr('height', (d: any) => Math.min(d.radius * 1.0, d.radius * 1.0))
-			.attr('x', (d: any) => -Math.min(d.radius * 0.5, d.radius * 0.5))
-			.attr('y', (d: any) => -Math.min(d.radius * 0.5, d.radius * 0.5));
+			.attr('href', (d: BubbleData) => `/icons/${d.iconName}.svg`)
+			.attr('width', (d: BubbleData) =>
+				Math.min(d.radius * 1.0, d.radius * 1.0)
+			)
+			.attr('height', (d: BubbleData) =>
+				Math.min(d.radius * 1.0, d.radius * 1.0)
+			)
+			.attr('x', (d: BubbleData) => -Math.min(d.radius * 0.5, d.radius * 0.5))
+			.attr('y', (d: BubbleData) => -Math.min(d.radius * 0.5, d.radius * 0.5));
 
 		// Update positions on simulation tick
 		simulation.on('tick', () => {
-			bubbles.attr('transform', (d: any) => {
+			bubbles.attr('transform', (d: BubbleData) => {
 				const x = d.x ?? 0;
 				const y = d.y ?? 0;
 				return `translate(${x},${y})`;
@@ -373,7 +387,15 @@ const SkillsBubbleChart = ({
 				svg
 					.transition()
 					.duration(1000)
-					.call(zoom.transform as any, transform);
+					.call(
+						zoom.transform as unknown as (
+							selection:
+								| d3.Selection<SVGSVGElement, unknown, null, undefined>
+								| d3.Transition<SVGSVGElement, unknown, null, undefined>,
+							transform: d3.ZoomTransform
+						) => void,
+						transform
+					);
 			}
 		});
 

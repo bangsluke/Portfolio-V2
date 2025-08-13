@@ -32,6 +32,7 @@ export default function ReferenceItem({
 				setCopiedField(curr => (curr === field ? null : curr));
 			}, 2000);
 		} catch (err) {
+			// eslint-disable-next-line no-console
 			console.error('Failed to copy to clipboard:', err);
 		}
 	};
@@ -105,7 +106,9 @@ export default function ReferenceItem({
 									type="button"
 									onClick={e => {
 										e.stopPropagation();
-										copyToClipboard(reference.email!, `email-${reference.id}`);
+										if (reference.email) {
+											copyToClipboard(reference.email, `email-${reference.id}`);
+										}
 									}}
 									className="opacity-0 group-hover/contact:opacity-100 transition-opacity duration-200 p-1 hover:bg-white/20 hover:text-theme-400 rounded"
 									title="Copy email"
@@ -148,7 +151,9 @@ export default function ReferenceItem({
 									type="button"
 									onClick={e => {
 										e.stopPropagation();
-										copyToClipboard(reference.phone!, `phone-${reference.id}`);
+										if (reference.phone) {
+											copyToClipboard(reference.phone, `phone-${reference.id}`);
+										}
 									}}
 									className="opacity-0 group-hover/contact:opacity-100 transition-opacity duration-200 p-1 hover:bg-white/20 rounded"
 									title="Copy phone"

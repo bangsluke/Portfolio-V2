@@ -2,6 +2,14 @@
  * Utility functions for calculating project counts consistently across components
  */
 
+interface Project {
+	data: {
+		technologies?: string[];
+		name?: string;
+	};
+	slug: string;
+}
+
 /**
  * Calculate the number of projects that use a specific skill/technology
  * Uses exact matching logic with support for pipe aliases
@@ -9,7 +17,7 @@
 export function getProjectCount(
 	skillName: string,
 	skillId: string,
-	projects: any[]
+	projects: Project[]
 ): number {
 	return projects.filter(project => {
 		// Add null checking for project and project.data
@@ -54,7 +62,7 @@ export function getProjectCount(
 export function getProjectsUsingSkill(
 	skillName: string,
 	skillId: string,
-	projects: any[]
+	projects: Project[]
 ): string[] {
 	const projectNames: string[] = [];
 

@@ -26,7 +26,7 @@ export default function CustomerAndClientItem({
 			: 'bg-gradient-to-br from-blue-500 to-purple-600';
 
 	// Handle card click - allow selection on all screen sizes
-	const handleCardClick = (e: any) => {
+	const handleCardClick = (e: MouseEvent) => {
 		e.preventDefault();
 		e.stopPropagation();
 
@@ -35,7 +35,7 @@ export default function CustomerAndClientItem({
 	};
 
 	// Handle keyboard navigation
-	const handleKeyDown = (e: any) => {
+	const handleKeyDown = (e: KeyboardEvent) => {
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
 			onClick();
