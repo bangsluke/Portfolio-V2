@@ -233,7 +233,8 @@ const containerClasses = `${baseClasses} ${sizeClasses[size].container} ${varian
 						this.classList.add('group-active/skill');
 						tooltipActive = true;
 					}
-				}
+				},
+				{ passive: true }
 			);
 
 			// Handle click outside to close tooltip
