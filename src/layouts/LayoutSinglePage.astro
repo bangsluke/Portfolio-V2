@@ -17,7 +17,7 @@ const siteUrl = new URL(Astro.url).origin;
 const SEO = {
 	sitename: 'bangsluke Portfolio',
 	url: siteUrl,
-	locale: 'en_UK',
+	locale: 'en_GB',
 	author: 'Luke Bangs | bangsluke',
 	twitter: '@bangsluke',
 };
@@ -26,7 +26,7 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 ---
 
 <html
-	lang="en"
+	lang="en-GB"
 	class="dark:bg-dark-background bg-theme-50/5 font-montserrat scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
@@ -107,14 +107,8 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 
 		<!-- Sitemap -->
 		<link rel="sitemap" href="/sitemap-index.xml" />
-
-		<!-- Umami Analytics -->
-		<script
-			defer
-			src="https://cloud.umami.is/script.js"
-			data-website-id="fad6adfb-2b8b-4868-a0a9-59d4fd860488"></script>
 	</head>
-	<body class="overflow-x-hidden">
+	<body class="overflow-x-hidden overflow-y-hidden">
 		<SpeedInsights />
 		<div class="blur-circle"></div>
 		<div
@@ -123,7 +117,7 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 		</div>
 		<Header />
 
-		<div class="min-h-[85vh]">
+		<div class="h-[63vh] md:h-[72vh]">
 			<slot />
 		</div>
 
