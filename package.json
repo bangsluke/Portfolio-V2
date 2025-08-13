@@ -42,6 +42,7 @@
 		"@tailwindcss/vite": "^4.1.8",
 		"@types/d3": "^7.4.3",
 		"@vercel/speed-insights": "^1.2.0",
+		"@yeskunall/astro-umami": "^0.0.6",
 		"alpinejs": "^3.14.9",
 		"astro": "^5.12.8",
 		"astro-icon": "^1.1.5",
