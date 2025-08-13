@@ -1402,10 +1402,9 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	font-size: 0.7rem !important;
 }
 
-.footer-logo {
-	display: block !important;
+footer .footer-logo {
+	display: inline-flex;
 }
-
 /* Mobile modal improvements */
 @media (max-width: 768px) {
 	.footer-logo {
