@@ -7,8 +7,8 @@ tags:
   - portfolio
   - notes
 created: 2022-04-10T09:28:00
-modified: 2025-07-19T09:45:29+01:00
-viewCount: 33
+modified: 2025-08-15T14:05:17+01:00
+viewCount: 34
 aliases: 
 projectURL: https://www.dorkiniansfcstats.co.uk/
 codeURL: https://github.com/bangsluke/Dorkinians-Dev-Site
@@ -37,11 +37,11 @@ topicTags:
   - "[[Dorkinians FC]]"
   - "[[Football]]"
 powerShellAlias: dorkinians
-version: 1
+version: 2
 portfolioOrder: 2
 shortDescription: "A sport stats website for displaying performance data for <span class=\"theme-link\">Dorkinians FC</span> players and teams."
 longDescription: "A sports stats site for displaying performance data for <span class=\"theme-link\">Dorkinians FC</span> players and teams, my local <span class=\"theme-link\">football</span> club which I play for. What initially started as an <span class=\"theme-link\">Excel</span> spreadsheet with stats posted on our club WhatsApp each week was the perfect opportunity for me to try and develop into my first real public website. I even wrote a <a href=\"https://dev.to/bangsluke/building-a-stats-website-for-a-sports-club-4g5m\">Dev article</a> explaining how I built the stats site."
-lessonsLearned: "This project taught me several things:<br>- Retrospectively taught me the importance of components for reusability for long term maintainability. All of this project was built within a single <span class=\"theme-link\">HTML</span> and <span class=\"theme-link\">JavaScript</span> file (and <span class=\"theme-link\">CSS</span>) before I knew how to work properly with components, meaning everything is copied out and manually edited over and over again, making maintenance a nightmare<br>- Reviewing the speed of the website through analysis tools helped me learn I need to reduce the number of <span class=\"theme-link\">HTML</span> elements in the future by being smarter and more efficient in components<br>- Taught me that parsing a <span class=\"theme-link\">CSV</span> using the method I used is too slow for large amounts of data, especially when the data continues growing. The project needs to be rebuilt faster with a new method<br>- Allowed me to learn how to work with <span class=\"theme-link\">SVG</span> files used as the images on the TOTW page<br>- Helped me creatively come up with ideas to keep users engaged whilst data was loading, leading to the various random humorous quotes I have appearing on the main loading screen<br><br>All of the above led me to begin work on <span class=\"theme-link\">Dorkinians Website V2</span> to overcome the problems listed above."
+lessonsLearned: "This project taught me several things:<br>- Retrospectively taught me the importance of components for reusability for long term maintainability. All of this project was built within a single <span class=\"theme-link\">HTML</span> and <span class=\"theme-link\">JavaScript</span> file (and <span class=\"theme-link\">CSS</span>) before I knew how to work properly with components, meaning everything is copied out and manually edited over and over again, making maintenance a nightmare<br>- Reviewing the speed of the website through analysis tools helped me learn I need to reduce the number of <span class=\"theme-link\">HTML</span> elements in the future by being smarter and more efficient in components<br>- Taught me that parsing a <span class=\"theme-link\">CSV</span> using the method I used is too slow for large amounts of data, especially when the data continues growing. The project needs to be rebuilt faster with a new method<br>- Allowed me to learn how to work with <span class=\"theme-link\">SVG</span> files used as the images on the TOTW page<br>- Helped me creatively come up with ideas to keep users engaged whilst data was loading, leading to the various random humorous quotes I have appearing on the main loading screen<br><br>All of the above led me to begin work on <span class=\"theme-link\">Dorkinians Website V3</span> to overcome the problems listed above."
 name: "Dorkinians Website"
 ---
 # Dorkinians Website
@@ -120,7 +120,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- [[Dorkinians Website V2]]
+- [[Dorkinians Website V3]]
 - [[Dorkinians Mobile Site]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -133,7 +133,7 @@ This project taught me several things:
 - Taught me that parsing a [[CSV]] using the method I used is too slow for large amounts of data, especially when the data continues growing. The project needs to be rebuilt faster with a new method
 - Allowed me to learn how to work with [[SVG]] files used as the images on the TOTW page
 - Helped me creatively come up with ideas to keep users engaged whilst data was loading, leading to the various random humorous quotes I have appearing on the main loading screen
-All of the above led me to begin work on [[Dorkinians Website V2]] to overcome the problems listed above.
+All of the above led me to begin work on [[Dorkinians Website V3]] to overcome the problems listed above.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

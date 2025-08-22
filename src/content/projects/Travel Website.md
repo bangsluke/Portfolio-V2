@@ -7,7 +7,7 @@ tags:
   - portfolio
   - project/parked
 created: 2025-05-16T09:29:00
-modified: 2025-07-19T09:42:38+01:00
+modified: 2025-08-13T20:56:19+01:00
 viewCount: 1
 aliases:
   - Travel Journal
@@ -144,6 +144,22 @@ To launch the repo, use the [[PowerShell]] alias
 - Add back to top Floating Action Button on all pages
 - Add a heading per page in the below style. Add tags to holidays in the same style as the below bubbles for things such as "skiing"
 - Use suspense in [[React]] for loading faster - [Efficient and Elegant Web Development with Next.js: A Deep Dive into Component Streaming and Chunked Transfer Encoding | by Momen Daoud | Nov, 2023 | Medium](https://medium.com/@momendaoud/efficient-and-elegant-web-development-with-next-js-6087b3fd86e1)
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+### AI Architecture Prompt
+
+I am building a website for sharing my travel notes and I need you to act as a professional software architect who can provide me with accurate and step by step guidance on how to set up the site.
+
+My requirements are as below;
+- The database is a [[Neo4j]] graph with nodes and edges carrying the holiday and location data. Locally I already have a running [[Neo4j]] desktop session. For production, I have a [[Neo4j]] Aura database.
+- The frontend is a [[Next.js]] application which I have already written much of.
+- I would like to deploy the site using [[Netlify]] if possible.
+- Ideally I'd like to make [[GraphQL]] calls from the front end to the database. I particularly need guidance in how to do this.
+
+Please be as detailed as you can about if the above is possible, and what recommendations you would make, including a step by step guide on how to correctly deploy the above.
+
+I have so far been unable to deploy my site to [[Netlify]] as I am very confused about if I need to host the [[Apollo]] server somewhere
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
