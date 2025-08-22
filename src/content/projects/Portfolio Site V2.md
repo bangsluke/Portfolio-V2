@@ -7,9 +7,9 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-08-13T12:00:02+01:00
-viewCount: 65
-aliases: 
+modified: 2025-08-16T12:39:46+01:00
+viewCount: 67
+aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
 codeMultipleRepos: false
@@ -119,6 +119,8 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Planning and Design
 
+> See [Portfolio Site V2 - Canva](https://www.canva.com/design/DAGwOxW7u4E/LWIzan4Iz-ywjKlt-wyYSQ/edit?utm_content=DAGwOxW7u4E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) for the design
+
 Create an updated Portfolio Website, in a similar style to the previous [[Portfolio Site]], but use [[Obsidian]] as the data source and load all data into my existing [[Neo4j]] graph for retrieval by the site. This will allow dynamic and on the fly updates to things such as skills updates, roles updates etc whilst creating a single source of truth in [[Obsidian]].
 
 Add portfolio tag to indicate which project, company and technology/skill should be displayed.
@@ -127,7 +129,7 @@ Design initially started from a template project called [NeonMint](https://githu
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-### ChatGPT Recommended Architecture 
+### AI Recommended Architecture 
 
 > See [[ChatGPT]] thread "Portfolio Site V2 Stack"
 
@@ -135,13 +137,6 @@ Design initially started from a template project called [NeonMint](https://githu
 - Backend/API: [[Vercel]] Serverless Functions ([[Node.js]])
 - Database: [[Neo4j Aura]] (cloud-hosted graph DB)
 - Auth: Secured via [[Vercel]]'s Environment Variables
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-### Design
-
-- See [[Portfolio Site V2 Canvas.canvas|Portfolio Site V2 Canvas]] for the design
-- Also see "Portfolio V2" in Freeform for design ideas
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -416,6 +411,7 @@ An enthusiastic individual with a passion for software and data seeking a stimul
 ## Other Links
 
 - [[Portfolio Site]]
+- [Portfolio Site V2 - Canva](https://www.canva.com/design/DAGwOxW7u4E/LWIzan4Iz-ywjKlt-wyYSQ/edit?utm_content=DAGwOxW7u4E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

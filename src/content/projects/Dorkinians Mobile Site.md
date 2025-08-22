@@ -124,7 +124,7 @@ To launch the repo, use the [[PowerShell]] alias
 - <https://dorkinians-mobile-stats.netlify.app/main>
 - <https://github.com/bangsluke/mobile-stats-dorkinians>
 - [[Dorkinians Website]]
-- [[Dorkinians Website V2]]
+- [[Dorkinians Website V3]]
 - [[Todoist]] Lists
 	- [Dorkinians Mobile Site](https://todoist.com/showTask?id=6496470356&sync_id=6506077820)
 

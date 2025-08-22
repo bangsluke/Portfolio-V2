@@ -10,7 +10,7 @@ viewCount: 5
 aliases:
   - Google Cloud Platform
   - GCP
-skillRating: 85
+skillRating: 55
 skillDescription: Built several large applications off of Google Sheets data, utilising its API and GAS functionalities.
 logoFileName: google_cloud.svg
 ---

@@ -5,7 +5,7 @@ tags:
   - portfolio
 created: 2025-07-16T09:36:00
 modified: 2025-07-22T17:44:22+01:00
-viewCount: 6
+viewCount: 3
 dateStart: 2018-06-01
 dateEnd: 2019-07-01
 linkedCompany:
