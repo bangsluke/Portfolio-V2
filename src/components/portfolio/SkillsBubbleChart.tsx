@@ -158,8 +158,15 @@ const SkillsBubbleChart = ({
 	useEffect(() => {
 		const handleReset = (e: Event) => {
 			const customEvent = e as CustomEvent;
-			const { sizeByRating: resetSizeByRating } = customEvent.detail;
-			setSizeByRating(resetSizeByRating);
+			const { currentView } = customEvent.detail;
+
+			// Set the sizing based on the current view
+			if (currentView === 'bubbles-skill') {
+				setSizeByRating(true);
+			} else if (currentView === 'bubbles-project') {
+				setSizeByRating(false);
+			}
+
 			setTooltip(null);
 
 			// Reset zoom to fit all bubbles
@@ -209,18 +216,27 @@ const SkillsBubbleChart = ({
 			}
 		};
 
-		const handleToggle = (e: Event) => {
+		const handleViewToggle = (e: Event) => {
 			const customEvent = e as CustomEvent;
-			const { sizeByRating: newSizeByRating } = customEvent.detail;
-			setSizeByRating(newSizeByRating);
+			const { currentView } = customEvent.detail;
+
+			// Update the sizing based on the current view
+			if (currentView === 'bubbles-skill') {
+				setSizeByRating(true);
+			} else if (currentView === 'bubbles-project') {
+				setSizeByRating(false);
+			}
+			// For 'list' view, we don't need to change anything in this component
 		};
 
+		// Add event listeners
 		window.addEventListener('skillsReset', handleReset);
-		window.addEventListener('skillsToggle', handleToggle);
+		window.addEventListener('skillsViewToggle', handleViewToggle);
 
+		// Cleanup function
 		return () => {
 			window.removeEventListener('skillsReset', handleReset);
-			window.removeEventListener('skillsToggle', handleToggle);
+			window.removeEventListener('skillsViewToggle', handleViewToggle);
 		};
 	}, []);
 
