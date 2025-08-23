@@ -151,7 +151,7 @@ export default function GitHubContributions() {
 							<div class="text-xs text-gray-600 dark:text-white/70 mb-1">
 								dev.to
 							</div>
-							<div class="text-xs font-medium text-theme-600 dark:text-theme-300">
+							<div class="text-xs small-text font-medium text-theme-600 dark:text-theme-300">
 								@bangsluke
 							</div>
 						</div>
@@ -170,7 +170,7 @@ export default function GitHubContributions() {
 							<div class="text-xs text-gray-600 dark:text-white/70 mb-1">
 								Medium
 							</div>
-							<div class="text-xs font-medium text-theme-600 dark:text-theme-300">
+							<div class="text-xs small-text font-medium text-theme-600 dark:text-theme-300">
 								@bangsluke
 							</div>
 						</div>

@@ -222,7 +222,7 @@ const { class: className } = Astro.props;
 							aria-label="Close fullscreen view"
 							title="Close fullscreen view">
 							<svg
-								class="w-6 h-6"
+								class="w-4 h-4"
 								fill="none"
 								stroke="currentColor"
 								viewBox="0 0 24 24">
@@ -248,92 +248,126 @@ const { class: className } = Astro.props;
 
 					<!-- Modal Skills Table View -->
 					<div id="modal-skills-table-view" class="hidden">
-						<div class="overflow-x-auto overflow-y-auto h-full">
-							<table class="w-full text-sm text-colour">
-								<thead class="sticky top-0 bg-white dark:bg-gray-900">
-									<tr class="border-b border-gray-300 dark:border-gray-600">
-										<th class="text-left text-colour py-2 px-3 font-semibold"
-											>Name</th
-										>
-										<th class="text-left text-colour py-2 px-3 font-semibold"
-											>Logo</th
-										>
-										<th class="text-left text-colour py-2 px-3 font-semibold"
-											>Skill Rating</th
-										>
-										<th class="text-left text-colour py-2 px-3 font-semibold"
-											>Project Count</th
-										>
-										<th class="text-left text-colour py-2 px-3 font-semibold"
-											>Description</th
-										>
-									</tr>
-								</thead>
-								<tbody>
-									{
-										processedSkills
-											.sort(
-												(a, b) =>
-													(b.data.skillRating || 0) - (a.data.skillRating || 0)
-											)
-											.map(skill => (
-												<tr class="border-b border-gray-200 dark:border-gray-700">
-													<td class="py-2 px-3 font-medium text-colour">
-														{extractNameFromFilename(skill.id || skill.slug)}
-													</td>
-													<td class="py-2 px-3">
-														{skill.data.logoFileName ? (
+						<div class="overflow-y-auto h-full">
+							<!-- Mobile: Card layout -->
+							<div class="block md:hidden space-y-3">
+								{
+									processedSkills
+										.sort(
+											(a, b) =>
+												(b.data.skillRating || 0) - (a.data.skillRating || 0)
+										)
+										.map(skill => (
+											<div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+												<!-- Top row: Name with logo, Rating, Project Count -->
+												<div class="flex items-start justify-between gap-3 mb-2">
+													<div class="flex flex-col items-start gap-1 min-w-0 flex-1">
+														<div class="text-xs font-medium text-colour">
+															{extractNameFromFilename(skill.id || skill.slug)}
+														</div>
+														{skill.data.logoFileName && (
 															<img
 																src={`/icons/${skill.data.logoFileName}`}
 																alt={`${skill.data.name || skill.slug} icon`}
-																class="w-6 h-6"
+																class="w-5 h-5"
 															/>
-														) : (
-															'-'
 														)}
-													</td>
-													<td
-														class="py-2 px-3"
-														style="color: var(--color-text-colour);">
-														{skill.data.skillRating
-															? skill.data.skillRating
-															: '-'}
-													</td>
-													<td
-														class="py-2 px-3"
-														style="color: var(--color-text-colour);">
-														{(() => {
-															// Calculate project count for this skill
-															const skillName = skill.data.name || skill.slug;
-															const skillId = skill.id.replace('.md', '');
-															return projects.filter(project =>
-																project.data.technologies?.some(
-																	(tech: string) => {
-																		const cleanTech = tech.replace(
-																			/\[\[|\]\]/g,
-																			''
-																		);
-																		return (
-																			cleanTech.toLowerCase() ===
-																			skillName.toLowerCase()
-																		);
-																	}
-																)
-															).length;
-														})()}
-													</td>
-													<td
-														class="py-2 px-3"
-														style="color: var(--color-text-colour);">
-														{skill.data.skillDescription
-															? skill.data.skillDescription
-															: '-'}
-													</td>
-												</tr>
-											))
-									}
-								</tbody>
-							</table>
+													</div>
+													<div class="flex gap-3 text-xs text-colour">
+														<div class="text-center">
+															<div class="text-gray-500 dark:text-gray-400">Rating</div>
+															<div class="font-medium">
+																{skill.data.skillRating || '-'}
+															</div>
+														</div>
+														<div class="text-center">
+															<div class="text-gray-500 dark:text-gray-400">Projects</div>
+															<div class="font-medium">
+																{(() => {
+																	const skillName = skill.data.name || skill.slug;
+																	return projects.filter(project =>
+																		project.data.technologies?.some(
+																			(tech: string) => {
+																				const cleanTech = tech.replace(/\[\[|\]\]/g, '');
+																				return cleanTech.toLowerCase() === skillName.toLowerCase();
+																			}
+																		)
+																	).length;
+																})()}
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- Bottom row: Description -->
+												{skill.data.skillDescription && skill.data.skillDescription !== '-' && (
+													<div class="text-xs text-colour opacity-80 mt-2 pt-2 border-t border-gray-200 dark:border-gray-600">
+														{skill.data.skillDescription}
+													</div>
+												)}
+											</div>
+										))
+								}
+							</div>
+
+							<!-- Desktop: Table layout -->
+							<div class="hidden md:block overflow-x-auto">
+								<table class="w-full text-xs text-colour">
+									<thead class="sticky top-0 bg-white dark:bg-gray-900">
+										<tr class="border-b border-gray-300 dark:border-gray-600">
+											<th class="text-left text-colour py-2 px-3 font-semibold">Name</th>
+											<th class="text-left text-colour py-2 px-3 font-semibold">Skill Rating</th>
+											<th class="text-left text-colour py-2 px-3 font-semibold">Project Count</th>
+											<th class="text-left text-colour py-2 px-3 font-semibold">Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										{
+											processedSkills
+												.sort(
+													(a, b) =>
+														(b.data.skillRating || 0) - (a.data.skillRating || 0)
+												)
+												.map(skill => (
+													<tr class="border-b border-gray-200 dark:border-gray-700">
+														<td class="py-2 px-3 font-medium text-colour">
+															<div class="flex flex-col items-start gap-1">
+																<div class="text-xs font-medium">
+																	{extractNameFromFilename(skill.id || skill.slug)}
+																</div>
+																{skill.data.logoFileName && (
+																	<img
+																		src={`/icons/${skill.data.logoFileName}`}
+																		alt={`${skill.data.name || skill.slug} icon`}
+																		class="w-5 h-5"
+																	/>
+																)}
+															</div>
+														</td>
+														<td class="py-2 px-3" style="color: var(--color-text-colour);">
+															{skill.data.skillRating ? skill.data.skillRating : '-'}
+														</td>
+														<td class="py-2 px-3" style="color: var(--color-text-colour);">
+															{(() => {
+																const skillName = skill.data.name || skill.slug;
+																return projects.filter(project =>
+																	project.data.technologies?.some(
+																		(tech: string) => {
+																			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
+																			return cleanTech.toLowerCase() === skillName.toLowerCase();
+																		}
+																	)
+																).length;
+															})()}
+														</td>
+														<td class="py-2 px-3" style="color: var(--color-text-colour);">
+															{skill.data.skillDescription ? skill.data.skillDescription : '-'}
+														</td>
+													</tr>
+												))
+										}
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>

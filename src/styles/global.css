@@ -1324,7 +1324,7 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 
 	/* Even smaller buttons and text for very small screens */
 	.global-element {
-		font-size: 0.65rem !important;
+		font-size: 0.5rem !important;
 		padding: 0.2rem 0.4rem !important;
 		max-height: 1.25rem !important;
 		min-height: 1.25rem !important;
@@ -1359,6 +1359,10 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	/* Make icons smaller on very small screens */
 	.text-3xl.max-md\\:text-2xl.max-sm\\:text-sm {
 		font-size: 0.875rem !important;
+	}
+
+	.small-text {
+		font-size: 0.6rem !important;
 	}
 }
 
