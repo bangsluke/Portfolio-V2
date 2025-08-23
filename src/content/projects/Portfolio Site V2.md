@@ -7,8 +7,8 @@ tags:
   - analysis
   - notes
 created: 2025-02-02T19:03:00
-modified: 2025-08-16T12:39:46+01:00
-viewCount: 67
+modified: 2025-08-23T08:25:01+01:00
+viewCount: 68
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -176,6 +176,8 @@ Design initially started from a template project called [NeonMint](https://githu
 ##### Projects List
 
 > Sorted by Portfolio Order
+
+![[Portfolio Base.base]]
 
 ```dataview
 TABLE WITHOUT ID
@@ -398,7 +400,7 @@ SORT dateStart ASC
 
 #### About Me Short
 
-An enthusiastic individual with a passion for software and data seeking a stimulating role in which to utilise organisational skills, apply logical intuition and help build long term success within an exciting environment
+A personable and enthusiastic individual with a passion for data and software, seeking a stimulating role in which to utilise organisational skills, apply logical intuition, communicate effectively and help build long term success within an exciting environment
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

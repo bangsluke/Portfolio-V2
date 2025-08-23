@@ -4,7 +4,7 @@ tags:
   - portfolio
 created: 2025-07-21T19:17:10+01:00
 modified: 2025-08-21T14:36:00+01:00
-viewCount: 6
+viewCount: 8
 layout: /src/layouts/MarkdownAbout.astro
 title: Luke Bangs | My portfolio site | bangsluke
 description: My portfolio site to explain who I am, what I can do and what I want to do

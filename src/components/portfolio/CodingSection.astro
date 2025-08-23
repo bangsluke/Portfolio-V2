@@ -11,6 +11,7 @@ import {
 	getProjectCount,
 	getProjectsUsingSkill,
 } from '../../utils/project-count-utils';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 
 const [staticData] = await getCollection('staticData');
 const skills = await getCollection('skills');
@@ -162,12 +163,12 @@ const techData = {
 							Reset
 						</button>
 
-						<!-- Toggle Button -->
+						<!-- Combined Toggle Button - Three States -->
 						<button
 							id="skills-toggle-btn"
 							class="global-element global-button"
-							title="Toggle between skill rating and project count sizing">
-							Toggle: Skill Rating
+							title="Toggle between bubble chart (skill rating), bubble chart (project count), and list view">
+							Toggle: Bubbles (Skill)
 						</button>
 
 						<button
@@ -192,8 +193,99 @@ const techData = {
 				</div>
 
 				<!-- Content area - fills remaining space -->
-				<div class="flex-1 min-h-0">
-					<SkillsBubbles />
+				<div class="flex-1 min-h-0 relative">
+					<!-- Skills Bubbles View -->
+					<div id="skills-bubbles-view" class="h-full">
+						<SkillsBubbles />
+					</div>
+
+					<!-- Skills Table View - Visible by default for web scrapers but positioned absolutely to not affect layout -->
+					<div
+						id="skills-table-view"
+						class="absolute inset-0 z-10 bg-white dark:bg-theme-950 rounded-2xl p-6 overflow-hidden">
+						<!-- Debug: Skills count: {skills.length} -->
+						<div class="overflow-x-auto overflow-y-auto h-full">
+							<table class="w-full text-sm">
+								<thead>
+									<tr class="border-b border-gray-300 dark:border-gray-600">
+										<th class="text-left py-2 px-3 font-semibold text-colour"
+											>Name</th
+										>
+										<th class="text-left py-2 px-3 font-semibold text-colour"
+											>Logo</th
+										>
+										<th class="text-left py-2 px-3 font-semibold text-colour"
+											>Skill Rating</th
+										>
+										<th class="text-left py-2 px-3 font-semibold text-colour"
+											>Project Count</th
+										>
+										<th class="text-left py-2 px-3 font-semibold text-colour"
+											>Description</th
+										>
+									</tr>
+								</thead>
+								<tbody>
+									{
+										skills
+											.sort(
+												(a, b) =>
+													(b.data.skillRating || 0) - (a.data.skillRating || 0)
+											)
+											.map(skill => (
+												<tr class="border-b border-gray-200 dark:border-gray-700">
+													<td class="py-2 px-3 font-medium text-colour">
+														{extractNameFromFilename(skill.id || skill.slug)}
+													</td>
+													<td class="py-2 px-3">
+														{skill.data.logoFileName ? (
+															<img
+																src={`/icons/${skill.data.logoFileName}`}
+																alt={`${skill.data.name || skill.slug} icon`}
+																class="w-6 h-6"
+															/>
+														) : (
+															'-'
+														)}
+													</td>
+													<td class="py-2 px-3 text-colour">
+														{skill.data.skillRating
+															? skill.data.skillRating
+															: '-'}
+													</td>
+													<td class="py-2 px-3 text-colour">
+														{(() => {
+															// Calculate project count for this skill
+															const skillName = skill.data.name || skill.slug;
+															const skillId = skill.id.replace('.md', '');
+															return projects.filter(project =>
+																project.data.technologies?.some(
+																	(tech: string) => {
+																		const cleanTech = tech.replace(
+																			/\[\[|\]\]/g,
+																			''
+																		);
+																		return (
+																			cleanTech.toLowerCase() ===
+																			skillName.toLowerCase()
+																		);
+																	}
+																)
+															).length;
+														})()}
+													</td>
+													<td class="py-2 px-3 text-colour">
+														{skill.data.skillDescription
+															? skill.data.skillDescription
+															: '-'}
+													</td>
+												</tr>
+											))
+									}
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</article>
 		</div>
@@ -249,47 +341,66 @@ const techData = {
 	document.addEventListener('DOMContentLoaded', () => {
 		const resetBtn = document.getElementById('skills-reset-btn');
 		const toggleBtn = document.getElementById('skills-toggle-btn');
-		let sizeByRating = true;
+		let currentView = 'bubbles-skill'; // 'bubbles-skill', 'bubbles-project', 'list'
+
+		// Initialize view state - show bubbles (skill rating)
+		const bubblesView = document.getElementById('skills-bubbles-view');
+		const tableView = document.getElementById('skills-table-view');
+		if (bubblesView && tableView) {
+			bubblesView.classList.remove('hidden');
+			tableView.classList.add('hidden');
+		}
 
 		// Reset button functionality
 		if (resetBtn) {
 			resetBtn.addEventListener('click', () => {
-				// Reset toggle to skill rating
-				sizeByRating = true;
+				// Reset to default view (bubbles skill)
+				currentView = 'bubbles-skill';
 				if (toggleBtn) {
-					toggleBtn.textContent = 'Toggle: Skill Rating';
+					toggleBtn.textContent = 'Toggle: Bubbles (Skill)';
 					toggleBtn.title =
-						'Skill bubbles sized based on my self assessed skill rating';
+						'Toggle between bubble chart (skill rating), bubble chart (project count), and list view';
 				}
 
 				// Dispatch event for the Preact component
 				window.dispatchEvent(
 					new CustomEvent('skillsReset', {
-						detail: { sizeByRating },
+						detail: { currentView },
 					})
 				);
 			});
 		}
 
-		// Toggle button functionality
+		// Combined Toggle Button functionality
 		if (toggleBtn) {
 			toggleBtn.addEventListener('click', () => {
-				sizeByRating = !sizeByRating;
-
-				if (sizeByRating) {
-					toggleBtn.textContent = 'Toggle: Skill Rating';
+				if (currentView === 'bubbles-skill') {
+					currentView = 'bubbles-project';
+					toggleBtn.textContent = 'Toggle: Bubbles (Project)';
 					toggleBtn.title =
-						'Skill bubbles sized based on my self assessed skill rating';
+						'Toggle between bubble chart (project count) and list view';
+					if (bubblesView) bubblesView.classList.remove('hidden');
+					if (tableView) tableView.classList.add('hidden');
+				} else if (currentView === 'bubbles-project') {
+					currentView = 'list';
+					toggleBtn.textContent = 'Toggle: List';
+					toggleBtn.title = 'Show list view';
+					if (bubblesView) bubblesView.classList.add('hidden');
+					if (tableView) tableView.classList.remove('hidden');
 				} else {
-					toggleBtn.textContent = 'Toggle: Project Count';
+					// currentView === 'list'
+					currentView = 'bubbles-skill';
+					toggleBtn.textContent = 'Toggle: Bubbles (Skill)';
 					toggleBtn.title =
-						'Skill bubbles sized based on the number of projects used on';
+						'Toggle between bubble chart (skill rating) and list view';
+					if (bubblesView) bubblesView.classList.remove('hidden');
+					if (tableView) tableView.classList.add('hidden');
 				}
 
 				// Dispatch event for the Preact component
 				window.dispatchEvent(
-					new CustomEvent('skillsToggle', {
-						detail: { sizeByRating },
+					new CustomEvent('skillsViewToggle', {
+						detail: { currentView },
 					})
 				);
 			});
