@@ -3,16 +3,7 @@ import GitHubCalendar from 'preact-github-calendar';
 import { useEffect, useState } from 'preact/hooks';
 
 interface GitHubStats {
-	stars: number;
-	repositories: number;
 	accountAge: string;
-	mostStarredRepo: {
-		name: string;
-		stars: number;
-		url: string;
-	};
-	contributionsLastYear: number;
-	averageCommitsPerDay: number;
 }
 
 export default function GitHubContributions() {
@@ -46,23 +37,6 @@ export default function GitHubContributions() {
 					`https://api.github.com/users/${username}/repos?per_page=100&sort=stars&order=desc`
 				);
 				if (reposResponse.ok) {
-					const repos = await reposResponse.json();
-					const totalStars = repos.reduce(
-						(acc: number, repo: { stargazers_count: number }) =>
-							acc + repo.stargazers_count,
-						0
-					);
-
-					// Find most starred repo
-					const mostStarredRepo =
-						repos.length > 0
-							? {
-									name: repos[0].name,
-									stars: repos[0].stargazers_count,
-									url: repos[0].html_url,
-								}
-							: { name: 'N/A', stars: 0, url: '' };
-
 					// Calculate account age
 					const createdAt = new Date(userData.created_at);
 					const now = new Date();
@@ -73,19 +47,8 @@ export default function GitHubContributions() {
 							? `${years} year${years > 1 ? 's' : ''}`
 							: `${months} month${months > 1 ? 's' : ''}`;
 
-					// Calculate contributions and average commits (simplified)
-					// Note: This is a rough estimate since we don't have detailed contribution data
-					const contributionsLastYear = Math.floor(totalStars * 0.3); // Rough estimate
-					const averageCommitsPerDay =
-						Math.floor((contributionsLastYear / 365) * 10) / 10; // Rough estimate
-
 					setGithubStats({
-						stars: totalStars,
-						repositories: userData.public_repos,
 						accountAge,
-						mostStarredRepo,
-						contributionsLastYear,
-						averageCommitsPerDay,
 					});
 				}
 			} catch (err) {
