@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { processContent } from '../../utils/content-processor';
 import SkillsBubbleChart from './SkillsBubbleChart';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 
 // Get all skills and projects from the local content folders
 const skills = await getCollection('skills');
@@ -15,9 +16,12 @@ const processedSkills = skills.map(skill => ({
 		skillDescription: processContent(skill.data.skillDescription || ''),
 	},
 }));
+
+// Get the class attribute from the parent component
+const { class: className } = Astro.props;
 ---
 
-<section class="w-full h-full">
+<section class={`w-full h-full ${className || ''}`}>
 	<SkillsBubbleChart
 		client:only="preact"
 		skills={processedSkills}
@@ -77,18 +81,28 @@ const processedSkills = skills.map(skill => ({
 		// Modal Reset button functionality
 		if (modalResetBtn) {
 			modalResetBtn.addEventListener('click', () => {
-				// Reset toggle to skill rating
+				// Reset toggle to skill rating (first state)
 				sizeByRating = true;
 				if (modalToggleBtn) {
-					modalToggleBtn.textContent = 'Toggle: Skill Rating';
+					modalToggleBtn.textContent = 'Toggle: Bubbles (Skill Rating)';
 					modalToggleBtn.title =
-						'Skill bubbles sized based on my self assessed skill rating';
+						'Toggle between bubble chart (sized by skill rating or by project count), and list view';
 				}
+
+				// Show bubbles view, hide table
+				const modalBubblesView = document.getElementById(
+					'modal-skills-bubbles-view'
+				);
+				const modalTableView = document.getElementById(
+					'modal-skills-table-view'
+				);
+				if (modalBubblesView) modalBubblesView.classList.remove('hidden');
+				if (modalTableView) modalTableView.classList.add('hidden');
 
 				// Dispatch event for the Preact component
 				window.dispatchEvent(
 					new CustomEvent('skillsReset', {
-						detail: { sizeByRating },
+						detail: { currentView: 'bubbles-skill' },
 					})
 				);
 			});
@@ -97,24 +111,74 @@ const processedSkills = skills.map(skill => ({
 		// Modal Toggle button functionality
 		if (modalToggleBtn) {
 			modalToggleBtn.addEventListener('click', () => {
-				sizeByRating = !sizeByRating;
-
 				if (sizeByRating) {
-					modalToggleBtn.textContent = 'Toggle: Skill Rating';
+					// Switch to project count sizing
+					sizeByRating = false;
+					modalToggleBtn.textContent = 'Toggle: Bubbles (Project)';
 					modalToggleBtn.title =
-						'Skill bubbles sized based on my self assessed skill rating';
-				} else {
-					modalToggleBtn.textContent = 'Toggle: Project Count';
-					modalToggleBtn.title =
-						'Skill bubbles sized based on the number of projects used on';
-				}
+						'Toggle between bubble chart (project count) and list view';
 
-				// Dispatch event for the Preact component
-				window.dispatchEvent(
-					new CustomEvent('skillsToggle', {
-						detail: { sizeByRating },
-					})
-				);
+					// Show bubbles view, hide table
+					const modalBubblesView = document.getElementById(
+						'modal-skills-bubbles-view'
+					);
+					const modalTableView = document.getElementById(
+						'modal-skills-table-view'
+					);
+					if (modalBubblesView) modalBubblesView.classList.remove('hidden');
+					if (modalTableView) modalTableView.classList.add('hidden');
+
+					// Dispatch event for the Preact component
+					window.dispatchEvent(
+						new CustomEvent('skillsViewToggle', {
+							detail: { currentView: 'bubbles-project' },
+						})
+					);
+				} else if (modalToggleBtn.textContent === 'Toggle: Bubbles (Project)') {
+					// Switch to list view
+					modalToggleBtn.textContent = 'Toggle: List';
+					modalToggleBtn.title = 'Show list view of all skills';
+
+					// Hide bubbles, show table
+					const modalBubblesView = document.getElementById(
+						'modal-skills-bubbles-view'
+					);
+					const modalTableView = document.getElementById(
+						'modal-skills-table-view'
+					);
+					if (modalBubblesView) modalBubblesView.classList.add('hidden');
+					if (modalTableView) modalTableView.classList.remove('hidden');
+
+					// Dispatch event for the Preact component
+					window.dispatchEvent(
+						new CustomEvent('skillsViewToggle', {
+							detail: { currentView: 'list' },
+						})
+					);
+				} else {
+					// Switch back to skill rating (first state)
+					sizeByRating = true;
+					modalToggleBtn.textContent = 'Toggle: Bubbles (Skill)';
+					modalToggleBtn.title =
+						'Toggle between bubble chart (skill rating), bubble chart (project count), and list view';
+
+					// Show bubbles view, hide table
+					const modalBubblesView = document.getElementById(
+						'modal-skills-bubbles-view'
+					);
+					const modalTableView = document.getElementById(
+						'modal-skills-table-view'
+					);
+					if (modalBubblesView) modalBubblesView.classList.remove('hidden');
+					if (modalTableView) modalTableView.classList.add('hidden');
+
+					// Dispatch event for the Preact component
+					window.dispatchEvent(
+						new CustomEvent('skillsViewToggle', {
+							detail: { currentView: 'bubbles-skill' },
+						})
+					);
+				}
 			});
 		}
 	});
@@ -148,8 +212,8 @@ const processedSkills = skills.map(skill => ({
 						<button
 							id="modal-skills-toggle-btn"
 							class="global-element global-button"
-							title="Toggle between skill rating and project count sizing">
-							Toggle: Skill Rating
+							title="Toggle between bubble chart (sized by skill rating or by project count), and list view">
+							Toggle: Bubbles (Skill)
 						</button>
 
 						<button
@@ -172,12 +236,106 @@ const processedSkills = skills.map(skill => ({
 					</div>
 				</div>
 				<div class="flex-1 overflow-hidden">
-					<SkillsBubbleChart
-						client:only="preact"
-						skills={processedSkills}
-						projects={projects}
-						isFullscreen={true}
-					/>
+					<!-- Modal Skills Bubbles View -->
+					<div id="modal-skills-bubbles-view">
+						<SkillsBubbleChart
+							client:only="preact"
+							skills={processedSkills}
+							projects={projects}
+							isFullscreen={true}
+						/>
+					</div>
+
+					<!-- Modal Skills Table View -->
+					<div id="modal-skills-table-view" class="hidden">
+						<div class="overflow-x-auto overflow-y-auto h-full">
+							<table class="w-full text-sm text-colour">
+								<thead class="sticky top-0 bg-white dark:bg-gray-900">
+									<tr class="border-b border-gray-300 dark:border-gray-600">
+										<th class="text-left text-colour py-2 px-3 font-semibold"
+											>Name</th
+										>
+										<th class="text-left text-colour py-2 px-3 font-semibold"
+											>Logo</th
+										>
+										<th class="text-left text-colour py-2 px-3 font-semibold"
+											>Skill Rating</th
+										>
+										<th class="text-left text-colour py-2 px-3 font-semibold"
+											>Project Count</th
+										>
+										<th class="text-left text-colour py-2 px-3 font-semibold"
+											>Description</th
+										>
+									</tr>
+								</thead>
+								<tbody>
+									{
+										processedSkills
+											.sort(
+												(a, b) =>
+													(b.data.skillRating || 0) - (a.data.skillRating || 0)
+											)
+											.map(skill => (
+												<tr class="border-b border-gray-200 dark:border-gray-700">
+													<td class="py-2 px-3 font-medium text-colour">
+														{extractNameFromFilename(skill.id || skill.slug)}
+													</td>
+													<td class="py-2 px-3">
+														{skill.data.logoFileName ? (
+															<img
+																src={`/icons/${skill.data.logoFileName}`}
+																alt={`${skill.data.name || skill.slug} icon`}
+																class="w-6 h-6"
+															/>
+														) : (
+															'-'
+														)}
+													</td>
+													<td
+														class="py-2 px-3"
+														style="color: var(--color-text-colour);">
+														{skill.data.skillRating
+															? skill.data.skillRating
+															: '-'}
+													</td>
+													<td
+														class="py-2 px-3"
+														style="color: var(--color-text-colour);">
+														{(() => {
+															// Calculate project count for this skill
+															const skillName = skill.data.name || skill.slug;
+															const skillId = skill.id.replace('.md', '');
+															return projects.filter(project =>
+																project.data.technologies?.some(
+																	(tech: string) => {
+																		const cleanTech = tech.replace(
+																			/\[\[|\]\]/g,
+																			''
+																		);
+																		return (
+																			cleanTech.toLowerCase() ===
+																			skillName.toLowerCase()
+																		);
+																	}
+																)
+															).length;
+														})()}
+													</td>
+													<td
+														class="py-2 px-3"
+														style="color: var(--color-text-colour);">
+														{skill.data.skillDescription
+															? skill.data.skillDescription
+															: '-'}
+													</td>
+												</tr>
+											))
+									}
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
