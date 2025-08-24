@@ -1283,6 +1283,48 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	.github-calendar__footer > span {
 		font-size: 0.5rem !important;
 	}
+
+	/* Markdown Sizing (About Me page) */
+	.markdown h2 {
+		font-size: 1.5rem;
+		line-height: 2.2rem;
+		margin-bottom: 0.2rem;
+	}
+
+	.markdown,
+	.markdown p,
+	.markdown a {
+		font-size: 0.9rem;
+		line-height: 1.4rem;
+	}
+
+	/* Mobile modal improvements */
+
+	/* Ensure modal is properly positioned on mobile */
+	.fixed.inset-0 {
+		position: fixed !important;
+		top: 0 !important;
+		left: 0 !important;
+		right: 0 !important;
+		bottom: 0 !important;
+		z-index: 100 !important;
+	}
+
+	/* Improve modal content on mobile */
+	.bg-white.rounded-lg.max-w-md {
+		max-width: 90vw !important;
+		margin: 1rem !important;
+		max-height: 80vh !important;
+	}
+
+	/* Make SkillPill mobile tooltips 30% larger */
+	.global-tooltip {
+		min-width: 30vw;
+	}
+
+	.footer-logo {
+		display: none !important;
+	}
 }
 
 @media (max-width: 480px) {
@@ -1372,30 +1414,19 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	.github-calendar__footer > span {
 		font-size: 0.4rem !important;
 	}
-}
 
-/* Mobile modal improvements */
-@media (max-width: 768px) {
-	/* Ensure modal is properly positioned on mobile */
-	.fixed.inset-0 {
-		position: fixed !important;
-		top: 0 !important;
-		left: 0 !important;
-		right: 0 !important;
-		bottom: 0 !important;
-		z-index: 100 !important;
+	/* Markdown Sizing (About Me page) */
+	.markdown h2 {
+		font-size: 1.2rem;
+		line-height: 2rem;
+		margin-bottom: 0rem;
 	}
 
-	/* Improve modal content on mobile */
-	.bg-white.rounded-lg.max-w-md {
-		max-width: 90vw !important;
-		margin: 1rem !important;
-		max-height: 80vh !important;
-	}
-
-	/* Make SkillPill mobile tooltips 30% larger */
-	.global-tooltip {
-		min-width: 30vw;
+	.markdown,
+	.markdown p,
+	.markdown a {
+		font-size: 0.8rem;
+		line-height: 1.3rem;
 	}
 }
 
@@ -1416,10 +1447,4 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 
 footer .footer-logo {
 	display: inline-flex;
-}
-/* Mobile modal improvements */
-@media (max-width: 768px) {
-	.footer-logo {
-		display: none !important;
-	}
 }

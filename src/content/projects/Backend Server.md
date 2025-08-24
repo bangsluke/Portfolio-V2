@@ -6,9 +6,10 @@ tags:
   - project/active
 created: 2025-06-23 13:36
 modified: 2025-08-16T21:06:51+01:00
-viewCount: 16
+viewCount: 17
 aliases:
   - backend-server
+  - backend server
 projectURL: https://bangsluke-backend-server-221df04e1ad6.herokuapp.com/
 codeURL: https://github.com/bangsluke/bangsluke-backend-server
 codeMultipleRepos: false

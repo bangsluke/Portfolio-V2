@@ -66,6 +66,59 @@ const { frontmatter } = Astro.props;
 		<NavArticle title={frontmatter.title} />
 	</section>
 
+	<!-- Mobile Floating Action Button -->
+	<button
+		id="toc-fab"
+		class="lg:hidden fixed bottom-17 right-4 z-50 w-10 h-10 bg-theme-400 hover:bg-theme-500 active:bg-theme-600 text-black rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center active:bg-theme-600 text-black w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg hover:shadow-xl active:shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 flex items-center justify-center touch-manipulation"
+		aria-label="Open Table of Contents">
+		<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"
+				d="M4 6h16M4 12h16M4 18h16"></path>
+		</svg>
+	</button>
+
+	<!-- Mobile TOC Modal -->
+	<div
+		id="toc-modal"
+		class="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50 hidden"
+		aria-hidden="true">
+		<div class="flex items-center justify-center min-h-screen p-4">
+			<div
+				class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-hidden">
+				<div
+					class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+					<h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+						Table of Contents
+					</h3>
+					<button
+						id="toc-close"
+						class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+						aria-label="Close Table of Contents">
+						<svg
+							class="w-6 h-6"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M6 18L18 6M6 6l12 12"></path>
+						</svg>
+					</button>
+				</div>
+				<div class="p-4 overflow-y-auto max-h-[calc(80vh-80px)]">
+					<ul id="mobile-toc-list" class="space-y-2 text-sm">
+						<!-- Mobile TOC will be populated by JavaScript -->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Bottom Back Button -->
 	<section class="py-8 px-8 max-md:py-4">
 		<div class="max-w-7xl mx-auto">
@@ -92,3 +145,152 @@ const { frontmatter } = Astro.props;
 
 	<Contact />
 </Layout>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		// Mobile TOC functionality
+		const tocFab = document.getElementById('toc-fab');
+		const tocModal = document.getElementById('toc-modal');
+		const tocClose = document.getElementById('toc-close');
+		const mobileTocList = document.getElementById('mobile-toc-list');
+		const content = document.getElementById('content');
+
+		if (!tocFab || !tocModal || !tocClose || !mobileTocList || !content) return;
+
+		// Toggle modal visibility
+		function toggleModal() {
+			if (!tocModal) return;
+
+			const isHidden = tocModal!.classList.contains('hidden');
+			if (isHidden) {
+				tocModal!.classList.remove('hidden');
+				document.body.style.overflow = 'hidden';
+			} else {
+				tocModal!.classList.add('hidden');
+				document.body.style.overflow = '';
+			}
+		}
+
+		// Event listeners
+		tocFab.addEventListener('click', toggleModal);
+		tocClose.addEventListener('click', toggleModal);
+
+		// Close modal when clicking outside
+		tocModal.addEventListener('click', function (e) {
+			if (e.target === tocModal) {
+				toggleModal();
+			}
+		});
+
+		// Close modal on escape key
+		document.addEventListener('keydown', function (e) {
+			if (
+				e.key === 'Escape' &&
+				tocModal &&
+				!tocModal.classList.contains('hidden')
+			) {
+				toggleModal();
+			}
+		});
+
+		// Get all headers but exclude H1 and "Table of Contents"
+		const allHeaders = content.querySelectorAll('h1, h2, h3');
+		const headers = Array.from(allHeaders).filter(header => {
+			// Exclude H1 headers
+			if (header.tagName === 'H1') return false;
+
+			// Exclude headers with "Table of Contents" text
+			const headerText = header.textContent?.trim() || '';
+			if (headerText.toLowerCase().includes('table of contents')) return false;
+
+			if (headerText.toLowerCase().includes('My portfolio site')) return false;
+
+			return true;
+		});
+
+		// Add "Top of Page" option first
+		const topOfPageLi = document.createElement('li');
+		const topOfPageLink = document.createElement('a');
+		topOfPageLink.href = '#';
+		topOfPageLink.textContent = 'Top of Page';
+		topOfPageLink.classList.add(
+			'inline-block',
+			'text-gray-700',
+			'dark:text-gray-300',
+			'hover:text-theme-400',
+			'dark:hover:text-theme-300',
+			'transition-colors',
+			'py-2',
+			'px-3',
+			'rounded',
+			'hover:bg-gray-100',
+			'dark:hover:bg-gray-700',
+			'w-full',
+			'font-medium'
+		);
+		topOfPageLi.appendChild(topOfPageLink);
+		mobileTocList.appendChild(topOfPageLi);
+
+		// Add separator after Top of Page
+		const separatorLi = document.createElement('li');
+		separatorLi.classList.add(
+			'border-t',
+			'border-gray-200',
+			'dark:border-gray-600',
+			'my-2'
+		);
+		mobileTocList.appendChild(separatorLi);
+
+		headers.forEach((header, index) => {
+			if (!header.id) {
+				header.id =
+					header.textContent?.trim().toLowerCase().replace(/\s+/g, '-') +
+					'-' +
+					index;
+			}
+
+			const li = document.createElement('li');
+			const link = document.createElement('a');
+			link.href = `#${header.id}`;
+			link.textContent = header.textContent?.trim() || header.id;
+			link.classList.add(
+				'inline-block',
+				'text-gray-700',
+				'dark:text-gray-300',
+				'hover:text-theme-400',
+				'dark:hover:text-theme-300',
+				'transition-colors',
+				'py-2',
+				'px-3',
+				'rounded',
+				'hover:bg-gray-100',
+				'dark:hover:bg-gray-700',
+				'w-full'
+			);
+
+			// Add indentation for H3 headers
+			if (header.tagName === 'H3') {
+				link.classList.add('ml-4');
+			}
+
+			li.appendChild(link);
+			mobileTocList.appendChild(li);
+
+			// Smooth scroll when clicking on a link and close modal
+			link.addEventListener('click', function (e) {
+				e.preventDefault();
+				document
+					.getElementById(header.id)
+					?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				toggleModal(); // Close modal after clicking a link
+			});
+		});
+
+		// Top of Page click handler
+		topOfPageLink.addEventListener('click', function (e) {
+			e.preventDefault();
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+			toggleModal(); // Close modal after scrolling to top
+		});
+	});
+</script>

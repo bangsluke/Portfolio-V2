@@ -29,7 +29,7 @@ function getSlug(str: string) {
 }
 
 // Extract company/education name from linkedCompany array
-let companyName = null;
+let companyName: string | null = null;
 if (linkedCompany && linkedCompany.length > 0) {
 	const linkedCompanyRaw = linkedCompany[0];
 	const extractedName = processObsidianLink(linkedCompanyRaw);

@@ -1,15 +1,15 @@
 {
-	"timestamp": "2025-08-24T08:23:50.123Z",
-	"source": "C:\\\\Users\\\\bangs\\\\Documents\\\\Obsidian Personal Notes",
-	"syncMode": "development",
-	"debugMode": false,
-	"errors": [],
-	"summary": {
-		"totalFiles": 2132,
-		"processedFiles": 136,
-		"copiedFiles": 136,
-		"skippedFiles": 1996,
-		"errors": 0
-	},
-	"success": true
+  "timestamp": "2025-08-24T14:17:35.309Z",
+  "source": "C:\\\\Users\\\\bangs\\\\Documents\\\\Obsidian Personal Notes",
+  "syncMode": "development",
+  "debugMode": false,
+  "errors": [],
+  "summary": {
+    "totalFiles": 2132,
+    "processedFiles": 136,
+    "copiedFiles": 136,
+    "skippedFiles": 1996,
+    "errors": 0
+  },
+  "success": true
 }
