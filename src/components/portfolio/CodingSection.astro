@@ -1,9 +1,10 @@
 ---
 import { Icon } from 'astro-icon/components';
+// @ts-expect-error - AstroError is not typed
 import { AstroError } from 'astro/errors';
 import { getCollection } from 'astro:content';
 
-import GitHubContributions from '../portfolio/GitHubContributions.tsx';
+import GitHubContributions from '../portfolio/GitHubContributions.js';
 import MostCommonTechs from '../portfolio/MostCommonTechs.astro';
 import SkillsBubbles from '../portfolio/SkillsBubbles.astro';
 import Heading from '../ui/Heading.astro';
@@ -54,13 +55,11 @@ projects.forEach(project => {
 
 // Count technology usage across all projects and find matching skills
 allTechnologies.forEach(tech => {
-	// @ts-expect-error - getProjectCount is not typed
 	const count = getProjectCount(tech, tech, projects);
-	// @ts-expect-error - getProjectsUsingSkill is not typed
 	const projectsList = getProjectsUsingSkill(tech, tech, projects);
 
 	// Improved skill matching logic
-	let skillData = null;
+	let skillData: typeof skills[0] | null = null;
 	let tags: string[] = [];
 
 	// Try exact match first (case-insensitive)

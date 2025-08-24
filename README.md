@@ -70,8 +70,9 @@
     - [Tech Stack](#tech-stack)
     - [Scripts](#scripts)
     - [Testing](#testing)
+      - [Test Files](#test-files)
+      - [Test Integration](#test-integration)
     - [Styling](#styling)
-  - [License](#license)
 
 ## Introduction
 
@@ -779,6 +780,8 @@ npm run update-readme-links    # Update function links in README (runs automatic
 # Code Quality
 npm run lint                   # Run ESLint
 npm run lint:fix               # Fix ESLint issues
+npm run lint:css               # Run Stylelint on CSS files
+npm run lint:css:fix           # Fix Stylelint issues automatically
 npm run format                 # Format with Prettier
 npm run format:check           # Check formatting without fixing
 
@@ -827,11 +830,5 @@ The project uses Tailwind CSS 4.1+ with custom design tokens:
 - **Animations**: Smooth transitions and hover effects using Tailwind's animation utilities
 - **Responsive Design**: Mobile-first approach with breakpoint-specific styling
 - **Icon System**: 100+ technology icons with automatic matching and fallbacks
-
-> [Back to Table of Contents](#table-of-contents)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 > [Back to Table of Contents](#table-of-contents)
