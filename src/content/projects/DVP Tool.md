@@ -10,9 +10,9 @@ created: 2025-05-29 18:05
 modified: 2025-08-12T11:59:24+01:00
 aliases:
   - DVP Prototype
-viewCount: 17
+viewCount: 18
 projectURL: https://dvp-fe.icypebble-0bf96993.germanywestcentral
-codeURL: 
+codeURL:
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
