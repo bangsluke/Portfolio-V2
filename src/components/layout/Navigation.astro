@@ -1,4 +1,5 @@
 ---
+// @ts-expect-error - AstroError is not typed
 import { AstroError } from 'astro/errors';
 
 const { items = [] }: { items: (keyof typeof menu)[] } = Astro.props as {
