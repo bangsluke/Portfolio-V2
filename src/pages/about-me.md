@@ -3,11 +3,10 @@ tags:
   - notes
   - portfolio
 created: 2025-07-21T19:17:10+01:00
-modified: 2025-08-24T15:02:32+01:00
+modified: 2025-08-24T15:22:33+01:00
 viewCount: 9
 layout: /src/layouts/MarkdownAbout.astro
 title: Luke Bangs | My portfolio site | bangsluke
-description:
 author: Luke Bangs
 image-url: /images/profilePicture.webp
 image-alt: Photo of Luke Bangs

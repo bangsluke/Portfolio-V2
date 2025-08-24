@@ -200,15 +200,7 @@ If any note has a tag `skill` (and `portfolio`) then they will show up on the Po
 
 ##### Skills List
 
-```dataview
-TABLE WITHOUT ID
-	file.link as "Skill",
-	skillRating as "Skill Rating",
-	skillDescription as "Skill Description"
-FROM #skill AND #portfolio
-WHERE file.name != "Template Skill"
-SORT skillRating DESC
-```
+![[Portfolio Base.base]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -14,10 +14,7 @@ const { frontmatter } = Astro.props;
 	});
 </script>
 
-<Layout
-	pageTitle={frontmatter.aboutMeTitle}
-	description={frontmatter.description}
-	ogimage={frontmatter.image}>
+<Layout pageTitle={frontmatter.aboutMeTitle} ogimage={frontmatter.image}>
 	<section
 		class="w-full px-8 mt-5 max-sm:px-4 py-4 flex flex-row justify-center gap-6">
 		<div class="w-64 max-xl:hidden"></div>
@@ -50,11 +47,6 @@ const { frontmatter } = Astro.props;
 						<div class="text-center">
 							<Heading text="Luke " textGradient="Bangs" />
 						</div>
-
-						<p
-							class="text-lg max-xl:text-base text-blacktext dark:text-gray-200 mb-0 leading-8 font-semibold"
-							set:html={frontmatter.description}
-						/>
 					</div>
 				</div>
 			</div>
