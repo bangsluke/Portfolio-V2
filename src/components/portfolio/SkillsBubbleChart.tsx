@@ -229,20 +229,36 @@ const SkillsBubbleChart = ({
 			// For 'list' view, we don't need to change anything in this component
 		};
 
+		// Handle resize events for modal context
+		const handleResize = () => {
+			// Force re-render when container size changes
+			if (svgRef.current && containerRef.current) {
+				const container = containerRef.current;
+				const containerRect = container.getBoundingClientRect();
+				if (containerRect.width > 0 && containerRect.height > 0) {
+					// Trigger a re-render by updating state
+					setSizeByRating(prev => prev);
+				}
+			}
+		};
+
 		// Add event listeners
 		window.addEventListener('skillsReset', handleReset);
 		window.addEventListener('skillsViewToggle', handleViewToggle);
+		window.addEventListener('resize', handleResize);
 
 		// Cleanup function
 		return () => {
 			window.removeEventListener('skillsReset', handleReset);
 			window.removeEventListener('skillsViewToggle', handleViewToggle);
+			window.removeEventListener('resize', handleResize);
 		};
 	}, []);
 
 	// D3 Bubble Chart
 	useEffect(() => {
 		const currentBubbleData = bubbleData();
+
 		if (
 			!svgRef.current ||
 			!containerRef.current ||

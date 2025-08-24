@@ -42,16 +42,25 @@ const { class: className } = Astro.props;
 
 		if (fullscreenBtn) {
 			fullscreenBtn.addEventListener('click', () => {
+				console.log("Fullsize clicked")
 				if (modal) {
 					modal.classList.remove('hidden');
 					document.body.style.overflow = 'hidden';
+					console.log("modal exists")
 
-					// Automatically trigger reset functionality to center everything
+					// Force a re-render of the modal content
 					setTimeout(() => {
-						if (modalResetBtn) {
-							modalResetBtn.click();
-						}
-					}, 100); // Small delay to ensure modal is fully rendered
+						// Trigger a window resize event to force D3 to recalculate dimensions
+						window.dispatchEvent(new Event('resize'));
+						console.log('resize skills graph');
+
+						// Automatically trigger reset functionality to center everything
+						setTimeout(() => {
+							if (modalResetBtn) {
+								modalResetBtn.click();
+							}
+						}, 200); // Increased delay to ensure modal is fully rendered
+					}, 100);
 				}
 			});
 		}
@@ -99,6 +108,7 @@ const { class: className } = Astro.props;
 				if (modalBubblesView) modalBubblesView.classList.remove('hidden');
 				if (modalTableView) modalTableView.classList.add('hidden');
 
+			
 				// Dispatch event for the Preact component
 				window.dispatchEvent(
 					new CustomEvent('skillsReset', {
@@ -197,9 +207,9 @@ const { class: className } = Astro.props;
 			<div class="p-6 h-full flex flex-col">
 				<div class="flex justify-between items-center mb-4">
 					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-						Skills Bubble Chart
+						Skills
 					</h3>
-					<div class="flex items-center gap-4">
+					<div class="flex items-center gap-2 md:gap-4">
 						<!-- Modal Reset Button -->
 						<button
 							id="modal-skills-reset-btn"
@@ -235,9 +245,9 @@ const { class: className } = Astro.props;
 						</button>
 					</div>
 				</div>
-				<div class="flex-1 overflow-hidden">
+				<div class="flex-1 overflow-hidden h-full">
 					<!-- Modal Skills Bubbles View -->
-					<div id="modal-skills-bubbles-view">
+					<div id="modal-skills-bubbles-view" class="h-full">
 						<SkillsBubbleChart
 							client:only="preact"
 							skills={processedSkills}
