@@ -134,6 +134,48 @@ const techData = {
 		<Heading text="Coding " textGradient="Skills" level={2} />
 	</div>
 
+	<!-- SEO-accessible skills summary for web crawlers -->
+	<div class="sr-only" aria-hidden="true">
+		<h3>Complete Technical Skills List</h3>
+		<p>Professional skills and technologies I work with, organized by category:</p>
+		
+		<h4>Programming Languages</h4>
+		<ul>
+			{skills.filter(s => s.data.tags?.includes('language')).map(skill => (
+				<li><strong>{skill.data.name || skill.slug}</strong>: {skill.data.skillDescription?.replace(/<[^>]*>/g, '') || 'Programming language'}</li>
+			))}
+		</ul>
+		
+		<h4>Frontend Technologies</h4>
+		<ul>
+			{skills.filter(s => s.data.tags?.includes('framework') || s.data.tags?.includes('library')).map(skill => (
+				<li><strong>{skill.data.name || skill.slug}</strong>: {skill.data.skillDescription?.replace(/<[^>]*>/g, '') || 'Frontend technology'}</li>
+			))}
+		</ul>
+		
+		<h4>Development Tools</h4>
+		<ul>
+			{skills.filter(s => s.data.tags?.includes('tool') || s.data.tags?.includes('software')).map(skill => (
+				<li><strong>{skill.data.name || skill.slug}</strong>: {skill.data.skillDescription?.replace(/<[^>]*>/g, '') || 'Development tool'}</li>
+			))}
+		</ul>
+		
+		<h4>Cloud & Platforms</h4>
+		<ul>
+			{skills.filter(s => s.data.tags?.includes('cloud') || s.data.tags?.includes('platform')).map(skill => (
+				<li><strong>{skill.data.name || skill.slug}</strong>: {skill.data.skillDescription?.replace(/<[^>]*>/g, '') || 'Cloud platform'}</li>
+			))}
+		</ul>
+		
+		<h4>All Skills</h4>
+		<p>Complete list of {skills.length} technical skills:</p>
+		<ul>
+			{skills.map(skill => (
+				<li><strong>{skill.data.name || skill.slug}</strong></li>
+			))}
+		</ul>
+	</div>
+
 	<div
 		id="coding-section-layout"
 		class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mx-auto max-w-7xl max-sm:gap-3 gap-4">
@@ -179,10 +221,10 @@ const techData = {
 						<SkillsBubbles />
 					</div>
 
-					<!-- Skills Table View - Visible by default for web scrapers but positioned absolutely to not affect layout -->
+					<!-- Skills Table View - Always visible to web crawlers but visually hidden for users -->
 					<div
 						id="skills-table-view"
-						class="absolute inset-0 z-10 bg-white dark:bg-theme-950 rounded-2xl p-2 md:p-6 overflow-hidden">
+						class="block md:hidden bg-white dark:bg-theme-950 rounded-2xl p-2 md:p-6 overflow-hidden">
 						<div class="overflow-y-auto h-full">
 							<!-- Skills Table View layout -->
 							<div class="block space-y-3">
@@ -221,19 +263,21 @@ const techData = {
 															</div>
 														</div>
 														<div class="text-center">
-															<div class="text-gray-500 dark:text-gray-400">Projects</div>
-															<div class="font-medium">
-																{(() => {
-																	const skillName = skill.data.name || skill.slug;
-																	return projects.filter(project =>
-																		project.data.technologies?.some(
-																			(tech: string) => {
-																				const cleanTech = tech.replace(/\[\[|\]\]/g, '');
-																				return cleanTech.toLowerCase() === skillName.toLowerCase();
-																			}
-																		)
-																	).length;
-																})()}
+															<div class="text-center">
+																<div class="text-gray-500 dark:text-gray-400">Projects</div>
+																<div class="font-medium">
+																	{(() => {
+																		const skillName = skill.data.name || skill.slug;
+																		return projects.filter(project =>
+																			project.data.technologies?.some(
+																				(tech: string) => {
+																					const cleanTech = tech.replace(/\[\[|\]\]/g, '');
+																					return cleanTech.toLowerCase() === skillName.toLowerCase();
+																				}
+																			)
+																		).length;
+																	})()}
+																</div>
 															</div>
 														</div>
 													</div>
