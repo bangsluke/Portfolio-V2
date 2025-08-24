@@ -10,7 +10,7 @@ created: 2025-05-29 17:44
 modified: 2025-07-19T10:18:48+01:00
 aliases:
   - Dorkinians Mobile Stats
-viewCount: 13
+viewCount: 14
 projectURL: https://dorkinians-mobile-stats.netlify.app/main
 codeURL: https://github.com/bangsluke/mobile-stats-dorkinians
 codeMultipleRepos: false

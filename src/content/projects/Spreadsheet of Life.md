@@ -6,10 +6,10 @@ tags:
   - project/completed
   - finances
 created: 2024-03-02T09:21:00
-modified: 2025-07-20T13:08:51+01:00
+modified: 2025-08-24T08:07:46+01:00
 aliases:
   - SoL
-viewCount: 15
+viewCount: 16
 projectURL: https://docs.google.com/spreadsheets/d/114gu85xbOJppMf3JIuHzoWIVsWAcy3ALmdv0owwyCQ0/edit?usp=sharing
 codeURL: https://script.google.com/home/projects/1e_U-ujneCBoYpGoZVAPtSYR9wI2StLhy4gLbL6t946wAJVTjDdAhn9xs/edit
 codeMultipleRepos: false
@@ -22,6 +22,7 @@ dateEnd: 2025-06-20
 technologies:
   - "[[Google Sheets]]"
   - "[[Google Apps Script]]"
+  - "[[Apple Shortcuts]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -88,7 +89,7 @@ SoL also contains health data such as distance traveled, steps and fluid intake 
 ## Architecture and Technologies
 
 - Front end: [[Google Sheets]]
-- Back end/Datasource: [[Google Apps Script]]/[[Google Sheets]]
+- Back end/Datasource: [[Google Apps Script]]/[[Google Sheets]], [[Apple Shortcuts]]
 - Hosting: [[Google Sheets]]
 - Security: [[Google Sheets]]
 - Authentication: [[Google Sheets]]

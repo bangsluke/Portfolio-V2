@@ -2,13 +2,13 @@
 tags:
   - project
   - coding
-  - portfolio
   - project/active
   - analysis
   - notes
+  - portfolio
 created: 2025-02-02T19:03:00
-modified: 2025-08-23T08:25:01+01:00
-viewCount: 68
+modified: 2025-08-24T09:17:33+01:00
+viewCount: 69
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -178,19 +178,6 @@ Design initially started from a template project called [NeonMint](https://githu
 > Sorted by Portfolio Order
 
 ![[Portfolio Base.base]]
-
-```dataview
-TABLE WITHOUT ID
-	file.link as "Project",
-	portfolioOrder as "Portfolio Order",
-	dateStart as "Start Date",
-	dateEnd as "End Date",
-	elink(projectURL, "Link") as "Project Link",
-	elink(codeURL, "Link") as "Code Link"
-FROM #project AND #portfolio
-WHERE file.name != "Template Project"
-SORT join([portfolioOrder, file.name], "-") ASC
-```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -400,7 +387,7 @@ SORT dateStart ASC
 
 #### About Me Short
 
-A personable and enthusiastic individual with a passion for data and software, seeking a stimulating role in which to utilise organisational skills, apply logical intuition, communicate effectively and help build long term success within an exciting environment
+Enthusiastic and personable professional with a passion for data and software, seeking a dynamic role to apply strong organisational skills, logical thinking, and effective communication to drive long-term success. Open to impactful positions including Software Developer, DevOps Engineer, or Product Owner
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
