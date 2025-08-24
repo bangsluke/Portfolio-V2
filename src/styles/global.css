@@ -1279,6 +1279,10 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 		border: none !important;
 		box-shadow: none !important;
 	}
+
+	.github-calendar__footer > span {
+		font-size: 0.5rem !important;
+	}
 }
 
 @media (max-width: 480px) {
@@ -1363,6 +1367,10 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 
 	.small-text {
 		font-size: 0.6rem !important;
+	}
+
+	.github-calendar__footer > span {
+		font-size: 0.4rem !important;
 	}
 }
 

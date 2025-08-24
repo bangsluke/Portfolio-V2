@@ -140,10 +140,10 @@ const techData = {
 		class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mx-auto max-w-7xl max-sm:gap-3 gap-4">
 		<!-- Skills Bubbles - First element - takes up 2 rows on mobile, full first column on desktop -->
 		<div
-			class="row-span-2 md:col-span-1 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 hover:to-theme-300/30 dark:hover:to-theme-600/30 p-[.2rem] transition-all hover:shadow-[0_20px_50px_var(--color-theme-500-rgba-04)] dark:before:bg-[radial-gradient(circle,var(--color-theme-500)_0,var(--color-theme-950)_100%)] before:bg-[radial-gradient(circle,var(--color-theme-300)_0,var(--color-theme-200)_100%)] before:absolute before:left-1/2 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-70 before:transition before:-z-0 hover:before:animate-pulse xl:before:bottom-2/5 min-h-[500px] md:min-h-[600px]">
+			class="row-span-2 md:col-span-1 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 hover:to-theme-300/30 dark:hover:to-theme-600/30 p-[.2rem] transition-all hover:shadow-[0_20px_50px_var(--color-theme-500-rgba-04)] dark:before:bg-[radial-gradient(circle,var(--color-theme-500)_0,var(--color-theme-950)_100%)] before:bg-[radial-gradient(circle,var(--color-theme-300)_0,var(--color-theme-200)_100%)] before:absolute before:left-1/2 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-70 before:transition before:-z-0 hover:before:animate-pulse xl:before:bottom-2/5 min-h-[400px] md:min-h-[450px]">
 			<article
-				class="group relative flex h-full flex-col justify-start overflow-hidden rounded-2xl bg-linear-to-tr from-light-theme-accent-100 to-theme-100 p-6 transition hover:shadow-[0_10px_50px_var(--color-theme-500-rgba-02)] dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 dark:overflow-hidden">
-				<!-- Header row - Skills title, buttons, and fullscreen icon -->
+				class="group relative flex h-full flex-col justify-start overflow-hidden rounded-2xl bg-linear-to-tr from-light-theme-accent-100 to-theme-100 p-4 md:p-6 transition hover:shadow-[0_10px_50px_var(--color-theme-500-rgba-02)] dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 dark:overflow-hidden">
+				<!-- Header row - Skills title and buttons -->
 				<div
 					class="flex items-center justify-between gap-4 max-md:gap-2 mb-4 flex-shrink-0">
 					<div class="flex items-center gap-4 max-md:gap-2">
@@ -170,25 +170,6 @@ const techData = {
 							title="Toggle between bubble chart (skill rating), bubble chart (project count), and list view">
 							Toggle: Bubbles (Skill)
 						</button>
-
-						<button
-							id="fullscreen-skills-btn"
-							class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
-							aria-label="Open skills chart in fullscreen"
-							title="Fullscreen view">
-							<svg
-								class="w-5 h-5"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
-								></path>
-							</svg>
-						</button>
 					</div>
 				</div>
 
@@ -202,11 +183,10 @@ const techData = {
 					<!-- Skills Table View - Visible by default for web scrapers but positioned absolutely to not affect layout -->
 					<div
 						id="skills-table-view"
-						class="absolute inset-0 z-10 bg-white dark:bg-theme-950 rounded-2xl p-6 overflow-hidden">
-						<!-- Debug: Skills count: {skills.length} -->
+						class="absolute inset-0 z-10 bg-white dark:bg-theme-950 rounded-2xl p-2 md:p-6 overflow-hidden">
 						<div class="overflow-y-auto h-full">
-							<!-- Mobile: Card layout -->
-							<div class="block md:hidden space-y-3">
+							<!-- Skills Table View layout -->
+							<div class="block space-y-3">
 								{
 									skills
 										.sort(
@@ -215,20 +195,25 @@ const techData = {
 										)
 										.map(skill => (
 											<div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
-												<!-- Top row: Name with logo, Rating, Project Count -->
-												<div class="flex items-start justify-between gap-3 mb-2">
-													<div class="flex flex-col items-start gap-1 min-w-0 flex-1">
+												<!-- Top row: Name, Logo, Rating, Project Count -->
+												<div class="flex items-center justify-between gap-3 mb-2 h-6">
+													<!-- Name -->
+													<div class="flex flex-col items-center gap-1 min-w-0 shrink-0">
 														<div class="text-xs font-medium text-colour">
 															{extractNameFromFilename(skill.id || skill.slug)}
 														</div>
-														{skill.data.logoFileName && (
-															<img
-																src={`/icons/${skill.data.logoFileName}`}
-																alt={`${skill.data.name || skill.slug} icon`}
-																class="w-5 h-5"
-															/>
-														)}
 													</div>
+													<!-- Logo -->
+													{skill.data.logoFileName && (
+														<div class="flex-1 flex justify-start">
+											<img
+												src={`/icons/${skill.data.logoFileName}`}
+												alt={`${skill.data.name || skill.slug} icon`}
+												class="h-full w-auto max-h-6"
+											/>
+											</div>
+									)}
+													<!-- Rating -->
 													<div class="flex gap-3 text-xs text-colour">
 														<div class="text-center">
 															<div class="text-gray-500 dark:text-gray-400">Rating</div>
@@ -254,76 +239,19 @@ const techData = {
 														</div>
 													</div>
 												</div>
-												<!-- Bottom row: Description -->
-												{skill.data.skillDescription && skill.data.skillDescription !== '-' && (
-													<div class="text-xs text-colour opacity-80 mt-2 pt-2 border-t border-gray-200 dark:border-gray-600">
-														{skill.data.skillDescription}
-													</div>
-												)}
-											</div>
-										))
-								}
+								<!-- Second row: Description -->
+								<div class="flex items-start">
+									
+									{skill.data.skillDescription && skill.data.skillDescription !== '-' && (
+										<div class="text-xs text-colour opacity-80 flex-1">
+											{skill.data.skillDescription}
+										</div>
+									)}
+								</div>
 							</div>
-
-							<!-- Desktop: Table layout -->
-							<div class="hidden md:block overflow-x-auto">
-								<table class="w-full text-xs">
-									<thead>
-										<tr class="border-b border-gray-300 dark:border-gray-600">
-											<th class="text-left py-2 px-3 font-semibold text-colour">Name</th>
-											<th class="text-left py-2 px-3 font-semibold text-colour">Skill Rating</th>
-											<th class="text-left py-2 px-3 font-semibold text-colour">Project Count</th>
-											<th class="text-left py-2 px-3 font-semibold text-colour">Description</th>
-										</tr>
-									</thead>
-									<tbody>
-										{
-											skills
-												.sort(
-													(a, b) =>
-														(b.data.skillRating || 0) - (a.data.skillRating || 0)
-												)
-												.map(skill => (
-													<tr class="border-b border-gray-200 dark:border-gray-700">
-														<td class="py-2 px-3 font-medium text-colour">
-															<div class="flex flex-col items-start gap-1">
-																<div class="text-xs font-medium">
-																	{extractNameFromFilename(skill.id || skill.slug)}
-																</div>
-																{skill.data.logoFileName && (
-																	<img
-																		src={`/icons/${skill.data.logoFileName}`}
-																		alt={`${skill.data.name || skill.slug} icon`}
-																		class="w-5 h-5"
-																	/>
-																)}
-															</div>
-														</td>
-														<td class="py-2 px-3 text-colour">
-															{skill.data.skillRating ? skill.data.skillRating : '-'}
-														</td>
-														<td class="py-2 px-3 text-colour">
-															{(() => {
-																const skillName = skill.data.name || skill.slug;
-																return projects.filter(project =>
-																	project.data.technologies?.some(
-																		(tech: string) => {
-																			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
-																			return cleanTech.toLowerCase() === skillName.toLowerCase();
-																		}
-																	)
-																).length;
-															})()}
-														</td>
-														<td class="py-2 px-3 text-colour">
-															{skill.data.skillDescription ? skill.data.skillDescription : '-'}
-														</td>
-													</tr>
-												))
-										}
-									</tbody>
-								</table>
-							</div>
+						))
+					}
+				</div>
 						</div>
 					</div>
 				</div>
@@ -332,9 +260,9 @@ const techData = {
 
 		<!-- GitHub Contributions - Second element - takes up 1 row on mobile, first row of second column on desktop -->
 		<div
-			class="row-span-1 md:col-span-1 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 hover:to-theme-300/30 dark:hover:to-theme-600/30 p-[.2rem] transition-all hover:shadow-[0_20px_50px_var(--color-theme-500-rgba-04)] dark:before:bg-[radial-gradient(circle,var(--color-theme-500)_0,var(--color-theme-950)_100%)] before:bg-[radial-gradient(circle,var(--color-theme-300)_0,var(--color-theme-200)_100%)] before:absolute before:left-1/2 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-70 before:transition before:-z-0 hover:before:animate-pulse xl:before:bottom-2/5 min-h-[250px] md:min-h-[200px]">
+			class="row-span-1 md:col-span-1 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 hover:to-theme-300/30 dark:hover:to-theme-600/30 p-[.2rem] transition-all hover:shadow-[0_20px_50px_var(--color-theme-500-rgba-04)] dark:before:bg-[radial-gradient(circle,var(--color-theme-500)_0,var(--color-theme-950)_100%)] before:bg-[radial-gradient(circle,var(--color-theme-300)_0,var(--color-theme-200)_100%)] before:absolute before:left-1/2 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-70 before:transition before:-z-0 hover:before:animate-pulse xl:before:bottom-2/5 min-h-[200px] md:min-h-[200px]">
 			<article
-				class="group relative z-0 flex h-full w-full flex-col overflow-hidden rounded-2xl bg-linear-to-tr from-light-theme-accent-100 to-theme-100 p-6 transition hover:shadow-[0_10px_50px_rgba(13,188,130,0.2)] dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 dark:overflow-hidden">
+				class="group relative z-0 flex h-full w-full flex-col overflow-hidden rounded-2xl bg-linear-to-tr from-light-theme-accent-100 to-theme-100 p-4 md:p-6 transition hover:shadow-[0_10px_50px_rgba(13,188,130,0.2)] dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 dark:overflow-hidden">
 				<div class="flex items-center gap-4 max-md:gap-2 mb-4">
 					<Icon
 						class="text-3xl dark:text-white text-theme-500 max-md:text-2xl max-sm:text-sm"
@@ -351,9 +279,9 @@ const techData = {
 
 		<!-- Most Common Techs Used - Third element - takes up 1 row on mobile, second row of second column on desktop -->
 		<div
-			class="row-span-1 md:col-span-1 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 hover:to-theme-300/30 dark:hover:to-theme-600/30 p-[.2rem] transition-all hover:shadow-[0_20px_50px_var(--color-theme-500-rgba-04)] dark:before:bg-[radial-gradient(circle,var(--color-theme-500)_0,var(--color-theme-950)_100%)] before:bg-[radial-gradient(circle,var(--color-theme-300)_0,var(--color-theme-200)_100%)] before:absolute before:left-1/2 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-70 before:transition before:-z-0 hover:before:animate-pulse xl:before:bottom-2/5 min-h-[350px] md:min-h-[280px]">
+			class="row-span-1 md:col-span-1 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 hover:to-theme-300/30 dark:hover:to-theme-600/30 p-[.2rem] transition-all hover:shadow-[0_20px_50px_var(--color-theme-500-rgba-04)] dark:before:bg-[radial-gradient(circle,var(--color-theme-500)_0,var(--color-theme-950)_100%)] before:bg-[radial-gradient(circle,var(--color-theme-300)_0,var(--color-theme-200)_100%)] before:absolute before:left-1/2 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-70 before:transition before:-z-0 hover:before:animate-pulse xl:before:bottom-2/5 min-h-[250px] md:min-h-[280px]">
 			<article
-				class="group relative z-0 flex h-full w-full flex-col overflow-hidden rounded-2xl bg-linear-to-tr from-light-theme-accent-100 to-theme-100 p-6 transition hover:shadow-[0_10px_50px_var(--color-theme-500-rgba-02)] dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 dark:overflow-hidden">
+				class="group relative z-0 flex h-full w-full flex-col overflow-hidden rounded-2xl bg-linear-to-tr from-light-theme-accent-100 to-theme-100 p-4 md:p-6 transition hover:shadow-[0_10px_50px_var(--color-theme-500-rgba-02)] dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 dark:overflow-hidden">
 				<!-- Header row - Techs title only -->
 				<div class="flex items-center gap-4 max-md:gap-2 mb-2 flex-shrink-0">
 					<Icon
@@ -364,7 +292,6 @@ const techData = {
 					<Heading text="Most Common" textGradient="Techs" level={3} />
 				</div>
 
-				<!-- No controls needed - static display only -->
 				<!-- Content area - fills remaining space -->
 				<div class="flex-1 min-h-0">
 					<MostCommonTechs techData={techData} />
@@ -373,8 +300,6 @@ const techData = {
 		</div>
 	</div>
 </section>
-
-<!-- Section spacing handled by main-section padding -->
 
 <script>
 	// Skills section button functionality
