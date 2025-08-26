@@ -15,7 +15,15 @@ import {
 import { extractNameFromFilename } from '../../utils/filename-utils';
 
 const [staticData] = await getCollection('staticData');
-const skills = await getCollection('skills');
+const skills = await getCollection('skills').then(skills =>
+	skills.map(skill => ({
+		...skill,
+		data: {
+			...skill.data,
+			skillName: skill.id.replace(/\.md$/, ''),
+		},
+	}))
+);
 
 if (!staticData) {
 	throw new AstroError('JSON data not found');
@@ -273,7 +281,7 @@ const techData = {
 					<!-- Skills Table View - Always visible to web crawlers but visually hidden for users -->
 					<div
 						id="skills-table-view"
-						class="block md:hidden bg-white dark:bg-theme-950 rounded-2xl p-2 md:p-6 overflow-hidden">
+						class="bg-white dark:bg-theme-950 rounded-2xl p-2 md:p-6 overflow-hidden">
 						<div class="overflow-y-auto h-full">
 							<!-- Skills Table View layout -->
 							<div class="block space-y-3">
@@ -320,8 +328,7 @@ const techData = {
 																</div>
 																<div class="font-medium">
 																	{(() => {
-																		const skillName =
-																			skill.data.name || skill.slug;
+																		const skillName = skill.data.skillName;
 																		return projects.filter(project =>
 																			project.data.technologies?.some(
 																				(tech: string) => {
