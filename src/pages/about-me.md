@@ -4,7 +4,7 @@ tags:
   - portfolio
 created: 2025-07-21T19:17:10+01:00
 modified: 2025-08-24T15:22:33+01:00
-viewCount: 9
+viewCount: 7
 layout: /src/layouts/MarkdownAbout.astro
 title: Luke Bangs | My portfolio site | bangsluke
 author: Luke Bangs

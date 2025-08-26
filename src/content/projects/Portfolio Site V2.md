@@ -7,8 +7,8 @@ tags:
   - notes
   - portfolio
 created: 2025-02-02T19:03:00
-modified: 2025-08-24T13:50:28+01:00
-viewCount: 69
+modified: 2025-08-26T15:54:02+01:00
+viewCount: 71
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -66,10 +66,11 @@ WHERE file = this.file
 TABLE WITHOUT ID this.deploymentServiceURL as "Deployment Service Link"
 WHERE file = this.file
 
-> [Analytics Tracking - Umami](https://eu.umami.is/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488)
-
 >[!details]  `=this.file.name`
 >`=choice(this.folderURL = null | this.folderURL = "" | this.folderURL = "n/a","","<br>Folder URL: " + link(this.folderURL,"Link")) + choice(this.dateStart = null | this.dateStart = "","","<br>Date Start: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>Date End: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "", "", choice(this.dateEnd = "", "<br>Development Duration: " + string(date(today) - date(this.dateStart)), "<br>Development Duration: " + string(date(this.dateEnd) - date(this.dateStart)))) + choice(this.projectCategory = null | this.projectCategory = "","","<br>Category: " + this.projectCategory) + choice(this.linkedCompany = null | this.linkedCompany = "" | contains(this.linkedCompany, "n/a"),"","<br>Project for: " + this.linkedCompany) + choice(this.toolOwner = null | this.toolOwner = "","","<br>Tool Owner: " + this.toolOwner) + choice(this.developers = null | this.developers = "","","<br>Developers: " + this.developers) + choice(this.technologies = null | this.technologies = "","","<br>Technologies: " + this.technologies) + choice(this.topicTags = null | this.topicTags = "","","<br>Topics: " + this.topicTags) + choice(this.powerShellAlias = null | this.powerShellAlias = "" | this.powerShellAlias = "n/a","","<br>PowerShell Alias: " + this.powerShellAlias) + choice(this.version = null | this.version = "","","<br>Version: " + this.version)`
+
+> - [Analytics Tracking - Umami](https://eu.umami.is/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488)
+> - [Neo4j Aura Database](https://console-preview.neo4j.io/projects/7a5b41a0-6373-5c3c-9fcf-48b80d5d38f2/instances)
 
 ## Table of Contents
 
@@ -177,7 +178,7 @@ Design initially started from a template project called [NeonMint](https://githu
 
 > Sorted by Portfolio Order
 
-![[Portfolio Base.base]]
+![[Portfolio Base.base#Project Lists]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -200,7 +201,7 @@ If any note has a tag `skill` (and `portfolio`) then they will show up on the Po
 
 ##### Skills List
 
-![[Portfolio Base.base]]
+![[Portfolio Base.base#Skills List]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -379,7 +380,7 @@ SORT dateStart ASC
 
 #### About Me Short
 
-Enthusiastic and personable professional with a passion for data and software, seeking a dynamic role to apply strong organisational skills, logical thinking, and effective communication to drive long-term success. Open to impactful positions including Software Developer, DevOps Engineer, or Product Owner
+Enthusiastic and personable professional with a passion for data and software, seeking a dynamic role to apply strong organisational skills, logical thinking and effective communication to drive long-term success. Open to positions where I can make a positive impact including Software Developer, DevOps Engineer or Product Owner
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -393,6 +394,9 @@ Enthusiastic and personable professional with a passion for data and software, s
 
 - [[Portfolio Site]]
 - [Portfolio Site V2 - Canva](https://www.canva.com/design/DAGwOxW7u4E/LWIzan4Iz-ywjKlt-wyYSQ/edit?utm_content=DAGwOxW7u4E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+- [[Portfolio About Me]]
+- [Analytics Tracking - Umami](https://eu.umami.is/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488)
+- [Neo4j Aura Database](https://console-preview.neo4j.io/projects/7a5b41a0-6373-5c3c-9fcf-48b80d5d38f2/instances)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

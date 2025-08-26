@@ -10,9 +10,9 @@ tags:
   - skill
   - library
 created: 2025-05-17T15:40:00
-modified: 2025-07-12T08:35:53+01:00
-viewCount: 9
-aliases: 
+modified: 2025-08-26T16:11:20+01:00
+viewCount: 10
+aliases:
 skillRating: 70
 skillDescription: Able to create more advanced React applications with wide functionality and scalability, utilising hooks and refactoring components down to useable functions
 logoFileName: react.svg
