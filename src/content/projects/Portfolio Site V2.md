@@ -7,7 +7,7 @@ tags:
   - notes
   - portfolio
 created: 2025-02-02T19:03:00
-modified: 2025-08-26T15:25:55+01:00
+modified: 2025-08-26T15:54:02+01:00
 viewCount: 71
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
@@ -178,7 +178,7 @@ Design initially started from a template project called [NeonMint](https://githu
 
 > Sorted by Portfolio Order
 
-![[Portfolio Base.base]]
+![[Portfolio Base.base#Project Lists]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -201,7 +201,7 @@ If any note has a tag `skill` (and `portfolio`) then they will show up on the Po
 
 ##### Skills List
 
-![[Portfolio Base.base]]
+![[Portfolio Base.base#Skills List]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
