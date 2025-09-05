@@ -35,7 +35,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 4
+portfolioOrder: 6
 shortDescription: "A group of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> data. Includes the <a href=\"/projects/group-sales-report\" class=\"theme-link\">Group Sales Report</a>, <a href=\"/projects/pipeline-app-user-report\" class=\"theme-link\">Pipeline App User Report</a> and <a href=\"/projects/project-finance-tracking-report\" class=\"theme-link\">Project Finance Tracking Report</a>."
 longDescription: "A collection of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> projects, focused on analysing the data important to the <span class=\"theme-link\">GPMO</span> team to ensure full data population to provide a full picture to the company's management.<br><br>Includes the <a href=\"/projects/group-sales-report\" class=\"theme-link\">Group Sales Report</a>, <a href=\"/projects/pipeline-app-user-report\" class=\"theme-link\">Pipeline App User Report</a> and <a href=\"/projects/project-finance-tracking-report\" class=\"theme-link\">Project Finance Tracking Report</a>."
 lessonsLearned: "TBC"

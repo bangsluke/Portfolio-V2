@@ -7,7 +7,7 @@ tags:
   - project/completed
 created: 2025-05-30 10:00
 modified: 2025-07-19T10:11:40+01:00
-aliases: 
+aliases:
 viewCount: 12
 projectURL: https://og-stag.netlify.app/
 codeURL: https://github.com/bangsluke/OG-stag
@@ -34,7 +34,7 @@ topicTags:
   - "[[Oli Goddard]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 5
+portfolioOrder: 7
 shortDescription: "A website detailing the itinerary for <span class=\"theme-link\">Oli Goddard</span>'s stag do."
 longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and <span class=\"theme-link\">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.<br><br>This site was a copy and rebrand from the <a href=\"/projects/js-stag-website\" class=\"theme-link\">JS Stag Website</a> I had previously built."
 lessonsLearned: "As this site was a copy of <a href=\"/projects/js-stag-website\" class=\"theme-link\">JS Stag Website</a>, the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes."

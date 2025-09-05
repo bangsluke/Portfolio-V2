@@ -35,7 +35,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 4
+portfolioOrder: 6
 shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing global <span class=\"theme-link\">RLE International</span> data."
 longDescription: "TBC"
 lessonsLearned: "TBC"

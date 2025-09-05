@@ -36,7 +36,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 1.2
-portfolioOrder: 3
+portfolioOrder: 4
 shortDescription: "Data input for financial tracking of <span class=\"theme-link\">RLE International</span> projects."
 longDescription: "TBC<br><br>Pulled in timesheet data and financial information from various <span class=\"theme-link\">RLE International</span> region sources such as <span class=\"theme-link\">Paycor</span>, <span class=\"theme-link\">T-Sheet</span> and <span class=\"theme-link\">Iplicit</span>."
 lessonsLearned: "TBC"
