@@ -4,15 +4,15 @@ tags:
   - role
   - portfolio
 created: 2025-09-01 11:37
-modified: 2025-09-01T16:13:53+01:00
-viewCount: 1
+modified: 2025-09-05T13:06:18+01:00
+viewCount: 3
 dateStart: 2025-09-01
 dateEnd: ""
 linkedCompany:
   - "[[Ford]]"
 shortRoleDescription: "Vehicle integration role working on V801 in the VHE2 group (interiors team)."
-fullRoleDescription: "TBC"
-keyAchievement: "TBC"
+fullRoleDescription: "V801 Vehicle Integration role for the Interiors team, supporting various engineering issues and reporting to management."
+keyAchievement: "Supporting <span class=\"theme-link\">Ford</span> for their defined milestones."
 ---
 # VHE2 Integration Engineer
 
@@ -30,15 +30,17 @@ Vehicle integration role working on V801 in the VHE2 group (interiors team).
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
+TBC
+
 ## Full Role Description
 
-TBC
+V801 Vehicle Integration role for the Interiors team, supporting various engineering issues and reporting to management.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Key Achievement
 
-TBC
+Supporting [[Ford]] for their defined milestones.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
