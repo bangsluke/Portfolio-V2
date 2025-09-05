@@ -12,7 +12,7 @@ aliases:
   - SDP Dev Sites
 viewCount: 20
 projectURL: https://sdp-dev-sites.netlify.app/pages/sdp-acronyms
-codeURL: 
+codeURL: https://git.rle.de/sdp/sdpsupportpages
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/sdp-dev-sites/overview
 folderURL: n/a

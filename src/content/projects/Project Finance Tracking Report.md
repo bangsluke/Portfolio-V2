@@ -7,14 +7,14 @@ tags:
   - project/completed/work
 modified: 2025-08-12T11:54:05+01:00
 viewCount: 12
-aliases: 
+aliases:
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/849fbe08-7442-4d16-8bb7-ba7d415e1d02/ReportSectiondbd35394606841004e11?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
 codeURL: n/a
-codeMultipleRepos: 
+codeMultipleRepos:
 deploymentServiceURL: n/a
-folderURL: 
+folderURL: https://app.powerbi.com/groups/5dc8490c-b5de-49a3-85f9-9eaee02b7d96/list?experience=power-bi
 logoURL: https://i.imgur.com/SFb7UNB.png
-imageURL: 
+imageURL: https://i.imgur.com/i55CeE2.png
 dateStart: 2024-01-01
 dateEnd: 2024-07-31
 technologies:
@@ -34,7 +34,7 @@ topicTags:
   - "[[GPMO]]"
   - "[[Finances]]"
 powerShellAlias: n/a
-version: 
+version: 1
 portfolioOrder: 4
 shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing individual <span class=\"theme-link\">RLE International</span> project data."
 longDescription: "TBC"

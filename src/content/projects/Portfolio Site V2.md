@@ -7,8 +7,8 @@ tags:
   - notes
   - portfolio
 created: 2025-02-02T19:03:00
-modified: 2025-08-26T15:54:02+01:00
-viewCount: 71
+modified: 2025-08-27T10:15:09+01:00
+viewCount: 70
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -387,6 +387,17 @@ Enthusiastic and personable professional with a passion for data and software, s
 #### About Me Long
 
 > For the full About Me section text, see the [[Portfolio About Me]] note
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+#### Social Media Profile Summaries
+
+Software developer with a passion for building web applications and automating processes
+
+- [GitHub Profile](https://github.com/bangsluke)
+- [LinkedIn Profile](https://www.linkedin.com/in/bangsluke/)
+- [Medium Profile](https://medium.com/@bangsluke)
+- [Dev Profile](https://dev.to/bangsluke)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

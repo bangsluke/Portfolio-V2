@@ -2,21 +2,20 @@
 tags:
   - tag
   - software
-  - packageManagement
+  - hosting
+  - coding
   - skill
   - portfolio
-modified: 2025-07-28T07:37:17+01:00
-viewCount: 7
+modified: 2025-07-24T07:26:29+01:00
+viewCount: 3
 aliases:
-skillRating: 15
-skillDescription: Understanding of the differences to npm and Yarn and used in a project.
-logoFileName: pnpm.svg
+skillRating: 10
+skillDescription: Have hosted a single project on Vercel without fully exploring its features.
+logoFileName: vercel.svg
 ---
-# pnpm
+# Vercel
 
 > [!back] Link back to [[Skills Notes]]
-
-> [[JavaScript]] package manager
 
 ## Table of Contents
 

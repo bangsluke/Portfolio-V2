@@ -1,22 +1,24 @@
 ---
 tags:
   - tag
+  - coding
+  - language
   - software
-  - packageManagement
+  - notes
   - skill
   - portfolio
-modified: 2025-07-28T07:37:17+01:00
+created: 2024-02-14T16:16:00
+modified: 2025-08-12T12:10:40+01:00
 viewCount: 7
 aliases:
+  - Yet Another Markup Language
 skillRating: 15
-skillDescription: Understanding of the differences to npm and Yarn and used in a project.
-logoFileName: pnpm.svg
+skillDescription: Able to create simple YAML files for use in processes like GitHub actions and for CI/CD.
+logoFileName: yaml.svg
 ---
-# pnpm
+# YAML
 
 > [!back] Link back to [[Skills Notes]]
-
-> [[JavaScript]] package manager
 
 ## Table of Contents
 

@@ -6,16 +6,16 @@ tags:
   - portfolio
   - project/completed/work
 modified: 2025-08-12T11:54:29+01:00
-viewCount: 11
+viewCount: 12
 aliases:
   - Pipeline
-projectURL: 
+projectURL: https://apps.powerapps.com/play/e/9cb5bfc9-13df-e75e-98ff-a4782f9d0f48/a/c4b54ab2-1db0-4f44-8314-e1ca852d3f44?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4&sourcetime=1701875569544&source=portal
 codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Project%20Pipeline?csf=1&web=1&e=nVEm7I
 logoURL: https://i.imgur.com/RoBXXlo.png
-imageURL: 
+imageURL: https://i.imgur.com/TDp3g9y.png
 dateStart: 2023-05-01
 dateEnd: 2024-07-31
 technologies:
@@ -33,7 +33,7 @@ topicTags:
   - "[[Work]]"
   - "[[GPMO]]"
 powerShellAlias: n/a
-version: 
+version: 5.1
 portfolioOrder: 3
 shortDescription: "A tool for identifying the progress of global <span class=\"theme-link\">RLE International</span> projects from lead to in-play, through to completion."
 longDescription: "TBC"
