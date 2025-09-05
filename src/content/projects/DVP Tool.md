@@ -12,7 +12,7 @@ aliases:
   - DVP Prototype
 viewCount: 18
 projectURL: https://dvp-fe.icypebble-0bf96993.germanywestcentral
-codeURL:
+codeURL: https://git.rle.de/DigitalEngineering/externalpocs/dvp
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a

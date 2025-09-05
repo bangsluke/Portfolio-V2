@@ -6,17 +6,17 @@ tags:
   - project/completed/work
   - portfolio
 modified: 2025-08-12T12:02:36+01:00
-viewCount: 9
+viewCount: 10
 aliases:
   - Financial Tracking
   - FTL
-projectURL: https://apps.powerapps.com/play/e/9cb5bfc9-13df-e75e-98ff-a4782f9d0f48/a/0f4944ff-c216-417f-9c3f-0a1caa4d9940?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4&hint=4806e425-29da-4f17-aa45-7a1d3e37666b&sourcetime=1701763414195
+projectURL: https://apps.powerapps.com/play/e/9cb5bfc9-13df-e75e-98ff-a4782f9d0f48/a/0f4944ff-c216-417f-9c3f-0a1caa4d9940?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4&hint=4806e425-29da-4f17-aa45-7a1d3e37666b&sourcetime=1708077290794&source=portal
 codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: https://i.imgur.com/SFb7UNB.png
-imageURL: 
+imageURL: https://i.imgur.com/bsoJQXm.png
 dateStart: 2023-11-27
 dateEnd: 2024-07-30
 technologies:
@@ -36,8 +36,8 @@ topicTags:
   - "[[GPMO]]"
   - "[[Finances]]"
 powerShellAlias: n/a
-version: 
-portfolioOrder: 3
+version: 2.2
+portfolioOrder: 4
 shortDescription: "A simplified version of the <span class=\"theme-link\">Financial Tracker</span>."
 longDescription: "TBC"
 lessonsLearned: "TBC"

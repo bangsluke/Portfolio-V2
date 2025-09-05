@@ -52,6 +52,7 @@ let knownIconsCache: string[] = [
 	'mysql',
 	'neo4j',
 	'neo4j_cypher',
+	'neon',
 	'nestjs',
 	'netlify',
 	'nextauth',
@@ -87,6 +88,7 @@ let knownIconsCache: string[] = [
 	'visio',
 	'vitejs',
 	'vs_code',
+	'yaml',
 	'yarn',
 	'zod',
 ];

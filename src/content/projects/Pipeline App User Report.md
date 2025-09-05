@@ -7,14 +7,14 @@ tags:
   - project/completed/work
 modified: 2025-08-12T11:53:03+01:00
 viewCount: 10
-aliases: 
+aliases:
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/4800ac5b-36e5-4818-9c5a-38b19965e578/ReportSectiondd4069f533edc22c8a48?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
 codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
-folderURL: 
+folderURL: https://app.powerbi.com/groups/5dc8490c-b5de-49a3-85f9-9eaee02b7d96/list?experience=power-bi
 logoURL: https://i.imgur.com/SFb7UNB.png
-imageURL: 
+imageURL: https://i.imgur.com/hBuR0eh.png
 dateStart: 2023-07-01
 dateEnd: 2024-07-31
 technologies:
@@ -22,6 +22,8 @@ technologies:
   - "[[Power Query]]"
   - "[[SharePoint]]"
 projectCategory: Work Project
+linkedCompany:
+  - "[[RLE International]]"
 toolOwner: "[[Dominic Ede]]"
 developers:
   - "[[Alex Sheers]]"
@@ -31,8 +33,8 @@ topicTags:
   - "[[GPMO]]"
   - "[[Finances]]"
 powerShellAlias: n/a
-version: 
-portfolioOrder: 4
+version: 1
+portfolioOrder: 6
 shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing global <span class=\"theme-link\">RLE International</span> <a href=\"/projects/project-pipeline\" class=\"theme-link\">Project Pipeline</a> data."
 longDescription: "TBC"
 lessonsLearned: "TBC"

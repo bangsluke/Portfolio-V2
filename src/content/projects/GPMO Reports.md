@@ -5,16 +5,16 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-08-12T12:07:26+01:00
+modified: 2025-09-05T11:58:34+01:00
 viewCount: 12
-aliases: 
+aliases:
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/efd30e67-8ed4-4807-95cb-11f46a62d7d2/ReportSectiona3c344f318d21cde0ced?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
 codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
-folderURL: 
+folderURL: https://app.powerbi.com/groups/5dc8490c-b5de-49a3-85f9-9eaee02b7d96/list?experience=power-bi
 logoURL: https://i.imgur.com/SFb7UNB.png
-imageURL: 
+imageURL: https://i.imgur.com/px7FLzl.png
 dateStart: 2024-07-01
 dateEnd: 2024-07-10
 technologies:
@@ -35,9 +35,9 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 4
-shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing global <span class=\"theme-link\">RLE International</span> data."
-longDescription: "A collection of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> projects, focused on analysing the data important to the <span class=\"theme-link\">GPMO</span> team to ensure full data population to provide a full picture to the company's management."
+portfolioOrder: 6
+shortDescription: "A group of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> data. Includes the <a href=\"/projects/group-sales-report\" class=\"theme-link\">Group Sales Report</a>, <a href=\"/projects/pipeline-app-user-report\" class=\"theme-link\">Pipeline App User Report</a> and <a href=\"/projects/project-finance-tracking-report\" class=\"theme-link\">Project Finance Tracking Report</a>."
+longDescription: "A collection of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> projects, focused on analysing the data important to the <span class=\"theme-link\">GPMO</span> team to ensure full data population to provide a full picture to the company's management.<br><br>Includes the <a href=\"/projects/group-sales-report\" class=\"theme-link\">Group Sales Report</a>, <a href=\"/projects/pipeline-app-user-report\" class=\"theme-link\">Pipeline App User Report</a> and <a href=\"/projects/project-finance-tracking-report\" class=\"theme-link\">Project Finance Tracking Report</a>."
 lessonsLearned: "TBC"
 name: "GPMO Reports"
 ---
@@ -74,13 +74,15 @@ WHERE file = this.file
 
 ## Short Description
 
-The report section for the [[Financial Tracker]] showing global [[RLE International]] data.
+A group of [[Power BI]] reports for global [[RLE International]] data. Includes the [[Group Sales Report]], [[Pipeline App User Report]] and [[Project Finance Tracking Report]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
 A collection of [[Power BI]] reports for global [[RLE International]] projects, focused on analysing the data important to the [[GPMO]] team to ensure full data population to provide a full picture to the company's management.
+
+Includes the [[Group Sales Report]], [[Pipeline App User Report]] and [[Project Finance Tracking Report]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

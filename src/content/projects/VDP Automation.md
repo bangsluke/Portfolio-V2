@@ -8,14 +8,14 @@ tags:
 created: 2025-07-24T16:02:00
 modified: 2025-08-12T12:09:32+01:00
 viewCount: 3
-aliases: 
-projectURL: n/a
-codeURL: n/a
+aliases:
+projectURL: https://rleint.sharepoint.com/:x:/r/sites/DeloittePMTool/Shared%20Documents/CEER%20DevPlan.xlsb?d=w96a37936195d4126a22329f260501438&csf=1&web=1&e=Xm5aFR
+codeURL: https://git.rle.de/deloitte/deloitte-pm-tool
 codeMultipleRepos: false
 deploymentServiceURL: n/a
-folderURL: 
-logoURL: 
-imageURL: 
+folderURL: https://rleint.sharepoint.com/sites/DeloittePMTool/Shared%20Documents/Forms/AllItems.aspx
+logoURL: n/a
+imageURL: https://i.imgur.com/TsQv9Z2.png
 dateStart: 2023-11-22
 dateEnd: 2024-02-19
 technologies:
@@ -28,6 +28,7 @@ projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
   - "[[CEER Automotive]]"
+  - "[[Deloitte]]"
 toolOwner: "[[Ian Digman]]"
 developers:
   - "[[Luke Bangs]]"
@@ -37,7 +38,7 @@ topicTags:
   - Tools
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 4
+portfolioOrder: 6
 shortDescription: "Automation of generating populated <span class=\"theme-link\">PowerPoint</span> and <span class=\"theme-link\">Visio</span> slides from an <span class=\"theme-link\">Excel</span> data source."
 longDescription: "The VDP Automation project was an <span class=\"theme-link\">Excel</span> based data source populated with Automotive deliverables and processes by consultants within <span class=\"theme-link\">RLE International</span>, which then had scripts written by me to run through the data and generate hyperlinked and navigable <span class=\"theme-link\">PowerPoint</span> slides showing workflows, whilst simultaneously generating <span class=\"theme-link\">Visio</span> workflows and an exported PDF for mapping out a full Automotive workflow process for the development of a vehicle.<br><br>The tool was successful enough to be utilised by a new start-up Automotive company in defining their deliverable and process documentation providing me an opportunity to travel to <span class=\"theme-link\">Saudi Arabia</span> in the process."
 lessonsLearned: "This project taught me a lot about working with the object libraries within <span class=\"theme-link\">PowerPoint</span> and <span class=\"theme-link\">Visio</span> within the <span class=\"theme-link\">VBA</span> environment. It also gave me a great comparison of how powerful <span class=\"theme-link\">Python</span> can be when I was able to re-write a section of my code from <span class=\"theme-link\">VBA</span> to <span class=\"theme-link\">Python</span> and run the script in less than a tenth of the time."

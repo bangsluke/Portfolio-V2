@@ -2,21 +2,23 @@
 tags:
   - tag
   - software
-  - packageManagement
+  - coding
   - skill
   - portfolio
-modified: 2025-07-28T07:37:17+01:00
-viewCount: 7
+  - database
+created: 2025-08-31T07:36:00
+modified: 2025-08-31T07:38:18+01:00
+viewCount: 1
 aliases:
-skillRating: 15
-skillDescription: Understanding of the differences to npm and Yarn and used in a project.
-logoFileName: pnpm.svg
+skillRating: 5
+skillDescription: Set up and used for a single project to understand its concepts.
+logoFileName: neon.svg
 ---
-# pnpm
+# Neon
 
 > [!back] Link back to [[Skills Notes]]
 
-> [[JavaScript]] package manager
+> Neon offers a serverless [[PostgreSQL|Postgres]] database platform for developers
 
 ## Table of Contents
 
@@ -25,6 +27,7 @@ logoFileName: pnpm.svg
 
 ## Links
 
+- [Neon Serverless Postgres — Ship faster](https://neon.com/)
 - n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)

@@ -11,13 +11,13 @@ modified: 2025-08-12T12:08:12+01:00
 aliases:
   - interview-test Repo
 viewCount: 20
-projectURL: 
+projectURL: n/a
 codeURL: https://github.com/bangsluke/interview-test
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: n/a
-imageURL: 
+imageURL: https://i.imgur.com/3JWcUmJ.png
 dateStart: 2022-05-01
 dateEnd: 2022-05-31
 technologies:
