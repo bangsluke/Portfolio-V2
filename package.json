@@ -50,7 +50,7 @@
 		"preact": "^10.26.2",
 		"preact-github-calendar": "^0.5.10",
 		"react": "^19.1.0",
-		"tailwindcss": "^4.1.8"
+		"tailwindcss": "^4.1.12"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.31.0",
