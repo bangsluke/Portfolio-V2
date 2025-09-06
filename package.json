@@ -33,7 +33,7 @@
 		"update-readme-links": "node scripts/update-readme-links.js"
 	},
 	"dependencies": {
-		"@astrojs/preact": "^4.0.8",
+		"@astrojs/preact": "^4.1.0",
 		"@astrojs/rss": "^4.0.11",
 		"@astrojs/sitemap": "^3.3.0",
 		"@egjs/flicking-plugins": "^4.7.1",
