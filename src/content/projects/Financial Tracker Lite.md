@@ -5,7 +5,7 @@ tags:
   - tool
   - project/completed/work
   - portfolio
-modified: 2025-08-12T12:02:36+01:00
+modified: 2025-09-08T10:23:11+01:00
 viewCount: 10
 aliases:
   - Financial Tracking
@@ -39,8 +39,8 @@ powerShellAlias: n/a
 version: 2.2
 portfolioOrder: 4
 shortDescription: "A simplified version of the <span class=\"theme-link\">Financial Tracker</span>."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+longDescription: "A <span class=\"theme-link\">Power Apps</span> tool for users to input finances (both realised and predicted) on a project by project basis, enabling finance forecasting per region."
+lessonsLearned: "This project helped me work on <span class=\"theme-link\">Power Apps</span> gallery components and ensuring these are user friendly whilst staying maintainable.<br><br>It also involved integrating currency conversions within the tool to ensure that all regions could enter accurate information from their end for singular currency reporting at management level."
 name: "Financial Tracker Lite"
 ---
 # Financial Tracker Lite
@@ -82,7 +82,7 @@ A simplified version of the [[Financial Tracker]].
 
 ## Long Description
 
-TBC
+A [[Power Apps]] tool for users to input finances (both realised and predicted) on a project by project basis, enabling finance forecasting per region.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -126,7 +126,9 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-TBC
+This project helped me work on [[Power Apps]] gallery components and ensuring these are user friendly whilst staying maintainable.
+
+It also involved integrating currency conversions within the tool to ensure that all regions could enter accurate information from their end for singular currency reporting at management level.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

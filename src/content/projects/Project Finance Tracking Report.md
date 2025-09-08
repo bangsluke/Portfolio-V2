@@ -5,7 +5,7 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-08-12T11:54:05+01:00
+modified: 2025-09-08T11:18:04+01:00
 viewCount: 12
 aliases:
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/849fbe08-7442-4d16-8bb7-ba7d415e1d02/ReportSectiondbd35394606841004e11?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
@@ -36,9 +36,9 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 6
-shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing individual <span class=\"theme-link\">RLE International</span> project data."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+shortDescription: "The report section for the <a href=\"/projects/project-finance-data-manager\" class=\"theme-link\">Project Finance Data Manager</a> showing individual <span class=\"theme-link\">RLE International</span> project data."
+longDescription: "A <span class=\"theme-link\">Power BI</span> report that allows users to select their project and drill through to see the forecast and actual finances for the project, as well as a tab showing project hours drawn in from the various timesheet systems."
+lessonsLearned: "The key lesson learned here was gathering the data from the <span class=\"theme-link\">SQL</span> data, rather than from <span class=\"theme-link\">SharePoint</span>."
 name: "Project Finance Tracking Report"
 ---
 # Project Finance Tracking Report
@@ -74,13 +74,13 @@ WHERE file = this.file
 
 ## Short Description
 
-The report section for the [[Financial Tracker]] showing individual [[RLE International]] project data.
+The report section for the [[Project Finance Data Manager]] showing individual [[RLE International]] project data.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-TBC
+A [[Power BI]] report that allows users to select their project and drill through to see the forecast and actual finances for the project, as well as a tab showing project hours drawn in from the various timesheet systems.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -124,7 +124,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-TBC
+The key lesson learned here was gathering the data from the [[SQL]] data, rather than from [[SharePoint]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

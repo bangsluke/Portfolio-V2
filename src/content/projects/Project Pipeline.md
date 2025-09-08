@@ -5,7 +5,7 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-08-12T11:54:29+01:00
+modified: 2025-09-08T11:27:43+01:00
 viewCount: 12
 aliases:
   - Pipeline
@@ -36,8 +36,8 @@ powerShellAlias: n/a
 version: 5.1
 portfolioOrder: 4
 shortDescription: "A tool for identifying the progress of global <span class=\"theme-link\">RLE International</span> projects from lead to in-play, through to completion."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+longDescription: "A <span class=\"theme-link\">Power Apps</span> tool that utilised a project process defined internally within <span class=\"theme-link\">RLE International</span> and allowed users to create and track projects through various phases and stages.<br><br>Each phase had a set of user sign offs to provide process control with each stage below it having a RAG status and documentation explaining what is required to get to green.<br><br>Tasks along with in app notifications were also included in the application to help users pick up their required next steps quickly."
+lessonsLearned: "The main lessons learned for this tool were ensuring the application was very user friendly as we had a very wide user base across the company. Adding features such as sidebar notifications to flag which pages needed attention and task counts on the main dashboard as well as weekly email summaries to users with outstanding tasks was key in keeping all users regularly updating the system."
 name: "Project Pipeline"
 ---
 # Project Pipeline
@@ -79,7 +79,11 @@ A tool for identifying the progress of global [[RLE International]] projects fro
 
 ## Long Description
 
-TBC
+A [[Power Apps]] tool that utilised a project process defined internally within [[RLE International]] and allowed users to create and track projects through various phases and stages.
+
+Each phase had a set of user sign offs to provide process control with each stage below it having a RAG status and documentation explaining what is required to get to green.
+
+Tasks along with in app notifications were also included in the application to help users pick up their required next steps quickly.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -127,7 +131,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-TBC
+The main lessons learned for this tool were ensuring the application was very user friendly as we had a very wide user base across the company. Adding features such as sidebar notifications to flag which pages needed attention and task counts on the main dashboard as well as weekly email summaries to users with outstanding tasks was key in keeping all users regularly updating the system.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

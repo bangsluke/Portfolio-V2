@@ -8,9 +8,9 @@ tags:
   - skill
   - notes
 created: 2023-10-13T07:43:00
-modified: 2025-07-18T12:05:14+01:00
+modified: 2025-09-07T11:44:28+01:00
 viewCount: 7
-aliases: 
+aliases:
 skillRating: 30
 skillDescription: Able to write simple commands for navigating and interacting with folders and files.
 logoFileName: bash.svg
@@ -136,6 +136,19 @@ greet
 ```
 
 > Source: [Linux Shell Scripting for DevOps: A Beginner's Guide - DEV Community](https://dev.to/arbythecoder/linux-shell-scripting-for-devops-a-beginners-guide-1fgf)
+
+### Useful Tips
+
+#### Reverse Searches Using Ctrl + R
+
+More often than not, we find ourselves using the same commands when working on a project. Instead of typing them repeatedly or copy-pasting them, we can take advantage of the terminal’s history. The terminal keeps a record of all previously used commands, which can be easily searched.
+
+Just use the combination Ctrl + R and start typing the command you are looking for. The list of commands from history are filtered based on what you type.
+
+> Bonus Tip: You can add comments at the end of your command to work as tags. This way, searching your command becomes even more easy!
+> For example, run your command like command # useful. Then you can use the reverse search to find the exact command by tag “useful” - Ctrl + R # useful.
+
+> Source: <https://levelup.gitconnected.com/10-terminal-tricks-most-developers-dont-know-but-should-c62520940eab>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

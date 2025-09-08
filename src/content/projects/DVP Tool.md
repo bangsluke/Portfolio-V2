@@ -7,7 +7,7 @@ tags:
   - project/completed/work
   - coding
 created: 2025-05-29 18:05
-modified: 2025-08-12T11:59:24+01:00
+modified: 2025-09-08T10:13:32+01:00
 aliases:
   - DVP Prototype
 viewCount: 18
@@ -124,7 +124,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- TBC - add link to the GitLab top level project?
+- [Digital Engineering GitLab](https://git.rle.de/DigitalEngineering)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

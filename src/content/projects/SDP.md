@@ -4,10 +4,10 @@ tags:
   - portfolio
   - notes
 created: 2025-06-27 10:45
-modified: 2025-08-12T12:09:01+01:00
+modified: 2025-09-08T11:45:48+01:00
 aliases:
   - Scalable Development Plan
-viewCount: 16
+viewCount: 17
 projectURL: https://sdp.labs.rle.de/sdpweb/
 codeURL: https://git.rle.de/sdp/sdp-3
 codeMultipleRepos: false
@@ -46,8 +46,8 @@ powerShellAlias: n/a
 version: 3
 portfolioOrder: 2
 shortDescription: "Scalable Development Plan to automatically build a full development timing plan based on a number of inputs."
-longDescription: "TBC"
-lessonsLearned: "I was fully in charge of the <span class=\"theme-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"theme-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"theme-link\">Excel</span> and then writing a <span class=\"theme-link\">VBA</span> script to automate creating the <span class=\"theme-link\">SQL</span> queries to update the database quickly.<br><br>This lead to a complete rebuild when our company migrated from <span class=\"theme-link\">Microsoft</span> to <span class=\"theme-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"theme-link\">Google Sheets</span> and use <span class=\"theme-link\">Google Apps Script</span>.<br><br>There was a brief period where we began consider rebuilding the frontend in <span class=\"theme-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.<br><br>As well as the main app, we also developed several <span class=\"theme-link\">NeoDash</span> dashboards off of the <span class=\"theme-link\">Neo4j</span> data for ongoing maintenance to check on the data.<br><br>TBC"
+longDescription: "SDP - Scalable Development Plan - was an internal tool developed within <span class=\"theme-link\">RLE International</span> that brought together the various automotive process knowledge that the company had gathered over years of work with various <span class=\"theme-link\">OEMs</span>.<br><br>It was a web application that gathered project inputs from users and could then calculate a full project timing plan, split across various swimlanes for the given project details. After this, users could further update the plan within the tool to fully align it to their own expectations or export the data for using in external tools such as <span class=\"theme-link\">Microsoft Project</span>."
+lessonsLearned: "I was fully in charge of the <span class=\"theme-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"theme-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"theme-link\">Excel</span> and then writing a <span class=\"theme-link\">VBA</span> script to automate creating the <span class=\"theme-link\">SQL</span> queries to update the database quickly.<br><br>This lead to a complete rebuild when our company migrated from <span class=\"theme-link\">Microsoft</span> to <span class=\"theme-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"theme-link\">Google Sheets</span> and use <span class=\"theme-link\">Google Apps Script</span>.<br><br>There was a brief period where we began consider rebuilding the frontend in <span class=\"theme-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.<br><br>As well as the main app, we also developed several <span class=\"theme-link\">NeoDash</span> dashboards off of the <span class=\"theme-link\">Neo4j</span> data for ongoing maintenance to check on the data, teaching me about this tool and getting me further involved with writing <span class=\"theme-link\">Cypher</span> queries."
 name: "SDP"
 ---
 # SDP
@@ -89,7 +89,9 @@ Scalable Development Plan to automatically build a full development timing plan 
 
 ## Long Description
 
-TBC
+SDP - Scalable Development Plan - was an internal tool developed within [[RLE International]] that brought together the various automotive process knowledge that the company had gathered over years of work with various [[OEMs]].
+
+It was a web application that gathered project inputs from users and could then calculate a full project timing plan, split across various swimlanes for the given project details. After this, users could further update the plan within the tool to fully align it to their own expectations or export the data for using in external tools such as [[Project|Microsoft Project]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -126,7 +128,9 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
+- [SDP GitLab](https://git.rle.de/sdp)
 - [[SDP Consultant Pages]]
+- [Digital Engineering GitLab](https://git.rle.de/DigitalEngineering)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -138,9 +142,7 @@ This lead to a complete rebuild when our company migrated from [[Microsoft]] to 
 
 There was a brief period where we began consider rebuilding the frontend in [[React]] and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
 
-As well as the main app, we also developed several [[NeoDash]] dashboards off of the [[Neo4j]] data for ongoing maintenance to check on the data.
-
-TBC
+As well as the main app, we also developed several [[NeoDash]] dashboards off of the [[Neo4j]] data for ongoing maintenance to check on the data, teaching me about this tool and getting me further involved with writing [[Cypher]] queries.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

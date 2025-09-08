@@ -6,7 +6,7 @@ tags:
   - portfolio
   - project/completed/work
 created: 2025-07-24T16:02:00
-modified: 2025-08-12T12:09:32+01:00
+modified: 2025-09-08T11:37:38+01:00
 viewCount: 3
 aliases:
 projectURL: https://rleint.sharepoint.com/:x:/r/sites/DeloittePMTool/Shared%20Documents/CEER%20DevPlan.xlsb?d=w96a37936195d4126a22329f260501438&csf=1&web=1&e=Xm5aFR
@@ -48,7 +48,7 @@ name: "VDP Automation"
 
 > [!back] Link back to [[01 Projects|Projects]]
 
-> VDP - TBC what it stands for (Vehicle Development Plan?)
+> VDP - Vehicle Development Process
 
 >[!website-link] Links
 > ```dataview
@@ -124,7 +124,8 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- TBC
+- [Deloitte Documents](https://rleint.sharepoint.com/:f:/r/sites/Deloitte/Freigegebene%20Dokumente/General?csf=1&web=1&e=37O9Sy)
+- [Excel Generator Tool](https://rleint.sharepoint.com/:f:/r/sites/DeloittePMTool/Shared%20Documents/Excel%20Generator%20Tool?csf=1&web=1&e=lhVeB7)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

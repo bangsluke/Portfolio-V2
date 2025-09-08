@@ -4,8 +4,8 @@ tags:
   - role
   - portfolio
 created: 2025-09-01 11:37
-modified: 2025-09-05T13:06:18+01:00
-viewCount: 3
+modified: 2025-09-08T11:37:56+01:00
+viewCount: 2
 dateStart: 2025-09-01
 dateEnd: ""
 linkedCompany:

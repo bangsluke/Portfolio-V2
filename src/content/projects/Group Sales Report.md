@@ -5,7 +5,7 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-08-12T11:52:45+01:00
+modified: 2025-09-08T10:39:27+01:00
 viewCount: 12
 aliases:
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/efd30e67-8ed4-4807-95cb-11f46a62d7d2/ReportSectiona3c344f318d21cde0ced?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
@@ -37,8 +37,8 @@ powerShellAlias: n/a
 version: 1
 portfolioOrder: 6
 shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing global <span class=\"theme-link\">RLE International</span> data."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+longDescription: "Financial data split out by region for all <span class=\"theme-link\">RLE International</span> entities, showing booked and opportunities. This <span class=\"theme-link\">Power BI</span> report was management level reporting, showing regions rolled together up to show the companies finances projections against target."
+lessonsLearned: "The key functionality for the graphics was developed by <span class=\"theme-link\">Alex Sheers</span> on this report. My role was the navigation between pages and usability.<br><br>I learned how best to develop images for use as page and button backgrounds in <span class=\"theme-link\">Figma</span> to get pixel perfect images and help separate the content of each page into distinguishable sections to aid readability."
 name: "Group Sales Report"
 ---
 # Group Sales Report
@@ -80,7 +80,7 @@ The report section for the [[Financial Tracker]] showing global [[RLE Internatio
 
 ## Long Description
 
-TBC
+Financial data split out by region for all [[RLE International]] entities, showing booked and opportunities. This [[Power BI]] report was management level reporting, showing regions rolled together up to show the companies finances projections against target.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -124,7 +124,9 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-TBC
+The key functionality for the graphics was developed by [[Alex Sheers]] on this report. My role was the navigation between pages and usability.
+
+I learned how best to develop images for use as page and button backgrounds in [[Figma]] to get pixel perfect images and help separate the content of each page into distinguishable sections to aid readability.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

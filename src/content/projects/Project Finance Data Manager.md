@@ -5,7 +5,7 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-08-12T11:53:51+01:00
+modified: 2025-09-08T11:08:10+01:00
 viewCount: 13
 aliases:
   - PFDM
@@ -38,8 +38,8 @@ powerShellAlias: n/a
 version: 1.2
 portfolioOrder: 4
 shortDescription: "Data input for financial tracking of <span class=\"theme-link\">RLE International</span> projects."
-longDescription: "TBC<br><br>Pulled in timesheet data and financial information from various <span class=\"theme-link\">RLE International</span> region sources such as <span class=\"theme-link\">Paycor</span>, <span class=\"theme-link\">T-Sheet</span> and <span class=\"theme-link\">Iplicit</span>."
-lessonsLearned: "TBC"
+longDescription: "The <a href=\"/projects/project-finance-data-manager\" class=\"theme-link\">Project Finance Data Manager</a> app was a <span class=\"theme-link\">Power App</span> for managing various cost data for a project, tying together several data sources.<br><br>Pulled in timesheet data and financial information from various <span class=\"theme-link\">RLE International</span> region sources such as <span class=\"theme-link\">Paycor</span>, <span class=\"theme-link\">T-Sheet</span> and <span class=\"theme-link\">Iplicit</span>.<br><br>Users could also import <a href=\"/projects/cost-model-translation-file\" class=\"theme-link\">Cost Model Translation File</a>s to bring in planned finances and could version changes."
+lessonsLearned: "This project challenged our architecture skills mainly, ensuring we had a solid logic for how data flowed between the <a href=\"/projects/cost-model\" class=\"theme-link\">Cost Model</a> files and could be pushed to the <span class=\"theme-link\">SQL</span> backend whilst maintaining version control.<br><br>There were also various access roles we had to set up and implement to ensure the correct users could see the correct level of detail and correct projects."
 name: "Project Finance Data Manager"
 ---
 # Project Finance Data Manager
@@ -81,9 +81,11 @@ Data input for financial tracking of [[RLE International]] projects.
 
 ## Long Description
 
-TBC
+The [[Project Finance Data Manager]] app was a [[Power Apps|Power App]] for managing various cost data for a project, tying together several data sources.
 
 Pulled in timesheet data and financial information from various [[RLE International]] region sources such as [[Paycor]], [[T-Sheet]] and [[Iplicit]].
+
+Users could also import [[Cost Model Translation File]]s to bring in planned finances and could version changes.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -128,7 +130,9 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-TBC
+This project challenged our architecture skills mainly, ensuring we had a solid logic for how data flowed between the [[Cost Model]] files and could be pushed to the [[SQL]] backend whilst maintaining version control.
+
+There were also various access roles we had to set up and implement to ensure the correct users could see the correct level of detail and correct projects.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
