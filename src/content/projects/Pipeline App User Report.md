@@ -5,7 +5,7 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-08-12T11:53:03+01:00
+modified: 2025-09-08T10:54:02+01:00
 viewCount: 10
 aliases:
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/4800ac5b-36e5-4818-9c5a-38b19965e578/ReportSectiondd4069f533edc22c8a48?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
@@ -36,8 +36,8 @@ powerShellAlias: n/a
 version: 1
 portfolioOrder: 6
 shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing global <span class=\"theme-link\">RLE International</span> <a href=\"/projects/project-pipeline\" class=\"theme-link\">Project Pipeline</a> data."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+longDescription: "A <span class=\"theme-link\">Power BI</span> report outlining the activity within the <a href=\"/projects/project-pipeline\" class=\"theme-link\">Project Pipeline</a> <span class=\"theme-link\">Power Apps</span> tool, analysing the use of the tool by user and region helping identify weaknesses in data input and aging data.<br><br>Users could use the report to also see upcoming and overdue tasks to see where bottlenecks existed and visualise ageing leads for possible projects."
+lessonsLearned: "The key lessons learned on this report was working to extract useful graphics from the <a href=\"/projects/project-pipeline\" class=\"theme-link\">Project Pipeline</a> tool to help understand its usage and how to identify gaps in its use."
 name: "Pipeline App User Report"
 ---
 # Pipeline App User Report
@@ -79,7 +79,9 @@ The report section for the [[Financial Tracker]] showing global [[RLE Internatio
 
 ## Long Description
 
-TBC
+A [[Power BI]] report outlining the activity within the [[Project Pipeline]] [[Power Apps]] tool, analysing the use of the tool by user and region helping identify weaknesses in data input and aging data.
+
+Users could use the report to also see upcoming and overdue tasks to see where bottlenecks existed and visualise ageing leads for possible projects.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -123,7 +125,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-TBC
+The key lessons learned on this report was working to extract useful graphics from the [[Project Pipeline]] tool to help understand its usage and how to identify gaps in its use.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
