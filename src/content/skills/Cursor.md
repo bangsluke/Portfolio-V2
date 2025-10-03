@@ -8,9 +8,9 @@ tags:
   - portfolio
 modified: 2025-07-12T19:11:39+01:00
 viewCount: 4
-aliases: 
-skillRating: 60
-skillDescription: Used daily as part of my workflow process, handing over basic tasks to the integrated AI agent.
+aliases:
+skillRating: 65
+skillDescription: Used daily as part of my workflow process, handing over basic tasks to the integrated AI agent, scoped to work within my defined rules.
 logoFileName: cursor.svg
 ---
 # Cursor
