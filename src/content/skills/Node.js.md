@@ -11,7 +11,7 @@ modified: 2025-07-26T09:08:41+01:00
 viewCount: 9
 aliases:
   - Node
-skillRating: 50
+skillRating: 55
 skillDescription: Confident in using Node.js for backend work and setting up scripts for automating development steps.
 logoFileName: nodejs.svg
 ---

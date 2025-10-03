@@ -4,21 +4,21 @@ tags:
   - role
   - portfolio
 created: 2025-09-01 11:37
-modified: 2025-09-08T11:37:56+01:00
-viewCount: 2
+modified: 2025-09-16T17:57:59+01:00
+viewCount: 4
 dateStart: 2025-09-01
 dateEnd: ""
 linkedCompany:
   - "[[Ford]]"
 shortRoleDescription: "Vehicle integration role working on V801 in the VHE2 group (interiors team)."
-fullRoleDescription: "V801 Vehicle Integration role for the Interiors team, supporting various engineering issues and reporting to management."
+fullRoleDescription: "V801 Vehicle Integration role for the Interiors team, supporting various engineering issues and reporting to management.<br><br>Developed numerous tracking documents to support the team and optimised ongoing workflows to enhance day to day operations."
 keyAchievement: "Supporting <span class=\"theme-link\">Ford</span> for their defined milestones."
 ---
 # VHE2 Integration Engineer
 
 > [!back] Link back to [[Role Notes]]
 
-> LBANGS1
+> LBANGS1@ford.com
 
 ## Table of Contents
 ```table-of-contents
@@ -35,6 +35,8 @@ TBC
 ## Full Role Description
 
 V801 Vehicle Integration role for the Interiors team, supporting various engineering issues and reporting to management.
+
+Developed numerous tracking documents to support the team and optimised ongoing workflows to enhance day to day operations.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -10,8 +10,8 @@ tags:
 created: 2025-06-13T08:16:00
 modified: 2025-07-28T07:36:48+01:00
 viewCount: 10
-aliases: 
-skillRating: 50
+aliases:
+skillRating: 55
 skillDescription: Able to write basic and more advanced queries for interacting with Neo4j data.
 logoFileName: neo4j_cypher.svg
 ---
