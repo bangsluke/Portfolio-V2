@@ -14,7 +14,7 @@ codeURL: https://dev.azure.com/RLEGPMO/_git/Project%20Finance%20Data%20Manager
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/sites/UKPMO/Freigegebene%20Dokumente/Forms/AllItems.aspx?id=%2Fsites%2FUKPMO%2FFreigegebene%20Dokumente%2FGeneral%2FTools%2FProject%20Finance%20Data%20Manager&viewid=5f4536b9%2D13eb%2D4e4d%2Dbf13%2D48ab749b5169
-logoURL: https://i.imgur.com/Jsm73YL.png
+logoURL: https://i.postimg.cc/KcrMkn2p/Project-Finance-Data-Manager.png
 imageURL: https://i.postimg.cc/nhP8MkqS/Project-Finance-Data-Manager.png
 dateStart: 2024-01-01
 dateEnd: 2024-07-31

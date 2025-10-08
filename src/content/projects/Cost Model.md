@@ -13,7 +13,7 @@ codeURL: n/a
 codeMultipleRepos:
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model?csf=1&web=1&e=CGmO2I
-logoURL: https://i.imgur.com/fmcxj4Y.png
+logoURL: https://i.postimg.cc/fWj9txNr/Cost-Model.png
 imageURL: https://i.postimg.cc/R06ktHRZ/Cost-Model.png
 dateStart: 2023-11-15
 dateEnd: 2024-07-26

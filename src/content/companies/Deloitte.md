@@ -11,7 +11,7 @@ viewCount: 1
 aliases:
 dateStart: 2023-02-01
 dateEnd: 2023-03-31
-logoURL: https://i.imgur.com/TbJR0Mi.png
+logoURL: https://i.postimg.cc/V6Q7Kj5M/Deloitte.png
 linkedCompany:
   - "[[RLE International]]"
 ---

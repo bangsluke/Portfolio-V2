@@ -7,11 +7,11 @@ tags:
   - client
 created: 2025-07-21T11:06:00
 modified: 2025-07-21T11:05:00+01:00
-viewCount: 3
-aliases: 
+viewCount: 1
+aliases:
 dateStart: 2018-06-01
 dateEnd: 2019-07-01
-logoURL: https://i.imgur.com/IOJ0h8y.png
+logoURL: https://i.postimg.cc/SsFZgWj6/Dyson.png
 linkedCompany:
   - "[[RLE International]]"
 ---

@@ -5,7 +5,7 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-09-08T11:27:43+01:00
+modified: 2025-10-08T18:00:21+01:00
 viewCount: 13
 aliases:
   - Pipeline
@@ -14,7 +14,7 @@ codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Project%20Pipeline?csf=1&web=1&e=nVEm7I
-logoURL: https://i.imgur.com/RoBXXlo.png
+logoURL: https://i.postimg.cc/sf9hQprn/Project-Pipeline.png
 imageURL: https://i.postimg.cc/T348h9nH/Project-Pipeline.png
 dateStart: 2023-05-01
 dateEnd: 2024-07-31
