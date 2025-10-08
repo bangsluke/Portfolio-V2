@@ -17,7 +17,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/sdp-dev-sites/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/57VSthu.png
+imageURL: https://i.postimg.cc/FKM2VHWL/SDP-Consultant-Pages.png
 dateStart: 2021-03-01
 dateEnd: 2021-03-31
 technologies:

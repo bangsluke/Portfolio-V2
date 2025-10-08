@@ -8,14 +8,14 @@ tags:
 created: 2025-05-30 10:00
 modified: 2025-07-19T10:11:15+01:00
 aliases:
-viewCount: 11
+viewCount: 12
 projectURL: https://js-stag.netlify.app/
 codeURL: https://github.com/bangsluke/JS-stag
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/js-stag/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/Ve95p8R.png
+imageURL: https://i.postimg.cc/4yZqjFTZ/JS-Stag.png
 dateStart: 2023-03-23
 dateEnd: 2023-05-11
 technologies:

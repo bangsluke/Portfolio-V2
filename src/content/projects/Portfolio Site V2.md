@@ -15,8 +15,8 @@ codeURL: https://github.com/bangsluke/Portfolio-V2
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-portfolio/overview
 folderURL: n/a
-logoURL: n/a
-imageURL: https://i.imgur.com/pxMynvO.png
+logoURL: https://i.postimg.cc/3RZn08zP/Portfolio-Site-V2.png
+imageURL: https://i.postimg.cc/25sP7Scj/Portfolio-Site-V2.png
 powerShellAlias: portfolio
 dateStart: 2025-02-01
 dateEnd: ""

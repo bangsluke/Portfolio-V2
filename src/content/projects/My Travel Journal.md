@@ -16,7 +16,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-my-travel-journal/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/mXKIr8v.png
+imageURL: https://i.postimg.cc/TwnB7vFg/my-travel-journal-V1.png
 dateStart: 2022-06-09
 dateEnd: 2023-08-14
 technologies:

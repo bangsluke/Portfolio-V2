@@ -7,7 +7,7 @@ tags:
   - project/completed/work
 created: 2025-07-24T16:02:00
 modified: 2025-09-08T11:37:38+01:00
-viewCount: 3
+viewCount: 4
 aliases:
 projectURL: https://rleint.sharepoint.com/:x:/r/sites/DeloittePMTool/Shared%20Documents/CEER%20DevPlan.xlsb?d=w96a37936195d4126a22329f260501438&csf=1&web=1&e=Xm5aFR
 codeURL: https://git.rle.de/deloitte/deloitte-pm-tool
@@ -15,7 +15,7 @@ codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/sites/DeloittePMTool/Shared%20Documents/Forms/AllItems.aspx
 logoURL: n/a
-imageURL: https://i.imgur.com/TsQv9Z2.png
+imageURL: https://i.postimg.cc/xdJwmzRQ/VDP-Automation.png
 dateStart: 2023-11-22
 dateEnd: 2024-02-19
 technologies:

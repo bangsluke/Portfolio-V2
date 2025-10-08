@@ -14,7 +14,7 @@ codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/sites/SDP-Titans/Freigegebene%20Dokumente/Forms/AllItems.aspx
 logoURL: n/a
-imageURL: https://i.imgur.com/9wrW5ZH.png
+imageURL: https://i.postimg.cc/hGkH1tyG/SDP.png
 dateStart: 2019-07-01
 dateEnd: 2022-05-30
 technologies:

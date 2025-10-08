@@ -17,7 +17,7 @@ codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/3JWcUmJ.png
+imageURL: https://i.postimg.cc/rp0B4rJX/Interview-Test-Repo.png
 dateStart: 2022-05-01
 dateEnd: 2022-05-31
 technologies:

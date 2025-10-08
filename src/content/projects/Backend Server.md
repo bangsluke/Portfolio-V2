@@ -6,7 +6,7 @@ tags:
   - project/active
 created: 2025-06-23 13:36
 modified: 2025-08-16T21:06:51+01:00
-viewCount: 17
+viewCount: 15
 aliases:
   - backend-server
   - backend server
@@ -15,8 +15,8 @@ codeURL: https://github.com/bangsluke/bangsluke-backend-server
 codeMultipleRepos: false
 deploymentServiceURL: https://dashboard.heroku.com/apps/server-mytraveljournal
 folderURL: n/a
-logoURL: https://i.imgur.com/yqTK1TX.png
-imageURL: https://i.imgur.com/o3p2v41.png
+logoURL: https://i.postimg.cc/NMxp2sWq/Backend-Server.png
+imageURL: https://i.postimg.cc/Y0kZTywq/Backend-Server.png
 dateStart: 2025-06-24
 dateEnd: ""
 technologies:

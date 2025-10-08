@@ -8,14 +8,14 @@ tags:
 created: 2025-05-29 18:01
 modified: 2025-08-12T12:12:40+01:00
 aliases:
-viewCount: 14
+viewCount: 15
 projectURL: https://bangsluke-portfolio-card.netlify.app/
 codeURL: https://github.com/bangsluke/card-portfolio
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-portfolio-card/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/Nr44f3t.png
+imageURL: https://i.postimg.cc/90VKsNHN/Portfolio-Card.png
 dateStart: 2022-06-07
 dateEnd: 2023-10-20
 technologies:
