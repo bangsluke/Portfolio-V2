@@ -7,10 +7,10 @@ tags:
   - tag
 created: 2025-02-08 13:47
 modified: 2025-08-13T15:16:49+01:00
-viewCount: 11
+viewCount: 14
 dateStart: 2011-09-05
 dateEnd: 2014-06-27
-logoURL: https://i.imgur.com/V4J5S0P.png
+logoURL: https://i.postimg.cc/4d6Wqmh1/Loughborough-University.png
 qualifications: "BEng. Automotive Engineering. Second Class Honours, Upper Division (2:1)"
 additionalDetails: "Large range of engineering topics, exploring multiple engineering fundamentals from structures and materials to vehicle aerodynamics. Final year project conducted on the numerical analysis of CNG, LPG and Hydrogen turbulent premixed flames data from experiments conducted in <span class=\"theme-link\">Sydney</span>."
 ---

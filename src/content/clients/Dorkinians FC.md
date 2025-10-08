@@ -13,7 +13,7 @@ aliases:
   - Dorkinians
 dateStart: 2015-09-05
 dateEnd: TBD
-logoURL: https://i.imgur.com/wMPmx9P.png
+logoURL: https://i.postimg.cc/rm1f3Kth/Dorkinians.png
 linkedCompany:
   - n/a
 ---

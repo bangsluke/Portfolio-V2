@@ -8,11 +8,11 @@ tags:
   - subsidiary
 created: 2025-05-30T11:25:00
 modified: 2025-07-18T08:07:25+01:00
-viewCount: 7
-aliases: 
+viewCount: 8
+aliases:
 dateStart: 2014-09-01
 dateEnd: ""
-logoURL: https://i.imgur.com/YO94MEL.png
+logoURL: https://i.postimg.cc/nzbd3vM2/RLE-International.png
 ---
 # RLE UK
 

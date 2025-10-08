@@ -14,7 +14,7 @@ codeURL: https://github.com/bangsluke/rle-sales-details
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/rle-sales-details/overview
 folderURL: n/a
-logoURL: https://i.imgur.com/13pPwzp.png
+logoURL: https://i.postimg.cc/zDSgbnrM/RLEGPT.png
 imageURL: https://i.postimg.cc/nzqNRfg6/RLEGPT.png
 dateStart: 2023-04-01
 dateEnd: 2023-04-30

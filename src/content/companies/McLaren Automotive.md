@@ -12,7 +12,7 @@ aliases:
   - McLaren
 dateStart: 2014-09-01
 dateEnd: 2016-02-01
-logoURL: https://i.imgur.com/e73shC9.png
+logoURL: https://i.postimg.cc/XJS2swXd/McLaren.png
 linkedCompany:
   - "[[RLE International]]"
 ---

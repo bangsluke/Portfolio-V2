@@ -8,11 +8,11 @@ tags:
   - automotive
 created: 2025-06-02 17:46
 modified: 2025-07-18T07:44:59+01:00
-viewCount: 12
-aliases: 
+viewCount: 13
+aliases:
 dateStart: 2022-03-01
 dateEnd: 2022-03-31
-logoURL: https://i.imgur.com/kHPlATO.png
+logoURL: https://i.postimg.cc/4d6Wqmh6/Odin-Automotive.png
 linkedCompany:
   - "[[RLE International]]"
 ---

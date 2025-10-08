@@ -15,7 +15,7 @@ codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
-logoURL: https://i.imgur.com/SFb7UNB.png
+logoURL: https://i.postimg.cc/pVYFhDH1/Finance-Reports.png
 imageURL: https://i.postimg.cc/fRr4kKY2/Financial-Tracker-Lite.png
 dateStart: 2023-11-27
 dateEnd: 2024-07-30
