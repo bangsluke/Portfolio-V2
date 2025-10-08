@@ -6,7 +6,7 @@ tags:
   - portfolio
   - project/completed/work
 modified: 2025-09-08T11:08:10+01:00
-viewCount: 13
+viewCount: 14
 aliases:
   - PFDM
 projectURL: https://apps.powerapps.com/play/e/9cb5bfc9-13df-e75e-98ff-a4782f9d0f48/a/2f37da68-ee87-4e33-854b-8598826a866f?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4&hint=d7be4b55-aa62-4dec-8fe2-a4738bd94489&sourcetime=1707918756797
@@ -15,7 +15,7 @@ codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/sites/UKPMO/Freigegebene%20Dokumente/Forms/AllItems.aspx?id=%2Fsites%2FUKPMO%2FFreigegebene%20Dokumente%2FGeneral%2FTools%2FProject%20Finance%20Data%20Manager&viewid=5f4536b9%2D13eb%2D4e4d%2Dbf13%2D48ab749b5169
 logoURL: https://i.imgur.com/Jsm73YL.png
-imageURL: https://i.imgur.com/aVgRHHq.png
+imageURL: https://i.postimg.cc/nhP8MkqS/Project-Finance-Data-Manager.png
 dateStart: 2024-01-01
 dateEnd: 2024-07-31
 technologies:

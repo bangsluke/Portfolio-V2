@@ -10,14 +10,14 @@ created: 2025-06-02 17:16
 modified: 2025-07-19T09:57:46+01:00
 aliases:
   - Stratamotiv Landing Page
-viewCount: 16
+viewCount: 18
 projectURL: https://stratamotiv.netlify.app/
 codeURL: https://github.com/bangsluke/CoELandingPage
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/stratamotiv/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/BfUN7o4.png
+imageURL: https://i.postimg.cc/BbskRwfY/Co-E-Landing-Page.png
 dateStart: 2023-02-01
 dateEnd: 2023-03-01
 technologies:

@@ -8,14 +8,14 @@ tags:
 created: 2025-05-30 10:00
 modified: 2025-07-19T10:11:40+01:00
 aliases:
-viewCount: 12
+viewCount: 13
 projectURL: https://og-stag.netlify.app/
 codeURL: https://github.com/bangsluke/OG-stag
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/og-stag/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/hlZ9jEG.png
+imageURL: https://i.postimg.cc/hvg6N3RY/OG-Stag.png
 dateStart: 2023-05-22
 dateEnd: 2023-07-07
 technologies:

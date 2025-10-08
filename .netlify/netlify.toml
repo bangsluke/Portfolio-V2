@@ -1,10 +1,16 @@
-plugins = []
 headers = []
 redirects = []
 
 [functions]
 
 [functions."*"]
+
+[[plugins]]
+origin = "ui"
+package = "@netlify/plugin-lighthouse"
+pinned_version = "6"
+
+[plugins.inputs]
 
 [build]
 publish = "C:\\Users\\bangs\\Documents\\Coding Projects\\Portfolio-Projects\\Portfolio-V2\\dist"

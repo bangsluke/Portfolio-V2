@@ -8,7 +8,7 @@ tags:
   - work
 created: 2025-05-30 09:57
 modified: 2025-09-08T10:30:13+01:00
-viewCount: 17
+viewCount: 18
 aliases:
 projectURL: https://gpmo.rle.international/
 codeURL: https://dev.azure.com/RLEGPMO/_git/GPMO%20Documentation
@@ -16,7 +16,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://dev.azure.com/RLEGPMO/GPMO%20Documentation
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/utXk3m3.png
+imageURL: https://i.postimg.cc/s2kt4g6d/GPMO-Documentation-Site.png
 dateStart: 2024-02-01
 dateEnd: 2024-07-31
 technologies:

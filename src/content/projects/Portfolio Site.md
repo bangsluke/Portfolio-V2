@@ -9,14 +9,14 @@ tags:
 created: 2025-05-29 17:59
 modified: 2025-08-13T11:44:23+01:00
 aliases:
-viewCount: 17
+viewCount: 18
 projectURL: https://bangsluke-portfolio-v1.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/fMd3zzE.png
+imageURL: https://i.postimg.cc/sxyqb0CH/Portfolio-Site.png
 dateStart: 2022-04-09
 dateEnd: 2024-02-02
 technologies:

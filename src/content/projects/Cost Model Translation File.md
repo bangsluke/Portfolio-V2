@@ -14,7 +14,7 @@ codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model?csf=1&web=1&e=CGmO2I
 logoURL: n/a
-imageURL: https://i.imgur.com/g9DXTNE.png
+imageURL: https://i.postimg.cc/zfbshgjJ/Cost-Model-Translation-File.png
 dateStart: 2024-01-31
 dateEnd: 2024-07-31
 technologies:

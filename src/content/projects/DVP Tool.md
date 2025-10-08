@@ -10,14 +10,14 @@ created: 2025-05-29 18:05
 modified: 2025-09-08T10:13:32+01:00
 aliases:
   - DVP Prototype
-viewCount: 18
+viewCount: 19
 projectURL: https://dvp-fe.icypebble-0bf96993.germanywestcentral
 codeURL: https://git.rle.de/DigitalEngineering/externalpocs/dvp
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/mBhpEXt.png
+imageURL: https://i.postimg.cc/7LFpnZsJ/DVP-Tool.png
 dateStart: 2022-06-01
 dateEnd: 2022-12-31
 technologies:

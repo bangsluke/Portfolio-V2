@@ -6,7 +6,7 @@ tags:
   - project/completed/work
   - portfolio
 modified: 2025-09-08T10:23:11+01:00
-viewCount: 10
+viewCount: 11
 aliases:
   - Financial Tracking
   - FTL
@@ -16,7 +16,7 @@ codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: https://i.imgur.com/SFb7UNB.png
-imageURL: https://i.imgur.com/bsoJQXm.png
+imageURL: https://i.postimg.cc/fRr4kKY2/Financial-Tracker-Lite.png
 dateStart: 2023-11-27
 dateEnd: 2024-07-30
 technologies:
