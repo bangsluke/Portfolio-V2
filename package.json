@@ -42,7 +42,7 @@
 		"@tailwindcss/vite": "^4.1.13",
 		"@types/d3": "^7.4.3",
 		"@yeskunall/astro-umami": "^0.0.7",
-		"astro": "^5.13.7",
+		"astro": "^5.13.9",
 		"astro-icon": "^1.1.5",
 		"d3": "^7.9.0",
 		"dotenv": "^16.6.1",
