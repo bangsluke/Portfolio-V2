@@ -37,7 +37,7 @@
 		"@astrojs/preact": "^4.1.1",
 		"@astrojs/sitemap": "^3.6.0",
 		"@egjs/flicking-plugins": "^4.7.1",
-		"@egjs/preact-flicking": "^4.14.0",
+		"@egjs/preact-flicking": "^4.14.1",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.1.13",
 		"@types/d3": "^7.4.3",
