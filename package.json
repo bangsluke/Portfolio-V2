@@ -49,8 +49,13 @@
 		"nodemailer": "^7.0.7",
 		"preact": "^10.27.2",
 		"preact-github-calendar": "^0.5.10",
+<<<<<<< HEAD
 		"react": "^19.2.0",
 		"tailwindcss": "^4.1.13"
+=======
+		"react": "^19.1.1",
+		"tailwindcss": "^4.1.14"
+>>>>>>> origin/snyk-upgrade-b8d12dd44fc3063eb06f73e20ae913e0
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.31.0",
