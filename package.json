@@ -37,9 +37,9 @@
 		"@astrojs/preact": "^4.1.1",
 		"@astrojs/sitemap": "^3.6.0",
 		"@egjs/flicking-plugins": "^4.7.1",
-		"@egjs/preact-flicking": "^4.14.0",
+		"@egjs/preact-flicking": "^4.14.1",
 		"@tailwindcss/typography": "^0.5.19",
-		"@tailwindcss/vite": "^4.1.13",
+		"@tailwindcss/vite": "^4.1.14",
 		"@types/d3": "^7.4.3",
 		"@yeskunall/astro-umami": "^0.0.7",
 		"astro": "^5.14.4",
@@ -49,8 +49,8 @@
 		"nodemailer": "^7.0.7",
 		"preact": "^10.27.2",
 		"preact-github-calendar": "^0.5.10",
-		"react": "^19.1.1",
-		"tailwindcss": "^4.1.13"
+		"react": "^19.2.0",
+		"tailwindcss": "^4.1.14"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.31.0",
