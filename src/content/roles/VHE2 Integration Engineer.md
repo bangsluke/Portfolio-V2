@@ -4,14 +4,14 @@ tags:
   - role
   - portfolio
 created: 2025-09-01 11:37
-modified: 2025-09-16T17:57:59+01:00
-viewCount: 4
+modified: 2025-10-22T16:48:17+01:00
+viewCount: 5
 dateStart: 2025-09-01
 dateEnd: ""
 linkedCompany:
   - "[[Ford]]"
 shortRoleDescription: "Vehicle integration role working on V801 in the VHE2 group (interiors team)."
-fullRoleDescription: "V801 Vehicle Integration role for the Interiors team, supporting various engineering issues and reporting to management.<br><br>Developed numerous tracking documents to support the team and optimised ongoing workflows to enhance day to day operations."
+fullRoleDescription: "V801 Vehicle Integration role for the Interiors team (VHE2), supporting various engineering issues and reporting to management.<br><br>Developed numerous tracking documents to support the team and optimised ongoing workflows to enhance day to day operations. Helped with cross VHE metrics reporting and data architecture.<br><br>Supported teams in meeting <span class=\"theme-link\">CAD</span> <span class=\"theme-link\">MCI</span> completeness targets for UXV0 and then took on the role of tracking Recycling and Renewables content in ensuring suppliers met <span class=\"theme-link\">Ford</span>'s 20% renewables target."
 keyAchievement: "Supporting <span class=\"theme-link\">Ford</span> for their defined milestones."
 ---
 # VHE2 Integration Engineer
@@ -34,9 +34,11 @@ TBC
 
 ## Full Role Description
 
-V801 Vehicle Integration role for the Interiors team, supporting various engineering issues and reporting to management.
+V801 Vehicle Integration role for the Interiors team (VHE2), supporting various engineering issues and reporting to management.
 
-Developed numerous tracking documents to support the team and optimised ongoing workflows to enhance day to day operations.
+Developed numerous tracking documents to support the team and optimised ongoing workflows to enhance day to day operations. Helped with cross VHE metrics reporting and data architecture.
+
+Supported teams in meeting [[CAD]] [[MCI]] completeness targets for UXV0 and then took on the role of tracking Recycling and Renewables content in ensuring suppliers met [[Ford]]'s 20% renewables target.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
