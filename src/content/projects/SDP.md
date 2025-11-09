@@ -4,10 +4,10 @@ tags:
   - portfolio
   - notes
 created: 2025-06-27 10:45
-modified: 2025-09-08T11:45:48+01:00
+modified: 2025-11-09T15:03:24+00:00
 aliases:
   - Scalable Development Plan
-viewCount: 17
+viewCount: 18
 projectURL: https://sdp.labs.rle.de/sdpweb/
 codeURL: https://git.rle.de/sdp/sdp-3
 codeMultipleRepos: false
@@ -18,18 +18,18 @@ imageURL: https://i.postimg.cc/hGkH1tyG/SDP.png
 dateStart: 2019-07-01
 dateEnd: 2022-05-30
 technologies:
-  - "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]"
   - "[[React]]"
   - "[[Neo4j]]"
   - "[[Cypher]]"
   - "[[GitLab]]"
-  - "[[Google Cloud|GCP]]"
   - "[[SQL]]"
   - "[[Excel]]"
   - "[[VBA]]"
   - "[[Google Sheets]]"
   - "[[Google Apps Script]]"
   - "[[NeoDash]]"
+  - "[[Google Cloud]]"
+  - "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
