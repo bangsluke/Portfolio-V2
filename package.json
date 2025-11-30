@@ -33,24 +33,24 @@
 		"update-readme-links": "node scripts/update-readme-links.js"
 	},
 	"dependencies": {
-		"@astrojs/rss": "^4.0.12",
+		"@astrojs/rss": "^4.0.13",
 		"@astrojs/preact": "^4.1.1",
 		"@astrojs/sitemap": "^3.6.0",
 		"@egjs/flicking-plugins": "^4.7.1",
 		"@egjs/preact-flicking": "^4.14.1",
 		"@tailwindcss/typography": "^0.5.19",
-		"@tailwindcss/vite": "^4.1.14",
+		"@tailwindcss/vite": "^4.1.17",
 		"@types/d3": "^7.4.3",
 		"@yeskunall/astro-umami": "^0.0.7",
-		"astro": "^5.14.6",
+		"astro": "^5.15.9",
 		"astro-icon": "^1.1.5",
 		"d3": "^7.9.0",
 		"dotenv": "^16.6.1",
-		"nodemailer": "^7.0.9",
+		"nodemailer": "^7.0.10",
 		"preact": "^10.27.2",
 		"preact-github-calendar": "^0.5.10",
 		"react": "^19.2.0",
-		"tailwindcss": "^4.1.14"
+		"tailwindcss": "^4.1.17"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.31.0",
