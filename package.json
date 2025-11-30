@@ -46,7 +46,7 @@
 		"astro-icon": "^1.1.5",
 		"d3": "^7.9.0",
 		"dotenv": "^16.6.1",
-		"nodemailer": "^7.0.9",
+		"nodemailer": "^7.0.10",
 		"preact": "^10.27.2",
 		"preact-github-calendar": "^0.5.10",
 		"react": "^19.2.0",
