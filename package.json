@@ -72,5 +72,8 @@
 		"tailwindcss-animated": "^2.0.0",
 		"ts-jest": "^29.4.0",
 		"typescript-eslint": "^8.37.0"
+	},
+	"overrides": {
+		"html-minifier": "npm:html-minifier-terser@^7.2.0"
 	}
 }
