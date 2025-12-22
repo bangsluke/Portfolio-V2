@@ -7,8 +7,8 @@ tags:
   - portfolio
   - project/parked
 created: 2025-02-02T19:03:00
-modified: 2025-10-17T17:51:54+01:00
-viewCount: 2
+modified: 2025-12-22T08:34:33+00:00
+viewCount: 4
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -101,6 +101,7 @@ Every project, skill, role, company, education and reference is stored in [[Obsi
 - Security: [[Snyk]]
 - Authentication: n/a
 - Testing: [[Jest]]
+- Analytics: [[Umami]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

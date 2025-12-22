@@ -1,22 +1,17 @@
 ---
 tags:
-  - synced
-  - coding
   - skill
-  - notes
   - tag
-  - software
-  - testing
   - portfolio
-created: 2025-05-16T15:38:00
-modified: 2025-07-22T09:47:54+01:00
-viewCount: 8
+created: 2025-11-09 18:47
+modified: 2025-11-09T18:47:13+00:00
 aliases:
-skillRating: 10
-skillDescription: Can set up basic unit tests and automate the running during development or during deployment checks.
-logoFileName: jest.svg
+viewCount: 1
+skillRating: 30
+skillDescription: Utilised on a couple of projects for basic website usage analytics.
+logoFileName: umami.svg
 ---
-# Jest
+# Umami
 
 > [!back] Link back to [[Skills Notes]]
 
@@ -83,8 +78,6 @@ FROM [[]]
 GROUP BY "Links"
 ```
 
->[!top] [Back to top](#Table%20of%20Contents)
-
 ### Last Mentioned
 
 ```dataview
@@ -93,8 +86,6 @@ FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
 ```
-
->[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 

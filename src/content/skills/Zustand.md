@@ -1,22 +1,17 @@
 ---
 tags:
-  - synced
-  - coding
   - skill
-  - notes
-  - tag
+  - coding
   - software
-  - testing
   - portfolio
-created: 2025-05-16T15:38:00
-modified: 2025-07-22T09:47:54+01:00
-viewCount: 8
+created: 2025-12-19 08:53
+modified: 2025-12-19T08:55:28+00:00
 aliases:
-skillRating: 10
-skillDescription: Can set up basic unit tests and automate the running during development or during deployment checks.
-logoFileName: jest.svg
+viewCount: 2
+skillRating: 15
+logoFileName: zustand.svg
 ---
-# Jest
+# Zustand
 
 > [!back] Link back to [[Skills Notes]]
 
@@ -83,8 +78,6 @@ FROM [[]]
 GROUP BY "Links"
 ```
 
->[!top] [Back to top](#Table%20of%20Contents)
-
 ### Last Mentioned
 
 ```dataview
@@ -93,8 +86,6 @@ FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
 ```
-
->[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 

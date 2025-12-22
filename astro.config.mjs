@@ -31,6 +31,10 @@ try {
 // https://astro.build/config
 export default defineConfig({
   site: "https://bangsluke-portfolio.netlify.app/",
+  server: {
+    host: '0.0.0.0',
+    port: 4321,
+  },
   integrations: [preact(), icon(), sitemap({
     filter: (page) =>
       !page.includes("/blog/tags") &&
