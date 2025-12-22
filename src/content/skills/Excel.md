@@ -8,7 +8,7 @@ viewCount: 4
 aliases:
   - Microsoft Excel
 modified: 2025-07-18T12:16:41+01:00
-skillRating: 85
+skillRating: 90
 skillDescription: Highly proficient in developing complex and optimised spreadsheets including writing VBA code.
 logoFileName: excel.svg
 ---
