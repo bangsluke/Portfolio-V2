@@ -116,7 +116,7 @@ export default function Carousel({
 		}
 	}, [items, type]);
 
-	// Create AutoPlay plugin
+	// Create AutoPlay plugin with circular support
 	const autoPlayPlugin = useRef(
 		new AutoPlay({
 			duration: autoPlayDuration,
@@ -126,6 +126,21 @@ export default function Carousel({
 	);
 
 	const plugins = useMemo(() => [autoPlayPlugin.current], []);
+
+	// Ensure we have enough items for circular mode (minimum 3)
+	// If fewer than 3, duplicate items to enable circular mode
+	const itemsForCircular = useMemo(() => {
+		if (processedItems.length === 0) return [];
+		if (processedItems.length >= 3) return processedItems;
+		// Duplicate items to reach minimum of 3 for circular mode
+		// Repeat the pattern enough times to create seamless looping
+		const repetitions = Math.ceil(3 / processedItems.length);
+		const duplicated: (CustomerClientItem | ReferenceItemData)[] = [];
+		for (let i = 0; i < repetitions; i++) {
+			duplicated.push(...processedItems);
+		}
+		return duplicated;
+	}, [processedItems]);
 
 	const handleItemClick = (itemId: string) => {
 		const newSelectedItem = selectedItem === itemId ? null : itemId;
@@ -140,7 +155,7 @@ export default function Carousel({
 
 		// Snap to the clicked item
 		if (flickingRef.current) {
-			const itemIndex = processedItems.findIndex(
+			const itemIndex = itemsForCircular.findIndex(
 				(item: CustomerClientItem | ReferenceItemData) => item.id === itemId
 			);
 			if (itemIndex !== -1) {
@@ -165,11 +180,22 @@ export default function Carousel({
 		return () => document.removeEventListener('click', handleClickOutside);
 	}, [autoPlayPlugin]);
 
+	// Update Flicking when items change to ensure circular mode works
+	useEffect(() => {
+		if (flickingRef.current && itemsForCircular.length > 0) {
+			// Resize and update Flicking to ensure circular mode is properly initialized
+			flickingRef.current.resize();
+		}
+	}, [itemsForCircular.length]);
+
 	// Render item based on type
-	const renderItem = (item: CustomerClientItem | ReferenceItemData) => {
+	const renderItem = (
+		item: CustomerClientItem | ReferenceItemData,
+		index: number
+	) => {
 		if (type === 'customer-client') {
 			return (
-				<div key={item.id} className="flicking-panel">
+				<div key={`${item.id}-${index}`} className="flicking-panel">
 					<CustomerAndClientItem
 						item={item as CustomerClientItem & { type: 'company' | 'client' }}
 						isSelected={selectedItem === item.id}
@@ -179,7 +205,7 @@ export default function Carousel({
 			);
 		} else if (type === 'reference') {
 			return (
-				<div key={item.id} className="flicking-panel">
+				<div key={`${item.id}-${index}`} className="flicking-panel">
 					<ReferenceItem
 						reference={item as ReferenceItemData}
 						isSelected={selectedItem === item.id}
@@ -205,8 +231,12 @@ export default function Carousel({
 				ref={flickingRef}
 				plugins={plugins}
 				className="flicking-viewport"
-				circular={true}>
-				{processedItems.map(renderItem)}
+				circular={true}
+				circularFallback="bound"
+				renderOnlyVisible={false}
+				bound={false}
+				preventClickOnDrag={true}>
+				{itemsForCircular.map((item, index) => renderItem(item, index))}
 			</Flicking>
 
 			{/* Custom Arrow Buttons */}
