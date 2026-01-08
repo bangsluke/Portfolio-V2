@@ -4,8 +4,8 @@ tags:
   - role
   - portfolio
 created: 2025-07-16T09:36:00
-modified: 2025-07-22T17:41:37+01:00
-viewCount: 5
+modified: 2026-01-08T15:38:25+00:00
+viewCount: 1
 dateStart: 2016-02-01
 dateEnd: 2018-06-01
 linkedCompany:
@@ -19,7 +19,8 @@ keyAchievement: "Implementation of the rear door hinge cost reduction concept, s
 
 > [!back] Link back to [[Role Notes]]
 
-> Total Value Management
+> Total Value Management Engineer
+> LBANGS@ford.com
 
 ## Table of Contents
 ```table-of-contents
