@@ -4,12 +4,14 @@ tags:
   - coding
   - software
   - portfolio
+  - tag
 created: 2025-12-19 08:53
 modified: 2025-12-19T08:55:28+00:00
 aliases:
 viewCount: 2
 skillRating: 15
 logoFileName: zustand.svg
+skillDescription: Utilised on a single project for large state management.
 ---
 # Zustand
 
