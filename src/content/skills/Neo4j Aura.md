@@ -6,10 +6,10 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-18T12:43:15+01:00
-viewCount: 6
+viewCount: 7
 aliases:
   - Aura
-skillRating: 40
+skillRating: 55
 skillDescription: Set up a single instance within which I manage the data across multiple projects.
 logoFileName: neo4j_cypher.svg
 ---

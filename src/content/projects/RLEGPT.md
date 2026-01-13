@@ -22,6 +22,10 @@ technologies:
   - "[[Vite.js]]"
   - "[[OpenAI]]"
   - "[[React]]"
+  - "[[VS Code]]"
+  - "[[Yarn]]"
+  - "[[ESLint]]"
+  - "[[Prettier]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

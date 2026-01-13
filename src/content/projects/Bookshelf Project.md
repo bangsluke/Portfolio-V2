@@ -1,47 +1,48 @@
 ---
 tags:
-  - tag
+  - project
+  - notes
   - work
-  - tool
-  - project/completed/work
   - portfolio
-modified: 2025-08-12T11:50:30+01:00
-viewCount: 8
+  - project/completed/work
+created: 2026-01-12 15:12
+modified: 2026-01-12T16:30:35+00:00
 aliases:
-projectURL: https://rleint.sharepoint.com/:x:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model/GPMO%20Cost%20Model%20Translation%20File%20V1_5.xlsm?d=wcacae63dda2a43abbfe9065ce76d8b03&csf=1&web=1&e=wIT1PG
+viewCount: 2
+projectURL: n/a
 codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
-folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model?csf=1&web=1&e=CGmO2I
+folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/zfbshgjJ/Cost-Model-Translation-File.png
-dateStart: 2024-01-31
-dateEnd: 2024-07-31
+imageURL: https://i.postimg.cc/RVPz10pc/Bookshelf-Dashboard.png
+dateStart: 2025-12-16
+dateEnd: 2026-01-07
 technologies:
-  - "[[Excel]]"
+  - "[[Python]]"
+  - "[[pip]]"
+  - "[[Power BI]]"
   - "[[VBA]]"
-  - "[[SharePoint]]"
-  - "[[DevOps]]"
+  - "[[Excel]]"
+  - "[[VS Code]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
-toolOwner: "[[Keith Higham]]"
+  - "[[Ford]]"
+toolOwner: "[[Luke Bangs]]"
 developers:
   - "[[Luke Bangs]]"
-  - "[[Alex Sheers]]"
 topicTags:
-  - "[[GPMO]]"
-  - "[[Work]]"
-  - "[[Finances]]"
-powerShellAlias: n/a
-version: 1.5
+  - "[[Ford]]"
+powerShellAlias: bookshelf
+version: 1
 portfolioOrder: 5
-shortDescription: "The automation file to convert the <a href=\"/projects/cost-model\" class=\"theme-link\">Cost Model</a> into the data format required for the <span class=\"theme-link\">Finance Tracker</span>."
-longDescription: "An <span class=\"theme-link\">Excel</span> file that was used as the front end interface for users to upload <a href=\"/projects/cost-model\" class=\"theme-link\">Cost Model</a> data into our <span class=\"theme-link\">Financial Tracker</span> system.<br><br><span class=\"theme-link\">VBA</span> scripts facilitated the selection and upload of a file and processed the data to be stored in <span class=\"theme-link\">SharePoint</span>, ready for tools such as the <span class=\"theme-link\">Financial Tracker</span> to utilise."
-lessonsLearned: "This project taught me about the importance of keeping users engaged and informed during the script running process to ensure users were aware that the <span class=\"theme-link\">VBA</span> script was working.<br><br>It also was an interesting technical consideration on how to create a tool that would work across multiple <span class=\"theme-link\">Microsoft</span> tenants as we have internal offices split across different ones."
-name: "Cost Model Translation File"
+shortDescription: "A gathering of files and folders from across various team <span class=\"theme-link\">SharePoint</span> sites into a combined <span class=\"theme-link\">Power BI</span> report enabling search and filtering."
+longDescription: "This project was built for a vehicle program that was paused where the customer wanted the progress and data saved for possible use again in the future.<br><br>My implemented solution used a <span class=\"theme-link\">VBA</span> script to loop through mapped <span class=\"theme-link\">SharePoint</span> sites and generate a <span class=\"theme-link\">CSV</span> of the sites structure, storing folder and file meta data.<br><br>The <span class=\"theme-link\">CSV</span>s were then passed through a <span class=\"theme-link\">Python</span> script, which used fuzzy matching to generate a set of tags for the files and clean any data ready for the <span class=\"theme-link\">Power BI</span> report.<br><br>A <span class=\"theme-link\">Power BI</span> report was then built to display the various <span class=\"theme-link\">SharePoint</span> data, using filters for site location, tags and file types to allow the user to sift through the data. Users could search the database of folders and files using their own search text and could follow the URL links to the specific item."
+lessonsLearned: "This project taught me how to use fuzzy matching with the correct fine tuning to extract usable tags from a list of data.<br><br>It also helped me improve my <span class=\"theme-link\">Power BI</span> skills, ensuring I set up the project from start to finish rather than modifying an existing report as had previously been the case."
+name: "Bookshelf Project"
 ---
-# Cost Model Translation File
+# Bookshelf Project
 
 > [!back] Link back to [[01 Projects|Projects]]
 
@@ -74,25 +75,29 @@ WHERE file = this.file
 
 ## Short Description
 
-The automation file to convert the [[Cost Model]] into the data format required for the [[Financial Tracker|Finance Tracker]].
+A gathering of files and folders from across various team [[SharePoint]] sites into a combined [[Power BI]] report enabling search and filtering.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-An [[Excel]] file that was used as the front end interface for users to upload [[Cost Model]] data into our [[Financial Tracker]] system.
+This project was built for a vehicle program that was paused where the customer wanted the progress and data saved for possible use again in the future.
 
-[[VBA]] scripts facilitated the selection and upload of a file and processed the data to be stored in [[SharePoint]], ready for tools such as the [[Financial Tracker]] to utilise.
+My implemented solution used a [[VBA]] script to loop through mapped [[SharePoint]] sites and generate a [[CSV]] of the sites structure, storing folder and file meta data.
+
+The [[CSV]]s were then passed through a [[Python]] script, which used fuzzy matching to generate a set of tags for the files and clean any data ready for the [[Power BI]] report.
+
+A [[Power BI]] report was then built to display the various [[SharePoint]] data, using filters for site location, tags and file types to allow the user to sift through the data. Users could search the database of folders and files using their own search text and could follow the URL links to the specific item.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: [[Excel]]
-- Back end/Datasource: [[VBA]]
-- Hosting: [[SharePoint]] (see [Repositories](#repositories))
-- Security: n/a
-- Authentication: [[SharePoint]]
+- Front end: [[Power BI]]
+- Back end/Datasource: [[SharePoint]], [[VBA]], [[Python]]
+- Hosting: [[Microsoft]]
+- Security: [[Microsoft]]
+- Authentication: [[Microsoft]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -119,16 +124,15 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
-- [[GPMO]]
-- [[Cost Model]]
+- See the physical [[Excel]] and [[Power BI]] report within my Coding Projects folder
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This project taught me about the importance of keeping users engaged and informed during the script running process to ensure users were aware that the [[VBA]] script was working.
+This project taught me how to use fuzzy matching with the correct fine tuning to extract usable tags from a list of data.
 
-It also was an interesting technical consideration on how to create a tool that would work across multiple [[Microsoft]] tenants as we have internal offices split across different ones.
+It also helped me improve my [[Power BI]] skills, ensuring I set up the project from start to finish rather than modifying an existing report as had previously been the case.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -22,6 +22,8 @@ technologies:
   - "[[React]]"
   - "[[GitHub]]"
   - "[[Snyk]]"
+  - "[[npm]]"
+  - "[[VS Code]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a
@@ -32,7 +34,7 @@ topicTags:
   - "[[Work]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 6
+portfolioOrder: 7
 shortDescription: "A simplified portfolio idea to show just a single card of my contact details."
 longDescription: "A single static site displaying a high level summary of who I am and how to contact me along with some details on the skills and technologies I have worked with."
 lessonsLearned: "The key lesson learned from this project was learning to work with the d3 chart library in order to create the skill bubble graphic."

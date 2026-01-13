@@ -9,8 +9,8 @@ tags:
   - portfolio
 created: 2025-05-16T15:38:00
 modified: 2025-07-02T14:20:10+01:00
-viewCount: 7
-aliases: 
+viewCount: 8
+aliases:
 skillRating: 5
 skillDescription: Very minor experience in fixing small scripts for developers.
 logoFileName: CPlusPlus.svg

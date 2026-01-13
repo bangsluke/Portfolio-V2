@@ -16,7 +16,7 @@ logoFileName: cypress.svg
 
 > [!back] Link back to [[Skills Notes]]
 
-> [[JavaScript]] E2E testing library
+> [[JavaScript]] [[E2E]] testing library
 
 ## Table of Contents
 

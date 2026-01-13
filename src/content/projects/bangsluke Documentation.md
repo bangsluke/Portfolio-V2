@@ -29,6 +29,8 @@ technologies:
   - "[[Netlify]]"
   - "[[Snyk]]"
   - "[[Algolia]]"
+  - "[[Yarn]]"
+  - "[[VS Code]]"
 projectCategory: Documentation
 linkedCompany:
   - n/a

@@ -24,6 +24,7 @@ technologies:
   - "[[JavaScript]]"
   - "[[Google Sheets]]"
   - "[[GitHub]]"
+  - "[[VS Code]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a

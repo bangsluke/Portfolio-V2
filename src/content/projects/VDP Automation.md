@@ -24,6 +24,7 @@ technologies:
   - "[[PowerPoint]]"
   - "[[Visio]]"
   - "[[Python]]"
+  - "[[pip]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

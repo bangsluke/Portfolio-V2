@@ -6,10 +6,10 @@ tags:
   - AI
   - skill
   - portfolio
-modified: 2025-07-12T19:11:39+01:00
-viewCount: 4
+modified: 2026-01-12T17:10:56+00:00
+viewCount: 5
 aliases:
-skillRating: 70
+skillRating: 65
 skillDescription: Used daily as part of my workflow process, handing over basic tasks to the integrated AI agent, scoped to work within my defined rules and building out on the planning feature within the tool.
 logoFileName: cursor.svg
 ---

@@ -8,7 +8,7 @@ tags:
   - project/parked
 created: 2025-05-16T09:29:00
 modified: 2025-08-13T20:56:19+01:00
-viewCount: 38
+viewCount: 37
 aliases:
   - Travel Journal
   - mytraveljournal
@@ -34,6 +34,13 @@ technologies:
   - "[[Cypher]]"
   - "[[Neo4j Aura]]"
   - "[[NextAuth]]"
+  - "[[ESLint]]"
+  - "[[Prettier]]"
+  - "[[Yarn]]"
+  - "[[Typescript]]"
+  - "[[VS Code]]"
+  - "[[Obsidian]]"
+  - "[[Codeium]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a

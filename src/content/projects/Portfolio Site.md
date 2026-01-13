@@ -26,6 +26,7 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Snyk]]"
+  - "[[VS Code]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a

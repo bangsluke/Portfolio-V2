@@ -26,6 +26,12 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Snyk]]"
+  - "[[Yarn]]"
+  - "[[Prettier]]"
+  - "[[ESLint]]"
+  - "[[Typescript]]"
+  - "[[Next.js]]"
+  - "[[VS Code]]"
 projectCategory: Personal Design
 linkedCompany:
   - "[[Dorkinians FC]]"

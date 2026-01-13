@@ -29,6 +29,9 @@ technologies:
   - "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]"
   - "[[Next.js]]"
   - "[[Nest.JS]]"
+  - "[[Cypress]]"
+  - "[[VS Code]]"
+  - "[[npm]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

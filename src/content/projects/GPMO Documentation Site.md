@@ -25,6 +25,8 @@ technologies:
   - "[[Markdown]]"
   - "[[GitLab]]"
   - "[[Azure]]"
+  - "[[VS Code]]"
+  - "[[DevOps]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
