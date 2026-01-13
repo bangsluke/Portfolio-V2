@@ -1,78 +1,109 @@
 <p align="center">
-  <img src="https://i.imgur.com/QL72TPw.png" alt="bangsluke Logo" width="200"/>
+  <img src="https://i.postimg.cc/3RZn08zP/Portfolio-Site-V2.png" alt="bangsluke Logo" height="100"/>
 </p>
 
 # Portfolio Site V2
 
-> A modern, static portfolio website built with Astro and Tailwind CSS, featuring integrated Obsidian note syncing for seamless content management and a comprehensive project showcase system.
+<p align="center">
+  A modern, static portfolio website built with Astro and Tailwind CSS, featuring integrated Obsidian note syncing for seamless content management and a comprehensive project showcase system.
+</p>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d9ed7eb9-789c-4a7c-b069-b9aebb73c553/deploy-status)](https://app.netlify.com/projects/bangsluke-portfolio/deploys)
+<p align="center">
+  <a href="https://bangsluke-portfolio.netlify.app/">🌐 Live Demo</a> •
+  <a href="https://github.com/bangsluke/Portfolio-V2">💻 GitHub Repository</a> •
+  <a href="#key-benefits">✨ Key Benefits</a> •
+  <a href="#features">✨ Features</a> •
+  <a href="#screenshots">📸 Screenshots</a> •
+</p>
+
+<p align="center">
+  <a href="https://app.netlify.com/projects/bangsluke-portfolio/deploys">
+    <img src="https://api.netlify.com/api/v1/badges/d9ed7eb9-789c-4a7c-b069-b9aebb73c553/deploy-status" alt="Netlify Status" />
+  </a>
+  <img src="https://img.shields.io/badge/Astro-14-purple?logo=astro" alt="Astro" />
+  <img src="https://img.shields.io/badge/TypeScript-5.9-blue?logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind CSS-green?logo=tailwindcss" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Preact-purple?logo=preact" alt="Preact" />
+  <img src="https://img.shields.io/badge/Zod-red?logo=zod" alt="Zod" />
+</p>
+
+<p align="center">
+  <img src="./public/screenshots/Portfolio.png" alt="Portfolio Site V2 Screenshot" height="550"/>
+</p>
 
 ## Table of Contents
 
-- [Portfolio Site V2](#portfolio-site-v2)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-    - [Key Benefits](#key-benefits)
-    - [Features](#features)
-  - [How It Works](#how-it-works)
-  - [Quick Start](#quick-start)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-    - [Environment Configuration](#environment-configuration)
-    - [Development](#development)
-    - [Production](#production)
-  - [Obsidian Sync System](#obsidian-sync-system)
-    - [Overview](#overview)
-    - [Quick Sync Commands](#quick-sync-commands)
-    - [Configuration](#configuration)
-      - [Environment Variables](#environment-variables)
-      - [Default Paths](#default-paths)
-    - [Tag System](#tag-system)
-      - [Tagging Your Notes](#tagging-your-notes)
-    - [Usage Examples](#usage-examples)
-      - [Local Development](#local-development)
-      - [Production Deployment](#production-deployment)
-      - [Custom Path](#custom-path)
-      - [Custom Tag](#custom-tag)
-      - [Email Notifications](#email-notifications)
-    - [Mobile Sync](#mobile-sync)
-      - [Android](#android)
-      - [iOS](#ios)
-    - [GitHub Actions Integration](#github-actions-integration)
-      - [Manual Trigger](#manual-trigger)
-      - [Automated Deployment](#automated-deployment)
-      - [Setup GitHub Secrets](#setup-github-secrets)
-    - [Email Notifications](#email-notifications-1)
-      - [Setup](#setup)
-      - [Test Email Service](#test-email-service)
-      - [Email Content](#email-content)
-    - [Troubleshooting](#troubleshooting)
-      - [Common Issues](#common-issues)
-      - [Debug Mode](#debug-mode)
-      - [Manual File Processing](#manual-file-processing)
-  - [Project Structure](#project-structure)
-  - [Content Management](#content-management)
-    - [Obsidian Integration](#obsidian-integration)
-    - [Content Collections](#content-collections)
-    - [Markdown Processing](#markdown-processing)
-  - [Portfolio Features](#portfolio-features)
-    - [Project Showcase](#project-showcase)
-    - [Skills Display](#skills-display)
-    - [Work Experience Timeline](#work-experience-timeline)
-    - [Education Timeline](#education-timeline)
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+  - [Key Benefits](#key-benefits)
+  - [Features](#features)
+  - [Screenshots](#screenshots)
+    - [Portfolio Introduction](#portfolio-introduction)
+    - [Skills](#skills)
+    - [Projects](#projects)
+    - [Work Experience](#work-experience)
+    - [Customers and Clients](#customers-and-clients)
+    - [Education](#education)
     - [References](#references)
-    - [Blog System](#blog-system)
-  - [Deployment](#deployment)
-    - [Netlify](#netlify)
-    - [GitHub Actions](#github-actions)
-  - [Development](#development-1)
-    - [Tech Stack](#tech-stack)
-    - [Scripts](#scripts)
-    - [Testing](#testing)
-      - [Test Files](#test-files)
-      - [Test Integration](#test-integration)
-    - [Styling](#styling)
+    - [About Me](#about-me)
+- [How It Works](#how-it-works)
+- [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Environment Configuration](#environment-configuration)
+  - [Development](#development)
+  - [Production](#production)
+- [Obsidian Sync System](#obsidian-sync-system)
+  - [Overview](#overview)
+  - [Quick Sync Commands](#quick-sync-commands)
+  - [Configuration](#configuration)
+    - [Environment Variables](#environment-variables)
+    - [Default Paths](#default-paths)
+  - [Tag System](#tag-system)
+    - [Tagging Your Notes](#tagging-your-notes)
+  - [Usage Examples](#usage-examples)
+    - [Local Development](#local-development)
+    - [Production Deployment](#production-deployment)
+    - [Custom Path](#custom-path)
+    - [Custom Tag](#custom-tag)
+    - [Email Notifications](#email-notifications)
+  - [Mobile Sync](#mobile-sync)
+    - [Android](#android)
+    - [iOS](#ios)
+  - [GitHub Actions Integration](#github-actions-integration)
+    - [Manual Trigger](#manual-trigger)
+    - [Automated Deployment](#automated-deployment)
+    - [Setup GitHub Secrets](#setup-github-secrets)
+  - [Email Notifications](#email-notifications-1)
+    - [Setup](#setup)
+    - [Test Email Service](#test-email-service)
+    - [Email Content](#email-content)
+  - [Troubleshooting](#troubleshooting)
+    - [Common Issues](#common-issues)
+    - [Debug Mode](#debug-mode)
+    - [Manual File Processing](#manual-file-processing)
+- [Project Structure](#project-structure)
+- [Content Management](#content-management)
+  - [Obsidian Integration](#obsidian-integration)
+  - [Content Collections](#content-collections)
+  - [Markdown Processing](#markdown-processing)
+- [Portfolio Features](#portfolio-features)
+  - [Project Showcase](#project-showcase)
+  - [Skills Display](#skills-display)
+  - [Work Experience Timeline](#work-experience-timeline)
+  - [Education Timeline](#education-timeline)
+  - [References](#references-1)
+  - [Blog System](#blog-system)
+- [Deployment](#deployment)
+  - [Netlify](#netlify)
+  - [GitHub Actions](#github-actions)
+- [Development](#development-1)
+  - [Tech Stack](#tech-stack)
+  - [Scripts](#scripts)
+  - [Testing](#testing)
+    - [Test Files](#test-files)
+    - [Test Integration](#test-integration)
+  - [Styling](#styling)
 
 ## Introduction
 
@@ -107,6 +138,58 @@ Portfolio Site V2 is a modern, static portfolio website that combines the power 
 - **Blog System**: Markdown-based blog with tag filtering
 - **Icon System**: Comprehensive icon library with Astro Icon
 - **Mobile Sync**: Cross-platform sync support for mobile devices
+
+> [Back to Table of Contents](#table-of-contents)
+
+### Screenshots
+
+#### Portfolio Introduction
+
+<p align="center">
+  <img src="./public/screenshots/Portfolio.png" alt="Portfolio Screenshot" height="500"/>
+</p>
+
+#### Skills
+
+<p align="center">
+  <img src="./public/screenshots/Skills.png" alt="Skills Screenshot" height="500"/>
+</p>
+
+#### Projects
+
+<p align="center">
+  <img src="./public/screenshots/Projects.png" alt="Projects Screenshot" height="500"/>
+</p>
+
+#### Work Experience
+
+<p align="center">
+  <img src="./public/screenshots/Work Experience.png" alt="Work Experience Screenshot" height="500"/>
+</p>
+
+#### Customers and Clients
+
+<p align="center">
+  <img src="./public/screenshots/Customers and Clients.png" alt="Customers and Clients Screenshot" height="500"/>
+</p>
+
+#### Education
+
+<p align="center">
+  <img src="./public/screenshots/Education.png" alt="Education Screenshot" height="500"/>
+</p>
+
+#### References
+
+<p align="center">
+  <img src="./public/screenshots/References.png" alt="References Screenshot" height="500"/>
+</p>
+
+#### About Me
+
+<p align="center">
+  <img src="./public/screenshots/About Me.png" alt="About Me Screenshot" height="500"/>
+</p>
 
 > [Back to Table of Contents](#table-of-contents)
 
