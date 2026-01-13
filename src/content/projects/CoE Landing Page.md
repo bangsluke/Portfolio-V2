@@ -25,6 +25,12 @@ technologies:
   - "[[Netlify]]"
   - "[[GitLab]]"
   - "[[Azure]]"
+  - "[[VS Code]]"
+  - "[[ESLint]]"
+  - "[[Prettier]]"
+  - "[[Next.js]]"
+  - "[[Yarn]]"
+  - "[[Typescript]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

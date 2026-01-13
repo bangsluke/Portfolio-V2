@@ -9,7 +9,7 @@ modified: 2025-07-26T09:39:47+01:00
 viewCount: 3
 aliases:
   - Microsoft VS Code
-skillRating: 60
+skillRating: 65
 skillDescription: Used VS Code for a few years of my coding time, building and utility the environment for fast and optimised development.
 logoFileName: vs_code.svg
 ---

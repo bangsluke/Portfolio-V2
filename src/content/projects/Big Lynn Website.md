@@ -24,6 +24,11 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Snyk]]"
+  - "[[ESLint]]"
+  - "[[Prettier]]"
+  - "[[Typescript]]"
+  - "[[Yarn]]"
+  - "[[VS Code]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a

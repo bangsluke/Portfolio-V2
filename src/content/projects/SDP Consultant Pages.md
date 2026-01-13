@@ -26,6 +26,7 @@ technologies:
   - "[[JavaScript]]"
   - "[[GitLab]]"
   - "[[Azure]]"
+  - "[[VS Code]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

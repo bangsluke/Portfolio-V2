@@ -9,10 +9,10 @@ tags:
   - notes
 created: 2023-10-13T07:43:00
 modified: 2025-07-28T07:25:44+01:00
-viewCount: 5
+viewCount: 6
 aliases:
   - Cascading Sheet Styles
-skillRating: 60
+skillRating: 65
 skillDescription: Competent at building full sites using CSS and utilising modules for scoped rules.
 logoFileName: css.svg
 ---

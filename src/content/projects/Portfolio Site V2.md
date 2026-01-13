@@ -8,7 +8,7 @@ tags:
   - project/parked
 created: 2025-02-02T19:03:00
 modified: 2025-12-22T08:34:33+00:00
-viewCount: 4
+viewCount: 5
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -30,6 +30,11 @@ technologies:
   - "[[Zod]]"
   - "[[Jest]]"
   - "[[Node.js]]"
+  - "[[Umami]]"
+  - "[[Typescript]]"
+  - "[[ESLint]]"
+  - "[[Prettier]]"
+  - "[[Cursor]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a

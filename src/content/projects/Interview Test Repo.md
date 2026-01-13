@@ -24,6 +24,7 @@ technologies:
   - "[[React]]"
   - "[[GitHub]]"
   - "[[Snyk]]"
+  - "[[VS Code]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

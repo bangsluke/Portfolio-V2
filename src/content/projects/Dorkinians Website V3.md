@@ -7,9 +7,9 @@ tags:
   - project/active
   - portfolio
 created: 2025-05-30 09:40
-modified: 2026-01-07T11:06:29+00:00
+modified: 2026-01-12T16:13:37+00:00
 aliases:
-viewCount: 35
+viewCount: 39
 projectURL: https://dorkinians-website-v3.netlify.app/
 codeURL: https://github.com/bangsluke/Dorkinians-Website-V3
 codeMultipleRepos: true
@@ -32,6 +32,16 @@ technologies:
   - "[[Snyk]]"
   - "[[Umami]]"
   - "[[Zustand]]"
+  - "[[Playwright]]"
+  - "[[Jest]]"
+  - "[[YAML]]"
+  - "[[Tailwind CSS]]"
+  - "[[npm]]"
+  - "[[Typescript]]"
+  - "[[Markdown]]"
+  - "[[Cursor]]"
+  - "[[Cypher]]"
+  - "[[Google Maps]]"
 projectCategory: Personal Design
 linkedCompany:
   - "[[Dorkinians FC]]"
@@ -43,10 +53,10 @@ topicTags:
   - "[[Football]]"
 powerShellAlias: dorkinians
 version: 3
-portfolioOrder: 2
-shortDescription: "The next version of the <span class=\"theme-link\">Dorkinians FC</span> stats website, following on from <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>."
-longDescription: "Building on the foundations of the previous <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>, the new site aims to provide deeper analysis of the available stats and clearer display across player, team and club statistics.<br><br>It is built as a <span class=\"theme-link\">PWA</span>, allowing a more native experience with a chatbot key feature for users to ask questions to."
-lessonsLearned: "One of the lessons learned was learning how to deal with <span class=\"theme-link\">Netlify</span>'s 30 second timeout limit for functions, where my initial script was timing out on every run. Splitting the database seeding code out into <span class=\"theme-link\">Heroku</span> and optimising the script run time was sufficient to get the script up working remotely with email notifications and job id tracking for status updates.<br><br>I also learned how to set up a <span class=\"theme-link\">PWA</span> to work across <span class=\"theme-link\">iOS</span> and Android mobile devices and feel like a native app, whilst working on desktop as well.<br><br>To make the chat bot work, I utilised test driven development, defining the tests for questions and answers expected and then developing the chat bot logic from that.<br><br>I learned how to test and check memory build ups to avoid crashes within the <span class=\"theme-link\">Heroku</span> limit I was working within and set up an Admin dashboard within the site for job monitoring and triggering.<br><br>For the table data, I discovered the FA Site to have a very good bot detection system but an awful <span class=\"theme-link\">API</span> for developers to use and so automating the data updates was a pain point I had to use an external ScraperAPI service for.<br><br>In the frontend, I was able to implement skeleton loaders and optimise data fetching orders to prioritise important visible data to users to make the app feel fast and efficient.<br><br>TBC"
+portfolioOrder: 1
+shortDescription: "The next version of my <span class=\"theme-link\">Dorkinians FC</span> stats website, following on from <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>, featuring a chat bot, improved visualisation and a more robust architecture."
+longDescription: "Building on the foundations of the previous <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>, the new site aims to provide deeper analysis of the available stats and clearer display across player, team and club statistics.<br><br>It is built as a <span class=\"theme-link\">PWA</span>, allowing a more native experience with a chatbot key feature for users to ask questions to.<br><br>The app provides a far more detailed analysis of the club's stats, built upon a graph database using <span class=\"theme-link\">Neo4j</span>."
+lessonsLearned: "One of the lessons learned was learning how to deal with <span class=\"theme-link\">Netlify</span>'s 30 second timeout limit for functions, where my initial script was timing out on every run. Splitting the database seeding code out into <span class=\"theme-link\">Heroku</span> and optimising the script run time was sufficient to get the script up working remotely with email notifications and job id tracking for status updates.<br><br>I also learned how to set up a <span class=\"theme-link\">PWA</span> to work across <span class=\"theme-link\">iOS</span> and Android mobile devices and feel like a native app, whilst working on desktop as well.<br><br>To make the chat bot work, I utilised test driven development, defining the tests for questions and answers expected and then developing the chat bot logic from that.<br><br>I learned how to test and check memory build ups to avoid crashes within the <span class=\"theme-link\">Heroku</span> limit I was working within and set up an Admin dashboard within the site for job monitoring and triggering.<br><br>For the table data, I discovered the FA Site to have a very good bot detection system but an awful <span class=\"theme-link\">API</span> for developers to use and so automating the data updates was a pain point I had to use an external ScraperAPI service for.<br><br>In the frontend, I was able to implement skeleton loaders and optimise data fetching orders to prioritise important visible data to users to make the app feel fast and efficient.<br><br>After completing development, I learned how to set up <span class=\"theme-link\">E2E</span> testing for both mobile and desktop versions of the app using <span class=\"theme-link\">Playwright</span>, automating a weekly test through <span class=\"theme-link\">GitHub</span> Actions.<br><br>TBC"
 name: "Dorkinians Website V3"
 ---
 # Dorkinians Website V3
@@ -72,8 +82,10 @@ WHERE file = this.file
 
 >[!details]  `=this.file.name`
 >`=choice(this.folderURL = null | this.folderURL = "" | this.folderURL = "n/a","","<br>Folder URL: " + link(this.folderURL,"Link")) + choice(this.dateStart = null | this.dateStart = "","","<br>Date Start: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>Date End: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "", "", choice(this.dateEnd = "", "<br>Development Duration: " + string(date(today) - date(this.dateStart)), "<br>Development Duration: " + string(date(this.dateEnd) - date(this.dateStart)))) + choice(this.projectCategory = null | this.projectCategory = "","","<br>Category: " + this.projectCategory) + choice(this.linkedCompany = null | this.linkedCompany = "" | contains(this.linkedCompany, "n/a"),"","<br>Project for: " + this.linkedCompany) + choice(this.toolOwner = null | this.toolOwner = "","","<br>Tool Owner: " + this.toolOwner) + choice(this.developers = null | this.developers = "","","<br>Developers: " + this.developers) + choice(this.technologies = null | this.technologies = "","","<br>Technologies: " + this.technologies) + choice(this.topicTags = null | this.topicTags = "","","<br>Topics: " + this.topicTags) + choice(this.powerShellAlias = null | this.powerShellAlias = "" | this.powerShellAlias = "n/a","","<br>PowerShell Alias: " + this.powerShellAlias) + choice(this.version = null | this.version = "","","<br>Version: " + this.version)`
+>
 
-> - [Analytics Tracking - Umami](https://cloud.umami.is/analytics/eu/websites/351bdc1f-abd3-4b55-8e6f-23b3693b13b4)
+>[!info] Quick Links
+>- [Analytics Tracking - Umami](https://cloud.umami.is/analytics/eu/websites/351bdc1f-abd3-4b55-8e6f-23b3693b13b4)
 
 ## Table of Contents
 
@@ -84,7 +96,7 @@ WHERE file = this.file
 
 ## Short Description
 
-The next version of the [[Dorkinians FC]] stats website, following on from [[Dorkinians Website]].
+The next version of my [[Dorkinians FC]] stats website, following on from [[Dorkinians Website]], featuring a chat bot, improved visualisation and a more robust architecture.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -94,6 +106,8 @@ Building on the foundations of the previous [[Dorkinians Website]], the new site
 
 It is built as a [[PWA]], allowing a more native experience with a chatbot key feature for users to ask questions to.
 
+The app provides a far more detailed analysis of the club's stats, built upon a graph database using [[Neo4j]].
+
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
@@ -101,7 +115,7 @@ It is built as a [[PWA]], allowing a more native experience with a chatbot key f
 - Front end: [[Next.js]]
 - Back end/Datasource: [[Node.js]], [[Neo4j]], [[Neo4j Aura]], [[Google Sheets]], [[Google Apps Script]]
 - Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]], [[Heroku]]
-- Security: [[Snyk]], TBC
+- Security: [[Snyk]], [[Dependabot]]
 - Authentication: n/a
 - Analytics: [[Umami]]
 
@@ -504,6 +518,8 @@ I learned how to test and check memory build ups to avoid crashes within the [[H
 For the table data, I discovered the FA Site to have a very good bot detection system but an awful [[API]] for developers to use and so automating the data updates was a pain point I had to use an external ScraperAPI service for.
 
 In the frontend, I was able to implement skeleton loaders and optimise data fetching orders to prioritise important visible data to users to make the app feel fast and efficient.
+
+After completing development, I learned how to set up [[E2E]] testing for both mobile and desktop versions of the app using [[Playwright]], automating a weekly test through [[GitHub]] Actions.
 
 TBC
 

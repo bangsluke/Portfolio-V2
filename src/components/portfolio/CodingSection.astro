@@ -332,20 +332,32 @@ const techData = {
 																<div class="font-medium">
 																	{(() => {
 																		const skillName = skill.data.skillName;
-																		return projects.filter(project =>
-																			project.data.technologies?.some(
-																				(tech: string) => {
-																					const cleanTech = tech.replace(
-																						/\[\[|\]\]/g,
-																						''
-																					);
-																					return (
-																						cleanTech.toLowerCase() ===
-																						skillName.toLowerCase()
-																					);
-																				}
-																			)
+																		const projectCount = projects.filter(
+																			project =>
+																				project.data.technologies?.some(
+																					(tech: string) => {
+																						const cleanTech = tech.replace(
+																							/\[\[|\]\]/g,
+																							''
+																						);
+																						return (
+																							cleanTech.toLowerCase() ===
+																							skillName.toLowerCase()
+																						);
+																					}
+																				)
 																		).length;
+																		if (
+																			skillName.toLowerCase() === 'git' ||
+																			skillName.toLowerCase() ===
+																				'powershell' ||
+																			(skillName.toLowerCase() ===
+																				'dependabot' &&
+																				projectCount === 0)
+																		) {
+																			return 'All';
+																		}
+																		return projectCount;
 																	})()}
 																</div>
 															</div>

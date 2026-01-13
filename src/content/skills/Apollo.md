@@ -7,7 +7,7 @@ tags:
   - portfolio
 modified: 2025-07-20T12:52:18+01:00
 viewCount: 9
-aliases: 
+aliases:
 skillRating: 20
 skillDescription: Set up and configured for my travel website without much additional exploration.
 logoFileName: apollo.svg

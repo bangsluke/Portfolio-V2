@@ -8,7 +8,7 @@ tags:
   - notes
 created: 2022-04-10T09:28:00
 modified: 2025-08-15T14:05:17+01:00
-viewCount: 36
+viewCount: 37
 aliases:
 projectURL: https://www.dorkiniansfcstats.co.uk/
 codeURL: https://github.com/bangsluke/Dorkinians-Dev-Site
@@ -27,6 +27,7 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Snyk]]"
+  - "[[VS Code]]"
 projectCategory: Personal Design
 linkedCompany:
   - "[[Dorkinians FC]]"

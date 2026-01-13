@@ -29,7 +29,9 @@ technologies:
   - "[[Google Apps Script]]"
   - "[[NeoDash]]"
   - "[[Google Cloud]]"
+  - "[[C++]]"
   - "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]"
+  - "[[VS Code]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

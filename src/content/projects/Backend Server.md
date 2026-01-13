@@ -6,7 +6,7 @@ tags:
   - project/active
 created: 2025-06-23 13:36
 modified: 2025-12-25T07:02:10+00:00
-viewCount: 17
+viewCount: 16
 aliases:
   - backend-server
   - backend server
@@ -26,6 +26,11 @@ technologies:
   - "[[Cypher]]"
   - "[[Python]]"
   - "[[Flask]]"
+  - "[[pip]]"
+  - "[[GraphQL]]"
+  - "[[npm]]"
+  - "[[VS Code]]"
+  - "[[Codeium]]"
 projectCategory: Backend
 linkedCompany:
   - n/a

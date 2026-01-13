@@ -24,6 +24,7 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Snyk]]"
+  - "[[VS Code]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a

@@ -7,13 +7,13 @@ tags:
   - portfolio
   - skill
   - notes
-viewCount: 5
+viewCount: 6
 created: 2023-10-13T07:43:00
 modified: 2025-07-28T07:30:20+01:00
 aliases:
   - Hypertext Markup Language
 skillRating: 80
-skillDescription: Confident in using HTML to build complex sites and utilising semantics tags correctly.
+skillDescription: Confident in using HTML to build sites and utilise semantics tags correctly.
 logoFileName: html.svg
 ---
 # HTML

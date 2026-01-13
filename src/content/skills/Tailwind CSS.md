@@ -9,11 +9,11 @@ tags:
   - framework
 created: 2025-05-31T22:28:00
 modified: 2025-07-23T14:21:08+01:00
-viewCount: 16
+viewCount: 15
 aliases:
   - Tailwind
 skillRating: 25
-skillDescription: Utilised across my Portfolio and useful for quick prototyping, but end up regularly falling back to CSS.
+skillDescription: Utilised across my Portfolio, Dorkinians app and favoured for quick prototyping.
 logoFileName: tailwind.svg
 ---
 # Tailwind CSS

@@ -1430,12 +1430,6 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	}
 }
 
-.main-logo:hover {
-	filter: invert(71%) sepia(50%) saturate(959%) hue-rotate(197deg)
-		brightness(106%) contrast(98%);
-	transition: filter 0.3s ease;
-}
-
 /* Specific carousel styling - keep at bottom of file */
 .references-bottom-section {
 	max-height: 40% !important;

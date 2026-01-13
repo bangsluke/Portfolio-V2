@@ -6,7 +6,7 @@ tags:
   - portfolio
 created: 2025-06-02T18:33:00
 modified: 2025-07-28T08:10:01+01:00
-viewCount: 3
+viewCount: 4
 aliases:
   - Microsoft Power Platform
 skillRating: 55

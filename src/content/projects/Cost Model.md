@@ -27,6 +27,7 @@ developers:
 technologies:
   - "[[Excel]]"
   - "[[SharePoint]]"
+  - "[[DevOps]]"
 topicTags:
   - "[[Finances]]"
   - "[[Work]]"

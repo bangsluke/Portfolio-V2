@@ -2,43 +2,31 @@
 tags:
   - tag
   - software
+  - coding
+  - testing
   - skill
   - portfolio
-created: 2023-08-18T15:45:00
-modified: 2025-07-05T08:04:52+01:00
-viewCount: 9
+modified: 2025-07-05T08:05:49+01:00
+viewCount: 5
 aliases:
-skillRating: 80
-skillDescription: Absolutely obsessed with Obsidian as my PKM and use it frequently daily, even using it as my data source for my Portfolio Site and Travel Site data.
-logoFileName: obsidian.svg
+skillRating: 25
+skillDescription: Used for a couple of projects to set up automated E2E testing, combined with GitHub actions for scheduled runs.
+logoFileName: playwright.svg
 ---
-# Obsidian
+# Playwright
 
 > [!back] Link back to [[Skills Notes]]
 
-> [[PKMS|Personal Knowledge Management System]] - Language: [[Markdown]]
+> [[JavaScript]] testing library
 
-## Table of Contents 
+## Table of Contents
 
 ```table-of-contents
 ```
 
 ## Links
 
-- [Todoist link](https://todoist.com/app/project/Obsidian-Updates-6XF5Hq5W4vhCFw4q)
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Plugins List
-
-```dataview
-TABLE WITHOUT ID
-	file.link as "Plugin",
-	length(file.inlinks) AS "Mentions",
-	viewCount as "View Count"
-FROM #plugin 
-SORT length(file.inlinks) DESC
-```
+- n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

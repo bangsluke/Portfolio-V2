@@ -23,6 +23,7 @@ technologies:
   - "[[Power Query]]"
   - "[[SharePoint]]"
   - "[[SQL]]"
+  - "[[DevOps]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

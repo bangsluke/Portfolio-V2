@@ -9,7 +9,7 @@ tags:
 created: 2025-05-29 18:06
 modified: 2025-07-19T10:46:19+01:00
 aliases:
-viewCount: 11
+viewCount: 12
 projectURL: https://bangsluke-my-travel-journal.netlify.app/
 codeURL: https://github.com/bangsluke/my-travel-journal
 codeMultipleRepos: false
@@ -25,6 +25,8 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Snyk]]"
+  - "[[npm]]"
+  - "[[VS Code]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
