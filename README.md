@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <a href="https://app.netlify.com/projects/bangsluke-portfolio/deploys">
+  <a href="https://app.netlify.com/projects/bangsluke-portfolio/deploys" style="text-decoration: none;">
     <img src="https://api.netlify.com/api/v1/badges/d9ed7eb9-789c-4a7c-b069-b9aebb73c553/deploy-status" alt="Netlify Status" />
   </a>
   <img src="https://img.shields.io/badge/Astro-14-purple?logo=astro" alt="Astro" />
