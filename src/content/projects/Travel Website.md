@@ -20,7 +20,7 @@ folderURL: n/a
 logoURL: n/a
 imageURL: https://i.postimg.cc/rsc37YLV/my-travel-journal.png
 dateStart: 2022-06-09
-dateEnd: ""
+dateEnd: 2025-10-31
 technologies:
   - "[[Next.js]]"
   - "[[Apollo]]"

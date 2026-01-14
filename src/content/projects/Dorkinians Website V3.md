@@ -7,9 +7,9 @@ tags:
   - project/active
   - portfolio
 created: 2025-05-30 09:40
-modified: 2026-01-12T16:13:37+00:00
+modified: 2026-01-14T07:32:43+00:00
 aliases:
-viewCount: 39
+viewCount: 41
 projectURL: https://dorkinians-website-v3.netlify.app/
 codeURL: https://github.com/bangsluke/Dorkinians-Website-V3
 codeMultipleRepos: true
@@ -42,6 +42,8 @@ technologies:
   - "[[Cursor]]"
   - "[[Cypher]]"
   - "[[Google Maps]]"
+  - "[[Google Cloud]]"
+  - "[[NextAuth]]"
 projectCategory: Personal Design
 linkedCompany:
   - "[[Dorkinians FC]]"
@@ -85,7 +87,9 @@ WHERE file = this.file
 >
 
 >[!info] Quick Links
+>- [Google Cloud Console - OAuth and Google Maps API](https://console.cloud.google.com/apis/credentials?project=dorkinians-website-v3)
 >- [Analytics Tracking - Umami](https://cloud.umami.is/analytics/eu/websites/351bdc1f-abd3-4b55-8e6f-23b3693b13b4)
+>- [Upstash - Redis Database](https://console.upstash.com/redis/7543a52e-83bf-4b7a-adbf-73e9b87e9414?teamid=0)
 
 ## Table of Contents
 
@@ -116,7 +120,7 @@ The app provides a far more detailed analysis of the club's stats, built upon a 
 - Back end/Datasource: [[Node.js]], [[Neo4j]], [[Neo4j Aura]], [[Google Sheets]], [[Google Apps Script]]
 - Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]], [[Heroku]]
 - Security: [[Snyk]], [[Dependabot]]
-- Authentication: n/a
+- Authentication: [[NextAuth]], [[Google Cloud|Google Cloud Platform]]
 - Analytics: [[Umami]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
