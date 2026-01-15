@@ -5,19 +5,18 @@ tags:
   - coding
   - skill
   - portfolio
-modified: 2025-07-18T13:20:20+01:00
-viewCount: 4
+modified: 2025-07-23T14:20:14+01:00
+viewCount: 5
 aliases: 
 skillRating: 50
-skillDescription: TBC
+skillDescription: Used on each and every project I build following basic configuration.
 logoFileName: eslint.svg
 ---
-
 # ESLint
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">JavaScript</span> linter and <span class="theme-link">VS Code</span> plugin
+> [[JavaScript]] linter and [[VS Code]] plugin
 
 ## Table of Contents
 

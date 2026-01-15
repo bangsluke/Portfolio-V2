@@ -1,63 +1,252 @@
 ---
 import { Icon } from 'astro-icon/components';
+// @ts-expect-error - AstroError is not typed
 import { AstroError } from 'astro/errors';
 import { getCollection } from 'astro:content';
-import { SKILLS_FILTER_OPTIONS } from '../../../scripts/repoConfig.js';
-import GitHubContributions from '../portfolio/GitHubContributions.tsx';
+
+import GitHubContributions from '../portfolio/GitHubContributions.js';
 import MostCommonTechs from '../portfolio/MostCommonTechs.astro';
 import SkillsBubbles from '../portfolio/SkillsBubbles.astro';
 import Heading from '../ui/Heading.astro';
+import {
+	getProjectCount,
+	getProjectsUsingSkill,
+} from '../../utils/project-count-utils';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 
 const [staticData] = await getCollection('staticData');
-const skills = await getCollection('skills');
+const skills = await getCollection('skills').then(skills =>
+	skills.map(skill => ({
+		...skill,
+		data: {
+			...skill.data,
+			skillName: skill.id.replace(/\.md$/, ''),
+		},
+	}))
+);
 
 if (!staticData) {
 	throw new AstroError('JSON data not found');
 }
 
-// Get filter options, filtered to only show tags that exist in skills
-const existingTags = skills.flatMap(skill => skill.data.tags || []);
-const filterOptions = SKILLS_FILTER_OPTIONS.filter(
-	tag => tag === 'all' || existingTags.includes(tag)
-);
+// Process tech data for MostCommonTechs component
+const projects = await getCollection('projects');
+
+// Create an array of tech objects instead of separate objects
+const techsArray: Array<{
+	name: string;
+	count: number;
+	projects: string[];
+	tags: string[];
+}> = [];
+
+// Get all unique technologies from projects
+const allTechnologies = new Set<string>();
+projects.forEach(project => {
+	if (!project || !project.data) {
+		return;
+	}
+	if (project.data.technologies) {
+		project.data.technologies.forEach((tech: string) => {
+			// Clean the technology name by removing Obsidian brackets
+			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
+
+			// Skip "n/a" technologies
+			if (cleanTech.toLowerCase() === 'n/a') {
+				return;
+			}
+
+			allTechnologies.add(cleanTech);
+		});
+	}
+});
+
+// Count technology usage across all projects and find matching skills
+allTechnologies.forEach(tech => {
+	const count = getProjectCount(tech, tech, projects);
+	const projectsList = getProjectsUsingSkill(tech, tech, projects);
+
+	// Improved skill matching logic
+	let skillData: (typeof skills)[0] | null = null;
+	let tags: string[] = [];
+
+	// Try exact match first (case-insensitive)
+	skillData = skills.find(
+		s => (s.data.name || s.slug).toLowerCase() === tech.toLowerCase()
+	);
+
+	// If no exact match, try normalized matches (remove special characters)
+	if (!skillData) {
+		const normalizedTech = tech.toLowerCase().replace(/[^a-z0-9]/g, '');
+		skillData = skills.find(s => {
+			const skillName = (s.data.name || s.slug)
+				.toLowerCase()
+				.replace(/[^a-z0-9]/g, '');
+			return skillName === normalizedTech;
+		});
+	}
+
+	// If still no match, try partial matches
+	if (!skillData) {
+		skillData = skills.find(s => {
+			const skillName = (s.data.name || s.slug).toLowerCase();
+			const techLower = tech.toLowerCase();
+
+			// Check if skill name contains tech or vice versa
+			return skillName.includes(techLower) || techLower.includes(skillName);
+		});
+	}
+
+	// If still no match, try checking aliases
+	if (!skillData) {
+		skillData = skills.find(s => {
+			const aliases = (s.data as any).aliases;
+			return (
+				aliases &&
+				Array.isArray(aliases) &&
+				aliases.some(
+					(alias: string) => alias.toLowerCase() === tech.toLowerCase()
+				)
+			);
+		});
+	}
+
+	if (skillData) {
+		tags = skillData.data.tags || [];
+	}
+
+	// Add to techs array
+	techsArray.push({
+		name: tech,
+		count,
+		projects: projectsList,
+		tags,
+	});
+});
+
+// Sort by count (most used first)
+techsArray.sort((a, b) => b.count - a.count);
+
+// Create the final data structure
+const techData = {
+	techs: techsArray,
+};
 ---
 
 <section
-	class="scroll-m-16 px-8 max-sm:px-4 py-8"
-	id="coding"
+	class="main-section pt-8 pb-12 md:pt-16"
+	id="skills"
 	aria-label="Coding section">
-	<div class="flex gap-4 items-center justify-center">
+	<div class="flex gap-4 items-center justify-center mb-6">
 		<Icon class="text-3xl dark:text-white text-blacktext" name="code" />
-		<Heading text="" textGradient="Coding " level={2} />
+		<Heading text="Coding " textGradient="Skills" level={2} />
+	</div>
+
+	<!-- SEO-accessible skills summary for web crawlers -->
+	<div class="sr-only" aria-hidden="true">
+		<h3>Complete Technical Skills List</h3>
+		<p>
+			Professional skills and technologies I work with, organized by category:
+		</p>
+
+		<h4>Programming Languages</h4>
+		<ul>
+			{
+				skills
+					.filter(s => s.data.tags?.includes('language'))
+					.map(skill => (
+						<li>
+							<strong>{skill.data.name || skill.slug}</strong>:{' '}
+							{skill.data.skillDescription?.replace(/<[^>]*>/g, '') ||
+								'Programming language'}
+						</li>
+					))
+			}
+		</ul>
+
+		<h4>Frontend Technologies</h4>
+		<ul>
+			{
+				skills
+					.filter(
+						s =>
+							s.data.tags?.includes('framework') ||
+							s.data.tags?.includes('library')
+					)
+					.map(skill => (
+						<li>
+							<strong>{skill.data.name || skill.slug}</strong>:{' '}
+							{skill.data.skillDescription?.replace(/<[^>]*>/g, '') ||
+								'Frontend technology'}
+						</li>
+					))
+			}
+		</ul>
+
+		<h4>Development Tools</h4>
+		<ul>
+			{
+				skills
+					.filter(
+						s =>
+							s.data.tags?.includes('tool') || s.data.tags?.includes('software')
+					)
+					.map(skill => (
+						<li>
+							<strong>{skill.data.name || skill.slug}</strong>:{' '}
+							{skill.data.skillDescription?.replace(/<[^>]*>/g, '') ||
+								'Development tool'}
+						</li>
+					))
+			}
+		</ul>
+
+		<h4>Cloud & Platforms</h4>
+		<ul>
+			{
+				skills
+					.filter(
+						s =>
+							s.data.tags?.includes('cloud') ||
+							s.data.tags?.includes('platform')
+					)
+					.map(skill => (
+						<li>
+							<strong>{skill.data.name || skill.slug}</strong>:{' '}
+							{skill.data.skillDescription?.replace(/<[^>]*>/g, '') ||
+								'Cloud platform'}
+						</li>
+					))
+			}
+		</ul>
+
+		<h4>All Skills</h4>
+		<p>Complete list of {skills.length} technical skills:</p>
+		<ul>
+			{
+				skills.map(skill => (
+					<li>
+						<strong>{skill.data.name || skill.slug}</strong>
+						<strong>{skill.data.skillName}</strong>
+						<strong>{skill.data.skillDescription}</strong>
+					</li>
+				))
+			}
+		</ul>
 	</div>
 
 	<div
-		class="mx-auto grid max-w-7xl grid-cols-2 grid-rows-4 max-sm:gap-3 gap-4 max-md:h-[80vh] max-sm:h-[900px] max-xl:h-[550px] xl:h-[700px] md:grid-cols-4 md:grid-rows-3">
-		<!-- Most Common Techs Used -->
+		id="coding-section-layout"
+		class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mx-auto max-w-7xl max-sm:gap-3 gap-4">
+		<!-- Skills Box - First element - takes up 2 rows on mobile, full first column on desktop -->
 		<div
-			class="col-span-2 col-start-1 row-start-3 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 hover:to-theme-300/30 dark:hover:to-theme-600/30 p-[.2rem] md:col-start-3 md:row-start-3">
+			class="row-span-2 md:col-span-1 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 hover:to-theme-300/30 dark:hover:to-theme-600/30 p-[.2rem] transition-all hover:shadow-[0_20px_50px_var(--color-theme-500-rgba-04)] dark:before:bg-[radial-gradient(circle,var(--color-theme-500)_0,var(--color-theme-950)_100%)] before:bg-[radial-gradient(circle,var(--color-theme-300)_0,var(--color-theme-200)_100%)] before:absolute before:left-1/2 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-70 before:transition before:-z-0 hover:before:animate-pulse xl:before:bottom-2/5 min-h-[400px] md:min-h-[450px]">
 			<article
-				class="group relative z-0 flex h-full w-full flex-col overflow-hidden rounded-2xl bg-linear-to-tr from-riptide-100 to-theme-100 p-6 transition hover:shadow-[0_10px_50px_rgba(13,188,130,0.2)] dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 dark:overflow-hidden max-md:p-4 gap-6 max-md:gap-3 max-lg:gap-4 dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-30 before:-bottom-0 before:h-[80%] before:aspect-square before:rounded-full before:blur-3xl dark:before:opacity-80 before:opacity-30 before:-z-10 before:transition">
-				<div class="flex items-center gap-4 max-md:gap-2">
-					<Icon
-						class="text-3xl dark:text-white text-theme-500 max-md:text-2xl max-sm:text-sm"
-						name="tech"
-						aria-hidden="true"
-					/>
-					<Heading text="Most Common" textGradient="Techs" level={3} />
-				</div>
-				<div class="overflow-y-auto">
-					<MostCommonTechs />
-				</div>
-			</article>
-		</div>
-
-		<!-- Skills Bubble -->
-		<div
-			class="col-span-2 row-span-1 row-start-1 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 p-[.2rem] hover:to-theme-300/30 dark:hover:to-theme-600/30 md:col-start-1 md:row-start-1 md:row-span-2">
-			<article
-				class="group relative flex h-full flex-col justify-start overflow-hidden rounded-2xl bg-linear-to-br from-riptide-100 to-white dark:from-theme-950 dark:to-zinc-950 p-8 transition-all hover:shadow-[0_20px_50px_rgba(13,188,130,0.4)] max-md:p-6 dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-1/2 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-70 before:transition before:-z-0 hover:before:animate-pulse xl:before:bottom-2/5">
-				<div class="flex items-center justify-between gap-4 max-md:gap-2 mb-2">
+				id="skills-box"
+				class="group relative flex h-full flex-col justify-start overflow-hidden rounded-2xl bg-linear-to-tr from-light-theme-accent-100 to-theme-100 p-4 md:p-6 transition hover:shadow-[0_10px_50px_var(--color-theme-500-rgba-02)] dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 dark:overflow-hidden">
+				<!-- Header row - Skills title and buttons -->
+				<div
+					class="flex items-center justify-between gap-4 max-md:gap-2 mb-4 flex-shrink-0">
 					<div class="flex items-center gap-4 max-md:gap-2">
 						<Icon
 							class="text-3xl dark:text-white text-theme-500 max-md:text-2xl max-sm:text-sm"
@@ -67,49 +256,139 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 						<Heading text="Skills" textGradient="" level={3} />
 					</div>
 					<div class="flex items-center gap-2">
-						<select
-							id="skills-filter"
-							class="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-theme-400 focus:border-transparent">
-							{
-								filterOptions.map(tag => (
-									<option value={tag}>
-										{tag === 'all'
-											? 'All Skills'
-											: tag.charAt(0).toUpperCase() + tag.slice(1)}
-									</option>
-								))
-							}
-						</select>
+						<!-- Reset Button -->
 						<button
-							id="fullscreen-skills-btn"
-							class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
-							aria-label="Open skills chart in fullscreen"
-							title="Fullscreen view">
-							<svg
-								class="w-5 h-5"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
-								></path>
-							</svg>
+							id="skills-reset-btn"
+							class="global-element global-button global-clear-button"
+							title="Reset to default view - center graph and reset to skill rating sizing">
+							Reset
+						</button>
+
+						<!-- Combined Toggle Button - Three States -->
+						<button
+							id="skills-toggle-btn"
+							class="global-element global-button"
+							title="Toggle between bubble chart (skill rating), bubble chart (project count), and list view">
+							Toggle: Bubbles (Skill)
 						</button>
 					</div>
 				</div>
-				<SkillsBubbles />
+
+				<!-- Content area - fills remaining space -->
+				<div id="skills-box-content" class="flex-1 min-h-0 relative h-full">
+					<!-- Skills Bubbles View -->
+					<div id="skills-bubbles-view" class="h-full">
+						<SkillsBubbles />
+					</div>
+
+					<!-- Skills Table View - Always visible to web crawlers but visually hidden for users -->
+					<div
+						id="skills-table-view"
+						class="block hidden bg-white dark:bg-theme-950 rounded-2xl p-2 md:p-6 overflow-hidden absolute inset-0 top-2">
+						<div class="overflow-y-auto h-full">
+							<!-- Skills Table View layout -->
+							<div class="block space-y-3">
+								{
+									skills
+										.sort(
+											(a, b) =>
+												(b.data.skillRating || 0) - (a.data.skillRating || 0)
+										)
+										.map(skill => (
+											<div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+												{/* Top row: Name, Logo, Rating, Project Count */}
+												<div class="flex items-center justify-between gap-3 mb-2 h-6">
+													{/* Name */}
+													<div class="flex flex-col items-center gap-1 min-w-0 shrink-0">
+														<div class="text-xs font-medium text-colour">
+															{extractNameFromFilename(skill.id || skill.slug)}
+														</div>
+													</div>
+													{/* Logo */}
+													{skill.data.logoFileName && (
+														<div class="flex-1 flex justify-start">
+															<img
+																src={`/icons/${skill.data.logoFileName}`}
+																alt={`${skill.data.name || skill.slug} icon`}
+																class="h-full w-auto max-h-6"
+															/>
+														</div>
+													)}
+													{/* Rating */}
+													<div class="flex gap-3 text-xs text-colour">
+														<div class="text-center">
+															<div class="text-gray-500 dark:text-gray-400">
+																Rating
+															</div>
+															<div class="font-medium">
+																{skill.data.skillRating || '-'}
+															</div>
+														</div>
+														<div class="text-center">
+															<div class="text-center">
+																<div class="text-gray-500 dark:text-gray-400">
+																	Projects
+																</div>
+																<div class="font-medium">
+																	{(() => {
+																		const skillName = skill.data.skillName;
+																		const projectCount = projects.filter(
+																			project =>
+																				project.data.technologies?.some(
+																					(tech: string) => {
+																						const cleanTech = tech.replace(
+																							/\[\[|\]\]/g,
+																							''
+																						);
+																						return (
+																							cleanTech.toLowerCase() ===
+																							skillName.toLowerCase()
+																						);
+																					}
+																				)
+																		).length;
+																		if (
+																			skillName.toLowerCase() === 'git' ||
+																			skillName.toLowerCase() ===
+																				'powershell' ||
+																			(skillName.toLowerCase() ===
+																				'dependabot' &&
+																				projectCount === 0)
+																		) {
+																			return 'All';
+																		}
+																		return projectCount;
+																	})()}
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												{/* Second row: Description */}
+												<div class="flex items-start">
+													{skill.data.skillDescription &&
+														skill.data.skillDescription !== '-' && (
+															<div class="text-xs text-colour opacity-80 flex-1">
+																{skill.data.skillDescription}
+															</div>
+														)}
+												</div>
+											</div>
+										))
+								}
+							</div>
+						</div>
+					</div>
+				</div>
 			</article>
 		</div>
 
-		<!-- GitHub Contributions -->
+		<!-- GitHub Contributions - Second element - takes up 1 row on mobile, first row of second column on desktop -->
 		<div
-			class="col-span-2 col-start-1 row-start-2 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 hover:to-theme-300/30 dark:hover:to-theme-600/30 p-[.2rem] md:col-start-3 md:row-start-1 md:row-span-2">
+			class="row-span-1 md:col-span-1 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 hover:to-theme-300/30 dark:hover:to-theme-600/30 p-[.2rem] transition-all hover:shadow-[0_20px_50px_var(--color-theme-500-rgba-04)] dark:before:bg-[radial-gradient(circle,var(--color-theme-500)_0,var(--color-theme-950)_100%)] before:bg-[radial-gradient(circle,var(--color-theme-300)_0,var(--color-theme-200)_100%)] before:absolute before:left-1/2 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-70 before:transition before:-z-0 hover:before:animate-pulse xl:before:bottom-2/5 min-h-[200px] md:min-h-[200px]">
 			<article
-				class="group relative z-0 flex h-full w-full flex-col overflow-hidden rounded-2xl bg-linear-to-tr from-riptide-100 to-theme-100 p-6 transition hover:shadow-[0_10px_50px_rgba(13,188,130,0.2)] dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 dark:overflow-hidden max-md:p-4 gap-6 max-md:gap-3 max-lg:gap-4 dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-30 before:-bottom-0 before:h-[80%] before:aspect-square before:rounded-full before:blur-3xl dark:before:opacity-80 before:opacity-30 before:-z-10 before:transition">
-				<div class="flex items-center gap-4 max-md:gap-2">
+				class="group relative z-0 flex h-full w-full flex-col overflow-hidden rounded-2xl bg-linear-to-tr from-light-theme-accent-100 to-theme-100 p-4 md:p-6 transition hover:shadow-[0_10px_50px_rgba(13,188,130,0.2)] dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 dark:overflow-hidden">
+				<div class="flex items-center gap-4 max-md:gap-2 mb-4">
 					<Icon
 						class="text-3xl dark:text-white text-theme-500 max-md:text-2xl max-sm:text-sm"
 						name="github"
@@ -122,5 +401,99 @@ const filterOptions = SKILLS_FILTER_OPTIONS.filter(
 				</div>
 			</article>
 		</div>
+
+		<!-- Most Common Techs Used - Third element - takes up 1 row on mobile, second row of second column on desktop -->
+		<div
+			class="row-span-1 md:col-span-1 rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 hover:to-theme-300/30 dark:hover:to-theme-600/30 p-[.2rem] transition-all hover:shadow-[0_20px_50px_var(--color-theme-500-rgba-04)] dark:before:bg-[radial-gradient(circle,var(--color-theme-500)_0,var(--color-theme-950)_100%)] before:bg-[radial-gradient(circle,var(--color-theme-300)_0,var(--color-theme-200)_100%)] before:absolute before:left-1/2 before:bottom-30 before:h-[30%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-70 before:transition before:-z-0 hover:before:animate-pulse xl:before:bottom-2/5 min-h-[250px] md:min-h-[280px]">
+			<article
+				class="group relative z-0 flex h-full w-full flex-col overflow-hidden rounded-2xl bg-linear-to-tr from-light-theme-accent-100 to-theme-100 p-4 md:p-6 transition hover:shadow-[0_10px_50px_var(--color-theme-500-rgba-02)] dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 dark:overflow-hidden">
+				<!-- Header row - Techs title only -->
+				<div class="flex items-center gap-4 max-md:gap-2 mb-2 flex-shrink-0">
+					<Icon
+						class="text-3xl dark:text-white text-theme-500 max-md:text-2xl max-sm:text-sm"
+						name="tech"
+						aria-hidden="true"
+					/>
+					<Heading text="Most Common" textGradient="Techs" level={3} />
+				</div>
+
+				<!-- Content area - fills remaining space -->
+				<div class="flex-1 min-h-0">
+					<MostCommonTechs techData={techData} />
+				</div>
+			</article>
+		</div>
 	</div>
 </section>
+
+<script>
+	// Skills section button functionality
+	document.addEventListener('DOMContentLoaded', () => {
+		const resetBtn = document.getElementById('skills-reset-btn');
+		const toggleBtn = document.getElementById('skills-toggle-btn');
+		let currentView = 'bubbles-skill'; // 'bubbles-skill', 'bubbles-project', 'list'
+
+		// Initialize view state - show bubbles (skill rating)
+		const bubblesView = document.getElementById('skills-bubbles-view');
+		const tableView = document.getElementById('skills-table-view');
+		if (bubblesView && tableView) {
+			bubblesView.classList.remove('hidden');
+			tableView.classList.add('hidden');
+		}
+
+		// Reset button functionality
+		if (resetBtn) {
+			resetBtn.addEventListener('click', () => {
+				// Reset to default view (bubbles skill)
+				currentView = 'bubbles-skill';
+				if (toggleBtn) {
+					toggleBtn.textContent = 'Toggle: Bubbles (Skill)';
+					toggleBtn.title =
+						'Toggle between bubble chart (skill rating), bubble chart (project count), and list view';
+				}
+
+				// Dispatch event for the Preact component
+				window.dispatchEvent(
+					new CustomEvent('skillsReset', {
+						detail: { currentView },
+					})
+				);
+			});
+		}
+
+		// Combined Toggle Button functionality
+		if (toggleBtn) {
+			toggleBtn.addEventListener('click', () => {
+				if (currentView === 'bubbles-skill') {
+					currentView = 'bubbles-project';
+					toggleBtn.textContent = 'Toggle: Bubbles (Project)';
+					toggleBtn.title =
+						'Toggle between bubble chart (project count) and list view';
+					if (bubblesView) bubblesView.classList.remove('hidden');
+					if (tableView) tableView.classList.add('hidden');
+				} else if (currentView === 'bubbles-project') {
+					currentView = 'list';
+					toggleBtn.textContent = 'Toggle: List';
+					toggleBtn.title = 'Show list view';
+					if (bubblesView) bubblesView.classList.add('hidden');
+					if (tableView) tableView.classList.remove('hidden');
+				} else {
+					// currentView === 'list'
+					currentView = 'bubbles-skill';
+					toggleBtn.textContent = 'Toggle: Bubbles (Skill)';
+					toggleBtn.title =
+						'Toggle between bubble chart (skill rating) and list view';
+					if (bubblesView) bubblesView.classList.remove('hidden');
+					if (tableView) tableView.classList.add('hidden');
+				}
+
+				// Dispatch event for the Preact component
+				window.dispatchEvent(
+					new CustomEvent('skillsViewToggle', {
+						detail: { currentView },
+					})
+				);
+			});
+		}
+	});
+</script>

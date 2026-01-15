@@ -8,19 +8,18 @@ tags:
   - skill
   - notes
 created: 2023-08-18T15:49:00
-modified: 2025-07-02T14:20:40+01:00
-viewCount: 6
+modified: 2025-07-26T09:07:02+01:00
+viewCount: 5
 aliases: 
 skillRating: 60
 skillDescription: Set up several projects using GraphQL queries and mutations to interact with a Neo4j graph and developed detailed queries for extracting data for the front end.
 logoFileName: graphql.svg
 ---
-
 # GraphQL
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Language: <span class="theme-link">JavaScript</span>
+> Language: [[JavaScript]]
 
 ## Table of Contents 
 
@@ -29,7 +28,7 @@ logoFileName: graphql.svg
 
 ## Links
 
-- TBC
+- <https://graphql.org/learn/>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

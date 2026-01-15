@@ -7,23 +7,24 @@ tags:
   - coding
   - work
 created: 2025-05-30 09:57
-modified: 2025-07-19T10:13:59+01:00
+modified: 2025-08-12T12:08:12+01:00
 aliases:
   - interview-test Repo
-viewCount: 15
-projectURL: TBC
+viewCount: 20
+projectURL: n/a
 codeURL: https://github.com/bangsluke/interview-test
 codeMultipleRepos: false
-deploymentServiceURL: TBC
+deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: n/a
-imageURL: 
-dateStart: ""
-dateEnd: ""
+imageURL: https://i.postimg.cc/rp0B4rJX/Interview-Test-Repo.png
+dateStart: 2022-05-01
+dateEnd: 2022-05-31
 technologies:
   - "[[React]]"
   - "[[GitHub]]"
   - "[[Snyk]]"
+  - "[[VS Code]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -35,14 +36,14 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 8
-shortDescription: "An interview test written for possibly hiring a <span class=\"theme-link\">RLE</span> with <span class=\"theme-link\">Uwe Kloss</span>."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+shortDescription: "An interview test written for possibly hiring a <span class=\"theme-link\">React</span> developer when working for <span class=\"theme-link\">Digital Engineering</span> at <span class=\"theme-link\">RLE</span>."
+longDescription: "A simple <span class=\"theme-link\">React</span> website that contained several <span class=\"theme-link\">React</span> development challenges for giving to potential hires to test their skills within the interview process.<br><br>The site was provided to a few possible <span class=\"theme-link\">RLE India</span> potential hires when considering upgrading the <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> front end to <span class=\"theme-link\">React</span>."
+lessonsLearned: "This project mainly challenged me to consider what requirements we needed within our <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> project that would challenge possible developers and design a quick test that was clearly documented for remote completion and submission."
+name: "Interview Test Repo"
 ---
-
 # Interview Test Repo
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -73,23 +74,25 @@ WHERE file = this.file
 
 ## Short Description
 
-An interview test written for possibly hiring a <span class="theme-link">RLE</span> with <span class="theme-link">Uwe Kloss</span>.
+An interview test written for possibly hiring a [[React]] developer when working for [[Digital Engineering]] at [[RLE International|RLE]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-TBC
+A simple [[React]] website that contained several [[React]] development challenges for giving to potential hires to test their skills within the interview process.
+
+The site was provided to a few possible [[RLE India]] potential hires when considering upgrading the [[SDP]] front end to [[React]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">React</span>
-- Back end/Datasource: TBC
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), TBC
-- Security: <span class="theme-link">Snyk</span>
-- Authentication: TBC
+- Front end: [[React]]
+- Back end/Datasource: n/a
+- Hosting: [[GitHub]] (see [Repositories](#repositories))
+- Security: [[Snyk]]
+- Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -102,7 +105,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -116,13 +119,13 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- TBC
+- [[Digital Engineering]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-TBC
+This project mainly challenged me to consider what requirements we needed within our [[SDP]] project that would challenge possible developers and design a quick test that was clearly documented for remote completion and submission.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

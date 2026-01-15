@@ -7,19 +7,18 @@ tags:
   - portfolio
   - skill
   - notes
-viewCount: 4
+viewCount: 6
 created: 2023-10-13T07:43:00
-modified: 2025-07-02T14:20:47+01:00
+modified: 2025-07-28T07:30:20+01:00
 aliases:
   - Hypertext Markup Language
-skillRating: 0
-skillDescription: TBC
+skillRating: 80
+skillDescription: Confident in using HTML to build sites and utilise semantics tags correctly.
 logoFileName: html.svg
 ---
-
 # HTML
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents 
 
@@ -28,7 +27,7 @@ logoFileName: html.svg
 
 ## Links
 
-- TBC
+- [HTML: HyperText Markup Language \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

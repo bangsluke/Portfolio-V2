@@ -1,20 +1,9 @@
-// @ts-ignore
+// @ts-expect-error - GitHubCalendar is not typed
 import GitHubCalendar from 'preact-github-calendar';
 import { useEffect, useState } from 'preact/hooks';
 
 interface GitHubStats {
-	stars: number;
-	repositories: number;
-	followers: number;
-	following: number;
 	accountAge: string;
-	mostStarredRepo: {
-		name: string;
-		stars: number;
-		url: string;
-	};
-	contributionsLastYear: number;
-	averageCommitsPerDay: number;
 }
 
 export default function GitHubContributions() {
@@ -26,6 +15,7 @@ export default function GitHubContributions() {
 	const username = 'bangsluke';
 	const githubUrl = `https://github.com/${username}`;
 
+	// Fetch GitHub stats
 	useEffect(() => {
 		const fetchGitHubStats = async () => {
 			try {
@@ -47,22 +37,6 @@ export default function GitHubContributions() {
 					`https://api.github.com/users/${username}/repos?per_page=100&sort=stars&order=desc`
 				);
 				if (reposResponse.ok) {
-					const repos = await reposResponse.json();
-					const totalStars = repos.reduce(
-						(acc: number, repo: any) => acc + repo.stargazers_count,
-						0
-					);
-
-					// Find most starred repo
-					const mostStarredRepo =
-						repos.length > 0
-							? {
-									name: repos[0].name,
-									stars: repos[0].stargazers_count,
-									url: repos[0].html_url,
-								}
-							: { name: 'N/A', stars: 0, url: '' };
-
 					// Calculate account age
 					const createdAt = new Date(userData.created_at);
 					const now = new Date();
@@ -73,24 +47,12 @@ export default function GitHubContributions() {
 							? `${years} year${years > 1 ? 's' : ''}`
 							: `${months} month${months > 1 ? 's' : ''}`;
 
-					// Calculate contributions and average commits (simplified)
-					// Note: This is a rough estimate since we don't have detailed contribution data
-					const contributionsLastYear = Math.floor(totalStars * 0.3); // Rough estimate
-					const averageCommitsPerDay =
-						Math.floor((contributionsLastYear / 365) * 10) / 10; // Rough estimate
-
 					setGithubStats({
-						stars: totalStars,
-						repositories: userData.public_repos,
-						followers: userData.followers,
-						following: userData.following,
 						accountAge,
-						mostStarredRepo,
-						contributionsLastYear,
-						averageCommitsPerDay,
 					});
 				}
 			} catch (err) {
+				// eslint-disable-next-line no-console
 				console.error('Error fetching GitHub stats:', err);
 				setError(
 					err instanceof Error ? err.message : 'Failed to fetch GitHub data'
@@ -107,23 +69,9 @@ export default function GitHubContributions() {
 	const isGitHubCalendarAvailable = typeof GitHubCalendar !== 'undefined';
 
 	return (
-		<section id="github-contributions" class="flex flex-col gap-4 w-full">
-			{/* GitHub Profile Link */}
-			<div class="flex items-center justify-between">
-				<h4 class="text-lg font-semibold text-white">GitHub Activity</h4>
-				<a
-					href={githubUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="text-theme-300 hover:text-theme-200 transition-colors text-sm flex items-center gap-2">
-					View Profile
-					<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-						<path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-						<path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-					</svg>
-				</a>
-			</div>
-
+		<section
+			id="github-contributions"
+			class="flex flex-col gap-4 w-full text-black dark:text-white">
 			{/* GitHub Contributions Calendar */}
 			<div class="flex justify-center overflow-y-auto w-full">
 				{isGitHubCalendarAvailable ? (
@@ -135,7 +83,8 @@ export default function GitHubContributions() {
 						title="Click to view GitHub profile">
 						<GitHubCalendar
 							username={username}
-							onError={(err: any) => {
+							onError={(err: unknown) => {
+								// eslint-disable-next-line no-console
 								console.error('GitHub Calendar error:', err);
 								setCalendarError('Failed to load contributions calendar');
 							}}
@@ -171,77 +120,61 @@ export default function GitHubContributions() {
 				</div>
 			)}
 
-			{/* GitHub Stats */}
+			{/* GitHub Stats and Profile Links */}
 			{!loading && !error && githubStats && (
-				<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+				<div class="grid grid-cols-3 md:grid-cols-3 gap-3 mt-4">
 					<a
-						href={`${githubUrl}?tab=stars`}
+						href={githubUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-xl font-bold text-theme-300">
-							{githubStats.stars}
+						class="text-center p-3 bg-gray-100 dark:bg-white/10 rounded-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer">
+						<div class="flex flex-col items-center justify-center h-full">
+							<div class="text-xs text-gray-600 dark:text-white/70 mb-1">
+								Active
+							</div>
+							<div class="text-sm font-bold text-theme-600 dark:text-theme-300">
+								{githubStats.accountAge}
+							</div>
 						</div>
-						<div class="text-xs text-white/70">Stars</div>
 					</a>
 					<a
-						href={`${githubUrl}?tab=repositories`}
+						href="https://dev.to/bangsluke"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-xl font-bold text-theme-300">
-							{githubStats.repositories}
+						class="text-center p-3 bg-gray-100 dark:bg-white/10 rounded-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer">
+						<div class="flex flex-col items-center justify-center h-full">
+							<img
+								src="/icons/dev.svg"
+								alt="dev.to logo"
+								class="w-6 h-6 mb-2 dark:invert"
+							/>
+							<div class="text-xs text-gray-600 dark:text-white/70 mb-1">
+								dev.to
+							</div>
+							<div class="text-xs small-text font-medium text-theme-600 dark:text-theme-300">
+								@bangsluke
+							</div>
 						</div>
-						<div class="text-xs text-white/70">Repositories</div>
 					</a>
 					<a
-						href={`${githubUrl}?tab=followers`}
+						href="https://medium.com/@bangsluke"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-xl font-bold text-theme-300">
-							{githubStats.followers}
+						class="text-center p-3 bg-gray-100 dark:bg-white/10 rounded-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer">
+						<div class="flex flex-col items-center justify-center h-full">
+							<img
+								src="/icons/medium.svg"
+								alt="Medium logo"
+								class="w-6 h-6 mb-2 dark:invert"
+							/>
+							<div class="text-xs text-gray-600 dark:text-white/70 mb-1">
+								Medium
+							</div>
+							<div class="text-xs small-text font-medium text-theme-600 dark:text-theme-300">
+								@bangsluke
+							</div>
 						</div>
-						<div class="text-xs text-white/70">Followers</div>
 					</a>
-					<a
-						href={`${githubUrl}?tab=following`}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-xl font-bold text-theme-300">
-							{githubStats.following}
-						</div>
-						<div class="text-xs text-white/70">Following</div>
-					</a>
-					<div class="text-center p-2 bg-white/10 rounded-lg">
-						<div class="text-lg font-bold text-theme-300">
-							{githubStats.accountAge}
-						</div>
-						<div class="text-xs text-white/70">Active Since</div>
-					</div>
-					<a
-						href={githubStats.mostStarredRepo.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-center p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors cursor-pointer">
-						<div class="text-lg font-bold text-theme-300">
-							{githubStats.mostStarredRepo.stars}
-						</div>
-						<div class="text-xs text-white/70">Top Repo Stars</div>
-					</a>
-					<div class="text-center p-2 bg-white/10 rounded-lg">
-						<div class="text-lg font-bold text-theme-300">
-							{githubStats.contributionsLastYear}
-						</div>
-						<div class="text-xs text-white/70">Contributions (1Y)</div>
-					</div>
-					<div class="text-center p-2 bg-white/10 rounded-lg">
-						<div class="text-lg font-bold text-theme-300">
-							{githubStats.averageCommitsPerDay}
-						</div>
-						<div class="text-xs text-white/70">Avg Commits/Day</div>
-					</div>
 				</div>
 			)}
 
@@ -265,9 +198,56 @@ export default function GitHubContributions() {
 			)}
 
 			<style>{`
-        #github-contributions * {
-          color: #fff !important;
-        }
+				/* GitHub Calendar Label Styling for Theme Support */
+				.github-calendar__graph-label {
+					fill: #000 !important;
+					color: #000 !important;
+				}
+
+				/* Dark mode styles using html.dark selector */
+				html.dark .github-calendar__graph-label {
+					fill: #fff !important;
+					color: #fff !important;
+				}
+
+				/* Ensure the styles work even if the component is rendered dynamically */
+				#github-contributions .github-calendar__graph-label {
+					fill: #000 !important;
+					color: #000 !important;
+				}
+
+				html.dark #github-contributions .github-calendar__graph-label {
+					fill: #fff !important;
+					color: #fff !important;
+				}
+
+				/* Additional specificity for SVG text elements */
+				#github-contributions svg text.github-calendar__graph-label {
+					fill: #000 !important;
+				}
+
+				html.dark #github-contributions svg text.github-calendar__graph-label {
+					fill: #fff !important;
+				}
+
+				/* Force override for any inline styles from the component */
+				#github-contributions .github-calendar__graph-label[style*="fill"] {
+					fill: #000 !important;
+				}
+
+				html.dark #github-contributions .github-calendar__graph-label[style*="fill"] {
+					fill: #fff !important;
+				}
+
+				/* Target all text elements within the calendar */
+				#github-contributions svg text {
+					fill: #000 !important;
+				}
+
+				html.dark #github-contributions svg text {
+					fill: #fff !important;
+				}
+
         .github-calendar__graph-footer {
           display: none !important;
         }
@@ -285,11 +265,8 @@ export default function GitHubContributions() {
         .github-calendar {
           width: 100% !important;
         }
-        .github-calendar__graph-label {
-          fill: #fff !important;
-        }
         .github-calendar__graph rect {
-          stroke: rgba(255, 255, 255, 0.1) !important;
+          stroke: var(--color-theme-950-rgba-02) !important;
         }
         /* Ensure calendar is visible */
         .github-calendar__graph svg {
@@ -300,7 +277,6 @@ export default function GitHubContributions() {
         /* Debug styles to ensure visibility */
         #github-contributions {
           min-height: 200px !important;
-          border: 1px solid rgba(255, 255, 255, 0.1) !important;
         }
       `}</style>
 		</section>

@@ -7,20 +7,19 @@ tags:
   - skill
   - portfolio
 created: 2023-08-18T15:51:00
-modified: 2025-07-07T22:00:55+01:00
-viewCount: 6
+modified: 2025-07-26T09:08:41+01:00
+viewCount: 9
 aliases:
   - Node
-skillRating: 0
-skillDescription: TBC
+skillRating: 55
+skillDescription: Confident in using Node.js for backend work and setting up scripts for automating development steps.
 logoFileName: nodejs.svg
 ---
-
 # Node.js
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Language: <span class="theme-link">JavaScript</span>
+> Language: [[JavaScript]]
 
 ## Table of Contents 
 
@@ -29,7 +28,7 @@ logoFileName: nodejs.svg
 
 ## Links
 
-- TBC
+- <https://nodejs.org/api/index.html>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

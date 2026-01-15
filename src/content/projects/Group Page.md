@@ -6,17 +6,16 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 18:03
-modified: 2025-07-19T10:13:21+01:00
+modified: 2025-07-22T09:29:13+01:00
 aliases:
-  - Tits Group Page
-viewCount: 4
+viewCount: 8
 projectURL: https://group-page.netlify.app/
 codeURL: https://github.com/bangsluke/Group-Page
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/group-page/overview
 folderURL: https://drive.google.com/drive/folders/1wnM7858WTLTL7RqmvdoRSki5CHLn8V19?usp=drive_link
 logoURL: n/a
-imageURL: https://i.imgur.com/8C8TZpB.png
+imageURL: https://i.postimg.cc/d0bzjVH2/Group-Page.png
 dateStart: 2022-04-09
 dateEnd: 2023-10-30
 technologies:
@@ -25,6 +24,7 @@ technologies:
   - "[[JavaScript]]"
   - "[[Google Sheets]]"
   - "[[GitHub]]"
+  - "[[VS Code]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -36,14 +36,14 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 6
-shortDescription: "TBC"
-longDescription: "TBC"
-lessonsLearned: "TBC"
+shortDescription: "An early site that I built as a laugh for my friends displaying statistics for each person to fuel our competitive nature."
+longDescription: "My first real project with multiple pages and functionalities, the site was designed for a laugh amongst my friendship group given our high levels of competitiveness.<br><br>The data was stored in manageable <span class=\"theme-link\">Google Sheets</span> which I could update easily after any sports or competitions we did as a group and this would generate an overall ranking for the group.<br><br>The site also contained features such as a shared calendar embedded for us to send events to and help plan get togethers."
+lessonsLearned: "This site helped me start processing external data into a front end, which I did rather inefficiently using papa parse to gather the <span class=\"theme-link\">CSV</span> data.<br><br>It also taught me how to embed components like Google Calendar and widgets, and allowed me to understand theme switching for <span class=\"theme-link\">CSS</span>."
+name: "Group Page"
 ---
-
 # Group Page
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -74,21 +74,25 @@ WHERE file = this.file
 
 ## Short Description
 
-TBC
+An early site that I built as a laugh for my friends displaying statistics for each person to fuel our competitive nature.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-TBC
+My first real project with multiple pages and functionalities, the site was designed for a laugh amongst my friendship group given our high levels of competitiveness.
+
+The data was stored in manageable [[Google Sheets]] which I could update easily after any sports or competitions we did as a group and this would generate an overall ranking for the group.
+
+The site also contained features such as a shared calendar embedded for us to send events to and help plan get togethers.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">HTML</span>, <span class="theme-link">CSS</span>, <span class="theme-link">JavaScript</span>
-- Back end/Datasource: <span class="theme-link">Google Sheets</span>
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories))
+- Front end: [[HTML]], [[CSS]], [[JavaScript]]
+- Back end/Datasource: [[Google Sheets]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories))
 - Security: n/a
 - Authentication: Manual
 
@@ -103,7 +107,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -123,7 +127,9 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Lessons Learned
 
-TBC
+This site helped me start processing external data into a front end, which I did rather inefficiently using papa parse to gather the [[CSV]] data.
+
+It also taught me how to embed components like Google Calendar and widgets, and allowed me to understand theme switching for [[CSS]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

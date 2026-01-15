@@ -5,23 +5,27 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-19T10:13:05+01:00
-viewCount: 7
+modified: 2025-08-12T11:54:36+01:00
+viewCount: 10
 aliases:
   - Sales Chatbot
 projectURL: https://rle-sales-details.netlify.app/
-codeURL: TBC
+codeURL: https://github.com/bangsluke/rle-sales-details
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/rle-sales-details/overview
 folderURL: n/a
-logoURL: https://i.imgur.com/13pPwzp.png
-imageURL: https://i.imgur.com/yJOei4e.png
-dateStart: 
-dateEnd: 
+logoURL: https://i.postimg.cc/zDSgbnrM/RLEGPT.png
+imageURL: https://i.postimg.cc/nzqNRfg6/RLEGPT.png
+dateStart: 2023-04-01
+dateEnd: 2023-04-30
 technologies:
   - "[[Vite.js]]"
   - "[[OpenAI]]"
   - "[[React]]"
+  - "[[VS Code]]"
+  - "[[Yarn]]"
+  - "[[ESLint]]"
+  - "[[Prettier]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -35,15 +39,15 @@ topicTags:
   - "[[RFQ]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 5
+portfolioOrder: 6
 shortDescription: "A chat bot that takes on content such as an <span class=\"theme-link\">RFQ</span> block of text and then allows the user to query the text via chat."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+longDescription: "A simple website, demonstrating the power of integrating <span class=\"theme-link\">AI</span> into Automotive processes and day to day workflows, providing a simple interface for using a chat bot for quickly summarising the content of an <span class=\"theme-link\">RFQ</span> or querying information or extractions of logic from it."
+lessonsLearned: "This project was a test of using <span class=\"theme-link\">OpenAI</span>'s <span class=\"theme-link\">API</span> and the setup process involving tokens and cost behind it.<br><br>It also was my first integration of a chat bot component into a project."
+name: "RLEGPT"
 ---
-
 # RLEGPT
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -74,23 +78,23 @@ WHERE file = this.file
 
 ## Short Description
 
-A chat bot that takes on content such as an <span class="theme-link">RFQ</span> block of text and then allows the user to query the text via chat.
+A chat bot that takes on content such as an [[RFQ]] block of text and then allows the user to query the text via chat.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-TBC
+A simple website, demonstrating the power of integrating [[AI]] into Automotive processes and day to day workflows, providing a simple interface for using a chat bot for quickly summarising the content of an [[RFQ]] or querying information or extractions of logic from it. 
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: TBC
-- Back end/Datasource: TBC
-- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories))
+- Front end: [[React]], [[Vite.js]]
+- Back end/Datasource: [[OpenAI]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories))
 - Security: n/a
-- Authentication: TBC
+- Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -103,7 +107,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -117,13 +121,15 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- TBC
+- [[GPMO]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-TBC
+This project was a test of using [[OpenAI]]'s [[API]] and the setup process involving tokens and cost behind it.
+
+It also was my first integration of a chat bot component into a project.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

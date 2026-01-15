@@ -7,19 +7,18 @@ tags:
   - portfolio
   - skill
 created: 2023-08-18T15:51:00
-modified: 2025-07-20T11:25:16+01:00
+modified: 2025-08-26T15:57:00+01:00
 viewCount: 9
-aliases: 
+aliases:
 skillRating: 65
 skillDescription: Used Next.JS for multiple projects, utilising it's features to create dynamic and rapid applications.
 logoFileName: nextjs.svg
 ---
-
 # Next.js
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Language: <span class="theme-link">JavaScript</span>, built on <span class="theme-link">React</span>
+> Language: [[JavaScript]], built on [[React]]
 
 ## Table of Contents 
 

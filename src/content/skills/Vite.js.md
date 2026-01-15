@@ -7,20 +7,19 @@ tags:
   - skill
   - portfolio
 created: 2023-08-18T15:51:00
-modified: 2025-07-02T14:19:48+01:00
-viewCount: 5
+modified: 2025-08-26T16:11:46+01:00
+viewCount: 7
 aliases:
   - Vite
-skillRating: 0
-skillDescription: TBC
+skillRating: 70
+skillDescription: Used as my go to starting point for most projects and able to configure multiple set ups.
 logoFileName: vitejs.svg
 ---
-
 # Vite.js
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Language: <span class="theme-link">JavaScript</span> built on <span class="theme-link">React</span>
+> Language: [[JavaScript]] built on [[React]]
 
 ## Table of Contents 
 

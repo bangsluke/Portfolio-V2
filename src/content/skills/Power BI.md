@@ -4,7 +4,7 @@ tags:
   - software
   - skill
   - portfolio
-modified: 2025-07-02T14:38:37+01:00
+modified: 2026-01-05T08:43:45+00:00
 viewCount: 4
 aliases:
   - Microsoft Power BI
@@ -12,12 +12,11 @@ skillRating: 45
 skillDescription: Supported the design and development of several Power BI reports for internal management review.
 logoFileName: power_bi.svg
 ---
-
 # Power BI
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> Power BI
+> [[Microsoft]] Power BI
 
 ## Table of Contents
 
@@ -26,7 +25,7 @@ logoFileName: power_bi.svg
 
 ## Links
 
-- n/a
+- [Getting Started with Power BI - Guy in a Cube - YouTube](https://youtube.com/playlist?list=PLv2BtOtLblH13vCbf99BptWWk-EWx7QQG&si=7axwmQ7KZTPX25Ex)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -7,20 +7,19 @@ tags:
   - client
   - automotive
 created: 2025-06-02 17:46
-modified: 2025-07-18T08:19:37+01:00
-viewCount: 7
+modified: 2025-07-23T08:56:27+01:00
+viewCount: 12
 aliases:
   - CEER
 dateStart: 2023-02-01
 dateEnd: 2023-03-31
-logoURL: https://i.imgur.com/u0d0rC1.png
+logoURL: https://i.postimg.cc/MT79Nvj0/CEER.png
 linkedCompany:
   - "[[RLE International]]"
 ---
-
 # CEER Automotive
 
-> [!back] Link back to <span class="theme-link">Company Notes</span>
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
 >```dataview

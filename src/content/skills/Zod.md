@@ -7,17 +7,16 @@ tags:
   - portfolio
 created: 2025-07-20T07:44:00
 modified: 2025-07-20T07:43:48+01:00
-viewCount: 2
-skillRating: 0
-skillDescription: n/a
-logoFileName:
+viewCount: 1
+skillRating: 15
+skillDescription: Implemented in a single project with limited experience.
+logoFileName: zod.svg
 ---
-
 # Zod
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Typescript</span> type validation library
+> [[Typescript]] type validation library
 
 ## Table of Contents
 

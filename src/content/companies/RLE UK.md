@@ -8,23 +8,22 @@ tags:
   - subsidiary
 created: 2025-05-30T11:25:00
 modified: 2025-07-18T08:07:25+01:00
-viewCount: 5
-aliases: 
+viewCount: 8
+aliases:
 dateStart: 2014-09-01
 dateEnd: ""
-logoURL: https://i.imgur.com/YO94MEL.png
+logoURL: https://i.postimg.cc/nzbd3vM2/RLE-International.png
 ---
-
 # RLE UK
 
-> [!back] Link back to <span class="theme-link">Company Notes</span>
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
 >```dataview
 TABLE WITHOUT ID elink("https://en.wikipedia.org/wiki/"+replace(this.file.name, " ", "_"), this.file.name + " Wiki") as "Wikipedia Link"
 WHERE file = this.file
 
-> Subsidiary of <span class="theme-link">RLE International</span> based in the <span class="theme-link">United Kingdom</span>
+> Subsidiary of [[RLE International]] based in the [[United Kingdom]]
 
 ## Table of Contents
 ```table-of-contents

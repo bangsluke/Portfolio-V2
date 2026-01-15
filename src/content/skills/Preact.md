@@ -10,19 +10,18 @@ tags:
   - skill
   - library
 created: 2025-07-14T21:22:00
-modified: 2025-07-18T11:51:42+01:00
-viewCount: 4
-aliases: 
-skillRating: 0
-skillDescription: TBC
+modified: 2025-08-26T16:11:08+01:00
+viewCount: 6
+aliases:
+skillRating: 40
+skillDescription: Utilised on a single project to minimise front end size without fully exploring the full functionality.
 logoFileName: preact.svg
 ---
-
 # Preact
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Language: <span class="theme-link">JavaScript</span>. Lightweight version of <span class="theme-link">React</span>
+> Language: [[JavaScript]]. Lightweight version of [[React]]
 
 ## Table of Contents
 

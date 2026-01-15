@@ -4,19 +4,18 @@ tags:
   - software
   - skill
   - portfolio
-viewCount: 4
+viewCount: 3
 aliases:
   - Microsoft SharePoint
-skillRating: 0
-skillDescription: TBC
+skillRating: 50
+skillDescription: Have worked with SharePoint for several years and am competent in working with it directly and indirectly through automation.
 logoFileName: sharepoint.svg
 ---
-
 # SharePoint
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> SharePoint
+> [[Microsoft]] SharePoint
 
 ## Table of Contents
 

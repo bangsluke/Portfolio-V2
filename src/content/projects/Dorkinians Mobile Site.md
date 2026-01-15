@@ -10,13 +10,14 @@ created: 2025-05-29 17:44
 modified: 2025-07-19T10:18:48+01:00
 aliases:
   - Dorkinians Mobile Stats
-viewCount: 12
+viewCount: 13
 projectURL: https://dorkinians-mobile-stats.netlify.app/main
 codeURL: https://github.com/bangsluke/mobile-stats-dorkinians
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/dorkinians-mobile-stats/overview
 folderURL: n/a
-imageURL: 
+logoURL: n/a
+imageURL: https://i.postimg.cc/0Q7hW1FJ/Dorkinians-Mobile-Site.png
 dateStart: 2022-12-07
 dateEnd: 2023-01-13
 technologies:
@@ -25,6 +26,12 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Snyk]]"
+  - "[[Yarn]]"
+  - "[[Prettier]]"
+  - "[[ESLint]]"
+  - "[[Typescript]]"
+  - "[[Next.js]]"
+  - "[[VS Code]]"
 projectCategory: Personal Design
 linkedCompany:
   - "[[Dorkinians FC]]"
@@ -38,13 +45,13 @@ powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
 shortDescription: "A quick access, mobile friendly filterable stats site for <span class=\"theme-link\">Dorkinians FC</span> players."
-longDescription: "After creating the initial <a href=\"/portfolio/projects/Dorkinians Website\" class=\"theme-link\">Dorkinians Website</a>, I would regularly be asked by players “But how many goals were just in cup games/not friendlies/just league?” Etc etc.\nI therefore decided to play around with creating a filterable site so that players could answer these questions themselves."
-lessonsLearned: "This project let me design my first filter <span class=\"theme-link\">UI</span> popup using <span class=\"theme-link\">React</span> and taught me methods of filtering the data received from the back end.\nI also tried out a new <span class=\"theme-link\">API</span> method of retrieving data to the front end from <span class=\"theme-link\">Google Sheets</span>, using their available method instead of parsing generated <span class=\"theme-link\">CSV</span> data like I did on the <a href=\"/portfolio/projects/Dorkinians Website\" class=\"theme-link\">Dorkinians Website</a>."
+longDescription: "After creating the initial <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>, I would regularly be asked by players \"But how many goals were just in cup games/not friendlies/just league?\" Etc etc.<br><br>I therefore decided to play around with creating a filterable site so that players could answer these questions themselves."
+lessonsLearned: "This project let me design my first filter <span class=\"theme-link\">UI</span> popup using <span class=\"theme-link\">React</span> and taught me methods of filtering the data received from the back end.<br><br>I also tried out a new <span class=\"theme-link\">API</span> method of retrieving data to the front end from <span class=\"theme-link\">Google Sheets</span>, using their available method instead of parsing generated <span class=\"theme-link\">CSV</span> data like I did on the <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>."
+name: "Dorkinians Mobile Site"
 ---
-
 # Dorkinians Mobile Site
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -75,13 +82,13 @@ WHERE file = this.file
 
 ## Short Description
 
-A quick access, mobile friendly filterable stats site for <span class="theme-link">Dorkinians FC</span> players.
+A quick access, mobile friendly filterable stats site for [[Dorkinians FC]] players.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-After creating the initial <a href="/portfolio/projects/Dorkinians Website" class="theme-link">Dorkinians Website</a>, I would regularly be asked by players “But how many goals were just in cup games/not friendlies/just league?” Etc etc.
+After creating the initial [[Dorkinians Website]], I would regularly be asked by players "But how many goals were just in cup games/not friendlies/just league?" Etc etc.
 
 I therefore decided to play around with creating a filterable site so that players could answer these questions themselves.
 
@@ -89,10 +96,10 @@ I therefore decided to play around with creating a filterable site so that playe
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">React</span>
-- Back end/Datasource: <span class="theme-link">Google Sheets</span>
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), <span class="theme-link">Netlify</span>
-- Security: <span class="theme-link">Snyk</span>
+- Front end: [[React]]
+- Back end/Datasource: [[Google Sheets]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
+- Security: [[Snyk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -106,7 +113,7 @@ I therefore decided to play around with creating a filterable site so that playe
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -121,20 +128,20 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- https://dorkinians-mobile-stats.netlify.app/main
-- https://github.com/bangsluke/mobile-stats-dorkinians
-- <a href="/portfolio/projects/Dorkinians Website" class="theme-link">Dorkinians Website</a>
-- <a href="/portfolio/projects/Dorkinians Website V2" class="theme-link">Dorkinians Website V2</a>
-- <span class="theme-link">Todoist</span> Lists
+- <https://dorkinians-mobile-stats.netlify.app/main>
+- <https://github.com/bangsluke/mobile-stats-dorkinians>
+- [[Dorkinians Website]]
+- [[Dorkinians Website V3]]
+- [[Todoist]] Lists
 	- [Dorkinians Mobile Site](https://todoist.com/showTask?id=6496470356&sync_id=6506077820)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This project let me design my first filter <span class="theme-link">UI</span> popup using <span class="theme-link">React</span> and taught me methods of filtering the data received from the back end.
+This project let me design my first filter [[UI]] popup using [[React]] and taught me methods of filtering the data received from the back end.
 
-I also tried out a new <span class="theme-link">API</span> method of retrieving data to the front end from <span class="theme-link">Google Sheets</span>, using their available method instead of parsing generated <span class="theme-link">CSV</span> data like I did on the <a href="/portfolio/projects/Dorkinians Website" class="theme-link">Dorkinians Website</a>.
+I also tried out a new [[API]] method of retrieving data to the front end from [[Google Sheets]], using their available method instead of parsing generated [[CSV]] data like I did on the [[Dorkinians Website]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

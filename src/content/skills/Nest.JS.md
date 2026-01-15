@@ -10,17 +10,16 @@ tags:
 modified: 2025-07-18T11:10:52+01:00
 created: 2023-10-13T07:42:00
 viewCount: 7
-aliases: 
+aliases:
 skillRating: 10
 skillDescription: A very basic understanding of the concept of Nest.JS as a Node framework.
 logoFileName: nestjs.svg
 ---
-
 # Nest.JS
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-A framework for <span class="theme-link">JavaScript</span>
+A framework for [[JavaScript]]
 
 ## Table of Contents 
 

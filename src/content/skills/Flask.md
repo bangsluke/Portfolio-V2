@@ -8,19 +8,18 @@ tags:
   - portfolio
   - skill
 created: 2023-08-18T15:51:00
-modified: 2025-07-18T11:09:49+01:00
+modified: 2025-08-26T15:59:46+01:00
 viewCount: 10
-aliases: 
+aliases:
 skillRating: 40
 skillDescription: Built a single Flask API set up for a work project to enable a Python algorithm to be called from the frontend.
 logoFileName: flask.svg
 ---
-
 # Flask
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-A framework for <span class="theme-link">Python</span>
+A framework for [[Python]]
 
 ## Table of Contents 
 

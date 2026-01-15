@@ -8,18 +8,17 @@ tags:
   - skill
   - notes
 created: 2023-10-13T07:43:00
-modified: 2025-07-02T14:20:20+01:00
-viewCount: 4
+modified: 2025-07-28T07:25:44+01:00
+viewCount: 6
 aliases:
   - Cascading Sheet Styles
-skillRating: 0
-skillDescription: TBC
+skillRating: 65
+skillDescription: Competent at building full sites using CSS and utilising modules for scoped rules.
 logoFileName: css.svg
 ---
-
 # CSS
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents 
 
@@ -28,7 +27,7 @@ logoFileName: css.svg
 
 ## Links
 
-- TBC
+- [CSS: Cascading Style Sheets \| MDN](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

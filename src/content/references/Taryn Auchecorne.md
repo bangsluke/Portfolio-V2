@@ -23,10 +23,9 @@ referenceNumber: 07912 945265
 referenceAddress: London, EC4A 3BF
 portfolioOrder: 4
 ---
-
 # Taryn Auchecorne
 
-> [!back] Link back to <span class="theme-link">People Notes</span>
+> [!back] Link back to [[People Notes]]
 
 ## Table of Contents 
 

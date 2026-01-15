@@ -1,4 +1,5 @@
 ---
+// @ts-expect-error - AstroError is not typed
 import { AstroError } from 'astro/errors';
 
 const { items = [] }: { items: (keyof typeof menu)[] } = Astro.props as {
@@ -13,13 +14,13 @@ const menu = {
 	//     { name: "All Posts", path: "/blog/posts/" },
 	//   ]
 	// },
-	home: { name: 'Home', path: '/site/#home' },
-	projects: { name: 'Projects', path: '/site/#projects' },
-	coding: { name: 'Coding', path: '/site/#coding' },
-	experience: { name: 'Experience', path: '/site/#experience' },
-	clients: { name: 'Clients', path: '/site/#customers-and-clients' },
-	education: { name: 'Education', path: '/site/#education' },
-	references: { name: 'References', path: '/site/#references' },
+	home: { name: 'Home', path: '/#home' },
+	skills: { name: 'Skills', path: '/#skills' },
+	projects: { name: 'Projects', path: '/#projects' },
+	experience: { name: 'Experience', path: '/#experience' },
+	clients: { name: 'Clients', path: '/#customers-and-clients' },
+	education: { name: 'Education', path: '/#education' },
+	references: { name: 'References', path: '/#references' },
 	about: { name: 'About Me', path: '/about-me' },
 };
 
@@ -45,7 +46,7 @@ const baseClasses = {
 				'text-theme-500',
 				'dark:text-theme-400',
 				'font-bold',
-				'[text-shadow:1px_1px_11px_rgba(208,251,229,0.7)]',
+				'[text-shadow:1px_1px_11px_var(--color-theme-100)]',
 			],
 			inactive: ['dark:text-zinc-300', 'text-blacktext'],
 		};

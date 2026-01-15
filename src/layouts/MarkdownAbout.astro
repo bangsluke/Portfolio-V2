@@ -14,24 +14,21 @@ const { frontmatter } = Astro.props;
 	});
 </script>
 
-<Layout
-	pageTitle={frontmatter.aboutMeTitle}
-	description={frontmatter.description}
-	ogimage={frontmatter.image}>
+<Layout pageTitle={frontmatter.aboutMeTitle} ogimage={frontmatter.image}>
 	<section
 		class="w-full px-8 mt-5 max-sm:px-4 py-4 flex flex-row justify-center gap-6">
 		<div class="w-64 max-xl:hidden"></div>
 
 		<article
-			class="flex flex-col gap-8 max-w-3xl max-md:w-full pb-10 pt-8 mt-8 max-sm:mt-0 px-14 max-md:px-10 max-sm:px-6 dark:bg-transparent bg-white dark:border-0 border border-neutral-100 rounded-2xl">
+			class="flex flex-col gap-6 max-w-3xl max-md:w-full pb-10 pt-8 mt-8 max-sm:mt-0 px-14 max-md:px-10 max-sm:px-6 dark:bg-transparent dark:text-gray-200 bg-white dark:border-0 border border-neutral-100 rounded-2xl">
 			<div class="w-full h-auto mb-4 mx-auto" id="#">
 				<div
-					class="transition-all justify-center w-full gap-8 max-md:gap-3 max-lg:gap-2 flex flex-col items-center z-0 relative dark:from-theme-950 dark:to-zinc-950">
+					class="transition-all justify-center w-full gap-8 max-md:gap-3 max-xl:gap-2 flex flex-col items-center z-0 relative dark:from-theme-950 dark:to-zinc-950">
 					<div class="aspect-square h-60 max-md:size-32">
 						<div
 							class="group-hover:scale-105 relative z-10 flex w-full cursor-pointer items-center overflow-hidden rounded-full dark:p-[1.5px] p-[2px] transition-all duration-500">
 							<div
-								class="absolute inset-0 h-full w-full rounded-fullfrom-transparent to-riptide-500 dark:from-transparent f dark:to-theme-300 animate-rotate-border bg-conic/[from_var(--border-angle)]">
+								class="absolute inset-0 h-full w-full rounded-fullfrom-transparent to-light-theme-accent-500 dark:from-transparent f dark:to-theme-300 animate-rotate-border bg-conic/[from_var(--border-angle)]">
 							</div>
 							<div class="relative z-20 flex w-full rounded-full bg-theme-900">
 								<div
@@ -48,55 +45,244 @@ const { frontmatter } = Astro.props;
 
 					<div class="w-full flex flex-col justify-center gap-4 max-md:gap-2">
 						<div class="text-center">
-							<Heading textGradient="Luke Bangs | bangsluke" />
+							<Heading text="Luke " textGradient="Bangs" />
 						</div>
-
-						<p
-							class="text-lg max-xl:text-base text-blacktext dark:text-gray-200 mb-0 leading-8 font-semibold">
-							<b
-								class="bg-linear-to-r from-riptide-400 to-theme-500 dark:to-theme-200 dark:from-riptide-300 text-transparent bg-clip-text"
-								>Frontend Developer</b
-							> with <b
-								class="bg-linear-to-r from-riptide-400 to-theme-500 dark:to-theme-200 dark:from-riptide-300 text-transparent bg-clip-text"
-								>8 years of experience</b
-							>, passionate about development, technology, and coffee that
-							sparks ideas. I love bringing digital projects to life. 🚀☕
-						</p>
 					</div>
 				</div>
 			</div>
-			<div class="flex gap-4 items-center">
-				<Heading text="About" textGradient="me" />
-			</div>
 
-			<div class="markdown" id="content">
+			<div class="markdown text-lg" id="content">
 				<slot />
 			</div>
 		</article>
 		<NavArticle title={frontmatter.title} />
 	</section>
 
-	<!-- Back to Home Button -->
-	<div class="w-full flex justify-center mb-8">
-		<a
-			href="/"
-			class="inline-flex items-center gap-2 px-6 py-3 bg-theme-500 hover:bg-theme-600 dark:bg-theme-400 dark:hover:bg-theme-300 text-white dark:text-theme-900 font-semibold rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
-			<svg
-				class="w-5 h-5"
-				fill="none"
-				stroke="currentColor"
-				viewBox="0 0 24 24"
-				xmlns="http://www.w3.org/2000/svg">
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-				</path>
-			</svg>
-			Back to Home
-		</a>
+	<!-- Mobile Floating Action Button -->
+	<button
+		id="toc-fab"
+		class="lg:hidden fixed bottom-17 right-4 z-50 w-10 h-10 bg-theme-400 hover:bg-theme-500 active:bg-theme-600 text-black rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center active:bg-theme-600 text-black w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg hover:shadow-xl active:shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 flex items-center justify-center touch-manipulation"
+		aria-label="Open Table of Contents">
+		<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"
+				d="M4 6h16M4 12h16M4 18h16"></path>
+		</svg>
+	</button>
+
+	<!-- Mobile TOC Modal -->
+	<div
+		id="toc-modal"
+		class="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50 hidden"
+		aria-hidden="true">
+		<div class="flex items-center justify-center min-h-screen p-4">
+			<div
+				class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-hidden">
+				<div
+					class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+					<h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+						Table of Contents
+					</h3>
+					<button
+						id="toc-close"
+						class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+						aria-label="Close Table of Contents">
+						<svg
+							class="w-6 h-6"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M6 18L18 6M6 6l12 12"></path>
+						</svg>
+					</button>
+				</div>
+				<div class="p-4 overflow-y-auto max-h-[calc(80vh-80px)]">
+					<ul id="mobile-toc-list" class="space-y-2 text-sm">
+						<!-- Mobile TOC will be populated by JavaScript -->
+					</ul>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<!-- Bottom Back Button -->
+	<section class="py-8 px-8 max-md:py-4">
+		<div class="max-w-7xl mx-auto">
+			<div class="text-center">
+				<a
+					href="/"
+					class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
+					<svg
+						class="w-5 h-5 mr-2"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M15 19l-7-7 7-7"></path>
+					</svg>
+					Back to Portfolio
+				</a>
+			</div>
+		</div>
+	</section>
 
 	<Contact />
 </Layout>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		// Mobile TOC functionality
+		const tocFab = document.getElementById('toc-fab');
+		const tocModal = document.getElementById('toc-modal');
+		const tocClose = document.getElementById('toc-close');
+		const mobileTocList = document.getElementById('mobile-toc-list');
+		const content = document.getElementById('content');
+
+		if (!tocFab || !tocModal || !tocClose || !mobileTocList || !content) return;
+
+		// Toggle modal visibility
+		function toggleModal() {
+			if (!tocModal) return;
+
+			const isHidden = tocModal!.classList.contains('hidden');
+			if (isHidden) {
+				tocModal!.classList.remove('hidden');
+				document.body.style.overflow = 'hidden';
+			} else {
+				tocModal!.classList.add('hidden');
+				document.body.style.overflow = '';
+			}
+		}
+
+		// Event listeners
+		tocFab.addEventListener('click', toggleModal);
+		tocClose.addEventListener('click', toggleModal);
+
+		// Close modal when clicking outside
+		tocModal.addEventListener('click', function (e) {
+			if (e.target === tocModal) {
+				toggleModal();
+			}
+		});
+
+		// Close modal on escape key
+		document.addEventListener('keydown', function (e) {
+			if (
+				e.key === 'Escape' &&
+				tocModal &&
+				!tocModal.classList.contains('hidden')
+			) {
+				toggleModal();
+			}
+		});
+
+		// Get all headers but exclude H1 and "Table of Contents"
+		const allHeaders = content.querySelectorAll('h1, h2, h3');
+		const headers = Array.from(allHeaders).filter(header => {
+			// Exclude H1 headers
+			if (header.tagName === 'H1') return false;
+
+			// Exclude headers with "Table of Contents" text
+			const headerText = header.textContent?.trim() || '';
+			if (headerText.toLowerCase().includes('table of contents')) return false;
+
+			if (headerText.toLowerCase().includes('My portfolio site')) return false;
+
+			return true;
+		});
+
+		// Add "Top of Page" option first
+		const topOfPageLi = document.createElement('li');
+		const topOfPageLink = document.createElement('a');
+		topOfPageLink.href = '#';
+		topOfPageLink.textContent = 'Top of Page';
+		topOfPageLink.classList.add(
+			'inline-block',
+			'text-gray-700',
+			'dark:text-gray-300',
+			'hover:text-theme-400',
+			'dark:hover:text-theme-300',
+			'transition-colors',
+			'py-2',
+			'px-3',
+			'rounded',
+			'hover:bg-gray-100',
+			'dark:hover:bg-gray-700',
+			'w-full',
+			'font-medium'
+		);
+		topOfPageLi.appendChild(topOfPageLink);
+		mobileTocList.appendChild(topOfPageLi);
+
+		// Add separator after Top of Page
+		const separatorLi = document.createElement('li');
+		separatorLi.classList.add(
+			'border-t',
+			'border-gray-200',
+			'dark:border-gray-600',
+			'my-2'
+		);
+		mobileTocList.appendChild(separatorLi);
+
+		headers.forEach((header, index) => {
+			if (!header.id) {
+				header.id =
+					header.textContent?.trim().toLowerCase().replace(/\s+/g, '-') +
+					'-' +
+					index;
+			}
+
+			const li = document.createElement('li');
+			const link = document.createElement('a');
+			link.href = `#${header.id}`;
+			link.textContent = header.textContent?.trim() || header.id;
+			link.classList.add(
+				'inline-block',
+				'text-gray-700',
+				'dark:text-gray-300',
+				'hover:text-theme-400',
+				'dark:hover:text-theme-300',
+				'transition-colors',
+				'py-2',
+				'px-3',
+				'rounded',
+				'hover:bg-gray-100',
+				'dark:hover:bg-gray-700',
+				'w-full'
+			);
+
+			// Add indentation for H3 headers
+			if (header.tagName === 'H3') {
+				link.classList.add('ml-4');
+			}
+
+			li.appendChild(link);
+			mobileTocList.appendChild(li);
+
+			// Smooth scroll when clicking on a link and close modal
+			link.addEventListener('click', function (e) {
+				e.preventDefault();
+				document
+					.getElementById(header.id)
+					?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				toggleModal(); // Close modal after clicking a link
+			});
+		});
+
+		// Top of Page click handler
+		topOfPageLink.addEventListener('click', function (e) {
+			e.preventDefault();
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+			toggleModal(); // Close modal after scrolling to top
+		});
+	});
+</script>

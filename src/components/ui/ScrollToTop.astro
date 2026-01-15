@@ -4,13 +4,16 @@
 
 <div
 	id="scroll-to-top"
-	class="fixed bottom-[5%] right-[5%] z-50 opacity-0 pointer-events-none transition-all duration-300 ease-in-out">
+	class="fixed bottom-4 right-4 md:bottom-[10%] md:right-[5%] z-[100] opacity-0 pointer-events-none transition-all duration-300 ease-in-out">
 	<button
 		id="scroll-to-top-btn"
-		class="bg-theme-400 hover:bg-theme-500 text-black w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 flex items-center justify-center"
-		aria-label="Scroll to top"
-		title="Scroll to top">
-		<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+		class="bg-theme-400 hover:bg-theme-500 active:bg-theme-600 text-black w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg hover:shadow-xl active:shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 flex items-center justify-center touch-manipulation"
+		aria-label="Scroll to top">
+		<svg
+			class="w-5 h-5 md:w-6 md:h-6"
+			fill="none"
+			stroke="currentColor"
+			viewBox="0 0 24 24">
 			<path
 				stroke-linecap="round"
 				stroke-linejoin="round"
@@ -32,10 +35,41 @@
 		function toggleScrollToTop() {
 			if (!scrollToTop) return;
 
+			// Multiple methods to get scroll position for mobile compatibility
+			const scrollY = Math.max(
+				window.pageYOffset || 0,
+				window.scrollY || 0,
+				document.documentElement.scrollTop || 0,
+				document.body.scrollTop || 0
+			);
+
+			// Get fresh dimensions on each call for mobile compatibility
+			const documentHeight = Math.max(
+				document.body.scrollHeight,
+				document.body.offsetHeight,
+				document.documentElement.clientHeight,
+				document.documentElement.scrollHeight,
+				document.documentElement.offsetHeight
+			);
+
+			// Use visual viewport for more accurate mobile measurements
+			const viewportHeight = window.visualViewport
+				? window.visualViewport.height
+				: window.innerHeight;
+
+			// Calculate scrollable distance with mobile-friendly approach
+			const scrollableDistance = Math.max(0, documentHeight - viewportHeight);
+
+			// Alternative calculation: use scroll position relative to total content height
+			// This is more reliable on mobile where viewport dimensions change
+			const alternativeScrollPercent =
+				documentHeight > 0 ? (scrollY / documentHeight) * 100 : 0;
+
+			// Use the more reliable calculation for mobile
 			const scrollPercent =
-				(window.scrollY /
-					(document.documentElement.scrollHeight - window.innerHeight)) *
-				100;
+				scrollableDistance > 0
+					? (scrollY / scrollableDistance) * 100
+					: alternativeScrollPercent;
 
 			if (scrollPercent > 15) {
 				scrollToTop.classList.remove('opacity-0', 'pointer-events-none');
@@ -46,19 +80,90 @@
 			}
 		}
 
+		// Debounced scroll handler for better mobile performance
+		let scrollTimeout: ReturnType<typeof setTimeout>;
+		function debouncedScrollHandler() {
+			clearTimeout(scrollTimeout);
+			scrollTimeout = setTimeout(toggleScrollToTop, 10);
+		}
+
 		// Smooth scroll to top
-		function scrollToTopHandler() {
+		function scrollToTopHandler(event: Event) {
+			console.log('Scroll to top handler');
+			// Prevent default to avoid any potential issues
+			event.preventDefault();
+			event.stopPropagation();
+
 			window.scrollTo({
 				top: 0,
 				behavior: 'smooth',
 			});
 		}
 
-		// Add event listeners
-		window.addEventListener('scroll', toggleScrollToTop);
-		scrollToTopBtn.addEventListener('click', scrollToTopHandler);
+		function scrollToTopHandlerMobile(event: Event) {
+			console.log('Scroll to top handler mobile');
+			// Remove preventDefault since we're using passive: true
+			event.stopPropagation();
+
+			document.body.scrollTop = 0; // For Safari
+			document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+		}
+
+		// Add event listeners with mobile-friendly options
+		window.addEventListener('scroll', debouncedScrollHandler, {
+			passive: true,
+		});
+
+		// Fallback wheel event for better mobile support
+		window.addEventListener('wheel', debouncedScrollHandler, {
+			passive: true,
+		});
+
+		// Mobile viewport change detection
+		window.addEventListener('resize', debouncedScrollHandler, {
+			passive: true,
+		});
+
+		// Visual viewport change detection for mobile
+		if (window.visualViewport) {
+			window.visualViewport.addEventListener('resize', debouncedScrollHandler, {
+				passive: true,
+			});
+		}
+
+		// Handle both click and touch events
+		scrollToTopBtn.addEventListener('click', scrollToTopHandler, {
+			passive: true,
+		});
+
+		// Touch events for mobile
+		scrollToTopBtn.addEventListener('touchstart', scrollToTopHandlerMobile, {
+			passive: true,
+		});
 
 		// Initial check in case page is already scrolled
 		toggleScrollToTop();
+
+		// Mobile fallback: poll scroll position for devices that don't fire scroll events reliably
+		let lastScrollY = Math.max(
+			window.pageYOffset || 0,
+			window.scrollY || 0,
+			document.documentElement.scrollTop || 0,
+			document.body.scrollTop || 0
+		);
+
+		setInterval(() => {
+			const currentScrollY = Math.max(
+				window.pageYOffset || 0,
+				window.scrollY || 0,
+				document.documentElement.scrollTop || 0,
+				document.body.scrollTop || 0
+			);
+
+			if (currentScrollY !== lastScrollY) {
+				lastScrollY = currentScrollY;
+				toggleScrollToTop();
+			}
+		}, 50); // Check every 50ms for better mobile responsiveness
 	});
 </script>

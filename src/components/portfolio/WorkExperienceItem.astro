@@ -8,11 +8,14 @@ interface Props {
 	dateEnd?: string | Date | null;
 	logoURL?: string | null;
 	linkedCompany?: string[];
+	shortRoleDescription?: string;
+	fullRoleDescription?: string;
 	roleDescription?: string;
 	keyAchievement?: string;
 	processedLinkedCompany?: string;
 	companyLogoURL?: string | null;
 	allCompanyLogos?: { logoURL: string | null; name: string }[];
+	useShort?: boolean;
 }
 
 const {
@@ -22,15 +25,23 @@ const {
 	dateEnd,
 	logoURL,
 	linkedCompany,
+	shortRoleDescription,
+	fullRoleDescription,
 	roleDescription,
 	keyAchievement,
 	processedLinkedCompany,
 	companyLogoURL,
 	allCompanyLogos,
+	useShort = false,
 } = Astro.props;
 
+// Pick the correct description
+const descriptionToShow = useShort
+	? shortRoleDescription || roleDescription
+	: fullRoleDescription || roleDescription;
+
 // Process content to handle Obsidian links and markdown
-const processedRoleDescription = processContent(roleDescription);
+const processedRoleDescription = processContent(descriptionToShow);
 const processedKeyAchievement = processContent(keyAchievement);
 
 // Format dates in "MMM YYYY - MMM YYYY" format
@@ -63,11 +74,11 @@ if (formattedDateStart && formattedDateEnd) {
 ---
 
 <div
-	class="relative mx-12 pb-12 grid md:grid-cols-5 md:gap-10 before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 dark:before:border-white/15 before:content-['']">
-	<div class="pb-12 md:col-span-2">
-		<div class="sticky top-0">
+	class="relative mx-4 md:mx-12 pb-12 grid md:grid-cols-5 md:gap-10 before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 dark:before:border-white/15 before:content-['']">
+	<div class="pb-4 md:col-span-2 md:pb-12">
+		<div class="sticky top-16 md:top-20">
 			<span
-				class="absolute -left-[42px] text-5xl text-theme-400 rounded-full drop-shadow-[0px_0px_8px_rgba(0,255,94,1)]"
+				class="absolute -left-[42px] text-5xl text-theme-400 rounded-full drop-shadow-[0px_0px_8px_rgba(0,255,94,1)] hidden md:block"
 				>&bull;</span
 			>
 			<h3 class="text-xl font-bold text-theme-400">
@@ -78,7 +89,7 @@ if (formattedDateStart && formattedDateEnd) {
 			</h4>
 			<time
 				datetime={dateStart?.toString()}
-				class="text-sm text-zinc-600/80 dark:text-white/80">
+				class="text-sm text-zinc-600/80 dark:text-white/80 mb-2 md:mb-0">
 				{dateRange}
 			</time>
 
@@ -102,8 +113,11 @@ if (formattedDateStart && formattedDateEnd) {
 		</div>
 	</div>
 	<div
-		class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3">
-		<div class="processed-content" set:html={processedRoleDescription} />
+		class="flex flex-col gap-2 pb-4 text-zinc-00 dark:text-zinc-300 md:col-span-3 max-sm:col-span-full max-sm:w-full max-sm:px-4 dark:bg-red">
+		<div
+			class="processed-content max-sm:text-sm"
+			set:html={processedRoleDescription}
+		/>
 		{
 			processedKeyAchievement && (
 				<div class="mt-2">

@@ -7,20 +7,19 @@ tags:
   - client
   - portfolio
 modified: 2025-07-18T08:43:17+01:00
-viewCount: 2
+viewCount: 9
 aliases:
   - AML
   - Aston Martin Limited
-dateStart: 
-dateEnd: 
-logoURL: https://i.imgur.com/ImIdiJo.jpeg
+dateStart: 2016-03-01
+dateEnd: 2016-04-01
+logoURL: https://i.postimg.cc/4d6Wqmhz/Aston-Martin.jpg
 linkedCompany:
   - "[[RLE International]]"
 ---
-
 # Aston Martin
 
-> [!back] Link back to <span class="theme-link">Company Notes</span>
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
 >```dataview

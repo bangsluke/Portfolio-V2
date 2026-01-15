@@ -5,16 +5,16 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-19T10:04:20+01:00
-viewCount: 9
-aliases: 
+modified: 2025-09-08T07:23:29+01:00
+viewCount: 15
+aliases:
 projectURL: https://rleint.sharepoint.com/:x:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model/GPMO%20Cost%20Model%20V1.xlsx?d=w63d8777e305243178780a626d3abdf07&csf=1&web=1&e=hCf0X0
 codeURL: n/a
-codeMultipleRepos: 
+codeMultipleRepos:
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model?csf=1&web=1&e=CGmO2I
-logoURL: https://i.imgur.com/fmcxj4Y.png
-imageURL: 
+logoURL: https://i.postimg.cc/fWj9txNr/Cost-Model.png
+imageURL: https://i.postimg.cc/R06ktHRZ/Cost-Model.png
 dateStart: 2023-11-15
 dateEnd: 2024-07-26
 projectCategory: Work Project
@@ -26,21 +26,23 @@ developers:
   - "[[Alex Sheers]]"
 technologies:
   - "[[Excel]]"
+  - "[[SharePoint]]"
+  - "[[DevOps]]"
 topicTags:
   - "[[Finances]]"
   - "[[Work]]"
   - "[[GPMO]]"
 powerShellAlias: n/a
-version: 
-portfolioOrder: 4
-shortDescription: "A unified cost model template and approach for costing projects - feeds into the <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Finance Tracker</a>."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+version: 1.5
+portfolioOrder: 5
+shortDescription: "A unified cost model template and approach for costing projects - feeds into the <span class=\"theme-link\">Finance Tracker</span>."
+longDescription: "A detailed <span class=\"theme-link\">Excel</span> cost model template, designed for use across all <span class=\"theme-link\">RLE International</span> regions for quoting new projects, which guides the user through completion to gather the required financial inputs needed for submitting a complete and comprehensive quote.<br><br>Whilst certain financial values and targets are set/restricted within the template, users can modify other values within the quotation to meet their regions requirements.<br><br>The resulting file can then be uploaded into the company system using the <a href=\"/projects/cost-model-translation-file\" class=\"theme-link\">Cost Model Translation File</a> ready for visualisation and reporting within the <span class=\"theme-link\">Financial Tracker</span>."
+lessonsLearned: "The Cost Model template gave me good experience in trying to keep a complex and detailed <span class=\"theme-link\">Excel</span> sheet lightweight and optimised, all whilst avoiding macros for maximum user compatibility."
+name: "Cost Model"
 ---
-
 # Cost Model
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -71,23 +73,27 @@ WHERE file = this.file
 
 ## Short Description
 
-A unified cost model template and approach for costing projects - feeds into the <a href="/portfolio/projects/Financial Tracker" class="theme-link">Finance Tracker</a>.
+A unified cost model template and approach for costing projects - feeds into the [[Financial Tracker|Finance Tracker]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-TBC
+A detailed [[Excel]] cost model template, designed for use across all [[RLE International]] regions for quoting new projects, which guides the user through completion to gather the required financial inputs needed for submitting a complete and comprehensive quote.
+
+Whilst certain financial values and targets are set/restricted within the template, users can modify other values within the quotation to meet their regions requirements.
+
+The resulting file can then be uploaded into the company system using the [[Cost Model Translation File]] ready for visualisation and reporting within the [[Financial Tracker]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: TBC
+- Front end: [[Excel]]
 - Back end/Datasource: n/a
-- Hosting: <span class="theme-link">Azure</span>
+- Hosting: [[SharePoint]]
 - Security: n/a
-- Authentication: <span class="theme-link">Azure</span>
+- Authentication: [[SharePoint]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -100,7 +106,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -133,13 +139,15 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <span class="theme-link">GPMO</span>
+- [[GPMO]]
+- [[Cost Model Translation File]]
+- [[Project Finance Data Manager]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-TBC
+The Cost Model template gave me good experience in trying to keep a complex and detailed [[Excel]] sheet lightweight and optimised, all whilst avoiding macros for maximum user compatibility.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

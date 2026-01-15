@@ -11,12 +11,11 @@ skillRating: 20
 skillDescription: Able to transform data via queries to extract useful data from basic data sets.
 logoFileName: power_automate.svg
 ---
-
 # Power Automate
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> Power Automate
+> [[Microsoft]] Power Automate
 
 ## Table of Contents
 

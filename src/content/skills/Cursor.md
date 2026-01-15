@@ -6,19 +6,18 @@ tags:
   - AI
   - skill
   - portfolio
-modified: 2025-07-12T19:11:39+01:00
-viewCount: 4
-aliases: 
-skillRating: 0
-skillDescription: TBC
+modified: 2026-01-12T17:10:56+00:00
+viewCount: 5
+aliases:
+skillRating: 65
+skillDescription: Used daily as part of my workflow process, handing over basic tasks to the integrated AI agent, scoped to work within my defined rules and building out on the planning feature within the tool.
 logoFileName: cursor.svg
 ---
-
 # Cursor
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">AI</span> integrated coding IDE
+> [[AI]] integrated coding IDE
 
 ## Table of Contents
 

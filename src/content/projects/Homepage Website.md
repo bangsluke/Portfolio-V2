@@ -9,14 +9,14 @@ created: 2025-05-29 17:09
 modified: 2025-07-19T12:20:01+01:00
 aliases:
   - Homepage
-viewCount: 18
+viewCount: 19
 projectURL: https://bangsluke.github.io/Homepage.html
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
 deploymentServiceURL: https://github.com/bangsluke
 folderURL: n/a
 logoURL: n/a
-imageURL: 
+imageURL: https://i.postimg.cc/bJ14CfW0/Homepage-Website.png
 dateStart: 2021-01-15
 dateEnd: 2021-01-24
 technologies:
@@ -25,6 +25,7 @@ technologies:
   - "[[JavaScript]]"
   - "[[GitHub]]"
   - "[[Snyk]]"
+  - "[[VS Code]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -35,15 +36,15 @@ topicTags:
   - Coding
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 3
+portfolioOrder: 6
 shortDescription: "An early site built as a homepage for storing links to all my projects and showing a widget with the weather in my area."
 longDescription: "A single point of focus for where the links to all my projects were stored, as well as a weather widget for my area."
 lessonsLearned: "Main lesson was understanding and adjusting an existing codebase and learning how to correctly modify an online widget to receive my location and correct styling."
+name: "Homepage Website"
 ---
-
 # Homepage Website
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -86,7 +87,38 @@ A single point of focus for where the links to all my projects were stored, as w
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">New Tab</span>
+- Front end: [[HTML]], [[CSS]] and [[JavaScript]]
+- Back end/Datasource: n/a
+- Hosting: [[GitHub]] (see [Repositories](#repositories))
+- Security: [[Snyk]]
+- Authentication: n/a
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Repositories
+
+- Main repo: `=this.codeURL`
+- Secondary repo: n/a
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## PowerShell Query
+
+To launch the repo, use the [[PowerShell]] alias 
+
+> `=this.powerShellAlias`
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Planning and Design
+
+- n/a
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Other Links
+
+- [[New Tab Website|New Tab]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

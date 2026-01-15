@@ -1,134 +1,49 @@
 ---
 import { getCollection } from 'astro:content';
+import { processContent } from '../../utils/content-processor';
 import SkillsBubbleChart from './SkillsBubbleChart';
-import { SKILLS_FILTER_OPTIONS } from '../../../scripts/repoConfig.js';
 
+// Get all skills and projects from the local content folders
 const skills = await getCollection('skills');
 const projects = await getCollection('projects');
 
-// Filter options based on existing skill tags
-const existingTags = new Set();
-skills.forEach(skill => {
-	skill.data.tags?.forEach(tag => existingTags.add(tag));
-});
-
-const filteredOptions = SKILLS_FILTER_OPTIONS.filter(
-	option => option === 'all' || existingTags.has(option)
-).map(option => ({
-	value: option,
-	label:
-		option === 'all'
-			? 'All Skills'
-			: option.charAt(0).toUpperCase() + option.slice(1),
+// Process skills to include processed descriptions
+const processedSkills = skills.map(skill => ({
+	...skill,
+	data: {
+		...skill.data,
+		skillDescription: processContent(skill.data.skillDescription || ''),
+	},
 }));
+
+// Get the class attribute from the parent component
+const { class: className } = Astro.props;
 ---
 
-<section class="w-full">
+<section class={`w-full h-full ${className || ''}`}>
+	<!-- SEO-accessible skills list for web crawlers -->
+	<div class="sr-only" aria-hidden="true">
+		<h2>Technical Skills and Technologies</h2>
+		<p>Professional skills and technologies I work with:</p>
+		<ul>
+			{
+				skills.map(skill => (
+					<li>
+						<strong>{skill.data.name || skill.slug}</strong>
+						{skill.data.skillDescription && (
+							<span>
+								: {skill.data.skillDescription.replace(/<[^>]*>/g, '')}
+							</span>
+						)}
+					</li>
+				))
+			}
+		</ul>
+	</div>
+
 	<SkillsBubbleChart
 		client:only="preact"
-		skills={skills}
+		skills={processedSkills}
 		projects={projects}
-		filterOptions={filteredOptions}
 	/>
 </section>
-
-<script>
-	// Fullscreen modal functionality
-	document.addEventListener('DOMContentLoaded', () => {
-		const fullscreenBtn = document.getElementById('fullscreen-skills-btn');
-		const modal = document.getElementById('skills-fullscreen-modal');
-		const closeBtn = document.getElementById('close-skills-modal');
-		const modalOverlay = document.getElementById('skills-modal-overlay');
-		const skillsFilter = document.getElementById('skills-filter');
-
-		if (fullscreenBtn) {
-			fullscreenBtn.addEventListener('click', () => {
-				if (modal) {
-					modal.classList.remove('hidden');
-					document.body.style.overflow = 'hidden';
-				}
-			});
-		}
-
-		const closeModal = () => {
-			if (modal) {
-				modal.classList.add('hidden');
-				document.body.style.overflow = 'auto';
-			}
-		};
-
-		if (closeBtn) {
-			closeBtn.addEventListener('click', closeModal);
-		}
-
-		if (modalOverlay) {
-			modalOverlay.addEventListener('click', closeModal);
-		}
-
-		// Close on escape key
-		document.addEventListener('keydown', e => {
-			if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
-				closeModal();
-			}
-		});
-
-		// Sync filter between main and modal
-		if (skillsFilter) {
-			skillsFilter.addEventListener('change', e => {
-				const target = e.target as HTMLSelectElement;
-				const selectedValue = target.value;
-				// Dispatch custom event for the Preact component to listen to
-				window.dispatchEvent(
-					new CustomEvent('skillsFilterChange', {
-						detail: { filter: selectedValue },
-					})
-				);
-			});
-		}
-	});
-</script>
-
-<!-- Fullscreen Modal -->
-<div id="skills-fullscreen-modal" class="fixed inset-0 z-50 hidden">
-	<div
-		id="skills-modal-overlay"
-		class="absolute inset-0 bg-black bg-opacity-75">
-	</div>
-	<div class="relative z-10 w-full h-full flex items-center justify-center p-4">
-		<div
-			class="bg-white dark:bg-gray-900 rounded-xl shadow-2xl w-full h-full max-w-7xl max-h-[95vh] overflow-hidden">
-			<div class="p-6 h-full flex flex-col">
-				<div class="flex justify-between items-center mb-4">
-					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-						Skills Bubble Chart
-					</h3>
-					<button
-						id="close-skills-modal"
-						class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
-						aria-label="Close fullscreen view">
-						<svg
-							class="w-6 h-6"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24">
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M6 18L18 6M6 6l12 12"></path>
-						</svg>
-					</button>
-				</div>
-				<div class="flex-1 overflow-hidden">
-					<SkillsBubbleChart
-						client:only="preact"
-						skills={skills}
-						projects={projects}
-						filterOptions={filteredOptions}
-						isFullscreen={true}
-					/>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>

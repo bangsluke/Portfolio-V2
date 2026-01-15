@@ -8,16 +8,15 @@ tags:
 modified: 2025-07-18T12:44:19+01:00
 viewCount: 6
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 50
+skillDescription: Used on each and every project I build following basic configuration.
 logoFileName: prettier.svg
 ---
-
 # Prettier
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">VS Code</span> plugin
+> [[VS Code]] plugin
 
 ## Table of Contents
 

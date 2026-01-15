@@ -8,20 +8,19 @@ tags:
   - tag
   - framework
 created: 2025-05-31T22:28:00
-modified: 2025-07-18T14:50:51+01:00
-viewCount: 1
+modified: 2025-07-23T14:21:08+01:00
+viewCount: 15
 aliases:
   - Tailwind
-skillRating: 0
-skillDescription: TBC
+skillRating: 25
+skillDescription: Utilised across my Portfolio, Dorkinians app and favoured for quick prototyping.
 logoFileName: tailwind.svg
 ---
-
 # Tailwind CSS
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> A framework for <span class="theme-link">CSS</span>
+> A framework for [[CSS]]
 
 ## Table of Contents
 

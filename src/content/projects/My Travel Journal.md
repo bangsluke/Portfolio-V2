@@ -8,14 +8,15 @@ tags:
   - coding
 created: 2025-05-29 18:06
 modified: 2025-07-19T10:46:19+01:00
-aliases: 
-viewCount: 11
+aliases:
+viewCount: 12
 projectURL: https://bangsluke-my-travel-journal.netlify.app/
 codeURL: https://github.com/bangsluke/my-travel-journal
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-my-travel-journal/overview
 folderURL: n/a
-imageURL: 
+logoURL: n/a
+imageURL: https://i.postimg.cc/TwnB7vFg/my-travel-journal-V1.png
 dateStart: 2022-06-09
 dateEnd: 2023-08-14
 technologies:
@@ -24,6 +25,8 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Snyk]]"
+  - "[[npm]]"
+  - "[[VS Code]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -38,12 +41,12 @@ version: 1
 portfolioOrder: 6
 shortDescription: "A website built to display the notes I had taken across various holidays I had been on."
 longDescription: "A site dedicated to my travel explorations, providing details on what my wife and I did whilst abroad for several holidays with a picture from each trip."
-lessonsLearned: "This site taught me a few extra skills such as working with <span class=\"theme-link\">Markdown</span> data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the <a href=\"/portfolio/projects/Travel Website\" class=\"theme-link\">Travel Website</a> which dynamically loads in data via a <span class=\"theme-link\">Neo4j</span> graph."
+lessonsLearned: "This site taught me a few extra skills such as working with <span class=\"theme-link\">Markdown</span> data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the <a href=\"/projects/travel-website\" class=\"theme-link\">Travel Website</a> which dynamically loads in data via a <span class=\"theme-link\">Neo4j</span> graph."
+name: "My Travel Journal"
 ---
-
 # My Travel Journal
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -86,10 +89,10 @@ A site dedicated to my travel explorations, providing details on what my wife an
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">React</span>
-- Back end/Datasource: <span class="theme-link">Markdown</span>
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), <span class="theme-link">Netlify</span>
-- Security: <span class="theme-link">Snyk</span>
+- Front end: [[React]]
+- Back end/Datasource: [[Markdown]]
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
+- Security: [[Snyk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -103,7 +106,7 @@ A site dedicated to my travel explorations, providing details on what my wife an
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -117,13 +120,13 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <a href="/portfolio/projects/Travel Website" class="theme-link">Travel Website</a>
+- [[Travel Website]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This site taught me a few extra skills such as working with <span class="theme-link">Markdown</span> data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the <a href="/portfolio/projects/Travel Website" class="theme-link">Travel Website</a> which dynamically loads in data via a <span class="theme-link">Neo4j</span> graph.
+This site taught me a few extra skills such as working with [[Markdown]] data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the [[Travel Website]] which dynamically loads in data via a [[Neo4j]] graph.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

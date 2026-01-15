@@ -5,24 +5,24 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-19T10:08:46+01:00
-viewCount: 7
+modified: 2025-10-08T18:00:21+01:00
+viewCount: 13
 aliases:
   - Pipeline
-projectURL: 
-codeURL: 
+projectURL: https://apps.powerapps.com/play/e/9cb5bfc9-13df-e75e-98ff-a4782f9d0f48/a/c4b54ab2-1db0-4f44-8314-e1ca852d3f44?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4&sourcetime=1701875569544&source=portal
+codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Project%20Pipeline?csf=1&web=1&e=nVEm7I
-logoURL: https://i.imgur.com/RoBXXlo.png
-imageURL: 
-dateStart: 
-dateEnd: 
+logoURL: https://i.postimg.cc/sf9hQprn/Project-Pipeline.png
+imageURL: https://i.postimg.cc/T348h9nH/Project-Pipeline.png
+dateStart: 2023-05-01
+dateEnd: 2024-07-31
 technologies:
   - "[[Power Apps]]"
-  - "[[Power BI]]"
   - "[[Power Query]]"
   - "[[SharePoint]]"
+  - "[[DevOps]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -34,16 +34,16 @@ topicTags:
   - "[[Work]]"
   - "[[GPMO]]"
 powerShellAlias: n/a
-version: 
+version: 5.1
 portfolioOrder: 4
 shortDescription: "A tool for identifying the progress of global <span class=\"theme-link\">RLE International</span> projects from lead to in-play, through to completion."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+longDescription: "A <span class=\"theme-link\">Power Apps</span> tool that utilised a project process defined internally within <span class=\"theme-link\">RLE International</span> and allowed users to create and track projects through various phases and stages.<br><br>Each phase had a set of user sign offs to provide process control with each stage below it having a RAG status and documentation explaining what is required to get to green.<br><br>Tasks along with in app notifications were also included in the application to help users pick up their required next steps quickly."
+lessonsLearned: "The main lessons learned for this tool were ensuring the application was very user friendly as we had a very wide user base across the company. Adding features such as sidebar notifications to flag which pages needed attention and task counts on the main dashboard as well as weekly email summaries to users with outstanding tasks was key in keeping all users regularly updating the system."
+name: "Project Pipeline"
 ---
-
 # Project Pipeline
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -74,23 +74,27 @@ WHERE file = this.file
 
 ## Short Description
 
-A tool for identifying the progress of global <span class="theme-link">RLE International</span> projects from lead to in-play, through to completion.
+A tool for identifying the progress of global [[RLE International]] projects from lead to in-play, through to completion.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-TBC
+A [[Power Apps]] tool that utilised a project process defined internally within [[RLE International]] and allowed users to create and track projects through various phases and stages.
+
+Each phase had a set of user sign offs to provide process control with each stage below it having a RAG status and documentation explaining what is required to get to green.
+
+Tasks along with in app notifications were also included in the application to help users pick up their required next steps quickly.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: TBC
-- Back end/Datasource: TBC
-- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories))
+- Front end: [[Power Apps]]
+- Back end/Datasource: [[SharePoint]], [[Power Query]]
+- Hosting: [[SharePoint]]
 - Security: n/a
-- Authentication: TBC
+- Authentication: [[SharePoint]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -103,7 +107,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -117,6 +121,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
+- [[GPMO]]
 - [Power Apps](https://apps.powerapps.com/play/e/default-6422ff1a-f3b5-4450-9230-ad4241884bf4/a/bc6bd75e-616c-4523-9aff-ebf895b6a517?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4#)
 - [Power Apps - Testing Environment](https://apps.powerapps.com/play/e/af1a6289-d705-e68c-b420-36d1783eeb48/a/497b2bcd-1042-4ad0-9d36-c3cd000e0a4d?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4&sourcetime=1700652905991&source=portal#)
 - [PowerBI](https://app.powerbi.com/groups/me/reports/4800ac5b-36e5-4818-9c5a-38b19965e578/ReportSection?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi)
@@ -127,7 +132,7 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Lessons Learned
 
-TBC
+The main lessons learned for this tool were ensuring the application was very user friendly as we had a very wide user base across the company. Adding features such as sidebar notifications to flag which pages needed attention and task counts on the main dashboard as well as weekly email summaries to users with outstanding tasks was key in keeping all users regularly updating the system.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

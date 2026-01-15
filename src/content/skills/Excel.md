@@ -4,20 +4,19 @@ tags:
   - software
   - skill
   - portfolio
-viewCount: 3
+viewCount: 4
 aliases:
   - Microsoft Excel
 modified: 2025-07-18T12:16:41+01:00
-skillRating: 0
-skillDescription: TBC
+skillRating: 90
+skillDescription: Highly proficient in developing complex and optimised spreadsheets including writing VBA code.
 logoFileName: excel.svg
 ---
-
 # Excel
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> Excel - Language: <span class="theme-link">VBA</span>
+> [[Microsoft]] Excel - Language: [[VBA]]
 
 ## Table of Contents
 

@@ -7,16 +7,17 @@ tags:
   - client
   - portfolio
 modified: 2025-07-18T07:49:24+01:00
-viewCount: 7
-aliases: 
-dateStart: 
-dateEnd: 
-logoURL: https://i.imgur.com/yehPfdV.png
+viewCount: 9
+aliases:
+dateStart: 2016-02-01
+dateEnd: 2026-01-08
+logoURL: https://i.postimg.cc/0QRtVpr7/Ford.png
+linkedCompany:
+  - "[[RLE International]]"
 ---
-
 # Ford
 
-> [!back] Link back to <span class="theme-link">Company Notes</span>
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
 >```dataview

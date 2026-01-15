@@ -75,7 +75,15 @@ export const CONTENT_TYPE_MAPPINGS = {
 	roles: {
 		sections: [
 			{
-				name: 'Role Description',
+				name: 'Short Role Description',
+				property: 'shortRoleDescription',
+			},
+			{
+				name: 'Full Role Description',
+				property: 'fullRoleDescription',
+			},
+			{
+				name: 'Role Description', // legacy fallback
 				property: 'roleDescription',
 			},
 			{
@@ -97,13 +105,3 @@ export const CONTENT_TYPE_MAPPINGS = {
 		],
 	},
 };
-
-// Skills bubble chart configuration
-export const SKILLS_FILTER_OPTIONS = [
-	'all',
-	'framework',
-	'library',
-	'language',
-	'database',
-	'design',
-];

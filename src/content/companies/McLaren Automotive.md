@@ -7,19 +7,18 @@ tags:
   - portfolio
   - client
 modified: 2025-07-18T07:50:36+01:00
-viewCount: 6
+viewCount: 10
 aliases:
   - McLaren
-dateStart: 
-dateEnd: 
-logoURL: https://i.imgur.com/Ut9jRLb.png
+dateStart: 2014-09-01
+dateEnd: 2016-02-01
+logoURL: https://i.postimg.cc/XJS2swXd/McLaren.png
 linkedCompany:
   - "[[RLE International]]"
 ---
-
 # McLaren Automotive
 
-> [!back] Link back to <span class="theme-link">Company Notes</span>
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
 >```dataview

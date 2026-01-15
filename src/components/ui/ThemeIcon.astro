@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 
 <button
 	id="themeToggle"
-	class="hover:cursor-pointer hover:text-theme-400 transition-all">
+	class="hover:cursor-pointer hover:text-theme-400 hover:scale-150 transition-all">
 	<Icon name="sun" class="sun" />
 	<Icon name="moon" class="moon" />
 </button>
@@ -30,28 +30,86 @@ import { Icon } from 'astro-icon/components';
 </style>
 
 <script is:inline>
-	// Listen for changes in system preferences
+	// Initialize theme on page load
+	function initializeTheme() {
+		// Check if user has already made a choice (stored in localStorage)
+		if ('theme' in localStorage) {
+			// User has made a choice before, use their stored preference
+			document.documentElement.classList.toggle(
+				'dark',
+				localStorage.theme === 'dark'
+			);
+		} else {
+			// First time visit - use OS preference but don't store it
+			const prefersDark = window.matchMedia(
+				'(prefers-color-scheme: dark)'
+			).matches;
+			document.documentElement.classList.toggle('dark', prefersDark);
+		}
+
+		// Trigger a custom event to notify ThemeDisplay component
+		window.dispatchEvent(
+			new CustomEvent('themeInitialized', {
+				detail: { theme: getCurrentTheme() },
+			})
+		);
+	}
+
+	// Get current theme state
+	function getCurrentTheme() {
+		if ('theme' in localStorage) {
+			return localStorage.theme;
+		} else {
+			// No stored preference, return current OS preference
+			return window.matchMedia('(prefers-color-scheme: dark)').matches
+				? 'dark'
+				: 'light';
+		}
+	}
+
+	// Run initialization when DOM is ready
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initializeTheme);
+	} else {
+		initializeTheme();
+	}
+
+	// Listen for changes in system preferences (only if user hasn't made a choice)
 	window
 		.matchMedia('(prefers-color-scheme: dark)')
 		.addEventListener('change', e => {
-			// Only update theme if user hasn't set a preference
-			if (!localStorage.getItem('theme')) {
-				if (e.matches) {
-					document.documentElement.classList.add('dark');
-				} else {
-					document.documentElement.classList.remove('dark');
-				}
+			// Only update theme if user hasn't made a choice yet
+			if (!('theme' in localStorage)) {
+				document.documentElement.classList.toggle('dark', e.matches);
+
+				// Trigger event for ThemeDisplay update
+				window.dispatchEvent(
+					new CustomEvent('themeChanged', {
+						detail: { theme: e.matches ? 'dark' : 'light' },
+					})
+				);
 			}
 		});
 
 	const handleToggleClick = () => {
 		const element = document.documentElement;
+		const isDark = element.classList.contains('dark');
+		const newTheme = isDark ? 'light' : 'dark';
+
+		// Toggle the theme
 		element.classList.toggle('dark');
 
-		const isDark = element.classList.contains('dark');
-		// Always store user preference when they click the toggle
-		localStorage.setItem('theme', isDark ? 'dark' : 'light');
-		console.log('Theme toggled to:', isDark ? 'dark' : 'light');
+		// Store the user's choice in localStorage
+		localStorage.theme = newTheme;
+
+		console.log('Theme toggled to:', newTheme);
+
+		// Trigger event for ThemeDisplay update
+		window.dispatchEvent(
+			new CustomEvent('themeChanged', {
+				detail: { theme: newTheme },
+			})
+		);
 	};
 
 	document

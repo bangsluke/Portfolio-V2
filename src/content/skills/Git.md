@@ -6,16 +6,15 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-05T07:08:54+01:00
-viewCount: 5
+viewCount: 6
 aliases: 
 skillRating: 70
-skillDescription: TBC
+skillDescription: Confident in utilising Git both for individual projects and for team development.
 logoFileName: git.svg
 ---
-
 # Git
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 > Software Version Management
 

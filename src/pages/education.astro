@@ -25,30 +25,25 @@ const sortedEducation = education.sort((a, b) => {
 const pageTitle = 'Education - bangsluke Portfolio';
 const description = 'Complete education timeline';
 const ogimage = {
-	url: '/images/imagedefault.webp',
+	url: '/images/siteImage.webp',
 	alt: 'Education Timeline',
 };
 ---
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
-	<div class="min-h-screen bg-white dark:bg-gray-900">
+	<div
+		class="min-h-screen"
+		style="background: linear-gradient(45deg, var(--color-theme-500-rgba-001) 10.79%, var(--color-theme-500-rgba-003) 40.92%, var(--color-theme-500-rgba-001) 90.35%)">
 		<!-- Header -->
-		<div class="bg-gradient-to-r from-theme-400 to-theme-500 py-16">
-			<div class="max-w-4xl mx-auto px-8 text-center">
-				<div class="flex gap-4 items-center justify-center mb-4">
-					<Icon class="text-4xl text-white" name="education" />
-					<Heading text="" textGradient="Education" level={1} />
-				</div>
-				<p class="text-white/90 text-lg max-w-2xl mx-auto">
-					Complete timeline of my educational background and academic
-					achievements
-				</p>
-				<div class="mt-6">
+		<div class="pt-16">
+			<div class="max-w-4xl mx-auto px-8 text-center max-sm:max-w-full">
+				<!-- Top Back Button -->
+				<div class="mb-8 text-center">
 					<a
-						href="/site"
-						class="inline-flex items-center px-4 py-2 bg-white/20 hover:bg-white/30 text-white font-medium rounded-lg transition-colors duration-300">
+						href="/"
+						class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
 						<svg
-							class="w-4 h-4 mr-2"
+							class="w-5 h-5 mr-2"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24">
@@ -56,19 +51,28 @@ const ogimage = {
 								stroke-linecap="round"
 								stroke-linejoin="round"
 								stroke-width="2"
-								d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+								d="M15 19l-7-7 7-7"></path>
 						</svg>
 						Back to Portfolio
 					</a>
 				</div>
+
+				<div class="flex gap-4 items-center justify-center mb-4">
+					<Icon class="text-4xl dark:text-white" name="education" />
+					<Heading text="" textGradient="Education" level={1} />
+				</div>
+				<p class="dark:text-white/90 text-lg max-w-2xl mx-auto">
+					Complete timeline of my educational background and academic
+					achievements
+				</p>
 			</div>
 		</div>
 
 		<!-- Timeline -->
 		<section class="py-16 px-8">
-			<div class="max-w-4xl mx-auto">
+			<div class="max-w-4xl mx-auto max-sm:max-w-full">
 				<div class="relative" aria-label="Complete education experience">
-					<ol class="relative mt-10">
+					<ol class="relative mt-10 max-sm:mt-6">
 						{
 							sortedEducation.map((education, index) => (
 								<li>
@@ -94,13 +98,18 @@ const ogimage = {
 						}
 					</ol>
 				</div>
-				<!-- Bottom Back to Portfolio Button -->
-				<div class="flex justify-center mt-16">
+			</div>
+		</section>
+
+		<!-- Bottom Back Button -->
+		<section class="py-8 px-8 max-md:py-4">
+			<div class="max-w-7xl mx-auto">
+				<div class="text-center">
 					<a
-						href="/site"
-						class="inline-flex items-center px-4 py-2 bg-white/20 hover:bg-white/30 text-theme-500 dark:text-theme-400 font-medium rounded-lg transition-colors duration-300 border border-theme-400 dark:border-theme-500">
+						href="/"
+						class="inline-flex items-center text-theme-400 hover:text-theme-300 transition-colors">
 						<svg
-							class="w-4 h-4 mr-2"
+							class="w-5 h-5 mr-2"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24">
@@ -108,7 +117,7 @@ const ogimage = {
 								stroke-linecap="round"
 								stroke-linejoin="round"
 								stroke-width="2"
-								d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+								d="M15 19l-7-7 7-7"></path>
 						</svg>
 						Back to Portfolio
 					</a>

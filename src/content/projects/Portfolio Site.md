@@ -7,16 +7,16 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 17:59
-modified: 2025-07-19T10:01:02+01:00
-aliases: 
-viewCount: 16
-projectURL: https://bangsluke-portfolio.netlify.app/
+modified: 2025-08-13T11:44:23+01:00
+aliases:
+viewCount: 18
+projectURL: https://bangsluke-portfolio-v1.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/fMd3zzE.png
+imageURL: https://i.postimg.cc/sxyqb0CH/Portfolio-Site.png
 dateStart: 2022-04-09
 dateEnd: 2024-02-02
 technologies:
@@ -26,6 +26,7 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Snyk]]"
+  - "[[VS Code]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a
@@ -36,15 +37,15 @@ topicTags:
   - "[[Work]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 3
+portfolioOrder: 6
 shortDescription: "The portfolio site was my initial attempt at creating a marketing page for myself as a developer, showcasing my skills and contact information."
 longDescription: "The portfolio site showcased all the information I believed to be relevant for possible hirers, clients or collaborators, providing details on my ambitions, my self-assessed skill level in several languages and technologies, my education and former work experience and finally my contact details."
 lessonsLearned: "The key lesson learned for this project was how useful it is to create re-usable components for a site - a skill I only began using after building this site. As such, this site became a challenge to maintain and ultimately broke, leading me to the decision to rebuild it entirely."
+name: "Portfolio Site"
 ---
-
 # Portfolio Site
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -87,10 +88,10 @@ The portfolio site showcased all the information I believed to be relevant for p
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">HTML</span>, <span class="theme-link">CSS</span> and <span class="theme-link">JavaScript</span>
+- Front end: [[HTML]], [[CSS]] and [[JavaScript]]
 - Back end/Datasource: n/a
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), <span class="theme-link">Netlify</span>
-- Security: <span class="theme-link">Snyk</span>
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
+- Security: [[Snyk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -99,13 +100,13 @@ The portfolio site showcased all the information I believed to be relevant for p
 
 - Main repo: `=this.codeURL`
 - Secondary repo: n/a
-- <span class="theme-link">Netlify</span>: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
+- [[Netlify]]: <https://app.netlify.com/projects/bangsluke-portfolio-v1/overview>
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -116,15 +117,15 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 - For page headers, use the below / style for each page.
 - Also add the language bubble tags for each project
 
-!<span class="theme-link">20231009 PageHeaderInspiration.jpeg</span>
+![[20231009 PageHeaderInspiration.jpeg]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
 - [Portfolio Site page Todoist list](https://todoist.com/showTask?id=5773759872&sync_id=6506087454)
-- <a href="/portfolio/projects/Portfolio Card" class="theme-link">Portfolio Card</a>
-- <a href="/portfolio/projects/Portfolio Site V2" class="theme-link">Portfolio Site V2</a>
+- [[Portfolio Card]]
+- [[Portfolio Site V2]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -3,13 +3,12 @@ import '../styles/global.css';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import ScrollToTop from '../components/ui/ScrollToTop.astro';
-import SpeedInsights from '@vercel/speed-insights/astro';
 const {
 	pageTitle = 'bangsluke Portfolio',
 	description = 'Welcome to my portfolio site',
 	ogimage = {
-		url: '/images/imagedefault.webp',
-		alt: 'Default image of bangsluke',
+		url: '/images/siteImage.webp',
+		alt: 'Luke Bangs Portfolio - Software Engineer and Developer',
 	},
 } = Astro.props;
 
@@ -21,79 +20,42 @@ const SEO = {
 	author: 'Luke Bangs | bangsluke',
 	twitter: '@bangsluke',
 };
-
-const twitterimage = `${siteUrl}${ogimage.url}`;
 ---
 
 <html
 	lang="en"
-	class="dark:bg-[#0E0E11] bg-theme-50/5 font-montserrat scroll-smooth">
+	class="dark:bg-dark-background bg-theme-50/5 font-montserrat scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no"
+		/>
 		<title>{pageTitle}</title>
 
-		<!-- Theme detection script - runs before page renders to prevent flash -->
+		<!-- Prevent theme flash - apply theme immediately -->
 		<script is:inline>
-			// Execute immediately to prevent flash of incorrect theme
+			// Apply theme immediately to prevent flash
 			(function () {
 				try {
-					// Check if we're in a browser environment
 					if (typeof window === 'undefined') return;
 
-					// Get the current theme preference
-					const getTheme = () => {
-						// First check localStorage for user preference
-						if (
-							typeof localStorage !== 'undefined' &&
-							localStorage.getItem('theme')
-						) {
-							return localStorage.getItem('theme');
-						}
-
-						// Then check system preference
-						if (
-							typeof window.matchMedia !== 'undefined' &&
-							window.matchMedia('(prefers-color-scheme: dark)').matches
-						) {
-							return 'dark';
-						}
-
-						// Default to light
-						return 'light';
-					};
-
-					const theme = getTheme();
-					const root = document.documentElement;
-
-					// Apply the theme
-					if (theme === 'dark') {
-						root.classList.add('dark');
+					// Check if user has already made a choice (stored in localStorage)
+					if ('theme' in localStorage) {
+						// User has made a choice before, use their stored preference
+						document.documentElement.classList.toggle(
+							'dark',
+							localStorage.theme === 'dark'
+						);
 					} else {
-						root.classList.remove('dark');
+						// First time visit - use OS preference but don't store it
+						const prefersDark = window.matchMedia(
+							'(prefers-color-scheme: dark)'
+						).matches;
+						document.documentElement.classList.toggle('dark', prefersDark);
 					}
-
-					// Only store the theme if it's a user preference, not system preference
-					if (
-						typeof localStorage !== 'undefined' &&
-						localStorage.getItem('theme')
-					) {
-						// Theme is already stored, keep it
-					} else {
-						// Store the detected theme (system preference or default)
-						localStorage.setItem('theme', theme);
-					}
-
-					// Debug logging (remove in production)
-					console.log('Theme detection:', {
-						detectedTheme: theme,
-						hasDarkClass: root.classList.contains('dark'),
-						localStorage: localStorage.getItem('theme'),
-						systemPrefersDark: window.matchMedia('(prefers-color-scheme: dark)')
-							.matches,
-					});
 				} catch (error) {
-					console.error('Theme detection error:', error);
+					console.error('Theme flash prevention error:', error);
 				}
 			})();
 		</script>
@@ -123,8 +85,11 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 		<!-- Open Graph / Facebook -->
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={ogimage.url} />
+		<meta property="og:image" content={`${siteUrl}${ogimage.url}`} />
 		<meta property="og:image:alt" content={ogimage.alt} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:type" content="image/webp" />
 		<meta property="og:url" content={SEO.url} />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content={SEO.sitename} />
@@ -134,21 +99,27 @@ const twitterimage = `${siteUrl}${ogimage.url}`;
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={twitterimage} />
+		<meta name="twitter:image" content={`${siteUrl}${ogimage.url}`} />
 		<meta name="twitter:image:alt" content={ogimage.alt} />
 		<meta name="twitter:site" content={SEO.twitter} />
+		<meta name="twitter:creator" content={SEO.twitter} />
 
 		<meta name="theme-color" content="#0E0E11" />
 
 		<!-- Sitemap -->
 		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<!-- Umami Analytics -->
+		<script
+			defer
+			src="https://cloud.umami.is/script.js"
+			data-website-id="fad6adfb-2b8b-4868-a0a9-59d4fd860488"></script>
 	</head>
 	<body class="overflow-x-hidden">
-		<SpeedInsights />
 		<div class="blur-circle"></div>
 		<div
-			style="  background:linear-gradient(45deg, rgba(96, 250, 155, 0) 10.79%, rgba(96, 250, 170, 0.03) 40.92%, rgba(96, 250, 155, 0) 90.35%)"
-			class="fixed top-0 left-0 w-full h-full pointer-events-none -z-1">
+			style="background: linear-gradient(45deg, var(--color-theme-500-rgba-001) 10.79%, var(--color-theme-500-rgba-003) 40.92%, var(--color-theme-500-rgba-001) 90.35%)"
+			class="fixed top-0 left-0 w-full h-screen pointer-events-none -z-10">
 		</div>
 		<Header />
 

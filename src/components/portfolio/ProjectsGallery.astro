@@ -5,13 +5,15 @@ import {
 	getPortfolioConfigValue,
 	processObsidianLink,
 } from '../../utils/content-processor';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 import Heading from '../ui/Heading.astro';
 import ProjectCard from './ProjectCard.astro';
 
-// Get all projects, companies, and clients from the local content folders
+// Get all projects, companies, clients, and educations from the local content folders
 const projects = await getCollection('projects');
 const companies = await getCollection('companies');
 const clients = await getCollection('clients');
+const educations = await getCollection('educations');
 
 // Get portfolio configuration with fallback
 let maxProjectsDisplay = 6;
@@ -51,11 +53,11 @@ const sortedProjects = projects.sort((a, b) => {
 	return a.slug.localeCompare(b.slug);
 });
 
-// Process projects to include company/client logos
+// Process projects to include company/client/education logos
 const processedProjects = sortedProjects.map(project => {
 	let companyLogoURL = null;
 
-	// If project has linkedCompany, find the company or client and get its logoURL
+	// If project has linkedCompany, find the company, client, or education and get its logoURL
 	if (project.data.linkedCompany && project.data.linkedCompany.length > 0) {
 		// Get the first linked company and process Obsidian link format
 		const linkedCompanyRaw = project.data.linkedCompany[0];
@@ -63,7 +65,7 @@ const processedProjects = sortedProjects.map(project => {
 
 		// First try to find in companies collection
 		const company = companies.find(company => {
-			const companyName = company.id.replace('.md', ''); // Remove .md extension
+			const companyName = extractNameFromFilename(company.id);
 			return companyName === linkedCompanyName;
 		});
 
@@ -72,12 +74,22 @@ const processedProjects = sortedProjects.map(project => {
 		} else {
 			// If not found in companies, try clients collection
 			const client = clients.find(client => {
-				const clientName = client.id.replace('.md', ''); // Remove .md extension
+				const clientName = extractNameFromFilename(client.id);
 				return clientName === linkedCompanyName;
 			});
 
 			if (client && client.data.logoURL) {
 				companyLogoURL = client.data.logoURL;
+			} else {
+				// If not found in clients, try educations collection
+				const education = educations.find(education => {
+					const educationName = extractNameFromFilename(education.id);
+					return educationName === linkedCompanyName;
+				});
+
+				if (education && education.data.logoURL) {
+					companyLogoURL = education.data.logoURL;
+				}
 			}
 		}
 	}
@@ -93,9 +105,9 @@ const processedProjects = sortedProjects.map(project => {
 const displayedProjects = processedProjects.slice(0, maxProjectsDisplay);
 ---
 
-<section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="projects">
-	<div class="flex flex-col pt-8 max-w-7xl mx-auto">
-		<div class="flex gap-4 items-center justify-center">
+<section class="main-section pt-8 pb-12 md:pt-12" id="projects">
+	<div class="flex flex-col max-w-7xl mx-auto">
+		<div class="flex gap-4 items-center justify-center mb-6 md:mb-0">
 			<Icon class="text-3xl dark:text-white text-blacktext" name="dashboard" />
 			<Heading text="" textGradient="Projects " level={2} />
 		</div>
@@ -105,13 +117,16 @@ const displayedProjects = processedProjects.slice(0, maxProjectsDisplay);
 				{
 					displayedProjects.map(project => (
 						<ProjectCard
-							name={project.data.name ?? project.id.replace('.md', '')}
+							name={project.data.name ?? extractNameFromFilename(project.id)}
 							imageURL={project.data.imageURL}
 							technologies={project.data.technologies}
 							shortDescription={project.data.shortDescription}
 							slug={project.slug}
 							companyLogoURL={project.companyLogoURL}
 							linkedCompany={project.data.linkedCompany}
+							projects={projects}
+							dateStart={project.data.dateStart}
+							dateEnd={project.data.dateEnd}
 						/>
 					))
 				}
@@ -120,7 +135,7 @@ const displayedProjects = processedProjects.slice(0, maxProjectsDisplay);
 				sortedProjects.length > maxProjectsDisplay && (
 					<div class="flex justify-center mt-12">
 						<a
-							href="/portfolio/projects"
+							href="/projects"
 							class="bg-theme-400 hover:bg-theme-500 text-black font-bold px-8 py-3 rounded-full transition-all duration-300 text-lg">
 							See more projects
 						</a>

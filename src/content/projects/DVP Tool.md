@@ -7,19 +7,19 @@ tags:
   - project/completed/work
   - coding
 created: 2025-05-29 18:05
-modified: 2025-07-19T09:58:59+01:00
+modified: 2025-09-08T10:13:32+01:00
 aliases:
   - DVP Prototype
-viewCount: 14
+viewCount: 19
 projectURL: https://dvp-fe.icypebble-0bf96993.germanywestcentral
-codeURL: TBC
+codeURL: https://git.rle.de/DigitalEngineering/externalpocs/dvp
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: n/a
-imageURL: 
-dateStart: ""
-dateEnd: ""
+imageURL: https://i.postimg.cc/7LFpnZsJ/DVP-Tool.png
+dateStart: 2022-06-01
+dateEnd: 2022-12-31
 technologies:
   - "[[React]]"
   - "[[JavaScript]]"
@@ -28,6 +28,10 @@ technologies:
   - "[[Azure]]"
   - "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]"
   - "[[Next.js]]"
+  - "[[Nest.JS]]"
+  - "[[Cypress]]"
+  - "[[VS Code]]"
+  - "[[npm]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -41,15 +45,15 @@ topicTags:
   - "[[DVP]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 3
+portfolioOrder: 2
 shortDescription: "The <span class=\"theme-link\">DVP</span> project was a short demonstration of using <span class=\"theme-link\">Neo4j</span> graphs for running optimisation calculations for the Automotive industry."
-longDescription: "<span class=\"theme-link\">RLE</span>’s <span class=\"theme-link\">DVP</span> tool was a working demonstration tool for how problems such as automatically generating a vehicle <span class=\"theme-link\">DVP</span> could be done from inputs and running optimisation algorithms to generate a Pareto curve of the importance of each input."
-lessonsLearned: "The lessons learned for me were mainly in data visualisation in the front end, as I received various data points from the backend <span class=\"theme-link\">Java</span> calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.\nIt also taught me a lot about passing large objects of states from one page to the next."
+longDescription: "<span class=\"theme-link\">RLE</span>'s <span class=\"theme-link\">DVP</span> tool was a working demonstration tool for how problems such as automatically generating a vehicle <span class=\"theme-link\">DVP</span> could be done from inputs and running optimisation algorithms to generate a Pareto curve of the importance of each input."
+lessonsLearned: "The lessons learned for me were mainly in data visualisation in the front end, as I received various data points from the backend <span class=\"theme-link\">Neo4j</span> and <span class=\"theme-link\">Java</span> calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.<br><br>It also taught me a lot about passing large objects of states from one page to the next."
+name: "DVP Tool"
 ---
-
 # DVP Tool
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -80,8 +84,56 @@ WHERE file = this.file
 
 ## Short Description
 
-The <span class="theme-link">RLE</span>’s <span class="theme-link">Java</span>
-- Hosting: <span class="theme-link">Java</span> calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.
+The [[DVP]] project was a short demonstration of using [[Neo4j]] graphs for running optimisation calculations for the Automotive industry.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Long Description
+
+[[RLE International|RLE]]'s [[DVP]] tool was a working demonstration tool for how problems such as automatically generating a vehicle [[DVP]] could be done from inputs and running optimisation algorithms to generate a Pareto curve of the importance of each input.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Architecture and Technologies
+
+- Front end: [[React]], [[JavaScript]], [[Next.js]]
+- Back end/Datasource: [[Nest.JS]], [[Neo4j]], [[Cypher]], [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]
+- Hosting: [[GitLab]] (see [Repositories](#repositories))
+- Security: n/a
+- Authentication: [[Azure]]
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Repositories
+
+- Main repo: `=this.codeURL`
+- Secondary repo: n/a
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## PowerShell Query
+
+To launch the repo, use the [[PowerShell]] alias 
+
+> `=this.powerShellAlias`
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Planning and Design
+
+- The main template of the frontend was a Berry Material [[UI]] template
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Other Links
+
+- [Digital Engineering GitLab](https://git.rle.de/DigitalEngineering)
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Lessons Learned
+
+The lessons learned for me were mainly in data visualisation in the front end, as I received various data points from the backend [[Neo4j]] and [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]] calculations and had to plot the results on a 3D graph to best demonstrate the tradeoffs between results, allowing the user to select the floating 3D point and see the data inputs behind its generation.
 
 It also taught me a lot about passing large objects of states from one page to the next.
 

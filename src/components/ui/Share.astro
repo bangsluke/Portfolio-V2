@@ -29,15 +29,22 @@ const shareLinks = [
 	<span class="text-base font-bold text-blacktext dark:text-white">Share </span>
 	{
 		shareLinks.map(link => (
-			<a
-				href={link.href}
-				class="bg-blacktext rounded-full p-2"
-				target="_blank"
-				rel="noopener noreferrer"
-				aria-label={`Share on ${link.name}`}
-				title={`Share on ${link.name}`}>
-				<Icon name={link.icon} />
-			</a>
+			<div class="relative group/tooltip">
+				<a
+					href={link.href}
+					class="bg-blacktext rounded-full p-2"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label={`Share on ${link.name}`}>
+					<Icon name={link.icon} />
+				</a>
+				<div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
+					<div class="global-tooltip">
+						<div class="global-tooltip-content">Share on {link.name}</div>
+						<div class="absolute left-1/2 transform -translate-x-1/2 global-tooltip-arrow global-tooltip-arrow-top" />
+					</div>
+				</div>
+			</div>
 		))
 	}
 </div>

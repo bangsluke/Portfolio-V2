@@ -6,19 +6,18 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-18T12:43:15+01:00
-viewCount: 6
+viewCount: 7
 aliases:
   - Aura
-skillRating: 0
-skillDescription: TBC
+skillRating: 55
+skillDescription: Set up a single instance within which I manage the data across multiple projects.
 logoFileName: neo4j_cypher.svg
 ---
-
 # Neo4j Aura
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Hosted <span class="theme-link">Neo4j</span> graph service
+> Hosted [[Neo4j]] graph service
 
 ## Table of Contents
 

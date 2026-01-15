@@ -12,12 +12,11 @@ skillRating: 70
 skillDescription: Able to read Cypher query language and write various queries to return data via graph connections as well as create and maintain graphs from the CLI.
 logoFileName: neo4j.svg
 ---
-
 # Neo4j
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Graph database - Language: <span class="theme-link">Cypher</span>
+> Graph database - Language: [[Cypher]]
 
 ## Table of Contents
 

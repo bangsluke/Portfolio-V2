@@ -5,25 +5,25 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-19T10:07:51+01:00
-viewCount: 8
+modified: 2025-09-08T11:08:10+01:00
+viewCount: 14
 aliases:
   - PFDM
-projectURL: 
-codeURL: 
+projectURL: https://apps.powerapps.com/play/e/9cb5bfc9-13df-e75e-98ff-a4782f9d0f48/a/2f37da68-ee87-4e33-854b-8598826a866f?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4&hint=d7be4b55-aa62-4dec-8fe2-a4738bd94489&sourcetime=1707918756797
+codeURL: https://dev.azure.com/RLEGPMO/_git/Project%20Finance%20Data%20Manager
 codeMultipleRepos: false
 deploymentServiceURL: n/a
-folderURL: 
-logoURL: https://i.imgur.com/Jsm73YL.png
-imageURL: 
-dateStart: 
-dateEnd: 
+folderURL: https://rleint.sharepoint.com/sites/UKPMO/Freigegebene%20Dokumente/Forms/AllItems.aspx?id=%2Fsites%2FUKPMO%2FFreigegebene%20Dokumente%2FGeneral%2FTools%2FProject%20Finance%20Data%20Manager&viewid=5f4536b9%2D13eb%2D4e4d%2Dbf13%2D48ab749b5169
+logoURL: https://i.postimg.cc/KcrMkn2p/Project-Finance-Data-Manager.png
+imageURL: https://i.postimg.cc/nhP8MkqS/Project-Finance-Data-Manager.png
+dateStart: 2024-01-01
+dateEnd: 2024-07-31
 technologies:
   - "[[Power Apps]]"
-  - "[[Power BI]]"
   - "[[Power Query]]"
   - "[[SharePoint]]"
   - "[[SQL]]"
+  - "[[DevOps]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -36,16 +36,16 @@ topicTags:
   - "[[GPMO]]"
   - "[[Finances]]"
 powerShellAlias: n/a
-version: 
+version: 1.2
 portfolioOrder: 4
 shortDescription: "Data input for financial tracking of <span class=\"theme-link\">RLE International</span> projects."
-longDescription: "TBC\nPulled in timesheet data and financial information from various <span class=\"theme-link\">RLE International</span> region sources such as <span class=\"theme-link\">Paycor</span>, <span class=\"theme-link\">T-Sheet</span> and <span class=\"theme-link\">Iplicit</span>."
-lessonsLearned: "TBC"
+longDescription: "The <a href=\"/projects/project-finance-data-manager\" class=\"theme-link\">Project Finance Data Manager</a> app was a <span class=\"theme-link\">Power App</span> for managing various cost data for a project, tying together several data sources.<br><br>Pulled in timesheet data and financial information from various <span class=\"theme-link\">RLE International</span> region sources such as <span class=\"theme-link\">Paycor</span>, <span class=\"theme-link\">T-Sheet</span> and <span class=\"theme-link\">Iplicit</span>.<br><br>Users could also import <a href=\"/projects/cost-model-translation-file\" class=\"theme-link\">Cost Model Translation File</a>s to bring in planned finances and could version changes."
+lessonsLearned: "This project challenged our architecture skills mainly, ensuring we had a solid logic for how data flowed between the <a href=\"/projects/cost-model\" class=\"theme-link\">Cost Model</a> files and could be pushed to the <span class=\"theme-link\">SQL</span> backend whilst maintaining version control.<br><br>There were also various access roles we had to set up and implement to ensure the correct users could see the correct level of detail and correct projects."
+name: "Project Finance Data Manager"
 ---
-
 # Project Finance Data Manager
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -76,25 +76,27 @@ WHERE file = this.file
 
 ## Short Description
 
-Data input for financial tracking of <span class="theme-link">RLE International</span> projects.
+Data input for financial tracking of [[RLE International]] projects.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-TBC
+The [[Project Finance Data Manager]] app was a [[Power Apps|Power App]] for managing various cost data for a project, tying together several data sources.
 
-Pulled in timesheet data and financial information from various <span class="theme-link">RLE International</span> region sources such as <span class="theme-link">Paycor</span>, <span class="theme-link">T-Sheet</span> and <span class="theme-link">Iplicit</span>.
+Pulled in timesheet data and financial information from various [[RLE International]] region sources such as [[Paycor]], [[T-Sheet]] and [[Iplicit]].
+
+Users could also import [[Cost Model Translation File]]s to bring in planned finances and could version changes.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: TBC
-- Back end/Datasource: TBC
-- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories))
+- Front end: [[Power Apps]]
+- Back end/Datasource: [[SharePoint]], [[Power Query]], [[SQL]]
+- Hosting: [[SharePoint]]
 - Security: n/a
-- Authentication: TBC
+- Authentication: [[SharePoint]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -107,7 +109,7 @@ Pulled in timesheet data and financial information from various <span class="the
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -121,13 +123,17 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- TBC
+- [[GPMO]]
+- [[Cost Model]]
+- [[Project Finance Tracking Report]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-TBC
+This project challenged our architecture skills mainly, ensuring we had a solid logic for how data flowed between the [[Cost Model]] files and could be pushed to the [[SQL]] backend whilst maintaining version control.
+
+There were also various access roles we had to set up and implement to ensure the correct users could see the correct level of detail and correct projects.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -7,25 +7,26 @@ tags:
   - coding
   - work
 created: 2025-06-02 17:16
-modified: 2025-07-19T10:10:51+01:00
+modified: 2025-08-12T12:09:11+01:00
 aliases:
   - SDP Dev Sites
-viewCount: 16
+viewCount: 20
 projectURL: https://sdp-dev-sites.netlify.app/pages/sdp-acronyms
-codeURL: TBC
+codeURL: https://git.rle.de/sdp/sdpsupportpages
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/sdp-dev-sites/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/GoZ1rp5.png
-dateStart: ""
-dateEnd: ""
+imageURL: https://i.postimg.cc/FKM2VHWL/SDP-Consultant-Pages.png
+dateStart: 2021-03-01
+dateEnd: 2021-03-31
 technologies:
   - "[[HTML]]"
   - "[[CSS]]"
   - "[[JavaScript]]"
   - "[[GitLab]]"
   - "[[Azure]]"
+  - "[[VS Code]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -39,14 +40,14 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 4
-shortDescription: "A site for the consultants working with the tool, showing the acronyms and definitions used across the <a href=\"/portfolio/projects/SDP\" class=\"theme-link\">SDP</a> tool, as well as documentation and an encyclopaedia."
-longDescription: "A full list of acronyms and definitions used across the <span class=\"theme-link\">RLE</span> and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.\nThe <a href=\"/portfolio/projects/SDP\" class=\"theme-link\">SDP</a> project was disbanded early into the websites development, leaving it only partially developed, but matching the style and design of the main tool."
-lessonsLearned: "Provided good learning for getting correct anchor points in <span class=\"theme-link\">HTML</span> for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main <a href=\"/portfolio/projects/SDP\" class=\"theme-link\">SDP</a> tool to provide a visual connection."
+shortDescription: "A site for the consultants working with the tool, showing the acronyms and definitions used across the <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> tool, as well as documentation and an encyclopaedia."
+longDescription: "A full list of acronyms and definitions used across the <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> app, provided as support material to consultants using the tool for <span class=\"theme-link\">RLE</span> and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.<br><br>The <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> project was disbanded early into the websites development, leaving it only partially developed, but matching the style and design of the main tool."
+lessonsLearned: "Provided good learning for getting correct anchor points in <span class=\"theme-link\">HTML</span> for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> tool to provide a visual connection."
+name: "SDP Consultant Pages"
 ---
-
 # SDP Consultant Pages
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -77,15 +78,58 @@ WHERE file = this.file
 
 ## Short Description
 
-A site for the consultants working with the tool, showing the acronyms and definitions used across the <span class="theme-link">RLE</span> and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.
+A site for the consultants working with the tool, showing the acronyms and definitions used across the [[SDP]] tool, as well as documentation and an encyclopaedia.
 
-The <span class="theme-link">SDP</span>
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Long Description
+
+A full list of acronyms and definitions used across the [[SDP]] app, provided as support material to consultants using the tool for [[RLE International|RLE]] and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.
+
+The [[SDP]] project was disbanded early into the websites development, leaving it only partially developed, but matching the style and design of the main tool.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Architecture and Technologies
+
+- Front end: [[HTML]], [[CSS]], [[JavaScript]]
+- Back end/Datasource: n/a
+- Hosting: [[GitLab]] (see [Repositories](#repositories))
+- Security: n/a
+- Authentication: [[Azure]]
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Repositories
+
+- Main repo: `=this.codeURL`
+- Secondary repo: n/a
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## PowerShell Query
+
+To launch the repo, use the [[PowerShell]] alias 
+
+> `=this.powerShellAlias`
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Planning and Design
+
+- Designed to look like the [[SDP]] site in terms of styling.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Other Links
+
+- [[SDP|SDP]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-Provided good learning for getting correct anchor points in <span class="theme-link">HTML</span> for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main <a href="/portfolio/projects/SDP" class="theme-link">SDP</a> tool to provide a visual connection.
+Provided good learning for getting correct anchor points in [[HTML]] for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main [[SDP]] tool to provide a visual connection.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

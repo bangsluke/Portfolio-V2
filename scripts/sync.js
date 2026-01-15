@@ -15,6 +15,61 @@ import {
 	SPACING_LEVEL_2,
 	SPACING_LEVEL_3,
 } from './repoConfig.js';
+// Utility function for extracting name from filename
+function extractNameFromFilename(filename) {
+	return filename.replace(/\.md$/, '');
+}
+
+// Add name property to project frontmatter
+function addProjectNameToFrontmatter(content, fileName) {
+	// Extract the name from filename (remove .md extension)
+	const projectName = extractNameFromFilename(fileName);
+
+	// Check if name property already exists in frontmatter
+	const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
+
+	if (frontmatterMatch) {
+		const existingFrontmatter = frontmatterMatch[1];
+
+		// Check if name property already exists
+		if (existingFrontmatter.includes('name:')) {
+			if (DEBUG_MODE) {
+				console.log(
+					SPACING_LEVEL_3 +
+						`⏭️ Project already has name property in frontmatter`
+				);
+			}
+			return content;
+		}
+
+		// Add name property to existing frontmatter
+		const newFrontmatter = existingFrontmatter + `\nname: "${projectName}"`;
+		content = content.replace(
+			/^---\s*\n([\s\S]*?)\n---\s*\n/,
+			`---\n${newFrontmatter}\n---\n`
+		);
+
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_3 +
+					`✅ Added name property to project frontmatter: "${projectName}"`
+			);
+		}
+	} else {
+		// No existing frontmatter, create new one
+		const newFrontmatter = `name: "${projectName}"`;
+		content = `---\n${newFrontmatter}\n---\n\n${content}`;
+
+		if (DEBUG_MODE) {
+			console.log(
+				SPACING_LEVEL_3 +
+					`✅ Created new frontmatter with name property: "${projectName}"`
+			);
+		}
+	}
+
+	return content;
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -110,7 +165,7 @@ function extractSectionContent(content, sectionName, endMarker) {
 }
 
 // Extract sections and add to frontmatter based on content type
-function extractSectionsToFrontmatter(content, contentType) {
+async function extractSectionsToFrontmatter(content, contentType) {
 	// Get sections to extract from config based on content type
 	const contentTypeConfig = CONTENT_TYPE_MAPPINGS[contentType];
 	if (!contentTypeConfig) {
@@ -127,12 +182,15 @@ function extractSectionsToFrontmatter(content, contentType) {
 	const extractedData = {};
 	const endMarker = '>[!top] [Back to top](#Table%20of%20Contents)';
 
+	// Import the new content processor
+	const { processContent } = await import('./content-processor.js');
+
 	// Extract content from each section defined in config
 	sectionsToExtract.forEach(({ name, property }) => {
 		const sectionContent = extractSectionContent(content, name, endMarker);
 		if (sectionContent) {
-			// Process Obsidian links in the extracted section content
-			const processedSectionContent = processObsidianLinks(sectionContent);
+			// Process the extracted section content using the new content processor
+			const processedSectionContent = processContent(sectionContent);
 			extractedData[property] = processedSectionContent;
 			if (DEBUG_MODE) {
 				console.log(
@@ -304,8 +362,7 @@ function getContentType(targetFolder) {
 	return targetFolder || null;
 }
 
-// Process a markdown file
-function processMarkdownFile(filePath, relativePath) {
+async function processMarkdownFile(filePath, relativePath) {
 	try {
 		syncErrors.summary.totalFiles++;
 
@@ -428,7 +485,7 @@ function processMarkdownFile(filePath, relativePath) {
 			);
 		}
 		if (contentType) {
-			content = extractSectionsToFrontmatter(content, contentType);
+			content = await extractSectionsToFrontmatter(content, contentType);
 		} else if (DEBUG_MODE) {
 			console.log(
 				SPACING_LEVEL_3 +
@@ -436,16 +493,19 @@ function processMarkdownFile(filePath, relativePath) {
 			);
 		}
 
+		// Add name property to project frontmatter if it's a project and doesn't already have one
+		if (targetFolder === 'projects') {
+			content = addProjectNameToFrontmatter(content, fileName);
+		}
+
+		// NOTE: We no longer process Obsidian links in the content body
+		// This preserves the original Obsidian syntax in the markdown files
+		// The processed HTML is stored in frontmatter properties for display on the website
 		if (DEBUG_MODE) {
 			console.log(
 				SPACING_LEVEL_2 +
-					`🔍 8: Processing Obsidian links (content body only) and skipping if not found...`
+					`⏭️ 8: Skipping content body processing to preserve original Obsidian syntax`
 			);
-		}
-		// Process Obsidian links only in the content body (not in frontmatter)
-		content = processObsidianLinksInContentOnly(content);
-		if (DEBUG_MODE) {
-			console.log(SPACING_LEVEL_3 + `✅ 8. Obsidian links processed`);
 		}
 
 		if (DEBUG_MODE) {
@@ -476,7 +536,7 @@ function processMarkdownFile(filePath, relativePath) {
 }
 
 // Recursively process directory
-function processDirectory(dirPath, relativePath = '') {
+async function processDirectory(dirPath, relativePath = '') {
 	if (DEBUG_MODE) {
 		console.log(`📂 Entering directory: ${relativePath || dirPath}`);
 	}
@@ -512,12 +572,12 @@ function processDirectory(dirPath, relativePath = '') {
 					console.log(`🔍 Found Projects directory: ${itemRelativePath}`);
 				}
 
-				processDirectory(fullPath, itemRelativePath);
+				await processDirectory(fullPath, itemRelativePath);
 			} else if (item.endsWith('.md')) {
 				if (DEBUG_MODE && item.includes('Documentation')) {
 					console.log(`🔍 Found Documentation file: ${itemRelativePath}`);
 				}
-				processMarkdownFile(fullPath, itemRelativePath);
+				await processMarkdownFile(fullPath, itemRelativePath);
 			}
 		}
 	} catch (error) {
@@ -564,10 +624,10 @@ function getProjectNameToSlugMappings() {
 			const nameMatch = content.match(/^#\s*(.+)$/m);
 			const projectName = nameMatch
 				? nameMatch[1].trim()
-				: projectFile.replace('.md', '');
+				: extractNameFromFilename(projectFile);
 
 			// Generate slug from filename (remove .md extension)
-			const slug = projectFile.replace('.md', '');
+			const slug = extractNameFromFilename(projectFile);
 
 			mappings[projectName] = slug;
 		});
@@ -619,7 +679,7 @@ function processObsidianLinks(content) {
 			}
 
 			if (slug) {
-				return `<a href="/portfolio/projects/${slug}" class="theme-link">${altText}</a>`;
+				return `<a href="/projects/${slug}" class="theme-link">${altText}</a>`;
 			}
 			// If not a project, keep as bold text
 			return `<span class="theme-link">${altText}</span>`;
@@ -631,7 +691,7 @@ function processObsidianLinks(content) {
 	content = content.replace(/\[\[([^\]]+)\]\]/g, (match, projectName) => {
 		const slug = projectMappings[projectName];
 		if (slug) {
-			return `<a href="/portfolio/projects/${slug}" class="theme-link">${projectName}</a>`;
+			return `<a href="/projects/${slug}" class="theme-link">${projectName}</a>`;
 		}
 		// If not a project, keep as bold text
 		return `<span class="theme-link">${projectName}</span>`;
@@ -666,7 +726,7 @@ function processObsidianLinksInContentOnly(content) {
 function checkMissingSvgFiles() {
 	try {
 		const skillsPath = path.join(ASTRO_CONTENT_PATH, 'skills');
-		const iconsPath = path.join(__dirname, '../src/icons');
+		const iconsPath = path.join(__dirname, '../public/icons');
 
 		if (!fs.existsSync(skillsPath)) {
 			console.log('📁 Skills directory does not exist, skipping SVG check');
@@ -689,7 +749,7 @@ function checkMissingSvgFiles() {
 				// Check if the SVG file exists
 				const svgPath = path.join(iconsPath, logoFileName);
 				if (!fs.existsSync(svgPath)) {
-					const skillName = skillFile.replace('.md', '');
+					const skillName = extractNameFromFilename(skillFile);
 					missingSvgFiles.push({
 						skill: skillName,
 						logoFileName: logoFileName,
@@ -754,7 +814,7 @@ function createSkillIconMapping() {
 			const nameMatch = content.match(/^#\s*(.+)$/m);
 			const skillName = nameMatch
 				? nameMatch[1].trim()
-				: skillFile.replace('.md', '');
+				: extractNameFromFilename(skillFile);
 
 			// Extract logoFileName from frontmatter
 			const logoFileNameMatch = content.match(/logoFileName:\s*(.+)/);
@@ -810,7 +870,7 @@ function createSkillIconMapping() {
 // Update icon-utils with current icons from the icons directory
 function updateIconUtils() {
 	try {
-		const iconsDir = path.join(__dirname, '../src/icons');
+		const iconsDir = path.join(__dirname, '../public/icons');
 		const iconUtilsFile = path.join(__dirname, '../src/utils/icon-utils.ts');
 
 		// Check if icons directory exists
@@ -1082,7 +1142,7 @@ async function sendEmailNotification() {
 }
 
 // Sync Portfolio About Me file specifically
-function syncPortfolioAboutMe() {
+async function syncPortfolioAboutMe() {
 	try {
 		// Search for the file recursively in the Obsidian vault
 		const aboutMePath = findFileRecursively(
@@ -1102,11 +1162,23 @@ function syncPortfolioAboutMe() {
 		// Read content from Obsidian
 		let content = fs.readFileSync(aboutMePath, 'utf8');
 
-		// Process Obsidian links in the content
-		content = processObsidianLinks(content);
+		// Process content using the new content processor (only process the body, not frontmatter)
+		const processedContent =
+			await processObsidianLinksInContentOnlyWithNewProcessor(content);
 
 		// Remove "about-me-" from frontmatter
-		content = removeAboutMeFromFrontmatter(content);
+		content = removeAboutMeFromFrontmatter(processedContent);
+
+		// Remove the first line of about me content (Portfolio About Me heading)
+		// This removes the "<h1>Portfolio About Me</h1><br><br>" line
+		content = content.replace(
+			'<h1>Portfolio About Me</h1><br><br><br><br>',
+			''
+		);
+
+		// Replace four <br> tags with a single <br> tag to stop the spacing on the processed About Me file from being too large
+		// Use global regex to replace all occurrences throughout the file
+		content = content.replace(/<br><br><br>/g, '<br>');
 
 		// Write content to Astro
 		fs.writeFileSync(targetAboutMePath, content, 'utf8');
@@ -1125,6 +1197,40 @@ function syncPortfolioAboutMe() {
 			timestamp: new Date().toISOString(),
 		});
 		syncErrors.summary.errors++;
+	}
+}
+
+// Process Obsidian links only in the content body using the new content processor
+async function processObsidianLinksInContentOnlyWithNewProcessor(content) {
+	try {
+		// Import the new content processor
+		const { processContent } = await import('./content-processor.js');
+
+		// Split content into frontmatter and body
+		const frontmatterMatch = content.match(
+			/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/
+		);
+
+		if (frontmatterMatch) {
+			const frontmatter = frontmatterMatch[1];
+			const body = frontmatterMatch[2];
+
+			// Only process Obsidian links in the body, not in frontmatter
+			const processedBody = processContent(body);
+
+			// Reconstruct the content with processed body but unchanged frontmatter
+			return `---\n${frontmatter}\n---\n\n${processedBody}`;
+		} else {
+			// If no frontmatter found, process the entire content
+			return processContent(content);
+		}
+	} catch (error) {
+		console.error(
+			'Error using new content processor, falling back to old method:',
+			error.message
+		);
+		// Fallback to old method if new processor fails
+		return processObsidianLinksInContentOnly(content);
 	}
 }
 
@@ -1248,7 +1354,7 @@ async function main() {
 		console.log(
 			SPACING_LEVEL_1 + '📂 Scanning directory structure recursively...'
 		);
-		processDirectory(OBSIDIAN_VAULT_PATH);
+		await processDirectory(OBSIDIAN_VAULT_PATH);
 
 		// Check for missing SVG files (for production mode or when email notifications are enabled)
 		if (SYNC_MODE === 'production' || EMAIL_NOTIFICATIONS) {
@@ -1266,7 +1372,7 @@ async function main() {
 
 		// Sync Portfolio About Me file specifically
 		console.log('📄 Syncing Portfolio About Me file...');
-		syncPortfolioAboutMe();
+		await syncPortfolioAboutMe();
 
 		// Post-process content (only for production mode)
 		if (SYNC_MODE === 'production') {

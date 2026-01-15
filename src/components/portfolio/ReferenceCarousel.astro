@@ -1,0 +1,100 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import {
+	processContent,
+	processObsidianLink,
+} from '../../utils/content-processor';
+import { extractNameFromFilename } from '../../utils/filename-utils';
+import Carousel from '../ui/Carousel';
+import Heading from '../ui/Heading.astro';
+
+// Get all references, companies, and clients from the local content folders
+const references = await getCollection('references');
+const companies = await getCollection('companies');
+const clients = await getCollection('clients');
+
+// Sort references by portfolioOrder, then alphabetically by name
+const sortedReferences = references.sort((a, b) => {
+	// First sort by portfolioOrder (lower numbers first)
+	const orderA = a.data.portfolioOrder ?? Number.MAX_SAFE_INTEGER;
+	const orderB = b.data.portfolioOrder ?? Number.MAX_SAFE_INTEGER;
+
+	if (orderA !== orderB) {
+		return orderA - orderB;
+	}
+
+	// If portfolioOrder is the same or not set, sort alphabetically by slug
+	return a.slug.localeCompare(b.slug);
+});
+
+// Process references to include company/client logos
+const processedReferences = sortedReferences.map(reference => {
+	let companyLogoURL = null;
+
+	// If reference has linkedCompany, find the company or client and get its logoURL
+	if (reference.data.linkedCompany && reference.data.linkedCompany.length > 0) {
+		// Get the first linked company and process Obsidian link format
+		const linkedCompanyRaw = reference.data.linkedCompany[0];
+		const linkedCompanyName = processObsidianLink(linkedCompanyRaw);
+
+		// First try to find in companies collection
+		const company = companies.find(company => {
+			const companyName = extractNameFromFilename(company.id);
+			return companyName === linkedCompanyName;
+		});
+
+		if (company && company.data.logoURL) {
+			companyLogoURL = company.data.logoURL;
+		} else {
+			// If not found in companies, try clients collection
+			const client = clients.find(client => {
+				const clientName = extractNameFromFilename(client.id);
+				return clientName === linkedCompanyName;
+			});
+
+			if (client && client.data.logoURL) {
+				companyLogoURL = client.data.logoURL;
+			}
+		}
+	}
+
+	return {
+		...reference,
+		companyLogoURL,
+	};
+});
+---
+
+<section
+	class="main-section main-section-carousel pt-8 pb-12 md:pt-12"
+	id="references">
+	<div class="flex flex-col w-full">
+		<div class="flex gap-4 items-center justify-center mb-6">
+			<Icon class="text-3xl dark:text-white text-blacktext" name="people" />
+			<Heading text="" textGradient="References" level={2} />
+		</div>
+
+		<div class="relative w-full" aria-label="References">
+			<Carousel
+				items={processedReferences.map(ref => ({
+					id: ref.id,
+					name: ref.data.name || extractNameFromFilename(ref.id),
+					title: ref.data.referenceRole || '',
+					email: ref.data.referenceEmail || '',
+					phone: ref.data.referenceNumber || '',
+					company:
+						Array.isArray(ref.data.linkedCompany) &&
+						ref.data.linkedCompany.length > 0
+							? processObsidianLink(ref.data.linkedCompany[0])
+							: '',
+					logoURL: ref.companyLogoURL || '',
+					address: processContent(ref.data.referenceAddress || ''),
+				}))}
+				type="reference"
+				autoPlayDuration={5000}
+				client:only="preact"
+			/>
+		</div>
+	</div>
+</section>

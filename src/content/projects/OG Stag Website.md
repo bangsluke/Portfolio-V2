@@ -7,15 +7,15 @@ tags:
   - project/completed
 created: 2025-05-30 10:00
 modified: 2025-07-19T10:11:40+01:00
-aliases: 
-viewCount: 12
+aliases:
+viewCount: 13
 projectURL: https://og-stag.netlify.app/
 codeURL: https://github.com/bangsluke/OG-stag
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/og-stag/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/hlZ9jEG.png
+imageURL: https://i.postimg.cc/hvg6N3RY/OG-Stag.png
 dateStart: 2023-05-22
 dateEnd: 2023-07-07
 technologies:
@@ -24,6 +24,7 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Snyk]]"
+  - "[[VS Code]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -34,15 +35,15 @@ topicTags:
   - "[[Oli Goddard]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 5
+portfolioOrder: 7
 shortDescription: "A website detailing the itinerary for <span class=\"theme-link\">Oli Goddard</span>'s stag do."
-longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and <span class=\"theme-link\">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.\nThis site was a copy and rebrand from the <a href=\"/portfolio/projects/JS Stag Website\" class=\"theme-link\">JS Stag Website</a> I had previously built."
-lessonsLearned: "As this site was a copy of <a href=\"/portfolio/projects/JS Stag Website\" class=\"theme-link\">JS Stag Website</a>, the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes."
+longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and <span class=\"theme-link\">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.<br><br>This site was a copy and rebrand from the <a href=\"/projects/js-stag-website\" class=\"theme-link\">JS Stag Website</a> I had previously built."
+lessonsLearned: "As this site was a copy of <a href=\"/projects/js-stag-website\" class=\"theme-link\">JS Stag Website</a>, the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes."
+name: "OG Stag Website"
 ---
-
 # OG Stag Website
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -72,24 +73,24 @@ WHERE file = this.file
 
 ## Short Description
 
-A website detailing the itinerary for <span class="theme-link">Oli Goddard</span>'s stag do.
+A website detailing the itinerary for [[Oli Goddard]]'s stag do.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-This site provided the stag attendees with the full itinerary of the stag, with timings and <span class="theme-link">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
+This site provided the stag attendees with the full itinerary of the stag, with timings and [[Google Maps]] links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
 
-This site was a copy and rebrand from the <a href="/portfolio/projects/JS Stag Website" class="theme-link">JS Stag Website</a> I had previously built.
+This site was a copy and rebrand from the [[JS Stag Website]] I had previously built.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">Vite.js</span>, <span class="theme-link">React</span>
+- Front end: [[Vite.js]], [[React]]
 - Back end/Datasource: n/a
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), <span class="theme-link">Netlify</span>
-- Security: <span class="theme-link">Snyk</span>
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
+- Security: [[Snyk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -103,7 +104,7 @@ This site was a copy and rebrand from the <a href="/portfolio/projects/JS Stag W
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -117,13 +118,13 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <a href="/portfolio/projects/JS Stag Website" class="theme-link">JS Stag Website</a>
+- [[JS Stag Website]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-As this site was a copy of <a href="/portfolio/projects/JS Stag Website" class="theme-link">JS Stag Website</a>, the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes.
+As this site was a copy of [[JS Stag Website]], the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

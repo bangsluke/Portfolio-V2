@@ -7,16 +7,16 @@ tags:
   - portfolio
   - company
 modified: 2025-07-20T13:19:43+01:00
-viewCount: 9
+viewCount: 8
 aliases: 
 skillRating: 30
 skillDescription: Single test app built using the OpenAI API to understand how to connect to it but proficient and writing efficient prompts.
 logoFileName: openai.svg
+banner: https://blogs.swarthmore.edu/its/wp-content/uploads/2022/05/openai.jpg
 ---
-
 # OpenAI
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
 ## Table of Contents
 
@@ -26,8 +26,8 @@ logoFileName: openai.svg
 ## Folder Contents
 
 %% Begin Waypoint %%
-- **<span class="theme-link">OpenAI</span>**
-	- <span class="theme-link">ChatGPT</span>
+- **[[OpenAI]]**
+	- [[ChatGPT]]
 
 %% End Waypoint %%
 

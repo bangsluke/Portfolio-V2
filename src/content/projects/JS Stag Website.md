@@ -7,15 +7,15 @@ tags:
   - project/completed
 created: 2025-05-30 10:00
 modified: 2025-07-19T10:11:15+01:00
-aliases: 
-viewCount: 11
+aliases:
+viewCount: 12
 projectURL: https://js-stag.netlify.app/
 codeURL: https://github.com/bangsluke/JS-stag
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/js-stag/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.imgur.com/Ve95p8R.png
+imageURL: https://i.postimg.cc/4yZqjFTZ/JS-Stag.png
 dateStart: 2023-03-23
 dateEnd: 2023-05-11
 technologies:
@@ -24,6 +24,7 @@ technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Snyk]]"
+  - "[[VS Code]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -34,15 +35,15 @@ topicTags:
   - "[[Jonny Sourris]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 5
+portfolioOrder: 7
 shortDescription: "A website detailing the itinerary for <span class=\"theme-link\">Jonny Sourris</span>'s stag do."
 longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and <span class=\"theme-link\">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group."
-lessonsLearned: "There were a few lessons learned from this project;\n- Learning how to use <span class=\"theme-link\">Vite.js</span> for the first time\n- Writing a website using <span class=\"theme-link\">Typescript</span> for the first time\n- Implementing a timeline component and targeting mobile screen size\n- Correctly setting up hyperlinks from the users location to the next activity in <span class=\"theme-link\">Google Maps</span>"
+lessonsLearned: "There were a few lessons learned from this project;<br>- Learning how to use <span class=\"theme-link\">Vite.js</span> for the first time<br>- Writing a website using <span class=\"theme-link\">Typescript</span> for the first time<br>- Implementing a timeline component and targeting mobile screen size<br>- Correctly setting up hyperlinks from the users location to the next activity in <span class=\"theme-link\">Google Maps</span>"
+name: "JS Stag Website"
 ---
-
 # JS Stag Website
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -73,22 +74,22 @@ WHERE file = this.file
 
 ## Short Description
 
-A website detailing the itinerary for <span class="theme-link">Jonny Sourris</span>'s stag do.
+A website detailing the itinerary for [[Jonny Sourris]]'s stag do.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-This site provided the stag attendees with the full itinerary of the stag, with timings and <span class="theme-link">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
+This site provided the stag attendees with the full itinerary of the stag, with timings and [[Google Maps]] links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">Vite.js</span>, <span class="theme-link">React</span>
+- Front end: [[Vite.js]], [[React]]
 - Back end/Datasource: n/a
-- Hosting: <span class="theme-link">GitHub</span> (see [Repositories](#repositories)), <span class="theme-link">Netlify</span>
-- Security: <span class="theme-link">Snyk</span>
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
+- Security: [[Snyk]]
 - Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -102,7 +103,7 @@ This site provided the stag attendees with the full itinerary of the stag, with 
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -116,17 +117,17 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <a href="/portfolio/projects/OG Stag Website" class="theme-link">OG Stag Website</a>
+- [[OG Stag Website]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
 There were a few lessons learned from this project;
-- Learning how to use <span class="theme-link">Vite.js</span> for the first time
-- Writing a website using <span class="theme-link">Typescript</span> for the first time
+- Learning how to use [[Vite.js]] for the first time
+- Writing a website using [[Typescript]] for the first time
 - Implementing a timeline component and targeting mobile screen size
-- Correctly setting up hyperlinks from the users location to the next activity in <span class="theme-link">Google Maps</span>
+- Correctly setting up hyperlinks from the users location to the next activity in [[Google Maps]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

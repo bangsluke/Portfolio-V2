@@ -1,9 +1,17 @@
+/* eslint-disable no-console */
 /**
  * Formats a date string to "MMM YYYY" format
  * @param dateString - The date string to format (e.g., "2023-01-15" or "2023-01")
  * @returns Formatted date string (e.g., "Jan 2023")
  */
-export function formatDateToMMMYYYY(dateString: string): string {
+export function formatDateToMMMYYYY(
+	dateString: string | null | undefined
+): string | null | undefined {
+	// Handle null and undefined inputs
+	if (dateString === null || dateString === undefined) {
+		return dateString;
+	}
+
 	try {
 		// Handle different date formats
 		let date: Date;

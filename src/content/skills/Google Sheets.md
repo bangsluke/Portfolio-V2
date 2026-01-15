@@ -4,18 +4,17 @@ tags:
   - software
   - skill
   - portfolio
-modified: 2025-07-20T12:52:02+01:00
+modified: 2025-07-23T22:40:11+01:00
 viewCount: 7
-skillRating: 0
-skillDescription: TBC
+skillRating: 80
+skillDescription: Able to develop expansive and complex spreadsheets for use as databases in some instances and automate the manipulation of data through Google Apps Script.
 logoFileName: google_sheets.svg
 ---
-
 # Google Sheets
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Google</span> Sheets
+> [[Google]] Sheets
 
 ## Table of Contents
 
@@ -24,12 +23,12 @@ logoFileName: google_sheets.svg
 
 ## Tips
 
-- Autofill: On <span class="theme-link">Apple</span> iPad, to autofill formulas down, you need to:
+- Autofill: On [[Apple]] iPad, to autofill formulas down, you need to:
 	- Clear all of the cells you want to autofill into
 	- Create the formula in the top cell
 	- Select all cells including the formula cell
 	- Click on the selected cells
-	- Choose ‘Autofill’ (or ‘More’)
+	- Choose 'Autofill' (or 'More')
 
  >[!top] [Back to top](#Table%20of%20Contents)
 

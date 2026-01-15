@@ -6,18 +6,17 @@ tags:
   - tag
 created: 2025-02-04 18:53
 modified: 2025-07-07T20:55:15+01:00
-viewCount: 15
+viewCount: 16
 aliases:
   - Opus 2
   - Opus
 dateStart: 2011-03-06
 dateEnd: 2014-07-25
-logoURL: https://www.opus2.com/wp-content/uploads/2024/03/Spring-release-from-Opus-2-delivers-powerful-enhancements-to-market-leading-case-management-and-analysis-software.jpg
+logoURL: https://i.postimg.cc/L8vYCRXT/Opus-2.jpg
 ---
-
 # Opus 2 International
 
-> [!back] Link back to <span class="theme-link">Company Notes</span>
+> [!back] Link back to [[Company Notes]]
 
 >[!website-link] Links
 >```dataview

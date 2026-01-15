@@ -28,8 +28,8 @@ describe('formatDateToMMMYYYY', () => {
 	});
 
 	test('handles null and undefined inputs', () => {
-		expect(formatDateToMMMYYYY(null as any)).toBe(null);
-		expect(formatDateToMMMYYYY(undefined as any)).toBe(undefined);
+		expect(formatDateToMMMYYYY(null)).toBe(null);
+		expect(formatDateToMMMYYYY(undefined)).toBe(undefined);
 	});
 
 	test('handles empty string', () => {

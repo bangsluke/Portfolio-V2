@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Path to the icons directory
-const iconsDir = path.join(__dirname, '../src/icons');
+const iconsDir = path.join(__dirname, '../public/icons');
 const iconUtilsFile = path.join(__dirname, '../src/utils/icon-utils.ts');
 
 function updateIconUtils() {

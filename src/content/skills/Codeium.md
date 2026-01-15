@@ -9,16 +9,15 @@ tags:
 modified: 2025-07-18T12:36:44+01:00
 viewCount: 7
 aliases: 
-skillRating: 0
-skillDescription: TBC
+skillRating: 60
+skillDescription: Enjoyed using frequently for writing code until Cursor arrived.
 logoFileName: codeium.svg
 ---
-
 # Codeium
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Coding support and predictive code - Similar to <span class="theme-link">GitHub</span> Co-pilot
+> Coding support and predictive code - Similar to [[GitHub]] Co-pilot
 
 ## Table of Contents
 

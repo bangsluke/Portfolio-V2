@@ -6,17 +6,16 @@ tags:
   - portfolio
 created: 2025-07-18T08:22:00
 modified: 2025-07-20T13:16:31+01:00
-viewCount: 4
-skillRating: 0
-skillDescription: TBC
+viewCount: 3
+skillRating: 30
+skillDescription: Created a basic documentation site within Google Sites for internal employees of our company.
 logoFileName: google_sites.svg
 ---
-
 # Google Sites
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Google</span> Sites
+> [[Google]] Sites
 
 ## Table of Contents
 

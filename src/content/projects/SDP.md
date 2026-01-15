@@ -4,32 +4,34 @@ tags:
   - portfolio
   - notes
 created: 2025-06-27 10:45
-modified: 2025-07-19T10:01:44+01:00
+modified: 2025-11-09T15:03:24+00:00
 aliases:
   - Scalable Development Plan
-viewCount: 12
-projectURL: TBC
-codeURL: TBC
+viewCount: 18
+projectURL: https://sdp.labs.rle.de/sdpweb/
+codeURL: https://git.rle.de/sdp/sdp-3
 codeMultipleRepos: false
 deploymentServiceURL: n/a
-folderURL: n/a
+folderURL: https://rleint.sharepoint.com/sites/SDP-Titans/Freigegebene%20Dokumente/Forms/AllItems.aspx
 logoURL: n/a
-imageURL: 
-dateStart: ""
-dateEnd: ""
+imageURL: https://i.postimg.cc/hGkH1tyG/SDP.png
+dateStart: 2019-07-01
+dateEnd: 2022-05-30
 technologies:
-  - "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]"
   - "[[React]]"
   - "[[Neo4j]]"
   - "[[Cypher]]"
   - "[[GitLab]]"
-  - "[[Google Cloud|GCP]]"
   - "[[SQL]]"
   - "[[Excel]]"
   - "[[VBA]]"
   - "[[Google Sheets]]"
   - "[[Google Apps Script]]"
   - "[[NeoDash]]"
+  - "[[Google Cloud]]"
+  - "[[C++]]"
+  - "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]"
+  - "[[VS Code]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -44,15 +46,15 @@ topicTags:
   - "[[Digital Engineering]]"
 powerShellAlias: n/a
 version: 3
-portfolioOrder: 3
-shortDescription: "Scalable Development Plan to automatically building a full development timing plan based on a number of inputs.\nTBC"
-longDescription: "TBC"
-lessonsLearned: "TBC\nI was fully in charge of the <span class=\"theme-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"theme-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"theme-link\">Excel</span> and then writing a <span class=\"theme-link\">VBA</span> script to automate creating the <span class=\"theme-link\">SQL</span> queries to update the database quickly.\nThis lead to a complete rebuild when our company migrated from <span class=\"theme-link\">Microsoft</span> to <span class=\"theme-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"theme-link\">Google Sheets</span> and use <span class=\"theme-link\">Google Apps Script</span>.\nThere was a brief period where we began consider rebuilding the frontend in <span class=\"theme-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.\nAs well as the main app, we also developed several <span class=\"theme-link\">NeoDash</span> dashboards off of the <span class=\"theme-link\">Neo4j</span> data for ongoing maintenance to check on the data."
+portfolioOrder: 2
+shortDescription: "Scalable Development Plan to automatically build a full development timing plan based on a number of inputs."
+longDescription: "SDP - Scalable Development Plan - was an internal tool developed within <span class=\"theme-link\">RLE International</span> that brought together the various automotive process knowledge that the company had gathered over years of work with various <span class=\"theme-link\">OEMs</span>.<br><br>It was a web application that gathered project inputs from users and could then calculate a full project timing plan, split across various swimlanes for the given project details. After this, users could further update the plan within the tool to fully align it to their own expectations or export the data for using in external tools such as <span class=\"theme-link\">Microsoft Project</span>."
+lessonsLearned: "I was fully in charge of the <span class=\"theme-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"theme-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"theme-link\">Excel</span> and then writing a <span class=\"theme-link\">VBA</span> script to automate creating the <span class=\"theme-link\">SQL</span> queries to update the database quickly.<br><br>This lead to a complete rebuild when our company migrated from <span class=\"theme-link\">Microsoft</span> to <span class=\"theme-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"theme-link\">Google Sheets</span> and use <span class=\"theme-link\">Google Apps Script</span>.<br><br>There was a brief period where we began consider rebuilding the frontend in <span class=\"theme-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.<br><br>As well as the main app, we also developed several <span class=\"theme-link\">NeoDash</span> dashboards off of the <span class=\"theme-link\">Neo4j</span> data for ongoing maintenance to check on the data, teaching me about this tool and getting me further involved with writing <span class=\"theme-link\">Cypher</span> queries."
+name: "SDP"
 ---
-
 # SDP
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -83,21 +85,25 @@ WHERE file = this.file
 
 ## Short Description
 
-Scalable Development Plan to automatically building a full development timing plan based on a number of inputs.
-
-TBC
+Scalable Development Plan to automatically build a full development timing plan based on a number of inputs.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-TBC
+SDP - Scalable Development Plan - was an internal tool developed within [[RLE International]] that brought together the various automotive process knowledge that the company had gathered over years of work with various [[OEMs]].
+
+It was a web application that gathered project inputs from users and could then calculate a full project timing plan, split across various swimlanes for the given project details. After this, users could further update the plan within the tool to fully align it to their own expectations or export the data for using in external tools such as [[Project|Microsoft Project]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: <span class="theme-link">Java</span>/<span class="theme-link">Java</span>, <span class="theme-link">GCP</span>
+- Front end: [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]/[[React]]
+- Back end/Datasource: [[Neo4j]], [[Cypher]], [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]], [[SQL]], [[Excel]], [[VBA]], [[Google Sheets]], [[Google Apps Script]]
+- Hosting: [[GitLab]] (see [Repositories](#repositories))
+- Security: n/a
+- Authentication: [[Google Cloud|GCP]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -110,7 +116,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -124,22 +130,21 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- <a href="/portfolio/projects/SDP Consultant Pages" class="theme-link">SDP Consultant Pages</a>
-- <a href="/portfolio/projects/SDP Encyclopaedia" class="theme-link">SDP Encyclopaedia</a>
+- [SDP GitLab](https://git.rle.de/sdp)
+- [[SDP Consultant Pages]]
+- [Digital Engineering GitLab](https://git.rle.de/DigitalEngineering)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-TBC
+I was fully in charge of the [[SQL]] backend database, meaning I had to learn how to write [[SQL]] queries. I optimised this by storing the data that we collected day to day in [[Excel]] and then writing a [[VBA]] script to automate creating the [[SQL]] queries to update the database quickly.
 
-I was fully in charge of the <span class="theme-link">SQL</span> backend database, meaning I had to learn how to write <span class="theme-link">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class="theme-link">Excel</span> and then writing a <span class="theme-link">VBA</span> script to automate creating the <span class="theme-link">SQL</span> queries to update the database quickly.
+This lead to a complete rebuild when our company migrated from [[Microsoft]] to [[Google]], meaning I had to migrate the data and automations into [[Google Sheets]] and use [[Google Apps Script]].
 
-This lead to a complete rebuild when our company migrated from <span class="theme-link">Microsoft</span> to <span class="theme-link">Google</span>, meaning I had to migrate the data and automations into <span class="theme-link">Google Sheets</span> and use <span class="theme-link">Google Apps Script</span>.
+There was a brief period where we began consider rebuilding the frontend in [[React]] and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
 
-There was a brief period where we began consider rebuilding the frontend in <span class="theme-link">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
-
-As well as the main app, we also developed several <span class="theme-link">NeoDash</span> dashboards off of the <span class="theme-link">Neo4j</span> data for ongoing maintenance to check on the data.
+As well as the main app, we also developed several [[NeoDash]] dashboards off of the [[Neo4j]] data for ongoing maintenance to check on the data, teaching me about this tool and getting me further involved with writing [[Cypher]] queries.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

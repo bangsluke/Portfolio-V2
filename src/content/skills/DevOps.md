@@ -12,12 +12,11 @@ skillRating: 70
 skillDescription: Managed several projects as development lead using Azure DevOps to track progress and report on sprint progress, building report dashboards within DevOps.
 logoFileName: azure_devops.svg
 ---
-
 # DevOps
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> <span class="theme-link">Microsoft</span> <span class="theme-link">Azure</span> DevOps
+> [[Microsoft]] [[Azure]] DevOps
 
 ## Table of Contents
 

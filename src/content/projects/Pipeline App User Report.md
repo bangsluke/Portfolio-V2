@@ -5,23 +5,26 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-19T10:07:05+01:00
-viewCount: 7
-aliases: 
+modified: 2025-09-08T10:54:02+01:00
+viewCount: 11
+aliases:
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/4800ac5b-36e5-4818-9c5a-38b19965e578/ReportSectiondd4069f533edc22c8a48?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
-codeURL: 
+codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
-folderURL: 
-logoURL: https://i.imgur.com/SFb7UNB.png
-imageURL: 
-dateStart: 
-dateEnd: 
+folderURL: https://app.powerbi.com/groups/5dc8490c-b5de-49a3-85f9-9eaee02b7d96/list?experience=power-bi
+logoURL: https://i.postimg.cc/pVYFhDH1/Finance-Reports.png
+imageURL: https://i.postimg.cc/7LGFz2NX/Pipeline-App-User-Report.png
+dateStart: 2023-07-01
+dateEnd: 2024-07-31
 technologies:
   - "[[Power BI]]"
   - "[[Power Query]]"
   - "[[SharePoint]]"
+  - "[[DevOps]]"
 projectCategory: Work Project
+linkedCompany:
+  - "[[RLE International]]"
 toolOwner: "[[Dominic Ede]]"
 developers:
   - "[[Alex Sheers]]"
@@ -31,16 +34,16 @@ topicTags:
   - "[[GPMO]]"
   - "[[Finances]]"
 powerShellAlias: n/a
-version: 
-portfolioOrder: 4
-shortDescription: "The report section for the <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Financial Tracker</a> showing global <span class=\"theme-link\">RLE International</span> <a href=\"/portfolio/projects/Project Pipeline\" class=\"theme-link\">Project Pipeline</a> data."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+version: 1
+portfolioOrder: 6
+shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing global <span class=\"theme-link\">RLE International</span> <a href=\"/projects/project-pipeline\" class=\"theme-link\">Project Pipeline</a> data."
+longDescription: "A <span class=\"theme-link\">Power BI</span> report outlining the activity within the <a href=\"/projects/project-pipeline\" class=\"theme-link\">Project Pipeline</a> <span class=\"theme-link\">Power Apps</span> tool, analysing the use of the tool by user and region helping identify weaknesses in data input and aging data.<br><br>Users could use the report to also see upcoming and overdue tasks to see where bottlenecks existed and visualise ageing leads for possible projects."
+lessonsLearned: "The key lessons learned on this report was working to extract useful graphics from the <a href=\"/projects/project-pipeline\" class=\"theme-link\">Project Pipeline</a> tool to help understand its usage and how to identify gaps in its use."
+name: "Pipeline App User Report"
 ---
-
 # Pipeline App User Report
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -71,23 +74,25 @@ WHERE file = this.file
 
 ## Short Description
 
-The report section for the <a href="/portfolio/projects/Financial Tracker" class="theme-link">Financial Tracker</a> showing global <span class="theme-link">RLE International</span> <a href="/portfolio/projects/Project Pipeline" class="theme-link">Project Pipeline</a> data.
+The report section for the [[Financial Tracker]] showing global [[RLE International]] [[Project Pipeline]] data.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-TBC
+A [[Power BI]] report outlining the activity within the [[Project Pipeline]] [[Power Apps]] tool, analysing the use of the tool by user and region helping identify weaknesses in data input and aging data.
+
+Users could use the report to also see upcoming and overdue tasks to see where bottlenecks existed and visualise ageing leads for possible projects.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: TBC
-- Back end/Datasource: TBC
-- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories))
+- Front end: [[Power BI]]
+- Back end/Datasource: [[SharePoint]], [[Power Query]]
+- Hosting: [[SharePoint]]
 - Security: n/a
-- Authentication: TBC
+- Authentication: [[SharePoint]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -100,7 +105,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -114,13 +119,14 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
-- TBC
+- [[GPMO]]
+- [[Project Pipeline]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-TBC
+The key lessons learned on this report was working to extract useful graphics from the [[Project Pipeline]] tool to help understand its usage and how to identify gaps in its use.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

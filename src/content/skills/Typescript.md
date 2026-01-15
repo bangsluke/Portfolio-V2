@@ -7,7 +7,7 @@ tags:
   - skill
   - notes
   - portfolio
-modified: 2025-07-18T12:12:54+01:00
+modified: 2025-08-18T07:28:35+01:00
 created: 2023-08-18T15:44:00
 viewCount: 7
 aliases:
@@ -16,12 +16,11 @@ skillRating: 45
 skillDescription: A reasonable understanding and application of TypeScript, with a couple of larger projects built using it.
 logoFileName: typescript.svg
 ---
-
 # Typescript
 
-> [!back] Link back to <span class="theme-link">Skills Notes</span>
+> [!back] Link back to [[Skills Notes]]
 
-> Superset language of: <span class="theme-link">JavaScript</span>
+> Superset language of: [[JavaScript]]
 
 ## Table of Contents
 
@@ -32,6 +31,7 @@ logoFileName: typescript.svg
 
 - [TypeScript Site](https://www.typescriptlang.org/)
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- [React TypeScript Cheatsheet](https://github.com/typescript-cheatsheets/react)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

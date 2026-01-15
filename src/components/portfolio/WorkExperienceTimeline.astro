@@ -2,12 +2,14 @@
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { processObsidianLink } from '../../utils/content-processor';
+import { extractNameFromFilename } from '../../utils/filename-utils';
 import Heading from '../ui/Heading.astro';
 import WorkExperienceItem from './WorkExperienceItem.astro';
 
-// Get all roles and companies from the local content folder
+// Get all roles, companies, and clients from the local content folder
 const roles = await getCollection('roles');
 const companies = await getCollection('companies');
+const clients = await getCollection('clients');
 
 // Process company data for each role
 const rolesWithCompanyData = await Promise.all(
@@ -20,25 +22,34 @@ const rolesWithCompanyData = await Promise.all(
 			// Process the first company for display
 			processedLinkedCompany = processObsidianLink(role.data.linkedCompany[0]);
 
-			// Get company logos for all companies
+			// Get company/client logos for all linked entities
 			allCompanyLogos = await Promise.all(
 				role.data.linkedCompany.map(async companyLink => {
 					let logoURL: string | null = null;
-					// Extract company name from Obsidian link format [[Company Name]]
-					const companyName = companyLink.replace(/\[\[(.*?)\]\]/, '$1');
+					// Extract company/client name from Obsidian link format [[Company Name]]
+					const entityName = companyLink.replace(/\[\[(.*?)\]\]/, '$1');
 
-					// Find company in the pre-fetched companies collection
+					// First try to find in companies collection
 					const company = companies.find(
-						company => company.id === companyName.replace('.md', '')
+						company => company.id === extractNameFromFilename(entityName)
 					);
 
 					if (company && company.data.logoURL) {
 						logoURL = company.data.logoURL;
+					} else {
+						// If not found in companies, try clients collection
+						const client = clients.find(
+							client => client.id === extractNameFromFilename(entityName)
+						);
+
+						if (client && client.data.logoURL) {
+							logoURL = client.data.logoURL;
+						}
 					}
 
 					return {
 						logoURL,
-						name: companyName,
+						name: entityName,
 					};
 				})
 			);
@@ -58,8 +69,13 @@ const rolesWithCompanyData = await Promise.all(
 	})
 );
 
+// Filter out roles with "voluntary" tag
+const nonVoluntaryRoles = rolesWithCompanyData.filter(
+	role => !role.data.tags || !role.data.tags.includes('voluntary')
+);
+
 // Sort roles by dateStart date (newest first)
-const sortedRoles = rolesWithCompanyData.sort((a, b) => {
+const sortedRoles = nonVoluntaryRoles.sort((a, b) => {
 	// Sort by dateStart date, fallback to dateEnd date, then alphabetically
 	const dateA = a.data.dateStart || a.data.dateEnd || new Date(0);
 	const dateB = b.data.dateStart || b.data.dateEnd || new Date(0);
@@ -77,15 +93,15 @@ const displayedRoles = sortedRoles.slice(0, 3);
 const hasMoreItems = sortedRoles.length > 3;
 ---
 
-<section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="experience">
-	<div class="flex flex-col pt-8 max-w-4xl mx-auto">
+<section class="main-section pt-8 pb-12 md:pt-12" id="experience">
+	<div class="flex flex-col max-w-4xl mx-auto">
 		<div class="flex gap-4 items-center justify-center">
 			<Icon class="text-3xl dark:text-white text-blacktext" name="briefcase" />
 			<Heading text="Work" textGradient="Experience" level={2} />
 		</div>
 
 		<div
-			class="relative max-md:mt-0 mt-8 group"
+			class="relative max-md:mt-0 group"
 			aria-label="Professional experience">
 			<ol class="relative mt-10">
 				{
@@ -99,10 +115,11 @@ const hasMoreItems = sortedRoles.length > 3;
 									aria-describedby={`experience-title-${index}`}>
 									<WorkExperienceItem
 										{...role.data}
-										name={role.data.name || role.id.replace('.md', '')}
+										name={role.data.name || extractNameFromFilename(role.id)}
 										processedLinkedCompany={role.processedLinkedCompany}
 										companyLogoURL={role.companyLogoURL}
 										allCompanyLogos={role.allCompanyLogos}
+										useShort={true}
 									/>
 								</div>
 							</article>

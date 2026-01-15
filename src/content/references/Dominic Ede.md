@@ -6,8 +6,8 @@ tags:
   - work
   - portfolio
   - reference
-modified: 2025-07-09T22:02:48+01:00
-viewCount: 4
+modified: 2025-07-24T14:31:29+01:00
+viewCount: 5
 aliases:
   - Dom Ede
   - Dom
@@ -15,22 +15,24 @@ birthday:
 died: 
 partneredWith: 
 marriageDate: 
-relatedTo: 
+relatedTo:
+  - Sophie
+  - Seb
 friendOf: 
 education: 
 linkedCompany:
   - "[[RLE International]]"
   - "[[RLE UK]]"
+  - "[[GPMO]]"
 referenceRole: Senior Project Consultant
 referenceEmail: dominic.ede@icloud.com
 referenceNumber: +44 7989 423267
 referenceAddress: RLE UK, Essex
 portfolioOrder: 1
 ---
-
 # Dominic Ede
 
-> [!back] Link back to <span class="theme-link">People Notes</span>
+> [!back] Link back to [[People Notes]]
 
 ## Table of Contents 
 

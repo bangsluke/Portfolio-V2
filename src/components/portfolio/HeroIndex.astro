@@ -1,4 +1,5 @@
 ---
+// @ts-expect-error - AstroError is not typed
 import { AstroError } from 'astro/errors';
 import { getCollection } from 'astro:content';
 import {
@@ -22,22 +23,22 @@ const portfolioConfig = await getPortfolioConfig();
 ---
 
 <section
-	class="scroll-m-16 px-8 max-sm:px-4 py-8"
+	class="main-section pt-8 pb-12 md:pt-12"
 	id="home"
 	aria-label="Professional profile and introduction">
 	<div
 		class="mx-auto mb-4 h-96 w-full max-w-7xl rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-50 dark:to-theme-200/5 hover:to-theme-300/30 dark:hover:to-theme-600/30 p-[.2rem] max-md:h-auto">
 		<div
-			class="group relative z-0 flex h-full items-center justify-center gap-8 overflow-hidden rounded-2xl bg-linear-to-tr from-riptide-100 to-white p-4 transition-all hover:shadow-[0_10px_50px_rgba(13,188,130,0.2)] dark:bg-linear-to-r dark:from-theme-950 dark:to-zinc-950 dark:overflow-hidden max-md:w-full max-md:gap-3 max-lg:gap-2 max-sm:flex-col dark:before:bg-[radial-gradient(circle,rgba(13,188,130)_0,rgba(1,45,34)_100%)] before:bg-[radial-gradient(circle,rgba(95,255,202)_0,rgba(144,253,210)_100%)] before:absolute before:left-65 before:top-10 before:h-[40%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-80 before:-z-10 before:transition hover:before:animate-pulse">
+			class="group relative z-10 flex h-full items-center justify-center gap-8 overflow-hidden rounded-2xl bg-linear-to-tr from-light-theme-accent-100 to-white p-4 transition-all hover:shadow-[0_10px_50px_var(--color-theme-500-rgba-02)] dark:bg-linear-to-r dark:from-theme-950 dark:to-zinc-950 dark:overflow-hidden max-md:w-full max-md:gap-3 max-lg:gap-2 max-sm:flex-col dark:before:bg-[radial-gradient(circle,var(--color-theme-500)_0,var(--color-theme-950)_100%)] before:bg-[radial-gradient(circle,var(--color-theme-300)_0,var(--color-theme-200)_100%)] before:absolute before:left-65 before:top-10 before:h-[40%] before:aspect-square before:rounded-full before:blur-3xl before:opacity-80 before:-z-10 before:transition hover:before:animate-pulse">
 			<div class="aspect-square h-4/5 max-md:size-32">
 				<div
-					class="group-hover:scale-105 relative z-10 flex w-full cursor-pointer items-center overflow-hidden rounded-full p-[2px] transition-all duration-500">
+					class="group-hover:scale-105 relative z-20 flex w-full cursor-pointer items-center overflow-hidden rounded-full p-[2px] transition-all duration-500">
 					<div
-						class="absolute inset-0 h-full w-full rounded-fullfrom-transparent to-riptide-500 dark:from-transparent f dark:to-theme-300 animate-rotate-border bg-conic/[from_var(--border-angle)]">
+						class="absolute inset-0 h-full w-full rounded-fullfrom-transparent to-light-theme-accent-500 dark:from-transparent f dark:to-theme-300 animate-rotate-border bg-conic/[from_var(--border-angle)]">
 					</div>
-					<div class="relative z-20 flex w-full rounded-full bg-theme-900">
+					<div class="relative z-30 flex w-full rounded-full bg-theme-900">
 						<div
-							class="w-full aspect-square rounded-full bg-center bg-cover"
+							class="w-full aspect-square rounded-full bg-center bg-cover brightness-120 dark:brightness-100"
 							style={`background-image: url(${staticData.data.profileImage})`}
 							aria-label={staticData.data.profileAlt}>
 							<a
@@ -53,33 +54,37 @@ const portfolioConfig = await getPortfolioConfig();
 				class="flex h-full w-7/12 flex-col justify-center gap-4 p-4 max-md:w-full max-md:gap-2">
 				{
 					portfolioConfig.lookingForWork && (
-						<span class="relative inline-flex items-center text-xs font-semibold leading-0 dark:text-white text-blacktext max-md:font-medium max-sm:justify-center">
-							<span class="before:mr-2 before:block before:h-1.5 before:w-1.5 before:rounded-full before:bg-green-400 before:shadow-[0px_0px_0px_3px_rgba(34,197,94,0.5)] before:animate-pulse before:content-['']" />
+						<span class="relative inline-flex items-center mb-2 md:mb-0 text-xs font-semibold leading-0 text-colour dark:text-zinc-300 max-md:font-medium max-sm:justify-center">
+							<span class="before:mr-2 before:block before:h-1.5 before:w-1.5 before:rounded-full before:bg-green-400 before:shadow-[0px_0px_0px_3px_var(--color-theme-400-rgba-03)] before:animate-pulse before:content-['']" />
 							Available for work
 						</span>
 					)
 				}
 
 				<h1
-					class="text-4xl font-black leading-none text-blacktext dark:text-white max-xl:text-3xl max-lg:text-2xl max-sm:text-center">
+					class="text-4xl font-black mb-2 md:mb-0 leading-none text-colour dark:text-zinc-300 max-xl:text-3xl max-lg:text-2xl max-sm:text-center">
 					{staticData.data.profileName} 👋
 				</h1>
+
 				<p
-					class="mb-0 text-lg font-semibold leading-8 text-blacktext dark:text-gray-200 max-xl:text-base"
+					class="mb-2 md:mb-0 text-lg font-semibold leading-6 md:leading-8 text-colour dark:text-zinc-300 max-xl:text-base"
 					set:html={processContent(heroDescription)}
 				/>
 
-				<div class="flex gap-4 max-sm:flex-col max-sm:items-center">
+				<div
+					class="flex gap-4 max-sm:flex-row max-sm:items-center max-sm:justify-center max-sm:gap-2">
 					<Button
 						link={'mailto:' + staticData.data.email}
 						text={staticData.data.contactSectionButtonText}
 						iconName={staticData.data.emailIconName}
+						class="max-sm:!text-sm"
 					/>
 					<Button
 						link={staticData.data.profileLink}
 						text="About Me"
 						iconName="person"
 						variant="dark"
+						class="max-sm:!text-sm"
 					/>
 				</div>
 			</div>

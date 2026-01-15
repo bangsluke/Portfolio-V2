@@ -5,16 +5,16 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-07-19T10:05:29+01:00
-viewCount: 8
-aliases: 
+modified: 2025-09-08T10:32:29+01:00
+viewCount: 13
+aliases:
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/efd30e67-8ed4-4807-95cb-11f46a62d7d2/ReportSectiona3c344f318d21cde0ced?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
-codeURL: 
+codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
-folderURL: 
-logoURL: https://i.imgur.com/SFb7UNB.png
-imageURL: 
+folderURL: https://app.powerbi.com/groups/5dc8490c-b5de-49a3-85f9-9eaee02b7d96/list?experience=power-bi
+logoURL: https://i.postimg.cc/pVYFhDH1/Finance-Reports.png
+imageURL: https://i.postimg.cc/zfbshgk7/GPMO-Reports.png
 dateStart: 2024-07-01
 dateEnd: 2024-07-10
 technologies:
@@ -22,6 +22,7 @@ technologies:
   - "[[Power Query]]"
   - "[[SharePoint]]"
   - "[[SQL]]"
+  - "[[DevOps]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -35,15 +36,15 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 4
-shortDescription: "The report section for the <a href=\"/portfolio/projects/Financial Tracker\" class=\"theme-link\">Financial Tracker</a> showing global <span class=\"theme-link\">RLE International</span> data."
-longDescription: "TBC"
-lessonsLearned: "TBC"
+portfolioOrder: 6
+shortDescription: "A group of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> data. Includes the <a href=\"/projects/group-sales-report\" class=\"theme-link\">Group Sales Report</a>, <a href=\"/projects/pipeline-app-user-report\" class=\"theme-link\">Pipeline App User Report</a> and <a href=\"/projects/project-finance-tracking-report\" class=\"theme-link\">Project Finance Tracking Report</a>."
+longDescription: "A collection of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> projects, focused on analysing the data important to the <span class=\"theme-link\">GPMO</span> team to ensure full data population to provide a full picture to the company's management.<br><br>Includes the <a href=\"/projects/group-sales-report\" class=\"theme-link\">Group Sales Report</a>, <a href=\"/projects/pipeline-app-user-report\" class=\"theme-link\">Pipeline App User Report</a> and <a href=\"/projects/project-finance-tracking-report\" class=\"theme-link\">Project Finance Tracking Report</a>."
+lessonsLearned: "This project really taught me about <span class=\"theme-link\">Power BI</span> workspaces and grouping reports. Further lessons were learned within the individual report projects."
+name: "GPMO Reports"
 ---
-
 # GPMO Reports
 
-> [!back] Link back to <span class="theme-link">Projects</span>
+> [!back] Link back to [[01 Projects|Projects]]
 
 >[!website-link] Links
 > ```dataview
@@ -74,23 +75,25 @@ WHERE file = this.file
 
 ## Short Description
 
-The report section for the <a href="/portfolio/projects/Financial Tracker" class="theme-link">Financial Tracker</a> showing global <span class="theme-link">RLE International</span> data.
+A group of [[Power BI]] reports for global [[RLE International]] data. Includes the [[Group Sales Report]], [[Pipeline App User Report]] and [[Project Finance Tracking Report]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-TBC
+A collection of [[Power BI]] reports for global [[RLE International]] projects, focused on analysing the data important to the [[GPMO]] team to ensure full data population to provide a full picture to the company's management.
+
+Includes the [[Group Sales Report]], [[Pipeline App User Report]] and [[Project Finance Tracking Report]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: TBC
-- Back end/Datasource: TBC
-- Hosting: <span class="theme-link">GitLab</span> (see [Repositories](#repositories))
+- Front end: [[Power BI]]
+- Back end/Datasource: [[SharePoint]], [[Power Query]], [[SQL]]
+- Hosting: [[SharePoint]]
 - Security: n/a
-- Authentication: TBC
+- Authentication: [[SharePoint]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -103,7 +106,7 @@ TBC
 
 ## PowerShell Query
 
-To launch the repo, use the <span class="theme-link">PowerShell</span> alias 
+To launch the repo, use the [[PowerShell]] alias 
 
 > `=this.powerShellAlias`
 
@@ -117,16 +120,17 @@ To launch the repo, use the <span class="theme-link">PowerShell</span> alias
 
 ## Other Links
 
+- [[GPMO]]
 - Sub sections:
-	- <a href="/portfolio/projects/Pipeline App User Report" class="theme-link">Pipeline App User Report</a>
-	- <a href="/portfolio/projects/Group Sales Report" class="theme-link">Group Sales Report</a>
-	- <a href="/portfolio/projects/Project Finance Tracking Report" class="theme-link">Project Finance Tracking Report</a>
+	- [[Pipeline App User Report]]
+	- [[Group Sales Report]]
+	- [[Project Finance Tracking Report]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-TBC
+This project really taught me about [[Power BI]] workspaces and grouping reports. Further lessons were learned within the individual report projects.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

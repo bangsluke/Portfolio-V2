@@ -4,36 +4,47 @@ tags:
   - role
   - portfolio
 created: 2025-07-16T09:36:00
-modified: 2025-07-21T18:30:34+01:00
-viewCount: 3
+modified: 2026-01-08T15:38:25+00:00
+viewCount: 1
 dateStart: 2016-02-01
 dateEnd: 2018-06-01
 linkedCompany:
   - "[[RLE International]]"
   - "[[Ford]]"
-roleDescription: "Development of lightweight rear closure door hinges to replace a high-volume multinational OEM’s overly complex design for a weight and cost saving. Steel cast hinges incorporated with a new check arm design that became common across all commercial vehicle variants. Cross-continental implementation in three production plants achieved through managing multiple supply chain costs and timing. Continued interaction with suppliers to find cost down opportunities, functionally test the designed system and improve assembly processes for enhanced part quality."
-keyAchievement: "TBC"
+shortRoleDescription: "Implementation of a new lightweight rear closure door hinge concept across three plants worldwide, saving 2kg of weight per vehicle and saving the customer over $8m across the vehicle lifetime."
+fullRoleDescription: "Development of lightweight rear closure door hinges to replace a high-volume multinational OEM's overly complex design for a weight (2kg) and cost saving (lifetime saving of over $8m). Steel cast hinges incorporated with a new check arm design that became common across all commercial vehicle variants. Durability action to D-Pillar structure to tackle ongoing production issues.<br><br>Cross-continental implementation in three production plants achieved through managing multiple supply chain costs and timing. Continued interaction with suppliers to find cost down opportunities, functionally test the designed system and improve assembly processes for enhanced part quality.<br><br>Ongoing progression of other cost saving changes, taking ideas from concept to implementation across V362 & V363."
+keyAchievement: "Implementation of the rear door hinge cost reduction concept, saving the customer over $8m over the vehicle's lifetime."
 ---
-
 # TVM Engineer
 
-> [!back] Link back to <span class="theme-link">Role Notes</span>
+> [!back] Link back to [[Role Notes]]
 
-> Total Value Management
+> Total Value Management Engineer
+> LBANGS@ford.com
 
 ## Table of Contents
 ```table-of-contents
 ```
 
-## Role Description
+## Short Role Description
 
-Development of lightweight rear closure door hinges to replace a high-volume multinational OEM’s overly complex design for a weight and cost saving. Steel cast hinges incorporated with a new check arm design that became common across all commercial vehicle variants. Cross-continental implementation in three production plants achieved through managing multiple supply chain costs and timing. Continued interaction with suppliers to find cost down opportunities, functionally test the designed system and improve assembly processes for enhanced part quality.
+Implementation of a new lightweight rear closure door hinge concept across three plants worldwide, saving 2kg of weight per vehicle and saving the customer over $8m across the vehicle lifetime.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Full Role Description
+
+Development of lightweight rear closure door hinges to replace a high-volume multinational OEM's overly complex design for a weight (2kg) and cost saving (lifetime saving of over $8m). Steel cast hinges incorporated with a new check arm design that became common across all commercial vehicle variants. Durability action to D-Pillar structure to tackle ongoing production issues.
+
+Cross-continental implementation in three production plants achieved through managing multiple supply chain costs and timing. Continued interaction with suppliers to find cost down opportunities, functionally test the designed system and improve assembly processes for enhanced part quality.
+
+Ongoing progression of other cost saving changes, taking ideas from concept to implementation across V362 & V363.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Key Achievement
 
-TBC
+Implementation of the rear door hinge cost reduction concept, saving the customer over $8m over the vehicle's lifetime.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
