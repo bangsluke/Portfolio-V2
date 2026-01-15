@@ -1,6 +1,16 @@
 {
 	"extends": "astro/tsconfigs/strict",
-	"include": [".astro/types.d.ts", "src/**/*"],
+	"include": [
+		".astro/types.d.ts",
+		"src/**/*",
+		"__tests__/unit/content-processor.test.ts",
+		"__tests__/unit/date-formatter.test.ts",
+		"__tests__/unit/filename-utils.test.ts",
+		"__tests__/unit/jest.setup.ts",
+		"__tests__/unit/languages.test.ts",
+		"__tests__/unit/Logo.test.ts",
+		"__tests__/unit/web-scraper-accessibility.test.ts"
+	],
 	"exclude": ["dist", "**/*.astro"],
 	"compilerOptions": {
 		"jsx": "react-jsx",
