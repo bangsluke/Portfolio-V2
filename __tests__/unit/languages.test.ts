@@ -1,4 +1,4 @@
-import { getLanguage, languages } from '../utils/languages';
+import { getLanguage, languages } from '../../src/utils/languages';
 
 describe('languages', () => {
 	test('contains expected language definitions', () => {

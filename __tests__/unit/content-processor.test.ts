@@ -3,7 +3,7 @@ import {
 	processContent,
 	processMarkdownContent,
 	processObsidianLink,
-} from '../utils/content-processor';
+} from '../../src/utils/content-processor';
 
 describe('processContent', () => {
 	test('handles null and undefined content', () => {
