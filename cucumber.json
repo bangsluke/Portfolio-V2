@@ -1,0 +1,7 @@
+{
+	"default": {
+		"import": ["__tests__/e2e/steps/**/*.ts"],
+		"paths": ["__tests__/e2e/features/**/*.feature"],
+		"format": ["pretty"]
+	}
+}

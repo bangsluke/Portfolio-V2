@@ -1,7 +1,7 @@
 import {
 	extractNameFromFilename,
 	extractNameFromFilenameString,
-} from '../utils/filename-utils';
+} from '../../src/utils/filename-utils';
 
 describe('extractNameFromFilename', () => {
 	test('removes .md extension from filename', () => {
