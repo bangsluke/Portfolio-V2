@@ -25,7 +25,8 @@ const {
 	isExternal = false,
 	isActive = false,
 	class: className = '',
-} = Astro.props as Props;
+	...restProps
+} = Astro.props as Props & Record<string, any>;
 import { Icon } from 'astro-icon/components';
 
 // Common base classes for all buttons
@@ -161,6 +162,7 @@ const loadingAriaLabel = isLoading
 		aria-busy={isLoading}
 		aria-pressed={isActive}
 		{...externalAttributes}
+		{...restProps}
 		data-haptic-button>
 		{
 			iconName && (
