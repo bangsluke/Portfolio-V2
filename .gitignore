@@ -25,3 +25,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Playwright
+/__tests__/e2e/test-results/
+/__tests__/e2e/playwright-report/
+/__tests__/e2e/blob-report/
+/__tests__/e2e/playwright/.cache/
+/__tests__/e2e/playwright/.auth/

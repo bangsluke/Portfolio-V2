@@ -1,4 +1,4 @@
-import { formatDateToMMMYYYY } from '../utils/date-formatter';
+import { formatDateToMMMYYYY } from '../../src/utils/date-formatter';
 
 describe('formatDateToMMMYYYY', () => {
 	test('formats full date string correctly', () => {
