@@ -122,7 +122,8 @@ const baseClasses = {
 					class={baseClasses.link}
 					data-path={item.path}
 					aria-label={item.name}
-					aria-current={item.path === Astro.url.pathname ? 'page' : undefined}>
+					aria-current={item.path === Astro.url.pathname ? 'page' : undefined}
+					data-testid={`nav-link-${item.name.toLowerCase().replace(/ /g, '-')}`}>
 					{item.name}
 				</a>
 			);

@@ -13,8 +13,33 @@ const baseUrl = getBaseUrl();
 
 export const testData = {
 	mainPageUrl: baseUrl,
+	email: 'bangsluke@gmail.com',
 	description:
 		'Enthusiastic and personable professional with a passion for data and software, seeking a dynamic role to apply strong organisational skills, logical thinking and effective communication to drive long-term success. Open to positions where I can make a positive impact including Software Developer, DevOps Engineer or Product Owner',
 	skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js'],
 	downloadCVUrl: `${baseUrl}Luke-Bangs-CV.pdf`,
+	sectionIds: {
+		home: 'home',
+		skills: 'skills',
+		projects: 'projects',
+		experience: 'experience',
+		clients: 'customers-and-clients',
+		education: 'education',
+		references: 'references',
+	},
+	navigationPaths: {
+		home: '/#home',
+		skills: '/#skills',
+		projects: '/#projects',
+		experience: '/#experience',
+		clients: '/#customers-and-clients',
+		education: '/#education',
+		references: '/#references',
+		about: '/about-me',
+	},
+	projectsPageUrl: `${baseUrl}projects`,
+	workExperiencePageUrl: `${baseUrl}work-experience`,
+	educationPageUrl: `${baseUrl}education`,
+	aboutMePageUrl: `${baseUrl}about-me`,
+	sampleProjectSlug: 'dorkinians-website-v3',
 };
