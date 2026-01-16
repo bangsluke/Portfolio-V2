@@ -27,8 +27,8 @@ pnpm-debug.log*
 .idea/
 
 # Playwright
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
+/__tests__/e2e/test-results/
+/__tests__/e2e/playwright-report/
+/__tests__/e2e/blob-report/
+/__tests__/e2e/playwright/.cache/
+/__tests__/e2e/playwright/.auth/
