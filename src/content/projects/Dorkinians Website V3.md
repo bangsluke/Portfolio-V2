@@ -9,7 +9,7 @@ tags:
 created: 2025-05-30 09:40
 modified: 2026-01-14T07:32:43+00:00
 aliases:
-viewCount: 41
+viewCount: 42
 projectURL: https://dorkinians-website-v3.netlify.app/
 codeURL: https://github.com/bangsluke/Dorkinians-Website-V3
 codeMultipleRepos: true
@@ -44,6 +44,7 @@ technologies:
   - "[[Google Maps]]"
   - "[[Google Cloud]]"
   - "[[NextAuth]]"
+  - "[[Express.js]]"
 projectCategory: Personal Design
 linkedCompany:
   - "[[Dorkinians FC]]"

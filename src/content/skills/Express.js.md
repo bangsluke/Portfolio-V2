@@ -1,40 +1,36 @@
 ---
 tags:
   - tag
-  - software
+  - framework
   - coding
-  - testing
-  - skill
+  - software
+  - notes
   - portfolio
-modified: 2026-01-15T18:25:24+00:00
-viewCount: 6
+  - skill
+created: 2026-01-16
+modified: 2026-01-16T09:02:32+00:00
+viewCount: 2
 aliases:
+  - Express
 skillRating: 25
-skillDescription: Used for a couple of projects to set up automated E2E testing, combined with GitHub actions for scheduled runs.
-logoFileName: playwright.svg
+skillDescription: Utilised within a few projects to set up basic servers and API routes.
+logoFileName: expressjs.svg
 ---
-# Playwright
+# Express.js
 
 > [!back] Link back to [[Skills Notes]]
 
-> [[JavaScript]] testing library
+A framework for [[Node.js]]
 
-## Table of Contents
+## Table of Contents 
 
 ```table-of-contents
 ```
 
-## Useful Commands
-
-- `npx playwright test` - Runs all of the Playwright tests
-- `npx playwright test --ui` - Run the tests visually in a specific Playwright test window (opens a new pop up)
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Links
 
-- [Playwright Documentation - Fast and reliable end-to-end testing for modern web apps](https://playwright.dev/)
-- [Explore design patterns in Playwright - Microsoft Playwright Video Tutorial \| LinkedIn Learning](https://www.linkedin.com/learning/playwright-design-patterns/welcome) - [[Playwright]]
+- [Astro Build Documentation](https://astro.build/)
+- [Astro Docs - Guides, resources, and API references to help you build with Astro](https://docs.astro.build/en/getting-started/)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
