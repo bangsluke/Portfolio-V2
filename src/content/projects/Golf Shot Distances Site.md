@@ -8,7 +8,7 @@ tags:
 created: 2025-07-13 16:48
 modified: 2025-08-07T07:59:18+01:00
 aliases:
-viewCount: 8
+viewCount: 9
 projectURL: https://golf-shot-distances.netlify.app/
 codeURL: https://github.com/bangsluke/golf-shot-distances
 codeMultipleRepos: false
@@ -28,6 +28,7 @@ technologies:
   - "[[Prettier]]"
   - "[[Typescript]]"
   - "[[Tailwind CSS]]"
+  - "[[Express.js]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a

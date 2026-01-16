@@ -8,7 +8,7 @@ tags:
   - project/parked
 created: 2025-05-16T09:29:00
 modified: 2025-08-13T20:56:19+01:00
-viewCount: 37
+viewCount: 38
 aliases:
   - Travel Journal
   - mytraveljournal
@@ -41,6 +41,7 @@ technologies:
   - "[[VS Code]]"
   - "[[Obsidian]]"
   - "[[Codeium]]"
+  - "[[Express.js]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
