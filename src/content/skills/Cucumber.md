@@ -6,35 +6,26 @@ tags:
   - testing
   - skill
   - portfolio
-modified: 2026-01-15T18:25:24+00:00
-viewCount: 6
-aliases:
-skillRating: 25
-skillDescription: Used for a couple of projects to set up automated E2E testing, combined with GitHub actions for scheduled runs.
-logoFileName: playwright.svg
+modified: 2026-01-16T07:32:59+00:00
+viewCount: 2
+skillRating: 15
+skillDescription: Used on a single project to implement behaviour driven development.
+logoFileName: cucumber.svg
 ---
-# Playwright
+# Cucumber
 
 > [!back] Link back to [[Skills Notes]]
 
-> [[JavaScript]] testing library
+> [[JavaScript]]/[[Typescript]] [[E2E]] testing library to support [[Playwright]]
 
 ## Table of Contents
 
 ```table-of-contents
 ```
 
-## Useful Commands
-
-- `npx playwright test` - Runs all of the Playwright tests
-- `npx playwright test --ui` - Run the tests visually in a specific Playwright test window (opens a new pop up)
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Links
 
-- [Playwright Documentation - Fast and reliable end-to-end testing for modern web apps](https://playwright.dev/)
-- [Explore design patterns in Playwright - Microsoft Playwright Video Tutorial \| LinkedIn Learning](https://www.linkedin.com/learning/playwright-design-patterns/welcome) - [[Playwright]]
+- n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
