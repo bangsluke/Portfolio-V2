@@ -11,6 +11,17 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+// Determine base URL based on environment
+const getBaseUrl = (): string => {
+	if (process.env.BASE_URL || process.env.PLAYWRIGHT_BASE_URL) {
+		return process.env.BASE_URL || process.env.PLAYWRIGHT_BASE_URL || '';
+	}
+	// Use localhost for development, production URL for CI
+	return process.env.CI || process.env.NODE_ENV === 'production'
+		? 'https://bangsluke-portfolio.netlify.app/'
+		: 'http://localhost:4321';
+};
+
 export default defineConfig({
   testDir: './__tests__/e2e',
   /* Run tests in files in parallel */
@@ -28,10 +39,13 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: getBaseUrl(),
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
+    video: 'retain-on-failure',
+    screenshot: 'only-on-failure',
+
   },
 
   /* Configure projects for major browsers */

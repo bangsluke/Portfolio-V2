@@ -1,3 +1,4 @@
+// An example of a step file for the home page using Cucumber
 import { Given, Then, When } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { page } from '../utils/browserSetup.ts';
