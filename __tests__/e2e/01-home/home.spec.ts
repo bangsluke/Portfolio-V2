@@ -7,7 +7,7 @@ test.describe('Home Page Tests', () => {
 	// Before each test, navigate to the home page and wait for it to load
 	test.beforeEach(async ({ page }) => {
 		await page.goto(testData.mainPageUrl, {
-			timeout: 30000,
+			timeout: 10000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);

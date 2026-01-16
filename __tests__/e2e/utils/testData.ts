@@ -37,9 +37,11 @@ export const testData = {
 		references: '/#references',
 		about: '/about-me',
 	},
-	projectsPageUrl: `${baseUrl}projects`,
-	workExperiencePageUrl: `${baseUrl}work-experience`,
-	educationPageUrl: `${baseUrl}education`,
-	aboutMePageUrl: `${baseUrl}about-me`,
+	projectsPageUrl: `${baseUrl}/projects`,
+	workExperiencePageUrl: `${baseUrl}/work-experience`,
+	educationPageUrl: `${baseUrl}/education`,
+	aboutMePageUrl: `${baseUrl}/about-me`,
 	sampleProjectSlug: 'dorkinians-website-v3',
+	exampleProjectDescriptionText:
+		'Building on the foundations of the previous Dorkinians Website',
 };

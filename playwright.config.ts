@@ -47,6 +47,13 @@ export default defineConfig({
     screenshot: 'only-on-failure',
 
   },
+  webServer: {
+    command: 'npm run preview',
+    port: 4321,
+    reuseExistingServer: true,
+    timeout: 60000,
+  },
+  
 
   /* Configure projects for major browsers */
   projects: [
