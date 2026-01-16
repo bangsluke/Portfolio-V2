@@ -61,6 +61,25 @@ projects.forEach(project => {
 	}
 });
 
+// Get skill group function (same logic as SkillsBubbleChart)
+function getSkillGroup(tags: string[]): string {
+	if (tags.includes('framework') || tags.includes('library')) {
+		return 'Frameworks & Libraries';
+	} else if (tags.includes('language')) {
+		return 'Languages';
+	} else if (tags.includes('tool') || tags.includes('platform')) {
+		return 'Tools & Platforms';
+	} else if (tags.includes('database')) {
+		return 'Databases';
+	} else if (tags.includes('cloud') || tags.includes('devops')) {
+		return 'Cloud & DevOps';
+	} else if (tags.includes('hosting')) {
+		return 'Hosting';
+	} else {
+		return 'Other';
+	}
+}
+
 // Count technology usage across all projects and find matching skills
 allTechnologies.forEach(tech => {
 	const count = getProjectCount(tech, tech, projects);
@@ -113,6 +132,12 @@ allTechnologies.forEach(tech => {
 
 	if (skillData) {
 		tags = skillData.data.tags || [];
+	}
+
+	// Filter out "Other" and "Hosting" group skills
+	const group = getSkillGroup(tags);
+	if (group === 'Other' || group === 'Hosting') {
+		return;
 	}
 
 	// Add to techs array
@@ -284,7 +309,8 @@ const techData = {
 					<!-- Skills Table View - Always visible to web crawlers but visually hidden for users -->
 					<div
 						id="skills-table-view"
-						class="block hidden bg-white dark:bg-theme-950 rounded-2xl p-2 md:p-6 overflow-hidden absolute inset-0 top-2">
+						class="block hidden bg-white dark:bg-theme-950 rounded-2xl p-2 md:p-6 overflow-hidden absolute inset-0 top-2"
+						data-testid="skills-table-view">
 						<div class="overflow-y-auto h-full">
 							<!-- Skills Table View layout -->
 							<div class="block space-y-3">
@@ -295,7 +321,9 @@ const techData = {
 												(b.data.skillRating || 0) - (a.data.skillRating || 0)
 										)
 										.map(skill => (
-											<div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+											<div
+												class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700"
+												data-testid={`skills-table-item-${extractNameFromFilename(skill.id || skill.slug)}`}>
 												{/* Top row: Name, Logo, Rating, Project Count */}
 												<div class="flex items-center justify-between gap-3 mb-2 h-6">
 													{/* Name */}

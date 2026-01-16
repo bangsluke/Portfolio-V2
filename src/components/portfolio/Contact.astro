@@ -30,8 +30,9 @@ if (!staticData) {
 						variant="big"
 						link={`mailto:${staticData.data.email}`}
 						text={staticData.data.contactSectionButtonText}
-						iconName={staticData.data.contactSectionButtonIcon}
+						iconName={staticData.data.emailIconName}
 						class="!py-4 !text-lg max-xl:!text-base max-sm:!text-sm transition-all duration-500 hover:scale-110"
+						data-testid="contact-me-button-bottom-section"
 					/>
 					<Button
 						variant="dark"
