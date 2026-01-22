@@ -7,7 +7,7 @@ tags:
   - coding
   - work
 created: 2025-05-30 09:57
-modified: 2025-09-08T10:30:13+01:00
+modified: 2026-01-21T09:22:15+00:00
 viewCount: 18
 aliases:
 projectURL: https://gpmo.rle.international/
@@ -20,13 +20,13 @@ imageURL: https://i.postimg.cc/s2kt4g6d/GPMO-Documentation-Site.png
 dateStart: 2024-02-01
 dateEnd: 2024-07-31
 technologies:
-  - "[[React]]"
   - "[[Docusaurus]]"
   - "[[Markdown]]"
   - "[[GitLab]]"
   - "[[Azure]]"
   - "[[VS Code]]"
-  - "[[DevOps]]"
+  - "[[Azure DevOps]]"
+  - "[[React]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

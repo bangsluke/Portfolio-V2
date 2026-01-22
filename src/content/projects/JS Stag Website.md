@@ -6,7 +6,7 @@ tags:
   - coding
   - project/completed
 created: 2025-05-30 10:00
-modified: 2025-07-19T10:11:15+01:00
+modified: 2026-01-21T09:22:45+00:00
 aliases:
 viewCount: 12
 projectURL: https://js-stag.netlify.app/
@@ -19,12 +19,12 @@ imageURL: https://i.postimg.cc/4yZqjFTZ/JS-Stag.png
 dateStart: 2023-03-23
 dateEnd: 2023-05-11
 technologies:
-  - "[[Vite.js]]"
-  - "[[React]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
   - "[[Snyk]]"
   - "[[VS Code]]"
+  - "[[Vite.js]]"
+  - "[[React]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a

@@ -4,15 +4,15 @@ tags:
   - software
   - skill
   - portfolio
-modified: 2025-07-02T14:31:35+01:00
-viewCount: 3
+modified: 2026-01-21T08:43:58+00:00
+viewCount: 4
 aliases:
-  - Azure DevOps
-skillRating: 70
+  - DevOps
+skillRating: 75
 skillDescription: Managed several projects as development lead using Azure DevOps to track progress and report on sprint progress, building report dashboards within DevOps.
 logoFileName: azure_devops.svg
 ---
-# DevOps
+# Azure DevOps
 
 > [!back] Link back to [[Skills Notes]]
 

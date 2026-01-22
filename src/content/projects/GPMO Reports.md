@@ -22,7 +22,7 @@ technologies:
   - "[[Power Query]]"
   - "[[SharePoint]]"
   - "[[SQL]]"
-  - "[[DevOps]]"
+  - "[[Azure DevOps]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -36,7 +36,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 6
+portfolioOrder: 3
 shortDescription: "A group of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> data. Includes the <a href=\"/projects/group-sales-report\" class=\"theme-link\">Group Sales Report</a>, <a href=\"/projects/pipeline-app-user-report\" class=\"theme-link\">Pipeline App User Report</a> and <a href=\"/projects/project-finance-tracking-report\" class=\"theme-link\">Project Finance Tracking Report</a>."
 longDescription: "A collection of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> projects, focused on analysing the data important to the <span class=\"theme-link\">GPMO</span> team to ensure full data population to provide a full picture to the company's management.<br><br>Includes the <a href=\"/projects/group-sales-report\" class=\"theme-link\">Group Sales Report</a>, <a href=\"/projects/pipeline-app-user-report\" class=\"theme-link\">Pipeline App User Report</a> and <a href=\"/projects/project-finance-tracking-report\" class=\"theme-link\">Project Finance Tracking Report</a>."
 lessonsLearned: "This project really taught me about <span class=\"theme-link\">Power BI</span> workspaces and grouping reports. Further lessons were learned within the individual report projects."

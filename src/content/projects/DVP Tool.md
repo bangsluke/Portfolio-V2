@@ -7,7 +7,7 @@ tags:
   - project/completed/work
   - coding
 created: 2025-05-29 18:05
-modified: 2025-09-08T10:13:32+01:00
+modified: 2026-01-21T09:22:26+00:00
 aliases:
   - DVP Prototype
 viewCount: 19
@@ -21,17 +21,17 @@ imageURL: https://i.postimg.cc/7LFpnZsJ/DVP-Tool.png
 dateStart: 2022-06-01
 dateEnd: 2022-12-31
 technologies:
-  - "[[React]]"
   - "[[JavaScript]]"
   - "[[Neo4j]]"
   - "[[GitLab]]"
   - "[[Azure]]"
   - "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]"
-  - "[[Next.js]]"
-  - "[[Nest.JS]]"
   - "[[Cypress]]"
   - "[[VS Code]]"
   - "[[npm]]"
+  - "[[React]]"
+  - "[[Next.js]]"
+  - "[[Nest.JS]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

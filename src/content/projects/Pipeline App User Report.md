@@ -21,7 +21,7 @@ technologies:
   - "[[Power BI]]"
   - "[[Power Query]]"
   - "[[SharePoint]]"
-  - "[[DevOps]]"
+  - "[[Azure DevOps]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -35,7 +35,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 6
+portfolioOrder: 4
 shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing global <span class=\"theme-link\">RLE International</span> <a href=\"/projects/project-pipeline\" class=\"theme-link\">Project Pipeline</a> data."
 longDescription: "A <span class=\"theme-link\">Power BI</span> report outlining the activity within the <a href=\"/projects/project-pipeline\" class=\"theme-link\">Project Pipeline</a> <span class=\"theme-link\">Power Apps</span> tool, analysing the use of the tool by user and region helping identify weaknesses in data input and aging data.<br><br>Users could use the report to also see upcoming and overdue tasks to see where bottlenecks existed and visualise ageing leads for possible projects."
 lessonsLearned: "The key lessons learned on this report was working to extract useful graphics from the <a href=\"/projects/project-pipeline\" class=\"theme-link\">Project Pipeline</a> tool to help understand its usage and how to identify gaps in its use."

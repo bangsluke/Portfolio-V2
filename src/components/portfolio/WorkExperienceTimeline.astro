@@ -31,7 +31,7 @@ const rolesWithCompanyData = await Promise.all(
 
 					// First try to find in companies collection
 					const company = companies.find(
-						company => company.id === extractNameFromFilename(entityName)
+						company => company.id === entityName + '.md'
 					);
 
 					if (company && company.data.logoURL) {
@@ -39,7 +39,7 @@ const rolesWithCompanyData = await Promise.all(
 					} else {
 						// If not found in companies, try clients collection
 						const client = clients.find(
-							client => client.id === extractNameFromFilename(entityName)
+							client => client.id === entityName + '.md'
 						);
 
 						if (client && client.data.logoURL) {
