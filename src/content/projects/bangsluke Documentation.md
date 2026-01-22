@@ -22,7 +22,6 @@ imageURL: https://i.postimg.cc/SscHTb3X/bangsluke-Documentation.png
 dateStart: 2023-06-04
 dateEnd: 2024-07-14
 technologies:
-  - "[[React]]"
   - "[[Docusaurus]]"
   - "[[Markdown]]"
   - "[[GitHub]]"
@@ -31,6 +30,7 @@ technologies:
   - "[[Algolia]]"
   - "[[Yarn]]"
   - "[[VS Code]]"
+  - "[[React]]"
 projectCategory: Documentation
 linkedCompany:
   - n/a

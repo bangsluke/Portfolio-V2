@@ -22,7 +22,7 @@ technologies:
   - "[[Power Query]]"
   - "[[SharePoint]]"
   - "[[SQL]]"
-  - "[[DevOps]]"
+  - "[[Azure DevOps]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -36,7 +36,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 6
+portfolioOrder: 4
 shortDescription: "The report section for the <a href=\"/projects/project-finance-data-manager\" class=\"theme-link\">Project Finance Data Manager</a> showing individual <span class=\"theme-link\">RLE International</span> project data."
 longDescription: "A <span class=\"theme-link\">Power BI</span> report that allows users to select their project and drill through to see the forecast and actual finances for the project, as well as a tab showing project hours drawn in from the various timesheet systems."
 lessonsLearned: "The key lesson learned here was gathering the data from the <span class=\"theme-link\">SQL</span> data, rather than from <span class=\"theme-link\">SharePoint</span>."

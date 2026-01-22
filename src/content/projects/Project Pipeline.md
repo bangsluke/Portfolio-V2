@@ -22,7 +22,7 @@ technologies:
   - "[[Power Apps]]"
   - "[[Power Query]]"
   - "[[SharePoint]]"
-  - "[[DevOps]]"
+  - "[[Azure DevOps]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -35,7 +35,7 @@ topicTags:
   - "[[GPMO]]"
 powerShellAlias: n/a
 version: 5.1
-portfolioOrder: 4
+portfolioOrder: 3
 shortDescription: "A tool for identifying the progress of global <span class=\"theme-link\">RLE International</span> projects from lead to in-play, through to completion."
 longDescription: "A <span class=\"theme-link\">Power Apps</span> tool that utilised a project process defined internally within <span class=\"theme-link\">RLE International</span> and allowed users to create and track projects through various phases and stages.<br><br>Each phase had a set of user sign offs to provide process control with each stage below it having a RAG status and documentation explaining what is required to get to green.<br><br>Tasks along with in app notifications were also included in the application to help users pick up their required next steps quickly."
 lessonsLearned: "The main lessons learned for this tool were ensuring the application was very user friendly as we had a very wide user base across the company. Adding features such as sidebar notifications to flag which pages needed attention and task counts on the main dashboard as well as weekly email summaries to users with outstanding tasks was key in keeping all users regularly updating the system."

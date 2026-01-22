@@ -20,10 +20,8 @@ imageURL: https://i.postimg.cc/Yq7Xvd7n/Dorkinians-Website.png
 dateStart: 2025-08-14
 dateEnd: ""
 technologies:
-  - "[[Next.js]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
-  - "[[Node.js]]"
   - "[[Heroku]]"
   - "[[Google Apps Script]]"
   - "[[Google Sheets]]"
@@ -35,7 +33,6 @@ technologies:
   - "[[Playwright]]"
   - "[[Jest]]"
   - "[[YAML]]"
-  - "[[Tailwind CSS]]"
   - "[[npm]]"
   - "[[Typescript]]"
   - "[[Markdown]]"
@@ -44,7 +41,11 @@ technologies:
   - "[[Google Maps]]"
   - "[[Google Cloud]]"
   - "[[NextAuth]]"
+  - "[[Next.js]]"
   - "[[Express.js]]"
+  - "[[Tailwind CSS]]"
+  - "[[Node.js]]"
+  - "[[React]]"
 projectCategory: Personal Design
 linkedCompany:
   - "[[Dorkinians FC]]"
