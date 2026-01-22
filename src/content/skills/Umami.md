@@ -3,6 +3,8 @@ tags:
   - skill
   - tag
   - portfolio
+  - software
+  - analytics
 created: 2025-11-09 18:47
 modified: 2025-11-09T18:47:13+00:00
 aliases:

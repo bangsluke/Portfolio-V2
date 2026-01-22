@@ -7,7 +7,7 @@ tags:
   - sport
   - coding
 created: 2025-05-29 17:44
-modified: 2025-07-19T10:18:48+01:00
+modified: 2026-01-21T09:10:20+00:00
 aliases:
   - Dorkinians Mobile Stats
 viewCount: 13
@@ -21,7 +21,6 @@ imageURL: https://i.postimg.cc/0Q7hW1FJ/Dorkinians-Mobile-Site.png
 dateStart: 2022-12-07
 dateEnd: 2023-01-13
 technologies:
-  - "[[React]]"
   - "[[Google Sheets]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
@@ -30,8 +29,9 @@ technologies:
   - "[[Prettier]]"
   - "[[ESLint]]"
   - "[[Typescript]]"
-  - "[[Next.js]]"
   - "[[VS Code]]"
+  - "[[React]]"
+  - "[[Next.js]]"
 projectCategory: Personal Design
 linkedCompany:
   - "[[Dorkinians FC]]"

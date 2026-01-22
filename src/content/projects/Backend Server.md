@@ -3,10 +3,10 @@ tags:
   - project
   - portfolio
   - notes
-  - project/active
+  - project/completed
 created: 2025-06-23 13:36
-modified: 2025-12-25T07:02:10+00:00
-viewCount: 16
+modified: 2026-01-22T11:03:37+00:00
+viewCount: 18
 aliases:
   - backend-server
   - backend server
@@ -18,19 +18,19 @@ folderURL: n/a
 logoURL: https://i.postimg.cc/NMxp2sWq/Backend-Server.png
 imageURL: https://i.postimg.cc/Y0kZTywq/Backend-Server.png
 dateStart: 2025-06-24
-dateEnd: ""
+dateEnd: 2025-10-01
 technologies:
   - "[[Neo4j]]"
   - "[[Neo4j Aura]]"
   - "[[Heroku]]"
   - "[[Cypher]]"
   - "[[Python]]"
-  - "[[Flask]]"
   - "[[pip]]"
   - "[[GraphQL]]"
   - "[[npm]]"
   - "[[VS Code]]"
   - "[[Codeium]]"
+  - "[[Flask]]"
 projectCategory: Backend
 linkedCompany:
   - n/a
@@ -42,9 +42,9 @@ topicTags:
   - Backend
 powerShellAlias: backend
 version: 1
-portfolioOrder: 2
+portfolioOrder: 4
 shortDescription: "The backend server and source of data for several of my projects, allowing a singular point of management and maintenance."
-longDescription: "The source of data for several projects including my <a href=\"/projects/travel-website\" class=\"theme-link\">Travel Website</a> and <a href=\"/projects/portfolio-site-v2\" class=\"theme-link\">Portfolio Site V2</a>, providing a route for data retrieval from a <span class=\"theme-link\">Neo4j</span> graph using <span class=\"theme-link\">GraphQL</span> queries."
+longDescription: "The source of data for several projects including my <a href=\"/projects/dorkinians-website-v3\" class=\"theme-link\">Dorkinians Website V3</a> and <a href=\"/projects/travel-website\" class=\"theme-link\">Travel Website</a>, providing a route for data retrieval from a <span class=\"theme-link\">Neo4j</span> graph using <span class=\"theme-link\">GraphQL</span> queries."
 lessonsLearned: "Taught me about setting up a <span class=\"theme-link\">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class=\"theme-link\">Python</span> code in a growing codebase given my past experience with <span class=\"theme-link\">Python</span> had been for single script projects.<br><br>Also forced me into developing debugging documentation for myself after making the same mistakes twice and ensuring a third time never happened by writing a checklist for understanding why the backend server crashed."
 name: "Backend Server"
 ---
@@ -93,7 +93,7 @@ The backend server and source of data for several of my projects, allowing a sin
 
 ## Long Description
 
-The source of data for several projects including my [[Travel Website]] and [[Portfolio Site V2]], providing a route for data retrieval from a [[Neo4j]] graph using [[GraphQL]] queries.
+The source of data for several projects including my [[Dorkinians Website V3]] and [[Travel Website]], providing a route for data retrieval from a [[Neo4j]] graph using [[GraphQL]] queries.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -149,6 +149,7 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Other Links
 
+- [[Dorkinians Website V3]]
 - [[Travel Website]]
 - [Heroku Test Scheduler](https://dashboard.heroku.com/apps/bangsluke-backend-server/scheduler)
 - [Neo4j Aura database](https://console-preview.neo4j.io/projects/7a5b41a0-6373-5c3c-9fcf-48b80d5d38f2/instances)

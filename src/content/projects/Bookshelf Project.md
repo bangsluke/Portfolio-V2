@@ -36,7 +36,7 @@ topicTags:
   - "[[Ford]]"
 powerShellAlias: bookshelf
 version: 1
-portfolioOrder: 5
+portfolioOrder: 4
 shortDescription: "A gathering of files and folders from across various team <span class=\"theme-link\">SharePoint</span> sites into a combined <span class=\"theme-link\">Power BI</span> report enabling search and filtering."
 longDescription: "This project was built for a vehicle program that was paused where the customer wanted the progress and data saved for possible use again in the future.<br><br>My implemented solution used a <span class=\"theme-link\">VBA</span> script to loop through mapped <span class=\"theme-link\">SharePoint</span> sites and generate a <span class=\"theme-link\">CSV</span> of the sites structure, storing folder and file meta data.<br><br>The <span class=\"theme-link\">CSV</span>s were then passed through a <span class=\"theme-link\">Python</span> script, which used fuzzy matching to generate a set of tags for the files and clean any data ready for the <span class=\"theme-link\">Power BI</span> report.<br><br>A <span class=\"theme-link\">Power BI</span> report was then built to display the various <span class=\"theme-link\">SharePoint</span> data, using filters for site location, tags and file types to allow the user to sift through the data. Users could search the database of folders and files using their own search text and could follow the URL links to the specific item."
 lessonsLearned: "This project taught me how to use fuzzy matching with the correct fine tuning to extract usable tags from a list of data.<br><br>It also helped me improve my <span class=\"theme-link\">Power BI</span> skills, ensuring I set up the project from start to finish rather than modifying an existing report as had previously been the case."

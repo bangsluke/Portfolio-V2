@@ -22,7 +22,7 @@ technologies:
   - "[[Power Query]]"
   - "[[SharePoint]]"
   - "[[SQL]]"
-  - "[[DevOps]]"
+  - "[[Azure DevOps]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"
@@ -36,7 +36,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 6
+portfolioOrder: 4
 shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing global <span class=\"theme-link\">RLE International</span> data."
 longDescription: "Financial data split out by region for all <span class=\"theme-link\">RLE International</span> entities, showing booked and opportunities. This <span class=\"theme-link\">Power BI</span> report was management level reporting, showing regions rolled together up to show the companies finances projections against target."
 lessonsLearned: "The key functionality for the graphics was developed by <span class=\"theme-link\">Alex Sheers</span> on this report. My role was the navigation between pages and usability.<br><br>I learned how best to develop images for use as page and button backgrounds in <span class=\"theme-link\">Figma</span> to get pixel perfect images and help separate the content of each page into distinguishable sections to aid readability."

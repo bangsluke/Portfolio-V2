@@ -19,7 +19,6 @@ imageURL: https://i.postimg.cc/nrZgNwtL/Big-Lynn.png
 dateStart: 2022-09-06
 dateEnd: 2023-07-26
 technologies:
-  - "[[Next.js]]"
   - "[[Google Sheets]]"
   - "[[GitHub]]"
   - "[[Netlify]]"
@@ -29,6 +28,8 @@ technologies:
   - "[[Typescript]]"
   - "[[Yarn]]"
   - "[[VS Code]]"
+  - "[[Next.js]]"
+  - "[[React]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -39,7 +40,7 @@ topicTags:
   - "[[Golf]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 3
+portfolioOrder: 5
 shortDescription: "A stats and information website about an annual <span class=\"theme-link\">golf</span> competition that I am involved in."
 longDescription: "A site I developed for an annual <span class=\"theme-link\">golf</span> competition that I play in, where I displayed details for the 2023 competition that I was in charge of organising and then I collected past years data and displayed this for each player as well as predictions for the upcoming year."
 lessonsLearned: "This project let me take an existing Berry Material <span class=\"theme-link\">UI</span> template and extend and develop it into the site I required. It helped me integrate animations and stats components like graphs into the site using libraries like d3."

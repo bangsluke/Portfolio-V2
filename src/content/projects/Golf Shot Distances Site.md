@@ -6,7 +6,7 @@ tags:
   - project/parked
   - portfolio
 created: 2025-07-13 16:48
-modified: 2025-08-07T07:59:18+01:00
+modified: 2026-01-21T09:26:43+00:00
 aliases:
 viewCount: 9
 projectURL: https://golf-shot-distances.netlify.app/
@@ -19,16 +19,16 @@ imageURL: https://i.postimg.cc/cJgsPTSF/Club-Distances.png
 dateStart: 2025-07-13
 dateEnd: 2025-07-14
 technologies:
-  - "[[Vite.js]]"
-  - "[[React]]"
   - "[[Google Sheets]]"
   - "[[Cursor]]"
   - "[[Netlify]]"
   - "[[ESLint]]"
   - "[[Prettier]]"
   - "[[Typescript]]"
-  - "[[Tailwind CSS]]"
+  - "[[React]]"
+  - "[[Vite.js]]"
   - "[[Express.js]]"
+  - "[[Tailwind CSS]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a

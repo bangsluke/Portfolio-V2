@@ -19,11 +19,11 @@ imageURL: https://i.postimg.cc/90VKsNHN/Portfolio-Card.png
 dateStart: 2022-06-07
 dateEnd: 2023-10-20
 technologies:
-  - "[[React]]"
   - "[[GitHub]]"
   - "[[Snyk]]"
   - "[[npm]]"
   - "[[VS Code]]"
+  - "[[React]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a

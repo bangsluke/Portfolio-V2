@@ -19,13 +19,13 @@ imageURL: https://i.postimg.cc/nzqNRfg6/RLEGPT.png
 dateStart: 2023-04-01
 dateEnd: 2023-04-30
 technologies:
-  - "[[Vite.js]]"
   - "[[OpenAI]]"
-  - "[[React]]"
   - "[[VS Code]]"
   - "[[Yarn]]"
   - "[[ESLint]]"
   - "[[Prettier]]"
+  - "[[Vite.js]]"
+  - "[[React]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

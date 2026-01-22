@@ -7,8 +7,8 @@ tags:
   - portfolio
   - project/parked
 created: 2025-02-02T19:03:00
-modified: 2025-12-22T08:34:33+00:00
-viewCount: 6
+modified: 2026-01-22T10:02:20+00:00
+viewCount: 8
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -24,18 +24,18 @@ technologies:
   - "[[Obsidian]]"
   - "[[Netlify]]"
   - "[[GitHub]]"
-  - "[[Astro]]"
-  - "[[Tailwind CSS]]"
-  - "[[Preact]]"
   - "[[Zod]]"
   - "[[Jest]]"
-  - "[[Node.js]]"
   - "[[Umami]]"
   - "[[Typescript]]"
   - "[[ESLint]]"
   - "[[Prettier]]"
   - "[[Cursor]]"
   - "[[Playwright]]"
+  - "[[Astro|Astro.js]]"
+  - "[[Tailwind CSS]]"
+  - "[[Preact]]"
+  - "[[Node.js]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a
@@ -387,7 +387,13 @@ SORT dateStart ASC
 
 #### About Me Short
 
-Enthusiastic and personable professional with a passion for data and software, seeking a dynamic role to apply strong organisational skills, logical thinking and effective communication to drive long-term success. Open to positions where I can make a positive impact including Software Developer, DevOps Engineer or Product Owner
+Process-obsessed professional specializing in the "translation layer" between commercial vision and technical reality. I bridge the gap between stakeholders and developers to deliver high-quality, user-focused software. Currently seeking Technical Product Owner or Delivery Lead roles where I can shape both the product and the process.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+##### Archived About Me Short
+
+> Enthusiastic and personable professional with a passion for data and software, seeking a dynamic role to apply strong organisational skills, logical thinking and effective communication to drive long-term success. Open to positions where I can make a positive impact including Software Developer, [[DevOps]] Engineer or Product Owner
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

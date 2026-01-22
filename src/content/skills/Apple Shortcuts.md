@@ -8,7 +8,7 @@ tags:
   - notes
 created: 2023-08-18T15:45:00
 modified: 2025-07-02T14:22:46+01:00
-viewCount: 9
+viewCount: 8
 aliases:
   - Apple Shortcut
 skillRating: 70

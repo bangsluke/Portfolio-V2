@@ -7,7 +7,7 @@ tags:
   - portfolio
   - project/parked
 created: 2025-05-16T09:29:00
-modified: 2025-08-13T20:56:19+01:00
+modified: 2026-01-21T09:30:31+00:00
 viewCount: 38
 aliases:
   - Travel Journal
@@ -22,7 +22,6 @@ imageURL: https://i.postimg.cc/rsc37YLV/my-travel-journal.png
 dateStart: 2022-06-09
 dateEnd: 2025-10-31
 technologies:
-  - "[[Next.js]]"
   - "[[Apollo]]"
   - "[[Python]]"
   - "[[Neo4j]]"
@@ -41,6 +40,7 @@ technologies:
   - "[[VS Code]]"
   - "[[Obsidian]]"
   - "[[Codeium]]"
+  - "[[Next.js]]"
   - "[[Express.js]]"
 projectCategory: Personal Design
 linkedCompany:
@@ -53,7 +53,7 @@ topicTags:
   - "[[Travel Notes]]"
 powerShellAlias: travel
 version: 2
-portfolioOrder: 1
+portfolioOrder: 3
 shortDescription: "A website to show details of my travels across the world."
 longDescription: "A visualisation and analysis of the travelling I have done, providing descriptions of my trips and a level of analysis on top of this such as most visited places, most common travel companions and other stats."
 lessonsLearned: "The biggest challenge for this project was setting up the <span class=\"theme-link\">Apollo</span> backend server and getting the connection to the front end.<br><br>I also learned a lot about the page routing in <span class=\"theme-link\">Next.js</span> to develop the various page types on the site."
