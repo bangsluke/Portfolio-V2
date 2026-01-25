@@ -4,13 +4,13 @@ tags:
   - notes
   - coding
   - sport
-  - project/active
   - portfolio
+  - project/parked
 created: 2025-05-30 09:40
-modified: 2026-01-14T07:32:43+00:00
+modified: 2026-01-24T09:43:03+00:00
 aliases:
-viewCount: 42
-projectURL: https://dorkinians-website-v3.netlify.app/
+viewCount: 1
+projectURL: https://dorkiniansfcstats.co.uk/
 codeURL: https://github.com/bangsluke/Dorkinians-Website-V3
 codeMultipleRepos: true
 deploymentServiceURL: https://app.netlify.com/projects/dorkinians-website-v3/overview
@@ -18,7 +18,7 @@ folderURL: n/a
 logoURL: n/a
 imageURL: https://i.postimg.cc/Yq7Xvd7n/Dorkinians-Website.png
 dateStart: 2025-08-14
-dateEnd: ""
+dateEnd: 2026-01-23
 technologies:
   - "[[GitHub]]"
   - "[[Netlify]]"
@@ -59,7 +59,7 @@ powerShellAlias: dorkinians
 version: 3
 portfolioOrder: 1
 shortDescription: "The next version of my <span class=\"theme-link\">Dorkinians FC</span> stats website, following on from <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>, featuring a chat bot, improved visualisation and a more robust architecture."
-longDescription: "Building on the foundations of the previous <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>, the new site aims to provide deeper analysis of the available stats and clearer display across player, team and club statistics.<br><br>It is built as a <span class=\"theme-link\">PWA</span>, allowing a more native experience with a chatbot key feature for users to ask questions to.<br><br>The app provides a far more detailed analysis of the club's stats, built upon a graph database using <span class=\"theme-link\">Neo4j</span>."
+longDescription: "Building on the foundations of the previous <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>, the new site aims to provide deeper analysis of the available stats and clearer display across player, team and club statistics.<br><br>Serving over 600 players, it is built as a <span class=\"theme-link\">PWA</span>, allowing a more native experience with a chatbot key feature for users to ask questions to.<br><br>The app provides a far more detailed analysis of the club's stats, built upon a graph database using <span class=\"theme-link\">Neo4j</span>."
 lessonsLearned: "One of the lessons learned was learning how to deal with <span class=\"theme-link\">Netlify</span>'s 30 second timeout limit for functions, where my initial script was timing out on every run. Splitting the database seeding code out into <span class=\"theme-link\">Heroku</span> and optimising the script run time was sufficient to get the script up working remotely with email notifications and job id tracking for status updates.<br><br>I also learned how to set up a <span class=\"theme-link\">PWA</span> to work across <span class=\"theme-link\">iOS</span> and Android mobile devices and feel like a native app, whilst working on desktop as well.<br><br>To make the chat bot work, I utilised test driven development, defining the tests for questions and answers expected and then developing the chat bot logic from that.<br><br>I learned how to test and check memory build ups to avoid crashes within the <span class=\"theme-link\">Heroku</span> limit I was working within and set up an Admin dashboard within the site for job monitoring and triggering.<br><br>For the table data, I discovered the FA Site to have a very good bot detection system but an awful <span class=\"theme-link\">API</span> for developers to use and so automating the data updates was a pain point I had to use an external ScraperAPI service for.<br><br>In the frontend, I was able to implement skeleton loaders and optimise data fetching orders to prioritise important visible data to users to make the app feel fast and efficient.<br><br>After completing development, I learned how to set up <span class=\"theme-link\">E2E</span> testing for both mobile and desktop versions of the app using <span class=\"theme-link\">Playwright</span>, automating a weekly test through <span class=\"theme-link\">GitHub</span> Actions.<br><br>TBC"
 name: "Dorkinians Website V3"
 ---
@@ -110,7 +110,7 @@ The next version of my [[Dorkinians FC]] stats website, following on from [[Dork
 
 Building on the foundations of the previous [[Dorkinians Website]], the new site aims to provide deeper analysis of the available stats and clearer display across player, team and club statistics.
 
-It is built as a [[PWA]], allowing a more native experience with a chatbot key feature for users to ask questions to.
+Serving over 600 players, it is built as a [[PWA]], allowing a more native experience with a chatbot key feature for users to ask questions to.
 
 The app provides a far more detailed analysis of the club's stats, built upon a graph database using [[Neo4j]].
 
