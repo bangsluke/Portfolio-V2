@@ -10,7 +10,7 @@ created: 2022-04-10T09:28:00
 modified: 2025-08-15T14:05:17+01:00
 viewCount: 37
 aliases:
-projectURL: https://www.dorkiniansfcstats.co.uk/
+projectURL: https://dorkinians-stats-site.netlify.app
 codeURL: https://github.com/bangsluke/Dorkinians-Dev-Site
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/dorkinians-stats-site/overview
