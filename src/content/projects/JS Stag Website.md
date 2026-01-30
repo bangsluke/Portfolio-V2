@@ -35,7 +35,7 @@ topicTags:
   - "[[Jonny Sourris]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 7
+portfolioOrder: 8
 shortDescription: "A website detailing the itinerary for <span class=\"theme-link\">Jonny Sourris</span>'s stag do."
 longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and <span class=\"theme-link\">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group."
 lessonsLearned: "There were a few lessons learned from this project;<br>- Learning how to use <span class=\"theme-link\">Vite.js</span> for the first time<br>- Writing a website using <span class=\"theme-link\">Typescript</span> for the first time<br>- Implementing a timeline component and targeting mobile screen size<br>- Correctly setting up hyperlinks from the users location to the next activity in <span class=\"theme-link\">Google Maps</span>"

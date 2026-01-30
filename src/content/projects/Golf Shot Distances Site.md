@@ -6,14 +6,14 @@ tags:
   - project/parked
   - portfolio
 created: 2025-07-13 16:48
-modified: 2026-01-21T09:26:43+00:00
+modified: 2026-01-28T17:14:52+00:00
 aliases:
-viewCount: 9
+viewCount: 10
 projectURL: https://golf-shot-distances.netlify.app/
 codeURL: https://github.com/bangsluke/golf-shot-distances
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/golf-shot-distances/overview
-folderURL:
+folderURL: n/a
 logoURL: https://i.postimg.cc/qRGj6JWP/Golf-Shot-Distances.png
 imageURL: https://i.postimg.cc/cJgsPTSF/Club-Distances.png
 dateStart: 2025-07-13
@@ -40,9 +40,9 @@ topicTags:
   - "[[Golf]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 5
+portfolioOrder: 6
 shortDescription: "An investigation into how far I could get without writing any code, by using <span class=\"theme-link\">Cursor</span> <span class=\"theme-link\">AI</span> to generate the codebase."
-longDescription: "I used this mini project as a small explorative test into how far <span class=\"theme-link\">AI</span> has developed inside <span class=\"theme-link\">Cursor</span> so far, aiming to build the site I had in mind only writing prompts and avoiding writing any code myself.<br><br>The site is a simple visualisation of golf club distances including flat carry and roll, taking into consideration conditions and displaying them in a graph, with a CRUD functionality with the <span class=\"theme-link\">Google Sheets</span> file behind it using their <span class=\"theme-link\">API</span>."
+longDescription: "I used this mini project as a small explorative test into how far <span class=\"theme-link\">AI</span> has developed inside <span class=\"theme-link\">Cursor</span> so far, aiming to build the site I had in mind only writing prompts and avoiding writing any code myself.<br><br>The site is a simple visualisation of golf club distances including flat carry and roll, taking into consideration conditions and displaying them in a graph, with a CRUD functionality with the <span class=\"theme-link\">Google Sheets</span> file behind it using their <span class=\"theme-link\">API</span>. It is also a <span class=\"theme-link\">PWA</span> to allow me to add it to my phone <span class=\"theme-link\">iOS</span> home screen."
 lessonsLearned: "Firstly I learned just how powerful the integrated <span class=\"theme-link\">AI</span> inside <span class=\"theme-link\">Cursor</span> is and how impressively fast it can generate code. But as I got deeper into the project, the <span class=\"theme-link\">AI</span> needed more and more specific prompts and often tried backtracking to re attempt fixes that were undesirable.<br><br>It also failed to cover many edge cases and tried to convince me it had them covered.<br><br>So overall it was a great experience but ultimately showed me that we still need people who understand coding to get good results out of prompting code."
 name: "Golf Shot Distances Site"
 ---
@@ -79,7 +79,7 @@ WHERE file = this.file
 
 ## Introduction
 
-A visual site to display how far I hit each [[Golf|golf]] club.
+A visual site and [[PWA]] to display how far I hit each [[Golf|golf]] club.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -93,7 +93,7 @@ An investigation into how far I could get without writing any code, by using [[C
 
 I used this mini project as a small explorative test into how far [[AI]] has developed inside [[Cursor]] so far, aiming to build the site I had in mind only writing prompts and avoiding writing any code myself.
 
-The site is a simple visualisation of golf club distances including flat carry and roll, taking into consideration conditions and displaying them in a graph, with a CRUD functionality with the [[Google Sheets]] file behind it using their [[API]].
+The site is a simple visualisation of golf club distances including flat carry and roll, taking into consideration conditions and displaying them in a graph, with a CRUD functionality with the [[Google Sheets]] file behind it using their [[API]]. It is also a [[PWA]] to allow me to add it to my phone [[iOS]] home screen.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

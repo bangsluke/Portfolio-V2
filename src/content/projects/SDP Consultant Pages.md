@@ -39,7 +39,7 @@ topicTags:
   - "[[Digital Engineering]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 4
+portfolioOrder: 5
 shortDescription: "A site for the consultants working with the tool, showing the acronyms and definitions used across the <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> tool, as well as documentation and an encyclopaedia."
 longDescription: "A full list of acronyms and definitions used across the <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> app, provided as support material to consultants using the tool for <span class=\"theme-link\">RLE</span> and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.<br><br>The <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> project was disbanded early into the websites development, leaving it only partially developed, but matching the style and design of the main tool."
 lessonsLearned: "Provided good learning for getting correct anchor points in <span class=\"theme-link\">HTML</span> for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> tool to provide a visual connection."

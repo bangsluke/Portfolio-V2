@@ -1,21 +1,22 @@
 ---
 tags:
-  - language
   - synced
   - coding
   - skill
   - notes
   - tag
+  - software
+  - design
   - portfolio
 created: 2025-05-16T15:38:00
-modified: 2025-07-02T14:20:10+01:00
-viewCount: 9
+modified: 2025-07-26T09:39:21+01:00
+viewCount: 7
 aliases:
 skillRating: 5
-skillDescription: Very minor experience in fixing small scripts for developers.
-logoFileName: cplusplus.svg
+skillDescription: Reviewed the process and concept of the tool without ever using in a project design workflow.
+logoFileName: storybook.svg
 ---
-# C++
+# Storybook
 
 > [!back] Link back to [[Skills Notes]]
 

@@ -7,9 +7,9 @@ tags:
   - portfolio
   - project/parked
 created: 2025-05-30 09:40
-modified: 2026-01-24T09:43:03+00:00
+modified: 2026-01-30T14:52:15+00:00
 aliases:
-viewCount: 1
+viewCount: 2
 projectURL: https://dorkiniansfcstats.co.uk/
 codeURL: https://github.com/bangsluke/Dorkinians-Website-V3
 codeMultipleRepos: true
@@ -58,9 +58,9 @@ topicTags:
 powerShellAlias: dorkinians
 version: 3
 portfolioOrder: 1
-shortDescription: "The next version of my <span class=\"theme-link\">Dorkinians FC</span> stats website, following on from <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>, featuring a chat bot, improved visualisation and a more robust architecture."
+shortDescription: "Serving over 600 players, the next version of my <span class=\"theme-link\">Dorkinians FC</span> stats website features a chat bot, improved visualisation and a more robust architecture over the older <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>."
 longDescription: "Building on the foundations of the previous <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>, the new site aims to provide deeper analysis of the available stats and clearer display across player, team and club statistics.<br><br>Serving over 600 players, it is built as a <span class=\"theme-link\">PWA</span>, allowing a more native experience with a chatbot key feature for users to ask questions to.<br><br>The app provides a far more detailed analysis of the club's stats, built upon a graph database using <span class=\"theme-link\">Neo4j</span>."
-lessonsLearned: "One of the lessons learned was learning how to deal with <span class=\"theme-link\">Netlify</span>'s 30 second timeout limit for functions, where my initial script was timing out on every run. Splitting the database seeding code out into <span class=\"theme-link\">Heroku</span> and optimising the script run time was sufficient to get the script up working remotely with email notifications and job id tracking for status updates.<br><br>I also learned how to set up a <span class=\"theme-link\">PWA</span> to work across <span class=\"theme-link\">iOS</span> and Android mobile devices and feel like a native app, whilst working on desktop as well.<br><br>To make the chat bot work, I utilised test driven development, defining the tests for questions and answers expected and then developing the chat bot logic from that.<br><br>I learned how to test and check memory build ups to avoid crashes within the <span class=\"theme-link\">Heroku</span> limit I was working within and set up an Admin dashboard within the site for job monitoring and triggering.<br><br>For the table data, I discovered the FA Site to have a very good bot detection system but an awful <span class=\"theme-link\">API</span> for developers to use and so automating the data updates was a pain point I had to use an external ScraperAPI service for.<br><br>In the frontend, I was able to implement skeleton loaders and optimise data fetching orders to prioritise important visible data to users to make the app feel fast and efficient.<br><br>After completing development, I learned how to set up <span class=\"theme-link\">E2E</span> testing for both mobile and desktop versions of the app using <span class=\"theme-link\">Playwright</span>, automating a weekly test through <span class=\"theme-link\">GitHub</span> Actions.<br><br>TBC"
+lessonsLearned: "One of the lessons learned was learning how to deal with <span class=\"theme-link\">Netlify</span>'s 30 second timeout limit for functions, where my initial script was timing out on every run. Splitting the database seeding code out into <span class=\"theme-link\">Heroku</span> and optimising the script run time was sufficient to get the script up working remotely with email notifications and job id tracking for status updates. I learned how to test and check memory build ups to avoid crashes within the <span class=\"theme-link\">Heroku</span> limit I was working within and set up an Admin dashboard within the site for job monitoring and triggering.<br><br>I also learned how to set up a <span class=\"theme-link\">PWA</span> to work across <span class=\"theme-link\">iOS</span> and Android mobile devices and feel like a native app, whilst working on desktop as well.<br><br>To make the chat bot work, I utilised test driven development, defining the tests for questions and answers expected and then developing the chat bot logic from that.<br><br>For the table data, I discovered the FA Site to have a very good bot detection system but an awful <span class=\"theme-link\">API</span> for developers to use and so automating the data updates was a pain point I had to use an external ScraperAPI service for.<br><br>In the frontend, I was able to implement skeleton loaders and optimise data fetching orders to prioritise important visible data to users to make the app feel fast and efficient.<br><br>After completing development, I learned how to set up <span class=\"theme-link\">E2E</span> testing for both mobile and desktop versions of the app using <span class=\"theme-link\">Playwright</span>, automating a weekly test through <span class=\"theme-link\">GitHub</span> Actions. Setting up the tests after the majority of development was also a lesson learned that I will take into my next project to write the tests before I start coding."
 name: "Dorkinians Website V3"
 ---
 # Dorkinians Website V3
@@ -102,7 +102,7 @@ WHERE file = this.file
 
 ## Short Description
 
-The next version of my [[Dorkinians FC]] stats website, following on from [[Dorkinians Website]], featuring a chat bot, improved visualisation and a more robust architecture.
+Serving over 600 players, the next version of my [[Dorkinians FC]] stats website features a chat bot, improved visualisation and a more robust architecture over the older [[Dorkinians Website]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -253,7 +253,46 @@ Commonly the teams are referred to in a variety of ways. For example, the 3rd te
 
 #### Existing Schema Summary
 
-TBC - Ask AI to summarise the Schema
+##### Node Types
+
+| Node Type           | Description                                                              |
+| ------------------- | ------------------------------------------------------------------------ |
+| SiteDetail          | Site configuration, version info, and database statistics                |
+| Player              | Player profiles with aggregate stats (appearances, goals, assists, etc.) |
+| Fixture             | Match fixtures/results (date, teams, scores, competition)                |
+| MatchDetail         | Individual player performance per match                                  |
+| WeeklyTOTW          | Weekly Team of the Week selections                                       |
+| SeasonTOTW          | Season-end Team of the Week selections                                   |
+| PlayersOfTheMonth   | Monthly player award rankings (top 5)                                    |
+| CaptainsAndAwards   | Captain appointments and seasonal awards                                 |
+| HistoricalAward     | Historical awards data (loaded programmatically)                         |
+| OppositionDetails   | Opposition team info (name, location, distance)                          |
+| LeagueTable         | League standings (1st–7th XI teams)                                      |
+| TestData            | Development/test player data                                             |
+| UnansweredQuestions | Chatbot unanswered questions storage                                     |
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+##### Relationships
+
+Player ──PLAYED_IN──────────────► MatchDetail
+Player ──IN_WEEKLY_TOTW─────────► WeeklyTOTW
+Player ──IN_SEASON_TOTW─────────► SeasonTOTW
+Player ──IN_PLAYER_OF_THE_MONTH─► PlayersOfTheMonth
+Player ──HAS_CAPTAIN_AWARDS─────► CaptainsAndAwards
+Player ──PLAYED_WITH────────────► Player
+Player ──PLAYED_AGAINST_OPPONENT► OppositionDetails
+Fixture ─HAS_MATCH_DETAILS──────► MatchDetail
+WeeklyTOTW ─TOTW_HAS_DETAILS────► MatchDetail
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+##### Key Relationship Properties
+
+- IN_WEEKLY_TOTW / IN_SEASON_TOTW: isStarMan, ftpScore, position
+- IN_PLAYER_OF_THE_MONTH: position, monthlyPoints
+- HAS_CAPTAIN_AWARDS: season, awardType
+- PLAYED_AGAINST_OPPONENT: timesPlayed, goalsScored, assists
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -305,9 +344,6 @@ Integrate the above logic into the current chat bot set up, prioritising the abo
 "PlayersOfTheMonth" - "Top player"
 
 When adding the above logic, additionally add any pseudonyms and antonyms you can think of and I will review them. The pseudonyms should be case insensitive.
-
-TBC
-
 ```
 
 >[!top] [Back to top](#Table%20of%20Contents)
@@ -424,13 +460,14 @@ If the answer provided is by using the FA Site data related to specific results 
 
 - Show the top 5 player appearances for the team
 - Points per game - value between 0 and 3
+- Show total wins, draws and losses
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ##### Club Stats
 
 - Show the top 5 player appearances for the full club
-- TBC
+- Show total wins, draws and losses
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -450,7 +487,6 @@ If the answer provided is by using the FA Site data related to specific results 
 - Each player is clickable to show a pop up modal about details on that player
 	- When clicking on a player, in the pop up, show what team(s) they played for that week
 - Have FTP players of the Month below
-- TBC
 
 ##### FTP Players of the Month
 
@@ -513,21 +549,17 @@ If the answer provided is by using the FA Site data related to specific results 
 
 ## Lessons Learned
 
-One of the lessons learned was learning how to deal with [[Netlify]]'s 30 second timeout limit for functions, where my initial script was timing out on every run. Splitting the database seeding code out into [[Heroku]] and optimising the script run time was sufficient to get the script up working remotely with email notifications and job id tracking for status updates.
+One of the lessons learned was learning how to deal with [[Netlify]]'s 30 second timeout limit for functions, where my initial script was timing out on every run. Splitting the database seeding code out into [[Heroku]] and optimising the script run time was sufficient to get the script up working remotely with email notifications and job id tracking for status updates. I learned how to test and check memory build ups to avoid crashes within the [[Heroku]] limit I was working within and set up an Admin dashboard within the site for job monitoring and triggering.
 
 I also learned how to set up a [[PWA]] to work across [[iOS]] and Android mobile devices and feel like a native app, whilst working on desktop as well.
 
 To make the chat bot work, I utilised test driven development, defining the tests for questions and answers expected and then developing the chat bot logic from that.
 
-I learned how to test and check memory build ups to avoid crashes within the [[Heroku]] limit I was working within and set up an Admin dashboard within the site for job monitoring and triggering.
-
 For the table data, I discovered the FA Site to have a very good bot detection system but an awful [[API]] for developers to use and so automating the data updates was a pain point I had to use an external ScraperAPI service for.
 
 In the frontend, I was able to implement skeleton loaders and optimise data fetching orders to prioritise important visible data to users to make the app feel fast and efficient.
 
-After completing development, I learned how to set up [[E2E]] testing for both mobile and desktop versions of the app using [[Playwright]], automating a weekly test through [[GitHub]] Actions.
-
-TBC
+After completing development, I learned how to set up [[E2E]] testing for both mobile and desktop versions of the app using [[Playwright]], automating a weekly test through [[GitHub]] Actions. Setting up the tests after the majority of development was also a lesson learned that I will take into my next project to write the tests before I start coding.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

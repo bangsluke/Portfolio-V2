@@ -4,7 +4,7 @@ tags:
   - portfolio
   - notes
 created: 2025-06-27 10:45
-modified: 2026-01-21T09:29:55+00:00
+modified: 2026-01-30T17:07:40+00:00
 aliases:
   - Scalable Development Plan
 viewCount: 19
@@ -46,9 +46,9 @@ topicTags:
   - "[[Digital Engineering]]"
 powerShellAlias: n/a
 version: 3
-portfolioOrder: 2
-shortDescription: "Scalable Development Plan to automatically build a full development timing plan based on a number of inputs."
-longDescription: "SDP - Scalable Development Plan - was an internal tool developed within <span class=\"theme-link\">RLE International</span> that brought together the various automotive process knowledge that the company had gathered over years of work with various <span class=\"theme-link\">OEMs</span>.<br><br>It was a web application that gathered project inputs from users and could then calculate a full project timing plan, split across various swimlanes for the given project details. After this, users could further update the plan within the tool to fully align it to their own expectations or export the data for using in external tools such as <span class=\"theme-link\">Microsoft Project</span>."
+portfolioOrder: 3
+shortDescription: "Developed a scalable development planning tool using graph technology, dropping the planning timing for Automotive projects from months to days."
+longDescription: "SDP - Scalable Development Plan - was an internal tool developed within <span class=\"theme-link\">RLE International</span> that brought together the various automotive process knowledge that the company had gathered over years of work with various <span class=\"theme-link\">OEMs</span>.<br><br>It was a web application that gathered project inputs from users and could then calculate a full project timing plan, split across various swimlanes for the given project details. After this, users could further update the plan within the tool to fully align it to their own expectations or export the data for using in external tools such as <span class=\"theme-link\">Microsoft Project</span>.<br><br>I was involved in collating the data and architecting a method of storing it. I gathered the data by conducting  interviews with technical specialists and mapping their defined process into whiteboard drawings which I later exported into <span class=\"theme-link\">Excel</span> in a custom built file with <span class=\"theme-link\">VBA</span> scripts to support the large datasets. The scripts also processed the data into an <span class=\"theme-link\">SQL</span> database, ready to be consumed by the <span class=\"theme-link\">Java</span> code for the calculations."
 lessonsLearned: "I was fully in charge of the <span class=\"theme-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"theme-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"theme-link\">Excel</span> and then writing a <span class=\"theme-link\">VBA</span> script to automate creating the <span class=\"theme-link\">SQL</span> queries to update the database quickly.<br><br>This lead to a complete rebuild when our company migrated from <span class=\"theme-link\">Microsoft</span> to <span class=\"theme-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"theme-link\">Google Sheets</span> and use <span class=\"theme-link\">Google Apps Script</span>.<br><br>There was a brief period where we began consider rebuilding the frontend in <span class=\"theme-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.<br><br>As well as the main app, we also developed several <span class=\"theme-link\">NeoDash</span> dashboards off of the <span class=\"theme-link\">Neo4j</span> data for ongoing maintenance to check on the data, teaching me about this tool and getting me further involved with writing <span class=\"theme-link\">Cypher</span> queries."
 name: "SDP"
 ---
@@ -85,7 +85,7 @@ WHERE file = this.file
 
 ## Short Description
 
-Scalable Development Plan to automatically build a full development timing plan based on a number of inputs.
+Developed a scalable development planning tool using graph technology, dropping the planning timing for Automotive projects from months to days.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -94,6 +94,8 @@ Scalable Development Plan to automatically build a full development timing plan 
 SDP - Scalable Development Plan - was an internal tool developed within [[RLE International]] that brought together the various automotive process knowledge that the company had gathered over years of work with various [[OEMs]].
 
 It was a web application that gathered project inputs from users and could then calculate a full project timing plan, split across various swimlanes for the given project details. After this, users could further update the plan within the tool to fully align it to their own expectations or export the data for using in external tools such as [[Project|Microsoft Project]].
+
+I was involved in collating the data and architecting a method of storing it. I gathered the data by conducting  interviews with technical specialists and mapping their defined process into whiteboard drawings which I later exported into [[Excel]] in a custom built file with [[VBA]] scripts to support the large datasets. The scripts also processed the data into an [[SQL]] database, ready to be consumed by the [[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]] code for the calculations.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -7,7 +7,7 @@ tags:
   - coding
   - work
 created: 2025-05-30 09:57
-modified: 2026-01-21T09:22:15+00:00
+modified: 2026-01-30T17:23:44+00:00
 viewCount: 18
 aliases:
 projectURL: https://gpmo.rle.international/
@@ -40,8 +40,8 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 2
-shortDescription: "A full documentation site for all tools developed by the <span class=\"theme-link\">GPMO</span> team, using <span class=\"theme-link\">Docusaurus</span> and static <span class=\"theme-link\">Markdown</span> files maintained by the tool developers."
-longDescription: "The documentation behind all <span class=\"theme-link\">GPMO</span> processes and tools, helping users and future developers understand how to use and update data and the tools themselves.<br><br>Maintained by the tool developers, the site is built using <span class=\"theme-link\">Docusaurus</span> which collates the documentation written in <span class=\"theme-link\">Markdown</span>, with special components written in <span class=\"theme-link\">React</span> to provide extended functionality beyond the available <span class=\"theme-link\">Docusaurus</span> features."
+shortDescription: "My developed and documented <span class=\"theme-link\">DevOps</span> process for how the <span class=\"theme-link\">GPMO</span> team managed the backlogs and built their tool set, maintained by the engineers within the SDLC."
+longDescription: "The documentation behind all <span class=\"theme-link\">GPMO</span> processes and tools, helping users and future developers understand how to use and update data and the tools themselves.<br><br>Maintained by the tool developers, the site is built using <span class=\"theme-link\">Docusaurus</span> which collates the documentation written in <span class=\"theme-link\">Markdown</span>, with special components written in <span class=\"theme-link\">React</span> to provide extended functionality beyond the available <span class=\"theme-link\">Docusaurus</span> features.<br><br>I used this site to document my developed process for prioritising features, managing the backlog of features and building the tools that the team generated."
 lessonsLearned: "This project taught me how to integrate <span class=\"theme-link\">React</span> components into a <span class=\"theme-link\">Docusaurus</span> site - as previously I had only built sites using the core <span class=\"theme-link\">Docusaurus</span> functionality.<br><br>I also had to investigate into our company's <span class=\"theme-link\">Azure</span> set up to ensure the site was accessible by internal employees only and set up a custom domain to make the site easier to find for users.<br><br>We also utilised the blog feature of <span class=\"theme-link\">Docusaurus</span> to provide regular <span class=\"theme-link\">GPMO</span> updates to the company which was a new feature for me to work with."
 name: "GPMO Documentation Site"
 ---
@@ -78,7 +78,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A full documentation site for all tools developed by the [[GPMO]] team, using [[Docusaurus]] and static [[Markdown]] files maintained by the tool developers.
+My developed and documented [[Azure DevOps|DevOps]] process for how the [[GPMO]] team managed the backlogs and built their tool set, maintained by the engineers within the SDLC.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -87,6 +87,8 @@ A full documentation site for all tools developed by the [[GPMO]] team, using [[
 The documentation behind all [[GPMO]] processes and tools, helping users and future developers understand how to use and update data and the tools themselves.
 
 Maintained by the tool developers, the site is built using [[Docusaurus]] which collates the documentation written in [[Markdown]], with special components written in [[React]] to provide extended functionality beyond the available [[Docusaurus]] features.
+
+I used this site to document my developed process for prioritising features, managing the backlog of features and building the tools that the team generated.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

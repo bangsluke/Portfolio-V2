@@ -37,7 +37,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 1.2
-portfolioOrder: 3
+portfolioOrder: 4
 shortDescription: "Data input for financial tracking of <span class=\"theme-link\">RLE International</span> projects."
 longDescription: "The <a href=\"/projects/project-finance-data-manager\" class=\"theme-link\">Project Finance Data Manager</a> app was a <span class=\"theme-link\">Power App</span> for managing various cost data for a project, tying together several data sources.<br><br>Pulled in timesheet data and financial information from various <span class=\"theme-link\">RLE International</span> region sources such as <span class=\"theme-link\">Paycor</span>, <span class=\"theme-link\">T-Sheet</span> and <span class=\"theme-link\">Iplicit</span>.<br><br>Users could also import <a href=\"/projects/cost-model-translation-file\" class=\"theme-link\">Cost Model Translation File</a>s to bring in planned finances and could version changes."
 lessonsLearned: "This project challenged our architecture skills mainly, ensuring we had a solid logic for how data flowed between the <a href=\"/projects/cost-model\" class=\"theme-link\">Cost Model</a> files and could be pushed to the <span class=\"theme-link\">SQL</span> backend whilst maintaining version control.<br><br>There were also various access roles we had to set up and implement to ensure the correct users could see the correct level of detail and correct projects."

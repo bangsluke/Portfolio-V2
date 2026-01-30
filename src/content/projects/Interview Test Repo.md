@@ -35,7 +35,7 @@ topicTags:
   - "[[Work]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 8
+portfolioOrder: 9
 shortDescription: "An interview test written for possibly hiring a <span class=\"theme-link\">React</span> developer when working for <span class=\"theme-link\">Digital Engineering</span> at <span class=\"theme-link\">RLE</span>."
 longDescription: "A simple <span class=\"theme-link\">React</span> website that contained several <span class=\"theme-link\">React</span> development challenges for giving to potential hires to test their skills within the interview process.<br><br>The site was provided to a few possible <span class=\"theme-link\">RLE India</span> potential hires when considering upgrading the <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> front end to <span class=\"theme-link\">React</span>."
 lessonsLearned: "This project mainly challenged me to consider what requirements we needed within our <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> project that would challenge possible developers and design a quick test that was clearly documented for remote completion and submission."

@@ -1,28 +1,34 @@
 ---
 tags:
-  - language
-  - synced
-  - coding
-  - skill
-  - notes
   - tag
+  - software
+  - coding
+  - AI
+  - skill
   - portfolio
-created: 2025-05-16T15:38:00
-modified: 2025-07-02T14:20:10+01:00
-viewCount: 9
+modified: 2026-01-05T15:04:19+00:00
+viewCount: 4
 aliases:
-skillRating: 5
-skillDescription: Very minor experience in fixing small scripts for developers.
-logoFileName: cplusplus.svg
+skillRating: 40
+skillDescription: Used with a single project initially to establish the similarities and differences to Cursor and VS Code as an IDE.
+logoFileName: antigravity.svg
 ---
-# C++
+# Antigravity
 
 > [!back] Link back to [[Skills Notes]]
 
-## Table of Contents 
+> [[Google]]'s [[AI]] integrated coding IDE
+
+## Table of Contents
 
 ```table-of-contents
 ```
+
+## Links
+
+- n/a
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Skill
 

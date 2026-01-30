@@ -42,7 +42,7 @@ topicTags:
   - Coding
 powerShellAlias: bangsluke, documentation
 version: 1
-portfolioOrder: 3
+portfolioOrder: 4
 shortDescription: "A personal documentation site storing key links to the software I use, my project initiation to release process, articles I find useful, and a section on <span class=\"theme-link\">Dorkinians FC</span> stats. The repo also contains my <a href=\"/projects/homepage-website\" class=\"theme-link\">Homepage</a> and <a href=\"/projects/new-tab-website\" class=\"theme-link\">New Tab</a> pages."
 longDescription: "Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment. It also holds details on the <span class=\"theme-link\">Dorkinians FC</span> stats and how to maintain them - for handover to others.<br><br>I regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing.<br><br>Outside of the documentation section, the repo also contains my <a href=\"/projects/homepage-website\" class=\"theme-link\">Homepage</a> and <a href=\"/projects/new-tab-website\" class=\"theme-link\">New Tab</a> pages as the whole repo is hosted through <span class=\"theme-link\">GitHub</span> pages."
 lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of <span class=\"theme-link\">Markdown</span> and led me to notice how many different softwares either use <span class=\"theme-link\">Docusaurus</span> or a very similar type static site builder for their documentation."
