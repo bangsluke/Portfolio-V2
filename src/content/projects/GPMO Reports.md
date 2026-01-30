@@ -5,7 +5,7 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-09-08T10:32:29+01:00
+modified: 2026-01-30T20:24:29+00:00
 viewCount: 13
 aliases:
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/efd30e67-8ed4-4807-95cb-11f46a62d7d2/ReportSectiona3c344f318d21cde0ced?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
@@ -37,8 +37,8 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "A group of <span class=\"theme-link\">Power BI</span> reporting dashboards for global <span class=\"theme-link\">RLE International</span> data, providing live KPIs for management."
-longDescription: "A collection of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> projects, focused on analysing the data important to the <span class=\"theme-link\">GPMO</span> team to ensure full data population to provide a full picture to the company's management.<br><br>Includes the <a href=\"/projects/group-sales-report\" class=\"theme-link\">Group Sales Report</a>, <a href=\"/projects/pipeline-app-user-report\" class=\"theme-link\">Pipeline App User Report</a> and <a href=\"/projects/project-finance-tracking-report\" class=\"theme-link\">Project Finance Tracking Report</a>."
+shortDescription: "A group of <span class=\"theme-link\">Power BI</span> reporting dashboards for global <span class=\"theme-link\">RLE International</span> data, providing live KPIs for management, removing cross-region data collection requirements."
+longDescription: "A collection of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> projects, focused on analysing the data important to the <span class=\"theme-link\">GPMO</span> team to ensure full data population to provide a full picture to the company's management.<br><br>This set of dashboards fixed a key issue within the company from a global strategic perspective, allowing real time data to be reviewed rather than asking each region to collate data - also removing any variances in the reporting structure.<br><br>Includes the <a href=\"/projects/group-sales-report\" class=\"theme-link\">Group Sales Report</a>, <a href=\"/projects/pipeline-app-user-report\" class=\"theme-link\">Pipeline App User Report</a> and <a href=\"/projects/project-finance-tracking-report\" class=\"theme-link\">Project Finance Tracking Report</a>."
 lessonsLearned: "This project really taught me about <span class=\"theme-link\">Power BI</span> workspaces and grouping reports. Further lessons were learned within the individual report projects."
 name: "GPMO Reports"
 ---
@@ -75,13 +75,15 @@ WHERE file = this.file
 
 ## Short Description
 
-A group of [[Power BI]] reporting dashboards for global [[RLE International]] data, providing live KPIs for management.
+A group of [[Power BI]] reporting dashboards for global [[RLE International]] data, providing live KPIs for management, removing cross-region data collection requirements.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
 A collection of [[Power BI]] reports for global [[RLE International]] projects, focused on analysing the data important to the [[GPMO]] team to ensure full data population to provide a full picture to the company's management.
+
+This set of dashboards fixed a key issue within the company from a global strategic perspective, allowing real time data to be reviewed rather than asking each region to collate data - also removing any variances in the reporting structure.
 
 Includes the [[Group Sales Report]], [[Pipeline App User Report]] and [[Project Finance Tracking Report]].
 
