@@ -6,7 +6,7 @@ tags:
   - coding
   - project/completed
 created: 2024-02-20T09:27:00
-modified: 2025-08-14T17:05:41+01:00
+modified: 2026-01-30T19:57:26+00:00
 aliases:
   - Documentation Site
   - bangsluke-documentation
@@ -43,9 +43,9 @@ topicTags:
 powerShellAlias: bangsluke, documentation
 version: 1
 portfolioOrder: 4
-shortDescription: "A personal documentation site storing key links to the software I use, my project initiation to release process, articles I find useful, and a section on <span class=\"theme-link\">Dorkinians FC</span> stats. The repo also contains my <a href=\"/projects/homepage-website\" class=\"theme-link\">Homepage</a> and <a href=\"/projects/new-tab-website\" class=\"theme-link\">New Tab</a> pages."
+shortDescription: "A <span class=\"theme-link\">PWA</span> personal documentation site that can be accessed offline, storing key links to the software I use, my project initiation to release process, articles I find useful, and a section on <span class=\"theme-link\">Dorkinians FC</span> stats. The repo also contains my <a href=\"/projects/homepage-website\" class=\"theme-link\">Homepage</a> and <a href=\"/projects/new-tab-website\" class=\"theme-link\">New Tab</a> pages."
 longDescription: "Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment. It also holds details on the <span class=\"theme-link\">Dorkinians FC</span> stats and how to maintain them - for handover to others.<br><br>I regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing.<br><br>Outside of the documentation section, the repo also contains my <a href=\"/projects/homepage-website\" class=\"theme-link\">Homepage</a> and <a href=\"/projects/new-tab-website\" class=\"theme-link\">New Tab</a> pages as the whole repo is hosted through <span class=\"theme-link\">GitHub</span> pages."
-lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of <span class=\"theme-link\">Markdown</span> and led me to notice how many different softwares either use <span class=\"theme-link\">Docusaurus</span> or a very similar type static site builder for their documentation."
+lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of <span class=\"theme-link\">Markdown</span> and led me to notice how many different techs either use <span class=\"theme-link\">Docusaurus</span> or a very similar type static site builder for their documentation.<br><br>I also learned how to set up offline caching to enable me to access the <span class=\"theme-link\">PWA</span> without connection on my mobile device."
 name: "bangsluke Documentation"
 ---
 # bangsluke Documentation
@@ -81,7 +81,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A personal documentation site storing key links to the software I use, my project initiation to release process, articles I find useful, and a section on [[Dorkinians FC]] stats. The repo also contains my [[Homepage Website|Homepage]] and [[New Tab Website|New Tab]] pages.
+A [[PWA]] personal documentation site that can be accessed offline, storing key links to the software I use, my project initiation to release process, articles I find useful, and a section on [[Dorkinians FC]] stats. The repo also contains my [[Homepage Website|Homepage]] and [[New Tab Website|New Tab]] pages.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -134,7 +134,9 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-This project introduced me to the concept of documentation sites, the ease and brilliance of [[Markdown]] and led me to notice how many different softwares either use [[Docusaurus]] or a very similar type static site builder for their documentation.
+This project introduced me to the concept of documentation sites, the ease and brilliance of [[Markdown]] and led me to notice how many different techs either use [[Docusaurus]] or a very similar type static site builder for their documentation.
+
+I also learned how to set up offline caching to enable me to access the [[PWA]] without connection on my mobile device.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
