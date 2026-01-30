@@ -1,21 +1,21 @@
 ---
 tags:
-  - language
   - synced
   - coding
   - skill
   - notes
   - tag
+  - software
   - portfolio
 created: 2025-05-16T15:38:00
-modified: 2025-07-02T14:20:10+01:00
-viewCount: 9
+modified: 2025-07-18T12:37:05+01:00
+viewCount: 6
 aliases:
 skillRating: 5
-skillDescription: Very minor experience in fixing small scripts for developers.
-logoFileName: cplusplus.svg
+skillDescription: Understanding of the concept without any real life practice.
+logoFileName: docker.svg
 ---
-# C++
+# Docker
 
 > [!back] Link back to [[Skills Notes]]
 
@@ -71,6 +71,33 @@ TASK
 WHERE completed AND !contains(file.path, "Template") AND text != "" AND contains(text, this.file.name)
 GROUP BY file.link
 LIMIT 100
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+### Total Count
+
+```dataview
+TABLE WITHOUT ID length(this.file.inlinks) as "Links"
+FROM [[]]
+GROUP BY "Links"
+```
+
+### Last Mentioned
+
+```dataview
+TABLE file.mtime As ModifiedTime
+FROM [[]]
+SORT file.ctime DESC
+LIMIT 5
+```
+
+### All Mentions
+
+```dataview
+TABLE file.mtime As ModifiedTime
+FROM [[]]
+SORT file.ctime DESC
+```
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -37,7 +37,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 3
-shortDescription: "A group of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> data. Includes the <a href=\"/projects/group-sales-report\" class=\"theme-link\">Group Sales Report</a>, <a href=\"/projects/pipeline-app-user-report\" class=\"theme-link\">Pipeline App User Report</a> and <a href=\"/projects/project-finance-tracking-report\" class=\"theme-link\">Project Finance Tracking Report</a>."
+shortDescription: "A group of <span class=\"theme-link\">Power BI</span> reporting dashboards for global <span class=\"theme-link\">RLE International</span> data, providing live KPIs for management."
 longDescription: "A collection of <span class=\"theme-link\">Power BI</span> reports for global <span class=\"theme-link\">RLE International</span> projects, focused on analysing the data important to the <span class=\"theme-link\">GPMO</span> team to ensure full data population to provide a full picture to the company's management.<br><br>Includes the <a href=\"/projects/group-sales-report\" class=\"theme-link\">Group Sales Report</a>, <a href=\"/projects/pipeline-app-user-report\" class=\"theme-link\">Pipeline App User Report</a> and <a href=\"/projects/project-finance-tracking-report\" class=\"theme-link\">Project Finance Tracking Report</a>."
 lessonsLearned: "This project really taught me about <span class=\"theme-link\">Power BI</span> workspaces and grouping reports. Further lessons were learned within the individual report projects."
 name: "GPMO Reports"
@@ -75,7 +75,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A group of [[Power BI]] reports for global [[RLE International]] data. Includes the [[Group Sales Report]], [[Pipeline App User Report]] and [[Project Finance Tracking Report]].
+A group of [[Power BI]] reporting dashboards for global [[RLE International]] data, providing live KPIs for management.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -34,7 +34,7 @@ topicTags:
   - "[[GPMO]]"
 powerShellAlias: n/a
 version: 1.5
-portfolioOrder: 4
+portfolioOrder: 5
 shortDescription: "A unified cost model template and approach for costing projects - feeds into the <span class=\"theme-link\">Finance Tracker</span>."
 longDescription: "A detailed <span class=\"theme-link\">Excel</span> cost model template, designed for use across all <span class=\"theme-link\">RLE International</span> regions for quoting new projects, which guides the user through completion to gather the required financial inputs needed for submitting a complete and comprehensive quote.<br><br>Whilst certain financial values and targets are set/restricted within the template, users can modify other values within the quotation to meet their regions requirements.<br><br>The resulting file can then be uploaded into the company system using the <a href=\"/projects/cost-model-translation-file\" class=\"theme-link\">Cost Model Translation File</a> ready for visualisation and reporting within the <span class=\"theme-link\">Financial Tracker</span>."
 lessonsLearned: "The Cost Model template gave me good experience in trying to keep a complex and detailed <span class=\"theme-link\">Excel</span> sheet lightweight and optimised, all whilst avoiding macros for maximum user compatibility."

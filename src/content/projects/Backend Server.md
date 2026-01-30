@@ -42,7 +42,7 @@ topicTags:
   - Backend
 powerShellAlias: backend
 version: 1
-portfolioOrder: 4
+portfolioOrder: 5
 shortDescription: "The backend server and source of data for several of my projects, allowing a singular point of management and maintenance."
 longDescription: "The source of data for several projects including my <a href=\"/projects/dorkinians-website-v3\" class=\"theme-link\">Dorkinians Website V3</a> and <a href=\"/projects/travel-website\" class=\"theme-link\">Travel Website</a>, providing a route for data retrieval from a <span class=\"theme-link\">Neo4j</span> graph using <span class=\"theme-link\">GraphQL</span> queries."
 lessonsLearned: "Taught me about setting up a <span class=\"theme-link\">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class=\"theme-link\">Python</span> code in a growing codebase given my past experience with <span class=\"theme-link\">Python</span> had been for single script projects.<br><br>Also forced me into developing debugging documentation for myself after making the same mistakes twice and ensuring a third time never happened by writing a checklist for understanding why the backend server crashed."

@@ -39,7 +39,7 @@ topicTags:
   - "[[RFQ]]"
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 6
+portfolioOrder: 7
 shortDescription: "A chat bot that takes on content such as an <span class=\"theme-link\">RFQ</span> block of text and then allows the user to query the text via chat."
 longDescription: "A simple website, demonstrating the power of integrating <span class=\"theme-link\">AI</span> into Automotive processes and day to day workflows, providing a simple interface for using a chat bot for quickly summarising the content of an <span class=\"theme-link\">RFQ</span> or querying information or extractions of logic from it."
 lessonsLearned: "This project was a test of using <span class=\"theme-link\">OpenAI</span>'s <span class=\"theme-link\">API</span> and the setup process involving tokens and cost behind it.<br><br>It also was my first integration of a chat bot component into a project."

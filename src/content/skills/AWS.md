@@ -1,28 +1,36 @@
 ---
 tags:
-  - language
-  - synced
+  - tag
+  - software
+  - hosting
   - coding
   - skill
   - notes
-  - tag
   - portfolio
-created: 2025-05-16T15:38:00
-modified: 2025-07-02T14:20:10+01:00
-viewCount: 9
+modified: 2025-07-26T08:33:13+01:00
+viewCount: 7
 aliases:
-skillRating: 5
-skillDescription: Very minor experience in fixing small scripts for developers.
-logoFileName: cplusplus.svg
+  - Amazon Web Services
+skillRating: 1
+skillDescription: Aware of AWS services without trying them out yet.
+logoFileName: aws.svg
 ---
-# C++
+# AWS
 
 > [!back] Link back to [[Skills Notes]]
 
-## Table of Contents 
+> [[Amazon]] Web Services
+
+## Table of Contents
 
 ```table-of-contents
 ```
+
+## Links
+
+- n/a
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Skill
 

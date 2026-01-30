@@ -7,8 +7,8 @@ tags:
   - portfolio
   - project/parked
 created: 2025-02-02T19:03:00
-modified: 2026-01-22T10:02:20+00:00
-viewCount: 8
+modified: 2026-01-30T17:00:12+00:00
+viewCount: 7
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -46,8 +46,8 @@ topicTags:
   - "[[Work]]"
 version: 2
 portfolioOrder: 2
-shortDescription: "This personal portfolio website for displaying my past projects, experience and skills."
-longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills.<br><br>Every project, skill, role, company, education and reference is stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> notes, processed by <span class=\"theme-link\">Node.js</span> scripts and loaded into the <span class=\"theme-link\">Astro</span> site for display."
+shortDescription: "Architected a <span class=\"theme-link\">Node.js</span> system to loop through my <span class=\"theme-link\">Obsidian</span> notes to collate the data for my personal portfolio website, displaying my past projects, experience and skills in a fast <span class=\"theme-link\">Astro.js</span> app. This system centralised my notes about my career and allowed me to update my experience on the go from my mobile."
+longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills.<br><br>Every project, skill, role, company, education and reference is stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> notes, processed by <span class=\"theme-link\">Node.js</span> scripts and loaded into the <span class=\"theme-link\">Astro</span> site for display.<br><br>After writing the backend <span class=\"theme-link\">Node</span> setup for gathering the data from the notes, I built the framework from a template, extending the design to include special sections that I wished to display such as the skills bubble graphic, the timeline and carousel components."
 lessonsLearned: "Initially I set the project up with an <span class=\"theme-link\">Astro</span> front end and started doing <span class=\"theme-link\">GraphQL</span> calls to my <a href=\"/projects/backend-server\" class=\"theme-link\">Backend Server</a> project to collect the portfolio data I had stored in the <span class=\"theme-link\">Neo4j</span> graph. However I soon realized that I was undoing the speed of <span class=\"theme-link\">Astro</span> and switched to a script that loads the required portfolio data (stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> files) into the portfolio repo and used <span class=\"theme-link\">Astro</span> collections to gather and display the data that way.<br><br>The project taught me about defining <span class=\"theme-link\">npm</span> functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package.<br><br>It was also my first taste of <span class=\"theme-link\">Tailwind CSS</span> and although I began to grasp the utility class names towards the end of development, I found it easier in a lot of situations to extract a class and define it in the main <span class=\"theme-link\">CSS</span> file. I see it's benefits for fast prototyping, but I'm not a big fan from what I've seen."
 name: "Portfolio Site V2"
 ---
@@ -87,7 +87,7 @@ WHERE file = this.file
 
 ## Short Description
 
-This personal portfolio website for displaying my past projects, experience and skills.
+Architected a [[Node.js]] system to loop through my [[Obsidian]] notes to collate the data for my personal portfolio website, displaying my past projects, experience and skills in a fast [[Astro|Astro.js]] app. This system centralised my notes about my career and allowed me to update my experience on the go from my mobile.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -96,6 +96,8 @@ This personal portfolio website for displaying my past projects, experience and 
 An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills.
 
 Every project, skill, role, company, education and reference is stored in [[Obsidian]] [[Markdown]] notes, processed by [[Node.js]] scripts and loaded into the [[Astro]] site for display.
+
+After writing the backend [[Node.js|Node]] setup for gathering the data from the notes, I built the framework from a template, extending the design to include special sections that I wished to display such as the skills bubble graphic, the timeline and carousel components.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -387,11 +389,17 @@ SORT dateStart ASC
 
 #### About Me Short
 
-Process-obsessed professional specializing in the "translation layer" between commercial vision and technical reality. I bridge the gap between stakeholders and developers to deliver high-quality, user-focused software. Currently seeking Technical Product Owner or Delivery Lead roles where I can shape both the product and the process.
+After 11 years in automotive engineering, I've pivoted to my real passion: software. I'm a Technical Product Owner with 3 years leading internal software development, able to effectively communicate with both developers and stakeholders. Looking for TPO or Delivery Lead roles where I can help teams ship great products with purpose and precision.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ##### Archived About Me Short
+
+**2nd Draft**
+
+> Process-obsessed professional specializing in the "translation layer" between commercial vision and technical reality. I bridge the gap between stakeholders and developers to deliver high-quality, user-focused software. Currently seeking Technical Product Owner or Delivery Lead roles where I can shape both the product and the process.
+
+**1st Draft**
 
 > Enthusiastic and personable professional with a passion for data and software, seeking a dynamic role to apply strong organisational skills, logical thinking and effective communication to drive long-term success. Open to positions where I can make a positive impact including Software Developer, [[DevOps]] Engineer or Product Owner
 

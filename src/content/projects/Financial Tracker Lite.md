@@ -38,7 +38,7 @@ topicTags:
   - "[[Finances]]"
 powerShellAlias: n/a
 version: 2.2
-portfolioOrder: 3
+portfolioOrder: 4
 shortDescription: "A simplified version of the <span class=\"theme-link\">Financial Tracker</span>."
 longDescription: "A <span class=\"theme-link\">Power Apps</span> tool for users to input finances (both realised and predicted) on a project by project basis, enabling finance forecasting per region."
 lessonsLearned: "This project helped me work on <span class=\"theme-link\">Power Apps</span> gallery components and ensuring these are user friendly whilst staying maintainable.<br><br>It also involved integrating currency conversions within the tool to ensure that all regions could enter accurate information from their end for singular currency reporting at management level."
