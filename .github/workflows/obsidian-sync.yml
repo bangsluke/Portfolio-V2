@@ -15,12 +15,8 @@ on:
       auto_deploy:
         description: 'Auto-deploy after sync'
         required: false
-        default: 'true'
+        default: true
         type: boolean
-
-  # Schedule sync (optional - runs daily at 2 AM UTC)
-  schedule:
-    - cron: '0 2 * * *'
 
   # Trigger on push to main branch
   push:
