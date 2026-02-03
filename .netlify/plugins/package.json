@@ -9,8 +9,10 @@
 		"@netlify/plugin-lighthouse": "6.0.1"
 	},
 	"overrides": {
+		"cookie": ">=0.7.0",
 		"ws": ">=8.17.1",
-		"html-minifier": "npm:html-minifier-terser@^7.2.0"
+		"html-minifier": "npm:html-minifier-terser@^7.2.0",
+		"tar-fs": ">=2.1.4"
 	},
 	"scripts": {
 		"postinstall": "node -e \"const fs=require('fs');const path=require('path');const pkgPath=path.join(__dirname,'node_modules','html-minifier','package.json');if(fs.existsSync(pkgPath)){const pkg=JSON.parse(fs.readFileSync(pkgPath,'utf8'));if(pkg.version==='4.0.0'){console.warn('WARNING: Vulnerable html-minifier 4.0.0 detected. Override should replace with html-minifier-terser.');}}\""
