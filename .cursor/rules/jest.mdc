@@ -1,0 +1,305 @@
+---
+description: Jest unit testing patterns and conventions
+globs: ['**/*.test.ts', '__tests__/unit/**/*']
+alwaysApply: false
+---
+
+# Jest Testing Patterns
+
+## Configuration
+
+This project uses Jest 30 with:
+
+- **TypeScript**: via `ts-jest`
+- **Testing Library**: `@testing-library/jest-dom`
+- **Config**: `jest.config.mjs`
+
+---
+
+## Test File Structure
+
+### Naming Convention
+
+```
+src/utils/date-formatter.ts       → __tests__/unit/date-formatter.test.ts
+src/utils/content-processor.ts    → __tests__/unit/content-processor.test.ts
+```
+
+### Basic Test Structure
+
+```typescript
+import { formatDate, parseDate } from '../../src/utils/date-formatter';
+
+describe('date-formatter', () => {
+	describe('formatDate', () => {
+		it('should format a valid date', () => {
+			const date = new Date('2026-02-04');
+			expect(formatDate(date)).toBe('Feb 4, 2026');
+		});
+
+		it('should handle invalid dates gracefully', () => {
+			expect(formatDate(new Date('invalid'))).toBe('Invalid Date');
+		});
+	});
+
+	describe('parseDate', () => {
+		it('should parse ISO date strings', () => {
+			const result = parseDate('2026-02-04');
+			expect(result).toBeInstanceOf(Date);
+		});
+	});
+});
+```
+
+---
+
+## Testing Patterns
+
+### Arrange-Act-Assert
+
+```typescript
+it('should calculate total with tax', () => {
+	// Arrange
+	const subtotal = 100;
+	const taxRate = 0.08;
+
+	// Act
+	const result = calculateTotal(subtotal, taxRate);
+
+	// Assert
+	expect(result).toBe(108);
+});
+```
+
+### Test Each (Parameterized Tests)
+
+```typescript
+describe('isValidEmail', () => {
+	it.each([
+		['test@example.com', true],
+		['invalid-email', false],
+		['user@domain.co.uk', true],
+		['@nodomain.com', false],
+	])('should validate %s as %s', (email, expected) => {
+		expect(isValidEmail(email)).toBe(expected);
+	});
+});
+```
+
+### Async Testing
+
+```typescript
+describe('fetchData', () => {
+	it('should fetch data successfully', async () => {
+		const result = await fetchData('/api/users');
+		expect(result).toHaveLength(3);
+	});
+
+	it('should handle errors', async () => {
+		await expect(fetchData('/api/invalid')).rejects.toThrow('Not found');
+	});
+});
+```
+
+---
+
+## Mocking
+
+### Mock Functions
+
+```typescript
+describe('UserService', () => {
+	it('should call the API with correct params', () => {
+		const mockFetch = jest.fn().mockResolvedValue({ id: 1, name: 'John' });
+
+		const service = new UserService(mockFetch);
+		await service.getUser(1);
+
+		expect(mockFetch).toHaveBeenCalledWith('/api/users/1');
+		expect(mockFetch).toHaveBeenCalledTimes(1);
+	});
+});
+```
+
+### Mock Modules
+
+```typescript
+// Mock entire module
+jest.mock('../../src/utils/api', () => ({
+	fetchData: jest.fn(),
+}));
+
+import { fetchData } from '../../src/utils/api';
+
+beforeEach(() => {
+	jest.clearAllMocks();
+});
+
+it('should use mocked fetchData', async () => {
+	(fetchData as jest.Mock).mockResolvedValue({ data: 'test' });
+
+	const result = await processData();
+
+	expect(fetchData).toHaveBeenCalled();
+	expect(result.data).toBe('test');
+});
+```
+
+### Mock Implementation
+
+```typescript
+const mockLogger = {
+	info: jest.fn(),
+	error: jest.fn(),
+	warn: jest.fn(),
+};
+
+beforeEach(() => {
+	jest.clearAllMocks();
+});
+```
+
+---
+
+## Setup and Teardown
+
+### Per-Test Setup
+
+```typescript
+describe('Database operations', () => {
+	let db: TestDatabase;
+
+	beforeEach(() => {
+		db = new TestDatabase();
+	});
+
+	afterEach(() => {
+		db.cleanup();
+	});
+
+	it('should insert record', () => {
+		db.insert({ id: 1, name: 'Test' });
+		expect(db.count()).toBe(1);
+	});
+});
+```
+
+### Global Setup
+
+```typescript
+// __tests__/unit/jest.setup.ts
+import '@testing-library/jest-dom';
+
+// Global mocks
+global.fetch = jest.fn();
+
+beforeEach(() => {
+	jest.clearAllMocks();
+});
+```
+
+---
+
+## Custom Matchers
+
+### Using jest-dom Matchers
+
+```typescript
+import '@testing-library/jest-dom';
+
+it('should render button correctly', () => {
+	const button = document.createElement('button');
+	button.disabled = true;
+	button.textContent = 'Submit';
+
+	expect(button).toBeDisabled();
+	expect(button).toHaveTextContent('Submit');
+});
+```
+
+---
+
+## Coverage
+
+Run with coverage:
+
+```bash
+npm run test:coverage
+```
+
+### Coverage Thresholds
+
+```javascript
+// jest.config.mjs
+export default {
+	coverageThreshold: {
+		global: {
+			branches: 80,
+			functions: 80,
+			lines: 80,
+			statements: 80,
+		},
+	},
+};
+```
+
+---
+
+## Best Practices
+
+1. **One assertion concept per test** - Test one behavior at a time
+2. **Descriptive test names** - Use "should [expected behavior] when [condition]"
+3. **Avoid test interdependence** - Each test should run independently
+4. **Use beforeEach for setup** - Reset state between tests
+5. **Mock external dependencies** - Don't make real API calls
+6. **Test edge cases** - Empty arrays, null values, boundary conditions
+7. **Keep tests fast** - Mock slow operations
+
+---
+
+## Common Assertions
+
+```typescript
+// Equality
+expect(value).toBe(expected); // Strict equality (===)
+expect(value).toEqual(expected); // Deep equality
+expect(value).toStrictEqual(expected); // Deep + type equality
+
+// Truthiness
+expect(value).toBeTruthy();
+expect(value).toBeFalsy();
+expect(value).toBeNull();
+expect(value).toBeUndefined();
+expect(value).toBeDefined();
+
+// Numbers
+expect(value).toBeGreaterThan(3);
+expect(value).toBeGreaterThanOrEqual(3);
+expect(value).toBeLessThan(5);
+expect(value).toBeCloseTo(0.3, 5); // Floating point
+
+// Strings
+expect(value).toMatch(/pattern/);
+expect(value).toContain('substring');
+
+// Arrays/Iterables
+expect(array).toContain(item);
+expect(array).toHaveLength(3);
+expect(array).toContainEqual({ id: 1 });
+
+// Objects
+expect(obj).toHaveProperty('key');
+expect(obj).toHaveProperty('nested.key', value);
+expect(obj).toMatchObject({ key: value });
+
+// Exceptions
+expect(() => fn()).toThrow();
+expect(() => fn()).toThrow('error message');
+expect(() => fn()).toThrow(ErrorClass);
+
+// Async
+await expect(promise).resolves.toBe(value);
+await expect(promise).rejects.toThrow();
+```
+
+---

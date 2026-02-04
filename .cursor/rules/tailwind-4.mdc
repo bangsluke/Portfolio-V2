@@ -1,0 +1,278 @@
+---
+description: Tailwind CSS 4 patterns and class organization
+globs: ['**/*.astro', '**/*.tsx', '**/*.css']
+alwaysApply: false
+---
+
+# Tailwind CSS 4 Patterns
+
+## Configuration
+
+This project uses Tailwind CSS 4 with:
+
+- **Vite plugin**: `@tailwindcss/vite` (not PostCSS)
+- **Typography plugin**: `@tailwindcss/typography`
+- **Animations**: `tailwindcss-animated`
+
+---
+
+## Tailwind CSS 4 Changes
+
+### New CSS-First Configuration
+
+```css
+/* src/styles/global.css */
+@import 'tailwindcss';
+
+/* Custom theme values using CSS */
+@theme {
+	--color-brand: #3b82f6;
+	--font-display: 'Inter', sans-serif;
+}
+```
+
+### No More tailwind.config.js (mostly)
+
+Tailwind 4 uses CSS-based configuration. The `tailwind.config.js` in this project may contain legacy config or plugin setup.
+
+---
+
+## Class Organization
+
+Follow this order for consistent, readable classes:
+
+### Order Convention
+
+```
+1. Layout (display, position, grid, flex)
+2. Sizing (width, height, padding, margin)
+3. Typography (font, text, leading)
+4. Visual (background, border, shadow)
+5. Interactive (hover, focus, transition)
+```
+
+### Example
+
+```tsx
+// Organized classes
+<div class="
+  flex items-center justify-between
+  w-full p-4 mb-2
+  text-sm font-medium text-gray-900
+  bg-white rounded-lg border border-gray-200 shadow-sm
+  hover:bg-gray-50 transition-colors
+">
+```
+
+---
+
+## Common Patterns
+
+### Responsive Design
+
+```tsx
+// Mobile-first approach
+<div class="
+  grid grid-cols-1 gap-4
+  md:grid-cols-2 md:gap-6
+  lg:grid-cols-3 lg:gap-8
+">
+```
+
+### Dark Mode
+
+```tsx
+<div class="
+  bg-white text-gray-900
+  dark:bg-gray-900 dark:text-white
+">
+```
+
+### Container Pattern
+
+```tsx
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">{/* Content */}</div>
+```
+
+### Card Component
+
+```tsx
+<article
+	class="
+  rounded-lg border border-gray-200 bg-white p-6 shadow-sm
+  dark:border-gray-700 dark:bg-gray-800
+  hover:shadow-md transition-shadow
+">
+	<h2 class="text-xl font-semibold text-gray-900 dark:text-white">Title</h2>
+	<p class="mt-2 text-gray-600 dark:text-gray-400">Description</p>
+</article>
+```
+
+---
+
+## Typography Plugin
+
+Use the `prose` classes for rendered markdown content:
+
+```tsx
+<article class="prose prose-lg dark:prose-invert max-w-none">
+	{/* Markdown content */}
+</article>
+```
+
+### Prose Customization
+
+```tsx
+<article class="
+  prose
+  prose-headings:font-bold
+  prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
+  prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded
+">
+```
+
+---
+
+## Animation Patterns
+
+Using `tailwindcss-animated`:
+
+```tsx
+// Fade in on load
+<div class="animate-fade-in">
+
+// Slide up
+<div class="animate-slide-in-up">
+
+// With delay
+<div class="animate-fade-in animate-delay-200">
+
+// On hover
+<button class="hover:animate-pulse">
+```
+
+---
+
+## Flexbox Patterns
+
+### Centered Content
+
+```tsx
+<div class="flex items-center justify-center min-h-screen">
+```
+
+### Space Between
+
+```tsx
+<header class="flex items-center justify-between p-4">
+	<Logo />
+	<Nav />
+</header>
+```
+
+### Flex Grow/Shrink
+
+```tsx
+<div class="flex">
+	<aside class="w-64 flex-shrink-0">Sidebar</aside>
+	<main class="flex-1 min-w-0">Content</main>
+</div>
+```
+
+---
+
+## Grid Patterns
+
+### Auto-fit Grid
+
+```tsx
+<div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
+	{/* Cards auto-wrap */}
+</div>
+```
+
+### Fixed Columns with Gap
+
+```tsx
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+```
+
+---
+
+## Form Styling
+
+```tsx
+<input
+	type="text"
+	class="
+    w-full px-4 py-2
+    text-gray-900 placeholder-gray-500
+    border border-gray-300 rounded-lg
+    focus:ring-2 focus:ring-blue-500 focus:border-transparent
+    dark:bg-gray-800 dark:text-white dark:border-gray-600
+  "
+	placeholder="Enter text..."
+/>
+```
+
+---
+
+## Button Variants
+
+### Primary Button
+
+```tsx
+<button
+	class="
+  px-4 py-2 
+  font-medium text-white 
+  bg-blue-600 rounded-lg 
+  hover:bg-blue-700 
+  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+  disabled:opacity-50 disabled:cursor-not-allowed
+  transition-colors
+">
+	Primary
+</button>
+```
+
+### Secondary Button
+
+```tsx
+<button
+	class="
+  px-4 py-2 
+  font-medium text-gray-700 
+  bg-white border border-gray-300 rounded-lg 
+  hover:bg-gray-50
+  dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700
+  transition-colors
+">
+	Secondary
+</button>
+```
+
+---
+
+## Best Practices
+
+1. **Mobile-first** - Start with base styles, add breakpoint modifiers
+2. **Consistent spacing** - Use Tailwind's spacing scale (4, 6, 8, etc.)
+3. **Extract components** - When classes repeat, create a component (not @apply)
+4. **Avoid @apply** - Prefer component composition over CSS abstractions
+5. **Use semantic colors** - Define theme colors for brand consistency
+6. **Group states** - Keep hover/focus/active states together
+
+---
+
+## Debugging
+
+```tsx
+// Outline all elements to debug layout
+<div class="*:outline *:outline-red-500">
+
+// Or specific element
+<div class="outline outline-2 outline-red-500">
+```
+
+---
