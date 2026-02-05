@@ -11,7 +11,7 @@ aliases:
   - Documentation Site
   - bangsluke-documentation
   - homepage
-viewCount: 24
+viewCount: 25
 projectURL: https://bangsluke-documentation.netlify.app/
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false

@@ -1,0 +1,359 @@
+---
+description: Clean code practices and inline documentation standards
+globs: []
+alwaysApply: true
+---
+
+# Clean Code Practices
+
+## Core Principles
+
+1. **Readability over cleverness** - Code is read more than written
+2. **Single Responsibility** - One function/component does one thing
+3. **DRY (Don't Repeat Yourself)** - Extract common logic
+4. **YAGNI (You Ain't Gonna Need It)** - Don't add unnecessary complexity
+
+---
+
+## Function Guidelines
+
+### Size and Complexity
+
+- **Max 50 lines** per function (excluding JSDoc)
+- **Max 3 parameters** - use objects for more
+- **Max 2 levels of nesting** - extract early returns or helper functions
+
+### Naming
+
+```typescript
+// Functions: verb + noun (action-oriented)
+function getUserById(id: string): User {}
+function calculateTotalPrice(items: Item[]): number {}
+function formatDisplayDate(date: Date): string {}
+
+// Booleans: is/has/should prefix
+function isValidEmail(email: string): boolean {}
+function hasPermission(user: User, action: string): boolean {}
+const isLoading = true;
+const hasErrors = errors.length > 0;
+```
+
+### Early Returns
+
+```typescript
+// GOOD: Early return reduces nesting
+function processUser(user: User | null): string {
+	if (!user) return 'No user';
+	if (!user.isActive) return 'Inactive user';
+
+	return `Welcome, ${user.name}`;
+}
+
+// AVOID: Deep nesting
+function processUser(user: User | null): string {
+	if (user) {
+		if (user.isActive) {
+			return `Welcome, ${user.name}`;
+		} else {
+			return 'Inactive user';
+		}
+	} else {
+		return 'No user';
+	}
+}
+```
+
+---
+
+## File Organization
+
+### Max File Size
+
+- **Components**: ~200 lines (extract sub-components if larger)
+- **Utilities**: ~150 lines (split into focused modules)
+- **Tests**: No strict limit, but split by feature
+
+### File Structure
+
+```typescript
+// 1. Imports (grouped)
+import { useState } from 'preact/hooks'; // External
+import { formatDate } from '../utils/date'; // Internal
+import type { User } from '../types'; // Types last
+
+// 2. Types/Interfaces
+interface Props {
+	user: User;
+}
+
+// 3. Constants
+const MAX_ITEMS = 10;
+
+// 4. Helper functions (if small, otherwise separate file)
+function formatUserName(user: User): string {
+	return `${user.firstName} ${user.lastName}`;
+}
+
+// 5. Main export
+export function UserCard({ user }: Props) {
+	// Component logic
+}
+```
+
+---
+
+## JSDoc Documentation
+
+### Document All Exports
+
+```typescript
+/**
+ * Formats a date for display in the UI
+ * @param date - The date to format
+ * @param options - Formatting options
+ * @returns Formatted date string (e.g., "Feb 4, 2026")
+ * @example
+ * formatDisplayDate(new Date('2026-02-04'))
+ * // Returns: "Feb 4, 2026"
+ */
+export function formatDisplayDate(
+	date: Date,
+	options: FormatOptions = {}
+): string {
+	// Implementation
+}
+```
+
+### Document Interfaces
+
+```typescript
+/**
+ * Represents a user in the system
+ */
+interface User {
+	/** Unique identifier */
+	id: string;
+	/** User's display name */
+	name: string;
+	/** Email address (validated) */
+	email: string;
+	/** Account creation timestamp */
+	createdAt: Date;
+}
+```
+
+### When to Document
+
+- **Always**: Exported functions, classes, interfaces
+- **Usually**: Complex internal logic
+- **Skip**: Self-explanatory one-liners, obvious getters/setters
+
+---
+
+## Error Handling
+
+### Use Explicit Error Types
+
+```typescript
+// Define specific errors
+class ValidationError extends Error {
+	constructor(
+		message: string,
+		public field: string
+	) {
+		super(message);
+		this.name = 'ValidationError';
+	}
+}
+
+// Use them
+function validateEmail(email: string): void {
+	if (!email.includes('@')) {
+		throw new ValidationError('Invalid email format', 'email');
+	}
+}
+```
+
+### Handle Errors Gracefully
+
+```typescript
+// GOOD: Explicit error handling
+async function fetchUser(id: string): Promise<User | null> {
+	try {
+		const response = await fetch(`/api/users/${id}`);
+		if (!response.ok) return null;
+		return response.json();
+	} catch (error) {
+		console.error('Failed to fetch user:', error);
+		return null;
+	}
+}
+
+// AVOID: Swallowing errors silently
+async function fetchUser(id: string): Promise<User | null> {
+	try {
+		return await fetch(`/api/users/${id}`).then(r => r.json());
+	} catch {
+		return null; // No logging, debugging is hard
+	}
+}
+```
+
+---
+
+## Component Patterns
+
+### Single Responsibility
+
+```typescript
+// GOOD: Each component has one job
+function UserAvatar({ user }: { user: User }) {
+  return <img src={user.avatar} alt={user.name} />;
+}
+
+function UserName({ user }: { user: User }) {
+  return <span>{user.name}</span>;
+}
+
+function UserCard({ user }: { user: User }) {
+  return (
+    <div class="user-card">
+      <UserAvatar user={user} />
+      <UserName user={user} />
+    </div>
+  );
+}
+```
+
+### Props Interface
+
+```typescript
+// Always define prop types
+interface ButtonProps {
+	label: string;
+	onClick: () => void;
+	variant?: 'primary' | 'secondary';
+	disabled?: boolean;
+}
+
+export function Button({
+	label,
+	onClick,
+	variant = 'primary',
+	disabled = false,
+}: ButtonProps) {
+	// ...
+}
+```
+
+---
+
+## Naming Conventions
+
+### Variables and Functions
+
+```typescript
+// camelCase for variables and functions
+const userName = 'John';
+function getUserName() {}
+
+// PascalCase for components and classes
+function UserProfile() {}
+class UserService {}
+
+// UPPER_SNAKE_CASE for constants
+const MAX_RETRY_COUNT = 3;
+const API_BASE_URL = '/api/v1';
+```
+
+### Files and Folders
+
+```
+src/
+├── components/
+│   ├── UserCard.tsx        # PascalCase for components
+│   └── user-card.test.ts   # kebab-case for test files
+├── utils/
+│   ├── date-formatter.ts   # kebab-case for utilities
+│   └── api-client.ts
+└── pages/
+    └── work-experience.astro  # kebab-case for pages
+```
+
+---
+
+## Code Smells to Avoid
+
+### Magic Numbers
+
+```typescript
+// BAD
+if (password.length < 8) {
+}
+
+// GOOD
+const MIN_PASSWORD_LENGTH = 8;
+if (password.length < MIN_PASSWORD_LENGTH) {
+}
+```
+
+### Long Parameter Lists
+
+```typescript
+// BAD
+function createUser(name, email, age, role, department, manager) {}
+
+// GOOD
+interface CreateUserParams {
+	name: string;
+	email: string;
+	age: number;
+	role: string;
+	department?: string;
+	manager?: string;
+}
+function createUser(params: CreateUserParams) {}
+```
+
+### Commented-Out Code
+
+```typescript
+// BAD: Remove dead code, use git history if needed
+// function oldImplementation() { ... }
+
+// GOOD: Just delete it
+```
+
+### Boolean Parameters
+
+```typescript
+// BAD: What does `true` mean?
+formatDate(date, true);
+
+// GOOD: Use named options
+formatDate(date, { includeTime: true });
+```
+
+---
+
+## Testing Principles
+
+1. **Test behavior, not implementation** - What does the user see?
+2. **One concept per test** - Easy to understand failures
+3. **Descriptive names** - "should display error when email invalid"
+4. **Arrange-Act-Assert** - Clear structure
+5. **Fast and isolated** - No test dependencies
+
+---
+
+## Refactoring Triggers
+
+Consider refactoring when:
+
+- Function exceeds 50 lines
+- More than 2 levels of nesting
+- Similar code appears 3+ times
+- Function has more than 3 parameters
+- You need a comment to explain "what" (not "why")
+
+---

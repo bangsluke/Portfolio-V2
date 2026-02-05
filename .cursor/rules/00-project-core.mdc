@@ -1,0 +1,123 @@
+---
+description: Core project configuration and conventions for Portfolio-V2
+globs: []
+alwaysApply: true
+---
+
+# Portfolio-V2 - Project Core
+
+## Critical Rules
+
+1. **Read before write** - Always understand existing patterns before modifying code
+2. **JSDoc for public APIs** - Document all exported functions and components with JSDoc
+3. **Strict TypeScript** - No `any` types; use `unknown` when type is uncertain
+
+**Current Date**: February 2026
+
+---
+
+## Tech Stack
+
+| Layer        | Technology                    | Version     |
+| ------------ | ----------------------------- | ----------- |
+| Framework    | Astro                         | 5.16.10     |
+| UI Library   | Preact                        | 10.28.2     |
+| Language     | TypeScript                    | Strict mode |
+| Styling      | Tailwind CSS                  | 4.1.18      |
+| Unit Testing | Jest                          | 30.0.5      |
+| E2E Testing  | Playwright                    | 1.57.0      |
+| BDD Testing  | Cucumber                      | 12.5.0      |
+| Linting      | ESLint + Prettier + Stylelint | Latest      |
+
+---
+
+## Project Structure
+
+```
+src/
+├── content/          # Content collections (staticData)
+├── icons/            # SVG icons for astro-icon
+├── pages/            # Astro pages (file-based routing)
+├── scripts/          # Client-side JavaScript
+├── styles/           # Global CSS (Tailwind)
+├── utils/            # TypeScript utilities
+└── logs/             # Auto-generated logs
+
+__tests__/
+├── unit/             # Jest unit tests (*.test.ts)
+└── e2e/
+    ├── page-object-models/  # Playwright POMs
+    ├── steps/               # Cucumber step definitions
+    └── utils/               # Test utilities
+
+scripts/              # Build/sync scripts (Node.js)
+public/               # Static assets
+```
+
+---
+
+## Conventions
+
+### File Naming
+
+- **Astro components**: PascalCase (`WorkExperience.astro`)
+- **Pages**: kebab-case (`work-experience.astro`)
+- **TypeScript utils**: kebab-case (`date-formatter.ts`)
+- **Tests**: Match source file + `.test.ts` or `.spec.ts`
+
+### Import Organization
+
+1. External packages (npm modules)
+2. Astro/framework imports
+3. Project components
+4. Utilities and helpers
+5. Types (last)
+
+### Code Style
+
+- Use JSDoc for inline documentation
+- Prefer functional components
+- Keep functions under 50 lines
+- One component per file
+
+---
+
+## Component Patterns
+
+### Astro Components (Server-first)
+
+```astro
+---
+// Server-side code (runs at build time)
+import { someUtil } from '../utils/some-util';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="component">
+	<h1>{title}</h1>
+</div>
+```
+
+### Preact Islands (Client-side interactivity)
+
+```tsx
+// Use client:* directives in Astro
+<InteractiveComponent client:load />
+<LazyComponent client:visible />
+```
+
+---
+
+## Testing Conventions
+
+- **Unit tests**: `__tests__/unit/*.test.ts` - Jest + Testing Library
+- **E2E tests**: `__tests__/e2e/*.spec.ts` - Playwright
+- **BDD tests**: Cucumber step definitions in `__tests__/e2e/steps/`
+- Use Page Object Models for E2E tests
+
+---

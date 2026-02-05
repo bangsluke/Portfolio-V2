@@ -1,0 +1,351 @@
+---
+description: Playwright E2E testing with Page Object Models
+globs: ['**/*.spec.ts', '__tests__/e2e/**/*']
+alwaysApply: false
+---
+
+# Playwright E2E Testing
+
+## Configuration
+
+This project uses Playwright 1.57 with:
+
+- **Config**: `playwright.config.ts`
+- **Test files**: `__tests__/e2e/*.spec.ts`
+- **Page Objects**: `__tests__/e2e/page-object-models/`
+- **Utilities**: `__tests__/e2e/utils/`
+
+---
+
+## Page Object Model Pattern
+
+### Page Object Structure
+
+```typescript
+// __tests__/e2e/page-object-models/home-page-object-models.ts
+import { type Page, type Locator } from '@playwright/test';
+
+export class HomePage {
+	readonly page: Page;
+	readonly heading: Locator;
+	readonly navLinks: Locator;
+	readonly heroSection: Locator;
+
+	constructor(page: Page) {
+		this.page = page;
+		this.heading = page.getByRole('heading', { level: 1 });
+		this.navLinks = page.getByRole('navigation').getByRole('link');
+		this.heroSection = page.locator('[data-testid="hero"]');
+	}
+
+	async goto() {
+		await this.page.goto('/');
+	}
+
+	async getTitle(): Promise<string> {
+		return this.heading.textContent() ?? '';
+	}
+
+	async navigateTo(linkText: string) {
+		await this.navLinks.filter({ hasText: linkText }).click();
+	}
+
+	async waitForHeroLoaded() {
+		await this.heroSection.waitFor({ state: 'visible' });
+	}
+}
+```
+
+### Using Page Objects in Tests
+
+```typescript
+// __tests__/e2e/home.spec.ts
+import { test, expect } from '@playwright/test';
+import { HomePage } from './page-object-models/home-page-object-models';
+
+test.describe('Home Page', () => {
+	let homePage: HomePage;
+
+	test.beforeEach(async ({ page }) => {
+		homePage = new HomePage(page);
+		await homePage.goto();
+	});
+
+	test('should display the main heading', async () => {
+		await expect(homePage.heading).toBeVisible();
+		await expect(homePage.heading).toContainText('Portfolio');
+	});
+
+	test('should navigate to Work Experience', async () => {
+		await homePage.navigateTo('Work Experience');
+		await expect(homePage.page).toHaveURL(/work-experience/);
+	});
+});
+```
+
+---
+
+## Test Structure
+
+### Basic Test
+
+```typescript
+import { test, expect } from '@playwright/test';
+
+test('should load the home page', async ({ page }) => {
+	await page.goto('/');
+	await expect(page).toHaveTitle(/Portfolio/);
+});
+```
+
+### Test Groups with Hooks
+
+```typescript
+test.describe('Navigation', () => {
+	test.beforeEach(async ({ page }) => {
+		await page.goto('/');
+	});
+
+	test('should have working nav links', async ({ page }) => {
+		await page.getByRole('link', { name: 'Projects' }).click();
+		await expect(page).toHaveURL(/projects/);
+	});
+
+	test('should show mobile menu on small screens', async ({ page }) => {
+		await page.setViewportSize({ width: 375, height: 667 });
+		await expect(page.getByRole('button', { name: /menu/i })).toBeVisible();
+	});
+});
+```
+
+---
+
+## Locator Strategies
+
+### Preferred (Resilient)
+
+```typescript
+// By role (most resilient)
+page.getByRole('button', { name: 'Submit' });
+page.getByRole('link', { name: 'Home' });
+page.getByRole('heading', { level: 1 });
+
+// By text
+page.getByText('Welcome');
+page.getByLabel('Email');
+page.getByPlaceholder('Enter email');
+
+// By test ID (for complex components)
+page.getByTestId('hero-section');
+```
+
+### Avoid (Brittle)
+
+```typescript
+// Don't use CSS selectors when possible
+page.locator('.btn-primary'); // Avoid
+page.locator('#submit-btn'); // Avoid
+
+// Use role-based instead
+page.getByRole('button', { name: 'Submit' }); // Better
+```
+
+---
+
+## Common Actions
+
+### Navigation
+
+```typescript
+await page.goto('/');
+await page.goto('/about');
+await page.goBack();
+await page.reload();
+```
+
+### Interactions
+
+```typescript
+// Click
+await page.getByRole('button', { name: 'Submit' }).click();
+await page.getByRole('link', { name: 'Home' }).click();
+
+// Type
+await page.getByLabel('Email').fill('test@example.com');
+await page.getByPlaceholder('Search').type('query');
+
+// Select
+await page.getByRole('combobox').selectOption('option-value');
+
+// Check/Uncheck
+await page.getByRole('checkbox').check();
+await page.getByRole('checkbox').uncheck();
+
+// Hover
+await page.getByRole('button').hover();
+```
+
+### Waiting
+
+```typescript
+// Wait for element
+await page.getByTestId('loading').waitFor({ state: 'hidden' });
+await page.getByRole('heading').waitFor({ state: 'visible' });
+
+// Wait for navigation
+await page.waitForURL(/dashboard/);
+
+// Wait for network
+await page.waitForResponse('/api/data');
+```
+
+---
+
+## Assertions
+
+```typescript
+// Visibility
+await expect(locator).toBeVisible();
+await expect(locator).toBeHidden();
+await expect(locator).toBeEnabled();
+await expect(locator).toBeDisabled();
+
+// Content
+await expect(locator).toHaveText('Expected text');
+await expect(locator).toContainText('partial');
+await expect(locator).toHaveValue('input value');
+
+// Attributes
+await expect(locator).toHaveAttribute('href', '/about');
+await expect(locator).toHaveClass(/active/);
+
+// Page
+await expect(page).toHaveTitle(/Portfolio/);
+await expect(page).toHaveURL(/about/);
+
+// Count
+await expect(locator).toHaveCount(3);
+```
+
+---
+
+## Visual Testing
+
+```typescript
+test('should match visual snapshot', async ({ page }) => {
+	await page.goto('/');
+	await expect(page).toHaveScreenshot('home-page.png');
+});
+
+test('should match component snapshot', async ({ page }) => {
+	await page.goto('/');
+	const hero = page.getByTestId('hero');
+	await expect(hero).toHaveScreenshot('hero-section.png');
+});
+```
+
+---
+
+## Mobile Testing
+
+```typescript
+test.describe('Mobile', () => {
+	test.use({ viewport: { width: 375, height: 667 } });
+
+	test('should show mobile navigation', async ({ page }) => {
+		await page.goto('/');
+		await expect(page.getByRole('button', { name: /menu/i })).toBeVisible();
+	});
+});
+```
+
+---
+
+## Test Utilities
+
+### Browser Setup (`__tests__/e2e/utils/browserSetup.ts`)
+
+```typescript
+import { type Page } from '@playwright/test';
+
+export async function setupPage(page: Page) {
+	// Set default timeout
+	page.setDefaultTimeout(10000);
+
+	// Mock analytics
+	await page.route('**/analytics/**', route => route.abort());
+}
+
+export async function waitForPageLoad(page: Page) {
+	await page.waitForLoadState('networkidle');
+}
+```
+
+### Test Data (`__tests__/e2e/utils/testData.ts`)
+
+```typescript
+export const testUsers = {
+	admin: { email: 'admin@test.com', role: 'admin' },
+	user: { email: 'user@test.com', role: 'user' },
+};
+
+export const testContent = {
+	validPost: { title: 'Test Post', content: 'Content here' },
+};
+```
+
+---
+
+## Running Tests
+
+```bash
+# Run all E2E tests
+npm run test:e2e
+
+# Run in headed mode (see browser)
+npx playwright test --headed
+
+# Run specific test file
+npx playwright test home.spec.ts
+
+# Run with UI mode
+npx playwright test --ui
+
+# Debug mode
+npx playwright test --debug
+
+# Generate tests
+npx playwright codegen localhost:4321
+```
+
+---
+
+## Best Practices
+
+1. **Use Page Objects** - Encapsulate page structure and actions
+2. **Prefer role locators** - Most resilient to UI changes
+3. **Add data-testid for complex elements** - When roles aren't enough
+4. **Keep tests independent** - Don't rely on test order
+5. **Use meaningful assertions** - Test user-visible behavior
+6. **Mock external services** - Isolate tests from third-party APIs
+7. **Test critical paths first** - Navigation, forms, core features
+
+---
+
+## Debugging Tips
+
+```typescript
+// Pause execution
+await page.pause();
+
+// Take screenshot
+await page.screenshot({ path: 'debug.png' });
+
+// Log element HTML
+console.log(await locator.innerHTML());
+
+// Slow down actions
+test.use({ actionTimeout: 5000 });
+```
+
+---

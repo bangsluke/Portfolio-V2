@@ -1,0 +1,319 @@
+---
+description: TypeScript strict mode patterns and JSDoc documentation
+globs: ['**/*.ts', '**/*.tsx']
+alwaysApply: false
+---
+
+# TypeScript Patterns
+
+## Configuration
+
+This project uses Astro's strict TypeScript configuration:
+
+- `extends: "astro/tsconfigs/strict"`
+- `jsx: "react-jsx"`
+- `jsxImportSource: "preact"`
+
+---
+
+## Core Rules
+
+### No `any` - Use `unknown` Instead
+
+```typescript
+// BAD
+function parse(data: any) {
+	return data.value;
+}
+
+// GOOD
+function parse(data: unknown): string {
+	if (typeof data === 'object' && data !== null && 'value' in data) {
+		return String((data as { value: unknown }).value);
+	}
+	throw new Error('Invalid data');
+}
+```
+
+### Type Inference - Let TypeScript Work
+
+```typescript
+// Unnecessary - TypeScript infers this
+const name: string = 'John';
+const items: string[] = ['a', 'b', 'c'];
+
+// Better - let inference work
+const name = 'John';
+const items = ['a', 'b', 'c'];
+
+// DO annotate function parameters and return types for public APIs
+export function formatDate(date: Date): string {
+	return date.toISOString();
+}
+```
+
+---
+
+## Interfaces vs Types
+
+### Use `interface` for Object Shapes
+
+```typescript
+// Preferred for objects - better error messages, extendable
+interface User {
+	id: string;
+	name: string;
+	email: string;
+}
+
+// Extending interfaces
+interface AdminUser extends User {
+	permissions: string[];
+}
+```
+
+### Use `type` for Unions, Intersections, Utilities
+
+```typescript
+// Union types
+type Status = 'pending' | 'active' | 'completed';
+
+// Intersection types
+type WithTimestamp<T> = T & { createdAt: Date; updatedAt: Date };
+
+// Utility types
+type PartialUser = Partial<User>;
+type UserKeys = keyof User;
+```
+
+---
+
+## Function Patterns
+
+### Explicit Return Types for Exports
+
+```typescript
+/**
+ * Formats a date for display
+ * @param date - The date to format
+ * @returns Formatted date string (e.g., "Jan 15, 2026")
+ */
+export function formatDisplayDate(date: Date): string {
+	return date.toLocaleDateString('en-US', {
+		month: 'short',
+		day: 'numeric',
+		year: 'numeric',
+	});
+}
+```
+
+### Optional Parameters with Defaults
+
+```typescript
+interface FormatOptions {
+	locale?: string;
+	includeTime?: boolean;
+}
+
+export function formatDate(date: Date, options: FormatOptions = {}): string {
+	const { locale = 'en-US', includeTime = false } = options;
+	// ...
+}
+```
+
+### Async Functions
+
+```typescript
+/**
+ * Fetches user data from the API
+ * @param userId - The user's unique identifier
+ * @returns The user object or null if not found
+ */
+export async function fetchUser(userId: string): Promise<User | null> {
+	try {
+		const response = await fetch(`/api/users/${userId}`);
+		if (!response.ok) return null;
+		return response.json();
+	} catch {
+		return null;
+	}
+}
+```
+
+---
+
+## Type Guards
+
+### Using `is` for Type Narrowing
+
+```typescript
+interface Post {
+	type: 'post';
+	title: string;
+	content: string;
+}
+
+interface Page {
+	type: 'page';
+	title: string;
+	slug: string;
+}
+
+type Content = Post | Page;
+
+function isPost(content: Content): content is Post {
+	return content.type === 'post';
+}
+
+// Usage
+function render(content: Content) {
+	if (isPost(content)) {
+		// TypeScript knows this is a Post
+		console.log(content.content);
+	} else {
+		// TypeScript knows this is a Page
+		console.log(content.slug);
+	}
+}
+```
+
+### Assertion Functions
+
+```typescript
+function assertDefined<T>(
+	value: T | null | undefined,
+	message: string
+): asserts value is T {
+	if (value === null || value === undefined) {
+		throw new Error(message);
+	}
+}
+
+// Usage
+const element = document.getElementById('app');
+assertDefined(element, 'App element not found');
+// Now TypeScript knows element is HTMLElement, not null
+```
+
+---
+
+## Generics
+
+### Basic Generic Function
+
+```typescript
+function first<T>(array: T[]): T | undefined {
+	return array[0];
+}
+
+// TypeScript infers the return type
+const num = first([1, 2, 3]); // number | undefined
+const str = first(['a', 'b']); // string | undefined
+```
+
+### Generic with Constraints
+
+```typescript
+interface HasId {
+	id: string;
+}
+
+function findById<T extends HasId>(items: T[], id: string): T | undefined {
+	return items.find(item => item.id === id);
+}
+```
+
+---
+
+## JSDoc Documentation
+
+### Document All Exported Functions
+
+```typescript
+/**
+ * Calculates the total price including tax
+ * @param subtotal - The pre-tax amount
+ * @param taxRate - Tax rate as decimal (e.g., 0.08 for 8%)
+ * @returns The total price with tax applied
+ * @example
+ * const total = calculateTotal(100, 0.08); // 108
+ */
+export function calculateTotal(subtotal: number, taxRate: number): number {
+	return subtotal * (1 + taxRate);
+}
+```
+
+### Document Interfaces
+
+```typescript
+/**
+ * Represents a blog post in the content collection
+ */
+interface BlogPost {
+	/** Unique identifier for the post */
+	id: string;
+	/** Post title displayed in listings and SEO */
+	title: string;
+	/** Publication date */
+	date: Date;
+	/** Optional list of tags for categorization */
+	tags?: string[];
+}
+```
+
+---
+
+## Utility Types Reference
+
+```typescript
+// Make all properties optional
+type PartialUser = Partial<User>;
+
+// Make all properties required
+type RequiredUser = Required<User>;
+
+// Make all properties readonly
+type ReadonlyUser = Readonly<User>;
+
+// Pick specific properties
+type UserPreview = Pick<User, 'id' | 'name'>;
+
+// Omit specific properties
+type UserWithoutEmail = Omit<User, 'email'>;
+
+// Record type for objects with known keys
+type UserRoles = Record<string, 'admin' | 'user' | 'guest'>;
+
+// Extract from union
+type ActiveStatus = Extract<Status, 'active' | 'pending'>;
+
+// Exclude from union
+type InactiveStatus = Exclude<Status, 'active'>;
+
+// Function return type
+type FetchResult = ReturnType<typeof fetchUser>;
+
+// Function parameter types
+type FetchParams = Parameters<typeof fetchUser>;
+```
+
+---
+
+## Strict Null Checks
+
+```typescript
+// Handle nullable values explicitly
+function getLength(str: string | null): number {
+	// Option 1: Early return
+	if (str === null) return 0;
+	return str.length;
+
+	// Option 2: Nullish coalescing
+	return (str ?? '').length;
+
+	// Option 3: Optional chaining (when accessing properties)
+	return str?.length ?? 0;
+}
+```
+
+---

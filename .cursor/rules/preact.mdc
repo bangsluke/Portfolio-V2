@@ -1,0 +1,273 @@
+---
+description: Preact component patterns for Astro islands
+globs: ['**/*.tsx']
+alwaysApply: false
+---
+
+# Preact Patterns
+
+## Overview
+
+This project uses Preact for interactive islands within Astro. Components are hydrated client-side using Astro's `client:*` directives.
+
+**Configuration**: `jsxImportSource: preact` (tsconfig.json)
+
+---
+
+## Component Structure
+
+### Functional Component with Props
+
+```tsx
+import { type FunctionComponent } from 'preact';
+
+interface ButtonProps {
+	label: string;
+	onClick: () => void;
+	variant?: 'primary' | 'secondary';
+	disabled?: boolean;
+}
+
+/**
+ * Reusable button component with variants
+ * @param props - Button configuration
+ */
+export const Button: FunctionComponent<ButtonProps> = ({
+	label,
+	onClick,
+	variant = 'primary',
+	disabled = false,
+}) => {
+	return (
+		<button
+			type="button"
+			class={`btn btn-${variant}`}
+			onClick={onClick}
+			disabled={disabled}>
+			{label}
+		</button>
+	);
+};
+```
+
+---
+
+## Hooks
+
+### useState
+
+```tsx
+import { useState } from 'preact/hooks';
+
+export const Counter = () => {
+	const [count, setCount] = useState(0);
+
+	return (
+		<div>
+			<p>Count: {count}</p>
+			<button onClick={() => setCount(c => c + 1)}>Increment</button>
+		</div>
+	);
+};
+```
+
+### useEffect
+
+```tsx
+import { useState, useEffect } from 'preact/hooks';
+
+export const DataFetcher = ({ url }: { url: string }) => {
+	const [data, setData] = useState(null);
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		let cancelled = false;
+
+		fetch(url)
+			.then(res => res.json())
+			.then(result => {
+				if (!cancelled) {
+					setData(result);
+					setLoading(false);
+				}
+			});
+
+		return () => {
+			cancelled = true;
+		};
+	}, [url]);
+
+	if (loading) return <p>Loading...</p>;
+	return <pre>{JSON.stringify(data, null, 2)}</pre>;
+};
+```
+
+### useRef
+
+```tsx
+import { useRef, useEffect } from 'preact/hooks';
+
+export const FocusInput = () => {
+	const inputRef = useRef<HTMLInputElement>(null);
+
+	useEffect(() => {
+		inputRef.current?.focus();
+	}, []);
+
+	return <input ref={inputRef} type="text" />;
+};
+```
+
+### useCallback and useMemo
+
+```tsx
+import { useState, useCallback, useMemo } from 'preact/hooks';
+
+export const ExpensiveComponent = ({ items }: { items: string[] }) => {
+	const [filter, setFilter] = useState('');
+
+	// Memoize expensive computation
+	const filteredItems = useMemo(
+		() => items.filter(item => item.includes(filter)),
+		[items, filter]
+	);
+
+	// Memoize callback
+	const handleChange = useCallback(
+		(e: Event) => setFilter((e.target as HTMLInputElement).value),
+		[]
+	);
+
+	return (
+		<div>
+			<input type="text" onInput={handleChange} />
+			<ul>
+				{filteredItems.map(item => (
+					<li key={item}>{item}</li>
+				))}
+			</ul>
+		</div>
+	);
+};
+```
+
+---
+
+## Integration with Astro
+
+### Using in Astro Components
+
+```astro
+---
+import { Counter } from '../components/Counter.tsx';
+import { Modal } from '../components/Modal.tsx';
+---
+
+<!-- Hydrate immediately (above fold, critical) -->
+<Counter client:load initialCount={5} />
+
+<!-- Hydrate when visible (below fold) -->
+<Modal client:visible />
+
+<!-- Hydrate when browser is idle -->
+<Widget client:idle />
+```
+
+### Passing Props from Astro
+
+```astro
+---
+const items = await fetchItems();
+---
+
+<ItemList client:load items={items} />
+```
+
+---
+
+## Patterns
+
+### Controlled Inputs
+
+```tsx
+import { useState } from 'preact/hooks';
+
+export const SearchInput = ({
+	onSearch,
+}: {
+	onSearch: (q: string) => void;
+}) => {
+	const [query, setQuery] = useState('');
+
+	const handleSubmit = (e: Event) => {
+		e.preventDefault();
+		onSearch(query);
+	};
+
+	return (
+		<form onSubmit={handleSubmit}>
+			<input
+				type="text"
+				value={query}
+				onInput={e => setQuery((e.target as HTMLInputElement).value)}
+				placeholder="Search..."
+			/>
+			<button type="submit">Search</button>
+		</form>
+	);
+};
+```
+
+### Conditional Rendering
+
+```tsx
+export const ConditionalContent = ({ isLoading, error, data }) => {
+	if (isLoading) return <Spinner />;
+	if (error) return <Error message={error} />;
+	if (!data) return <Empty />;
+	return <Content data={data} />;
+};
+```
+
+### Children Props
+
+```tsx
+import { type ComponentChildren } from 'preact';
+
+interface CardProps {
+	title: string;
+	children: ComponentChildren;
+}
+
+export const Card = ({ title, children }: CardProps) => (
+	<div class="card">
+		<h2>{title}</h2>
+		<div class="card-body">{children}</div>
+	</div>
+);
+```
+
+---
+
+## Best Practices
+
+1. **Keep components small** - One responsibility per component
+2. **Use TypeScript interfaces** - Define props with `interface`, not `type` for better error messages
+3. **Memoize expensive operations** - Use `useMemo` and `useCallback` when needed
+4. **Cleanup effects** - Always return cleanup functions from `useEffect`
+5. **Use `class` not `className`** - Preact supports both, but `class` is shorter
+6. **Prefer `onInput` over `onChange`** - More consistent behavior across browsers
+
+---
+
+## Preact vs React Differences
+
+| Feature             | Preact              | React                |
+| ------------------- | ------------------- | -------------------- |
+| Size                | ~3KB                | ~40KB                |
+| `class` attribute   | Supported           | Use `className`      |
+| Event handler names | `onInput` preferred | `onChange` preferred |
+| Ref callback        | Same                | Same                 |
+| Hooks               | Same API            | Same API             |
+
+---

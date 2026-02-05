@@ -4,14 +4,14 @@ tags:
   - role
   - portfolio
 created: 2025-07-15T14:35:00
-modified: 2026-01-21T08:52:08+00:00
-viewCount: 2
+modified: 2026-01-30T20:59:28+00:00
+viewCount: 1
 dateStart: 2019-07-01
 dateEnd: 2022-07-01
 linkedCompany:
   - "[[RLE International]]"
   - "[[Digital Engineering]]"
-shortRoleDescription: "Joined a small team in developing a scalable timing plan web-based tool for automotive projects (<a href=\"/projects/sdp\" class=\"theme-link\">SDP</a>). Collected data from field experts to generate a full development plan for the automotive process and developed a solution for maintaining a <span class=\"theme-link\">Neo4j</span> database via a custom-built <span class=\"theme-link\">Excel</span> sheet to store the collected knowledge."
+shortRoleDescription: "Joined a small team in developing a scalable timing plan web-based tool for automotive projects (<a href=\"/projects/sdp\" class=\"theme-link\">SDP</a>). Collected data from field experts to generate a full development plan for the automotive process and architected a solution for maintaining a <span class=\"theme-link\">Neo4j</span> database via a custom-built <span class=\"theme-link\">Excel</span> sheet, populating an <span class=\"theme-link\">SQL</span> database to store the collected knowledge."
 fullRoleDescription: "Joined an internal team in developing an automotive scalable development plan (<a href=\"/projects/sdp\" class=\"theme-link\">SDP</a>), initially defining a process in <span class=\"theme-link\">Excel</span>, and then developing this into a web-based tool. I was responsible for collecting the data by interviewing experts within and outside the company and collating the data into a format that we could use algorithms to automatically develop a tailored timing plan for a customer.<br><br>Responsibilities also include supporting decisions on the architecture of the tool, design of the <span class=\"theme-link\">UI</span> and managing the offshore developers in building and maintaining the tool.<br><br>This was my first step into <span class=\"theme-link\">DevOps</span>, where I managed feature requests and guided the developers through implementing improvements for users.<br><br>The role has allowed me to begin writing code in a number of languages, from writing test files in <span class=\"theme-link\">Java</span>, creating <span class=\"theme-link\">Cypher</span> queries on our graph database, to developing a basic <span class=\"theme-link\">React</span> app for providing support information to consultants using the tool."
 keyAchievement: "Deployment and upkeep of a working web-based tool used by several customers."
 ---
@@ -25,7 +25,7 @@ keyAchievement: "Deployment and upkeep of a working web-based tool used by sever
 
 ## Short Role Description
 
-Joined a small team in developing a scalable timing plan web-based tool for automotive projects ([[SDP]]). Collected data from field experts to generate a full development plan for the automotive process and developed a solution for maintaining a [[Neo4j]] database via a custom-built [[Excel]] sheet to store the collected knowledge.
+Joined a small team in developing a scalable timing plan web-based tool for automotive projects ([[SDP]]). Collected data from field experts to generate a full development plan for the automotive process and architected a solution for maintaining a [[Neo4j]] database via a custom-built [[Excel]] sheet, populating an [[SQL]] database to store the collected knowledge.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

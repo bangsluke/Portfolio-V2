@@ -1,31 +1,37 @@
 ---
 tags:
-  - tag
-  - software
   - coding
   - skill
+  - notes
+  - tag
+  - software
   - portfolio
-modified: 2025-07-05T07:08:54+01:00
-viewCount: 6
+created: 2026-02-05
+modified: 2026-02-05T17:38:30+00:00
+viewCount: 2
 aliases:
-skillRating: 70
-skillDescription: Confident in utilising Git both for individual projects and for team development.
-logoFileName: git.svg
+skillRating: 5
+skillDescription: Familiar with the concept without yet trying the software myself.
+logoFileName: terraform.svg
 ---
-# Git
+# Terraform
 
 > [!back] Link back to [[Skills Notes]]
 
-> Software Version Management
-
-## Table of Contents
+## Table of Contents 
 
 ```table-of-contents
 ```
 
+## Description
+
+Terraform, created by HashiCorp, is an Infrastructure‑as‑Code ([[IaC]]) tool that allows teams to define, provision, and manage cloud and on‑premises infrastructure using human‑readable configuration files. It enables reproducible, version‑controlled infrastructure deployments across multiple providers such as [[AWS]], [[Azure]], and [[Google Cloud]]. Terraform uses a declarative model: you specify the desired end state, and Terraform determines the necessary steps to achieve it. This approach reduces manual configuration, minimizes errors, and improves scalability. Terraform's modular design and provider ecosystem make it a powerful tool for automating complex infrastructure lifecycles.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
 ## Links
 
-- n/a
+- [Terraform \| HashiCorp Developer](https://developer.hashicorp.com/terraform)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -87,8 +93,6 @@ FROM [[]]
 GROUP BY "Links"
 ```
 
->[!top] [Back to top](#Table%20of%20Contents)
-
 ### Last Mentioned
 
 ```dataview
@@ -97,8 +101,6 @@ FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
 ```
-
->[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 

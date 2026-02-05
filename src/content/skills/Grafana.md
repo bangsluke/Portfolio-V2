@@ -1,31 +1,37 @@
 ---
 tags:
-  - tag
-  - software
   - coding
   - skill
+  - notes
+  - tag
+  - software
   - portfolio
-modified: 2025-07-05T07:08:54+01:00
-viewCount: 6
+created: 2026-02-05
+modified: 2026-02-05T17:51:13+00:00
+viewCount: 2
 aliases:
-skillRating: 70
-skillDescription: Confident in utilising Git both for individual projects and for team development.
-logoFileName: git.svg
+skillRating: 5
+skillDescription: Familiar with the concept without yet trying the software myself.
+logoFileName: grafana.svg
 ---
-# Git
+# Grafana
 
 > [!back] Link back to [[Skills Notes]]
 
-> Software Version Management
-
-## Table of Contents
+## Table of Contents 
 
 ```table-of-contents
 ```
 
+## Description
+
+Grafana is an open‑source observability and data visualization platform that allows users to explore, query, and visualize metrics, logs, and traces from diverse data sources. It transforms time‑series data into interactive dashboards, enabling teams to monitor system health, analyze trends, and troubleshoot issues effectively. Grafana supports integrations with [[Prometheus]], Elasticsearch, [[SQL]] databases, and many others. Its flexible dashboarding, alerting features, and plugin ecosystem make it a central tool for building unified monitoring solutions. Grafana is widely used across [[DevOps]], SRE, and analytics teams for its power, extensibility, and intuitive interface.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
 ## Links
 
-- n/a
+- [Grafana: The open and composable observability platform \| Grafana Labs](https://grafana.com/)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -87,8 +93,6 @@ FROM [[]]
 GROUP BY "Links"
 ```
 
->[!top] [Back to top](#Table%20of%20Contents)
-
 ### Last Mentioned
 
 ```dataview
@@ -97,8 +101,6 @@ FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
 ```
-
->[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 

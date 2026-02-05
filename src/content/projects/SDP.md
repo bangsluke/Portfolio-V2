@@ -7,7 +7,7 @@ created: 2025-06-27 10:45
 modified: 2026-01-30T17:07:40+00:00
 aliases:
   - Scalable Development Plan
-viewCount: 19
+viewCount: 21
 projectURL: https://sdp.labs.rle.de/sdpweb/
 codeURL: https://git.rle.de/sdp/sdp-3
 codeMultipleRepos: false
@@ -32,6 +32,8 @@ technologies:
   - "[[01 Notes/02 Areas/Work Notes/Skills Notes/Languages/Java|Java]]"
   - "[[VS Code]]"
   - "[[React]]"
+  - "[[Docker]]"
+  - "[[Kubernetes]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

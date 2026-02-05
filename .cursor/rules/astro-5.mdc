@@ -1,0 +1,212 @@
+---
+description: Astro 5 framework patterns and best practices
+globs: ['**/*.astro', 'src/pages/**/*']
+alwaysApply: false
+---
+
+# Astro 5 Patterns
+
+## Core Principles
+
+1. **Server-first** - Components render on the server by default (zero JS)
+2. **Islands architecture** - Add interactivity only where needed with `client:*` directives
+3. **Content-driven** - Use content collections for structured data
+
+---
+
+## Component Structure
+
+### Basic Component
+
+```astro
+---
+// Frontmatter: Server-side TypeScript
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = 'Default description' } = Astro.props;
+
+// Fetch data, process content, etc.
+const data = await fetchData();
+---
+
+<Layout title={title}>
+	<main class="container">
+		<h1>{title}</h1>
+		{description && <p>{description}</p>}
+		<Icon name="logo" />
+	</main>
+</Layout>
+
+<style>
+	/* Scoped styles - only affect this component */
+	.container {
+		max-width: 1200px;
+	}
+</style>
+```
+
+---
+
+## Client Directives
+
+Use these to hydrate Preact components:
+
+| Directive              | When to Use                                        |
+| ---------------------- | -------------------------------------------------- |
+| `client:load`          | High-priority interactive components (nav, modals) |
+| `client:idle`          | Lower-priority components (carousels, widgets)     |
+| `client:visible`       | Components below the fold                          |
+| `client:media`         | Components for specific viewport sizes             |
+| `client:only="preact"` | Skip server render entirely                        |
+
+```astro
+---
+import InteractiveNav from '../components/Nav.tsx';
+import Carousel from '../components/Carousel.tsx';
+---
+
+<InteractiveNav client:load />
+<Carousel client:visible />
+```
+
+---
+
+## Pages
+
+### File-based Routing
+
+```
+src/pages/
+├── index.astro          → /
+├── about.astro          → /about
+├── blog/
+│   ├── index.astro      → /blog
+│   └── [slug].astro     → /blog/:slug (dynamic)
+└── [...slug].astro      → Catch-all route
+```
+
+### Page Props
+
+```astro
+---
+// src/pages/blog/[slug].astro
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map(post => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+---
+```
+
+---
+
+## Content Collections
+
+### Define Schema (src/content/config.ts)
+
+```typescript
+import { defineCollection, z } from 'astro:content';
+
+const blogCollection = defineCollection({
+	type: 'content',
+	schema: z.object({
+		title: z.string(),
+		date: z.date(),
+		tags: z.array(z.string()).optional(),
+	}),
+});
+
+export const collections = {
+	blog: blogCollection,
+};
+```
+
+### Query Content
+
+```astro
+---
+import { getCollection, getEntry } from 'astro:content';
+
+// Get all entries
+const allPosts = await getCollection('blog');
+
+// Filter entries
+const publishedPosts = await getCollection('blog', ({ data }) => {
+	return data.draft !== true;
+});
+
+// Get single entry
+const post = await getEntry('blog', 'my-post');
+---
+```
+
+---
+
+## Integrations Used
+
+This project uses these Astro integrations:
+
+- **@astrojs/preact** - Preact components as islands
+- **@astrojs/sitemap** - Auto-generate sitemap.xml
+- **astro-icon** - SVG icon component
+- **@yeskunall/astro-umami** - Analytics
+
+---
+
+## Common Patterns
+
+### Conditional Rendering
+
+```astro
+{showContent && <Content />}
+{items.length > 0 ? <List items={items} /> : <Empty />}
+```
+
+### Loops
+
+```astro
+{items.map(item => <Card key={item.id} {...item} />)}
+```
+
+### Slots
+
+```astro
+<!-- Layout.astro -->
+<html>
+	<body>
+		<slot />
+		<!-- Default slot -->
+		<slot name="sidebar" />
+		<!-- Named slot -->
+	</body>
+</html>
+
+<!-- Usage -->
+<Layout>
+	<main>Content</main>
+	<aside slot="sidebar">Sidebar</aside>
+</Layout>
+```
+
+---
+
+## Performance Tips
+
+1. Avoid `client:load` unless necessary - prefer `client:visible` or `client:idle`
+2. Use `<Image />` component for optimized images
+3. Leverage view transitions for smooth navigation
+4. Keep frontmatter code minimal - heavy processing slows builds
+
+---

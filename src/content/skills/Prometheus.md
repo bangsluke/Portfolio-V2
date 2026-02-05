@@ -1,31 +1,37 @@
 ---
 tags:
-  - tag
-  - software
   - coding
   - skill
+  - notes
+  - tag
+  - software
   - portfolio
-modified: 2025-07-05T07:08:54+01:00
-viewCount: 6
+created: 2026-02-05
+modified: 2026-02-05T17:50:04+00:00
+viewCount: 2
 aliases:
-skillRating: 70
-skillDescription: Confident in utilising Git both for individual projects and for team development.
-logoFileName: git.svg
+skillRating: 5
+skillDescription: Familiar with the concept without yet trying the software myself.
+logoFileName: prometheus.svg
 ---
-# Git
+# Prometheus
 
 > [!back] Link back to [[Skills Notes]]
 
-> Software Version Management
-
-## Table of Contents
+## Table of Contents 
 
 ```table-of-contents
 ```
 
+## Description
+
+Prometheus is an open‑source monitoring and alerting toolkit optimized for reliability and scalability in dynamic, cloud‑native environments. It collects metrics as time‑series data, storing values alongside timestamps and labels for flexible querying. Prometheus uses a pull‑based model, scraping metrics from instrumented services, and includes a powerful query language (PromQL) for analysis. It integrates seamlessly with [[Kubernetes]] and other modern systems, providing real‑time insights into performance, availability, and resource usage. Prometheus is widely adopted for its simplicity, strong ecosystem, and robust alerting capabilities.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
 ## Links
 
-- n/a
+- [Prometheus - Monitoring system & time series database](https://prometheus.io/)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -87,8 +93,6 @@ FROM [[]]
 GROUP BY "Links"
 ```
 
->[!top] [Back to top](#Table%20of%20Contents)
-
 ### Last Mentioned
 
 ```dataview
@@ -97,8 +101,6 @@ FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
 ```
-
->[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 

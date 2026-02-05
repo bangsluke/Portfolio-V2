@@ -4,8 +4,9 @@ tags:
   - software
   - skill
   - portfolio
+  - devops
 modified: 2026-01-21T08:43:58+00:00
-viewCount: 4
+viewCount: 1
 aliases:
   - DevOps
 skillRating: 75
@@ -16,7 +17,7 @@ logoFileName: azure_devops.svg
 
 > [!back] Link back to [[Skills Notes]]
 
-> [[Microsoft]] [[Azure]] DevOps
+> [[Microsoft]] [[Azure]] [[DevOps]]
 
 ## Table of Contents
 
