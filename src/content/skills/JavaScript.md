@@ -8,8 +8,8 @@ tags:
   - notes
   - tag
 created: 2025-05-16T15:38:00
-modified: 2025-07-18T12:09:09+01:00
-viewCount: 19
+modified: 2026-02-03T14:49:56+00:00
+viewCount: 1
 aliases:
   - JS
 skillRating: 65
@@ -24,6 +24,12 @@ skillDescription: A good understanding of JavaScript concepts to build dynamic p
 
 ```table-of-contents
 ```
+
+## Links
+
+- [Free JavaScript eBooks](https://github.com/EbookFoundation/free-programming-books/blob/main/books/free-programming-books-langs.md#javascript)
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Skill
 

@@ -8,7 +8,7 @@ tags:
   - portfolio
 viewCount: 6
 modified: 2025-07-18T12:38:02+01:00
-aliases: 
+aliases:
 skillRating: 70
 skillDescription: Managed all of my projects via GitHub, setting up security checks and CI/CD actions across required projects
 logoFileName: github.svg

@@ -1,6 +1,5 @@
 ---
 tags:
-  - synced
   - coding
   - skill
   - notes
@@ -8,11 +7,11 @@ tags:
   - software
   - portfolio
 created: 2025-05-16T15:38:00
-modified: 2025-07-18T12:37:05+01:00
+modified: 2026-02-05T17:32:41+00:00
 viewCount: 6
 aliases:
-skillRating: 5
-skillDescription: Understanding of the concept without any real life practice.
+skillRating: 15
+skillDescription: Utilised on the SDP project, introducing me to the concept of images and containerisation.
 logoFileName: docker.svg
 ---
 # Docker
@@ -23,6 +22,18 @@ logoFileName: docker.svg
 
 ```table-of-contents
 ```
+
+## Description
+
+Docker is an open platform that enables developers to build, ship, and run applications inside lightweight, isolated containers. It standardizes environments by packaging code with all required dependencies, ensuring consistent behavior across development, testing, and production. Docker simplifies deployment, accelerates delivery cycles, and supports scalable microservices architectures. Its core engine manages container lifecycle operations, allowing teams to run multiple applications reliably on the same host. Docker has become a foundational technology in modern [[DevOps]] workflows, enabling reproducibility, portability, and efficient resource usage.
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+## Links
+
+- [Docker: Accelerated Container Application Development](https://www.docker.com/)
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Skill
 
@@ -90,37 +101,6 @@ FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
 ```
-
-### All Mentions
-
-```dataview
-TABLE file.mtime As ModifiedTime
-FROM [[]]
-SORT file.ctime DESC
-```
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-### Total Count
-
-```dataview
-TABLE WITHOUT ID length(this.file.inlinks) as "Links"
-FROM [[]]
-GROUP BY "Links"
-```
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-### Last Mentioned
-
-```dataview
-TABLE file.mtime As ModifiedTime
-FROM [[]]
-SORT file.ctime DESC
-LIMIT 5
-```
-
->[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 

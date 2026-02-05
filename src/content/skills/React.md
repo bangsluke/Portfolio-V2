@@ -10,7 +10,7 @@ tags:
   - skill
   - library
 created: 2025-05-17T15:40:00
-modified: 2025-08-26T16:11:20+01:00
+modified: 2026-02-03T14:48:02+00:00
 viewCount: 10
 aliases:
 skillRating: 70
@@ -30,7 +30,6 @@ logoFileName: react.svg
 
 ## Links
 
-- [Link to Documentation site](https://bangsluke-documentation.netlify.app/docs/Project%20Set%20Up%20to%20Release/4Development#react)
 - [React.dev - Learning documentation](https://react.dev/learn)
 - [React.gg Visualized - A visual exploration of core React concepts](https://react.gg/visualized)
 

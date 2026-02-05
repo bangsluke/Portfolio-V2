@@ -7,8 +7,8 @@ tags:
   - portfolio
   - skill
 created: 2023-08-18T15:51:00
-modified: 2025-08-26T15:57:00+01:00
-viewCount: 9
+modified: 2026-02-03T14:46:29+00:00
+viewCount: 8
 aliases:
 skillRating: 65
 skillDescription: Used Next.JS for multiple projects, utilising it's features to create dynamic and rapid applications.
@@ -27,7 +27,7 @@ logoFileName: nextjs.svg
 
 ## Links
 
-- [Link to Documentation site](https://bangsluke-documentation.netlify.app/docs/Project%20Set%20Up%20to%20Release/4Development#nextjs)
+- [Next.js Documentation](https://nextjs.org/docs)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

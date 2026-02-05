@@ -7,7 +7,7 @@ tags:
   - skill
   - portfolio
 modified: 2026-01-05T15:04:19+00:00
-viewCount: 4
+viewCount: 5
 aliases:
 skillRating: 40
 skillDescription: Used with a single project initially to establish the similarities and differences to Cursor and VS Code as an IDE.

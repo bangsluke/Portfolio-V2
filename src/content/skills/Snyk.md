@@ -8,8 +8,8 @@ tags:
   - portfolio
 modified: 2025-07-19T16:06:07+01:00
 viewCount: 1
-aliases: 
-skillRating: 65
+aliases:
+skillRating: 70
 skillDescription: Used widely across my projects for identifying and correcting security concerns and vulnerabilities.
 logoFileName: snyk.svg
 ---
