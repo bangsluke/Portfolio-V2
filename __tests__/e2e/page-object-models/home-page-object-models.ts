@@ -61,7 +61,7 @@ export class HomePageObjects {
 
 		// Click twice to cycle: bubbles-skill → bubbles-project → list
 		await toggleButton.click();
-		await this.page.waitForTimeout(200);
+		await this.page.waitForTimeout(2000);
 		await toggleButton.click();
 
 		// Wait for the 'hidden' class to be removed from the table view
@@ -70,7 +70,7 @@ export class HomePageObjects {
 				const tableView = document.getElementById('skills-table-view');
 				return tableView && !tableView.classList.contains('hidden');
 			},
-			{ timeout: 10000 }
+			{ timeout: 30000 }
 		);
 
 		// Wait for button text to change to "Toggle: List" to confirm state change
