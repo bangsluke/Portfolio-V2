@@ -42,6 +42,10 @@ export const testData = {
 	educationPageUrl: `${baseUrl}/education`,
 	aboutMePageUrl: `${baseUrl}/about-me`,
 	sampleProjectSlug: 'dorkinians-website-v3',
-	exampleProjectDescriptionText:
-		'Building on the foundations of the previous Dorkinians Website',
+	exampleProjectName: 'Dorkinians Website V3',
+	exampleProjectDateRange: 'Aug 2025 - Jan 2026',
+	exampleProjectCategory: 'Personal Design',
+	exampleProjectTechnologies: ['GitHub', 'Netlify', 'Heroku', 'Neo4j Aura'],
+	exampleProjectDescriptionText: 'Building on the foundations of the previous',
+	exampleProjectLessonsLearnedText: 'To make the chat bot work',
 };

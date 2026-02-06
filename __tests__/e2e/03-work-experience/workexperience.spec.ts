@@ -4,11 +4,11 @@ import { testData } from '../utils/testData';
 import { waitForPageLoad } from '../utils/testHelpers';
 
 test.describe('Work Experience Tests', () => {
-	test('"See more items" button for Experience should navigate to /work-experience', async ({
+	test('3.1. "See more items" button for Experience should navigate to /work-experience', async ({
 		page,
 	}) => {
 		await page.goto(testData.mainPageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
@@ -32,18 +32,18 @@ test.describe('Work Experience Tests', () => {
 
 		// Click the button and wait for navigation
 		await Promise.all([
-			page.waitForURL('**/work-experience', { timeout: 10000 }),
+			page.waitForURL('**/work-experience', { timeout: 30000 }),
 			seeMoreButton.click(),
 		]);
 
 		expect(page.url()).toContain('/work-experience');
 	});
 
-	test('Work experience page should display multiple items', async ({
+	test('3.2. Work experience page should display multiple items', async ({
 		page,
 	}) => {
 		await page.goto(testData.workExperiencePageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
@@ -68,11 +68,11 @@ test.describe('Work Experience Tests', () => {
 		).toBeVisible();
 	});
 
-	test('Work experience items should show relevant details', async ({
+	test('3.3. Work experience items should show relevant details', async ({
 		page,
 	}) => {
 		await page.goto(testData.workExperiencePageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);

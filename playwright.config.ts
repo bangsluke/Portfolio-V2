@@ -41,6 +41,9 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: getBaseUrl(),
 
+    /* Allow slow first load (e.g. dev server cold start / recompile). */
+    navigationTimeout: 30000,
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
     video: 'retain-on-failure',
@@ -49,7 +52,7 @@ export default defineConfig({
   },
   webServer: {
     command: 'npm run preview',
-    port: 4321,
+    url: 'http://localhost:4321',
     reuseExistingServer: true,
     timeout: 60000,
   },

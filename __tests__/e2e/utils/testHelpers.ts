@@ -5,5 +5,5 @@ import { Page } from '@playwright/test';
  */
 export async function waitForPageLoad(page: Page) {
 	// Wait for DOM - networkidle is unreliable with continuous requests (analytics, websockets, etc.)
-	await page.waitForLoadState('domcontentloaded', { timeout: 10000 });
+	await page.waitForLoadState('domcontentloaded', { timeout: 40000 });
 }

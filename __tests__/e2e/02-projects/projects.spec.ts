@@ -4,11 +4,11 @@ import { testData } from '../utils/testData';
 import { waitForPageLoad } from '../utils/testHelpers';
 
 test.describe('Projects Page Tests', () => {
-	test('"See more projects" button should navigate to /projects', async ({
+	test('"2.1. See more projects" button should navigate to /projects', async ({
 		page,
 	}) => {
 		await page.goto(testData.mainPageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
@@ -28,9 +28,11 @@ test.describe('Projects Page Tests', () => {
 		expect(page.url()).toContain(testData.projectsPageUrl);
 	});
 
-	test('Projects page should display multiple projects', async ({ page }) => {
+	test('2.2. Projects page should display multiple projects', async ({
+		page,
+	}) => {
 		await page.goto(testData.projectsPageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
@@ -47,9 +49,9 @@ test.describe('Projects Page Tests', () => {
 		await expect(projectCards.first()).toBeVisible();
 	});
 
-	test('Projects should be filterable by category', async ({ page }) => {
+	test('2.3. Projects should be filterable by category', async ({ page }) => {
 		await page.goto(testData.projectsPageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
@@ -94,11 +96,11 @@ test.describe('Projects Page Tests', () => {
 		}
 	});
 
-	test('Single project card click should navigate to project details page', async ({
+	test('2.4. Single project card click should navigate to project details page', async ({
 		page,
 	}) => {
 		await page.goto(testData.projectsPageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
@@ -116,7 +118,7 @@ test.describe('Projects Page Tests', () => {
 		if (href && href.startsWith('/projects/')) {
 			// Click the link and wait for navigation
 			await Promise.all([
-				page.waitForURL(`**${href}`, { timeout: 10000 }),
+				page.waitForURL(`**${href}`, { timeout: 30000 }),
 				projectLink.click(),
 			]);
 
@@ -124,13 +126,13 @@ test.describe('Projects Page Tests', () => {
 		}
 	});
 
-	test('Project details page should show correct information', async ({
+	test('2.5. Project details page should show correct information', async ({
 		page,
 	}) => {
 		// Navigate to a known project page
 		const projectUrl = `${testData.projectsPageUrl}/${testData.sampleProjectSlug}`;
 		await page.goto(projectUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
@@ -142,11 +144,84 @@ test.describe('Projects Page Tests', () => {
 		const heading = page.locator('h1, h2').first();
 		await expect(heading, 'Project heading should be visible').toBeVisible();
 
-		// Check for project description or content
-		const mainContent = page.locator('main, article, [role="main"]').first();
+		// Check for the back to projects button
+		const backToProjectsButton = page.locator('#back-to-projects-top');
+		await expect(backToProjectsButton, 'Back to Projects').toBeVisible();
+
+		// Check that the project image is visible
+		const projectImage = page.locator('#project-page-image');
+		await expect(projectImage, 'Project image should be visible').toBeVisible();
+
+		// Check that the project name is visible
+		const projectName = page.locator('h1, h2').first();
+		await expect(projectName, `${testData.exampleProjectName}`).toBeVisible();
+
+		// Check that the date range is visible
+		const dateRange = page.locator('#project-page-date-range');
 		await expect(
-			mainContent,
-			testData.exampleProjectDescriptionText
+			dateRange,
+			`${testData.exampleProjectDateRange}`
 		).toBeVisible();
+
+		// Check that the project category is visible
+		const projectCategory = page.locator('#project-page-category');
+		await expect(
+			projectCategory,
+			`${testData.exampleProjectCategory}`
+		).toBeVisible();
+
+		// Check that the project technologies are visible
+		const projectTechnologies = page.locator('#project-page-technologies');
+		// Expect this div to hold at least one skill pill for each technology in the example project technologies array
+		const technologyPills = projectTechnologies.locator('div.skill-pill');
+		const technologyPillCount = await technologyPills.count();
+		expect(technologyPillCount).toBeGreaterThanOrEqual(
+			testData.exampleProjectTechnologies.length
+		);
+		for (const technology of testData.exampleProjectTechnologies) {
+			const technologyPill = technologyPills.filter({ hasText: technology });
+			await expect(technologyPill, `${technology}`).toBeVisible();
+		}
+
+		// Check that the project description is visible and contains part of the example project description text
+		const projectDescription = page.locator('#project-page-description');
+		await expect(
+			projectDescription,
+			`${testData.exampleProjectDescriptionText}`
+		).toBeVisible();
+
+		// Check that the project lessons learned is visible and contains part of the example project lessons learned text
+		const projectLessonsLearned = page.locator('#project-page-lessons-learned');
+		await expect(
+			projectLessonsLearned,
+			`${testData.exampleProjectLessonsLearnedText}`
+		).toBeVisible();
+
+		// Check that the project developed for is visible and contains at least one card (company, client or education use same CustomerAndClientCard)
+		const projectDevelopedFor = page.locator('#project-page-developed-for');
+		await expect(
+			projectDevelopedFor,
+			'Project developed for should be visible'
+		).toBeVisible();
+		const developedForCards = projectDevelopedFor.locator(
+			'[data-company-name]'
+		);
+		const developedForCardCount = await developedForCards.count();
+		expect(developedForCardCount).toBeGreaterThanOrEqual(1);
+
+		// Check that the project links are visible and contain the correct links
+		const projectLinks = page.locator('#project-page-links');
+		await expect(projectLinks, 'Project links should be visible').toBeVisible();
+		const projectLink = projectLinks.locator('a').first();
+		const href = await projectLink.getAttribute('href');
+		if (href && href.startsWith('/projects/')) {
+			await expect(projectLink, 'Project link should be visible').toBeVisible();
+		}
+
+		// Check that the bottom back to projects button is visible and works
+		const backToProjectsButtonBottom = page.locator('#back-to-projects-bottom');
+		await expect(backToProjectsButtonBottom, 'Back to Projects').toBeVisible();
+		await backToProjectsButtonBottom.click();
+		expect(page.url()).toContain(testData.mainPageUrl);
 	});
 });

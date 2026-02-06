@@ -5,11 +5,11 @@ import { testData } from '../utils/testData';
 import { waitForPageLoad } from '../utils/testHelpers';
 
 test.describe('About Me Tests', () => {
-	test('"About Me" button on homepage should navigate to /about-me', async ({
+	test('5.1. "About Me" button on homepage should navigate to /about-me', async ({
 		page,
 	}) => {
 		await page.goto(testData.mainPageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
@@ -19,16 +19,18 @@ test.describe('About Me Tests', () => {
 
 		// Click the button and wait for navigation
 		await Promise.all([
-			page.waitForURL('**/about-me', { timeout: 10000 }),
+			page.waitForURL('**/about-me', { timeout: 30000 }),
 			homePageObjects.aboutMeButton.click(),
 		]);
 
 		expect(page.url()).toContain('/about-me');
 	});
 
-	test('About Me page should contain content/details', async ({ page }) => {
+	test('5.2. About Me page should contain content/details', async ({
+		page,
+	}) => {
 		await page.goto(testData.aboutMePageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
@@ -53,9 +55,9 @@ test.describe('About Me Tests', () => {
 		expect(contentText?.length).toBeGreaterThan(50); // Should have substantial content
 	});
 
-	test('About Me page should be properly rendered', async ({ page }) => {
+	test('5.3. About Me page should be properly rendered', async ({ page }) => {
 		await page.goto(testData.aboutMePageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);

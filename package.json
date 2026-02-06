@@ -12,7 +12,7 @@
 		"test:coverage": "jest --coverage",
 		"test:cucumber": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" cucumber-js",
 		"test:e2e": "playwright test",
-		"test:e2e:watch": "playwright test --watch",
+		"test:e2e:watch": "playwright test --ui",
 		"test:e2e:coverage": "playwright test --coverage",
 		"lint": "eslint . --ext .js,.ts,.jsx,.tsx,.astro",
 		"lint:fix": "eslint . --ext .js,.ts,.jsx,.tsx,.astro --fix",
