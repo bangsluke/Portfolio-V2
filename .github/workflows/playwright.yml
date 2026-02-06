@@ -21,13 +21,15 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+      - name: Build Astro site
+        run: npx astro build
       - name: Run Playwright tests
         env:
-          BASE_URL: 'https://bangsluke-portfolio.netlify.app/'
+          BASE_URL: 'http://localhost:4321'
         run: npx playwright test
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
-          path: playwright-report/
+          path: __tests__/e2e/playwright-report/
           retention-days: 30
