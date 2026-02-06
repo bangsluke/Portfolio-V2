@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import CustomerAndClientCard from './CustomerAndClientCard.astro';
 import SkillPill from '../../components/ui/SkillPill.astro';
 import Layout from '../../layouts/Layout.astro';
@@ -8,6 +8,8 @@ import {
 	processObsidianLink,
 } from '../../utils/content-processor';
 import { extractNameFromFilename } from '../../utils/filename-utils';
+
+type Props = { project: CollectionEntry<'projects'> };
 
 export async function getStaticPaths() {
 	const projects = await getCollection('projects');
@@ -31,7 +33,7 @@ export async function getStaticPaths() {
 	});
 }
 
-const { project } = Astro.props;
+const { project } = Astro.props as Props;
 const { data } = project;
 
 // Get all projects for SkillPill tooltips
@@ -166,6 +168,7 @@ const ogimage = {
 						src={data.imageURL || '/images/imagedefault.webp'}
 						alt={data.name}
 						class="w-full max-w-5xl h-[422px] object-cover object-top rounded-2xl shadow-2xl"
+						id="project-page-image"
 					/>
 				</div>
 			</div>
@@ -175,7 +178,9 @@ const ogimage = {
 		<div class="px-8 mb-12">
 			<div class="max-w-4xl mx-auto">
 				<div class="text-center">
-					<h1 class="text-5xl font-bold mb-4 text-colour">
+					<h1
+						class="text-5xl font-bold mb-4 text-colour"
+						id="project-page-name">
 						{data.name}
 					</h1>
 
@@ -183,7 +188,7 @@ const ogimage = {
 					{
 						data.dateStart && (
 							<div class="mb-6">
-								<p class="text-lg text-colour">
+								<p class="text-lg text-colour" id="project-page-date-range">
 									{new Date(data.dateStart).toLocaleDateString('en-US', {
 										month: 'short',
 										year: 'numeric',
@@ -205,6 +210,7 @@ const ogimage = {
 							<div class="mb-6">
 								<span class="text-lg text-colour mr-3">Category:</span>
 								<a
+									id="project-page-category"
 									href={`/projects?category=${encodeURIComponent(data.projectCategory)}`}
 									class="inline-block bg-theme-400 hover:bg-theme-500 text-black font-bold px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
 									{data.projectCategory}
@@ -214,7 +220,9 @@ const ogimage = {
 					}
 
 					{/* Technologies */}
-					<div class="flex flex-wrap justify-center gap-3">
+					<div
+						class="flex flex-wrap justify-center gap-3"
+						id="project-page-technologies">
 						{
 							data.technologies &&
 								data.technologies
@@ -250,6 +258,7 @@ const ogimage = {
 							<div
 								class="text-lg text-colour leading-relaxed processed-content"
 								set:html={processedLongDescription}
+								id="project-page-description"
 							/>
 						</div>
 					</div>
@@ -267,6 +276,7 @@ const ogimage = {
 							<div
 								class="text-lg text-colour leading-relaxed processed-content"
 								set:html={processedLessonsLearned}
+								id="project-page-lessons-learned"
 							/>
 						</div>
 					</div>
@@ -287,7 +297,9 @@ const ogimage = {
 								<h2 class="text-3xl font-bold mb-6 text-colour">
 									Developed For
 								</h2>
-								<div class="flex flex-wrap justify-center gap-6">
+								<div
+									class="flex flex-wrap justify-center gap-6"
+									id="project-page-developed-for">
 									{linkedCompanies.map(company => (
 										<CustomerAndClientCard
 											name={getCompanyName(company)}
@@ -332,7 +344,9 @@ const ogimage = {
 							<div class="max-w-4xl mx-auto">
 								<div class="flex text-center gap-4 justify-center items-center">
 									<span class="text-lg text-colour">Project Links:</span>
-									<div class="flex flex-wrap gap-4 justify-center items-start">
+									<div
+										class="flex flex-wrap gap-4 justify-center items-start"
+										id="project-page-links">
 										{hasValidProjectURL && data.projectURL && (
 											<a
 												href={data.projectURL}

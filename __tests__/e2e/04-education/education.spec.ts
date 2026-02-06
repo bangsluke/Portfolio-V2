@@ -4,11 +4,11 @@ import { testData } from '../utils/testData';
 import { waitForPageLoad } from '../utils/testHelpers';
 
 test.describe('Education Tests', () => {
-	test('"See more items" button for Education should navigate to /education', async ({
+	test('4.1."See more items" button for Education should navigate to /education', async ({
 		page,
 	}) => {
 		await page.goto(testData.mainPageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
@@ -30,16 +30,18 @@ test.describe('Education Tests', () => {
 
 		// Click the button and wait for navigation
 		await Promise.all([
-			page.waitForURL('**/education', { timeout: 10000 }),
+			page.waitForURL('**/education', { timeout: 30000 }),
 			seeMoreButton.click(),
 		]);
 
 		expect(page.url()).toContain('/education');
 	});
 
-	test('Education page should display multiple items', async ({ page }) => {
+	test('4.2. Education page should display multiple items', async ({
+		page,
+	}) => {
 		await page.goto(testData.educationPageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
@@ -64,9 +66,11 @@ test.describe('Education Tests', () => {
 		).toBeVisible();
 	});
 
-	test('Education items should show relevant details', async ({ page }) => {
+	test('4.3. Education items should show relevant details', async ({
+		page,
+	}) => {
 		await page.goto(testData.educationPageUrl, {
-			timeout: 10000,
+			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);

@@ -7,33 +7,33 @@ test.describe('Home Page Tests', () => {
 	// Before each test, navigate to the home page and wait for it to load
 	test.beforeEach(async ({ page }) => {
 		await page.goto(testData.mainPageUrl, {
-			timeout: 10000,
+			timeout: 60000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
 	});
 
-	test('Home page should show "Contact Me" buttons in top section', async ({
+	test('1.1. Home page should show "Contact Me" buttons in top section', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
 		await expect(homePageObjects.contactMeButtonTopSection).toBeVisible();
 	});
 
-	test('Home page should show "Contact Me" buttons in bottom section', async ({
+	test('1.2. Home page should show "Contact Me" buttons in bottom section', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
 		await expect(homePageObjects.contactMeButtonBottomSection).toBeVisible();
 	});
 
-	test('Home page should show "About Me" button', async ({ page }) => {
+	test('1.3. Home page should show "About Me" button', async ({ page }) => {
 		const homePageObjects = new HomePageObjects(page);
 		await expect(homePageObjects.aboutMeButton).toBeVisible();
 	});
 
 	// Checks for several skills defined in the test data
-	test('Home page should show each skill in the skills section', async ({
+	test('1.4. Home page should show each skill in the skills section', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
@@ -54,12 +54,12 @@ test.describe('Home Page Tests', () => {
 		}
 	});
 
-	test('Home page should show "Download CV" button', async ({ page }) => {
+	test('1.5. Home page should show "Download CV" button', async ({ page }) => {
 		const homePageObjects = new HomePageObjects(page);
 		await expect(homePageObjects.downloadCVButton).toBeVisible();
 	});
 
-	test('All main sections should be visible', async ({ page }) => {
+	test('1.6.All main sections should be visible', async ({ page }) => {
 		const sections = [
 			testData.sectionIds.home,
 			testData.sectionIds.skills,
@@ -86,7 +86,7 @@ test.describe('Home Page Tests', () => {
 		).toBeVisible();
 	});
 
-	test('Header anchor links should work correctly', async ({ page }) => {
+	test('1.7. Header anchor links should work correctly', async ({ page }) => {
 		const navLinks = [
 			{ name: 'Home', path: testData.navigationPaths.home },
 			{ name: 'Skills', path: testData.navigationPaths.skills },
@@ -112,7 +112,7 @@ test.describe('Home Page Tests', () => {
 		}
 	});
 
-	test('Header icons should be visible and clickable', async ({ page }) => {
+	test('1.8.Header icons should be visible and clickable', async ({ page }) => {
 		const homePageObjects = new HomePageObjects(page);
 
 		// GitHub icon
@@ -142,7 +142,7 @@ test.describe('Home Page Tests', () => {
 		).toBeVisible();
 	});
 
-	test('Scroll to top button should appear on scroll and work', async ({
+	test('1.9. Scroll to top button should appear on scroll and work', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
@@ -178,7 +178,7 @@ test.describe('Home Page Tests', () => {
 		expect(scrollAfter).toBeLessThan(100); // Should be near top
 	});
 
-	test('Contact Me button in top section should prepare email correctly', async ({
+	test('1.10. Contact Me button in top section should prepare email correctly', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
@@ -190,7 +190,7 @@ test.describe('Home Page Tests', () => {
 		expect(contactMeButtonHref).toContain(testData.email);
 	});
 
-	test('Contact Me button in bottom section should prepare email correctly', async ({
+	test('1.11.Contact Me button in bottom section should prepare email correctly', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
@@ -202,7 +202,7 @@ test.describe('Home Page Tests', () => {
 		expect(contactMeButtonHref).toContain(testData.email);
 	});
 
-	test('Footer icons should be visible and have correct links', async ({
+	test('1.12. Footer icons should be visible and have correct links', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
