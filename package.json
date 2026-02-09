@@ -39,7 +39,7 @@
 	"dependencies": {
 		"@astrojs/preact": "^4.1.1",
 		"@astrojs/rss": "^4.0.15",
-		"@astrojs/sitemap": "^3.6.1",
+		"@astrojs/sitemap": "^3.7.0",
 		"@egjs/flicking-plugins": "^4.7.1",
 		"@egjs/preact-flicking": "^4.14.1",
 		"@tailwindcss/typography": "^0.5.19",
