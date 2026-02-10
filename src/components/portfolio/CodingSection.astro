@@ -442,6 +442,34 @@ const techData = {
 					skills={skills}
 					projects={projects}
 				/>
+
+				<!-- Loading overlay: shown on search click until modal is open -->
+				<div
+					id="skills-search-loading"
+					class="hidden fixed inset-0 max-md:top-24 z-[125] bg-black/50 flex flex-col items-center justify-center gap-3"
+					aria-live="polite"
+					aria-busy="true"
+					aria-label="Loading search">
+					<svg
+						class="animate-spin w-10 h-10 text-white"
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						aria-hidden="true">
+						<circle
+							class="opacity-25"
+							cx="12"
+							cy="12"
+							r="10"
+							stroke="currentColor"
+							stroke-width="4" />
+						<path
+							class="opacity-75"
+							fill="currentColor"
+							d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+					</svg>
+					<span class="text-white text-sm">Loading search…</span>
+				</div>
 			</article>
 		</div>
 
@@ -508,12 +536,25 @@ const techData = {
 			tableView.classList.add('hidden');
 		}
 
-		// Search button functionality
+		// Search button functionality and loading overlay
+		const loadingOverlay = document.getElementById('skills-search-loading');
 		if (searchBtn) {
 			searchBtn.addEventListener('click', () => {
+				if (loadingOverlay) {
+					loadingOverlay.classList.remove('hidden');
+				}
+				(window as Window & { __skillsSearchPendingOpen?: boolean }).__skillsSearchPendingOpen = true;
 				window.dispatchEvent(new CustomEvent('openSkillsSearch'));
 			});
 		}
+		const hideLoading = () => {
+			if (loadingOverlay) {
+				loadingOverlay.classList.add('hidden');
+			}
+			(window as Window & { __skillsSearchPendingOpen?: boolean }).__skillsSearchPendingOpen = false;
+		};
+		window.addEventListener('skillsSearchModalOpen', hideLoading);
+		window.addEventListener('skillsSearchModalClose', hideLoading);
 
 		// Reset button functionality
 		if (resetBtn) {
