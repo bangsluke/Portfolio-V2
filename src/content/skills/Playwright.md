@@ -7,10 +7,10 @@ tags:
   - skill
   - portfolio
 modified: 2026-01-15T18:25:24+00:00
-viewCount: 6
+viewCount: 7
 aliases:
-skillRating: 25
-skillDescription: Used for a couple of projects to set up automated E2E testing, combined with GitHub actions for scheduled runs.
+skillRating: 45
+skillDescription: Used for a couple of projects to set up automated E2E testing, combined with GitHub actions for scheduled runs. Utilised both the basic testing and extended UI testing functionality for ensuring tests provide correct coverage.
 logoFileName: playwright.svg
 ---
 # Playwright

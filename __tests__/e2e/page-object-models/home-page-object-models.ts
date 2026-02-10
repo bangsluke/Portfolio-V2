@@ -11,10 +11,13 @@ export class HomePageObjects {
 	public readonly contactMeButtonTopSection: Locator;
 	public readonly contactMeButtonBottomSection: Locator;
 	public readonly aboutMeButton: Locator;
+	public readonly skillsSearchButton: Locator;
 	public readonly skillsResetButton: Locator;
 	public readonly skillsToggleButton: Locator;
 	public readonly skillsTableSection: Locator;
 	public readonly skillsBubblesView: Locator;
+	public readonly skillsSearchModal: Locator;
+	public readonly skillsSearchInput: Locator;
 	public readonly githubContributionsSection: Locator;
 	public readonly githubContributionsCalendar: Locator;
 	public readonly githubContributionsDevToLink: Locator;
@@ -53,10 +56,13 @@ export class HomePageObjects {
 		this.aboutMeButton = page.getByRole('button', {
 			name: 'About Me person',
 		});
+		this.skillsSearchButton = page.getByRole('button', { name: 'Search' });
 		this.skillsResetButton = page.getByTestId('skills-reset-btn');
 		this.skillsToggleButton = page.getByTestId('skills-toggle-btn');
 		this.skillsTableSection = page.getByTestId('skills-table-view');
 		this.skillsBubblesView = page.getByTestId('skills-bubbles-view');
+		this.skillsSearchModal = page.locator('[role="dialog"][aria-label="Search skills"]');
+		this.skillsSearchInput = page.getByPlaceholder('Search skills');
 		this.githubContributionsSection = page.getByTestId(
 			'github-contributions-section'
 		);
@@ -118,6 +124,11 @@ export class HomePageObjects {
 			.first();
 		this.mobileNavToggle = page.getByTestId('mobile-nav-toggle');
 		this.mobileNavLinks = page.getByTestId('mobile-nav-links');
+	}
+
+	getSkillsSearchResult(skillName: string): Locator {
+		const normalizedName = skillName;
+		return this.page.getByTestId(`skills-search-result-${normalizedName}`);
 	}
 
 	async openSkillsTable() {

@@ -125,7 +125,9 @@ test.describe('Home Page Tests', () => {
 			await page.waitForTimeout(200);
 
 			// Header and nav links should remain visible as we scroll through the page
-			const header = page.locator('header');
+			const header = page.getByRole('banner', {
+				name: 'Main navigation',
+			});
 			await expect(header).toBeVisible();
 		}
 	});
@@ -296,6 +298,28 @@ test.describe('Home Page Tests', () => {
 		// Expect to see the bubble chart view and hide list view
 		await expect(page.getByTestId('skills-bubbles-view')).toBeVisible();
 		await expect(page.getByTestId('skills-table-view')).toBeHidden();
+	});
+
+	test('1.4.7. Skills section should have a visible Search button and the skills search should handle fuzzy queries', async ({
+		page,
+	}) => {
+		const homePageObjects = new HomePageObjects(page);
+
+		// Search button should be visible
+		await expect(homePageObjects.skillsSearchButton).toBeVisible();
+
+		// Open the search modal
+		await homePageObjects.skillsSearchButton.click();
+
+		// Modal and input should be visible
+		await expect(homePageObjects.skillsSearchModal).toBeVisible();
+		await expect(homePageObjects.skillsSearchInput).toBeVisible();
+
+		// Type a fuzzy query (with a typo) and expect to see React in the results
+		await homePageObjects.skillsSearchInput.fill('Reect');
+
+		const reactResult = homePageObjects.getSkillsSearchResult('React');
+		await expect(reactResult).toBeVisible();
 	});
 
 	test('1.4.4. GitHub Contributions section should be visible and show a calendar of my GitHub contributions and links to my Dev.to and Medium profiles', async ({
