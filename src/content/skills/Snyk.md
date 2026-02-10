@@ -7,7 +7,7 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-19T16:06:07+01:00
-viewCount: 1
+viewCount: 2
 aliases:
 skillRating: 70
 skillDescription: Used widely across my projects for identifying and correcting security concerns and vulnerabilities.
