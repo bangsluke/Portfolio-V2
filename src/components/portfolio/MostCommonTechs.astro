@@ -30,7 +30,7 @@ const classes = `${baseClasses} ${variantClasses[variant]}`;
 
 <div class="flex flex-col gap-4 h-full">
 	<!-- Technologies Grid -->
-	<div class={`${classes} h-full flex-1`} id="techs-grid">
+	<div class={`${classes} h-full flex-1`} id="techs-grid" data-testid="most-common-techs-list">
 		{initialTopTechs.map((tech, index) => (
 			<div class="relative group/tech">
 				<!-- Skill Pill using the SkillPill component -->

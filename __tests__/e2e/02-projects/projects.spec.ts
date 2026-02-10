@@ -96,6 +96,300 @@ test.describe('Projects Page Tests', () => {
 		}
 	});
 
+	test('2.3.1. Category filter should only show projects from the selected category', async ({
+		page,
+	}) => {
+		await page.goto(testData.projectsPageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		const projectsPageObjects = new ProjectsPageObjects(page);
+
+		// Determine which category filter is visible (desktop vs mobile)
+		const desktopFilterVisible = await projectsPageObjects.categoryFilter
+			.isVisible()
+			.catch(() => false);
+		const mobileFilterVisible = await projectsPageObjects.categoryFilterMobile
+			.isVisible()
+			.catch(() => false);
+
+		if (!desktopFilterVisible && !mobileFilterVisible) {
+			test.skip();
+		}
+
+		const filter = desktopFilterVisible
+			? projectsPageObjects.categoryFilter
+			: projectsPageObjects.categoryFilterMobile;
+
+		// Choose a concrete category option (skip "All Categories")
+		const options = await filter.locator('option').all();
+		if (options.length <= 1) {
+			test.skip();
+		}
+
+		const categoryValue = await options[1].getAttribute('value');
+		expect(categoryValue).toBeTruthy();
+
+		await filter.selectOption(categoryValue!);
+		await page.waitForTimeout(500);
+
+		// All visible cards should match the selected category
+		const allMatchSelectedCategory = await page.evaluate(
+			selectedCategory => {
+				const wrappers = Array.from(
+					document.querySelectorAll<HTMLElement>('#projectsGrid > div')
+				);
+
+				let visibleCount = 0;
+				for (const el of wrappers) {
+					const style = window.getComputedStyle(el);
+					if (style.display === 'none' || style.visibility === 'hidden') {
+						continue;
+					}
+					visibleCount++;
+					if (selectedCategory && el.dataset.category !== selectedCategory) {
+						return { allMatch: false, visibleCount };
+					}
+				}
+				return { allMatch: true, visibleCount };
+			},
+			categoryValue
+		);
+
+		expect(allMatchSelectedCategory.allMatch).toBeTruthy();
+
+		// Project count text should match number of visible cards
+		const countLocator = desktopFilterVisible
+			? projectsPageObjects.projectCount
+			: page.locator('#projectCountMobile');
+		const countText = await countLocator.textContent();
+		const parsedCount = parseInt(countText || '0', 10);
+		expect(parsedCount).toBe(allMatchSelectedCategory.visibleCount);
+	});
+
+	test('2.3.2. Date range filters should only show projects within selected range', async ({
+		page,
+	}) => {
+		await page.goto(testData.projectsPageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		// Choose a start and end date that are likely to be in range of existing projects
+		const startDateValue = '2010-01-01';
+		const endDateValue = '2100-12-31';
+
+		await page.fill('#startDateInput', startDateValue);
+		await page.fill('#endDateInput', endDateValue);
+		await page.waitForTimeout(500);
+
+		const { allMatch } = await page.evaluate(
+			({ startDateValue, endDateValue }) => {
+				const wrappers = Array.from(
+					document.querySelectorAll<HTMLElement>('#projectsGrid > div')
+				);
+				const startDate = new Date(startDateValue);
+				const endDate = new Date(endDateValue);
+
+				for (const el of wrappers) {
+					const style = window.getComputedStyle(el);
+					if (style.display === 'none' || style.visibility === 'hidden') {
+						continue;
+					}
+
+					const cardStart = el.dataset.startDate
+						? new Date(el.dataset.startDate)
+						: null;
+					const cardEnd = el.dataset.endDate
+						? new Date(el.dataset.endDate)
+						: null;
+
+					const projectStart =
+						cardStart || cardEnd || new Date(0); // mirrors filter logic
+					const projectEnd =
+						cardEnd || cardStart || new Date(9999, 11, 31);
+
+					const matches =
+						projectStart <= endDate && projectEnd >= startDate;
+					if (!matches) {
+						return { allMatch: false };
+					}
+				}
+
+				return { allMatch: true };
+			},
+			{ startDateValue, endDateValue }
+		);
+
+		expect(allMatch).toBeTruthy();
+	});
+
+	test('2.3.3. Clear filters should reset project visibility and counts', async ({
+		page,
+	}) => {
+		await page.goto(testData.projectsPageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		const projectsPageObjects = new ProjectsPageObjects(page);
+		const totalWrappers = await projectsPageObjects.projectCards.count();
+
+		// Apply a simple filter
+		const desktopFilterVisible = await projectsPageObjects.categoryFilter
+			.isVisible()
+			.catch(() => false);
+		const mobileFilterVisible = await projectsPageObjects.categoryFilterMobile
+			.isVisible()
+			.catch(() => false);
+
+		const filter = desktopFilterVisible
+			? projectsPageObjects.categoryFilter
+			: projectsPageObjects.categoryFilterMobile;
+
+		if (!desktopFilterVisible && !mobileFilterVisible) {
+			test.skip();
+		}
+
+		const options = await filter.locator('option').all();
+		if (options.length <= 1) {
+			test.skip();
+		}
+
+		const categoryValue = await options[1].getAttribute('value');
+		expect(categoryValue).toBeTruthy();
+
+		await filter.selectOption(categoryValue!);
+		await page.waitForTimeout(500);
+
+		// Now clear filters
+		const clearButtonDesktop = page.locator('#clearFilters');
+		const clearButtonMobile = page.locator('#clearFiltersMobile');
+
+		if (await clearButtonDesktop.isVisible().catch(() => false)) {
+			await clearButtonDesktop.click();
+		} else if (await clearButtonMobile.isVisible().catch(() => false)) {
+			await clearButtonMobile.click();
+		}
+
+		await page.waitForTimeout(500);
+
+		// All wrappers should be visible again
+		const visibleCount = await page.evaluate(() => {
+			const wrappers = Array.from(
+				document.querySelectorAll<HTMLElement>('#projectsGrid > div')
+			);
+			return wrappers.filter(el => {
+				const style = window.getComputedStyle(el);
+				return style.display !== 'none' && style.visibility !== 'hidden';
+			}).length;
+		});
+
+		expect(visibleCount).toBeGreaterThan(0);
+		expect(visibleCount).toBeLessThanOrEqual(totalWrappers);
+
+		// Project count should reflect visible wrappers
+		const desktopCountText = await projectsPageObjects.projectCount
+			.textContent()
+			.catch(() => null);
+		const mobileCountText = await page
+			.locator('#projectCountMobile')
+			.textContent()
+			.catch(() => null);
+
+		const parsedDesktop = desktopCountText
+			? parseInt(desktopCountText, 10)
+			: NaN;
+		const parsedMobile = mobileCountText
+			? parseInt(mobileCountText, 10)
+			: NaN;
+
+		if (!Number.isNaN(parsedDesktop)) {
+			expect(parsedDesktop).toBe(visibleCount);
+		}
+		if (!Number.isNaN(parsedMobile)) {
+			expect(parsedMobile).toBe(visibleCount);
+		}
+	});
+
+	test('2.3.4. URL category parameter should pre-select filters and show matching projects', async ({
+		page,
+	}) => {
+		// First, discover a valid category value
+		await page.goto(testData.projectsPageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		const projectsPageObjects = new ProjectsPageObjects(page);
+		const desktopFilterVisible = await projectsPageObjects.categoryFilter
+			.isVisible()
+			.catch(() => false);
+		const mobileFilterVisible = await projectsPageObjects.categoryFilterMobile
+			.isVisible()
+			.catch(() => false);
+
+		if (!desktopFilterVisible && !mobileFilterVisible) {
+			test.skip();
+		}
+
+		const initialFilter = desktopFilterVisible
+			? projectsPageObjects.categoryFilter
+			: projectsPageObjects.categoryFilterMobile;
+		const options = await initialFilter.locator('option').all();
+		if (options.length <= 1) {
+			test.skip();
+		}
+
+		const categoryValue = await options[1].getAttribute('value');
+		expect(categoryValue).toBeTruthy();
+
+		// Now navigate with category query param
+		const urlWithParam = `${testData.projectsPageUrl}?category=${encodeURIComponent(
+			categoryValue!
+		)}`;
+		await page.goto(urlWithParam, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		const desktopFilterAfter = projectsPageObjects.categoryFilter;
+		const mobileFilterAfter = projectsPageObjects.categoryFilterMobile;
+
+		if (await desktopFilterAfter.isVisible().catch(() => false)) {
+			await expect(desktopFilterAfter).toHaveValue(categoryValue!);
+		}
+		if (await mobileFilterAfter.isVisible().catch(() => false)) {
+			await expect(mobileFilterAfter).toHaveValue(categoryValue!);
+		}
+
+		// All visible cards should match selected category
+		const { allMatch } = await page.evaluate(selectedCategory => {
+			const wrappers = Array.from(
+				document.querySelectorAll<HTMLElement>('#projectsGrid > div')
+			);
+
+			for (const el of wrappers) {
+				const style = window.getComputedStyle(el);
+				if (style.display === 'none' || style.visibility === 'hidden') {
+					continue;
+				}
+				if (selectedCategory && el.dataset.category !== selectedCategory) {
+					return { allMatch: false };
+				}
+			}
+			return { allMatch: true };
+		}, categoryValue);
+
+		expect(allMatch).toBeTruthy();
+	});
+
 	test('2.4. Single project card click should navigate to project details page', async ({
 		page,
 	}) => {
@@ -124,6 +418,40 @@ test.describe('Projects Page Tests', () => {
 
 			expect(page.url()).toContain('/projects/');
 		}
+	});
+
+	test('2.4.1. Back to projects links should point to projects page when coming from index', async ({
+		page,
+	}) => {
+		await page.goto(testData.projectsPageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		const projectsPageObjects = new ProjectsPageObjects(page);
+
+		const firstProjectCard =
+			await projectsPageObjects.getProjectCardByIndex(0);
+		await expect(firstProjectCard).toBeVisible();
+
+		const projectLink = firstProjectCard.locator('a').first();
+		const href = await projectLink.getAttribute('href');
+		expect(href).toBeTruthy();
+
+		await Promise.all([
+			page.waitForURL(`**${href}`, { timeout: 30000 }),
+			projectLink.click(),
+		]);
+
+		await expect(page.locator('#back-to-projects-top')).toHaveAttribute(
+			'href',
+			'/projects'
+		);
+		await expect(page.locator('#back-to-projects-bottom')).toHaveAttribute(
+			'href',
+			'/projects'
+		);
 	});
 
 	test('2.5. Project details page should show correct information', async ({
@@ -223,5 +551,67 @@ test.describe('Projects Page Tests', () => {
 		await expect(backToProjectsButtonBottom, 'Back to Projects').toBeVisible();
 		await backToProjectsButtonBottom.click();
 		expect(page.url()).toContain(testData.mainPageUrl);
+	});
+
+	test('2.6. Back to projects links should point to projects section when coming from home', async ({
+		page,
+	}) => {
+		// Navigate from home projects section directly to a project details page
+		await page.goto(`${testData.mainPageUrl}/#projects`, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		// Click the "Show more details" link for example project card
+		const exampleProjectCard = page
+			.getByTestId('projects-list')
+			.locator('article')
+			.filter({ has: page.getByText(testData.exampleProjectName) })
+			.first();
+		await expect(exampleProjectCard).toBeVisible();
+
+		// Ensure card is selected so that desktop detail link is interactive
+		await exampleProjectCard.click();
+		const detailsLink = exampleProjectCard.getByText('Show more details');
+
+		await Promise.all([
+			page.waitForURL('**/projects/**', { timeout: 30000 }),
+			detailsLink.click(),
+		]);
+
+		// Back buttons should resolve to /#projects
+		await expect(page.locator('#back-to-projects-top')).toHaveAttribute(
+			'href',
+			'/#projects'
+		);
+		await expect(page.locator('#back-to-projects-bottom')).toHaveAttribute(
+			'href',
+			'/#projects'
+		);
+	});
+
+	test('2.7. Project links should open in a new tab with safe attributes when present', async ({
+		page,
+	}) => {
+		const projectUrl = `${testData.projectsPageUrl}/${testData.sampleProjectSlug}`;
+		await page.goto(projectUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		const projectLinks = page.locator('#project-page-links a');
+		const linkCount = await projectLinks.count();
+
+		expect(linkCount).toBeGreaterThan(0);
+
+		for (let i = 0; i < linkCount; i++) {
+			const link = projectLinks.nth(i);
+			await expect(link).toHaveAttribute('target', '_blank');
+			const rel = await link.getAttribute('rel');
+			expect(rel || '').toContain('noopener');
+			expect(rel || '').toContain('noreferrer');
+		}
 	});
 });

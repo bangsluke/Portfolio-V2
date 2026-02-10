@@ -15,9 +15,9 @@ export const testData = {
 	mainPageUrl: baseUrl,
 	email: 'bangsluke@gmail.com',
 	description:
-		'Enthusiastic and personable professional with a passion for data and software, seeking a dynamic role to apply strong organisational skills, logical thinking and effective communication to drive long-term success. Open to positions where I can make a positive impact including Software Developer, DevOps Engineer or Product Owner',
+		'Technical Product Owner with 3 years leading internal software development, able to effectively communicate with both developers and stakeholders',
 	skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js'],
-	downloadCVUrl: `${baseUrl}Luke-Bangs-CV.pdf`,
+	downloadCVUrl: `Luke-Bangs-CV.pdf`,
 	sectionIds: {
 		home: 'home',
 		skills: 'skills',
@@ -45,7 +45,27 @@ export const testData = {
 	exampleProjectName: 'Dorkinians Website V3',
 	exampleProjectDateRange: 'Aug 2025 - Jan 2026',
 	exampleProjectCategory: 'Personal Design',
-	exampleProjectTechnologies: ['GitHub', 'Netlify', 'Heroku', 'Neo4j Aura'],
-	exampleProjectDescriptionText: 'Building on the foundations of the previous',
+	exampleProjectTechnologies: ['GitHub', 'Netlify', 'Heroku'],
+	exampleProjectDescriptionText:
+		'Serving over 600 players, the next version of my',
 	exampleProjectLessonsLearnedText: 'To make the chat bot work',
+	exampleMostCommonTech: 'React',
+	exampleWorkExperienceName: 'VHE2 Integration Engineer',
+	exampleWorkExperienceDateRange: 'Sep 2025 - Present',
+	exampleWorkExperienceDescription:
+		'Vehicle integration role working on V801 in the VHE2 group (interiors team)',
+	exampleCustomerAndClientName: 'Aston Martin',
+	exampleCustomerAndClientDateRange: 'Mar 2016 - Apr 2016',
+	exampleEducationItemName: 'Loughborough University',
+	exampleEducationItemDateRange: 'Sep 2011 - Jun 2014',
+	exampleEducationItemDescriptionTitle:
+		'BEng. Automotive Engineering. Second Class Honours, Upper Division (2:1)',
+	exampleEducationItemDescription:
+		'Large range of engineering topics, exploring multiple engineering fundamentals',
+	exampleReferenceName: 'Taryn Auchecorne',
+	exampleReferenceRole: 'Head of Client Services',
+	exampleReferenceCompanyName: 'Opus 2 International',
+	exampleReferenceEmail: 'tauchecorne@opus2.com',
+	exampleReferencePhone: '07912 945265',
+	exampleReferenceAddress: 'London, EC4A 3BF',
 };

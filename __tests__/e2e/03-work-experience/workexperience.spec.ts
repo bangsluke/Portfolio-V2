@@ -91,4 +91,69 @@ test.describe('Work Experience Tests', () => {
 		expect(itemText).toBeTruthy();
 		expect(itemText?.length).toBeGreaterThan(0);
 	});
+
+	test('3.4. Voluntary roles section should be visible and contain items when present', async ({
+		page,
+	}) => {
+		await page.goto(testData.workExperiencePageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		const voluntarySection = page.locator('#voluntary-roles');
+
+		// If there are no voluntary roles configured, do not assert further
+		if (await voluntarySection.count() === 0) {
+			return;
+		}
+
+		await expect(voluntarySection).toBeVisible();
+
+		// "View Voluntary Roles" link should scroll to the voluntary section
+		const viewVoluntaryLink = page.getByRole('link', {
+			name: 'View Voluntary Roles',
+		});
+		await expect(viewVoluntaryLink).toBeVisible();
+
+		await viewVoluntaryLink.click();
+		await page.waitForTimeout(500);
+
+		const boundingBox = await voluntarySection.boundingBox();
+		expect(boundingBox).not.toBeNull();
+
+		// Section should contain at least one article
+		const voluntaryItems = voluntarySection.locator('article[role="article"], article');
+		const voluntaryCount = await voluntaryItems.count();
+		expect(voluntaryCount).toBeGreaterThan(0);
+	});
+
+	test('3.5. Back to Portfolio links on work experience page should return to home', async ({
+		page,
+	}) => {
+		await page.goto(testData.workExperiencePageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		// Top back link
+		const topBackLink = page.getByRole('link', { name: 'Back to Portfolio' }).first();
+		await expect(topBackLink).toBeVisible();
+		await topBackLink.click();
+		await expect(page).toHaveURL(testData.mainPageUrl);
+
+		// Navigate again for bottom link
+		await page.goto(testData.workExperiencePageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		// Bottom back link (last occurrence)
+		const bottomBackLink = page.getByRole('link', { name: 'Back to Portfolio' }).last();
+		await expect(bottomBackLink).toBeVisible();
+		await bottomBackLink.click();
+		await expect(page).toHaveURL(testData.mainPageUrl);
+	});
 });
