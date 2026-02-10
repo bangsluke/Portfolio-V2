@@ -777,6 +777,18 @@ a.theme-link:hover {
 	justify-content: center;
 }
 
+@media (max-width: 768px) {
+	/* Make skills header buttons larger and more touch-friendly on mobile */
+	#skills-box button.global-element {
+		font-size: 0.6rem !important;
+		line-height: 1.25rem;
+		padding: 0.625rem 1.25rem;
+		min-height: 1.7rem !important;
+		max-height: none;
+		min-width: 1.7rem !important;
+	}
+}
+
 .global-element:hover {
 	background-color: var(--color-theme-900);
 	transform: translateY(-1px);
