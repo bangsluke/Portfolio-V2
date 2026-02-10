@@ -120,7 +120,17 @@ const SkillsSearchModal = ({ skills, projects }: SkillsSearchModalProps) => {
 	const handleClose = () => {
 		setIsOpen(false);
 		setQuery('');
+		window.dispatchEvent(new CustomEvent('skillsSearchModalClose'));
 	};
+
+	// On mount: open modal if a click happened before the island loaded
+	useEffect(() => {
+		const win = window as Window & { __skillsSearchPendingOpen?: boolean };
+		if (win.__skillsSearchPendingOpen) {
+			win.__skillsSearchPendingOpen = false;
+			setIsOpen(true);
+		}
+	}, []);
 
 	// Open the modal when a global event is dispatched from the Astro button
 	useEffect(() => {
@@ -134,6 +144,13 @@ const SkillsSearchModal = ({ skills, projects }: SkillsSearchModalProps) => {
 			window.removeEventListener('openSkillsSearch', handleOpen);
 		};
 	}, []);
+
+	// Notify the page when the modal is open so it can hide the loading overlay
+	useEffect(() => {
+		if (isOpen) {
+			window.dispatchEvent(new CustomEvent('skillsSearchModalOpen'));
+		}
+	}, [isOpen]);
 
 	// Focus the input when the modal opens
 	useEffect(() => {
@@ -179,7 +196,7 @@ const SkillsSearchModal = ({ skills, projects }: SkillsSearchModalProps) => {
 			aria-label="Search skills"
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			onClick={handleOverlayClick as unknown as any}>
-			<div class="bg-white dark:bg-gray-900 rounded-xl shadow-xl max-w-3xl w-full min-h-[80vh] max-h-[80vh] max-md:min-h-[calc(100vh-12rem)] max-md:max-h-[calc(100vh-12rem)] overflow-hidden border border-gray-200/60 dark:border-gray-700/60">
+			<div class="bg-white dark:bg-gray-900 rounded-xl shadow-xl max-w-3xl w-full min-h-[80vh] max-h-[80vh] max-md:min-h-[60vh] max-md:max-h-[60vh] overflow-hidden border border-gray-200/60 dark:border-gray-700/60">
 				<div class="flex items-center justify-between gap-3 p-4 border-b border-gray-200 dark:border-gray-700">
 					<input
 						ref={inputRef}
@@ -212,7 +229,7 @@ const SkillsSearchModal = ({ skills, projects }: SkillsSearchModalProps) => {
 					</button>
 				</div>
 
-				<div class="p-4 overflow-y-auto max-h-[calc(80vh-64px)] max-md:max-h-[calc(100vh-12rem-64px)] space-y-3">
+				<div class="p-4 overflow-y-auto max-h-[calc(80vh-64px)] max-md:max-h-[calc(60vh-64px)] space-y-3">
 					{query.trim().length < 1 ? (
 						<p class="text-sm text-gray-500 dark:text-gray-400">
 							Start typing to search Luke&apos;s skills.
