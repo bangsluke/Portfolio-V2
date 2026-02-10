@@ -7,6 +7,7 @@ import { getCollection } from 'astro:content';
 import GitHubContributions from '../portfolio/GitHubContributions.js';
 import MostCommonTechs from '../portfolio/MostCommonTechs.astro';
 import SkillsBubbles from '../portfolio/SkillsBubbles.astro';
+import SkillsSearchModal from '../portfolio/SkillsSearchModal';
 import Heading from '../ui/Heading.astro';
 import {
 	getProjectCount,
@@ -281,11 +282,33 @@ const techData = {
 						<Heading text="Skills" textGradient="" level={3} />
 					</div>
 					<div class="flex items-center gap-2">
+						<!-- Search Button -->
+						<button
+							id="skills-search-btn"
+							data-testid="skills-search-btn"
+							class="global-element global-button max-md:px-5 max-md:py-2.5 max-md:min-h-[44px]"
+							title="Search skills">
+							<svg
+								class="w-4 h-4"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								aria-hidden="true">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z"
+								></path>
+							</svg>
+							<span class="hidden md:inline ml-1">Search</span>
+						</button>
+
 						<!-- Reset Button -->
 						<button
 							id="skills-reset-btn"
 							data-testid="skills-reset-btn"
-							class="global-element global-button global-clear-button"
+							class="global-element global-button global-clear-button max-md:px-5 max-md:py-2.5 max-md:text-sm"
 							title="Reset to default view - center graph and reset to skill rating sizing">
 							Reset
 						</button>
@@ -294,7 +317,7 @@ const techData = {
 						<button
 							id="skills-toggle-btn"
 							data-testid="skills-toggle-btn"
-							class="global-element global-button"
+							class="global-element global-button max-md:px-5 max-md:py-2.5 max-md:text-sm"
 							title="Toggle between bubble chart (skill rating), bubble chart (project count), and list view">
 							Toggle: Bubbles (Skill)
 						</button>
@@ -413,6 +436,12 @@ const techData = {
 						</div>
 					</div>
 				</div>
+
+				<SkillsSearchModal
+					client:only="preact"
+					skills={skills}
+					projects={projects}
+				/>
 			</article>
 		</div>
 
@@ -468,6 +497,7 @@ const techData = {
 	document.addEventListener('DOMContentLoaded', () => {
 		const resetBtn = document.getElementById('skills-reset-btn');
 		const toggleBtn = document.getElementById('skills-toggle-btn');
+		const searchBtn = document.getElementById('skills-search-btn');
 		let currentView = 'bubbles-skill'; // 'bubbles-skill', 'bubbles-project', 'list'
 
 		// Initialize view state - show bubbles (skill rating)
@@ -476,6 +506,13 @@ const techData = {
 		if (bubblesView && tableView) {
 			bubblesView.classList.remove('hidden');
 			tableView.classList.add('hidden');
+		}
+
+		// Search button functionality
+		if (searchBtn) {
+			searchBtn.addEventListener('click', () => {
+				window.dispatchEvent(new CustomEvent('openSkillsSearch'));
+			});
 		}
 
 		// Reset button functionality
