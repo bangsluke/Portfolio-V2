@@ -37,6 +37,8 @@ export class HomePageObjects {
 	public readonly footerEmailIcon: Locator;
 	public readonly footerGitHubIcon: Locator;
 	public readonly footerLinkedInIcon: Locator;
+	public readonly mobileNavToggle: Locator;
+	public readonly mobileNavLinks: Locator;
 
 	constructor(public readonly page: Page) {
 		this.profileName = page.getByTestId('profile-name');
@@ -114,6 +116,8 @@ export class HomePageObjects {
 			.locator('footer')
 			.locator('a[href*="linkedin.com"]')
 			.first();
+		this.mobileNavToggle = page.getByTestId('mobile-nav-toggle');
+		this.mobileNavLinks = page.getByTestId('mobile-nav-links');
 	}
 
 	async openSkillsTable() {
