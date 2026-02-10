@@ -71,6 +71,7 @@ export default function GitHubContributions() {
 	return (
 		<section
 			id="github-contributions"
+			data-testid="github-contributions-calendar"
 			class="flex flex-col gap-4 w-full text-black dark:text-white">
 			{/* GitHub Contributions Calendar */}
 			<div class="flex justify-center overflow-y-auto w-full">
@@ -141,6 +142,7 @@ export default function GitHubContributions() {
 						href="https://dev.to/bangsluke"
 						target="_blank"
 						rel="noopener noreferrer"
+						data-testid="github-contributions-dev-to-link"
 						class="text-center p-3 bg-gray-100 dark:bg-white/10 rounded-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer">
 						<div class="flex flex-col items-center justify-center h-full">
 							<img
@@ -160,6 +162,7 @@ export default function GitHubContributions() {
 						href="https://medium.com/@bangsluke"
 						target="_blank"
 						rel="noopener noreferrer"
+						data-testid="github-contributions-medium-link"
 						class="text-center p-3 bg-gray-100 dark:bg-white/10 rounded-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer">
 						<div class="flex flex-col items-center justify-center h-full">
 							<img

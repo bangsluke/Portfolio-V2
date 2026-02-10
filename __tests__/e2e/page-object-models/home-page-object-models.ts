@@ -1,21 +1,47 @@
 import { Locator, Page } from '@playwright/test';
 
 export class HomePageObjects {
-	public readonly contactMeButtonTopSection: Locator;
-	public readonly contactMeButtonBottomSection: Locator;
-	public readonly aboutMeButton: Locator;
-	public readonly skillsTableSection: Locator;
-	public readonly downloadCVButton: Locator;
-	public readonly scrollToTopButton: Locator;
-	public readonly scrollToTopContainer: Locator;
+	public readonly headerLogo: Locator;
 	public readonly headerGitHubIcon: Locator;
 	public readonly headerLinkedInIcon: Locator;
 	public readonly headerThemeIcon: Locator;
+	public readonly profileName: Locator;
+	public readonly profilePicture: Locator;
+	public readonly description: Locator;
+	public readonly contactMeButtonTopSection: Locator;
+	public readonly contactMeButtonBottomSection: Locator;
+	public readonly aboutMeButton: Locator;
+	public readonly skillsResetButton: Locator;
+	public readonly skillsToggleButton: Locator;
+	public readonly skillsTableSection: Locator;
+	public readonly skillsBubblesView: Locator;
+	public readonly githubContributionsSection: Locator;
+	public readonly githubContributionsCalendar: Locator;
+	public readonly githubContributionsDevToLink: Locator;
+	public readonly githubContributionsMediumLink: Locator;
+	public readonly mostCommonTechSection: Locator;
+	public readonly mostCommonTechList: Locator;
+	public readonly projectsSection: Locator;
+	public readonly projectsList: Locator;
+	public readonly workExperienceSection: Locator;
+	public readonly workExperienceList: Locator;
+	public readonly customersAndClientsSection: Locator;
+	public readonly customersAndClientsList: Locator;
+	public readonly educationSection: Locator;
+	public readonly educationTimeline: Locator;
+	public readonly referencesSection: Locator;
+	public readonly referencesCarousel: Locator;
+	public readonly downloadCVButton: Locator;
+	public readonly scrollToTopButton: Locator;
+	public readonly scrollToTopContainer: Locator;
 	public readonly footerEmailIcon: Locator;
 	public readonly footerGitHubIcon: Locator;
 	public readonly footerLinkedInIcon: Locator;
 
 	constructor(public readonly page: Page) {
+		this.profileName = page.getByTestId('profile-name');
+		this.profilePicture = page.getByTestId('profile-picture');
+		this.description = page.getByTestId('profile-description');
 		this.contactMeButtonTopSection = page.getByTestId(
 			'contact-me-button-top-section'
 		);
@@ -25,14 +51,48 @@ export class HomePageObjects {
 		this.aboutMeButton = page.getByRole('button', {
 			name: 'About Me person',
 		});
+		this.skillsResetButton = page.getByTestId('skills-reset-btn');
+		this.skillsToggleButton = page.getByTestId('skills-toggle-btn');
 		this.skillsTableSection = page.getByTestId('skills-table-view');
+		this.skillsBubblesView = page.getByTestId('skills-bubbles-view');
+		this.githubContributionsSection = page.getByTestId(
+			'github-contributions-section'
+		);
+		this.githubContributionsCalendar = page.getByTestId(
+			'github-contributions-calendar'
+		);
+		this.githubContributionsDevToLink = page.getByTestId(
+			'github-contributions-dev-to-link'
+		);
+		this.githubContributionsMediumLink = page.getByTestId(
+			'github-contributions-medium-link'
+		);
+		this.mostCommonTechSection = page.getByTestId('most-common-techs-section');
+		this.mostCommonTechList = page.getByTestId('most-common-techs-list');
+		this.projectsSection = page.getByTestId('projects-section');
+		this.projectsList = page.getByTestId('projects-list');
+		this.workExperienceSection = page.getByTestId('work-experience-section');
+		this.workExperienceList = page.getByTestId('work-experience-list');
+		this.customersAndClientsSection = page.getByTestId(
+			'customers-and-clients-section'
+		);
+		this.customersAndClientsList = page.getByTestId(
+			'customers-and-clients-list'
+		);
+		this.educationSection = page.getByTestId('education-section');
+		this.educationTimeline = page.getByTestId('education-timeline');
 		this.downloadCVButton = page.getByRole('button', {
 			name: 'Download CV',
 		});
+		this.referencesSection = page.getByTestId('references-section');
+		this.referencesCarousel = page.getByTestId('references-carousel');
+		this.projectsSection = page.getByTestId('projects-section');
+		this.projectsList = page.getByTestId('projects-list');
 		this.scrollToTopButton = page.getByRole('button', {
 			name: 'Scroll to top',
 		});
 		this.scrollToTopContainer = page.locator('#scroll-to-top');
+		this.headerLogo = page.getByTestId('header-logo');
 		this.headerGitHubIcon = page
 			.locator('header')
 			.locator('a[href*="github.com"]')
