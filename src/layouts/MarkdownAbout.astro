@@ -75,7 +75,7 @@ const { frontmatter } = Astro.props;
 	<!-- Mobile TOC Modal -->
 	<div
 		id="toc-modal"
-		class="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50 hidden"
+		class="lg:hidden fixed inset-0 z-[120] bg-black bg-opacity-50 hidden"
 		aria-hidden="true">
 		<div class="flex items-center justify-center min-h-screen p-4">
 			<div
@@ -139,7 +139,7 @@ const { frontmatter } = Astro.props;
 </Layout>
 
 <script>
-	document.addEventListener('DOMContentLoaded', function () {
+	function initMobileToc() {
 		// Mobile TOC functionality
 		const tocFab = document.getElementById('toc-fab');
 		const tocModal = document.getElementById('toc-modal');
@@ -148,6 +148,10 @@ const { frontmatter } = Astro.props;
 		const content = document.getElementById('content');
 
 		if (!tocFab || !tocModal || !tocClose || !mobileTocList || !content) return;
+		// If already fully populated, skip (e.g. re-run from load handler)
+		if (mobileTocList.children.length > 2) return;
+		// Clear placeholder/partial list so we can repopulate
+		while (mobileTocList.firstChild) mobileTocList.removeChild(mobileTocList.firstChild);
 
 		// Toggle modal visibility
 		function toggleModal() {
@@ -284,5 +288,18 @@ const { frontmatter } = Astro.props;
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 			toggleModal(); // Close modal after scrolling to top
 		});
-	});
+	}
+	// Run on load so #content and headings are definitely in DOM (hoisted script runs before body)
+	function runWhenReady() {
+		if (document.readyState === 'complete') {
+			initMobileToc();
+		} else {
+			window.addEventListener('load', initMobileToc);
+		}
+	}
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', runWhenReady);
+	} else {
+		runWhenReady();
+	}
 </script>

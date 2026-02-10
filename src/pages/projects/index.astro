@@ -96,13 +96,16 @@ const processedProjects = sortedProjects.map(project => {
 });
 
 // Get unique project categories
-const projectCategories = [
-	...new Set(
+const projectCategories = Array.from(
+	new Set<string>(
 		processedProjects
 			.map(project => project.data.projectCategory)
-			.filter(Boolean)
-	),
-].sort();
+			.filter(
+				(category): category is string =>
+					typeof category === 'string' && category.length > 0
+			)
+	)
+).sort();
 
 // Calculate date range for filter (for input min/max attributes)
 const projectDates = processedProjects

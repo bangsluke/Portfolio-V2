@@ -112,8 +112,13 @@ const displayedProjects = processedProjects.slice(0, maxProjectsDisplay);
 			<Heading text="" textGradient="Projects " level={2} />
 		</div>
 
-		<div class="relative max-md:mt-0 mt-8" aria-label="Projects">
-			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+		<div
+			class="relative max-md:mt-0 mt-8"
+			aria-label="Projects"
+			data-testid="projects-section">
+			<div
+				class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+				data-testid="projects-list">
 				{
 					displayedProjects.map(project => (
 						<ProjectCard
