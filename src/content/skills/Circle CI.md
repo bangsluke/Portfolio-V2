@@ -6,15 +6,17 @@ tags:
   - tag
   - software
   - portfolio
-created: 2026-02-05
-modified: 2026-02-05T17:51:13+00:00
+  - validation
+created: 2026-02-11
+modified: 2026-02-11T15:29:29+00:00
 viewCount: 2
 aliases:
+  - circleci
 skillRating: 5
-skillDescription: Familiar with the concept without yet trying the software myself.
-logoFileName: grafana.svg
+skillDescription: Aware of the tool for code validation but not yet used.
+logoFileName: circleci.svg
 ---
-# Grafana
+# Circle CI
 
 > [!back] Link back to [[Skills Notes]]
 
@@ -25,13 +27,15 @@ logoFileName: grafana.svg
 
 ## Description
 
-Grafana is an open‑source observability and data visualization platform that allows users to explore, query, and visualize metrics, logs, and traces from diverse data sources. It transforms time‑series data into interactive dashboards, enabling teams to monitor system health, analyze trends, and troubleshoot issues effectively. Grafana supports integrations with [[Prometheus]], Elasticsearch, [[SQL]] databases, and many others. Its flexible dashboarding, alerting features, and plugin ecosystem make it a central tool for building unified monitoring solutions. Grafana is widely used across [[DevOps]], [[SRE]], and analytics teams for its power, extensibility, and intuitive interface.
+CircleCI is a **continuous integration and continuous delivery (CI/CD) platform** that helps engineering teams **build, test, and deploy code automatically and reliably**. It’s one of the most widely used CI/CD services in modern DevOps.
+
+It has fast, scalable pipelines and isn't tied to an ecosystem like [[GitHub]] or [[GitLab]] so it can be used for tools like BitBucket.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 
-- [Grafana: The open and composable observability platform \| Grafana Labs](https://grafana.com/)
+- [Autonomous validation for the AI era - CircleCI](https://circleci.com/)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

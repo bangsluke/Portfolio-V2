@@ -8,9 +8,9 @@ tags:
   - portfolio
   - notes
 created: 2023-10-13T07:42:00
-modified: 2025-07-02T14:21:35+01:00
-viewCount: 7
-aliases: 
+modified: 2026-02-11T14:42:12+00:00
+viewCount: 6
+aliases:
 skillRating: 50
 skillDescription: Built and maintained a relatively complex SQL database using MySQL writing schema modification statements and automating the population of data.
 logoFileName: sql.svg
@@ -27,6 +27,7 @@ logoFileName: sql.svg
 ## Links
 
 - [Link to Documentation site](https://bangsluke-documentation.netlify.app/docs/Project%20Set%20Up%20to%20Release/4Development#react)
+- [SQLZoo.net](https://sqlzoo.net/wiki/SQL_Tutorial)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

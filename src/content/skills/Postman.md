@@ -1,37 +1,30 @@
 ---
 tags:
-  - coding
-  - skill
-  - notes
   - tag
   - software
+  - skill
   - portfolio
-created: 2026-02-05
-modified: 2026-02-05T17:51:13+00:00
-viewCount: 2
+modified: 2026-02-10T18:32:46+00:00
 aliases:
-skillRating: 5
-skillDescription: Familiar with the concept without yet trying the software myself.
-logoFileName: grafana.svg
+viewCount: 2
+skillRating: 35
+skillDescription: Used on a single work project for verifying a Flask API's JSON payload for 3D co-ordinates and on a couple of personal projects.
+logoFileName: postman.svg
 ---
-# Grafana
+# Postman
 
 > [!back] Link back to [[Skills Notes]]
 
-## Table of Contents 
+> Postman is the leading, industry-standard [[API]] platform used by over 30 million developers to design, build, test, document, and collaborate on [[API]]s throughout their entire lifecycle. It streamlines development by allowing users to send [[REST]], SOAP, and [[GraphQL]] queries, automate tests, manage environments, and generate code snippets.
+
+## Table of Contents
 
 ```table-of-contents
 ```
 
-## Description
-
-Grafana is an open‑source observability and data visualization platform that allows users to explore, query, and visualize metrics, logs, and traces from diverse data sources. It transforms time‑series data into interactive dashboards, enabling teams to monitor system health, analyze trends, and troubleshoot issues effectively. Grafana supports integrations with [[Prometheus]], Elasticsearch, [[SQL]] databases, and many others. Its flexible dashboarding, alerting features, and plugin ecosystem make it a central tool for building unified monitoring solutions. Grafana is widely used across [[DevOps]], [[SRE]], and analytics teams for its power, extensibility, and intuitive interface.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
 ## Links
 
-- [Grafana: The open and composable observability platform \| Grafana Labs](https://grafana.com/)
+- n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -93,6 +86,8 @@ FROM [[]]
 GROUP BY "Links"
 ```
 
+>[!top] [Back to top](#Table%20of%20Contents)
+
 ### Last Mentioned
 
 ```dataview
@@ -101,6 +96,8 @@ FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
 ```
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
