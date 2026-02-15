@@ -6,15 +6,17 @@ tags:
   - tag
   - software
   - portfolio
-created: 2026-02-05
-modified: 2026-02-05T17:51:13+00:00
+  - analytics
+  - testing
+created: 2026-02-11
+modified: 2026-02-11T15:18:38+00:00
 viewCount: 2
 aliases:
 skillRating: 5
-skillDescription: Familiar with the concept without yet trying the software myself.
-logoFileName: grafana.svg
+skillDescription: Aware of the tool for A/B testing but not yet used.
+logoFileName: heap.svg
 ---
-# Grafana
+# Heap
 
 > [!back] Link back to [[Skills Notes]]
 
@@ -25,13 +27,17 @@ logoFileName: grafana.svg
 
 ## Description
 
-Grafana is an open‑source observability and data visualization platform that allows users to explore, query, and visualize metrics, logs, and traces from diverse data sources. It transforms time‑series data into interactive dashboards, enabling teams to monitor system health, analyze trends, and troubleshoot issues effectively. Grafana supports integrations with [[Prometheus]], Elasticsearch, [[SQL]] databases, and many others. Its flexible dashboarding, alerting features, and plugin ecosystem make it a central tool for building unified monitoring solutions. Grafana is widely used across [[DevOps]], [[SRE]], and analytics teams for its power, extensibility, and intuitive interface.
+Heap is a **digital product analytics platform** designed to give companies a **complete, automatic view of user behavior** across their websites and apps. Its core promise is simple:
+
+**Heap captures every user interaction automatically — no manual event tracking required.**
+
+This makes it very different from tools like Google Analytics, [[Amplitude]], or [[Mixpanel]], which require manual instrumentation.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 
-- [Grafana: The open and composable observability platform \| Grafana Labs](https://grafana.com/)
+- [Heap - Better Insights. Faster. \| Heap](https://www.heap.io/)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

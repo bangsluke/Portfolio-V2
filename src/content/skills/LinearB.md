@@ -6,15 +6,16 @@ tags:
   - tag
   - software
   - portfolio
-created: 2026-02-05
-modified: 2026-02-05T17:51:13+00:00
+  - analysis
+created: 2026-02-11
+modified: 2026-02-11T14:59:17+00:00
 viewCount: 2
 aliases:
 skillRating: 5
-skillDescription: Familiar with the concept without yet trying the software myself.
-logoFileName: grafana.svg
+skillDescription: Aware of the concept of the tool for analysing productivity.
+logoFileName: linearb.svg
 ---
-# Grafana
+# LinearB
 
 > [!back] Link back to [[Skills Notes]]
 
@@ -25,13 +26,13 @@ logoFileName: grafana.svg
 
 ## Description
 
-Grafana is an open‑source observability and data visualization platform that allows users to explore, query, and visualize metrics, logs, and traces from diverse data sources. It transforms time‑series data into interactive dashboards, enabling teams to monitor system health, analyze trends, and troubleshoot issues effectively. Grafana supports integrations with [[Prometheus]], Elasticsearch, [[SQL]] databases, and many others. Its flexible dashboarding, alerting features, and plugin ecosystem make it a central tool for building unified monitoring solutions. Grafana is widely used across [[DevOps]], [[SRE]], and analytics teams for its power, extensibility, and intuitive interface.
+LinearB is an **AI‑powered engineering productivity platform** designed for **engineering leaders, DevEx teams, and platform teams**. Its purpose is to give visibility into how software delivery actually works in practice—where work gets stuck, how long things take, and how to improve flow.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 
-- [Grafana: The open and composable observability platform \| Grafana Labs](https://grafana.com/)
+- [LinearB \| The AI productivity platform for engineering leaders](https://linearb.io/)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

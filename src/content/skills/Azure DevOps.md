@@ -5,8 +5,10 @@ tags:
   - skill
   - portfolio
   - devops
+  - planning
+  - tracking
 modified: 2026-01-21T08:43:58+00:00
-viewCount: 1
+viewCount: 2
 aliases:
   - DevOps
 skillRating: 75

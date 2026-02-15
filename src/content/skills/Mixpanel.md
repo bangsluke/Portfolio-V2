@@ -6,15 +6,16 @@ tags:
   - tag
   - software
   - portfolio
-created: 2026-02-05
-modified: 2026-02-05T17:51:13+00:00
+  - analytics
+created: 2026-02-11
+modified: 2026-02-11T15:33:05+00:00
 viewCount: 2
 aliases:
 skillRating: 5
-skillDescription: Familiar with the concept without yet trying the software myself.
-logoFileName: grafana.svg
+skillDescription: Aware of the tool for analytics but not yet used.
+logoFileName: mixpanel.svg
 ---
-# Grafana
+# Mixpanel
 
 > [!back] Link back to [[Skills Notes]]
 
@@ -25,13 +26,15 @@ logoFileName: grafana.svg
 
 ## Description
 
-Grafana is an open‑source observability and data visualization platform that allows users to explore, query, and visualize metrics, logs, and traces from diverse data sources. It transforms time‑series data into interactive dashboards, enabling teams to monitor system health, analyze trends, and troubleshoot issues effectively. Grafana supports integrations with [[Prometheus]], Elasticsearch, [[SQL]] databases, and many others. Its flexible dashboarding, alerting features, and plugin ecosystem make it a central tool for building unified monitoring solutions. Grafana is widely used across [[DevOps]], [[SRE]], and analytics teams for its power, extensibility, and intuitive interface.
+Mixpanel is a **product analytics platform** that helps teams understand **how users behave** inside their web and mobile applications. It specializes in **event‑based tracking**, meaning it records specific user actions (e.g., clicks, sign‑ups, feature usage) rather than just page views.
+
+Similar tool to [[Amplitude]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 
-- [Grafana: The open and composable observability platform \| Grafana Labs](https://grafana.com/)
+- [Product Analytics & Robust Event Tracking \| Mixpanel](https://mixpanel.com/home/)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

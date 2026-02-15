@@ -6,15 +6,16 @@ tags:
   - tag
   - software
   - portfolio
-created: 2026-02-05
-modified: 2026-02-05T17:51:13+00:00
+  - analysis
+created: 2026-02-11
+modified: 2026-02-11T15:09:42+00:00
 viewCount: 2
 aliases:
 skillRating: 5
-skillDescription: Familiar with the concept without yet trying the software myself.
-logoFileName: grafana.svg
+skillDescription: Aware of the concept of the tool for analysing productivity.
+logoFileName: haystack.svg
 ---
-# Grafana
+# Haystack
 
 > [!back] Link back to [[Skills Notes]]
 
@@ -25,13 +26,13 @@ logoFileName: grafana.svg
 
 ## Description
 
-Grafana is an open‑source observability and data visualization platform that allows users to explore, query, and visualize metrics, logs, and traces from diverse data sources. It transforms time‑series data into interactive dashboards, enabling teams to monitor system health, analyze trends, and troubleshoot issues effectively. Grafana supports integrations with [[Prometheus]], Elasticsearch, [[SQL]] databases, and many others. Its flexible dashboarding, alerting features, and plugin ecosystem make it a central tool for building unified monitoring solutions. Grafana is widely used across [[DevOps]], [[SRE]], and analytics teams for its power, extensibility, and intuitive interface.
+Haystack is an **engineering analytics platform** that turns [[Git]] and [[Jira]] data into **delivery‑focused metrics**, with a strong emphasis on [[DORA]], cycle time, and bottleneck detection. It sits in the same category as [[LinearB]], [[Sleuth]], and Swarmia, but it's known for being **simple, developer‑friendly, and DORA‑first**
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 
-- [Grafana: The open and composable observability platform \| Grafana Labs](https://grafana.com/)
+- [Delivery Ops for Product & Engineering Leaders \| Haystack](https://www.usehaystack.io/)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

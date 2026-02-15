@@ -6,15 +6,18 @@ tags:
   - tag
   - software
   - portfolio
-created: 2026-02-05
-modified: 2026-02-05T17:51:13+00:00
+  - planning
+  - tracking
+created: 2026-02-11
+modified: 2026-02-11T15:14:17+00:00
 viewCount: 2
 aliases:
+  - Jira
 skillRating: 5
-skillDescription: Familiar with the concept without yet trying the software myself.
-logoFileName: grafana.svg
+skillDescription: Aware of the tool for project and issue tracking but have only used Azure DevOps so far.
+logoFileName: jira.svg
 ---
-# Grafana
+# JIRA
 
 > [!back] Link back to [[Skills Notes]]
 
@@ -25,13 +28,15 @@ logoFileName: grafana.svg
 
 ## Description
 
-Grafana is an open‑source observability and data visualization platform that allows users to explore, query, and visualize metrics, logs, and traces from diverse data sources. It transforms time‑series data into interactive dashboards, enabling teams to monitor system health, analyze trends, and troubleshoot issues effectively. Grafana supports integrations with [[Prometheus]], Elasticsearch, [[SQL]] databases, and many others. Its flexible dashboarding, alerting features, and plugin ecosystem make it a central tool for building unified monitoring solutions. Grafana is widely used across [[DevOps]], [[SRE]], and analytics teams for its power, extensibility, and intuitive interface.
+Jira is **Atlassian's industry‑leading project and issue‑tracking platform**, used by software teams, IT teams, and business teams to **plan, track, and deliver work**. It's one of the most widely adopted tools for Agile development.
+
+According to Atlassian, Jira is a **"project management tool that brings every team together to plan, track, and deliver any type of project with confidence."**
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 
-- [Grafana: The open and composable observability platform \| Grafana Labs](https://grafana.com/)
+- [Jira \| Issue & Project Tracking Software \| Atlassian](https://www.atlassian.com/software/jira)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -10,7 +10,7 @@ created: 2025-05-29 18:05
 modified: 2026-01-30T15:03:16+00:00
 aliases:
   - DVP Prototype
-viewCount: 19
+viewCount: 20
 projectURL: https://dvp-fe.icypebble-0bf96993.germanywestcentral
 codeURL: https://git.rle.de/DigitalEngineering/externalpocs/dvp
 codeMultipleRepos: false
@@ -32,6 +32,7 @@ technologies:
   - "[[React]]"
   - "[[Next.js]]"
   - "[[Nest.JS]]"
+  - "[[Postman]]"
 projectCategory: Work Project
 linkedCompany:
   - "[[RLE International]]"

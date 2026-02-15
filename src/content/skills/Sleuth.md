@@ -6,15 +6,17 @@ tags:
   - tag
   - software
   - portfolio
-created: 2026-02-05
-modified: 2026-02-05T17:51:13+00:00
+  - analysis
+created: 2026-02-11
+modified: 2026-02-11T15:11:09+00:00
 viewCount: 2
 aliases:
+  - Sleuth.io
 skillRating: 5
-skillDescription: Familiar with the concept without yet trying the software myself.
-logoFileName: grafana.svg
+skillDescription: Aware of the concept of the tool for analysing productivity.
+logoFileName: sleuth.svg
 ---
-# Grafana
+# Sleuth
 
 > [!back] Link back to [[Skills Notes]]
 
@@ -25,13 +27,15 @@ logoFileName: grafana.svg
 
 ## Description
 
-Grafana is an open‑source observability and data visualization platform that allows users to explore, query, and visualize metrics, logs, and traces from diverse data sources. It transforms time‑series data into interactive dashboards, enabling teams to monitor system health, analyze trends, and troubleshoot issues effectively. Grafana supports integrations with [[Prometheus]], Elasticsearch, [[SQL]] databases, and many others. Its flexible dashboarding, alerting features, and plugin ecosystem make it a central tool for building unified monitoring solutions. Grafana is widely used across [[DevOps]], [[SRE]], and analytics teams for its power, extensibility, and intuitive interface.
+Sleuth is an **AI‑powered engineering intelligence platform** that helps engineering teams and executives **align engineering work with business outcomes**, improve delivery performance, and remove friction from the development process.
+
+It sits in the same problem space as [[LinearB]], [[Haystack]], and Swarmia, but with a stronger emphasis on **business alignment**, **review workflows**, and **AI‑assisted engineering operations**.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 
-- [Grafana: The open and composable observability platform \| Grafana Labs](https://grafana.com/)
+- [Sleuth \| Align business and engineering](https://www.sleuth.io/)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
