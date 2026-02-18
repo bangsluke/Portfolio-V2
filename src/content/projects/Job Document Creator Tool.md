@@ -1,35 +1,26 @@
 ---
 tags:
   - project
-  - portfolio
   - notes
-  - project/completed
-  - coding
-created: 2025-05-29 17:57
-modified: 2025-07-19T09:57:02+01:00
+  - project/active
+  - portfolio
+  - work
+created: 2026-02-18 08:48
+modified: 2026-02-18T14:51:04+00:00
 aliases:
-viewCount: 14
-projectURL: https://biglynn.netlify.app/info
-codeURL: https://github.com/bangsluke/BigLynn2023
+viewCount: 2
+projectURL: n/a
+codeURL: https://github.com/bangsluke/Job-Document-Creator-Tool
 codeMultipleRepos: false
-deploymentServiceURL: https://app.netlify.com/projects/biglynn/overview
+deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/nrZgNwtL/Big-Lynn.png
-dateStart: 2022-09-06
-dateEnd: 2023-07-26
+imageURL:
+dateStart: 2026-02-18
+dateEnd: ""
 technologies:
-  - "[[Google Sheets]]"
-  - "[[GitHub]]"
-  - "[[Netlify]]"
-  - "[[Snyk]]"
-  - "[[ESLint]]"
-  - "[[Prettier]]"
-  - "[[Typescript]]"
-  - "[[Yarn]]"
-  - "[[VS Code]]"
-  - "[[Next.js]]"
-  - "[[React]]"
+  - "[[Python]]"
+  - "[[Anthropic]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -37,16 +28,16 @@ toolOwner: "[[Luke Bangs]]"
 developers:
   - "[[Luke Bangs]]"
 topicTags:
-  - "[[Golf]]"
-powerShellAlias: biglynn
+  - "[[Work]]"
+powerShellAlias: jobs, jobsearch
 version: 1
-portfolioOrder: 6
-shortDescription: "A stats and information website about an annual <span class=\"theme-link\">golf</span> competition that I am involved in."
-longDescription: "A site I developed for an annual <span class=\"theme-link\">golf</span> competition that I play in, where I displayed details for the 2023 competition that I was in charge of organising and then I collected past years data and displayed this for each player as well as predictions for the upcoming year."
-lessonsLearned: "This project let me take an existing Berry Material <span class=\"theme-link\">UI</span> template and extend and develop it into the site I required. It helped me integrate animations and stats components like graphs into the site using libraries like d3."
-name: "Big Lynn Website"
+portfolioOrder: 8
+shortDescription: "TBD"
+longDescription: "TBD"
+lessonsLearned: "TBD"
+name: "Job Document Creator Tool"
 ---
-# Big Lynn Website
+# Job Document Creator Tool
 
 > [!back] Link back to [[01 Projects|Projects]]
 
@@ -79,23 +70,23 @@ WHERE file = this.file
 
 ## Short Description
 
-A stats and information website about an annual [[Golf|golf]] competition that I am involved in.
+TBD
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-A site I developed for an annual [[Golf|golf]] competition that I play in, where I displayed details for the 2023 competition that I was in charge of organising and then I collected past years data and displayed this for each player as well as predictions for the upcoming year.
+TBD
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
-- Front end: [[Next.js]]
-- Back end/Datasource: [[Google Sheets]]
-- Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
-- Security: [[Snyk]]
-- Authentication: n/a
+- Front end: TBD
+- Back end/Datasource: TBD
+- Hosting: [[GitHub]] (see [Repositories](#repositories)), TBD
+- Security: TBD
+- Authentication: TBD
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -116,21 +107,50 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Planning and Design
 
-- The main template of the frontend was a Berry Material [[UI]] template
-- Some designs sketched out on paper
+### Initial Prompt
+
+```
+I have a workflow that I want to automate. Currently I am searching for a job and when I find one, I am manually writing and updating my CV and possibly a Cover Letter to align with the job description. Ideally I'd like the workflow to be automated as below:
+
+1. I enter the company name, job title and job description into the tool/automation via a small visual GUI.
+2. The tool/automation then creates a folder with the company name in a certain folder and then populates it with a copy of my Microsoft Word CV and Cover Letter, updates the content to best match the job description and presents it for my review.
+3. I review and confirm the content, updating if I wish to.
+4. The tool/automation then checks the spelling and grammar of the documents before it creates the exported PDF version of the CV and Cover Letter into the folder.
+
+Advise on the best LLM and AI model to consume the data and output the highest quality documents.
+
+Advise if there is a specific template design you need for the CV and cover letter.
+
+Define what base constants you need for the workflow.
+
+In the GUI, add the option to choose to create just a CV or a CV and Cover Letter. Also ensure that each step of the process being done is written out in grey text, turning green if successful or red if an error, e.g. "Sending prompt to LLM...". Also have a section that explains any errors or warnings the process encounters.
+
+Ensure that there is a clear prompt document that I can modify and update of what is sent to the LLM to write the documents, allowing me to customise the output.
+
+Would it be best to have a folder full of example Cover Letters for the LLM to review and refer to?
+
+Ensure the full process is documented in a README file, including instructions on how to run the command.
+
+If there are any additional setup processes I need to do (such as connecting to the LLM), document these in a setup guide.
+
+Put together a plan for creating an automated process for the above requirements using Python or another language/tool set up if you know of better. The main objective of this automation is content generation quality over speed of process.
+
+Ask any further questions that you need clarified for your planning.
+```
+
+- TBD
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- [Big Lynn Website Tasks](https://todoist.com/app/section/Big-Lynn-6C4XgHCXxqhRx95j) - [[Todoist]]
-- [Old website link](https://biglynn2023.netlify.app/info)
+- TBD
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-This project let me take an existing Berry Material [[UI]] template and extend and develop it into the site I required. It helped me integrate animations and stats components like graphs into the site using libraries like d3.
+TBD
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

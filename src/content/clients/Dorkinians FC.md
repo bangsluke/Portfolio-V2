@@ -12,7 +12,7 @@ viewCount: 19
 aliases:
   - Dorkinians
 dateStart: 2015-09-05
-dateEnd: TBD
+dateEnd:
 logoURL: https://i.postimg.cc/rm1f3Kth/Dorkinians.png
 linkedCompany:
   - n/a
