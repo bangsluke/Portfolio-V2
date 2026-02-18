@@ -3,11 +3,12 @@ tags:
   - project
   - portfolio
   - notes
+  - SDP
 created: 2025-06-27 10:45
-modified: 2026-01-30T17:07:40+00:00
+modified: 2026-02-16T07:40:47+00:00
 aliases:
   - Scalable Development Plan
-viewCount: 21
+viewCount: 22
 projectURL: https://sdp.labs.rle.de/sdpweb/
 codeURL: https://git.rle.de/sdp/sdp-3
 codeMultipleRepos: false

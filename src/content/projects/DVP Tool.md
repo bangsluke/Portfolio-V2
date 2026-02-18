@@ -10,7 +10,7 @@ created: 2025-05-29 18:05
 modified: 2026-01-30T15:03:16+00:00
 aliases:
   - DVP Prototype
-viewCount: 20
+viewCount: 22
 projectURL: https://dvp-fe.icypebble-0bf96993.germanywestcentral
 codeURL: https://git.rle.de/DigitalEngineering/externalpocs/dvp
 codeMultipleRepos: false
@@ -44,7 +44,7 @@ developers:
 topicTags:
   - "[[Work]]"
   - "[[DVP]]"
-powerShellAlias: n/a
+powerShellAlias: dvp
 version: 1
 portfolioOrder: 2
 shortDescription: "Designed and shipped a web-based tool as a demonstration of using <span class=\"theme-link\">Neo4j</span> graphs for running optimisation calculations for <span class=\"theme-link\">DVP</span>'s the Automotive industry."

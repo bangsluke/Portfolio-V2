@@ -16,6 +16,7 @@ let knownIconsCache: string[] = [
 	'azure_devops',
 	'bash',
 	'circleci',
+	'claude_code',
 	'codeium',
 	'copilot',
 	'cplusplus',

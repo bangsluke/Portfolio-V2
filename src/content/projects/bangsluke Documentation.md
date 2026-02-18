@@ -6,12 +6,12 @@ tags:
   - coding
   - project/completed
 created: 2024-02-20T09:27:00
-modified: 2026-01-30T19:57:26+00:00
+modified: 2026-02-18T14:08:37+00:00
 aliases:
   - Documentation Site
   - bangsluke-documentation
   - homepage
-viewCount: 25
+viewCount: 26
 projectURL: https://bangsluke-documentation.netlify.app/
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
@@ -40,7 +40,7 @@ developers:
 topicTags:
   - Documentation
   - Coding
-powerShellAlias: bangsluke, documentation
+powerShellAlias: bangsluke, documentation, homepage
 version: 1
 portfolioOrder: 4
 shortDescription: "A <span class=\"theme-link\">PWA</span> personal documentation site that can be accessed offline, storing key links to the software I use, my project initiation to release process, articles I find useful, and a section on <span class=\"theme-link\">Dorkinians FC</span> stats. The repo also contains my <a href=\"/projects/homepage-website\" class=\"theme-link\">Homepage</a> and <a href=\"/projects/new-tab-website\" class=\"theme-link\">New Tab</a> pages."
