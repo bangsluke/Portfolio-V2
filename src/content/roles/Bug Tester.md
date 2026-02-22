@@ -4,14 +4,14 @@ tags:
   - role
   - portfolio
 created: 2025-02-04 18:53
-modified: 2026-01-21T09:32:34+00:00
+modified: 2026-02-22T13:52:05+00:00
 viewCount: 8
 dateStart: 2014-03-03
 dateEnd: 2014-07-25
 linkedCompany:
   - "[[Opus 2 International]]"
 shortRoleDescription: "Bug testing the cloud software and reviewing the sites functionality for users and admins."
-fullRoleDescription: "For the final few months at <span class=\"theme-link\">Opus 2</span> I was involved in programme bug testing the software and reviewing the sites applications for users and the admins using the system."
+fullRoleDescription: "For the final few months at <span class=\"theme-link\">Opus 2</span> I was involved in software bug testing, reviewing the applications functionality from both a users and admins perspectives and raising bug report documentation."
 keyAchievement: "Finding several front end bugs and developing a reporting structure for developers to understand easily."
 ---
 # Bug Tester
@@ -30,7 +30,7 @@ Bug testing the cloud software and reviewing the sites functionality for users a
 
 ## Full Role Description
 
-For the final few months at [[01 Notes/02 Areas/Work Notes/Company Notes/Opus 2 International|Opus 2]] I was involved in programme bug testing the software and reviewing the sites applications for users and the admins using the system.
+For the final few months at [[01 Notes/02 Areas/Work Notes/Company Notes/Opus 2 International|Opus 2]] I was involved in software bug testing, reviewing the applications functionality from both a users and admins perspectives and raising bug report documentation.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
