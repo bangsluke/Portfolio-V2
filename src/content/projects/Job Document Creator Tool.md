@@ -6,9 +6,9 @@ tags:
   - work
   - project/completed
 created: 2026-02-18 08:48
-modified: 2026-02-22T15:04:29+00:00
+modified: 2026-02-22T19:29:29+00:00
 aliases:
-viewCount: 1
+viewCount: 4
 projectURL: n/a
 codeURL: https://github.com/bangsluke/Job-Document-Creator-Tool
 codeMultipleRepos: false
@@ -20,7 +20,6 @@ dateStart: 2026-02-18
 dateEnd: 2026-02-22
 technologies:
   - "[[Python]]"
-  - "[[Anthropic]]"
   - "[[Cursor]]"
   - "[[Claude Code]]"
   - "[[Streamlit]]"
