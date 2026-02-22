@@ -52,8 +52,7 @@ export const testData = {
 	exampleMostCommonTech: 'React',
 	exampleWorkExperienceName: 'VHE2 Integration Engineer',
 	exampleWorkExperienceDateRange: 'Sep 2025 - Present',
-	exampleWorkExperienceDescription:
-		'Pivoted a vehicle integration role toward digital automation',
+	exampleWorkExperienceDescription: 'developing numerous tracking documents',
 	exampleCustomerAndClientName: 'Aston Martin',
 	exampleCustomerAndClientDateRange: 'Mar 2016 - Apr 2016',
 	exampleEducationItemName: 'Loughborough University',
