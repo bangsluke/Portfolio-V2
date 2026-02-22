@@ -20,7 +20,6 @@ imageURL:
 dateStart: 2026-02-12
 dateEnd:
 technologies:
-  - TBC
 projectCategory: Personal Design
 linkedCompany:
   - n/a

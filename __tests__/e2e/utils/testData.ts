@@ -53,7 +53,7 @@ export const testData = {
 	exampleWorkExperienceName: 'VHE2 Integration Engineer',
 	exampleWorkExperienceDateRange: 'Sep 2025 - Present',
 	exampleWorkExperienceDescription:
-		'Vehicle integration role working on V801 in the VHE2 group (interiors team)',
+		'Pivoted a vehicle integration role toward digital automation',
 	exampleCustomerAndClientName: 'Aston Martin',
 	exampleCustomerAndClientDateRange: 'Mar 2016 - Apr 2016',
 	exampleEducationItemName: 'Loughborough University',
