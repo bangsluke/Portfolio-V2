@@ -6,8 +6,8 @@ tags:
   - AI
   - skill
   - portfolio
-modified: 2026-02-18T20:21:56+00:00
-viewCount: 4
+modified: 2026-02-19T16:36:31+00:00
+viewCount: 5
 aliases:
 skillRating: 25
 skillDescription: Used on one small automation project to test out its capabilities.
@@ -23,6 +23,105 @@ logoFileName: claude_code.svg
 
 ```table-of-contents
 ```
+
+## Key Commands
+
+### Slash Commands
+
+#### Session
+
+| Command | Description |
+|---|---|
+| `/clear` | Reset context window — use between unrelated tasks |
+| `/compact [focus]` | Compress the conversation to free up context |
+| `/resume [session]` | Resume a previous session by name or ID |
+| `/rename <name>` | Name the current session for easy future reference |
+| `/rewind` | Restore code and conversation to a previous state |
+| `/exit` | Exit Claude Code |
+
+#### Visibility 
+
+| Command | Description |
+|---|---|
+| `/cost` | Show token usage and cost for this session |
+| `/context` | Visualise how full the context window is |
+| `/tasks` | List background tasks in progress |
+| `/todos` | Show current TODO items |
+| `/doctor` | Check Claude Code installation health |
+
+#### Configuration
+
+| Command | Description |
+|---|---|
+| `/model` | Switch model (Sonnet / Opus / Haiku) |
+| `/plan` | Enter Plan Mode — read-only exploration before making changes |
+| `/permissions` | Configure which tools run without prompting |
+| `/memory` | Edit `CLAUDE.md` files |
+| `/init` | Bootstrap a project by creating a `CLAUDE.md` |
+| `/vim` | Toggle vim-style editing mode |
+
+### Utilities
+
+| Command | Description |
+|---|---|
+| `/copy` | Copy the last response to clipboard |
+| `/export [file]` | Save the conversation to a file |
+
+---
+
+### Keyboard Shortcuts
+
+| Shortcut | Description |
+|---|---|
+| `Ctrl+C` | Cancel input or stop generation |
+| `Ctrl+D` | Exit Claude Code |
+| `Esc` `Esc` | Rewind to a previous state or summarise from a selected message |
+| `Shift+Tab` | Cycle permission modes (Auto → Plan → Normal) |
+| `Shift+Enter` | New line in multi-line input |
+| `Ctrl+G` | Open the current prompt in your external editor |
+| `Ctrl+R` | Reverse-search command history |
+| `Ctrl+L` | Clear the terminal screen (keeps conversation history) |
+
+---
+
+### In-Prompt Shortcuts
+
+| Syntax | Description |
+|---|---|
+| `@filename` | Reference a file — Claude reads it automatically |
+| `!command` | Run a shell command directly, bypassing Claude |
+| `/` at start | Browse and filter slash commands |
+
+---
+
+### CLI Flags
+
+| Flag | Description |
+|---|---|
+| `-p "prompt"` | Non-interactive (print) mode — run one prompt and exit |
+| `-c` | Continue the most recent conversation |
+| `-r "name"` | Resume a specific session by name or ID |
+| `--model <name>` | Set the model (`sonnet`, `opus`, `haiku`) |
+| `--permission-mode plan` | Start in Plan Mode |
+| `--output-format json` | Return JSON output (useful in scripts and CI/CD) |
+
+---
+
+### Best Practices
+
+| Practice | Why it matters |
+|---|---|
+| Keep `CLAUDE.md` short and specific | Long files cause important rules to be missed |
+| Use `/plan` before complex changes | Review the approach before any code is written |
+| Use `/clear` between unrelated tasks | Prevents context bleed; keeps responses accurate |
+| Provide a way to verify success | Give Claude a test or expected output to check its own work |
+| Use `@filename` instead of copy-pasting code | More reliable and saves context space |
+| Paste images with `Ctrl+V` | Include screenshots or mockups as visual context |
+| Use `Esc` to course-correct early | Stops generation mid-stream; context is preserved |
+| Use `/compact` proactively | Compress long sessions before context fills up |
+| Name sessions with `/rename` | Makes it easy to `/resume` specific projects later |
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 

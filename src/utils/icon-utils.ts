@@ -103,6 +103,7 @@ let knownIconsCache: string[] = [
 	'snyk',
 	'sql',
 	'storybook',
+	'streamlit',
 	'tailwind',
 	'terraform',
 	'typescript',

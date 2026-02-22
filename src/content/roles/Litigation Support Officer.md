@@ -4,14 +4,14 @@ tags:
   - role
   - portfolio
 created: 2025-02-06
-modified: 2025-07-22T17:20:28+01:00
-viewCount: 7
+modified: 2026-02-22T13:50:44+00:00
+viewCount: 6
 dateStart: 2011-03-06
 dateEnd: 2014-03-03
 linkedCompany:
   - "[[Opus 2 International]]"
 shortRoleDescription: "Responsible for the upload and storage of legal documents in a cloud-based structured environment and delivered within strict deadlines."
-fullRoleDescription: "Part time role, responsible for uploading and carefully ensuring legal documents were available for clients in a cloud-based structured environment and delivered within strict deadlines. The time I spent here showed me how to correctly conduct myself in a formal office-based job, deal with client requests and helping proactively improve new working processes."
+fullRoleDescription: "Part time role, responsible for uploading and carefully ensuring legal documents were available for clients in a cloud-based structured environment and delivered within strict deadlines. The time I spent here taught me how to correctly conduct myself in a formal office-based job, deal with client requests and proactively help improve new working processes."
 keyAchievement: "Development of processes to speed up repetitive workflows."
 ---
 # Litigation Support Officer
@@ -30,7 +30,7 @@ Responsible for the upload and storage of legal documents in a cloud-based struc
 
 ## Full Role Description
 
-Part time role, responsible for uploading and carefully ensuring legal documents were available for clients in a cloud-based structured environment and delivered within strict deadlines. The time I spent here showed me how to correctly conduct myself in a formal office-based job, deal with client requests and helping proactively improve new working processes.
+Part time role, responsible for uploading and carefully ensuring legal documents were available for clients in a cloud-based structured environment and delivered within strict deadlines. The time I spent here taught me how to correctly conduct myself in a formal office-based job, deal with client requests and proactively help improve new working processes.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
