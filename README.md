@@ -94,6 +94,7 @@
   - [Education Timeline](#education-timeline)
   - [References](#references-1)
   - [Blog System](#blog-system)
+- [Umami Analytics](#umami-analytics)
 - [Deployment](#deployment)
   - [Netlify](#netlify)
   - [GitHub Actions](#github-actions)
@@ -746,6 +747,29 @@ Content management and blogging:
 - **SEO Optimization**: Built-in SEO features for blog posts
 - **RSS Feed**: Automatic RSS feed generation
 - **Responsive Design**: Mobile-optimized blog layout
+
+> [Back to Table of Contents](#table-of-contents)
+
+## Umami Analytics
+
+The site uses [Umami](https://umami.is) for privacy-friendly analytics. Tracking is implemented via the `@yeskunall/astro-umami` integration and custom events so you can measure engagement without cookies.
+
+**What’s tracked**
+
+- **Traffic**: Pageviews, visitors, and visits (built-in).
+- **Engagement**: Clicks to LinkedIn/GitHub, “Contact Me”, Download CV, About Me page views, skills search and toggle, project card clicks, “See more projects” / “See more items” (experience & education), and “Visit Site” / “View Code” on project pages.
+
+**Setup**
+
+- Set `UMAMI_WEBSITE_ID` and optionally `UMAMI_ENABLED` (and `UMAMI_URL` if self-hosting) in your environment (see [Environment Configuration](#environment-configuration)). In production, also set `UMAMI_API_KEY` in Netlify if you use the weekly report (below).
+
+**Reporting**
+
+- **Umami Cloud**: View events and breakdowns in [Umami Cloud](https://cloud.umami.is) (Events, Pages, Properties).
+- **Google Sheets**: Use the Umami API or the provided Google Apps Script (multi-project, 24h/7d/30d visits and trends) to pull metrics into a sheet. See the full guide for copy-paste script and formulas.
+- **Weekly email**: A Netlify Scheduled Function (`netlify/functions/umami-report.mjs`) runs weekly and emails an HTML summary via Gmail. Configure `UMAMI_WEBSITE_ID`, `UMAMI_API_KEY`, and Gmail env vars in the Netlify dashboard.
+
+**Full guide**: [docs/UMAMI_TRACKING_REPORT.md](docs/UMAMI_TRACKING_REPORT.md) — event mapping, Umami UI steps, Google Sheets script and custom functions, and weekly report setup.
 
 > [Back to Table of Contents](#table-of-contents)
 

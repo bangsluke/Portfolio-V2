@@ -113,13 +113,22 @@ Send these as query parameters. Header: `x-umami-api-key: YOUR_API_KEY` and `Acc
 
 ### Option C: Google Apps Script to write Umami data into a sheet
 
-1. **Create a Google Sheet** and name a sheet (e.g. `Umami`).
+You can pull Umami analytics into a Google Sheet in two ways:
+
+- **Minimal example (single site, 7 days):** Uses script properties `UMAMI_WEBSITE_ID` and `UMAMI_API_KEY`, writes Metric/Value into A1:B5. Good for a quick test.
+- **Full script (multi-site, six time ranges):** Uses only `UMAMI_API_KEY`; site list comes from the sheet (columns A–B). Writes Last 24h / 7d / month and Past 24h / 7d / month for Pageviews, Visitors, and Visits. See **Single-sheet Umami layout** below.
+
+**Minimal example — setup**
+
+1. Create a Google Sheet and add a sheet named `Umami`.
 2. **Extensions** → **Apps Script**. Delete any sample code.
 3. **Project settings (gear)** → **Script properties** → Add:
-   - `UMAMI_API_KEY`: your Umami API key  
-   - `UMAMI_WEBSITE_ID`: your website UUID  
-   (Use these in the script so the key is not in the code.)
-4. **Example: total views for the past week**
+   - `UMAMI_API_KEY` — your Umami API key (Umami Cloud: Settings → API keys)
+   - `UMAMI_WEBSITE_ID` — your website’s UUID (from the Umami dashboard URL or website settings)
+4. Paste the minimal script below, save, run `fetchUmamiStats` once (authorize when prompted). It writes pageviews, visitors, visits, and last updated for the last 7 days into A1:B5.
+5. (Optional) **Triggers:** Add a time-driven trigger to run `fetchUmamiStats` daily.
+
+**Minimal script (single site, 7 days)**
 
 ```javascript
 function fetchUmamiStats() {
@@ -148,7 +157,6 @@ function fetchUmamiStats() {
   }
 
   const data = JSON.parse(response.getContentText());
-  // Headers
   sheet.getRange('A1:B1').setValues([['Metric', 'Value']]);
   sheet.getRange('A2:B2').setValues([['Pageviews', data.pageviews || 0]]);
   sheet.getRange('A3:B3').setValues([['Visitors', data.visitors || 0]]);
@@ -157,10 +165,216 @@ function fetchUmamiStats() {
 }
 ```
 
-5. Save, run `fetchUmamiStats` once (authorize when prompted). The script will write pageviews, visitors, and visits for the last 7 days into the `Umami` sheet.
-6. (Optional) **Triggers:** In Apps Script, add a time-driven trigger (e.g. daily) to run `fetchUmamiStats` so the sheet updates automatically.
+For **multiple sites** and **six time ranges** (Last and Past 24h, 7d, month), use the **Single-sheet Umami layout** and full script below.
 
-To pull more metrics (e.g. specific events), you can add more `UrlFetchApp.fetch` calls to the event-data endpoints and write those results into other columns or rows in the same sheet.
+---
+
+### Single-sheet Umami layout (multi-site)
+
+One sheet named **Umami**, header on **row 3**. You put **WebsiteId** in column A for every row (all three rows per site); the script reads A and B from the first row of each 3-row block and writes **Site** (B), **Metric** (C), the six period values (D–I), and **Last Updated** (J). Only **`UMAMI_API_KEY`** is required in Script properties.
+
+#### Sheet structure
+
+- **Header row:** Row 3. Labels: `WebsiteId` (A), `Site` (B), `Metric` (C), `Last 24 hours` (D), `Last 7 days` (E), `Last Month` (F), `Past 24 hours` (G), `Past 7 days` (H), `Past Month` (I), `Last Updated` (J).
+- **Data:** Each site uses **3 consecutive rows**. Put the **WebsiteId** in column A for all three rows (same UUID). Put the **Site** name in B on the first row (or all three); the script overwrites B and C and writes the six values into D–I and the timestamp in J.
+- **Adding a site:** Add three new rows with A = website UUID in each row (get the UUID from Umami), and B = site name on the first row. Run the script to fill B–J.
+
+#### Setup (full script)
+
+1. **Sheet:** Create a sheet named exactly **Umami**. In row 3, set headers: A = WebsiteId, B = Site, C = Metric, D = Last 24 hours, E = Last 7 days, F = Last Month, G = Past 24 hours, H = Past 7 days, I = Past Month, J = Last Updated.
+2. **Site list:** For each website, add 3 rows with the **WebsiteId** in column A for each row (same UUID for all three). Site name in B on the first row is enough; the script will fill B and C for all three rows.
+3. **Apps Script:** **Extensions** → **Apps Script**. In **Project settings** → **Script properties**, add **`UMAMI_API_KEY`** (Umami Cloud → Settings → API keys). The script reads website IDs from column A.
+4. **Paste and run:** Paste the full script below, save, run **`fetchUmamiStats`** once and grant permissions. The script fills B–J for every 3-row block.
+5. **Optional:** Add a time-driven trigger (e.g. daily) for `fetchUmamiStats`.
+
+#### Putting 24h, week and month in a cell
+
+After `fetchUmamiStats()` runs, **D–F** are Last 24h / 7d / month and **G–I** are Past 24h / 7d / month. Example: first site Pageviews = D4:I4; first site Visits = D6:I6. Use `=Umami!D6` (visits, last 24h) or the custom function: `=UMAMI_VISITS("24h")`, `=UMAMI_VISITS("7d", "Portfolio Site V2")`.
+
+#### Full Apps Script (single sheet "Umami")
+
+The script steps through the sheet in blocks of 3 rows. For each block it reads WebsiteId (A) and Site name (B) from the first row, calls the Umami API for six time ranges, and writes Site (B), Metric (C), values (D–I), and Last Updated (J). Column A is never written (you keep WebsiteId in every row).
+
+```javascript
+var UMAMI_BASE = 'https://api.umami.is/v1';
+var HEADER_ROW = 3;
+var METRIC_NAMES = ['Pageviews', 'Visitors', 'Visits'];
+var ROWS_PER_SITE = 3;
+
+function getTimeRanges() {
+  var now = Date.now();
+  var h = 60 * 60 * 1000;
+  var d = 24 * h;
+  return [
+    { startAt: now - 24 * h, endAt: now },
+    { startAt: now - 7 * d, endAt: now },
+    { startAt: now - 30 * d, endAt: now },
+    { startAt: now - 48 * h, endAt: now - 24 * h },
+    { startAt: now - 14 * d, endAt: now - 7 * d },
+    { startAt: now - 60 * d, endAt: now - 30 * d }
+  ];
+}
+
+function fetchStatsForPeriod(websiteId, apiKey, startAt, endAt) {
+  var url = UMAMI_BASE + '/websites/' + websiteId + '/stats?startAt=' + startAt + '&endAt=' + endAt;
+  var response = UrlFetchApp.fetch(url, {
+    headers: { 'Accept': 'application/json', 'x-umami-api-key': apiKey },
+    muteHttpExceptions: true
+  });
+  if (response.getResponseCode() !== 200) return null;
+  var data = JSON.parse(response.getContentText());
+  return {
+    pageviews: data.pageviews != null ? data.pageviews : 0,
+    visitors: data.visitors != null ? data.visitors : 0,
+    visits: data.visits != null ? data.visits : 0
+  };
+}
+
+function fetchUmamiStats() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName('Umami');
+  if (!sheet) throw new Error('Create a sheet named Umami with header row 3 (A=WebsiteId, B=Site, C=Metric, D–J as described above)');
+
+  var apiKey = PropertiesService.getScriptProperties().getProperty('UMAMI_API_KEY');
+  if (!apiKey) throw new Error('Set UMAMI_API_KEY in Script properties');
+
+  var lastRow = sheet.getLastRow();
+  if (lastRow < HEADER_ROW + 1) return;
+
+  var lastUpdated = new Date().toISOString();
+  var ranges = getTimeRanges();
+  var row = HEADER_ROW + 1;
+
+  while (row <= lastRow) {
+    var websiteId = (sheet.getRange(row, 1).getValue() && sheet.getRange(row, 1).getValue().toString().trim()) || null;
+    var name = (sheet.getRange(row, 2).getValue() && sheet.getRange(row, 2).getValue().toString().trim()) || null;
+    if (!websiteId || !name) break;
+
+    var pageviewsByPeriod = [], visitorsByPeriod = [], visitsByPeriod = [];
+    for (var i = 0; i < ranges.length; i++) {
+      var stats = fetchStatsForPeriod(websiteId, apiKey, ranges[i].startAt, ranges[i].endAt);
+      if (stats) {
+        pageviewsByPeriod.push(stats.pageviews);
+        visitorsByPeriod.push(stats.visitors);
+        visitsByPeriod.push(stats.visits);
+      } else {
+        pageviewsByPeriod.push(0);
+        visitorsByPeriod.push(0);
+        visitsByPeriod.push(0);
+      }
+    }
+
+    sheet.getRange(row, 2).setValue(name);
+    sheet.getRange(row, 3).setValue(METRIC_NAMES[0]);
+    sheet.getRange(row, 4, 1, 6).setValues([pageviewsByPeriod]);
+    sheet.getRange(row, 10).setValue(lastUpdated);
+
+    sheet.getRange(row + 1, 2).setValue(name);
+    sheet.getRange(row + 1, 3).setValue(METRIC_NAMES[1]);
+    sheet.getRange(row + 1, 4, 1, 6).setValues([visitorsByPeriod]);
+    sheet.getRange(row + 1, 10).setValue(lastUpdated);
+
+    sheet.getRange(row + 2, 2).setValue(name);
+    sheet.getRange(row + 2, 3).setValue(METRIC_NAMES[2]);
+    sheet.getRange(row + 2, 4, 1, 6).setValues([visitsByPeriod]);
+    sheet.getRange(row + 2, 10).setValue(lastUpdated);
+
+    row += ROWS_PER_SITE;
+  }
+}
+
+/**
+ * Custom function: use in a cell as =UMAMI_VISITS("24h"), =UMAMI_VISITS("7d"), or =UMAMI_VISITS("30d").
+ * Returns visits for the given period. If siteName is omitted, uses the first site on the Umami sheet.
+ * Requires UMAMI_API_KEY. May be slow (API call); 30s limit.
+ */
+function UMAMI_VISITS(period, siteName) {
+  var p = (period && period.toString().toLowerCase().trim()) || '24h';
+  var now = Date.now();
+  var h = 60 * 60 * 1000;
+  var d = 24 * h;
+  var startAt, endAt;
+  if (p === '24h') { startAt = now - 24 * h; endAt = now; }
+  else if (p === '7d') { startAt = now - 7 * d; endAt = now; }
+  else if (p === '30d') { startAt = now - 30 * d; endAt = now; }
+  else return null;
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var apiKey = PropertiesService.getScriptProperties().getProperty('UMAMI_API_KEY');
+  if (!apiKey) return null;
+  var sheet = ss.getSheetByName('Umami');
+  if (!sheet) return null;
+  var lastRow = sheet.getLastRow();
+  var dataStartRow = HEADER_ROW + 1;
+  var websiteId = null;
+  for (var r = dataStartRow; r <= lastRow; r += ROWS_PER_SITE) {
+    var wid = (sheet.getRange(r, 1).getValue() && sheet.getRange(r, 1).getValue().toString().trim()) || null;
+    var n = (sheet.getRange(r, 2).getValue() && sheet.getRange(r, 2).getValue().toString().trim()) || null;
+    if (!wid || !n) continue;
+    if (!siteName || n === siteName.toString().trim()) {
+      websiteId = wid;
+      break;
+    }
+  }
+  if (!websiteId) return null;
+  var stats = fetchStatsForPeriod(websiteId, apiKey, startAt, endAt);
+  return stats ? stats.visits : 0;
+}
+```
+
+Run **`fetchUmamiStats`** once (and add a time-driven trigger if you want automatic refresh). The Umami sheet will then show Pageviews, Visitors, and Visits for all sites and all six periods. To show 24h / week / month in a cell without running the script, use the custom function: `=UMAMI_VISITS("24h")`, `=UMAMI_VISITS("7d")`, or `=UMAMI_VISITS("30d")` (custom functions are subject to a 30s execution limit).
+
+#### Formula examples (direct in cells)
+
+All references use the **Umami** sheet. Row numbers below assume the first site is in rows 4–6 (row 4 = Pageviews, 5 = Visitors, 6 = Visits). For a second site, add 3 to the row (e.g. 7–9).
+
+**Using the table (after running `fetchUmamiStats`):**
+
+- **Visits, last 24h / 7d / month (first site):** `=Umami!D6`, `=Umami!E6`, `=Umami!F6`
+- **Visits, previous 24h / 7d / month (first site):** `=Umami!G6`, `=Umami!H6`, `=Umami!I6`
+- **Trend (current 24h vs previous 24h):** `=IF(Umami!G6=0,"N/A",(Umami!D6-Umami!G6)/Umami!G6)` — format as percentage. For 7d use E6 vs H6; for 30d use F6 vs I6.
+
+**Using the custom function (fetches on recalc; use in the Umami sheet or any other sheet):**
+
+- **24h:** `=UMAMI_VISITS("24h")` (first site) or `=UMAMI_VISITS("24h", "Portfolio Site V2")` (by name)
+- **Week:** `=UMAMI_VISITS("7d")`
+- **Month:** `=UMAMI_VISITS("30d")`
+
+---
+
+## 4. Weekly email report (Netlify Scheduled Function)
+
+You can receive a **weekly summary** of portfolio analytics by email, with no external cron service. A **Netlify Scheduled Function** runs on a schedule (e.g. every Sunday), fetches Umami data for the last 7 days, builds an HTML report, and sends it to you via **Gmail** using the same env vars as the rest of the project.
+
+### Architecture
+
+- **Trigger:** Netlify runs the function on a schedule (e.g. `@weekly` = Sundays 00:00 UTC).
+- **Flow:** Netlify Scheduler → `umami-report` function → Umami API (stats + events) → HTML report → Gmail (nodemailer).
+- **Auth:** Scheduled functions are not invoked by URL; no secret token is required. Set env vars in the Netlify dashboard.
+
+### Required env vars (Netlify UI)
+
+In **Site settings → Environment variables**, set (for the weekly report):
+
+- `UMAMI_WEBSITE_ID` — your Umami website UUID  
+- `UMAMI_API_KEY` — Umami API key (Settings → API keys in Umami Cloud)  
+- `GMAIL_USER` — Gmail address used to send  
+- `GMAIL_APP_PASSWORD` — Gmail app password  
+- `EMAIL_RECIPIENT` — where to send the report (e.g. your email)  
+- `EMAIL_SENDER` (optional) — defaults to `GMAIL_USER`
+
+These are the same as in [.env.example](.env.example) for local/scripts; the function reads them from Netlify’s environment.
+
+### Implementation
+
+- **File:** `netlify/functions/umami-report.mjs` in the repo. It exports a handler and `config = { schedule: "@weekly" }`.
+- **Logic:** On each run, the function requests Umami stats and event metrics for the last 7 days, builds an HTML email (traffic, LinkedIn/GitHub clicks, Contact Me, Download CV, About Me, skills, project clicks, See more, Visit Site/View Code, most visited projects), and sends it with nodemailer (Gmail).
+- **Schedule:** You can change the schedule in the function (`schedule: "@weekly"`) or in `netlify.toml` under `[functions."umami-report"] schedule = "@weekly"`. Times are UTC.
+
+### How to test
+
+- **Run now:** In the Netlify dashboard, go to **Functions**, select `umami-report`, and click **Run now**.
+- **Locally:** Run `netlify dev` and use `netlify functions:invoke umami-report` to trigger the function (see [Netlify docs](https://docs.netlify.com/build/functions/scheduled-functions/#developing-and-debugging-scheduled-functions)).
+- **Limits:** Scheduled functions have a 30s execution limit and run only on **published** deploys (not deploy previews).
 
 ---
 
@@ -168,4 +382,5 @@ To pull more metrics (e.g. specific events), you can add more `UrlFetchApp.fetch
 
 - **Tracking:** Implemented via `data-umami-event` (and `data-umami-event-*`) and `umami.track()` so every requested action sends a named event (and optional properties) to Umami.
 - **In Umami:** Use **Events** + **Properties** for counts and breakdowns; use **Pages** for “About Me” reads and most visited project pages.
-- **Google Sheets:** Use CSV export (Option A), the Umami API (Option B), or Apps Script (Option C) with your website ID and API key to pull total views and other metrics (e.g. past week) into a sheet.
+- **Google Sheets:** Use CSV export (Option A), the Umami API (Option B), or Apps Script (Option C) with your website ID and API key to pull total views and other metrics (e.g. past week) into a sheet. Use the single-sheet Umami layout (subsection above) for multiple sites: one sheet named Umami, header row 3, config in A–B, metrics in C–L (E–J = Last/Past 24h, 7d, month).
+- **Weekly report:** Use the Netlify Scheduled Function `umami-report` (Section 4) to email yourself a weekly analytics summary via Gmail; set env vars in the Netlify dashboard.
