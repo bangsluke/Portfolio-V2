@@ -143,6 +143,8 @@ export default function Carousel({
 	}, [processedItems]);
 
 	const handleItemClick = (itemId: string) => {
+		window.umami?.track('Carousel item click', { itemId });
+
 		const newSelectedItem = selectedItem === itemId ? null : itemId;
 		setSelectedItem(newSelectedItem);
 

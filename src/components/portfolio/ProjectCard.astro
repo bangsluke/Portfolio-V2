@@ -115,7 +115,9 @@ if (dateStart || dateEnd) {
 				class="relative bg-theme-400 hover:bg-theme-500 text-black rounded-full p-2 shadow-lg flex items-center justify-center group/info"
 				aria-label={`View details for ${name}`}
 				title={`View details for ${name}`}
-				onclick="event.stopPropagation();">
+				onclick="event.stopPropagation();"
+				data-umami-event="Project click"
+				data-umami-event-slug={projectSlug}>
 				<svg
 					class="w-5 h-5"
 					fill="none"
@@ -247,7 +249,9 @@ if (dateStart || dateEnd) {
 			<a
 				href={`/projects/${projectSlug}`}
 				class="flex items-center justify-center gap-2 text-theme-400 hover:text-theme-300 transition-colors text-sm font-medium pointer-events-none"
-				onclick="event.stopPropagation();">
+				onclick="event.stopPropagation();"
+				data-umami-event="Project click"
+				data-umami-event-slug={projectSlug}>
 				<span>See more details...</span>
 				<svg
 					class="w-4 h-4"
@@ -269,7 +273,9 @@ if (dateStart || dateEnd) {
 			<a
 				href={`/projects/${projectSlug}`}
 				class="flex items-center justify-center gap-2 text-theme-400 hover:text-theme-300 transition-colors text-sm font-medium pointer-events-none"
-				onclick="event.stopPropagation();">
+				onclick="event.stopPropagation();"
+				data-umami-event="Project click"
+				data-umami-event-slug={projectSlug}>
 				<span>Show more details</span>
 				<svg
 					class="w-4 h-4"

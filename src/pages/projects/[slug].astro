@@ -352,7 +352,9 @@ const ogimage = {
 												href={data.projectURL}
 												target="_blank"
 												rel="noopener noreferrer"
-												class="bg-theme-400 hover:bg-theme-500 text-black font-bold px-8 py-3 mb-6 md:mb-0 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
+												class="bg-theme-400 hover:bg-theme-500 text-black font-bold px-8 py-3 mb-6 md:mb-0 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center"
+												data-umami-event="Visit Site"
+												data-umami-event-slug={project.slug}>
 												<svg
 													class="w-5 h-5 mr-2"
 													fill="none"
@@ -373,7 +375,9 @@ const ogimage = {
 												href={data.codeURL}
 												target="_blank"
 												rel="noopener noreferrer"
-												class="bg-white dark:bg-zinc-900 hover:bg-theme-700/30 text-colour font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
+												class="bg-white dark:bg-zinc-900 hover:bg-theme-700/30 text-colour font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center"
+												data-umami-event="View Code"
+												data-umami-event-slug={project.slug}>
 												<svg
 													class="w-5 h-5 mr-2"
 													fill="none"

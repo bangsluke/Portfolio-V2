@@ -602,6 +602,8 @@ const techData = {
 					if (tableView) tableView.classList.add('hidden');
 				}
 
+				(window as Window & { umami?: { track: (n: string, d?: Record<string, string>) => void } }).umami?.track('Skills view toggle', { view: currentView });
+
 				// Dispatch event for the Preact component
 				window.dispatchEvent(
 					new CustomEvent('skillsViewToggle', {
