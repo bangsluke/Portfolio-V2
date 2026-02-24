@@ -886,6 +886,19 @@ a.theme-link:hover {
 	cursor: pointer;
 }
 
+/* Date input placeholder: visible on iOS Chrome (light native control) and elsewhere */
+input[type='date']::placeholder,
+input[type='date']::-webkit-input-placeholder {
+	color: #4b5563;
+	opacity: 1;
+}
+
+.dark input[type='date']::placeholder,
+.dark input[type='date']::-webkit-input-placeholder {
+	color: rgba(255, 255, 255, 0.7);
+	opacity: 1;
+}
+
 /* Date picker icon styling for light/dark mode */
 input[type='date']::-webkit-calendar-picker-indicator {
 	filter: invert(0);
@@ -1259,8 +1272,8 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	.global-element {
 		font-size: 0.7rem !important;
 		padding: 0.25rem 0.5rem !important;
-		max-height: 1.5rem !important;
-		min-height: 1.5rem !important;
+		max-height: 1.75rem !important;
+		min-height: 1.75rem !important;
 	}
 
 	/* Ensure footer logo aligns with social icons */
@@ -1384,8 +1397,8 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	.global-element {
 		font-size: 0.5rem !important;
 		padding: 0.2rem 0.4rem !important;
-		max-height: 1.25rem !important;
-		min-height: 1.25rem !important;
+		max-height: 1.75rem !important;
+		min-height: 1.75rem !important;
 	}
 
 	/* Ensure Skills and Most Common Techs headers stay on one line on very small screens */

@@ -2,8 +2,10 @@ import { expect, test } from '@playwright/test';
 import { testData } from '../utils/testData';
 
 test.describe('Error Pages', () => {
-	test('6.1. 404 page should render and link back to site', async ({ page }) => {
-		await page.goto(`${testData.mainPageUrl}/this-page-does-not-exist`, {
+	test('6.1. 404 page should render and link back to site', async ({
+		page,
+	}) => {
+		await page.goto(`${testData.mainPageUrl}/test-this-page-does-not-exist`, {
 			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
@@ -36,4 +38,3 @@ test.describe('Error Pages', () => {
 		await expect(page).toHaveURL(testData.mainPageUrl);
 	});
 });
-
