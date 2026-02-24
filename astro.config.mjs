@@ -39,7 +39,7 @@ export default defineConfig({
     filter: (page) =>
       !page.includes("/blog/tags") &&
       !page.includes("/blog/techs"),
-  }), umami({ id: "fad6adfb-2b8b-4868-a0a9-59d4fd860488" })],
+  }), umami({ id: process.env.UMAMI_WEBSITE_ID || "fad6adfb-2b8b-4868-a0a9-59d4fd860488" })],
 
   vite: {
     plugins: [

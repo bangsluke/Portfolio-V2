@@ -37,6 +37,14 @@ export default function ReferenceItem({
 		}
 	};
 
+	const handleClick = () => {
+		window.umami?.track('Reference click', {
+			id: reference.id,
+			name: reference.name,
+		});
+		onClick();
+	};
+
 	return (
 		<div
 			className={`carousel-item group relative ${
@@ -44,13 +52,13 @@ export default function ReferenceItem({
 					? 'ring-4 ring-theme-400 scale-105 brightness-110'
 					: ''
 			}`}
-			onClick={onClick}
+			onClick={handleClick}
 			role="button"
 			tabIndex={0}
 			onKeyDown={e => {
 				if (e.key === 'Enter' || e.key === ' ') {
 					e.preventDefault();
-					onClick();
+					handleClick();
 				}
 			}}>
 			{/* Background Image */}

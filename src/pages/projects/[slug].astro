@@ -154,7 +154,7 @@ const ogimage = {
 								stroke-width="2"
 								d="M15 19l-7-7 7-7"></path>
 						</svg>
-						Back to Projects
+						<span class="back-link-label">Back to Projects Section</span>
 					</a>
 				</div>
 			</div>
@@ -352,7 +352,9 @@ const ogimage = {
 												href={data.projectURL}
 												target="_blank"
 												rel="noopener noreferrer"
-												class="bg-theme-400 hover:bg-theme-500 text-black font-bold px-8 py-3 mb-6 md:mb-0 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
+												class="bg-theme-400 hover:bg-theme-500 text-black font-bold px-8 py-3 mb-6 md:mb-0 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center"
+												data-umami-event="Visit Site"
+												data-umami-event-slug={project.slug}>
 												<svg
 													class="w-5 h-5 mr-2"
 													fill="none"
@@ -373,7 +375,9 @@ const ogimage = {
 												href={data.codeURL}
 												target="_blank"
 												rel="noopener noreferrer"
-												class="bg-white dark:bg-zinc-900 hover:bg-theme-700/30 text-colour font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
+												class="bg-white dark:bg-zinc-900 hover:bg-theme-700/30 text-colour font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center"
+												data-umami-event="View Code"
+												data-umami-event-slug={project.slug}>
 												<svg
 													class="w-5 h-5 mr-2"
 													fill="none"
@@ -418,7 +422,7 @@ const ogimage = {
 								stroke-width="2"
 								d="M15 19l-7-7 7-7"></path>
 						</svg>
-						Back to Projects
+						<span class="back-link-label">Back to Projects Section</span>
 					</a>
 				</div>
 			</div>
@@ -427,18 +431,20 @@ const ogimage = {
 </Layout>
 
 <script>
-	// Handle intelligent "Back to Projects" navigation
+	// Handle intelligent back link navigation and label based on referrer
 	document.addEventListener('DOMContentLoaded', function () {
 		const backButtons = [
 			document.getElementById('back-to-projects-top'),
 			document.getElementById('back-to-projects-bottom'),
 		];
+		const backLabels = document.querySelectorAll('.back-link-label');
 
 		// Get the referrer URL
 		const referrer = document.referrer;
 
-		// Determine the correct back URL based on referrer
+		// Determine the correct back URL and label based on referrer
 		let backUrl = '/#projects'; // Default fallback
+		let backText = 'Back to Projects Section';
 
 		if (referrer) {
 			const referrerUrl = new URL(referrer);
@@ -446,18 +452,20 @@ const ogimage = {
 			// If user came from the main site with projects anchor
 			if (referrerUrl.pathname === '/' && referrerUrl.hash === '#projects') {
 				backUrl = '/#projects';
+				backText = 'Back to Projects Section';
 			}
-			// If user came from the projects page
-			else if (referrerUrl.pathname === '/projects') {
+			// If user came from the projects page or another project page
+			else if (
+				referrerUrl.pathname === '/projects' ||
+				referrerUrl.pathname.startsWith('/projects/')
+			) {
 				backUrl = '/projects';
-			}
-			// If user came from another project page (projects/[slug])
-			else if (referrerUrl.pathname.startsWith('/projects/')) {
-				backUrl = '/projects';
+				backText = 'Back to Project Gallery';
 			}
 			// For any other case, default to main site projects section
 			else {
 				backUrl = '/#projects';
+				backText = 'Back to Projects Section';
 			}
 		}
 
@@ -465,6 +473,12 @@ const ogimage = {
 		backButtons.forEach(button => {
 			if (button && button instanceof HTMLAnchorElement) {
 				button.href = backUrl;
+			}
+		});
+		// Update both back link labels
+		backLabels.forEach(label => {
+			if (label) {
+				label.textContent = backText;
 			}
 		});
 	});

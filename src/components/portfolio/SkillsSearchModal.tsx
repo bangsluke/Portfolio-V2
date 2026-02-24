@@ -79,6 +79,20 @@ const SkillsSearchModal = ({ skills, projects }: SkillsSearchModalProps) => {
 		});
 	}, [skills]);
 
+	// Debounced track of search query (Umami event name limit 50 chars)
+	useEffect(() => {
+		const trimmed = query.trim();
+		if (trimmed.length < 1) return;
+
+		const timeoutId = window.setTimeout(() => {
+			window.umami?.track('Skills search query', {
+				query: trimmed.slice(0, 50),
+			});
+		}, 600);
+
+		return () => window.clearTimeout(timeoutId);
+	}, [query]);
+
 	const results = useMemo(() => {
 		const trimmed = query.trim();
 		if (!trimmed || trimmed.length < 1) {
@@ -136,6 +150,7 @@ const SkillsSearchModal = ({ skills, projects }: SkillsSearchModalProps) => {
 	useEffect(() => {
 		const handleOpen = () => {
 			setIsOpen(true);
+			window.umami?.track('Skills search opened');
 		};
 
 		window.addEventListener('openSkillsSearch', handleOpen);
@@ -247,16 +262,32 @@ const SkillsSearchModal = ({ skills, projects }: SkillsSearchModalProps) => {
 								</div>
 							</div>
 							{results.map(skill => {
-								const displayName = extractNameFromFilename(
-									skill.id || skill.slug
-								);
+								const displayName =
+									skill.data.skillName ||
+									skill.data.name ||
+									extractNameFromFilename(skill.id || skill.slug);
 								const projectCount = getProjectCountForSkill(skill, projects);
 
 								return (
 									<div
 										key={skill.id}
-										class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700"
-										data-testid={`skills-search-result-${displayName}`}>
+										class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+										data-testid={`skills-search-result-${displayName}`}
+										role="button"
+										tabIndex={0}
+										onClick={() => {
+											window.umami?.track('Skills search result click', {
+												skill: displayName.slice(0, 50),
+											});
+										}}
+										onKeyDown={e => {
+											if (e.key === 'Enter' || e.key === ' ') {
+												e.preventDefault();
+												window.umami?.track('Skills search result click', {
+													skill: displayName.slice(0, 50),
+												});
+											}
+										}}>
 										<div class="flex items-center justify-between gap-3 mb-2 h-6">
 											<div class="flex flex-col items-center gap-1 min-w-0 shrink-0">
 												<div class="text-xs font-medium text-colour">

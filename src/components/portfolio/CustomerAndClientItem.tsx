@@ -30,6 +30,11 @@ export default function CustomerAndClientItem({
 		e.preventDefault();
 		e.stopPropagation();
 
+		window.umami?.track('Client card click', {
+			id: item.id,
+			title: item.title,
+		});
+
 		// Always allow selection on all screen sizes
 		onClick();
 	};

@@ -5,9 +5,10 @@ interface Props {
 	iconName: string;
 	link: string;
 	label?: string;
+	platform?: string;
 }
 
-const { iconName, link, label = `Link to ${iconName}` } = Astro.props;
+const { iconName, link, label = `Link to ${iconName}`, platform } = Astro.props;
 
 // Validate required props
 if (!iconName || !link) {
@@ -20,6 +21,8 @@ if (!iconName || !link) {
 	target="_blank"
 	href={link}
 	rel="noopener noreferrer"
-	aria-label={label}>
+	aria-label={label}
+	data-umami-event="Social click"
+	data-umami-event-platform={platform || iconName}>
 	<Icon name={iconName} aria-hidden="true" />
 </a>

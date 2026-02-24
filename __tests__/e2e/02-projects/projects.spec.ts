@@ -452,6 +452,12 @@ test.describe('Projects Page Tests', () => {
 			'href',
 			'/projects'
 		);
+		await expect(page.locator('#back-to-projects-top')).toContainText(
+			'Back to Project Gallery'
+		);
+		await expect(page.locator('#back-to-projects-bottom')).toContainText(
+			'Back to Project Gallery'
+		);
 	});
 
 	test('2.5. Project details page should show correct information', async ({
@@ -472,9 +478,15 @@ test.describe('Projects Page Tests', () => {
 		const heading = page.locator('h1, h2').first();
 		await expect(heading, 'Project heading should be visible').toBeVisible();
 
-		// Check for the back to projects button
+		// Check for the back to projects button (default text when no referrer)
 		const backToProjectsButton = page.locator('#back-to-projects-top');
-		await expect(backToProjectsButton, 'Back to Projects').toBeVisible();
+		await expect(
+			backToProjectsButton,
+			'Back to Projects Section'
+		).toBeVisible();
+		await expect(backToProjectsButton).toContainText(
+			'Back to Projects Section'
+		);
 
 		// Check that the project image is visible
 		const projectImage = page.locator('#project-page-image');
@@ -548,7 +560,13 @@ test.describe('Projects Page Tests', () => {
 
 		// Check that the bottom back to projects button is visible and works
 		const backToProjectsButtonBottom = page.locator('#back-to-projects-bottom');
-		await expect(backToProjectsButtonBottom, 'Back to Projects').toBeVisible();
+		await expect(
+			backToProjectsButtonBottom,
+			'Back to Projects Section'
+		).toBeVisible();
+		await expect(backToProjectsButtonBottom).toContainText(
+			'Back to Projects Section'
+		);
 		await backToProjectsButtonBottom.click();
 		expect(page.url()).toContain(testData.mainPageUrl);
 	});
@@ -580,7 +598,7 @@ test.describe('Projects Page Tests', () => {
 			detailsLink.click(),
 		]);
 
-		// Back buttons should resolve to /#projects
+		// Back buttons should resolve to /#projects and show "Back to Projects Section"
 		await expect(page.locator('#back-to-projects-top')).toHaveAttribute(
 			'href',
 			'/#projects'
@@ -588,6 +606,12 @@ test.describe('Projects Page Tests', () => {
 		await expect(page.locator('#back-to-projects-bottom')).toHaveAttribute(
 			'href',
 			'/#projects'
+		);
+		await expect(page.locator('#back-to-projects-top')).toContainText(
+			'Back to Projects Section'
+		);
+		await expect(page.locator('#back-to-projects-bottom')).toContainText(
+			'Back to Projects Section'
 		);
 	});
 
