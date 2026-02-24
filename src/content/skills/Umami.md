@@ -6,11 +6,11 @@ tags:
   - software
   - analytics
 created: 2025-11-09 18:47
-modified: 2025-11-09T18:47:13+00:00
+modified: 2026-02-24T10:18:48+00:00
 aliases:
 viewCount: 1
-skillRating: 30
-skillDescription: Utilised on a couple of projects for basic website usage analytics.
+skillRating: 65
+skillDescription: Utilised on a couple of projects, setting up and monitoring custom events to understand user usage for further ideation discovery.
 logoFileName: umami.svg
 ---
 # Umami
@@ -21,6 +21,12 @@ logoFileName: umami.svg
 
 ```table-of-contents
 ```
+
+## Links
+
+- [Umami Documentation](https://umami.is/docs)
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Skill
 
