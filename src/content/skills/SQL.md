@@ -11,8 +11,8 @@ created: 2023-10-13T07:42:00
 modified: 2026-02-19T16:38:50+00:00
 viewCount: 7
 aliases:
-skillRating: 50
-skillDescription: Built and maintained a relatively complex SQL database using MySQL writing schema modification statements and automating the population of data.
+skillRating: 70
+skillDescription: Able to write complex queries to extract, analyse, and manipulate data from various sources. Built and maintained a relatively complex SQL database using MySQL writing schema modification statements and automating the population of data.
 logoFileName: sql.svg
 ---
 # SQL
