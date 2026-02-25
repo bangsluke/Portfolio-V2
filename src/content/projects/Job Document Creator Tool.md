@@ -8,7 +8,7 @@ tags:
 created: 2026-02-18 08:48
 modified: 2026-02-22T19:29:29+00:00
 aliases:
-viewCount: 2
+viewCount: 3
 projectURL: n/a
 codeURL: https://github.com/bangsluke/Job-Document-Creator-Tool
 codeMultipleRepos: false
@@ -17,7 +17,7 @@ folderURL: n/a
 logoURL: n/a
 imageURL: https://i.postimg.cc/ZRxpWLTD/Job-Document-Creator.png
 dateStart: 2026-02-18
-dateEnd: 2026-02-23
+dateEnd: 2026-02-25
 technologies:
   - "[[Python]]"
   - "[[Cursor]]"

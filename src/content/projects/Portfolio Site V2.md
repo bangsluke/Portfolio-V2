@@ -8,7 +8,7 @@ tags:
   - project/parked
 created: 2025-02-02T19:03:00
 modified: 2026-02-24T17:55:13+00:00
-viewCount: 9
+viewCount: 10
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -36,6 +36,7 @@ technologies:
   - "[[Tailwind CSS]]"
   - "[[Preact]]"
   - "[[Node.js]]"
+  - "[[Claude Code]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a
