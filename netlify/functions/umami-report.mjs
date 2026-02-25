@@ -161,72 +161,260 @@ export default async () => {
 
 		const html = `
 <!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"><style>
-  body{font-family:Arial,sans-serif;line-height:1.5;color:#171717;max-width:640px;margin:0 auto;padding:20px;}
-  h1{font-size:1.25rem;margin-bottom:0.5rem;}
-  .meta{color:#666;font-size:0.875rem;margin-bottom:1.5rem;}
-  section{margin:1.25rem 0;}
-  section h2{font-size:1rem;margin:0 0 0.5rem;border-bottom:1px solid #ddd6fe;}
-  .report-table{width:100%;border-collapse:collapse;border:1px solid #ddd6fe;}
-  .report-table th,.report-table td{text-align:left;padding:8px 12px;border-bottom:1px solid #ede9fe;}
-  .report-table th{background:#6d28d9;color:#fff;font-weight:600;}
-  .report-table tbody tr:nth-child(even){background:#f5f3ff;}
-  .report-table tbody tr:nth-child(odd){background:#fff;}
-  .footer{margin-top:2rem;padding-top:1rem;border-top:1px solid #ddd6fe;font-size:0.75rem;color:#666;}
-</style></head>
-<body>
-  <h1>Portfolio Site V2 - Umami Weekly Report</h1>
-  <p class="meta">Period: ${periodStart} to ${periodEnd} (last 7 days). Generated ${new Date().toISOString()}.</p>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Site V2 - Umami Weekly Report</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f5f3ff;font-family:Montserrat,Arial,sans-serif;color:#171717;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f3ff;padding:24px 0;">
+    <tr>
+      <td align="center">
+        <table width="640" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;background-color:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #ddd6fe;">
+          <tr><td>
 
-  <section>
-    <h2>Traffic</h2>
-    <table class="report-table">
-      <tr><th>Metric</th><th>Count</th><th>Previous week</th></tr>
-      <tr><td>Pageviews</td><td>${stats.pageviews ?? 0}</td><td>${statsPrev.pageviews ?? 0}</td></tr>
-      <tr><td>Visitors</td><td>${stats.visitors ?? 0}</td><td>${statsPrev.visitors ?? 0}</td></tr>
-      <tr><td>Visits</td><td>${stats.visits ?? 0}</td><td>${statsPrev.visits ?? 0}</td></tr>
-    </table>
-  </section>
+            <!-- HEADER -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:linear-gradient(135deg,#2e1065 0%,#4c1d95 40%,#6d28d9 100%);border-radius:8px 8px 0 0;">
+              <tr>
+                <td style="padding:24px 28px;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="vertical-align:middle;padding-right:16px;">
+                        <img src="https://i.postimg.cc/3RZn08zP/Portfolio-Site-V2.png" alt="Portfolio Site V2" width="48" height="48" style="display:block;border-radius:8px;" />
+                      </td>
+                      <td style="vertical-align:middle;">
+                        <div style="font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4b5fd;margin-bottom:4px;">Portfolio Site V2</div>
+                        <div style="font-family:Montserrat,Arial,sans-serif;font-size:20px;font-weight:700;color:#ffffff;line-height:1.2;">Umami Weekly Report</div>
+                        <div style="font-family:Montserrat,Arial,sans-serif;font-size:12px;color:#ede9fe;margin-top:4px;">${periodStart} &ndash; ${periodEnd}</div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
 
-  <section>
-    <h2>Engagement</h2>
-    <table class="report-table">
-      <tr><th>Action</th><th>Count</th><th>Previous week</th></tr>
-      <tr><td>LinkedIn Logo clicks</td><td>${linkedin}</td><td>${linkedinPrev}</td></tr>
-      <tr><td>GitHub Logo clicks</td><td>${github}</td><td>${githubPrev}</td></tr>
-      <tr><td>Contact Me (email) button clicks</td><td>${contactClick}</td><td>${contactClickPrev}</td></tr>
-      <tr><td>Download CV button clicks</td><td>${downloadCv}</td><td>${downloadCvPrev}</td></tr>
-      <tr><td>About Me page views</td><td>${aboutMeViews}</td><td>${aboutMeViewsPrev}</td></tr>
-      <tr><td>Skills search opened</td><td>${skillsOpened}</td><td>${skillsOpenedPrev}</td></tr>
-      <tr><td>Skills search queries submitted</td><td>${skillsQuery}</td><td>${skillsQueryPrev}</td></tr>
-      <tr><td>Skills search result click</td><td>${skillsResultClick}</td><td>${skillsResultClickPrev}</td></tr>
-      <tr><td>Skills view toggle</td><td>${skillsToggle}</td><td>${skillsTogglePrev}</td></tr>
-      <tr><td>Project click (cards)</td><td>${projectClick}</td><td>${projectClickPrev}</td></tr>
-      <tr><td>"See more projects" click</td><td>${seeMoreProjects}</td><td>${seeMoreProjectsPrev}</td></tr>
-      <tr><td>"See more items" (experience/education)</td><td>${seeMoreItems}</td><td>${seeMoreItemsPrev}</td></tr>
-      <tr><td>Visit Site button clicks (from individual project page)</td><td>${visitSite}</td><td>${visitSitePrev}</td></tr>
-      <tr><td>View Code button clicks (from individual project page)</td><td>${viewCode}</td><td>${viewCodePrev}</td></tr>
-    </table>
-  </section>
+            <!-- NAV BAR -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#2e1065;border-bottom:3px solid #6d28d9;">
+              <tr>
+                <td style="padding:10px 28px;text-align:center;">
+                  <a href="https://cloud.umami.is/analytics/eu/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488" style="font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:600;color:#ddd6fe;text-decoration:none;letter-spacing:0.5px;">Umami Overview</a>
+                  <span style="color:#6d28d9;padding:0 12px;font-size:14px;">|</span>
+                  <a href="https://cloud.umami.is/analytics/eu/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488/events" style="font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:600;color:#ddd6fe;text-decoration:none;letter-spacing:0.5px;">Umami Events</a>
+                  <span style="color:#6d28d9;padding:0 12px;font-size:14px;">|</span>
+                  <a href="https://cloud.umami.is/analytics/eu/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488/goals" style="font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:600;color:#ddd6fe;text-decoration:none;letter-spacing:0.5px;">Umami Goals</a>
+                </td>
+              </tr>
+            </table>
 
-  <section>
-    <h2>Most clicked projects (by card)</h2>
-    <table class="report-table">
-      <tr><th>Slug</th><th>Clicks</th></tr>
-      ${topProjectClicks.length ? topProjectClicks.map(r => `<tr><td>${r.value || '-'}</td><td>${r.total ?? 0}</td></tr>`).join('') : '<tr><td colspan="2">No data</td></tr>'}
-    </table>
-  </section>
+            <!-- PERIOD META -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding:14px 28px 0;font-family:Montserrat,Arial,sans-serif;font-size:12px;color:#6b7280;">
+                  Period: <strong>${periodStart}</strong> to <strong>${periodEnd}</strong> (last 7 days). Generated ${new Date().toISOString()}.
+                </td>
+              </tr>
+            </table>
 
-  <section>
-    <h2>Most visited project pages (by path)</h2>
-    <table class="report-table">
-      <tr><th>Path</th><th>Pageviews</th></tr>
-      ${projectPaths.length ? projectPaths.map(p => `<tr><td>${p.x || '-'}</td><td>${p.y ?? 0}</td></tr>`).join('') : '<tr><td colspan="2">No data</td></tr>'}
-    </table>
-  </section>
+            <!-- TRAFFIC SECTION -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding:20px 28px 0;">
+                  <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Traffic</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:0 28px 20px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
+                    <thead>
+                      <tr>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.5px;">Metric</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:right;letter-spacing:0.5px;">This Week</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:right;letter-spacing:0.5px;">Prev. Week</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="background-color:#f5f3ff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Pageviews</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${stats.pageviews ?? 0}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${statsPrev.pageviews ?? 0}</td>
+                      </tr>
+                      <tr style="background-color:#ffffff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Visitors</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${stats.visitors ?? 0}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${statsPrev.visitors ?? 0}</td>
+                      </tr>
+                      <tr style="background-color:#f5f3ff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;">Visits</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;text-align:right;">${stats.visits ?? 0}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:right;">${statsPrev.visits ?? 0}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </table>
 
-  <p class="footer">Automated by Netlify Scheduled Function (umami-report).</p>
+            <!-- ENGAGEMENT SECTION -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding:4px 28px 0;">
+                  <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Engagement</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:0 28px 20px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
+                    <thead>
+                      <tr>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.5px;">Action</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:right;letter-spacing:0.5px;">This Week</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:right;letter-spacing:0.5px;">Prev. Week</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="background-color:#f5f3ff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">LinkedIn Logo clicks</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${linkedin}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${linkedinPrev}</td>
+                      </tr>
+                      <tr style="background-color:#ffffff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">GitHub Logo clicks</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${github}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${githubPrev}</td>
+                      </tr>
+                      <tr style="background-color:#f5f3ff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Contact Me (email) button clicks</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${contactClick}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${contactClickPrev}</td>
+                      </tr>
+                      <tr style="background-color:#ffffff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Download CV button clicks</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${downloadCv}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${downloadCvPrev}</td>
+                      </tr>
+                      <tr style="background-color:#f5f3ff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">About Me page views</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${aboutMeViews}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${aboutMeViewsPrev}</td>
+                      </tr>
+                      <tr style="background-color:#ffffff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Skills search opened</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${skillsOpened}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${skillsOpenedPrev}</td>
+                      </tr>
+                      <tr style="background-color:#f5f3ff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Skills search queries submitted</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${skillsQuery}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${skillsQueryPrev}</td>
+                      </tr>
+                      <tr style="background-color:#ffffff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Skills search result click</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${skillsResultClick}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${skillsResultClickPrev}</td>
+                      </tr>
+                      <tr style="background-color:#f5f3ff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Skills view toggle</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${skillsToggle}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${skillsTogglePrev}</td>
+                      </tr>
+                      <tr style="background-color:#ffffff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Project click (cards)</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${projectClick}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${projectClickPrev}</td>
+                      </tr>
+                      <tr style="background-color:#f5f3ff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">"See more projects" click</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreProjects}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreProjectsPrev}</td>
+                      </tr>
+                      <tr style="background-color:#ffffff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">"See more items" (experience/education)</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreItems}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreItemsPrev}</td>
+                      </tr>
+                      <tr style="background-color:#f5f3ff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Visit Site button clicks (from individual project page)</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${visitSite}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${visitSitePrev}</td>
+                      </tr>
+                      <tr style="background-color:#ffffff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;">View Code button clicks (from individual project page)</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;text-align:right;">${viewCode}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:right;">${viewCodePrev}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- MOST CLICKED PROJECTS SECTION -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding:4px 28px 0;">
+                  <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Most Clicked Projects (by card)</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:0 28px 20px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
+                    <thead>
+                      <tr>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.5px;">Slug</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:right;letter-spacing:0.5px;">Clicks</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${topProjectClicks.length
+												? topProjectClicks.map((r, i) => `<tr style="background-color:${i % 2 === 0 ? '#f5f3ff' : '#ffffff'};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${r.value || '-'}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${r.total ?? 0}</td></tr>`).join('')
+												: '<tr><td colspan="2" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>'}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- MOST VISITED PROJECT PAGES SECTION -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding:4px 28px 0;">
+                  <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Most Visited Project Pages (by path)</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:0 28px 20px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
+                    <thead>
+                      <tr>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.5px;">Path</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:right;letter-spacing:0.5px;">Pageviews</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${projectPaths.length
+												? projectPaths.map((p, i) => `<tr style="background-color:${i % 2 === 0 ? '#f5f3ff' : '#ffffff'};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${p.x || '-'}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${p.y ?? 0}</td></tr>`).join('')
+												: '<tr><td colspan="2" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>'}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- FOOTER -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #ddd6fe;">
+              <tr>
+                <td style="padding:16px 28px;font-family:Montserrat,Arial,sans-serif;font-size:12px;color:#6b7280;line-height:1.5;">
+                  <em>Automated by Netlify Scheduled Function (umami-report).</em>
+                </td>
+              </tr>
+            </table>
+
+          </td></tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>`;
 

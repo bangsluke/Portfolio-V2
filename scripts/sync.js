@@ -1083,56 +1083,166 @@ async function sendEmailNotification() {
 		if (warnings.length > 0) {
 			subject += ` (${warnings.length} warning${warnings.length > 1 ? 's' : ''})`;
 		}
+		const statusBg = syncErrors.success ? '#d1fae5' : '#fee2e2';
+		const statusColor = syncErrors.success ? '#065f46' : '#991b1b';
+		const statusText = syncErrors.success ? '&#10003; Portfolio Sync Completed Successfully' : '&#10007; Portfolio Sync Failed';
+
 		const body = `
-      <h2>Portfolio Sync Report</h2>
-      <p><strong>Mode:</strong> ${SYNC_MODE}</p>
-      <p><strong>Timestamp:</strong> ${syncErrors.timestamp}</p>
-      <p><strong>Source:</strong> ${syncErrors.source}</p>
-      
-      <h3>Summary</h3>
-      <ul>
-        <li>Total Files: ${syncErrors.summary.totalFiles}</li>
-        <li>Processed Files: ${syncErrors.summary.processedFiles}</li>
-        <li>Copied Files: ${syncErrors.summary.copiedFiles}</li>
-        <li>Skipped Files: ${syncErrors.summary.skippedFiles}</li>
-        <li>Errors: ${errors.length}</li>
-        <li>Warnings: ${warnings.length}</li>
-      </ul>
-      
-      ${
-				errors.length > 0
-					? `
-        <h3>Errors</h3>
-        <ul>
-          ${errors
-						.map(
-							error => `
-            <li><strong>${error.file || error.directory}:</strong> ${error.error}</li>
-          `
-						)
-						.join('')}
-        </ul>
-      `
-					: ''
-			}
-      
-      ${
-				warnings.length > 0
-					? `
-        <h3>Warnings</h3>
-        <ul>
-          ${warnings
-						.map(
-							warning => `
-            <li><strong>${warning.file}:</strong> ${warning.error}</li>
-          `
-						)
-						.join('')}
-        </ul>
-      `
-					: ''
-			}
-    `;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Sync Report</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f5f3ff;font-family:Montserrat,Arial,sans-serif;color:#171717;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f3ff;padding:24px 0;">
+    <tr>
+      <td align="center">
+        <table width="640" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;background-color:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #ddd6fe;">
+          <tr><td>
+
+            <!-- HEADER -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:linear-gradient(135deg,#2e1065 0%,#4c1d95 40%,#6d28d9 100%);border-radius:8px 8px 0 0;">
+              <tr>
+                <td style="padding:24px 28px;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="vertical-align:middle;padding-right:16px;">
+                        <img src="https://i.postimg.cc/3RZn08zP/Portfolio-Site-V2.png" alt="Portfolio Site V2" width="48" height="48" style="display:block;border-radius:8px;" />
+                      </td>
+                      <td style="vertical-align:middle;">
+                        <div style="font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4b5fd;margin-bottom:4px;">Portfolio Site V2</div>
+                        <div style="font-family:Montserrat,Arial,sans-serif;font-size:20px;font-weight:700;color:#ffffff;line-height:1.2;">Portfolio Sync Report</div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- STATUS BANNER -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${statusBg};border-bottom:1px solid #ddd6fe;">
+              <tr>
+                <td style="padding:14px 28px;font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:700;color:${statusColor};">
+                  ${statusText}
+                </td>
+              </tr>
+            </table>
+
+            <!-- SYNC DETAILS SECTION -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding:24px 28px 8px;">
+                  <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Sync Details</div>
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="padding:6px 0;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;width:140px;">Mode</td>
+                      <td style="padding:6px 0;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:600;">${SYNC_MODE}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:6px 0;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;">Timestamp</td>
+                      <td style="padding:6px 0;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:600;">${syncErrors.timestamp}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:6px 0;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;">Source</td>
+                      <td style="padding:6px 0;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:600;word-break:break-all;">${syncErrors.source}</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- FILE SUMMARY SECTION -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding:16px 28px 24px;">
+                  <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">File Summary</div>
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
+                    <tr style="background-color:#f5f3ff;">
+                      <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;width:60%;">Total Files</td>
+                      <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${syncErrors.summary.totalFiles}</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                      <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;">Processed Files</td>
+                      <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${syncErrors.summary.processedFiles}</td>
+                    </tr>
+                    <tr style="background-color:#f5f3ff;">
+                      <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;">Copied Files</td>
+                      <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#065f46;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${syncErrors.summary.copiedFiles}</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                      <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;">Skipped Files</td>
+                      <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${syncErrors.summary.skippedFiles}</td>
+                    </tr>
+                    <tr style="background-color:#f5f3ff;">
+                      <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;">Errors</td>
+                      <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:${errors.length > 0 ? '#991b1b' : '#065f46'};font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${errors.length}</td>
+                    </tr>
+                    <tr style="background-color:#ffffff;">
+                      <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;">Warnings</td>
+                      <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:${warnings.length > 0 ? '#92400e' : '#065f46'};font-weight:700;text-align:right;">${warnings.length}</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            ${errors.length > 0 ? `
+            <!-- ERRORS SECTION -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding:0 28px 24px;">
+                  <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#991b1b;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #fee2e2;">Errors</div>
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #fca5a5;border-radius:6px;border-collapse:collapse;">
+                    ${errors.map((error, i) => `
+                    <tr style="background-color:${i % 2 === 0 ? '#fff' : '#fff5f5'};">
+                      <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:600;border-bottom:1px solid #fee2e2;width:35%;word-break:break-all;">${error.file || error.directory}</td>
+                      <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#991b1b;border-bottom:1px solid #fee2e2;">${error.error}</td>
+                    </tr>
+                    `).join('')}
+                  </table>
+                </td>
+              </tr>
+            </table>
+            ` : ''}
+
+            ${warnings.length > 0 ? `
+            <!-- WARNINGS SECTION -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding:0 28px 24px;">
+                  <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#92400e;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #fde68a;">Warnings</div>
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #fcd34d;border-radius:6px;border-collapse:collapse;">
+                    ${warnings.map((warning, i) => `
+                    <tr style="background-color:${i % 2 === 0 ? '#fffbeb' : '#fef9ee'};">
+                      <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:600;border-bottom:1px solid #fde68a;width:35%;word-break:break-all;">${warning.file}</td>
+                      <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#92400e;border-bottom:1px solid #fde68a;">${warning.error}</td>
+                    </tr>
+                    `).join('')}
+                  </table>
+                </td>
+              </tr>
+            </table>
+            ` : ''}
+
+            <!-- FOOTER -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #ddd6fe;">
+              <tr>
+                <td style="padding:16px 28px;font-family:Montserrat,Arial,sans-serif;font-size:12px;color:#6b7280;line-height:1.5;">
+                  <em>Automated notification from Portfolio-V2 sync script.</em>
+                </td>
+              </tr>
+            </table>
+
+          </td></tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+`;
 
 		await emailService.sendEmail(subject, body);
 		console.log('✅ Email notification sent successfully');

@@ -6,7 +6,7 @@ tags:
   - AI
   - skill
   - portfolio
-modified: 2026-02-19T16:36:31+00:00
+modified: 2026-02-25T14:37:24+00:00
 viewCount: 5
 aliases:
 skillRating: 25
@@ -25,6 +25,23 @@ logoFileName: claude_code.svg
 ```
 
 ## Key Commands
+
+### Best Practices
+
+| Practice                                     | Why it matters                                                                     |
+| -------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Initialise Claude using `/init`              | Creates the `CLAUDE.md` set up and provides the project context to [[Claude Code]] |
+| Keep `CLAUDE.md` short and specific          | Long files cause important rules to be missed                                      |
+| Use `/plan` before complex changes           | Review the approach before any code is written                                     |
+| Use `/clear` between unrelated tasks         | Prevents context bleed; keeps responses accurate                                   |
+| Provide a way to verify success              | Give Claude a test or expected output to check its own work                        |
+| Use `@filename` instead of copy-pasting code | More reliable and saves context space                                              |
+| Paste images with `Ctrl+V`                   | Include screenshots or mockups as visual context                                   |
+| Use `Esc` to course-correct early            | Stops generation mid-stream; context is preserved                                  |
+| Use `/compact` proactively                   | Compress long sessions before context fills up                                     |
+| Name sessions with `/rename`                 | Makes it easy to `/resume` specific projects later                                 |
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ### Slash Commands
 
@@ -104,22 +121,6 @@ logoFileName: claude_code.svg
 | `--model <name>` | Set the model (`sonnet`, `opus`, `haiku`) |
 | `--permission-mode plan` | Start in Plan Mode |
 | `--output-format json` | Return JSON output (useful in scripts and CI/CD) |
-
----
-
-### Best Practices
-
-| Practice | Why it matters |
-|---|---|
-| Keep `CLAUDE.md` short and specific | Long files cause important rules to be missed |
-| Use `/plan` before complex changes | Review the approach before any code is written |
-| Use `/clear` between unrelated tasks | Prevents context bleed; keeps responses accurate |
-| Provide a way to verify success | Give Claude a test or expected output to check its own work |
-| Use `@filename` instead of copy-pasting code | More reliable and saves context space |
-| Paste images with `Ctrl+V` | Include screenshots or mockups as visual context |
-| Use `Esc` to course-correct early | Stops generation mid-stream; context is preserved |
-| Use `/compact` proactively | Compress long sessions before context fills up |
-| Name sessions with `/rename` | Makes it easy to `/resume` specific projects later |
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
