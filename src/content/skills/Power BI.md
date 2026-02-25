@@ -8,8 +8,8 @@ modified: 2026-01-05T08:43:45+00:00
 viewCount: 4
 aliases:
   - Microsoft Power BI
-skillRating: 45
-skillDescription: Supported the design and development of several Power BI reports for internal management review.
+skillRating: 60
+skillDescription: Led the design and development of several Power BI reports for internal management review.
 logoFileName: power_bi.svg
 ---
 # Power BI
