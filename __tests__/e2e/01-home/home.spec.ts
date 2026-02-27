@@ -357,9 +357,7 @@ test.describe('Home Page Tests', () => {
 		const sampleSkills = ['HTML', 'React'];
 
 		for (const skill of sampleSkills) {
-			const row = skillsTableSection.getByTestId(
-				`skills-table-item-${skill}`
-			);
+			const row = skillsTableSection.getByTestId(`skills-table-item-${skill}`);
 			await expect(
 				row,
 				`Skills table row should be visible for ${skill}`
@@ -460,13 +458,16 @@ test.describe('Home Page Tests', () => {
 		await expect(homePageObjects.workExperienceSection).toBeVisible();
 		await expect(homePageObjects.workExperienceList).toBeVisible();
 
+		// Scroll section into view so all list items are in DOM (avoids counting before full render)
+		await homePageObjects.workExperienceSection.scrollIntoViewIfNeeded();
+
 		const workExperienceItems = homePageObjects.workExperienceList.locator(
 			'article[role="article"], article'
 		);
-		const itemCount = await workExperienceItems.count();
-		expect(itemCount).toBeGreaterThanOrEqual(4);
+		// Wait for exactly 4 items (handles streaming/slow DOM; timeout 10s)
+		await expect(workExperienceItems).toHaveCount(4, { timeout: 10000 });
 
-		for (let i = 0; i < Math.min(itemCount, 4); i++) {
+		for (let i = 0; i < 4; i++) {
 			const item = workExperienceItems.nth(i);
 			const itemText = await item.textContent();
 			expect(itemText).toBeTruthy();
@@ -494,20 +495,6 @@ test.describe('Home Page Tests', () => {
 		expect(workExperienceDescription).toContain(
 			testData.exampleWorkExperienceDescription
 		);
-	});
-
-	test('1.6.1.1. Work Experience section should show at least 4 items', async ({
-		page,
-	}) => {
-		const homePageObjects = new HomePageObjects(page);
-		await expect(homePageObjects.workExperienceSection).toBeVisible();
-		await expect(homePageObjects.workExperienceList).toBeVisible();
-
-		const workExperienceItems = homePageObjects.workExperienceList.locator(
-			'article[role="article"], article'
-		);
-		const itemCount = await workExperienceItems.count();
-		expect(itemCount).toBeGreaterThanOrEqual(4);
 	});
 
 	test('1.6.2. Work Experience section, "See more items" button should navigate to /work-experience', async ({
@@ -804,7 +791,9 @@ test.describe('Home Page Tests', () => {
 		navClass = (await navLinks.getAttribute('class')) || '';
 		expect(navClass.includes('expanded')).toBeTruthy();
 
-		const bodyOverflow = await page.evaluate(() => document.body.style.overflow);
+		const bodyOverflow = await page.evaluate(
+			() => document.body.style.overflow
+		);
 		const htmlOverflow = await page.evaluate(
 			() => document.documentElement.style.overflow
 		);

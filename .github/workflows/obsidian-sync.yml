@@ -53,6 +53,9 @@ jobs:
             # For scheduled runs, use default path or skip
             echo "OBSIDIAN_PATH=/tmp/obsidian-vault" >> $GITHUB_ENV
             echo "SKIP_SYNC=true" >> $GITHUB_ENV
+          else
+            # Push trigger: no vault on runner; skip sync and build/deploy repo content only
+            echo "SKIP_SYNC=true" >> $GITHUB_ENV
           fi
 
           # Set portfolio tag
