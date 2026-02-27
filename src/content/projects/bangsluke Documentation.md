@@ -6,14 +6,13 @@ tags:
   - coding
   - project/completed
 created: 2024-02-20T09:27:00
-modified: 2026-02-25T17:43:34+00:00
+modified: 2026-02-27T21:55:18+00:00
 aliases:
   - Documentation Site
   - bangsluke-documentation
-  - homepage
 viewCount: 28
 projectURL: https://bangsluke-documentation.netlify.app/
-codeURL: https://github.com/bangsluke/bangsluke.github.io
+codeURL: https://github.com/bangsluke/bangsluke-documentation
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-documentation/overview
 folderURL: n/a
@@ -41,11 +40,11 @@ developers:
 topicTags:
   - Documentation
   - Coding
-powerShellAlias: bangsluke, documentation, homepage
+powerShellAlias: documentation, docusaurus
 version: 1
 portfolioOrder: 4
-shortDescription: "A <span class=\"theme-link\">PWA</span> personal documentation site that can be accessed offline, storing key links to the software I use, my project initiation to release process, articles I find useful, and a section on <span class=\"theme-link\">Dorkinians FC</span> stats. The repo also contains my <a href=\"/projects/homepage-website\" class=\"theme-link\">Homepage</a> and <a href=\"/projects/new-tab-website\" class=\"theme-link\">New Tab</a> pages."
-longDescription: "Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment. It also holds details on the <span class=\"theme-link\">Dorkinians FC</span> stats and how to maintain them - for handover to others.<br><br>I regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing.<br><br>Outside of the documentation section, the repo also contains my <a href=\"/projects/homepage-website\" class=\"theme-link\">Homepage</a> and <a href=\"/projects/new-tab-website\" class=\"theme-link\">New Tab</a> pages as the whole repo is hosted through <span class=\"theme-link\">GitHub</span> pages."
+shortDescription: "A <span class=\"theme-link\">PWA</span> personal documentation site that can be accessed offline, storing key links to the software I use, my project initiation to release process, articles I find useful, and a section on <span class=\"theme-link\">Dorkinians FC</span> stats and website."
+longDescription: "Broken out into several sections, my documentation site provides me top level links to <span class=\"theme-link\">Product Management</span> techniques, the <span class=\"theme-link\">SDLC</span> and key software links. Within it is a development guide I've written myself, from planning, installation and set up to develop, testing and deployment.<br><br>It also holds details on the <span class=\"theme-link\">Dorkinians FC</span> stats and how to maintain them - for handover to others - and  a user guide for the <a href=\"/projects/dorkinians-website-v3\" class=\"theme-link\">Dorkinians Website V3</a>.<br><br>I regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing."
 lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of <span class=\"theme-link\">Markdown</span> and led me to notice how many different techs either use <span class=\"theme-link\">Docusaurus</span> or a very similar type static site builder for their documentation.<br><br>I also learned how to set up offline caching to enable me to access the <span class=\"theme-link\">PWA</span> without connection on my mobile device."
 name: "bangsluke Documentation"
 ---
@@ -85,17 +84,17 @@ WHERE file = this.file
 
 ## Short Description
 
-A [[PWA]] personal documentation site that can be accessed offline, storing key links to the software I use, my project initiation to release process, articles I find useful, and a section on [[Dorkinians FC]] stats. The repo also contains my [[Homepage Website|Homepage]] and [[New Tab Website|New Tab]] pages.
+A [[PWA]] personal documentation site that can be accessed offline, storing key links to the software I use, my project initiation to release process, articles I find useful, and a section on [[Dorkinians FC]] stats and website.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-Broken out into several sections, my documentation site provides me top level links to key softwares and guides me through each project, from planning, installation and set up to develop, testing and deployment. It also holds details on the [[Dorkinians FC]] stats and how to maintain them - for handover to others.
+Broken out into several sections, my documentation site provides me top level links to [[Product Management]] techniques, the [[SDLC]] and key software links. Within it is a development guide I've written myself, from planning, installation and set up to develop, testing and deployment. 
+
+It also holds details on the [[Dorkinians FC]] stats and how to maintain them - for handover to others - and  a user guide for the [[Dorkinians Website V3]].
 
 I regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing.
-
-Outside of the documentation section, the repo also contains my [[Homepage Website|Homepage]] and [[New Tab Website|New Tab]] pages as the whole repo is hosted through [[GitHub]] pages.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
