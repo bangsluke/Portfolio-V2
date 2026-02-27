@@ -15,7 +15,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/js-stag/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/4yZqjFTZ/JS-Stag.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/JS-Stag.png
 dateStart: 2023-03-23
 dateEnd: 2023-05-11
 technologies:

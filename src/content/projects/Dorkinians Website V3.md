@@ -15,8 +15,8 @@ codeURL: https://github.com/bangsluke/Dorkinians-Website-V3
 codeMultipleRepos: true
 deploymentServiceURL: https://app.netlify.com/projects/dorkinians-website-v3/overview
 folderURL: n/a
-logoURL: n/a
-imageURL: https://i.postimg.cc/Yq7Xvd7n/Dorkinians-Website.png
+logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Dorkinians.png
+imageURL: https://bangsluke-assets.netlify.app/images/dorkinians/Dorkinians-Website.png
 dateStart: 2025-08-14
 dateEnd: 2026-01-23
 technologies:

@@ -15,8 +15,8 @@ codeURL: https://github.com/bangsluke/my-travel-journal
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-my-travel-journal/overview
 folderURL: n/a
-logoURL: n/a
-imageURL: https://i.postimg.cc/TwnB7vFg/my-travel-journal-V1.png
+logoURL: TBC
+imageURL: https://bangsluke-assets.netlify.app/images/projects/my-travel-journal-V1.png
 dateStart: 2022-06-09
 dateEnd: 2023-08-14
 technologies:

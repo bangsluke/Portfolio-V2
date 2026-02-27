@@ -13,7 +13,7 @@ aliases:
   - Aston Martin Limited
 dateStart: 2016-03-01
 dateEnd: 2016-04-01
-logoURL: https://i.postimg.cc/4d6Wqmhz/Aston-Martin.jpg
+logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Aston-Martin.jpeg
 linkedCompany:
   - "[[RLE International]]"
 ---

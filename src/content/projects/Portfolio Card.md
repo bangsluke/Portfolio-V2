@@ -15,7 +15,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-portfolio-card/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/90VKsNHN/Portfolio-Card.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Portfolio-Card.png
 dateStart: 2022-06-07
 dateEnd: 2023-10-20
 technologies:

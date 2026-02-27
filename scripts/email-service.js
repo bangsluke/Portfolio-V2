@@ -99,7 +99,9 @@ export class EmailService {
 
 		const statusBg = success ? '#d1fae5' : '#fee2e2';
 		const statusColor = success ? '#065f46' : '#991b1b';
-		const statusText = success ? '&#10003; Sync Completed Successfully' : '&#10007; Sync Failed';
+		const statusText = success
+			? '&#10003; Sync Completed Successfully'
+			: '&#10007; Sync Failed';
 
 		const body = `
 <!DOCTYPE html>
@@ -123,7 +125,7 @@ export class EmailService {
                   <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
                       <td style="vertical-align:middle;padding-right:16px;">
-                        <img src="https://i.postimg.cc/3RZn08zP/Portfolio-Site-V2.png" alt="Portfolio Site V2" width="48" height="48" style="display:block;border-radius:8px;" />
+                        <img src="https://bangsluke-assets.netlify.app/images/project-logos/Portfolio-Site-V2.png" alt="Portfolio Site V2" width="48" height="48" style="display:block;border-radius:8px;" />
                       </td>
                       <td style="vertical-align:middle;">
                         <div style="font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4b5fd;margin-bottom:4px;">Portfolio Site V2</div>
@@ -198,7 +200,9 @@ export class EmailService {
               </tr>
             </table>
 
-            ${errors.length > 0 ? `
+            ${
+							errors.length > 0
+								? `
             <!-- ERROR DETAILS SECTION -->
             <table width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
@@ -214,20 +218,26 @@ export class EmailService {
                       </tr>
                     </thead>
                     <tbody>
-                      ${errors.map((error, i) => `
+                      ${errors
+												.map(
+													(error, i) => `
                       <tr style="background-color:${i % 2 === 0 ? '#fff' : '#fff5f5'};">
                         <td style="padding:9px 12px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #fee2e2;">${error.type || 'Unknown'}</td>
                         <td style="padding:9px 12px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #fee2e2;word-break:break-all;">${error.file || error.directory || 'N/A'}</td>
                         <td style="padding:9px 12px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#991b1b;border-bottom:1px solid #fee2e2;">${error.error}</td>
                         <td style="padding:9px 12px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #fee2e2;white-space:nowrap;">${new Date(error.timestamp).toLocaleString()}</td>
                       </tr>
-                      `).join('')}
+                      `
+												)
+												.join('')}
                     </tbody>
                   </table>
                 </td>
               </tr>
             </table>
-            ` : ''}
+            `
+								: ''
+						}
 
             <!-- FOOTER -->
             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #ddd6fe;">

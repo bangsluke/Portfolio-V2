@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.postimg.cc/3RZn08zP/Portfolio-Site-V2.png" alt="bangsluke Logo" height="100"/>
+  <img src="https://bangsluke-assets.netlify.app/images/project-logos/Portfolio-Site-V2.png" alt="bangsluke Logo" height="100"/>
 </p>
 
 # Portfolio Site V2

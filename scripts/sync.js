@@ -1085,7 +1085,9 @@ async function sendEmailNotification() {
 		}
 		const statusBg = syncErrors.success ? '#d1fae5' : '#fee2e2';
 		const statusColor = syncErrors.success ? '#065f46' : '#991b1b';
-		const statusText = syncErrors.success ? '&#10003; Portfolio Sync Completed Successfully' : '&#10007; Portfolio Sync Failed';
+		const statusText = syncErrors.success
+			? '&#10003; Portfolio Sync Completed Successfully'
+			: '&#10007; Portfolio Sync Failed';
 
 		const body = `
 <!DOCTYPE html>
@@ -1109,7 +1111,7 @@ async function sendEmailNotification() {
                   <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
                       <td style="vertical-align:middle;padding-right:16px;">
-                        <img src="https://i.postimg.cc/3RZn08zP/Portfolio-Site-V2.png" alt="Portfolio Site V2" width="48" height="48" style="display:block;border-radius:8px;" />
+                        <img src="https://bangsluke-assets.netlify.app/images/project-logos/Portfolio-Site-V2.png" alt="Portfolio Site V2" width="48" height="48" style="display:block;border-radius:8px;" />
                       </td>
                       <td style="vertical-align:middle;">
                         <div style="font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4b5fd;margin-bottom:4px;">Portfolio Site V2</div>
@@ -1188,43 +1190,59 @@ async function sendEmailNotification() {
               </tr>
             </table>
 
-            ${errors.length > 0 ? `
+            ${
+							errors.length > 0
+								? `
             <!-- ERRORS SECTION -->
             <table width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding:0 28px 24px;">
                   <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#991b1b;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #fee2e2;">Errors</div>
                   <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #fca5a5;border-radius:6px;border-collapse:collapse;">
-                    ${errors.map((error, i) => `
+                    ${errors
+											.map(
+												(error, i) => `
                     <tr style="background-color:${i % 2 === 0 ? '#fff' : '#fff5f5'};">
                       <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:600;border-bottom:1px solid #fee2e2;width:35%;word-break:break-all;">${error.file || error.directory}</td>
                       <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#991b1b;border-bottom:1px solid #fee2e2;">${error.error}</td>
                     </tr>
-                    `).join('')}
+                    `
+											)
+											.join('')}
                   </table>
                 </td>
               </tr>
             </table>
-            ` : ''}
+            `
+								: ''
+						}
 
-            ${warnings.length > 0 ? `
+            ${
+							warnings.length > 0
+								? `
             <!-- WARNINGS SECTION -->
             <table width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding:0 28px 24px;">
                   <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#92400e;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #fde68a;">Warnings</div>
                   <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #fcd34d;border-radius:6px;border-collapse:collapse;">
-                    ${warnings.map((warning, i) => `
+                    ${warnings
+											.map(
+												(warning, i) => `
                     <tr style="background-color:${i % 2 === 0 ? '#fffbeb' : '#fef9ee'};">
                       <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:600;border-bottom:1px solid #fde68a;width:35%;word-break:break-all;">${warning.file}</td>
                       <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#92400e;border-bottom:1px solid #fde68a;">${warning.error}</td>
                     </tr>
-                    `).join('')}
+                    `
+											)
+											.join('')}
                   </table>
                 </td>
               </tr>
             </table>
-            ` : ''}
+            `
+								: ''
+						}
 
             <!-- FOOTER -->
             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #ddd6fe;">

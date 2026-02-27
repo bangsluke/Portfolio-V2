@@ -11,14 +11,14 @@ aliases:
   - Documentation Site
   - bangsluke-documentation
   - homepage
-viewCount: 27
+viewCount: 28
 projectURL: https://bangsluke-documentation.netlify.app/
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-documentation/overview
 folderURL: n/a
-logoURL: n/a
-imageURL: https://i.postimg.cc/SscHTb3X/bangsluke-Documentation.png
+logoURL: https://bangsluke-assets.netlify.app/images/project-logos/Portfolio-Site-V2.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/bangsluke-Documentation.png
 dateStart: 2023-06-04
 dateEnd: 2024-07-14
 technologies:

@@ -15,7 +15,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/biglynn/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/nrZgNwtL/Big-Lynn.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Big-Lynn.png
 dateStart: 2022-09-06
 dateEnd: 2023-07-26
 technologies:

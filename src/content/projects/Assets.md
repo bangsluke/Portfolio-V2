@@ -15,7 +15,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-assets/overview
 folderURL: n/a
 logoURL:
-imageURL:
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Assets.png
 dateStart: 2026-02-27
 dateEnd: 2026-02-27
 technologies:

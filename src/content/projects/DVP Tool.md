@@ -16,7 +16,7 @@ codeURL: https://git.rle.de/DigitalEngineering/externalpocs/dvp
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
-logoURL: n/a
+logoURL: https://bangsluke-assets.netlify.app/images/project-logos/DVP-Tool.png
 imageURL: https://bangsluke-assets.netlify.app/images/projects/DVP-Tool.png
 dateStart: 2022-06-01
 dateEnd: 2022-12-31

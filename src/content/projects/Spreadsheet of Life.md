@@ -16,7 +16,7 @@ codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://drive.google.com/drive/folders/1SQmATVMjxHXU8CsuSeGh_3suXXTxC_Nf?usp=drive_link
 logoURL: n/a
-imageURL: https://i.postimg.cc/gJ31Sb19/SoL.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/SoL.png
 dateStart: 2020-07-18
 dateEnd: 2025-06-20
 technologies:

@@ -8,7 +8,7 @@ tags:
   - work
 created: 2025-05-30 09:57
 modified: 2026-01-30T17:23:44+00:00
-viewCount: 18
+viewCount: 19
 aliases:
 projectURL: https://gpmo.rle.international/
 codeURL: https://dev.azure.com/RLEGPMO/_git/GPMO%20Documentation
@@ -16,7 +16,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://dev.azure.com/RLEGPMO/GPMO%20Documentation
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/s2kt4g6d/GPMO-Documentation-Site.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/GPMO-Documentation-Site.png
 dateStart: 2024-02-01
 dateEnd: 2024-07-31
 technologies:

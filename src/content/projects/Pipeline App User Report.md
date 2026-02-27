@@ -13,8 +13,8 @@ codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://app.powerbi.com/groups/5dc8490c-b5de-49a3-85f9-9eaee02b7d96/list?experience=power-bi
-logoURL: https://i.postimg.cc/pVYFhDH1/Finance-Reports.png
-imageURL: https://i.postimg.cc/7LGFz2NX/Pipeline-App-User-Report.png
+logoURL: https://bangsluke-assets.netlify.app/images/project-logos/Project-Pipeline.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Pipeline-App-User-Report.png
 dateStart: 2023-07-01
 dateEnd: 2024-07-31
 technologies:

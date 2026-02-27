@@ -17,7 +17,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/dorkinians-mobile-stats/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/0Q7hW1FJ/Dorkinians-Mobile-Site.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Dorkinians-Mobile-Site.png
 dateStart: 2022-12-07
 dateEnd: 2023-01-13
 technologies:

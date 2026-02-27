@@ -8,14 +8,14 @@ tags:
 created: 2026-01-12 15:12
 modified: 2026-01-12T16:30:35+00:00
 aliases:
-viewCount: 2
+viewCount: 3
 projectURL: n/a
 codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/RVPz10pc/Bookshelf-Dashboard.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Bookshelf-Dashboard.png
 dateStart: 2025-12-16
 dateEnd: 2026-01-07
 technologies:

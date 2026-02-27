@@ -16,7 +16,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-portfolio-v1/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/sxyqb0CH/Portfolio-Site.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Portfolio-Site.png
 dateStart: 2022-04-09
 dateEnd: 2024-02-02
 technologies:

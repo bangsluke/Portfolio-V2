@@ -15,7 +15,7 @@ codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/ZRxpWLTD/Job-Document-Creator.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Job-Document-Creator.png
 dateStart: 2026-02-18
 dateEnd: 2026-02-25
 technologies:
