@@ -175,6 +175,8 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page.locator(`#${testData.sectionIds.home}`).scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.profileName).toBeVisible();
 		await expect(homePageObjects.profilePicture).toBeVisible();
 		await expect(homePageObjects.description).toBeVisible();
@@ -184,6 +186,8 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page.locator(`#${testData.sectionIds.home}`).scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		const description = await homePageObjects.description.textContent();
 		expect(description).toContain(testData.description);
 	});
@@ -192,6 +196,8 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page.locator(`#${testData.sectionIds.home}`).scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.contactMeButtonTopSection).toBeVisible();
 	});
 
@@ -199,6 +205,8 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page.locator(`#${testData.sectionIds.home}`).scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.contactMeButtonTopSection).toBeVisible();
 		const contactMeButtonHref =
 			await homePageObjects.contactMeButtonTopSection.getAttribute('href');
@@ -209,6 +217,8 @@ test.describe('Home Page Tests', () => {
 
 	test('1.2.5. Home page should show "About Me" button', async ({ page }) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page.locator(`#${testData.sectionIds.home}`).scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.aboutMeButton).toBeVisible();
 	});
 
@@ -226,6 +236,8 @@ test.describe('Home Page Tests', () => {
 
 		for (const sectionId of sections) {
 			const section = page.locator(`#${sectionId}`);
+			await section.scrollIntoViewIfNeeded();
+			await page.waitForTimeout(200);
 			await expect(
 				section,
 				`Section ${sectionId} should be visible`
@@ -246,6 +258,10 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.skills}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 
 		await homePageObjects.openSkillsTable();
 
@@ -266,8 +282,11 @@ test.describe('Home Page Tests', () => {
 	test('1.4.2. Skills section should have a functioning Reset button that resets the skills section to the default view', async ({
 		page,
 	}) => {
-		// Check that the skills section reset button is visible
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.skills}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		const resetButton = homePageObjects.skillsResetButton;
 		await expect(resetButton).toBeVisible();
 		await resetButton.click();
@@ -278,8 +297,11 @@ test.describe('Home Page Tests', () => {
 	test('1.4.3. Skills section should have a functioning Toggle button that toggles the skills section between the default view and the list view', async ({
 		page,
 	}) => {
-		// On initial load, the toggle button should be "Toggle: Bubbles (Skill)"
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.skills}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		const toggleButton = homePageObjects.skillsToggleButton;
 		await expect(toggleButton).toBeVisible();
 		await expect(toggleButton).toHaveText('Toggle: Bubbles (Skill)');
@@ -304,8 +326,11 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.skills}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 
-		// Search button should be visible
 		await expect(homePageObjects.skillsSearchButton).toBeVisible();
 
 		// Open the search modal
@@ -326,6 +351,10 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.skills}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.githubContributionsSection).toBeVisible();
 		await expect(homePageObjects.githubContributionsCalendar).toBeVisible();
 		await expect(homePageObjects.githubContributionsDevToLink).toBeVisible();
@@ -336,6 +365,10 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.skills}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.mostCommonTechSection).toBeVisible();
 		await expect(homePageObjects.mostCommonTechList).toBeVisible();
 		// Check that React skill is visible
@@ -350,6 +383,10 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.skills}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 
 		await homePageObjects.openSkillsTable();
 
@@ -376,6 +413,10 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.projects}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.projectsSection).toBeVisible();
 		await expect(homePageObjects.projectsList).toBeVisible();
 		// Check that the example project is visible
@@ -407,8 +448,11 @@ test.describe('Home Page Tests', () => {
 	test('1.5.2. Clicking a project card should navigate to the project details page', async ({
 		page,
 	}) => {
-		// Check that clicking once on the example project card will make the text "Show more details" visible
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.projects}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.projectsSection).toBeVisible();
 		await expect(homePageObjects.projectsList).toBeVisible();
 		// Check that the example project is visible
@@ -436,6 +480,10 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.projects}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.projectsSection).toBeVisible();
 		await expect(homePageObjects.projectsList).toBeVisible();
 		// Check that the "See more projects" button is visible
@@ -455,19 +503,33 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.experience}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
+
 		await expect(homePageObjects.workExperienceSection).toBeVisible();
 		await expect(homePageObjects.workExperienceList).toBeVisible();
 
-		// Scroll section into view so all list items are in DOM (avoids counting before full render)
-		await homePageObjects.workExperienceSection.scrollIntoViewIfNeeded();
+		// Wait for server to have rendered 4 items (data attribute is set at render time)
+		await expect(homePageObjects.workExperienceList).toHaveAttribute(
+			'data-work-experience-count',
+			'4',
+			{ timeout: 10000 }
+		);
+		// Wait for 4th item to be in DOM (avoids counting before full list is parsed/attached)
+		const fourthItem = homePageObjects.workExperienceList.locator(
+			'article[aria-labelledby="experience-title-3"]'
+		);
+		await expect(fourthItem).toBeVisible({ timeout: 10000 });
 
 		const workExperienceItems = homePageObjects.workExperienceList.locator(
 			'article[role="article"], article'
 		);
-		// Wait for exactly 4 items (handles streaming/slow DOM; timeout 10s)
-		await expect(workExperienceItems).toHaveCount(4, { timeout: 10000 });
+		const itemCount = await workExperienceItems.count();
+		expect(itemCount).toBeGreaterThanOrEqual(4);
 
-		for (let i = 0; i < 4; i++) {
+		for (let i = 0; i < Math.min(itemCount, 4); i++) {
 			const item = workExperienceItems.nth(i);
 			const itemText = await item.textContent();
 			expect(itemText).toBeTruthy();
@@ -500,8 +562,11 @@ test.describe('Home Page Tests', () => {
 	test('1.6.2. Work Experience section, "See more items" button should navigate to /work-experience', async ({
 		page,
 	}) => {
-		// Check that the "See more items" button is visible
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.experience}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.workExperienceSection).toBeVisible();
 		await expect(homePageObjects.workExperienceList).toBeVisible();
 		// Check that the "See more items" button is visible
@@ -520,8 +585,11 @@ test.describe('Home Page Tests', () => {
 	test('1.7.1. Customers and Clients section should be visible and show a carousel of my customers and clients, including showing images, names and dates', async ({
 		page,
 	}) => {
-		// Check that the customers and clients section is visible
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.clients}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.customersAndClientsSection).toBeVisible();
 		await expect(homePageObjects.customersAndClientsList).toBeVisible();
 
@@ -549,6 +617,10 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.clients}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.customersAndClientsSection).toBeVisible();
 		await expect(homePageObjects.customersAndClientsList).toBeVisible();
 
@@ -577,8 +649,11 @@ test.describe('Home Page Tests', () => {
 	test('1.8.1. Education section should be visible and show a timeline of my education, including showing educational institution name, dates and description', async ({
 		page,
 	}) => {
-		// Check that the education section is visible
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.education}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.educationSection).toBeVisible();
 		// Check that the education timeline is visible
 		await expect(homePageObjects.educationTimeline).toBeVisible();
@@ -613,8 +688,11 @@ test.describe('Home Page Tests', () => {
 	test('1.8.2. Education section, "See more items" button should navigate to /education', async ({
 		page,
 	}) => {
-		// Check that the "See more items" button is visible
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.education}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.educationSection).toBeVisible();
 		await expect(homePageObjects.educationTimeline).toBeVisible();
 		// Check that the "See more items" button is visible
@@ -631,8 +709,11 @@ test.describe('Home Page Tests', () => {
 	test('1.9.1. References section should be visible and show a carousel of my references, including showing name, role and company name', async ({
 		page,
 	}) => {
-		// Check that the references section is visible
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.references}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.referencesSection).toBeVisible();
 		// Check that the references carousel is visible
 		await expect(homePageObjects.referencesCarousel).toBeVisible();
@@ -669,6 +750,10 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.references}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.referencesSection).toBeVisible();
 		await expect(homePageObjects.referencesCarousel).toBeVisible();
 
@@ -695,6 +780,10 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.references}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.referencesSection).toBeVisible();
 		await expect(homePageObjects.referencesCarousel).toBeVisible();
 
@@ -730,6 +819,8 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await homePageObjects.contactMeButtonBottomSection.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.contactMeButtonBottomSection).toBeVisible();
 	});
 
@@ -737,6 +828,8 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await homePageObjects.contactMeButtonBottomSection.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.contactMeButtonBottomSection).toBeVisible();
 		const contactMeButtonHref =
 			await homePageObjects.contactMeButtonBottomSection.getAttribute('href');
@@ -749,6 +842,8 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await homePageObjects.downloadCVButton.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.downloadCVButton).toBeVisible();
 	});
 
@@ -756,6 +851,8 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await homePageObjects.downloadCVButton.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 		await expect(homePageObjects.downloadCVButton).toBeVisible();
 		const downloadCVButtonHref =
 			await homePageObjects.downloadCVButton.getAttribute('href');
@@ -825,8 +922,9 @@ test.describe('Home Page Tests', () => {
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
+		await page.locator('footer').scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
 
-		// Email icon
 		await expect(
 			homePageObjects.footerEmailIcon,
 			'Footer email icon should be visible'

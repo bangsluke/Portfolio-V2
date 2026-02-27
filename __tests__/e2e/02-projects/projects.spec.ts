@@ -13,6 +13,9 @@ test.describe('Projects Page Tests', () => {
 		});
 		await waitForPageLoad(page);
 
+		await page.locator(`#${testData.sectionIds.projects}`).scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
+
 		const projectsPageObjects = new ProjectsPageObjects(page);
 		await expect(projectsPageObjects.seeMoreProjectsButton).toBeVisible();
 
@@ -616,14 +619,15 @@ test.describe('Projects Page Tests', () => {
 	test('2.6. Back to projects links should point to projects section when coming from home', async ({
 		page,
 	}) => {
-		// Navigate from home projects section directly to a project details page
 		await page.goto(`${testData.mainPageUrl}/#projects`, {
 			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
 
-		// Click the "Show more details" link for example project card
+		await page.locator(`#${testData.sectionIds.projects}`).scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
+
 		const exampleProjectCard = page
 			.getByTestId('projects-list')
 			.locator('article')

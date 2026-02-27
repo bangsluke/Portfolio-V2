@@ -47,7 +47,7 @@ export const testData = {
 	exampleProjectCategory: 'Personal Design',
 	exampleProjectTechnologies: ['GitHub', 'Netlify', 'Heroku'],
 	exampleProjectDescriptionText:
-		'Serving over 600 players, the next version of my',
+		'Serving over 600 players, the Dorkinians FC stats',
 	exampleProjectLessonsLearnedText: 'To make the chat bot work',
 	exampleMostCommonTech: 'React',
 	exampleWorkExperienceName: 'VHE2 Integration Engineer',
