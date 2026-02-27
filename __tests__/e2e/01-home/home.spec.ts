@@ -453,7 +453,7 @@ test.describe('Home Page Tests', () => {
 	});
 
 	// Work Experience section tests
-	test('1.6.1. Work Experience section should be visible and show a timeline of my last 3 work experiences, including showing role name, dates and description', async ({
+	test('1.6.1. Work Experience section should be visible and show a timeline of my last 4 work experiences, including showing role name, dates and description', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
@@ -464,9 +464,9 @@ test.describe('Home Page Tests', () => {
 			'article[role="article"], article'
 		);
 		const itemCount = await workExperienceItems.count();
-		expect(itemCount).toBeGreaterThanOrEqual(3);
+		expect(itemCount).toBeGreaterThanOrEqual(4);
 
-		for (let i = 0; i < Math.min(itemCount, 3); i++) {
+		for (let i = 0; i < Math.min(itemCount, 4); i++) {
 			const item = workExperienceItems.nth(i);
 			const itemText = await item.textContent();
 			expect(itemText).toBeTruthy();
@@ -494,6 +494,20 @@ test.describe('Home Page Tests', () => {
 		expect(workExperienceDescription).toContain(
 			testData.exampleWorkExperienceDescription
 		);
+	});
+
+	test('1.6.1.1. Work Experience section should show at least 4 items', async ({
+		page,
+	}) => {
+		const homePageObjects = new HomePageObjects(page);
+		await expect(homePageObjects.workExperienceSection).toBeVisible();
+		await expect(homePageObjects.workExperienceList).toBeVisible();
+
+		const workExperienceItems = homePageObjects.workExperienceList.locator(
+			'article[role="article"], article'
+		);
+		const itemCount = await workExperienceItems.count();
+		expect(itemCount).toBeGreaterThanOrEqual(4);
 	});
 
 	test('1.6.2. Work Experience section, "See more items" button should navigate to /work-experience', async ({

@@ -169,6 +169,48 @@ test.describe('Projects Page Tests', () => {
 		expect(parsedCount).toBe(allMatchSelectedCategory.visibleCount);
 	});
 
+	test('2.3.2. Project card tooltips should use dark description background in dark mode', async ({
+		page,
+	}) => {
+		await page.goto(testData.projectsPageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		// Ensure dark mode is enabled via the theme toggle if available
+		const themeToggle = page.locator('#themeToggle');
+		if (await themeToggle.isVisible().catch(() => false)) {
+			const html = page.locator('html');
+			const hasDarkClass = await html.evaluate(el =>
+				el.classList.contains('dark')
+			);
+			if (!hasDarkClass) {
+				await themeToggle.click();
+			}
+		}
+
+		const projectsPageObjects = new ProjectsPageObjects(page);
+		const firstProjectCard =
+			await projectsPageObjects.getProjectCardByIndex(0);
+		await expect(firstProjectCard).toBeVisible();
+
+		// Hover the info icon to trigger the date range tooltip
+		const infoButton = firstProjectCard.locator(
+			'a[aria-label^="View details"]'
+		);
+		await infoButton.hover();
+
+		const tooltip = page.locator('.global-tooltip').first();
+		await expect(tooltip).toBeVisible();
+
+		const bgColor = await tooltip.evaluate(element =>
+			window.getComputedStyle(element).backgroundColor
+		);
+		// #18181B in rgb
+		expect(bgColor).toBe('rgb(24, 24, 27)');
+	});
+
 	test('2.3.2. Date range filters should only show projects within selected range', async ({
 		page,
 	}) => {

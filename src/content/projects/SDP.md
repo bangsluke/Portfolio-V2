@@ -8,7 +8,7 @@ created: 2025-06-27 10:45
 modified: 2026-02-16T07:40:47+00:00
 aliases:
   - Scalable Development Plan
-viewCount: 22
+viewCount: 23
 projectURL: https://sdp.labs.rle.de/sdpweb/
 codeURL: https://git.rle.de/sdp/sdp-3
 codeMultipleRepos: false
