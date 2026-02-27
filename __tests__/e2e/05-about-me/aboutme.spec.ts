@@ -14,6 +14,9 @@ test.describe('About Me Tests', () => {
 		});
 		await waitForPageLoad(page);
 
+		await page.locator(`#${testData.sectionIds.home}`).scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
+
 		const homePageObjects = new HomePageObjects(page);
 		await expect(homePageObjects.aboutMeButton).toBeVisible();
 

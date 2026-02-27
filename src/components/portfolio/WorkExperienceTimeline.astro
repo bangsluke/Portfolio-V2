@@ -88,9 +88,10 @@ const sortedRoles = nonVoluntaryRoles.sort((a, b) => {
 	return a.slug.localeCompare(b.slug);
 });
 
-// Show only the first 4 items
-const displayedRoles = sortedRoles.slice(0, 4);
-const hasMoreItems = sortedRoles.length > 4;
+// Number of work experience items to show on the home page (must match E2E expectation)
+const WORK_EXPERIENCE_HOME_LIMIT = 4;
+const displayedRoles = sortedRoles.slice(0, WORK_EXPERIENCE_HOME_LIMIT);
+const hasMoreItems = sortedRoles.length > WORK_EXPERIENCE_HOME_LIMIT;
 ---
 
 <section
@@ -106,7 +107,8 @@ const hasMoreItems = sortedRoles.length > 4;
 		<div
 			class="relative max-md:mt-0 group"
 			aria-label="Professional experience"
-			data-testid="work-experience-list">
+			data-testid="work-experience-list"
+			data-work-experience-count={displayedRoles.length}>
 			<ol class="relative mt-10">
 				{
 					displayedRoles.map((role, index) => (
