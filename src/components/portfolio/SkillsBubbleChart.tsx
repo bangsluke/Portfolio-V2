@@ -486,7 +486,6 @@ const SkillsBubbleChart = ({
 								Group: {tooltip.skill.group}
 							</div>
 						</div>
-						<div class="absolute left-1/2 transform -translate-x-1/2 global-tooltip-arrow global-tooltip-arrow-top" />
 					</div>
 				</div>
 			)}

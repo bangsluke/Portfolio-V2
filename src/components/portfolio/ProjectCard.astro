@@ -18,8 +18,35 @@ const {
 	dateEnd,
 } = Astro.props;
 
-// Process content to handle Obsidian links and markdown
-const processedShortDescription = processContent(shortDescription || '');
+// Prepare a plain-text short description for controlled truncation on cards
+const rawShortDescription = shortDescription || '';
+
+function stripHtmlTags(value: string): string {
+	return value.replace(/<[^>]*>/g, '');
+}
+
+function truncateAtWordBoundary(value: string, maxLength: number): string {
+	const trimmed = value.trim();
+
+	if (trimmed.length <= maxLength) {
+		return trimmed;
+	}
+
+	const slice = trimmed.slice(0, maxLength);
+	const lastSpaceIndex = slice.lastIndexOf(' ');
+	const safeSlice =
+		lastSpaceIndex > 0 ? slice.slice(0, lastSpaceIndex) : slice;
+
+	return `${safeSlice.trimEnd()}…`;
+}
+
+// Approximate increase of ~4 words vs previous limit
+const MAX_CARD_DESCRIPTION_LENGTH = 260;
+const shortDescriptionPlain = stripHtmlTags(rawShortDescription);
+const cardDescription = truncateAtWordBoundary(
+	shortDescriptionPlain,
+	MAX_CARD_DESCRIPTION_LENGTH
+);
 
 function getSlug(str: string) {
 	return str
@@ -206,9 +233,9 @@ if (dateStart || dateEnd) {
 			}
 		</div>
 		<div
-			class="text-zinc-00 dark:text-zinc-300 text-base flex-1 mb-2 processed-content line-clamp-4"
-			set:html={processedShortDescription}
-		/>
+			class="text-zinc-00 dark:text-zinc-300 text-base flex-1 mb-2 processed-content">
+			{cardDescription}
+		</div>
 
 		{
 			companyName && (
