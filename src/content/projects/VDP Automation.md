@@ -15,7 +15,7 @@ codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/sites/DeloittePMTool/Shared%20Documents/Forms/AllItems.aspx
 logoURL: n/a
-imageURL: https://i.postimg.cc/xdJwmzRQ/VDP-Automation.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/VDP-Automation.png
 dateStart: 2023-11-22
 dateEnd: 2024-02-19
 technologies:

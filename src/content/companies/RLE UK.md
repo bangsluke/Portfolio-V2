@@ -12,7 +12,7 @@ viewCount: 8
 aliases:
 dateStart: 2014-09-01
 dateEnd: ""
-logoURL: https://i.postimg.cc/nzbd3vM2/RLE-International.png
+logoURL: https://bangsluke-assets.netlify.app/images/company-logos/RLE-International.png
 ---
 # RLE UK
 

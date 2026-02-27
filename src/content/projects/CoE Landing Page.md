@@ -17,7 +17,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/stratamotiv/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/BbskRwfY/Co-E-Landing-Page.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/CoE-Landing-Page.png
 dateStart: 2023-02-01
 dateEnd: 2023-03-01
 technologies:

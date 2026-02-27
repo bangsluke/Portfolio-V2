@@ -12,7 +12,7 @@ viewCount: 13
 aliases:
 dateStart: 2022-03-01
 dateEnd: 2022-03-31
-logoURL: https://i.postimg.cc/4d6Wqmh6/Odin-Automotive.png
+logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Odin-Automotive.png
 linkedCompany:
   - "[[RLE International]]"
 ---

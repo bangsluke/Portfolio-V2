@@ -16,7 +16,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://github.com/bangsluke
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/bJ14CfW0/Homepage-Website.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Homepage-Website.png
 dateStart: 2021-01-15
 dateEnd: 2021-01-24
 technologies:

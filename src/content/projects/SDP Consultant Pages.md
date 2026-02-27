@@ -11,14 +11,14 @@ created: 2025-06-02 17:16
 modified: 2025-08-12T12:09:11+01:00
 aliases:
   - SDP Dev Sites
-viewCount: 20
+viewCount: 21
 projectURL: https://sdp-dev-sites.netlify.app/pages/sdp-acronyms
 codeURL: https://git.rle.de/sdp/sdpsupportpages
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/sdp-dev-sites/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/FKM2VHWL/SDP-Consultant-Pages.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/SDP-Consultant-Pages.png
 dateStart: 2021-03-01
 dateEnd: 2021-03-31
 technologies:

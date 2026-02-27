@@ -11,7 +11,7 @@ viewCount: 1
 aliases:
 dateStart: 2018-06-01
 dateEnd: 2019-07-01
-logoURL: https://i.postimg.cc/SsFZgWj6/Dyson.png
+logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Dyson.png
 linkedCompany:
   - "[[RLE International]]"
 ---

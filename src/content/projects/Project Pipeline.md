@@ -6,7 +6,7 @@ tags:
   - portfolio
   - project/completed/work
 modified: 2025-10-08T18:00:21+01:00
-viewCount: 13
+viewCount: 14
 aliases:
   - Pipeline
 projectURL: https://apps.powerapps.com/play/e/9cb5bfc9-13df-e75e-98ff-a4782f9d0f48/a/c4b54ab2-1db0-4f44-8314-e1ca852d3f44?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4&sourcetime=1701875569544&source=portal
@@ -14,8 +14,8 @@ codeURL: n/a
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Project%20Pipeline?csf=1&web=1&e=nVEm7I
-logoURL: https://i.postimg.cc/sf9hQprn/Project-Pipeline.png
-imageURL: https://i.postimg.cc/T348h9nH/Project-Pipeline.png
+logoURL: https://bangsluke-assets.netlify.app/images/project-logos/Project-Pipeline.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Project-Pipeline.png
 dateStart: 2023-05-01
 dateEnd: 2024-07-31
 technologies:

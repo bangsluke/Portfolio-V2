@@ -12,7 +12,7 @@ aliases:
   - Opus
 dateStart: 2011-03-06
 dateEnd: 2014-07-25
-logoURL: https://i.postimg.cc/L8vYCRXT/Opus-2.jpg
+logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Opus-2.jpg
 ---
 # Opus 2 International
 

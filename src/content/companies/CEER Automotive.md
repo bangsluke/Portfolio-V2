@@ -13,7 +13,7 @@ aliases:
   - CEER
 dateStart: 2023-02-01
 dateEnd: 2023-03-31
-logoURL: https://i.postimg.cc/MT79Nvj0/CEER.png
+logoURL: https://bangsluke-assets.netlify.app/images/company-logos/CEER.png
 linkedCompany:
   - "[[RLE International]]"
 ---

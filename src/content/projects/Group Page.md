@@ -15,7 +15,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/group-page/overview
 folderURL: https://drive.google.com/drive/folders/1wnM7858WTLTL7RqmvdoRSki5CHLn8V19?usp=drive_link
 logoURL: n/a
-imageURL: https://i.postimg.cc/d0bzjVH2/Group-Page.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Group-Page.png
 dateStart: 2022-04-09
 dateEnd: 2023-10-30
 technologies:

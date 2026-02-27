@@ -11,7 +11,7 @@ viewCount: 1
 aliases:
 dateStart: 2023-02-01
 dateEnd: 2023-03-31
-logoURL: https://i.postimg.cc/V6Q7Kj5M/Deloitte.png
+logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Deloitte.png
 linkedCompany:
   - "[[RLE International]]"
 ---

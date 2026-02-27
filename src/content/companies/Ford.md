@@ -7,11 +7,11 @@ tags:
   - client
   - portfolio
 modified: 2025-07-18T07:49:24+01:00
-viewCount: 9
+viewCount: 10
 aliases:
 dateStart: 2016-02-01
 dateEnd: 2026-01-08
-logoURL: https://i.postimg.cc/0QRtVpr7/Ford.png
+logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Ford.png
 linkedCompany:
   - "[[RLE International]]"
 ---

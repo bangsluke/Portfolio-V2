@@ -8,14 +8,14 @@ created: 2025-06-27 10:45
 modified: 2026-02-16T07:40:47+00:00
 aliases:
   - Scalable Development Plan
-viewCount: 23
+viewCount: 24
 projectURL: https://sdp.labs.rle.de/sdpweb/
 codeURL: https://git.rle.de/sdp/sdp-3
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/sites/SDP-Titans/Freigegebene%20Dokumente/Forms/AllItems.aspx
-logoURL: n/a
-imageURL: https://i.postimg.cc/hGkH1tyG/SDP.png
+logoURL: https://bangsluke-assets.netlify.app/images/project-logos/SDP.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/SDP.png
 dateStart: 2019-07-01
 dateEnd: 2022-05-30
 technologies:

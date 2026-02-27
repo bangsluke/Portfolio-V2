@@ -15,7 +15,7 @@ codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/og-stag/overview
 folderURL: n/a
 logoURL: n/a
-imageURL: https://i.postimg.cc/hvg6N3RY/OG-Stag.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/OG-Stag.png
 dateStart: 2023-05-22
 dateEnd: 2023-07-07
 technologies:

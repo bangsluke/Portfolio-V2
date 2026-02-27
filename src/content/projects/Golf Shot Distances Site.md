@@ -9,14 +9,14 @@ tags:
 created: 2025-07-13 16:48
 modified: 2026-01-28T17:14:52+00:00
 aliases:
-viewCount: 10
+viewCount: 11
 projectURL: https://golf-shot-distances.netlify.app/
 codeURL: https://github.com/bangsluke/golf-shot-distances
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/golf-shot-distances/overview
 folderURL: n/a
-logoURL: https://i.postimg.cc/qRGj6JWP/Golf-Shot-Distances.png
-imageURL: https://i.postimg.cc/cJgsPTSF/Club-Distances.png
+logoURL: https://bangsluke-assets.netlify.app/images/project-logos/Golf-Shot-Distances.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Golf-Shot-Distances.png
 dateStart: 2025-07-13
 dateEnd: 2025-07-14
 technologies:

@@ -13,7 +13,7 @@ aliases:
   - Dorkinians
 dateStart: 2015-09-05
 dateEnd:
-logoURL: https://i.postimg.cc/rm1f3Kth/Dorkinians.png
+logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Dorkinians.png
 linkedCompany:
   - n/a
 ---

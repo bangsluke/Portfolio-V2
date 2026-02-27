@@ -6,15 +6,15 @@ tags:
   - portfolio
   - project/completed/work
 modified: 2025-09-08T07:23:29+01:00
-viewCount: 16
+viewCount: 15
 aliases:
 projectURL: https://rleint.sharepoint.com/:x:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model/GPMO%20Cost%20Model%20V1.xlsx?d=w63d8777e305243178780a626d3abdf07&csf=1&web=1&e=hCf0X0
 codeURL: n/a
 codeMultipleRepos:
 deploymentServiceURL: n/a
 folderURL: https://rleint.sharepoint.com/:f:/r/sites/UKPMO/Freigegebene%20Dokumente/General/Tools/Cost%20Model?csf=1&web=1&e=CGmO2I
-logoURL: https://i.postimg.cc/fWj9txNr/Cost-Model.png
-imageURL: https://i.postimg.cc/R06ktHRZ/Cost-Model.png
+logoURL: https://bangsluke-assets.netlify.app/images/project-logos/Cost-Model.png
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Cost-Model.png
 dateStart: 2023-11-15
 dateEnd: 2024-07-26
 projectCategory: Work Project

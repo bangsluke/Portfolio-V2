@@ -156,7 +156,7 @@ export default async () => {
 			.sort((a, b) => (b.total || 0) - (a.total || 0))
 			.slice(0, 10);
 
-		const formatPeriodDate = (ts) => {
+		const formatPeriodDate = ts => {
 			const d = new Date(ts);
 			const weekday = d.toLocaleDateString('en-GB', { weekday: 'short' });
 			const day = String(d.getDate()).padStart(2, '0');
@@ -167,8 +167,10 @@ export default async () => {
 		const periodStart = formatPeriodDate(startAt);
 		const periodEnd = formatPeriodDate(endAt);
 		const trend = (curr, prev) => {
-			if (curr > prev) return '<span style="color:#16a34a;font-size:14px;">&#9650;</span>';
-			if (curr < prev) return '<span style="color:#dc2626;font-size:14px;">&#9660;</span>';
+			if (curr > prev)
+				return '<span style="color:#16a34a;font-size:14px;">&#9650;</span>';
+			if (curr < prev)
+				return '<span style="color:#dc2626;font-size:14px;">&#9660;</span>';
 			return '<span style="color:#9ca3af;">&#8212;</span>';
 		};
 
@@ -194,7 +196,7 @@ export default async () => {
                   <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
                       <td style="vertical-align:middle;padding-right:16px;">
-                        <img src="https://i.postimg.cc/3RZn08zP/Portfolio-Site-V2.png" alt="Portfolio Site V2" width="48" height="48" style="display:block;border-radius:8px;" />
+                        <img src="https://bangsluke-assets.netlify.app/images/project-logos/Portfolio-Site-V2.png" alt="Portfolio Site V2" width="48" height="48" style="display:block;border-radius:8px;" />
                       </td>
                       <td style="vertical-align:middle;">
                         <div style="font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4b5fd;margin-bottom:4px;">Portfolio Site V2</div>
@@ -397,9 +399,16 @@ export default async () => {
                       </tr>
                     </thead>
                     <tbody>
-                      ${topProjectClicks.length
-												? topProjectClicks.map((r, i) => `<tr style="background-color:${i % 2 === 0 ? '#f5f3ff' : '#ffffff'};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${r.value || '-'}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${r.total ?? 0}</td></tr>`).join('')
-												: '<tr><td colspan="2" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>'}
+                      ${
+												topProjectClicks.length
+													? topProjectClicks
+															.map(
+																(r, i) =>
+																	`<tr style="background-color:${i % 2 === 0 ? '#f5f3ff' : '#ffffff'};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${r.value || '-'}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${r.total ?? 0}</td></tr>`
+															)
+															.join('')
+													: '<tr><td colspan="2" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>'
+											}
                     </tbody>
                   </table>
                 </td>
@@ -423,9 +432,16 @@ export default async () => {
                       </tr>
                     </thead>
                     <tbody>
-                      ${projectPaths.length
-												? projectPaths.map((p, i) => `<tr style="background-color:${i % 2 === 0 ? '#f5f3ff' : '#ffffff'};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${p.x || '-'}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${p.y ?? 0}</td></tr>`).join('')
-												: '<tr><td colspan="2" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>'}
+                      ${
+												projectPaths.length
+													? projectPaths
+															.map(
+																(p, i) =>
+																	`<tr style="background-color:${i % 2 === 0 ? '#f5f3ff' : '#ffffff'};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${p.x || '-'}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${p.y ?? 0}</td></tr>`
+															)
+															.join('')
+													: '<tr><td colspan="2" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>'
+											}
                     </tbody>
                   </table>
                 </td>

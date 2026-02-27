@@ -6,12 +6,12 @@ tags:
   - portfolio
 created: 2025-05-30T09:49:00
 modified: 2025-07-18T08:06:33+01:00
-viewCount: 14
+viewCount: 15
 aliases:
   - RLE
 dateStart: 2014-09-01
 dateEnd: ""
-logoURL: https://i.postimg.cc/nzbd3vM2/RLE-International.png
+logoURL: https://bangsluke-assets.netlify.app/images/company-logos/RLE-International.png
 ---
 # RLE International
 

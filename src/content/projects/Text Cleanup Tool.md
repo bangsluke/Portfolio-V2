@@ -15,7 +15,7 @@ codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
 logoURL: TBC
-imageURL: TBC
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Text-Cleanup-Tool.png
 dateStart: 2026-02-26
 dateEnd: 2026-02-27
 technologies:
