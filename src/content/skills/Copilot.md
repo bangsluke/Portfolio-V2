@@ -10,8 +10,8 @@ viewCount: 2
 aliases:
   - Co-pilot
   - Co-Pilot
-skillRating: 40
-skillDescription: Utilised within my work process, able to write well structured prompts to maximise response usefulness. Particularly useful for deeper research topics.
+skillRating: 65
+skillDescription: My go to day to day AI tool for queries. Utilised within my work process, able to write well structured prompts to maximise response usefulness. Particularly useful for research topics using the powerful Deep Research mode.
 logoFileName: copilot.svg
 ---
 # Copilot

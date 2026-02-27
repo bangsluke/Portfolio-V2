@@ -7,7 +7,7 @@ tags:
   - skill
   - portfolio
 modified: 2026-02-25T14:37:24+00:00
-viewCount: 5
+viewCount: 6
 aliases:
 skillRating: 25
 skillDescription: Used on one small automation project to test out its capabilities.

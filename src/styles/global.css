@@ -998,6 +998,28 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	border-left: none;
 }
 
+/* Dark mode overrides to match project description background */
+.dark .global-tooltip {
+	background-color: #18181b;
+	border-color: rgb(63 63 70); /* zinc-700 style border */
+}
+
+.dark .global-tooltip-arrow-top {
+	border-top-color: #18181b;
+}
+
+.dark .global-tooltip-arrow-bottom {
+	border-bottom-color: #18181b;
+}
+
+.dark .global-tooltip-arrow-left {
+	border-left-color: #18181b;
+}
+
+.dark .global-tooltip-arrow-right {
+	border-right-color: #18181b;
+}
+
 /* The top level carousel container */
 .carousel-container {
 	width: 100vw;

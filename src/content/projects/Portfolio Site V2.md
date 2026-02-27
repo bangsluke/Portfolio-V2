@@ -7,8 +7,8 @@ tags:
   - portfolio
   - project/parked
 created: 2025-02-02T19:03:00
-modified: 2026-02-24T17:55:13+00:00
-viewCount: 10
+modified: 2026-02-27T11:31:33+00:00
+viewCount: 11
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -47,8 +47,8 @@ topicTags:
   - "[[Work]]"
 version: 2
 portfolioOrder: 2
-shortDescription: "Architected a <span class=\"theme-link\">Node.js</span> system to loop through my <span class=\"theme-link\">Obsidian</span> notes to collate the data for my portfolio, displaying my past projects, experience and skills in a <span class=\"theme-link\">Astro.js</span> app. This system centralised my previously scattered notes about my career. Includes <span class=\"theme-link\">Umami</span> analytics that analyse user behaviour for me to review feature value."
-longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills.<br><br>Every project, skill, role, company, education and reference is stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> notes, processed by <span class=\"theme-link\">Node.js</span> scripts and loaded into the <span class=\"theme-link\">Astro</span> site for display.<br><br>After writing the backend <span class=\"theme-link\">Node</span> setup for gathering the data from the notes, I built the framework from a template, extending the design to include special sections that I wished to display such as the skills bubble graphic, the timeline and carousel components.<br><br>I've added a set of custom <span class=\"theme-link\">Umami</span> events throughout the code and automated emails to myself weekly reviewing user behaviour on the site to understand the value of features."
+shortDescription: "Architected a <span class=\"theme-link\">Node.js</span> system to collate my <span class=\"theme-link\">Obsidian</span> notes as the data for my portfolio, displaying past projects, experience and skills in a <span class=\"theme-link\">Astro.js</span> appcollate my <span class=\"theme-link\">Obsidian</span> notes as the data for my portfolio, displaying past projects, experience and skills in a <span class=\"theme-link\">Astro.js</span> app. Includes <span class=\"theme-link\">Umami</span> analytics that analyse user behaviour for me to review feature value."
+longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills.<br><br>Every project, skill, role, company, education and reference is stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> notes, processed by <span class=\"theme-link\">Node.js</span> scripts and loaded into the <span class=\"theme-link\">Astro</span> site for display. This system centralised my previously scattered notes about my career.<br><br>After writing the backend <span class=\"theme-link\">Node</span> setup for gathering the data from the notes, I built the framework from a template, extending the design to include special sections that I wished to display such as the skills bubble graphic, the timeline and carousel components.<br><br>I've added a set of custom <span class=\"theme-link\">Umami</span> events throughout the code and automated emails to myself weekly reviewing user behaviour on the site to understand the value of features."
 lessonsLearned: "Initially I set the project up with an <span class=\"theme-link\">Astro</span> front end and started doing <span class=\"theme-link\">GraphQL</span> calls to my <a href=\"/projects/backend-server\" class=\"theme-link\">Backend Server</a> project to collect the portfolio data I had stored in the <span class=\"theme-link\">Neo4j</span> graph. However I soon realized that I was undoing the speed of <span class=\"theme-link\">Astro</span> and switched to a script that loads the required portfolio data (stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> files) into the portfolio repo and used <span class=\"theme-link\">Astro</span> collections to gather and display the data that way.<br><br>The project taught me about defining <span class=\"theme-link\">npm</span> functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package.<br><br>It was also my first taste of <span class=\"theme-link\">Tailwind CSS</span> and although I began to grasp the utility class names towards the end of development, I found it easier in a lot of situations to extract a class and define it in the main <span class=\"theme-link\">CSS</span> file. I see it's benefits for fast prototyping, but I'm not a big fan from what I've seen.<br><br>This was the project I first learnt to use <span class=\"theme-link\">Umami</span> analytics on, apply custom events across the code to analyse the user behaviour and find understand the value in features added."
 name: "Portfolio Site V2"
 ---
@@ -88,7 +88,7 @@ WHERE file = this.file
 
 ## Short Description
 
-Architected a [[Node.js]] system to loop through my [[Obsidian]] notes to collate the data for my portfolio, displaying my past projects, experience and skills in a [[Astro|Astro.js]] app. This system centralised my previously scattered notes about my career. Includes [[Umami]] analytics that analyse user behaviour for me to review feature value.
+Architected a [[Node.js]] system to collate my [[Obsidian]] notes as the data for my portfolio, displaying past projects, experience and skills in a [[Astro|Astro.js]] appcollate my [[Obsidian]] notes as the data for my portfolio, displaying past projects, experience and skills in a [[Astro|Astro.js]] app. Includes [[Umami]] analytics that analyse user behaviour for me to review feature value.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -96,7 +96,7 @@ Architected a [[Node.js]] system to loop through my [[Obsidian]] notes to collat
 
 An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills.
 
-Every project, skill, role, company, education and reference is stored in [[Obsidian]] [[Markdown]] notes, processed by [[Node.js]] scripts and loaded into the [[Astro]] site for display.
+Every project, skill, role, company, education and reference is stored in [[Obsidian]] [[Markdown]] notes, processed by [[Node.js]] scripts and loaded into the [[Astro]] site for display. This system centralised my previously scattered notes about my career.
 
 After writing the backend [[Node.js|Node]] setup for gathering the data from the notes, I built the framework from a template, extending the design to include special sections that I wished to display such as the skills bubble graphic, the timeline and carousel components.
 

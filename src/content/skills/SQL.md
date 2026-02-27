@@ -8,8 +8,8 @@ tags:
   - portfolio
   - notes
 created: 2023-10-13T07:42:00
-modified: 2026-02-19T16:38:50+00:00
-viewCount: 7
+modified: 2026-02-26T15:58:10+00:00
+viewCount: 8
 aliases:
 skillRating: 70
 skillDescription: Able to write complex queries to extract, analyse, and manipulate data from various sources. Built and maintained a relatively complex SQL database using MySQL writing schema modification statements and automating the population of data.
@@ -43,17 +43,18 @@ logoFileName: sql.svg
 
 ### Query Clauses
 
-| Clause | Description |
-|---|---|
-| `WHERE` | Filter rows based on a condition |
-| `ORDER BY` | Sort results (`ASC` or `DESC`) |
-| `GROUP BY` | Group rows that share a value for use with aggregates |
-| `HAVING` | Filter groups after `GROUP BY` (like `WHERE` but for aggregates) |
-| `LIMIT` / `TOP` | Restrict the number of rows returned |
-| `DISTINCT` | Return only unique values |
-| `CASE WHEN` | Conditional logic inline within a query |
-| `COALESCE(a, b)` | Return the first non-null value from a list |
-| `NULLIF(a, b)` | Return `NULL` if `a = b`, otherwise return `a` |
+| Clause           | Description                                                      |
+| ---------------- | ---------------------------------------------------------------- |
+| `WHERE`          | Filter rows based on a condition                                 |
+| `ORDER BY`       | Sort results (`ASC` or `DESC`)                                   |
+| `GROUP BY`       | Group rows that share a value for use with aggregates            |
+| `HAVING`         | Filter groups after `GROUP BY` (like `WHERE` but for aggregates) |
+| `LIMIT` / `TOP`  | Restrict the number of rows returned                             |
+| `DISTINCT`       | Return only unique values                                        |
+| `CASE WHEN`      | Conditional logic inline within a query                          |
+| `COALESCE(a, b)` | Return the first non-null value from a list                      |
+| `NULLIF(a, b)`   | Return `NULL` if `a = b`, otherwise return `a`                   |
+| `CONCAT(a, b)`   | Concatenate two strings                                          |
 
 ---
 
