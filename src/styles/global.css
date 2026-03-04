@@ -96,6 +96,18 @@
 	color: var(--color-text-colour-dark, #e8ecf2);
 }
 
+/* Light mode fixes */
+
+html:not(.dark) body {
+	background-color: #f7f8fa; /* very slightly blue-grey, not pure white */
+}
+
+/* Override for light mode specifically */
+:root:not(.dark) .section-alt,
+html:not(.dark) .section-alt {
+	background-color: rgba(74, 122, 155, 0.07);
+}
+
 @property --border-angle {
 	syntax: '<angle>';
 	inherits: false;
@@ -180,12 +192,8 @@ a.inline-block.leading-5.pl-12 {
 	scroll-margin: 4rem; /* 64px */
 }
 
-.section-alt {
+html:not(.dark) .section-alt {
 	background-color: var(--color-theme-500-rgba-003);
-}
-
-.dark .section-alt {
-	background-color: var(--color-theme-950-rgba-02);
 }
 
 @media (max-width: 767px) {
@@ -335,7 +343,7 @@ a.inline-block.leading-5.pl-12 {
 }
 
 .markdown a:hover {
-	color: var(--color-theme-400);
+	color: var(--color-theme-600);
 }
 
 .processed-content {
@@ -343,30 +351,30 @@ a.inline-block.leading-5.pl-12 {
 }
 
 .processed-content a {
-	color: var(--color-theme-400) !important;
+	color: var(--color-theme-600) !important;
 	text-decoration: underline;
 	transition: all 0.3s ease;
 }
 
 .processed-content a:hover {
-	color: var(--color-theme-300) !important;
+	color: var(--color-theme-500) !important;
 }
 
 .dark .processed-content a {
-	color: var(--color-theme-400) !important;
+	color: var(--color-theme-600) !important;
 }
 
 .dark .processed-content a:hover {
-	color: var(--color-theme-300) !important;
+	color: var(--color-theme-500) !important;
 }
 
 .theme-link {
-	color: var(--color-theme-400) !important;
+	color: var(--color-theme-600) !important;
 	transition: all 0.3s ease;
 }
 
 .theme-link:hover {
-	color: var(--color-theme-300) !important;
+	color: var(--color-theme-500) !important;
 }
 
 a.theme-link {
@@ -374,7 +382,7 @@ a.theme-link {
 }
 
 a.theme-link:hover {
-	color: var(--color-theme-300) !important;
+	color: var(--color-theme-500) !important;
 }
 
 .dark .theme-link {
@@ -394,7 +402,7 @@ a.theme-link:hover {
 }
 
 .processed-content .theme-link {
-	color: var(--color-theme-400) !important;
+	color: var(--color-theme-600) !important;
 }
 
 .processed-content a.theme-link {
@@ -402,7 +410,7 @@ a.theme-link:hover {
 }
 
 .processed-content .theme-link:hover {
-	color: var(--color-theme-300) !important;
+	color: var(--color-theme-500) !important;
 }
 
 .processed-content a.theme-link:hover {
@@ -742,7 +750,7 @@ a.theme-link:hover {
 
 .blur-circle::after {
 	content: '';
-	display: block;
+	display: none;
 	width: 400px;
 	height: 400px;
 	background: var(--color-theme-400-rgba-04);
@@ -765,6 +773,7 @@ a.theme-link:hover {
 	filter: blur(150px);
 	overflow: hidden;
 	z-index: -2;
+	display: none;
 }
 
 .dark .blur-circle::after {
@@ -779,6 +788,30 @@ a.theme-link:hover {
 	z-index: -2;
 	border-radius: 50%;
 	filter: blur(10px);
+}
+
+/* Blur circle only in dark mode; keep it off in light mode */
+html:not(.dark) .blur-circle,
+html:not(.dark) .blur-circle::after {
+	display: none !important;
+	visibility: hidden !important;
+	opacity: 0 !important;
+	height: 0 !important;
+	width: 0 !important;
+	max-height: 0 !important;
+	max-width: 0 !important;
+	overflow: hidden !important;
+	content: none !important;
+	pointer-events: none !important;
+}
+
+/* Full-page gradient background: dark only (avoid faint glow in light mode) */
+html:not(.dark) .page-background-gradient {
+	display: none !important;
+}
+
+html:not(.dark) .global-element {
+	background-color: var(--color-theme-600);
 }
 
 .global-element {
@@ -824,6 +857,10 @@ a.theme-link:hover {
 
 .global-button {
 	cursor: pointer;
+}
+
+html:not(.dark) .global-clear-button {
+	background-color: var(--color-theme-800);
 }
 
 .global-clear-button {
@@ -1068,6 +1105,13 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 
 .carousel-item:hover {
 	transform: scale(1.05);
+}
+
+/* Card surface for light mode — add visible border and slight background */
+html:not(.dark) .carousel-item {
+	border: 1px solid var(--color-surface-light-border);
+	background-color: var(--color-surface-light);
+	box-shadow: 0 2px 8px rgba(30, 51, 82, 0.08);
 }
 
 .flicking-viewport {
