@@ -160,7 +160,7 @@ if (dateStart || dateEnd) {
 				{
 					dateRange && (
 						<div class="absolute top-full right-0 mt-2 opacity-0 group-hover/info:opacity-100 group-active/info:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
-							<div class="global-tooltip">
+							<div class="global-tooltip min-w-[10rem]">
 								<div class="global-tooltip-content">
 									<div class="text-xs text-theme-400 font-medium mb-1">
 										Project Duration:
@@ -187,9 +187,8 @@ if (dateStart || dateEnd) {
 						return (
 							<SkillPill
 								skillName={cleanTech}
-								variant="theme"
+								variant="project"
 								size="sm"
-								className="shadow hover:bg-theme-700/30"
 								projects={projects}
 							/>
 						);
@@ -217,9 +216,8 @@ if (dateStart || dateEnd) {
 												return (
 													<SkillPill
 														skillName={cleanTech}
-														variant="dark"
+														variant="project"
 														size="sm"
-														className="shadow hover:bg-theme-700/30"
 														projects={projects}
 													/>
 												);

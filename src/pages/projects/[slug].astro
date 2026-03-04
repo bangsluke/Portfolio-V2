@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import ClientCard from './ClientCard.astro';
+import ClientCard from '../../components/portfolio/ClientItem';
 import SkillPill from '../../components/ui/SkillPill.astro';
 import Layout from '../../layouts/Layout.astro';
 import {
@@ -302,20 +302,41 @@ const ogimage = {
 									id="project-page-developed-for">
 									{linkedCompanies.map(company => (
 										<ClientCard
-											name={getCompanyName(company)}
-											logoURL={company.data.logoURL || undefined}
+											item={{
+												id: company.id,
+												title: getCompanyName(company),
+												dateString: '',
+												type: 'company',
+												logoURL: company.data.logoURL || undefined,
+											}}
+											isSelected={false}
+											onClick={() => {}}
 										/>
 									))}
 									{linkedClients.map(client => (
 										<ClientCard
-											name={getCompanyName(client)}
-											logoURL={client.data.logoURL || undefined}
+											item={{
+												id: client.id,
+												title: getCompanyName(client),
+												dateString: '',
+												type: 'client',
+												logoURL: client.data.logoURL || undefined,
+											}}
+											isSelected={false}
+											onClick={() => {}}
 										/>
 									))}
 									{linkedEducations.map(education => (
 										<ClientCard
-											name={getCompanyName(education)}
-											logoURL={education.data.logoURL || undefined}
+											item={{
+												id: education.id,
+												title: getCompanyName(education),
+												dateString: '',
+												type: 'company',
+												logoURL: education.data.logoURL || undefined,
+											}}
+											isSelected={false}
+											onClick={() => {}}
 										/>
 									))}
 								</div>

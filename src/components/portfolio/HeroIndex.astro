@@ -74,18 +74,17 @@ const portfolioConfig = await getPortfolioConfig();
 				<div
 					class="flex gap-4 max-sm:flex-row max-sm:items-center max-sm:justify-center max-sm:gap-2">
 					<Button
-						link={'mailto:' + staticData.data.email}
-						text={staticData.data.contactSectionButtonText}
-						iconName={staticData.data.emailIconName}
-						class="max-sm:!text-sm"
-						data-testid="contact-me-button-top-section"
-					/>
-					<Button
 						link={staticData.data.profileLink}
 						text="About Me"
 						iconName="person"
 						variant="dark"
-						class="max-sm:!text-sm"
+					/>
+					<Button
+						link={'mailto:' + staticData.data.email}
+						text={staticData.data.contactSectionButtonText}
+						iconName={staticData.data.emailIconName}
+						variant="big"
+						data-testid="contact-me-button-top-section"
 					/>
 				</div>
 			</div>

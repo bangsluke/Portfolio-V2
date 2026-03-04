@@ -79,38 +79,38 @@ const variantClasses = {
         dark:to-theme-500
     `,
 	big: `
-        font-normal 
+        group
+        font-medium
         gap-3 
-        max-md:gap-1 
+        max-md:gap-2 
         text-white 
         px-8 
-        max-sm:py-3 
-        py-5 
+        py-4 
         max-xl:px-6 
-        max-sm:px-3 
-        text-2xl 
-        max-xl:text-xl 
-        max-sm:text-lg 
+        max-sm:px-4 
+        max-sm:py-3 
+        text-lg 
+        max-xl:text-base 
+        max-sm:text-sm 
         bg-[color:var(--color-light-theme-accent-500)]
         dark:bg-[color:var(--color-light-theme-accent-600)]
         hover:brightness-110
     `,
 	dark: `
         group 
-        dark:text-theme-50
-        text-blacktext
-        dark:hover:text-white 
-        px-6 
+        text-white
+        px-8 
         py-4 
-        max-xl:px-5 
-        max-sm:py-2 
-        max-sm:px-3 
+        max-xl:px-6 
+        max-sm:px-4 
+        max-sm:py-3 
         text-lg 
         max-xl:text-base 
         max-sm:text-sm 
-        dark:bg-zinc-800 
-        bg-white
-        dark:hover:bg-theme-500
+        bg-[color:var(--color-theme-500)]
+        hover:bg-[color:var(--color-theme-600)]
+        dark:bg-[color:var(--color-theme-600)]
+        dark:hover:bg-[color:var(--color-theme-700)]
     `,
 };
 
@@ -118,7 +118,7 @@ const variantClasses = {
 const iconClasses = {
 	default: 'size-5',
 	big: 'size-5',
-	dark: 'size-5 dark:text-theme-300 text-blacktext group-hover:text-blacktext dark:group-hover:text-white transition-colors',
+	dark: 'size-5 text-white group-hover:text-white transition-colors',
 };
 
 // Combine base classes with variant-specific classes
@@ -128,10 +128,9 @@ const buttonClasses = `${baseClasses} ${variantClasses[variant]}`;
 const wrapperBaseClasses = 'w-fit h-fit rounded-full';
 const wrapperVariantClasses: Record<ButtonVariant, string> = {
 	default:
-		'from-transparent via-light-theme-accent-300 to-transparent dark:from-transparent dark:via-theme-500 dark:to-transparent from-40% to-60% animate-rotate-border bg-conic/[from_var(--border-angle)] p-px hover:shadow-lg hover:shadow-theme-500/30',
+		'from-transparent via-light-theme-accent-300 to-transparent dark:from-transparent dark:via-white dark:to-transparent from-40% to-60% animate-rotate-border bg-conic/[from_var(--border-angle)] p-px hover:shadow-lg hover:shadow-theme-500/30',
 	big: 'border border-[color:var(--color-theme-400-rgba-03)] p-px',
-	dark:
-		'from-transparent via-light-theme-accent-300 to-transparent dark:from-transparent dark:via-theme-500 dark:to-transparent from-40% to-60% animate-rotate-border bg-conic/[from_var(--border-angle)] p-px hover:shadow-lg hover:shadow-theme-500/30',
+	dark: 'from-transparent via-light-theme-accent-300 to-transparent dark:from-transparent dark:via-white dark:to-transparent from-40% to-60% animate-rotate-border bg-conic/[from_var(--border-angle)] p-px hover:shadow-lg hover:shadow-theme-500/30',
 };
 
 // Generate aria-label if not provided
