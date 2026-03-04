@@ -209,7 +209,7 @@ test.describe('Projects Page Tests', () => {
 			element => window.getComputedStyle(element).backgroundColor
 		);
 		// #18181B in rgb
-		expect(bgColor).toBe('rgb(24, 24, 27)');
+		expect(bgColor).toBe('rgba(10, 21, 36, 0.95)');
 	});
 
 	test('2.3.2. Date range filters should only show projects within selected range', async ({

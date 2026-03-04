@@ -192,10 +192,6 @@ a.inline-block.leading-5.pl-12 {
 	scroll-margin: 4rem; /* 64px */
 }
 
-html:not(.dark) .section-alt {
-	background-color: var(--color-theme-500-rgba-003);
-}
-
 @media (max-width: 767px) {
 	.main-section {
 		padding-left: 1rem; /* 16px */
