@@ -32,19 +32,26 @@ import { Icon } from 'astro-icon/components';
 <script is:inline>
 	// Initialize theme on page load
 	function initializeTheme() {
-		// Check if user has already made a choice (stored in localStorage)
+		const element = document.documentElement;
+
+		// Respect an existing explicit user choice first
 		if ('theme' in localStorage) {
-			// User has made a choice before, use their stored preference
-			document.documentElement.classList.toggle(
-				'dark',
-				localStorage.theme === 'dark'
-			);
+			const storedTheme = localStorage.theme;
+
+			if (storedTheme === 'light') {
+				element.classList.remove('dark');
+			} else if (storedTheme === 'dark') {
+				element.classList.add('dark');
+			}
 		} else {
-			// First time visit - use OS preference but don't store it
-			const prefersDark = window.matchMedia(
-				'(prefers-color-scheme: dark)'
+			// No stored choice: only honour an explicit light preference,
+			// otherwise default to dark
+			const prefersLight = window.matchMedia(
+				'(prefers-color-scheme: light)'
 			).matches;
-			document.documentElement.classList.toggle('dark', prefersDark);
+			const shouldUseDark = !prefersLight;
+
+			element.classList.toggle('dark', shouldUseDark);
 		}
 
 		// Trigger a custom event to notify ThemeDisplay component
@@ -60,10 +67,13 @@ import { Icon } from 'astro-icon/components';
 		if ('theme' in localStorage) {
 			return localStorage.theme;
 		} else {
-			// No stored preference, return current OS preference
-			return window.matchMedia('(prefers-color-scheme: dark)').matches
-				? 'dark'
-				: 'light';
+			// No stored preference:
+			// - if OS explicitly prefers light, use light
+			// - otherwise (dark or no preference), use dark
+			const prefersLight = window.matchMedia(
+				'(prefers-color-scheme: light)'
+			).matches;
+			return prefersLight ? 'light' : 'dark';
 		}
 	}
 
@@ -76,16 +86,19 @@ import { Icon } from 'astro-icon/components';
 
 	// Listen for changes in system preferences (only if user hasn't made a choice)
 	window
-		.matchMedia('(prefers-color-scheme: dark)')
+		.matchMedia('(prefers-color-scheme: light)')
 		.addEventListener('change', e => {
 			// Only update theme if user hasn't made a choice yet
 			if (!('theme' in localStorage)) {
-				document.documentElement.classList.toggle('dark', e.matches);
+				const element = document.documentElement;
+				const shouldUseDark = !e.matches;
+
+				element.classList.toggle('dark', shouldUseDark);
 
 				// Trigger event for ThemeDisplay update
 				window.dispatchEvent(
 					new CustomEvent('themeChanged', {
-						detail: { theme: e.matches ? 'dark' : 'light' },
+						detail: { theme: shouldUseDark ? 'dark' : 'light' },
 					})
 				);
 			}
