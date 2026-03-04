@@ -203,52 +203,52 @@ export default function GitHubContributions() {
 			<style>{`
 				/* GitHub Calendar Label Styling for Theme Support */
 				.github-calendar__graph-label {
-					fill: #000 !important;
-					color: #000 !important;
+					fill: var(--color-text-colour, #171717) !important;
+					color: var(--color-text-colour, #171717) !important;
 				}
 
 				/* Dark mode styles using html.dark selector */
 				html.dark .github-calendar__graph-label {
-					fill: #fff !important;
-					color: #fff !important;
+					fill: var(--color-text-colour-dark, #e8e8e8) !important;
+					color: var(--color-text-colour-dark, #e8e8e8) !important;
 				}
 
 				/* Ensure the styles work even if the component is rendered dynamically */
 				#github-contributions .github-calendar__graph-label {
-					fill: #000 !important;
-					color: #000 !important;
+					fill: var(--color-text-colour, #171717) !important;
+					color: var(--color-text-colour, #171717) !important;
 				}
 
 				html.dark #github-contributions .github-calendar__graph-label {
-					fill: #fff !important;
-					color: #fff !important;
+					fill: var(--color-text-colour-dark, #e8e8e8) !important;
+					color: var(--color-text-colour-dark, #e8e8e8) !important;
 				}
 
 				/* Additional specificity for SVG text elements */
 				#github-contributions svg text.github-calendar__graph-label {
-					fill: #000 !important;
+					fill: var(--color-text-colour, #171717) !important;
 				}
 
 				html.dark #github-contributions svg text.github-calendar__graph-label {
-					fill: #fff !important;
+					fill: var(--color-text-colour-dark, #e8e8e8) !important;
 				}
 
 				/* Force override for any inline styles from the component */
 				#github-contributions .github-calendar__graph-label[style*="fill"] {
-					fill: #000 !important;
+					fill: var(--color-text-colour, #171717) !important;
 				}
 
 				html.dark #github-contributions .github-calendar__graph-label[style*="fill"] {
-					fill: #fff !important;
+					fill: var(--color-text-colour-dark, #e8e8e8) !important;
 				}
 
 				/* Target all text elements within the calendar */
 				#github-contributions svg text {
-					fill: #000 !important;
+					fill: var(--color-text-colour, #171717) !important;
 				}
 
 				html.dark #github-contributions svg text {
-					fill: #fff !important;
+					fill: var(--color-text-colour-dark, #e8e8e8) !important;
 				}
 
         .github-calendar__graph-footer {
