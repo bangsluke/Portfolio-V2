@@ -82,9 +82,7 @@ const variantClasses = {
         font-normal 
         gap-3 
         max-md:gap-1 
-        text-blacktext 
-        dark:text-theme-50 
-        dark:hover:text-white 
+        text-white 
         px-8 
         max-sm:py-3 
         py-5 
@@ -93,12 +91,9 @@ const variantClasses = {
         text-2xl 
         max-xl:text-xl 
         max-sm:text-lg 
-        hover:bg-linear-to-l 
-        bg-linear-to-r 
-        from-light-theme-accent-200 
-        to-theme-200 
-        dark:from-light-theme-accent-500 
-        dark:to-theme-500
+        bg-[color:var(--color-light-theme-accent-500)]
+        dark:bg-[color:var(--color-light-theme-accent-600)]
+        hover:brightness-110
     `,
 	dark: `
         group 
@@ -129,6 +124,16 @@ const iconClasses = {
 // Combine base classes with variant-specific classes
 const buttonClasses = `${baseClasses} ${variantClasses[variant]}`;
 
+// Wrapper classes per variant (outer frame around the button)
+const wrapperBaseClasses = 'w-fit h-fit rounded-full';
+const wrapperVariantClasses: Record<ButtonVariant, string> = {
+	default:
+		'from-transparent via-light-theme-accent-300 to-transparent dark:from-transparent dark:via-theme-500 dark:to-transparent from-40% to-60% animate-rotate-border bg-conic/[from_var(--border-angle)] p-px hover:shadow-lg hover:shadow-theme-500/30',
+	big: 'border border-[color:var(--color-theme-400-rgba-03)] p-px',
+	dark:
+		'from-transparent via-light-theme-accent-300 to-transparent dark:from-transparent dark:via-theme-500 dark:to-transparent from-40% to-60% animate-rotate-border bg-conic/[from_var(--border-angle)] p-px hover:shadow-lg hover:shadow-theme-500/30',
+};
+
 // Generate aria-label if not provided
 const buttonAriaLabel = ariaLabel || (iconName ? `${text} ${iconName}` : text);
 
@@ -150,9 +155,7 @@ const loadingAriaLabel = isLoading
 	: buttonAriaLabel;
 ---
 
-<div
-	class="w-fit h-fit from-transparent via-light-theme-accent-300 to-transparent dark:from-transparent dark:via-theme-500 dark:to-transparent from-40% to-60% animate-rotate-border bg-conic/[from_var(--border-angle)] p-px hover:shadow-lg
-    hover:shadow-theme-500/30 rounded-full">
+<div class:list={[wrapperBaseClasses, wrapperVariantClasses[variant]]}>
 	<a
 		class:list={[buttonClasses, className]}
 		href={disabled ? '#' : link}

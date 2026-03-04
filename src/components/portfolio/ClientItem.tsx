@@ -6,17 +6,17 @@ interface CarouselItem {
 	logoURL?: string;
 }
 
-interface CustomerAndClientItemProps {
+interface ClientItemProps {
 	item: CarouselItem;
 	isSelected: boolean;
 	onClick: () => void;
 }
 
-export default function CustomerAndClientItem({
+export default function ClientItem({
 	item,
 	isSelected,
 	onClick,
-}: CustomerAndClientItemProps) {
+}: ClientItemProps) {
 	// Handle both companies (logoURL) and clients (imageURL or logoURL)
 	const backgroundImage = item.logoURL?.trim() ?? '';
 	const hasBackground = backgroundImage.length > 0;

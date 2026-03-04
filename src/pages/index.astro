@@ -1,11 +1,11 @@
 ---
-import CodingSection from '../components/portfolio/CodingSection.astro';
+import ClientCarousel from '../components/portfolio/ClientCarousel.astro';
 import Contact from '../components/portfolio/Contact.astro';
-import CustomerAndClientCarousel from '../components/portfolio/CustomerAndClientCarousel.astro';
 import EducationTimeline from '../components/portfolio/EducationTimeline.astro';
 import HeroIndex from '../components/portfolio/HeroIndex.astro';
 import ProjectsGallery from '../components/portfolio/ProjectsGallery.astro';
 import ReferenceCarousel from '../components/portfolio/ReferenceCarousel.astro';
+import TechnicalSection from '../components/portfolio/TechnicalSection.astro';
 import WorkExperienceTimeline from '../components/portfolio/WorkExperienceTimeline.astro';
 import Layout from '../layouts/Layout.astro';
 const pageTitle = 'bangsluke Portfolio';
@@ -18,10 +18,10 @@ const ogimage = {
 
 <Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
 	<HeroIndex />
-	<CodingSection />
+	<TechnicalSection />
 	<ProjectsGallery />
 	<WorkExperienceTimeline />
-	<CustomerAndClientCarousel />
+	<ClientCarousel />
 	<EducationTimeline />
 	<ReferenceCarousel />
 	<Contact />

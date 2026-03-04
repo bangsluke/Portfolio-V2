@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import CustomerAndClientCard from './CustomerAndClientCard.astro';
+import ClientCard from './ClientCard.astro';
 import SkillPill from '../../components/ui/SkillPill.astro';
 import Layout from '../../layouts/Layout.astro';
 import {
@@ -301,19 +301,19 @@ const ogimage = {
 									class="flex flex-wrap justify-center gap-6"
 									id="project-page-developed-for">
 									{linkedCompanies.map(company => (
-										<CustomerAndClientCard
+										<ClientCard
 											name={getCompanyName(company)}
 											logoURL={company.data.logoURL || undefined}
 										/>
 									))}
 									{linkedClients.map(client => (
-										<CustomerAndClientCard
+										<ClientCard
 											name={getCompanyName(client)}
 											logoURL={client.data.logoURL || undefined}
 										/>
 									))}
 									{linkedEducations.map(education => (
-										<CustomerAndClientCard
+										<ClientCard
 											name={getCompanyName(education)}
 											logoURL={education.data.logoURL || undefined}
 										/>
