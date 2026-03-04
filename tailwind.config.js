@@ -15,9 +15,9 @@ export default {
             maxWidth: 'none',
             color: 'inherit',
             a: {
-              color: '#3182ce',
+              color: 'var(--color-theme-500)',
               '&:hover': {
-                color: '#2c5aa0',
+                color: 'var(--color-theme-600)',
               },
             },
             h1: {

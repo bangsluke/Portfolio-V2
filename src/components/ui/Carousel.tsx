@@ -2,11 +2,11 @@ import { AutoPlay } from '@egjs/flicking-plugins';
 import '@egjs/flicking/dist/flicking.css';
 import Flicking from '@egjs/preact-flicking';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import CustomerAndClientItem from '../portfolio/CustomerAndClientItem';
+import ClientItem from '../portfolio/ClientItem';
 import ReferenceItem from '../portfolio/ReferenceItem';
 
 // Types for different carousel items
-interface CustomerClientItem {
+interface ClientItem {
 	id: string;
 	title: string;
 	dateString: string;
@@ -26,12 +26,12 @@ interface ReferenceItemData {
 }
 
 // Union type for all possible carousel data
-type CarouselData = CustomerClientItem[] | ReferenceItemData[] | string;
+type CarouselData = ClientItem[] | ReferenceItemData[] | string;
 
 // Props for the unified Carousel component
 interface CarouselProps {
 	items: CarouselData;
-	type: 'customer-client' | 'reference';
+	type: 'client' | 'reference';
 	autoPlayDuration?: number;
 	showArrows?: boolean;
 	className?: string;
@@ -47,12 +47,12 @@ export default function Carousel({
 	const [selectedItem, setSelectedItem] = useState<string | null>(null);
 	const flickingRef = useRef<Flicking | null>(null);
 	const [processedItems, setProcessedItems] = useState<
-		(CustomerClientItem | ReferenceItemData)[]
+		(ClientItem | ReferenceItemData)[]
 	>([]);
 
 	// Process items based on type
 	useEffect(() => {
-		if (type === 'customer-client' && typeof items === 'string') {
+		if (type === 'client' && typeof items === 'string') {
 			try {
 				const parsedItems = JSON.parse(items);
 				// Transform the parsed items to match CarouselItem interface
@@ -102,7 +102,7 @@ export default function Carousel({
 				setProcessedItems(transformed);
 			} catch (error) {
 				// eslint-disable-next-line no-console
-				console.error('Error parsing customer-client items:', error);
+				console.error('Error parsing client items:', error);
 				setProcessedItems([]);
 			}
 		} else {
@@ -135,7 +135,7 @@ export default function Carousel({
 		// Duplicate items to reach minimum of 3 for circular mode
 		// Repeat the pattern enough times to create seamless looping
 		const repetitions = Math.ceil(3 / processedItems.length);
-		const duplicated: (CustomerClientItem | ReferenceItemData)[] = [];
+		const duplicated: (ClientItem | ReferenceItemData)[] = [];
 		for (let i = 0; i < repetitions; i++) {
 			duplicated.push(...processedItems);
 		}
@@ -158,7 +158,7 @@ export default function Carousel({
 		// Snap to the clicked item
 		if (flickingRef.current) {
 			const itemIndex = itemsForCircular.findIndex(
-				(item: CustomerClientItem | ReferenceItemData) => item.id === itemId
+				(item: ClientItem | ReferenceItemData) => item.id === itemId
 			);
 			if (itemIndex !== -1) {
 				flickingRef.current.moveTo(itemIndex, 0);
@@ -191,15 +191,12 @@ export default function Carousel({
 	}, [itemsForCircular.length]);
 
 	// Render item based on type
-	const renderItem = (
-		item: CustomerClientItem | ReferenceItemData,
-		index: number
-	) => {
-		if (type === 'customer-client') {
+	const renderItem = (item: ClientItem | ReferenceItemData, index: number) => {
+		if (type === 'client') {
 			return (
 				<div key={`${item.id}-${index}`} className="flicking-panel">
-					<CustomerAndClientItem
-						item={item as CustomerClientItem & { type: 'company' | 'client' }}
+					<ClientItem
+						item={item as ClientItem & { type: 'company' | 'client' }}
 						isSelected={selectedItem === item.id}
 						onClick={() => handleItemClick(item.id)}
 					/>

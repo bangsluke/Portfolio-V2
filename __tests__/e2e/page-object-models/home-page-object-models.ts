@@ -28,8 +28,8 @@ export class HomePageObjects {
 	public readonly projectsList: Locator;
 	public readonly workExperienceSection: Locator;
 	public readonly workExperienceList: Locator;
-	public readonly customersAndClientsSection: Locator;
-	public readonly customersAndClientsList: Locator;
+	public readonly clientsSection: Locator;
+	public readonly clientsList: Locator;
 	public readonly educationSection: Locator;
 	public readonly educationTimeline: Locator;
 	public readonly referencesSection: Locator;
@@ -61,7 +61,9 @@ export class HomePageObjects {
 		this.skillsToggleButton = page.getByTestId('skills-toggle-btn');
 		this.skillsTableSection = page.getByTestId('skills-table-view');
 		this.skillsBubblesView = page.getByTestId('skills-bubbles-view');
-		this.skillsSearchModal = page.locator('[role="dialog"][aria-label="Search skills"]');
+		this.skillsSearchModal = page.locator(
+			'[role="dialog"][aria-label="Search skills"]'
+		);
 		this.skillsSearchInput = page.getByPlaceholder('Search skills');
 		this.githubContributionsSection = page.getByTestId(
 			'github-contributions-section'
@@ -81,12 +83,8 @@ export class HomePageObjects {
 		this.projectsList = page.getByTestId('projects-list');
 		this.workExperienceSection = page.getByTestId('work-experience-section');
 		this.workExperienceList = page.getByTestId('work-experience-list');
-		this.customersAndClientsSection = page.getByTestId(
-			'customers-and-clients-section'
-		);
-		this.customersAndClientsList = page.getByTestId(
-			'customers-and-clients-list'
-		);
+		this.clientsSection = page.getByTestId('clients-section');
+		this.clientsList = page.getByTestId('clients-list');
 		this.educationSection = page.getByTestId('education-section');
 		this.educationTimeline = page.getByTestId('education-timeline');
 		this.downloadCVButton = page.getByRole('button', {

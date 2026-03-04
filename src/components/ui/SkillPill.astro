@@ -7,7 +7,7 @@ import { getProjectCount } from '../../utils/project-count-utils';
 interface Props {
 	skillName: string;
 	size?: 'xs' | 'sm' | 'md' | 'lg';
-	variant?: 'default' | 'dark' | 'theme';
+	variant?: 'default' | 'dark' | 'theme' | 'project';
 	className?: string;
 	projects?: any[];
 	disableTooltip?: boolean;
@@ -157,11 +157,17 @@ const variantClasses = {
 	dark: 'dark:text-theme-50 text-blacktext bg-gray-800 border border-gray-700 hover:bg-gray-700',
 	theme:
 		'dark:bg-zinc-800 bg-white text-blacktext dark:text-theme-50  border border-theme-500 hover:bg-theme-500 dark:hover:bg-theme-600',
+	project:
+		'bg-[color:var(--color-theme-800)] text-[color:var(--color-theme-300)] border border-[color:var(--color-theme-700)] hover:bg-[color:var(--color-theme-700)]',
 };
 
 const baseClasses =
 	'flex items-center justify-center rounded-full font-medium transition-colors duration-200 cursor-help';
 const containerClasses = `${baseClasses} ${sizeClasses[size].container} ${variantClasses[variant]} ${className}`;
+const iconFilterClassesForProject =
+	variant === 'project'
+		? 'filter grayscale opacity-80 group-hover/skill:grayscale-0 group-hover/skill:opacity-100'
+		: '';
 ---
 
 <div class="relative group/skill skill-pill">
@@ -177,11 +183,11 @@ const containerClasses = `${baseClasses} ${sizeClasses[size].container} ${varian
 				<img
 					src={`/icons/${finalIconName}.svg`}
 					alt={`${cleanedSkill.displayName} icon`}
-					class={`${sizeClasses[size].icon} text-gray-600`}
+					class={`${sizeClasses[size].icon} text-gray-600 ${iconFilterClassesForProject}`}
 				/>
 			) : (
 				<div
-					class={`${sizeClasses[size].icon} bg-gray-300 rounded-full flex items-center justify-center text-gray-500 text-xs min-h-full`}>
+					class={`${sizeClasses[size].icon} bg-gray-300 rounded-full flex items-center justify-center text-gray-500 text-xs min-h-full ${iconFilterClassesForProject}`}>
 					?
 				</div>
 			)

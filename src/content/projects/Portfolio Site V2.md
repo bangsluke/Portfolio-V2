@@ -7,8 +7,8 @@ tags:
   - portfolio
   - project/parked
 created: 2025-02-02T19:03:00
-modified: 2026-02-27T11:31:33+00:00
-viewCount: 11
+modified: 2026-03-04T12:23:31+00:00
+viewCount: 12
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -379,7 +379,7 @@ SORT dateStart ASC
 
 ### Portfolio Site Text Content
 
-> Portfolio colour scheme primary theme value: \#8962E8
+> Portfolio colour scheme primary theme value: \#8962E8 TBC
 
 #### Portfolio Config Options
 
@@ -392,11 +392,15 @@ SORT dateStart ASC
 
 #### About Me Short
 
-After 11 years in automotive engineering, I've pivoted to my real passion: software. I'm a Technical Product Owner with 3 years leading internal software development, able to effectively communicate with both developers and stakeholders. Looking for TPO or Delivery Lead roles where I can help teams ship great products with purpose and precision.
+11 years in engineering, including 3 leading internal software development. I bridge the gap between technical complexity and business value, translating stakeholder needs into production-ready solutions. Now seeking Product Owner, Delivery Lead, or Business Analyst roles where I can help teams ship high-impact products with precision.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ##### Archived About Me Short
+
+**3rd Draft
+
+> After 11 years in automotive engineering, I've pivoted to my real passion: software. I'm a Technical Product Owner with 3 years leading internal software development, able to effectively communicate with both developers and stakeholders. Looking for TPO or Delivery Lead roles where I can help teams ship great products with purpose and precision.
 
 **2nd Draft**
 
