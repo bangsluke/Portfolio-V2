@@ -141,9 +141,21 @@ const displayedProjects = processedProjects.slice(0, maxProjectsDisplay);
 					<div class="flex justify-center mt-12">
 						<a
 							href="/projects"
-							class="bg-theme-400 hover:bg-theme-500 text-black font-bold px-8 py-3 rounded-full transition-all duration-300 text-lg"
+							class="inline-flex items-center px-6 py-3 bg-theme-400 hover:bg-theme-500 text-black font-semibold text-sm md:text-base rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
 							data-umami-event="See more projects">
 							See more projects
+							<svg
+								class="w-5 h-5 ml-2"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M17 8l4 4m0 0l-4 4m4-4H3"
+								/>
+							</svg>
 						</a>
 					</div>
 				)
