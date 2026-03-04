@@ -15,7 +15,7 @@ export const testData = {
 	mainPageUrl: baseUrl,
 	email: 'bangsluke@gmail.com',
 	description:
-		'Technical Product Owner with 3 years leading internal software development, able to effectively communicate with both developers and stakeholders',
+		'11 years in engineering, including 3 leading internal software development',
 	skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js'],
 	downloadCVUrl: `Luke-Bangs-CV.pdf`,
 	sectionIds: {
