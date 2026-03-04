@@ -27,7 +27,7 @@ This file tracks all automatic changes made to the project.
    - Added `'language'` back to `SKILLS_FILTER_OPTIONS` array
    - This was needed for the language filter to work properly
 
-3. **Fixed filtering logic in CodingSection.astro**
+3. **Fixed filtering logic in TechnicalSection.astro**
    - Updated dropdown labels to correctly show "Frameworks & Libraries" and "Languages" as separate options
    - Fixed display text logic to show "Languages" when only language filter is selected
 

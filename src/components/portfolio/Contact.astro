@@ -28,22 +28,20 @@ if (!staticData) {
 				<div class="flex gap-4 max-sm:flex-row max-sm:justify-center">
 					<Button
 						variant="big"
-						link={`mailto:${staticData.data.email}`}
-						text={staticData.data.contactSectionButtonText}
-						iconName={staticData.data.emailIconName}
-						class="!py-4 !text-lg max-xl:!text-base max-sm:!text-sm transition-all duration-500 hover:scale-110"
-						data-testid="contact-me-button-bottom-section"
-						data-umami-event="Contact email click"
-					/>
-					<Button
-						variant="dark"
 						link="/Luke-Bangs-CV.pdf"
 						text="Download CV"
 						iconName="document"
 						isExternal={false}
 						ariaLabel="Download CV"
-						class="!py-4 !text-lg max-xl:!text-base max-sm:!text-sm transition-all duration-500 hover:scale-110"
 						data-umami-event="Download CV"
+					/>
+					<Button
+						variant="dark"
+						link={`mailto:${staticData.data.email}`}
+						text={staticData.data.contactSectionButtonText}
+						iconName={staticData.data.emailIconName}
+						data-testid="contact-me-button-bottom-section"
+						data-umami-event="Contact email click"
 					/>
 				</div>
 			</div>

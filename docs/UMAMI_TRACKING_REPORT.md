@@ -22,7 +22,7 @@ All of these events appear under your website’s **Events** in Umami. Custom pr
 | “Contact Me” (email) clicks | Contact email click | — | `Contact.astro` |
 | “About Me” reads | (Page view) | path = `/about-me` | Umami pageview; no extra code |
 | Skills search used | Skills search opened, Skills search query, Skills search result click | query, skill, etc. | `SkillsSearchModal.tsx` |
-| Skills view toggle | Skills view toggle | view = grid \| list | `CodingSection.astro` |
+| Skills view toggle | Skills view toggle | view = grid \| list | `TechnicalSection.astro` |
 | Most clicked project (card) | Project click | slug = project slug | `ProjectCard.astro` |
 | “See more projects” | See more projects | — | `ProjectsGallery.astro` |
 | “See more items” (experience) | See more items | section = `experience` | `WorkExperienceTimeline.astro` |

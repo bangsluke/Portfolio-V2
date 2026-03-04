@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import CustomerAndClientCard from './CustomerAndClientCard.astro';
+import ClientCard from '../../components/portfolio/ClientItem';
 import SkillPill from '../../components/ui/SkillPill.astro';
 import Layout from '../../layouts/Layout.astro';
 import {
@@ -254,7 +254,7 @@ const ogimage = {
 				<section class="px-8 mb-6 md:mb-12 pb-6 md:pb-0">
 					<div class="max-w-4xl mx-auto">
 						<h2 class="text-3xl font-bold mb-6 text-colour">Description</h2>
-						<div class="bg-white dark:bg-zinc-900 rounded-2xl p-8 shadow-lg">
+						<div class="bg-white dark:bg-theme-900 rounded-2xl p-8 shadow-lg">
 							<div
 								class="text-lg text-colour leading-relaxed processed-content"
 								set:html={processedLongDescription}
@@ -272,7 +272,7 @@ const ogimage = {
 				<section class="px-8 mb-6 md:mb-12 pb-6 md:pb-0">
 					<div class="max-w-4xl mx-auto">
 						<h2 class="text-3xl font-bold mb-6 text-colour">Lessons Learned</h2>
-						<div class="bg-white dark:bg-zinc-900 rounded-2xl p-8 shadow-lg">
+						<div class="bg-white dark:bg-theme-900 rounded-2xl p-8 shadow-lg">
 							<div
 								class="text-lg text-colour leading-relaxed processed-content"
 								set:html={processedLessonsLearned}
@@ -301,21 +301,42 @@ const ogimage = {
 									class="flex flex-wrap justify-center gap-6"
 									id="project-page-developed-for">
 									{linkedCompanies.map(company => (
-										<CustomerAndClientCard
-											name={getCompanyName(company)}
-											logoURL={company.data.logoURL || undefined}
+										<ClientCard
+											item={{
+												id: company.id,
+												title: getCompanyName(company),
+												dateString: '',
+												type: 'company',
+												logoURL: company.data.logoURL || undefined,
+											}}
+											isSelected={false}
+											onClick={() => {}}
 										/>
 									))}
 									{linkedClients.map(client => (
-										<CustomerAndClientCard
-											name={getCompanyName(client)}
-											logoURL={client.data.logoURL || undefined}
+										<ClientCard
+											item={{
+												id: client.id,
+												title: getCompanyName(client),
+												dateString: '',
+												type: 'client',
+												logoURL: client.data.logoURL || undefined,
+											}}
+											isSelected={false}
+											onClick={() => {}}
 										/>
 									))}
 									{linkedEducations.map(education => (
-										<CustomerAndClientCard
-											name={getCompanyName(education)}
-											logoURL={education.data.logoURL || undefined}
+										<ClientCard
+											item={{
+												id: education.id,
+												title: getCompanyName(education),
+												dateString: '',
+												type: 'company',
+												logoURL: education.data.logoURL || undefined,
+											}}
+											isSelected={false}
+											onClick={() => {}}
 										/>
 									))}
 								</div>

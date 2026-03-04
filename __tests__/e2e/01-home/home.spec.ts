@@ -252,9 +252,9 @@ test.describe('Home Page Tests', () => {
 		).toBeVisible();
 	});
 
-	// Coding Skills section tests
+	// Technical Skills section tests
 	// Checks for several skills defined in the test data
-	test('1.4.1. Coding Skills section, Skills section should show each skill', async ({
+	test('1.4.1. Technical Skills section, Skills section should show each skill', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
@@ -581,8 +581,8 @@ test.describe('Home Page Tests', () => {
 		await expect(page.url()).toContain(testData.workExperiencePageUrl);
 	});
 
-	// Customers and Clients section tests
-	test('1.7.1. Customers and Clients section should be visible and show a carousel of my customers and clients, including showing images, names and dates', async ({
+	// Clients section tests
+	test('1.7.1. Clients section should be visible and show a carousel of my clients, including showing images, names and dates', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
@@ -590,30 +590,26 @@ test.describe('Home Page Tests', () => {
 			.locator(`#${testData.sectionIds.clients}`)
 			.scrollIntoViewIfNeeded();
 		await page.waitForTimeout(200);
-		await expect(homePageObjects.customersAndClientsSection).toBeVisible();
-		await expect(homePageObjects.customersAndClientsList).toBeVisible();
+		await expect(homePageObjects.clientsSection).toBeVisible();
+		await expect(homePageObjects.clientsList).toBeVisible();
 
-		// Scope to the example customer and client card (div that contains the example customer and client name)
-		const exampleCustomerAndClientCard = homePageObjects.customersAndClientsList
+		// Scope to the example client card (div that contains the example client name)
+		const exampleClientCard = homePageObjects.clientsList
 			.locator('div')
-			.filter({ has: page.getByText(testData.exampleCustomerAndClientName) })
+			.filter({ has: page.getByText(testData.exampleClientName) })
 			.first();
 
-		// Check that the customers and clients list contains the example customer and client
+		// Check that the clients list contains the example client
 		await expect(
-			exampleCustomerAndClientCard.getByText(
-				testData.exampleCustomerAndClientName
-			)
+			exampleClientCard.getByText(testData.exampleClientName)
 		).toBeVisible();
-		// Check that the customers and clients list contains the example customer and client date range
+		// Check that the clients list contains the example client date range
 		await expect(
-			exampleCustomerAndClientCard.getByText(
-				testData.exampleCustomerAndClientDateRange
-			)
+			exampleClientCard.getByText(testData.exampleClientDateRange)
 		).toBeVisible();
 	});
 
-	test('1.7.2. Customers and Clients carousel arrows should change the visible item', async ({
+	test('1.7.2. Clients carousel arrows should change the visible item', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
@@ -621,10 +617,10 @@ test.describe('Home Page Tests', () => {
 			.locator(`#${testData.sectionIds.clients}`)
 			.scrollIntoViewIfNeeded();
 		await page.waitForTimeout(200);
-		await expect(homePageObjects.customersAndClientsSection).toBeVisible();
-		await expect(homePageObjects.customersAndClientsList).toBeVisible();
+		await expect(homePageObjects.clientsSection).toBeVisible();
+		await expect(homePageObjects.clientsList).toBeVisible();
 
-		const carousel = homePageObjects.customersAndClientsList;
+		const carousel = homePageObjects.clientsList;
 		const firstPanel = carousel.locator('.flicking-panel').first();
 		const initialText = (await firstPanel.textContent()) || '';
 

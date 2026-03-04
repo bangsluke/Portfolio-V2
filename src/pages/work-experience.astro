@@ -15,7 +15,7 @@ const clients = await getCollection('clients');
 // Process company data for each role
 const rolesWithCompanyData = await Promise.all(
 	roles.map(async role => {
-		let companyLogoURL = null;
+		let companyLogoURL: string | null = null;
 		let processedLinkedCompany = '';
 		let allCompanyLogos: { logoURL: string | null; name: string }[] = [];
 
@@ -155,7 +155,7 @@ const ogimage = {
 						sortedVoluntaryRoles.length > 0 && (
 							<a
 								href="#voluntary-roles"
-								class="inline-flex items-center px-4 py-2 bg-white/20 hover:bg-white/30 dark:text-white font-medium rounded-lg transition-colors duration-300">
+								class="inline-flex items-center px-4 py-2 bg-theme-400 hover:bg-theme-500 dark:text-white font-medium rounded-lg transition-colors duration-300">
 								<svg
 									class="w-4 h-4 mr-2"
 									fill="none"
@@ -218,7 +218,7 @@ const ogimage = {
 									<Icon class="text-3xl text-theme-400" name="people" />
 									<Heading text="Voluntary" textGradient="Roles" level={2} />
 								</div>
-								<p class="text-zinc-600 dark:text-zinc-400 text-lg max-w-2xl mx-auto">
+								<p class="dark:text-white/90 text-lg max-w-2xl mx-auto">
 									Roles and positions I've taken on voluntarily to support
 									organizations and communities
 								</p>

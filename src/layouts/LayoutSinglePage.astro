@@ -40,19 +40,26 @@ const SEO = {
 				try {
 					if (typeof window === 'undefined') return;
 
-					// Check if user has already made a choice (stored in localStorage)
+					const element = document.documentElement;
+
+					// Respect an existing explicit user choice first
 					if ('theme' in localStorage) {
-						// User has made a choice before, use their stored preference
-						document.documentElement.classList.toggle(
-							'dark',
-							localStorage.theme === 'dark'
-						);
+						const storedTheme = localStorage.theme;
+
+						if (storedTheme === 'light') {
+							element.classList.remove('dark');
+						} else if (storedTheme === 'dark') {
+							element.classList.add('dark');
+						}
 					} else {
-						// First time visit - use OS preference but don't store it
-						const prefersDark = window.matchMedia(
-							'(prefers-color-scheme: dark)'
+						// No stored choice: only honour an explicit light preference,
+						// otherwise default to dark
+						const prefersLight = window.matchMedia(
+							'(prefers-color-scheme: light)'
 						).matches;
-						document.documentElement.classList.toggle('dark', prefersDark);
+						const shouldUseDark = !prefersLight;
+
+						element.classList.toggle('dark', shouldUseDark);
 					}
 				} catch (error) {
 					console.error('Theme flash prevention error:', error);
@@ -113,7 +120,7 @@ const SEO = {
 		<div class="blur-circle"></div>
 		<div
 			style="background: linear-gradient(45deg, var(--color-theme-500-rgba-001) 10.79%, var(--color-theme-500-rgba-003) 40.92%, var(--color-theme-500-rgba-001) 90.35%)"
-			class="fixed top-0 left-0 w-full h-screen pointer-events-none -z-10">
+			class="page-background-gradient fixed top-0 left-0 w-full h-screen pointer-events-none -z-10">
 		</div>
 		<Header />
 

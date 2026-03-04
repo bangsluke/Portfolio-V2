@@ -11,52 +11,65 @@
 	--font-opensans: 'Open Sans', sans-serif;
 
 	--color-blacktext: #171717;
-	--color-dark-background: #0e0e11;
+	--color-dark-background: #0d0f14;
 
-	--color-text-colour: #171717;
-	--color-text-colour-dark: #e8e8e8;
+	--color-text-colour: #1e1e2c;
+	--color-text-colour-dark: #e8ecf2;
 
-	--color-theme-50: #f5f3ff;
-	--color-theme-100: #ede9fe;
-	--color-theme-200: #ddd6fe;
-	--color-theme-300: #c4b5fd;
-	--color-theme-400: #a78bfa;
-	--color-theme-500: #8962e8;
-	--color-theme-600: #7c3aed;
-	--color-theme-700: #6d28d9;
-	--color-theme-800: #5b21b6;
-	--color-theme-900: #4c1d95;
-	--color-theme-950: #2e1065;
+	/* Slate Blue — primary theme scale */
+	/* Light end shifted cooler (blue-white) to fix washed-out light mode */
+	--color-theme-50: #f4f6f8;
+	--color-theme-100: #e8edf2;
+	--color-theme-200: #ebf0f5;
+	--color-theme-300: #aabdd4;
+	--color-theme-400: #7096b8;
+	--color-theme-500: #4a7a9b;
+	--color-theme-600: #3a6485;
+	--color-theme-700: #2c4a6e;
+	--color-theme-800: #1e3352;
+	--color-theme-900: #132238;
+	--color-theme-950: #0a1524;
 
-	--color-light-theme-accent-50: #faf5ff;
-	--color-light-theme-accent-100: #f3e8ff;
-	--color-light-theme-accent-200: #e9d5ff;
-	--color-light-theme-accent-300: #d8b4fe;
-	--color-light-theme-accent-400: #c084fc;
-	--color-light-theme-accent-500: #a855f7;
-	--color-light-theme-accent-600: #9333ea;
-	--color-light-theme-accent-700: #7c3aed;
-	--color-light-theme-accent-800: #6b21a8;
-	--color-light-theme-accent-900: #581c87;
-	--color-light-theme-accent-950: #3b0764;
+	/* Amber/Gold — accent scale */
+	/* 500 kept as primary CTA colour — use with dark text in light mode */
+	--color-light-theme-accent-50: #fef9ee;
+	--color-light-theme-accent-100: #fdf0d0;
+	--color-light-theme-accent-200: #faded0;
+	--color-light-theme-accent-300: #f5c97a;
+	--color-light-theme-accent-400: #f0b84a;
+	--color-light-theme-accent-500: #e8a838;
+	--color-light-theme-accent-600: #d4922a;
+	--color-light-theme-accent-700: #b5751d;
+	--color-light-theme-accent-800: #8f5814;
+	--color-light-theme-accent-900: #6b3f0d;
+	--color-light-theme-accent-950: #3d2006;
 
-	--color-theme-300-rgba-05: rgba(196, 181, 253, 0.5);
-	--color-theme-400-rgba-03: rgba(167, 139, 250, 0.3);
-	--color-theme-400-rgba-02: rgba(167, 139, 250, 0.2);
-	--color-theme-400-rgba-01: rgba(167, 139, 250, 0.1);
-	--color-theme-500-rgba-04: rgba(137, 98, 232, 0.4);
-	--color-theme-500-rgba-02: rgba(137, 98, 232, 0.2);
-	--color-theme-500-rgba-01: rgba(137, 98, 232, 0.1);
-	--color-theme-500-rgba-003: rgba(137, 98, 232, 0.03);
-	--color-theme-500-rgba-001: rgba(137, 98, 232, 0.01);
-	--color-theme-950-rgba-02: rgba(46, 16, 101, 0.2);
-	--color-theme-950-rgba-095: rgba(46, 16, 101, 0.95);
-	--color-theme-300-rgba-03: rgba(196, 181, 253, 0.3);
-	--color-theme-300-rgba-025: rgba(196, 181, 253, 0.25);
-	--color-theme-400-rgba-029: rgba(167, 139, 250, 0.29);
-	--color-theme-400-rgba-04: rgba(167, 139, 250, 0.4);
+	/* Slate Blue rgba variants */
+	--color-theme-300-rgba-05: rgba(170, 189, 212, 0.5);
+	--color-theme-400-rgba-03: rgba(112, 150, 184, 0.3);
+	--color-theme-400-rgba-02: rgba(112, 150, 184, 0.2);
+	--color-theme-400-rgba-01: rgba(112, 150, 184, 0.1);
+	--color-theme-500-rgba-04: rgba(74, 122, 155, 0.4);
+	--color-theme-500-rgba-02: rgba(74, 122, 155, 0.2);
+	--color-theme-500-rgba-01: rgba(74, 122, 155, 0.1);
+	--color-theme-500-rgba-003: rgba(74, 122, 155, 0.03);
+	--color-theme-500-rgba-001: rgba(74, 122, 155, 0.01);
+	--color-theme-950-rgba-02: rgba(10, 21, 36, 0.2);
+	--color-theme-950-rgba-095: rgba(10, 21, 36, 0.95);
+	--color-theme-300-rgba-03: rgba(170, 189, 212, 0.3);
+	--color-theme-300-rgba-025: rgba(170, 189, 212, 0.25);
+	--color-theme-400-rgba-029: rgba(112, 150, 184, 0.29);
+	--color-theme-400-rgba-04: rgba(112, 150, 184, 0.4);
 
-	--color-footer-logo-glow: #50fd8f25;
+	/* Light mode specific surface colours */
+	/* Use these for card backgrounds and page surfaces in light mode */
+	--color-surface-light: #ffffff;
+	--color-surface-light-raised: #f4f6f8;
+	--color-surface-light-border: #d6dde6;
+
+	/* CTA button text colour — use dark text on amber in light mode */
+	--color-cta-text-light: #1e1e2c;
+	--color-cta-text-dark: #ffffff;
 
 	--animate-rotate: rotate 10s linear infinite;
 	--animate-rotate-border: border-rotate 3s linear infinite;
@@ -73,12 +86,26 @@
 	--carousel-item-height-mobile: 240px;
 }
 
+/* ─── Base text colours ─────────────────────────────────────────────────── */
+
 .text-colour {
-	color: var(--color-text-colour, #171717);
+	color: var(--color-text-colour, #1e1e2c);
 }
 
 .dark .text-colour {
-	color: var(--color-text-colour-dark, #e8e8e8);
+	color: var(--color-text-colour-dark, #e8ecf2);
+}
+
+/* Light mode fixes */
+
+html:not(.dark) body {
+	background-color: #f7f8fa; /* very slightly blue-grey, not pure white */
+}
+
+/* Override for light mode specifically */
+:root:not(.dark) .section-alt,
+html:not(.dark) .section-alt {
+	background-color: rgba(74, 122, 155, 0.07);
 }
 
 @property --border-angle {
@@ -312,7 +339,7 @@ a.inline-block.leading-5.pl-12 {
 }
 
 .markdown a:hover {
-	color: var(--color-theme-400);
+	color: var(--color-theme-600);
 }
 
 .processed-content {
@@ -320,30 +347,30 @@ a.inline-block.leading-5.pl-12 {
 }
 
 .processed-content a {
-	color: var(--color-theme-400) !important;
+	color: var(--color-theme-600) !important;
 	text-decoration: underline;
 	transition: all 0.3s ease;
 }
 
 .processed-content a:hover {
-	color: var(--color-theme-300) !important;
+	color: var(--color-theme-500) !important;
 }
 
 .dark .processed-content a {
-	color: var(--color-theme-400) !important;
+	color: var(--color-theme-600) !important;
 }
 
 .dark .processed-content a:hover {
-	color: var(--color-theme-300) !important;
+	color: var(--color-theme-500) !important;
 }
 
 .theme-link {
-	color: var(--color-theme-400) !important;
+	color: var(--color-theme-600) !important;
 	transition: all 0.3s ease;
 }
 
 .theme-link:hover {
-	color: var(--color-theme-300) !important;
+	color: var(--color-theme-500) !important;
 }
 
 a.theme-link {
@@ -351,7 +378,7 @@ a.theme-link {
 }
 
 a.theme-link:hover {
-	color: var(--color-theme-300) !important;
+	color: var(--color-theme-500) !important;
 }
 
 .dark .theme-link {
@@ -371,7 +398,7 @@ a.theme-link:hover {
 }
 
 .processed-content .theme-link {
-	color: var(--color-theme-400) !important;
+	color: var(--color-theme-600) !important;
 }
 
 .processed-content a.theme-link {
@@ -379,7 +406,7 @@ a.theme-link:hover {
 }
 
 .processed-content .theme-link:hover {
-	color: var(--color-theme-300) !important;
+	color: var(--color-theme-500) !important;
 }
 
 .processed-content a.theme-link:hover {
@@ -719,7 +746,7 @@ a.theme-link:hover {
 
 .blur-circle::after {
 	content: '';
-	display: block;
+	display: none;
 	width: 400px;
 	height: 400px;
 	background: var(--color-theme-400-rgba-04);
@@ -742,6 +769,7 @@ a.theme-link:hover {
 	filter: blur(150px);
 	overflow: hidden;
 	z-index: -2;
+	display: none;
 }
 
 .dark .blur-circle::after {
@@ -756,6 +784,30 @@ a.theme-link:hover {
 	z-index: -2;
 	border-radius: 50%;
 	filter: blur(10px);
+}
+
+/* Blur circle only in dark mode; keep it off in light mode */
+html:not(.dark) .blur-circle,
+html:not(.dark) .blur-circle::after {
+	display: none !important;
+	visibility: hidden !important;
+	opacity: 0 !important;
+	height: 0 !important;
+	width: 0 !important;
+	max-height: 0 !important;
+	max-width: 0 !important;
+	overflow: hidden !important;
+	content: none !important;
+	pointer-events: none !important;
+}
+
+/* Full-page gradient background: dark only (avoid faint glow in light mode) */
+html:not(.dark) .page-background-gradient {
+	display: none !important;
+}
+
+html:not(.dark) .global-element {
+	background-color: var(--color-theme-600);
 }
 
 .global-element {
@@ -801,6 +853,10 @@ a.theme-link:hover {
 
 .global-button {
 	cursor: pointer;
+}
+
+html:not(.dark) .global-clear-button {
+	background-color: var(--color-theme-800);
 }
 
 .global-clear-button {
@@ -1047,6 +1103,13 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 	transform: scale(1.05);
 }
 
+/* Card surface for light mode — add visible border and slight background */
+html:not(.dark) .carousel-item {
+	border: 1px solid var(--color-surface-light-border);
+	background-color: var(--color-surface-light);
+	box-shadow: 0 2px 8px rgba(30, 51, 82, 0.08);
+}
+
 .flicking-viewport {
 	width: 100vw;
 	height: calc(var(--carousel-height, 320px) + 10px);
@@ -1283,12 +1346,12 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 		min-height: 0;
 	}
 
-	/* Remove scroll bar from coding section on mobile */
-	#coding-section-layout {
+	/* Remove scroll bar from technical section on mobile */
+	#technical-section-layout {
 		overflow: hidden;
 	}
 
-	#coding-section-layout > div {
+	#technical-section-layout > div {
 		overflow: hidden;
 	}
 
@@ -1442,12 +1505,12 @@ input[type='date']::-moz-calendar-picker-indicator:hover {
 		min-height: 0;
 	}
 
-	/* Remove scroll bar from coding section on very small screens */
-	#coding-section-layout {
+	/* Remove scroll bar from technical section on very small screens */
+	#technical-section-layout {
 		overflow: hidden;
 	}
 
-	#coding-section-layout > div {
+	#technical-section-layout > div {
 		overflow: hidden;
 	}
 

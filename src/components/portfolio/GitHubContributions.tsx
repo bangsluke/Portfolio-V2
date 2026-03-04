@@ -84,6 +84,15 @@ export default function GitHubContributions() {
 						title="Click to view GitHub profile">
 						<GitHubCalendar
 							username={username}
+							options={{
+								contributionColorArray: [
+									'#ffffff',
+									'var(--color-theme-300)',
+									'var(--color-theme-500)',
+									'var(--color-theme-700)',
+									'var(--color-theme-800)',
+								],
+							}}
 							onError={(err: unknown) => {
 								// eslint-disable-next-line no-console
 								console.error('GitHub Calendar error:', err);
@@ -128,7 +137,7 @@ export default function GitHubContributions() {
 						href={githubUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-center p-3 bg-gray-100 dark:bg-white/10 rounded-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer">
+						class="text-center p-3 bg-theme-50 dark:bg-[color:var(--color-theme-800)] border border-theme-600/40 dark:border-theme-600 rounded-lg hover:bg-theme-100 dark:hover:bg-[color:var(--color-theme-700)] transition-colors cursor-pointer">
 						<div class="flex flex-col items-center justify-center h-full">
 							<div class="text-xs text-gray-600 dark:text-white/70 mb-1">
 								Active
@@ -143,7 +152,7 @@ export default function GitHubContributions() {
 						target="_blank"
 						rel="noopener noreferrer"
 						data-testid="github-contributions-dev-to-link"
-						class="text-center p-3 bg-gray-100 dark:bg-white/10 rounded-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer">
+						class="text-center p-3 bg-theme-50 dark:bg-[color:var(--color-theme-800)] border border-theme-600/40 dark:border-theme-600 rounded-lg hover:bg-theme-100 dark:hover:bg-[color:var(--color-theme-700)] transition-colors cursor-pointer">
 						<div class="flex flex-col items-center justify-center h-full">
 							<img
 								src="/icons/dev.svg"
@@ -163,7 +172,7 @@ export default function GitHubContributions() {
 						target="_blank"
 						rel="noopener noreferrer"
 						data-testid="github-contributions-medium-link"
-						class="text-center p-3 bg-gray-100 dark:bg-white/10 rounded-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer">
+						class="text-center p-3 bg-theme-50 dark:bg-[color:var(--color-theme-800)] border border-theme-600/40 dark:border-theme-600 rounded-lg hover:bg-theme-100 dark:hover:bg-[color:var(--color-theme-700)] transition-colors cursor-pointer">
 						<div class="flex flex-col items-center justify-center h-full">
 							<img
 								src="/icons/medium.svg"

@@ -4,13 +4,13 @@ tags:
   - role
   - portfolio
 created: 2026-01-14 08:41
-modified: 2026-01-14T08:46:55+00:00
-viewCount: 1
+modified: 2026-03-04T16:39:31+00:00
+viewCount: 3
 dateStart: 2024-08-01
 dateEnd: 2025-09-30
 linkedCompany:
-  - "[[RLE UK]]"
-shortRoleDescription: "A year long sabbatical to travel the world, visiting 19 countries across 4 continents."
+  - "[[RLE International]]"
+shortRoleDescription: "A year long sabbatical to travel the world, visiting 19 countries across 4 continents, experiencing a wide range of cultures and seeing incredible places with my wife."
 fullRoleDescription: "In early 2024, I made the decision to break from work and travel the world with my wife and was given a sabbatical for a year to head off and explore from August 2024 to September 2025. It was a simply unforgettable experience, travelling over 82,000 kilometers and visiting 19 countries across 4 continents."
 keyAchievement: "Experiencing a range of cultures and resetting my career goal to move into software development."
 ---
@@ -26,7 +26,7 @@ keyAchievement: "Experiencing a range of cultures and resetting my career goal t
 
 ## Short Role Description
 
-A year long sabbatical to travel the world, visiting 19 countries across 4 continents.
+A year long sabbatical to travel the world, visiting 19 countries across 4 continents, experiencing a wide range of cultures and seeing incredible places with my wife.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

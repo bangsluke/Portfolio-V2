@@ -42,7 +42,7 @@
     - [Skills](#skills)
     - [Projects](#projects)
     - [Work Experience](#work-experience)
-    - [Customers and Clients](#customers-and-clients)
+    - [Clients](#clients)
     - [Education](#education)
     - [References](#references)
     - [About Me](#about-me)
@@ -168,10 +168,10 @@ Portfolio Site V2 is a modern, static portfolio website that combines the power 
   <img src="./public/screenshots/Work Experience.png" alt="Work Experience Screenshot" height="500"/>
 </p>
 
-#### Customers and Clients
+#### Clients
 
 <p align="center">
-  <img src="./public/screenshots/Customers and Clients.png" alt="Customers and Clients Screenshot" height="500"/>
+  <img src="./public/screenshots/Clients.png" alt="Clients Screenshot" height="500"/>
 </p>
 
 #### Education

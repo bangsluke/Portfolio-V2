@@ -13,7 +13,9 @@ test.describe('Projects Page Tests', () => {
 		});
 		await waitForPageLoad(page);
 
-		await page.locator(`#${testData.sectionIds.projects}`).scrollIntoViewIfNeeded();
+		await page
+			.locator(`#${testData.sectionIds.projects}`)
+			.scrollIntoViewIfNeeded();
 		await page.waitForTimeout(200);
 
 		const projectsPageObjects = new ProjectsPageObjects(page);
@@ -139,27 +141,24 @@ test.describe('Projects Page Tests', () => {
 		await page.waitForTimeout(500);
 
 		// All visible cards should match the selected category
-		const allMatchSelectedCategory = await page.evaluate(
-			selectedCategory => {
-				const wrappers = Array.from(
-					document.querySelectorAll<HTMLElement>('#projectsGrid > div')
-				);
+		const allMatchSelectedCategory = await page.evaluate(selectedCategory => {
+			const wrappers = Array.from(
+				document.querySelectorAll<HTMLElement>('#projectsGrid > div')
+			);
 
-				let visibleCount = 0;
-				for (const el of wrappers) {
-					const style = window.getComputedStyle(el);
-					if (style.display === 'none' || style.visibility === 'hidden') {
-						continue;
-					}
-					visibleCount++;
-					if (selectedCategory && el.dataset.category !== selectedCategory) {
-						return { allMatch: false, visibleCount };
-					}
+			let visibleCount = 0;
+			for (const el of wrappers) {
+				const style = window.getComputedStyle(el);
+				if (style.display === 'none' || style.visibility === 'hidden') {
+					continue;
 				}
-				return { allMatch: true, visibleCount };
-			},
-			categoryValue
-		);
+				visibleCount++;
+				if (selectedCategory && el.dataset.category !== selectedCategory) {
+					return { allMatch: false, visibleCount };
+				}
+			}
+			return { allMatch: true, visibleCount };
+		}, categoryValue);
 
 		expect(allMatchSelectedCategory.allMatch).toBeTruthy();
 
@@ -194,8 +193,7 @@ test.describe('Projects Page Tests', () => {
 		}
 
 		const projectsPageObjects = new ProjectsPageObjects(page);
-		const firstProjectCard =
-			await projectsPageObjects.getProjectCardByIndex(0);
+		const firstProjectCard = await projectsPageObjects.getProjectCardByIndex(0);
 		await expect(firstProjectCard).toBeVisible();
 
 		// Hover the info icon to trigger the date range tooltip
@@ -207,11 +205,11 @@ test.describe('Projects Page Tests', () => {
 		const tooltip = page.locator('.global-tooltip').first();
 		await expect(tooltip).toBeVisible();
 
-		const bgColor = await tooltip.evaluate(element =>
-			window.getComputedStyle(element).backgroundColor
+		const bgColor = await tooltip.evaluate(
+			element => window.getComputedStyle(element).backgroundColor
 		);
 		// #18181B in rgb
-		expect(bgColor).toBe('rgb(24, 24, 27)');
+		expect(bgColor).toBe('rgba(10, 21, 36, 0.95)');
 	});
 
 	test('2.3.2. Date range filters should only show projects within selected range', async ({
@@ -252,13 +250,10 @@ test.describe('Projects Page Tests', () => {
 						? new Date(el.dataset.endDate)
 						: null;
 
-					const projectStart =
-						cardStart || cardEnd || new Date(0); // mirrors filter logic
-					const projectEnd =
-						cardEnd || cardStart || new Date(9999, 11, 31);
+					const projectStart = cardStart || cardEnd || new Date(0); // mirrors filter logic
+					const projectEnd = cardEnd || cardStart || new Date(9999, 11, 31);
 
-					const matches =
-						projectStart <= endDate && projectEnd >= startDate;
+					const matches = projectStart <= endDate && projectEnd >= startDate;
 					if (!matches) {
 						return { allMatch: false };
 					}
@@ -349,9 +344,7 @@ test.describe('Projects Page Tests', () => {
 		const parsedDesktop = desktopCountText
 			? parseInt(desktopCountText, 10)
 			: NaN;
-		const parsedMobile = mobileCountText
-			? parseInt(mobileCountText, 10)
-			: NaN;
+		const parsedMobile = mobileCountText ? parseInt(mobileCountText, 10) : NaN;
 
 		if (!Number.isNaN(parsedDesktop)) {
 			expect(parsedDesktop).toBe(visibleCount);
@@ -476,8 +469,7 @@ test.describe('Projects Page Tests', () => {
 
 		const projectsPageObjects = new ProjectsPageObjects(page);
 
-		const firstProjectCard =
-			await projectsPageObjects.getProjectCardByIndex(0);
+		const firstProjectCard = await projectsPageObjects.getProjectCardByIndex(0);
 		await expect(firstProjectCard).toBeVisible();
 
 		const projectLink = firstProjectCard.locator('a').first();
@@ -582,7 +574,7 @@ test.describe('Projects Page Tests', () => {
 			`${testData.exampleProjectLessonsLearnedText}`
 		).toBeVisible();
 
-		// Check that the project developed for is visible and contains at least one card (company, client or education use same CustomerAndClientCard)
+		// Check that the project developed for is visible and contains at least one card (company, client or education use same ClientCard)
 		const projectDevelopedFor = page.locator('#project-page-developed-for');
 		await expect(
 			projectDevelopedFor,
@@ -625,7 +617,9 @@ test.describe('Projects Page Tests', () => {
 		});
 		await waitForPageLoad(page);
 
-		await page.locator(`#${testData.sectionIds.projects}`).scrollIntoViewIfNeeded();
+		await page
+			.locator(`#${testData.sectionIds.projects}`)
+			.scrollIntoViewIfNeeded();
 		await page.waitForTimeout(200);
 
 		const exampleProjectCard = page
