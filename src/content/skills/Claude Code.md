@@ -7,10 +7,10 @@ tags:
   - skill
   - portfolio
 modified: 2026-02-25T14:37:24+00:00
-viewCount: 6
+viewCount: 7
 aliases:
-skillRating: 25
-skillDescription: Used on one small automation project to test out its capabilities.
+skillRating: 45
+skillDescription: Used for a couple of small automation projects to test out its capabilities with impressively good outcomes when utilised correctly.
 logoFileName: claude_code.svg
 ---
 # Claude Code

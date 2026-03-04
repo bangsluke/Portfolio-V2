@@ -3,12 +3,12 @@ tags:
   - project
   - notes
   - portfolio
-  - project/active
+  - project/completed
 created: 2026-02-27 13:26
-modified: 2026-02-27T13:34:49+00:00
+modified: 2026-03-01T17:55:29+00:00
 aliases:
   - Images
-viewCount: 2
+viewCount: 4
 projectURL: https://bangsluke-assets.netlify.app/
 codeURL: https://github.com/bangsluke/Assets
 codeMultipleRepos: false
