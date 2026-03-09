@@ -8,13 +8,13 @@ tags:
 created: 2026-02-26 23:09
 modified: 2026-02-27T08:08:20+00:00
 aliases:
-viewCount: 1
+viewCount: 2
 projectURL: n/a
 codeURL: https://github.com/bangsluke/text-cleanup-tool
 codeMultipleRepos: false
 deploymentServiceURL: n/a
 folderURL: n/a
-logoURL: TBC
+logoURL: n/a
 imageURL: https://bangsluke-assets.netlify.app/images/projects/Text-Cleanup-Tool.png
 dateStart: 2026-02-26
 dateEnd: 2026-02-27

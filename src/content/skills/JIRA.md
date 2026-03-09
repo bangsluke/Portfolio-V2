@@ -28,7 +28,7 @@ logoFileName: jira.svg
 
 ## Description
 
-Jira is **Atlassian's industry‑leading project and issue‑tracking platform**, used by software teams, IT teams, and business teams to **plan, track, and deliver work**. It's one of the most widely adopted tools for Agile development.
+Jira is **Atlassian's industry‑leading project and issue‑tracking platform**, used by software teams, IT teams, and business teams to **plan, track, and deliver work**. It's one of the most widely adopted tools for [[Agile]] development.
 
 According to Atlassian, Jira is a **"project management tool that brings every team together to plan, track, and deliver any type of project with confidence."**
 

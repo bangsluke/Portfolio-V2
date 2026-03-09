@@ -8,7 +8,7 @@ tags:
   - project/parked
 created: 2025-05-16T09:29:00
 modified: 2026-01-21T09:30:31+00:00
-viewCount: 38
+viewCount: 39
 aliases:
   - Travel Journal
   - mytraveljournal
@@ -17,7 +17,7 @@ codeURL: https://github.com/bangsluke/mytraveljournal
 codeMultipleRepos: true
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-mytraveljournal/overview
 folderURL: n/a
-logoURL: TBC
+logoURL: https://bangsluke-assets.netlify.app/images/project-logos/Travel-Journal-Logo.png
 imageURL: https://bangsluke-assets.netlify.app/images/projects/my-travel-journal.png
 dateStart: 2022-06-09
 dateEnd: 2025-10-31

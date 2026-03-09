@@ -6,10 +6,10 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 17:42
-modified: 2025-07-19T09:38:40+01:00
+modified: 2026-03-08T08:12:52+00:00
 aliases:
   - New Tab
-viewCount: 18
+viewCount: 22
 projectURL: https://bangsluke.github.io/pages/NewTab.html
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
@@ -120,6 +120,7 @@ To launch the repo, use the [[PowerShell]] alias
 ## Other Links
 
 - [[Homepage Website]]
+- [[New Tab Website V2]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

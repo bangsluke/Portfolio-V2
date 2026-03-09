@@ -7,7 +7,7 @@ tags:
   - portfolio
   - project/parked
 created: 2025-02-02T19:03:00
-modified: 2026-03-04T12:23:31+00:00
+modified: 2026-03-04T19:14:05+00:00
 viewCount: 12
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
@@ -379,7 +379,8 @@ SORT dateStart ASC
 
 ### Portfolio Site Text Content
 
-> Portfolio colour scheme primary theme value: \#8962E8 TBC
+> Portfolio colour scheme primary theme value:  \#4a7a9b (slate) with accents of  \#e8a838 (gold)
+> (Previously variants of \#8962E8)
 
 #### Portfolio Config Options
 
