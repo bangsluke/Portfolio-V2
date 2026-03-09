@@ -5,16 +5,16 @@ tags:
   - portfolio
   - project/completed
 created: 2026-02-27 13:26
-modified: 2026-03-01T17:55:29+00:00
+modified: 2026-03-06T08:25:45+00:00
 aliases:
   - Images
-viewCount: 4
+viewCount: 1
 projectURL: https://bangsluke-assets.netlify.app/
 codeURL: https://github.com/bangsluke/Assets
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-assets/overview
 folderURL: n/a
-logoURL:
+logoURL: https://bangsluke-assets.netlify.app/images/project-logos/assets.png
 imageURL: https://bangsluke-assets.netlify.app/images/projects/Assets.png
 dateStart: 2026-02-27
 dateEnd: 2026-02-27
@@ -36,9 +36,9 @@ topicTags:
 powerShellAlias: assets, images
 version: 1
 portfolioOrder: 18
-shortDescription: "After my previous image hosting service <https://postimages.org/> randomly began deleting my image, I built this static image hosting to hold images for my projects and documentation."
-longDescription: "After my previous image hosting service <https://postimages.org/> randomly began deleting my image, I built this static image hosting to hold images for my projects and documentation."
-lessonsLearned: "TBD"
+shortDescription: "After my previous image hosting services including <a href=\"https://postimages.org/\">postimages</a> randomly began deleting my images, I built this static image hosting to hold images for my projects and documentation."
+longDescription: "After my previous image hosting services <a href=\"https://imgur.com/\">Imgur</a> stopped being available in the UK and then my alternative, <a href=\"https://postimages.org/\">postimages</a> randomly began deleting my images, I  decided I needed a more robust setup for hosting my own assets, a solution that would give me control over my own files.<br><br>I built this simple static image hosting service within <span class=\"theme-link\">Netlify</span> to hold images for my projects and documentation, presenting the images in an easy to copy into documentation format."
+lessonsLearned: "The key lesson I learned here was that <span class=\"theme-link\">Netlify</span> could be used as a CDN for my own assets, immediately removing my need o rely on 3rd party software."
 name: "Assets"
 ---
 # Assets
@@ -74,13 +74,15 @@ WHERE file = this.file
 
 ## Short Description
 
-After my previous image hosting service <https://postimages.org/> randomly began deleting my image, I built this static image hosting to hold images for my projects and documentation. 
+After my previous image hosting services including [postimages](https://postimages.org/) randomly began deleting my images, I built this static image hosting to hold images for my projects and documentation. 
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-After my previous image hosting service <https://postimages.org/> randomly began deleting my image, I built this static image hosting to hold images for my projects and documentation. 
+After my previous image hosting services [Imgur](https://imgur.com/) stopped being available in the UK and then my alternative, [postimages](https://postimages.org/) randomly began deleting my images, I  decided I needed a more robust setup for hosting my own assets, a solution that would give me control over my own files.
+
+I built this simple static image hosting service within [[Netlify]] to hold images for my projects and documentation, presenting the images in an easy to copy into documentation format. 
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -111,19 +113,20 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Planning and Design
 
-- TBD
+- n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Other Links
 
-- TBD
+- [Imgur image hosting](https://imgur.com/) - stopped being available in the UK
+- [Postimages — free image hosting / image upload](https://postimages.org/) - randomly started deleting my images
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
 
-TBD
+The key lesson I learned here was that [[Netlify]] could be used as a CDN for my own assets, immediately removing my need o rely on 3rd party software.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

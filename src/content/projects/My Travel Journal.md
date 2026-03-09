@@ -9,13 +9,13 @@ tags:
 created: 2025-05-29 18:06
 modified: 2025-07-19T10:46:19+01:00
 aliases:
-viewCount: 12
+viewCount: 13
 projectURL: https://bangsluke-my-travel-journal.netlify.app/
 codeURL: https://github.com/bangsluke/my-travel-journal
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangsluke-my-travel-journal/overview
 folderURL: n/a
-logoURL: TBC
+logoURL: https://bangsluke-assets.netlify.app/images/project-logos/Travel-Journal-Logo.png
 imageURL: https://bangsluke-assets.netlify.app/images/projects/my-travel-journal-V1.png
 dateStart: 2022-06-09
 dateEnd: 2023-08-14
