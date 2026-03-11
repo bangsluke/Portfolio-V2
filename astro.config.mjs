@@ -2,7 +2,6 @@
 import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
-import umami from "@yeskunall/astro-umami";
 import icon from "astro-icon";
 import { defineConfig } from 'astro/config';
 import { readFileSync } from 'fs';
@@ -39,7 +38,7 @@ export default defineConfig({
     filter: (page) =>
       !page.includes("/blog/tags") &&
       !page.includes("/blog/techs"),
-  }), umami({ id: process.env.UMAMI_WEBSITE_ID || "fad6adfb-2b8b-4868-a0a9-59d4fd860488" })],
+  })],
 
   vite: {
     plugins: [

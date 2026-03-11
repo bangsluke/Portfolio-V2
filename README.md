@@ -752,7 +752,7 @@ Content management and blogging:
 
 ## Umami Analytics
 
-The site uses [Umami](https://umami.is) for privacy-friendly analytics. Tracking is implemented via the `@yeskunall/astro-umami` integration and custom events so you can measure engagement without cookies.
+The site uses [Umami](https://umami.is) for privacy-friendly analytics. Tracking is implemented via an inline script in the base layout (with `data-astro-rerun` for View Transitions) and custom events so you can measure engagement without cookies.
 
 **What’s tracked**
 

@@ -13,6 +13,8 @@ const {
 } = Astro.props;
 
 const siteUrl = new URL(Astro.url).origin;
+const isProd = import.meta.env.PROD;
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID ?? import.meta.env.UMAMI_WEBSITE_ID ?? 'fad6adfb-2b8b-4868-a0a9-59d4fd860488';
 const SEO = {
 	sitename: 'bangsluke Portfolio',
 	url: siteUrl,
@@ -115,6 +117,17 @@ const SEO = {
 
 		<!-- Sitemap -->
 		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<!-- Umami Analytics (production only) -->
+		{isProd && umamiWebsiteId && (
+			<script
+				is:inline
+				async
+				src="https://cloud.umami.is/script.js"
+				data-website-id={umamiWebsiteId}
+				data-astro-rerun
+			/>
+		)}
 	</head>
 	<body class="overflow-x-hidden overflow-y-hidden">
 		<div class="blur-circle"></div>
