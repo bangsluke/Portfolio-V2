@@ -108,10 +108,11 @@ const SkillsBubbleChart = ({
 	const bubbleData = useCallback((): BubbleData[] => {
 		return skills
 			.map(skill => {
-				// Use skill ID (minus file extension) for tooltip name
-				const skillId = extractNameFromFilename(skill.id);
-				const skillName = skill.data.name || skill.slug;
-				const rating = skill.data.skillRating || 0;
+				// Use skill ID (minus file extension) for tooltip name and matching
+				const skillId = extractNameFromFilename(skill.id ?? '');
+				const skillName =
+					skill.data?.name ?? skill.slug ?? skillId ?? '';
+				const rating = skill.data?.skillRating ?? 0;
 				const projectCount = getProjectCountForSkill(skillName, skillId);
 				const iconName = getSkillIconName(skill.data.logoFileName || null);
 
@@ -131,18 +132,18 @@ const SkillsBubbleChart = ({
 				}
 
 				return {
-					id: skill.slug,
+					id: skill.slug ?? skill.id ?? skillId,
 					name: skillId, // Use skill ID for tooltip display
 					rating,
 					description:
-						skill.data.skillDescription || 'No description available',
-					logoFileName: skill.data.logoFileName || null,
+						skill.data?.skillDescription ?? 'No description available',
+					logoFileName: skill.data?.logoFileName ?? null,
 					iconName,
-					tags: skill.data.tags || [],
+					tags: skill.data?.tags ?? [],
 					projectCount,
 					radius,
-					color: getSkillColor(skill.data.tags || []),
-					group: getSkillGroup(skill.data.tags || []),
+					color: getSkillColor(skill.data?.tags ?? []),
+					group: getSkillGroup(skill.data?.tags ?? []),
 				};
 			})
 			.filter((skill): skill is BubbleData => skill !== null);

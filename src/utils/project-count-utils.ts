@@ -19,6 +19,9 @@ export function getProjectCount(
 	skillId: string,
 	projects: Project[]
 ): number {
+	const name = skillName != null ? String(skillName) : '';
+	const id = skillId != null ? String(skillId) : '';
+	if (!name && !id) return 0;
 	return projects.filter(project => {
 		// Add null checking for project and project.data
 		if (!project || !project.data) {
@@ -26,6 +29,7 @@ export function getProjectCount(
 		}
 		const technologies = project.data.technologies || [];
 		return technologies.some((tech: string) => {
+			if (tech == null || typeof tech !== 'string') return false;
 			// Clean the technology name (remove Obsidian brackets)
 			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
 
@@ -36,8 +40,8 @@ export function getProjectCount(
 
 			// Check for exact match with skill name or skill ID
 			if (
-				cleanTech.toLowerCase() === skillName.toLowerCase() ||
-				cleanTech.toLowerCase() === skillId.toLowerCase()
+				cleanTech.toLowerCase() === name.toLowerCase() ||
+				cleanTech.toLowerCase() === id.toLowerCase()
 			) {
 				return true;
 			}
@@ -48,8 +52,8 @@ export function getProjectCount(
 				const techName = techPath.split('/').pop() || techPath;
 
 				if (
-					techName.toLowerCase() === skillName.toLowerCase() ||
-					techName.toLowerCase() === skillId.toLowerCase()
+					techName.toLowerCase() === name.toLowerCase() ||
+					techName.toLowerCase() === id.toLowerCase()
 				) {
 					return true;
 				}
@@ -70,6 +74,8 @@ export function getProjectsUsingSkill(
 	projects: Project[]
 ): string[] {
 	const projectNames: string[] = [];
+	const name = skillName != null ? String(skillName) : '';
+	const id = skillId != null ? String(skillId) : '';
 
 	projects.forEach(project => {
 		// Add null checking for project and project.data
@@ -78,6 +84,7 @@ export function getProjectsUsingSkill(
 		}
 		const technologies = project.data.technologies || [];
 		const isUsed = technologies.some((tech: string) => {
+			if (tech == null || typeof tech !== 'string') return false;
 			// Clean the technology name (remove Obsidian brackets)
 			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
 
@@ -88,8 +95,8 @@ export function getProjectsUsingSkill(
 
 			// Check for exact match with skill name or skill ID
 			if (
-				cleanTech.toLowerCase() === skillName.toLowerCase() ||
-				cleanTech.toLowerCase() === skillId.toLowerCase()
+				cleanTech.toLowerCase() === name.toLowerCase() ||
+				cleanTech.toLowerCase() === id.toLowerCase()
 			) {
 				return true;
 			}
@@ -100,8 +107,8 @@ export function getProjectsUsingSkill(
 				const techName = techPath.split('/').pop() || techPath;
 
 				if (
-					techName.toLowerCase() === skillName.toLowerCase() ||
-					techName.toLowerCase() === skillId.toLowerCase()
+					techName.toLowerCase() === name.toLowerCase() ||
+					techName.toLowerCase() === id.toLowerCase()
 				) {
 					return true;
 				}

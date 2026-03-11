@@ -38,7 +38,7 @@ const sortedProjects = projects.sort((a, b) => {
 	}
 
 	// If dates are the same, fallback to alphabetical sorting by slug
-	return a.slug.localeCompare(b.slug);
+	return (a.slug ?? '').localeCompare(b.slug ?? '');
 });
 
 // Process projects to add company logos and generate names

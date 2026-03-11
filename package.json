@@ -1,7 +1,8 @@
 {
 	"name": "site",
 	"type": "module",
-	"version": "1.4.0",
+	"version": "1.4.1",
+	"license": "UNLICENSED",
 	"scripts": {
 		"dev": "astro dev",
 		"build": "npm run test && npm run update-readme-links && astro build",
@@ -37,16 +38,16 @@
 		"update-readme-links": "node scripts/update-readme-links.js"
 	},
 	"dependencies": {
-		"@astrojs/preact": "^4.1.1",
-		"@astrojs/rss": "^4.0.15",
-		"@astrojs/sitemap": "^3.7.0",
+		"@astrojs/preact": "^5.0.0",
+		"@astrojs/rss": "^4.0.17",
+		"@astrojs/sitemap": "^3.7.1",
 		"@egjs/flicking-plugins": "^4.7.1",
 		"@egjs/preact-flicking": "^4.14.1",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.1.18",
 		"@types/d3": "^7.4.3",
 		"@yeskunall/astro-umami": "^0.0.7",
-		"astro": "^5.17.3",
+		"astro": "^6.0.2",
 		"astro-icon": "^1.1.5",
 		"d3": "^7.9.0",
 		"dotenv": "^16.6.1",

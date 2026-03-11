@@ -89,7 +89,7 @@
 
 		// Smooth scroll to top
 		function scrollToTopHandler(event: Event) {
-			console.log('Scroll to top handler');
+			// console.log('Scroll to top handler');
 			// Prevent default to avoid any potential issues
 			event.preventDefault();
 			event.stopPropagation();
@@ -101,7 +101,7 @@
 		}
 
 		function scrollToTopHandlerMobile(event: Event) {
-			console.log('Scroll to top handler mobile');
+			//console.log('Scroll to top handler mobile');
 			// Remove preventDefault since we're using passive: true
 			event.stopPropagation();
 
@@ -132,8 +132,9 @@
 		}
 
 		// Handle both click and touch events
+		// Click handler may call preventDefault/stopPropagation, so it must NOT be passive
 		scrollToTopBtn.addEventListener('click', scrollToTopHandler, {
-			passive: true,
+			passive: false,
 		});
 
 		// Touch events for mobile

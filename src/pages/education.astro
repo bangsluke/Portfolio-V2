@@ -19,7 +19,7 @@ const sortedEducation = education.sort((a, b) => {
 	}
 
 	// Fallback to alphabetical sorting by slug (filename)
-	return a.slug.localeCompare(b.slug);
+	return (a.slug ?? '').localeCompare(b.slug ?? '');
 });
 
 const pageTitle = 'Education - bangsluke Portfolio';
