@@ -21,8 +21,11 @@ export async function getStaticPaths() {
 			name: project.data.name,
 		};
 
+		// Derive slug from the file name so it is always defined
+		const slug = extractNameFromFilename(project.id);
+
 		return {
-			params: { slug: project.slug },
+			params: { slug },
 			props: {
 				project: {
 					...project,

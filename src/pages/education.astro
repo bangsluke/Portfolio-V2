@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import EducationTimelineItem from '../components/portfolio/EducationTimelineItem.astro';
 import Heading from '../components/ui/Heading.astro';
 import Layout from '../layouts/Layout.astro';
+import { extractNameFromFilename } from '../utils/filename-utils';
 
 // Get all education from the local content folder
 const education = await getCollection('educations');
@@ -86,7 +87,7 @@ const ogimage = {
 												{...education.data}
 												name={
 													education.data.name ||
-													education.slug
+													(education.slug ?? extractNameFromFilename(education.id) ?? '')
 														.replace(/-/g, ' ')
 														.replace(/\b\w/g, l => l.toUpperCase())
 												}

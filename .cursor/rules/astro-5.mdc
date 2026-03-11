@@ -161,7 +161,7 @@ This project uses these Astro integrations:
 - **@astrojs/preact** - Preact components as islands
 - **@astrojs/sitemap** - Auto-generate sitemap.xml
 - **astro-icon** - SVG icon component
-- **@yeskunall/astro-umami** - Analytics
+- **Umami** - Analytics via inline script in `Layout.astro` / `LayoutSinglePage.astro` (no package)
 
 ---
 
