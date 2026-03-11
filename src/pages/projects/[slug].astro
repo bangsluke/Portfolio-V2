@@ -7,7 +7,10 @@ import {
 	processContent,
 	processObsidianLink,
 } from '../../utils/content-processor';
-import { extractNameFromFilename } from '../../utils/filename-utils';
+import {
+	extractNameFromFilename,
+	nameToSlug,
+} from '../../utils/filename-utils';
 
 type Props = { project: CollectionEntry<'projects'> };
 
@@ -21,8 +24,8 @@ export async function getStaticPaths() {
 			name: project.data.name,
 		};
 
-		// Derive slug from the file name so it is always defined
-		const slug = extractNameFromFilename(project.id);
+		// Derive URL slug as kebab-case so routes match links (e.g. Dorkinians Website V3 -> dorkinians-website-v3)
+		const slug = nameToSlug(extractNameFromFilename(project.id));
 
 		return {
 			params: { slug },
@@ -30,6 +33,7 @@ export async function getStaticPaths() {
 				project: {
 					...project,
 					data: projectData,
+					slug,
 				},
 			},
 		};

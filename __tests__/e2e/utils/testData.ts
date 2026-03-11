@@ -15,7 +15,7 @@ export const testData = {
 	mainPageUrl: baseUrl,
 	email: 'bangsluke@gmail.com',
 	description:
-		'11 years in engineering, including 3 leading internal software development',
+		'11 years delivering complex systems, 3 owning software products end-to-end',
 	skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js'],
 	downloadCVUrl: `Luke-Bangs-CV.pdf`,
 	sectionIds: {
@@ -47,12 +47,12 @@ export const testData = {
 	exampleProjectCategory: 'Personal Design',
 	exampleProjectTechnologies: ['GitHub', 'Netlify', 'Heroku'],
 	exampleProjectDescriptionText:
-		'Serving over 600 players, the Dorkinians FC stats',
+		'A stats and performance insights platform for a 600+ member football club',
 	exampleProjectLessonsLearnedText: 'To make the chat bot work',
 	exampleMostCommonTech: 'React',
 	exampleWorkExperienceName: 'VHE2 Integration Engineer',
-	exampleWorkExperienceDateRange: 'Sep 2025 - Present',
-	exampleWorkExperienceDescription: 'developing numerous tracking documents',
+	exampleWorkExperienceDateRange: 'Sep 2025 - Jan 2026',
+	exampleWorkExperienceDescription: 'Owned end-to-end delivery of an automated',
 	exampleClientName: 'Aston Martin',
 	exampleClientDateRange: 'Mar 2016 - Apr 2016',
 	exampleEducationItemName: 'Loughborough University',

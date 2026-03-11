@@ -7,7 +7,7 @@ created: 2025-09-01 11:37
 modified: 2026-03-11T15:45:38+00:00
 viewCount: 10
 dateStart: 2025-09-01
-dateEnd:
+dateEnd: 2026-01-01
 linkedCompany:
   - "[[RLE International]]"
   - "[[Ford]]"

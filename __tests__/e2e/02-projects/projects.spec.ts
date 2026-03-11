@@ -475,11 +475,13 @@ test.describe('Projects Page Tests', () => {
 		const projectLink = firstProjectCard.locator('a').first();
 		const href = await projectLink.getAttribute('href');
 		expect(href).toBeTruthy();
+		expect(href).toMatch(/^\/projects\/[\w-]+$/);
 
 		await Promise.all([
 			page.waitForURL(`**${href}`, { timeout: 30000 }),
 			projectLink.click(),
 		]);
+		await waitForPageLoad(page);
 
 		await expect(page.locator('#back-to-projects-top')).toHaveAttribute(
 			'href',
@@ -637,6 +639,7 @@ test.describe('Projects Page Tests', () => {
 			page.waitForURL('**/projects/**', { timeout: 30000 }),
 			detailsLink.click(),
 		]);
+		await waitForPageLoad(page);
 
 		// Back buttons should resolve to /#projects and show "Back to Projects Section"
 		await expect(page.locator('#back-to-projects-top')).toHaveAttribute(
