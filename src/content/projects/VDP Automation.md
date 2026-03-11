@@ -6,8 +6,8 @@ tags:
   - portfolio
   - project/completed/work
 created: 2025-07-24T16:02:00
-modified: 2025-09-08T11:37:38+01:00
-viewCount: 4
+modified: 2026-03-11T17:21:36+00:00
+viewCount: 5
 aliases:
 projectURL: https://rleint.sharepoint.com/:x:/r/sites/DeloittePMTool/Shared%20Documents/CEER%20DevPlan.xlsb?d=w96a37936195d4126a22329f260501438&csf=1&web=1&e=Xm5aFR
 codeURL: https://git.rle.de/deloitte/deloitte-pm-tool
@@ -40,7 +40,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 6
-shortDescription: "Automation of generating populated <span class=\"theme-link\">PowerPoint</span> and <span class=\"theme-link\">Visio</span> slides from an <span class=\"theme-link\">Excel</span> data source."
+shortDescription: "Automated generation of populated <span class=\"theme-link\">PowerPoint</span> and <span class=\"theme-link\">Visio</span> slides from an <span class=\"theme-link\">Excel</span> data source, saving hours of manual slide production for the <span class=\"theme-link\">RLE</span> <span class=\"theme-link\">CEER Automotive</span> programme team."
 longDescription: "The VDP Automation project was an <span class=\"theme-link\">Excel</span> based data source populated with Automotive deliverables and processes by consultants within <span class=\"theme-link\">RLE International</span>, which then had scripts written by me to run through the data and generate hyperlinked and navigable <span class=\"theme-link\">PowerPoint</span> slides showing workflows, whilst simultaneously generating <span class=\"theme-link\">Visio</span> workflows and an exported PDF for mapping out a full Automotive workflow process for the development of a vehicle.<br><br>The tool was successful enough to be utilised by a new start-up Automotive company in defining their deliverable and process documentation providing me an opportunity to travel to <span class=\"theme-link\">Saudi Arabia</span> in the process."
 lessonsLearned: "This project taught me a lot about working with the object libraries within <span class=\"theme-link\">PowerPoint</span> and <span class=\"theme-link\">Visio</span> within the <span class=\"theme-link\">VBA</span> environment. It also gave me a great comparison of how powerful <span class=\"theme-link\">Python</span> can be when I was able to re-write a section of my code from <span class=\"theme-link\">VBA</span> to <span class=\"theme-link\">Python</span> and run the script in less than a tenth of the time."
 name: "VDP Automation"
@@ -80,7 +80,7 @@ WHERE file = this.file
 
 ## Short Description
 
-Automation of generating populated [[PowerPoint]] and [[Visio]] slides from an [[Excel]] data source.
+Automated generation of populated [[PowerPoint]] and [[Visio]] slides from an [[Excel]] data source, saving hours of manual slide production for the [[RLE International|RLE]] [[CEER Automotive]] programme team.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

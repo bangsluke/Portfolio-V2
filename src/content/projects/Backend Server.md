@@ -5,8 +5,8 @@ tags:
   - notes
   - project/completed
 created: 2025-06-23 13:36
-modified: 2026-01-22T11:03:37+00:00
-viewCount: 1
+modified: 2026-03-11T17:29:15+00:00
+viewCount: 2
 aliases:
   - backend-server
   - backend server
@@ -31,6 +31,9 @@ technologies:
   - "[[VS Code]]"
   - "[[Codeium]]"
   - "[[Flask]]"
+  - "[[Node.js]]"
+  - "[[Typescript]]"
+  - "[[JavaScript]]"
 projectCategory: Backend
 linkedCompany:
   - n/a
@@ -43,8 +46,8 @@ topicTags:
 powerShellAlias: backend
 version: 1
 portfolioOrder: 5
-shortDescription: "The backend server and source of data for several of my projects, allowing a singular point of management and maintenance."
-longDescription: "The source of data for several projects including my <a href=\"/projects/dorkinians-website-v3\" class=\"theme-link\">Dorkinians Website V3</a> and <a href=\"/projects/travel-website\" class=\"theme-link\">Travel Website</a>, providing a route for data retrieval from a <span class=\"theme-link\">Neo4j</span> graph using <span class=\"theme-link\">GraphQL</span> queries."
+shortDescription: "Centralised <span class=\"theme-link\">Node.js</span> and <span class=\"theme-link\">Neo4j</span> backend powering several of my projects, providing a single point of management for graph data, <span class=\"theme-link\">API</span>s and scheduled data processing."
+longDescription: "The source of data running through <span class=\"theme-link\">Node.js</span> for several projects including my <a href=\"/projects/dorkinians-website-v3\" class=\"theme-link\">Dorkinians Website V3</a> and <a href=\"/projects/travel-website\" class=\"theme-link\">Travel Website</a>, providing a route for data retrieval from a <span class=\"theme-link\">Neo4j</span> graph using <span class=\"theme-link\">GraphQL</span> queries."
 lessonsLearned: "Taught me about setting up a <span class=\"theme-link\">Flask</span> server and opening up endpoints for data retrieval. Also taught me about how best to organise and manage <span class=\"theme-link\">Python</span> code in a growing codebase given my past experience with <span class=\"theme-link\">Python</span> had been for single script projects.<br><br>Also forced me into developing debugging documentation for myself after making the same mistakes twice and ensuring a third time never happened by writing a checklist for understanding why the backend server crashed."
 name: "Backend Server"
 ---
@@ -87,20 +90,20 @@ WHERE file = this.file
 
 ## Short Description
 
-The backend server and source of data for several of my projects, allowing a singular point of management and maintenance.
+Centralised [[Node.js]] and [[Neo4j]] backend powering several of my projects, providing a single point of management for graph data, [[API]]s and scheduled data processing.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-The source of data for several projects including my [[Dorkinians Website V3]] and [[Travel Website]], providing a route for data retrieval from a [[Neo4j]] graph using [[GraphQL]] queries.
+The source of data running through [[Node.js]] for several projects including my [[Dorkinians Website V3]] and [[Travel Website]], providing a route for data retrieval from a [[Neo4j]] graph using [[GraphQL]] queries.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
 - Front end: n/a
-- Back end/Datasource: [[Neo4j]], [[Neo4j Aura]], [[Cypher]], [[Python]], [[Flask]]
+- Back end/Datasource: [[Node.js]], [[Neo4j]], [[Neo4j Aura]], [[Cypher]], [[Python]], [[Flask]]
 - Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Heroku]]
 - Security: [[Snyk]]
 - Authentication: n/a

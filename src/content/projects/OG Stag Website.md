@@ -6,9 +6,9 @@ tags:
   - coding
   - project/completed
 created: 2025-05-30 10:00
-modified: 2026-01-21T09:22:32+00:00
+modified: 2026-03-11T17:39:46+00:00
 aliases:
-viewCount: 13
+viewCount: 14
 projectURL: https://og-stag.netlify.app/
 codeURL: https://github.com/bangsluke/OG-stag
 codeMultipleRepos: false
@@ -36,8 +36,8 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 8
-shortDescription: "A website detailing the itinerary for <span class=\"theme-link\">Oli Goddard</span>'s stag do."
-longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and <span class=\"theme-link\">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.<br><br>This site was a copy and rebrand from the <a href=\"/projects/js-stag-website\" class=\"theme-link\">JS Stag Website</a> I had previously built."
+shortDescription: "Another personal project built as an itinerary site for a friends' stag do - quickly built to share event details and schedules in a more engaging format than a group chat."
+longDescription: "This site provided the stag attendees with the full itinerary of <span class=\"theme-link\">Oli Goddard</span>'s stag, with timings and <span class=\"theme-link\">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.<br><br>This site was a copy and rebrand from the <a href=\"/projects/js-stag-website\" class=\"theme-link\">JS Stag Website</a> I had previously built."
 lessonsLearned: "As this site was a copy of <a href=\"/projects/js-stag-website\" class=\"theme-link\">JS Stag Website</a>, the lessons learned were fewer, however it did highlight the usefulness of setting up a configurable colour scheme as I was able to quickly change the global colours across the site within minutes."
 name: "OG Stag Website"
 ---
@@ -73,13 +73,13 @@ WHERE file = this.file
 
 ## Short Description
 
-A website detailing the itinerary for [[Oli Goddard]]'s stag do.
+Another personal project built as an itinerary site for a friends' stag do - quickly built to share event details and schedules in a more engaging format than a group chat.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-This site provided the stag attendees with the full itinerary of the stag, with timings and [[Google Maps]] links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
+This site provided the stag attendees with the full itinerary of [[Oli Goddard]]'s stag, with timings and [[Google Maps]] links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
 
 This site was a copy and rebrand from the [[JS Stag Website]] I had previously built.
 

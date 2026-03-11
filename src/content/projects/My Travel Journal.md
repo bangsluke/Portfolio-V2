@@ -7,9 +7,9 @@ tags:
   - project/archived
   - coding
 created: 2025-05-29 18:06
-modified: 2025-07-19T10:46:19+01:00
+modified: 2026-03-11T17:46:35+00:00
 aliases:
-viewCount: 13
+viewCount: 14
 projectURL: https://bangsluke-my-travel-journal.netlify.app/
 codeURL: https://github.com/bangsluke/my-travel-journal
 codeMultipleRepos: false
@@ -27,6 +27,7 @@ technologies:
   - "[[npm]]"
   - "[[VS Code]]"
   - "[[React]]"
+  - "[[Obsidian]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -39,8 +40,8 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 7
-shortDescription: "A website built to display the notes I had taken across various holidays I had been on."
-longDescription: "A site dedicated to my travel explorations, providing details on what my wife and I did whilst abroad for several holidays with a picture from each trip."
+shortDescription: "My initial attempt at a site built to document and display notes and details from travels across 50+ countries. Used as a personal record and a test for using <span class=\"theme-link\">Obsidian</span> notes on a site."
+longDescription: "A site dedicated to my travel explorations, providing details on what my wife and I did whilst abroad for several holidays with a picture from each trip.<br><br>The site used <span class=\"theme-link\">Markdown</span> notes that I had written up about my travels within <span class=\"theme-link\">Obsidian</span>."
 lessonsLearned: "This site taught me a few extra skills such as working with <span class=\"theme-link\">Markdown</span> data; parsing it and extracting the relevant pieces. As this site was built purely on several markdown files providing the data, saved directly into the repository, this inspired me to go further and develop the <a href=\"/projects/travel-website\" class=\"theme-link\">Travel Website</a> which dynamically loads in data via a <span class=\"theme-link\">Neo4j</span> graph."
 name: "My Travel Journal"
 ---
@@ -77,7 +78,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A website built to display the notes I had taken across various holidays I had been on.
+My initial attempt at a site built to document and display notes and details from travels across 50+ countries. Used as a personal record and a test for using [[Obsidian]] notes on a site.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -85,12 +86,14 @@ A website built to display the notes I had taken across various holidays I had b
 
 A site dedicated to my travel explorations, providing details on what my wife and I did whilst abroad for several holidays with a picture from each trip.
 
+The site used [[Markdown]] notes that I had written up about my travels within [[Obsidian]].
+
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Architecture and Technologies
 
 - Front end: [[React]]
-- Back end/Datasource: [[Markdown]]
+- Back end/Datasource: [[Markdown]], [[Obsidian]]
 - Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
 - Security: [[Snyk]]
 - Authentication: n/a

@@ -8,10 +8,10 @@ tags:
   - work
   - SDP
 created: 2025-06-02 17:16
-modified: 2025-08-12T12:09:11+01:00
+modified: 2026-03-11T18:09:41+00:00
 aliases:
   - SDP Dev Sites
-viewCount: 21
+viewCount: 22
 projectURL: https://sdp-dev-sites.netlify.app/pages/sdp-acronyms
 codeURL: https://git.rle.de/sdp/sdpsupportpages
 codeMultipleRepos: false
@@ -41,7 +41,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
-shortDescription: "A site for the consultants working with the tool, showing the acronyms and definitions used across the <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> tool, as well as documentation and an encyclopaedia."
+shortDescription: "A reference site for consultants using the <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> tool, documenting acronyms, definitions, and an encyclopaedia of terms used across automotive program timing planning."
 longDescription: "A full list of acronyms and definitions used across the <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> app, provided as support material to consultants using the tool for <span class=\"theme-link\">RLE</span> and also by clients. The site also included pages dedicated to documentation of the tool and providing an encyclopaedia of the terms used.<br><br>The <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> project was disbanded early into the websites development, leaving it only partially developed, but matching the style and design of the main tool."
 lessonsLearned: "Provided good learning for getting correct anchor points in <span class=\"theme-link\">HTML</span> for jumping to the correct acronym letters. Also pushed me to colour and gap match to the main <a href=\"/projects/sdp\" class=\"theme-link\">SDP</a> tool to provide a visual connection."
 name: "SDP Consultant Pages"
@@ -79,7 +79,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A site for the consultants working with the tool, showing the acronyms and definitions used across the [[SDP]] tool, as well as documentation and an encyclopaedia.
+A reference site for consultants using the [[SDP]] tool, documenting acronyms, definitions, and an encyclopaedia of terms used across automotive program timing planning.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

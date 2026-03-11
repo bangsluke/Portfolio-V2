@@ -7,9 +7,9 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 17:59
-modified: 2025-08-13T11:44:23+01:00
+modified: 2026-03-11T18:13:06+00:00
 aliases:
-viewCount: 18
+viewCount: 19
 projectURL: https://bangsluke-portfolio-v1.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio
 codeMultipleRepos: false
@@ -38,7 +38,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 7
-shortDescription: "The portfolio site was my initial attempt at creating a marketing page for myself as a developer, showcasing my skills and contact information."
+shortDescription: "The first iteration of my personal portfolio, built from scratch in <span class=\"theme-link\">HTML</span>, <span class=\"theme-link\">CSS</span> and <span class=\"theme-link\">JavaScript</span> to showcase skills and contact information - the starting point for my public developer presence."
 longDescription: "The portfolio site showcased all the information I believed to be relevant for possible hirers, clients or collaborators, providing details on my ambitions, my self-assessed skill level in several languages and technologies, my education and former work experience and finally my contact details."
 lessonsLearned: "The key lesson learned for this project was how useful it is to create re-usable components for a site - a skill I only began using after building this site. As such, this site became a challenge to maintain and ultimately broke, leading me to the decision to rebuild it entirely."
 name: "Portfolio Site"
@@ -76,7 +76,7 @@ WHERE file = this.file
 
 ## Short Description
 
-The portfolio site was my initial attempt at creating a marketing page for myself as a developer, showcasing my skills and contact information.
+The first iteration of my personal portfolio, built from scratch in [[HTML]], [[CSS]] and [[JavaScript]] to showcase skills and contact information - the starting point for my public developer presence.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-09-08T11:08:10+01:00
-viewCount: 14
+modified: 2026-03-11T18:06:10+00:00
+viewCount: 15
 aliases:
   - PFDM
 projectURL: https://apps.powerapps.com/play/e/9cb5bfc9-13df-e75e-98ff-a4782f9d0f48/a/2f37da68-ee87-4e33-854b-8598826a866f?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4&hint=d7be4b55-aa62-4dec-8fe2-a4738bd94489&sourcetime=1707918756797
@@ -38,7 +38,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1.2
 portfolioOrder: 4
-shortDescription: "Data input for financial tracking of <span class=\"theme-link\">RLE International</span> projects."
+shortDescription: "<span class=\"theme-link\">Power Apps</span> data entry tool for financial tracking of <span class=\"theme-link\">RLE International</span> projects, providing structured minimal inputs to gather accurate project cost data across the business."
 longDescription: "The <a href=\"/projects/project-finance-data-manager\" class=\"theme-link\">Project Finance Data Manager</a> app was a <span class=\"theme-link\">Power App</span> for managing various cost data for a project, tying together several data sources.<br><br>Pulled in timesheet data and financial information from various <span class=\"theme-link\">RLE International</span> region sources such as <span class=\"theme-link\">Paycor</span>, <span class=\"theme-link\">T-Sheet</span> and <span class=\"theme-link\">Iplicit</span>.<br><br>Users could also import <a href=\"/projects/cost-model-translation-file\" class=\"theme-link\">Cost Model Translation File</a>s to bring in planned finances and could version changes."
 lessonsLearned: "This project challenged our architecture skills mainly, ensuring we had a solid logic for how data flowed between the <a href=\"/projects/cost-model\" class=\"theme-link\">Cost Model</a> files and could be pushed to the <span class=\"theme-link\">SQL</span> backend whilst maintaining version control.<br><br>There were also various access roles we had to set up and implement to ensure the correct users could see the correct level of detail and correct projects."
 name: "Project Finance Data Manager"
@@ -76,7 +76,7 @@ WHERE file = this.file
 
 ## Short Description
 
-Data input for financial tracking of [[RLE International]] projects.
+[[Power Apps]] data entry tool for financial tracking of [[RLE International]] projects, providing structured minimal inputs to gather accurate project cost data across the business.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

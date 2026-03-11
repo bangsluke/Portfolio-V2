@@ -7,10 +7,10 @@ tags:
   - coding
   - work
 created: 2025-06-02 17:16
-modified: 2025-07-19T09:57:46+01:00
+modified: 2026-03-11T17:24:06+00:00
 aliases:
   - Stratamotiv Landing Page
-viewCount: 18
+viewCount: 19
 projectURL: https://stratamotiv.netlify.app/
 codeURL: https://github.com/bangsluke/CoELandingPage
 codeMultipleRepos: false
@@ -43,7 +43,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 7
-shortDescription: "A landing page for showcasing a new Automotive Consultancy branch of <span class=\"theme-link\">RLE</span>, known as <span class=\"theme-link\">Centre of Excellence</span>."
+shortDescription: "Landing page for <span class=\"theme-link\">RLE International</span>'s new <span class=\"theme-link\">Centre of Excellence</span> automotive consultancy branch, built in <span class=\"theme-link\">Next.js</span> to showcase the proposition to prospective clients."
 longDescription: "A basic landing page for showcasing a new Automotive Consultancy branch of <span class=\"theme-link\">RLE</span>, known as <span class=\"theme-link\">Centre of Excellence</span> ready for prospective clients to view and see the services we provide."
 lessonsLearned: "Main lesson was creating the automatic video background of the site along with a subtle purple filter across it which ended up looking pretty good. Sadly the site wasn't finished as the requirements for the company changed."
 name: "CoE Landing Page"
@@ -81,7 +81,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A landing page for showcasing a new Automotive Consultancy branch of [[RLE International|RLE]], known as [[Centre of Excellence]].
+Landing page for [[RLE International]]'s new [[Centre of Excellence]] automotive consultancy branch, built in [[Next.js]] to showcase the proposition to prospective clients.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

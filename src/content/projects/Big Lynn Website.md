@@ -6,9 +6,9 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 17:57
-modified: 2025-07-19T09:57:02+01:00
+modified: 2026-03-11T17:35:27+00:00
 aliases:
-viewCount: 14
+viewCount: 15
 projectURL: https://biglynn.netlify.app/info
 codeURL: https://github.com/bangsluke/BigLynn2023
 codeMultipleRepos: false
@@ -41,7 +41,7 @@ topicTags:
 powerShellAlias: biglynn
 version: 1
 portfolioOrder: 6
-shortDescription: "A stats and information website about an annual <span class=\"theme-link\">golf</span> competition that I am involved in."
+shortDescription: "Stats and information site for an annual <span class=\"theme-link\">golf</span> competition I participate in, tracking results and standings across years."
 longDescription: "A site I developed for an annual <span class=\"theme-link\">golf</span> competition that I play in, where I displayed details for the 2023 competition that I was in charge of organising and then I collected past years data and displayed this for each player as well as predictions for the upcoming year."
 lessonsLearned: "This project let me take an existing Berry Material <span class=\"theme-link\">UI</span> template and extend and develop it into the site I required. It helped me integrate animations and stats components like graphs into the site using libraries like d3."
 name: "Big Lynn Website"
@@ -79,7 +79,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A stats and information website about an annual [[Golf|golf]] competition that I am involved in.
+Stats and information site for an annual [[Golf|golf]] competition I participate in, tracking results and standings across years.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

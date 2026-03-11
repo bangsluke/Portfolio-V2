@@ -5,10 +5,10 @@ tags:
   - portfolio
   - project/completed
 created: 2026-02-27 13:26
-modified: 2026-03-06T08:25:45+00:00
+modified: 2026-03-11T17:34:28+00:00
 aliases:
   - Images
-viewCount: 1
+viewCount: 2
 projectURL: https://bangsluke-assets.netlify.app/
 codeURL: https://github.com/bangsluke/Assets
 codeMultipleRepos: false
@@ -35,8 +35,8 @@ topicTags:
   - Assets
 powerShellAlias: assets, images
 version: 1
-portfolioOrder: 18
-shortDescription: "After my previous image hosting services including <a href=\"https://postimages.org/\">postimages</a> randomly began deleting my images, I built this static image hosting to hold images for my projects and documentation."
+portfolioOrder: 7
+shortDescription: "Static image hosting built after a third-party service deleted images used across my projects and documentation. Simple, reliable, self-controlled."
 longDescription: "After my previous image hosting services <a href=\"https://imgur.com/\">Imgur</a> stopped being available in the UK and then my alternative, <a href=\"https://postimages.org/\">postimages</a> randomly began deleting my images, I  decided I needed a more robust setup for hosting my own assets, a solution that would give me control over my own files.<br><br>I built this simple static image hosting service within <span class=\"theme-link\">Netlify</span> to hold images for my projects and documentation, presenting the images in an easy to copy into documentation format."
 lessonsLearned: "The key lesson I learned here was that <span class=\"theme-link\">Netlify</span> could be used as a CDN for my own assets, immediately removing my need o rely on 3rd party software."
 name: "Assets"
@@ -74,7 +74,7 @@ WHERE file = this.file
 
 ## Short Description
 
-After my previous image hosting services including [postimages](https://postimages.org/) randomly began deleting my images, I built this static image hosting to hold images for my projects and documentation. 
+Static image hosting built after a third-party service deleted images used across my projects and documentation. Simple, reliable, self-controlled.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

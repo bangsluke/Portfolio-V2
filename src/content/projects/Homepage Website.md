@@ -6,10 +6,10 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 17:09
-modified: 2025-07-19T12:20:01+01:00
+modified: 2026-03-11T18:10:13+00:00
 aliases:
   - Homepage
-viewCount: 19
+viewCount: 20
 projectURL: https://bangsluke.github.io/Homepage.html
 codeURL: https://github.com/bangsluke/bangsluke.github.io
 codeMultipleRepos: false
@@ -37,7 +37,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 7
-shortDescription: "An early site built as a homepage for storing links to all my projects and showing a widget with the weather in my area."
+shortDescription: "An early personal homepage storing links to all my projects with a local weather widget - one of the first experiments in building something genuinely useful for daily use."
 longDescription: "A single point of focus for where the links to all my projects were stored, as well as a weather widget for my area."
 lessonsLearned: "Main lesson was understanding and adjusting an existing codebase and learning how to correctly modify an online widget to receive my location and correct styling."
 name: "Homepage Website"
@@ -75,7 +75,7 @@ WHERE file = this.file
 
 ## Short Description
 
-An early site built as a homepage for storing links to all my projects and showing a widget with the weather in my area.
+An early personal homepage storing links to all my projects with a local weather widget - one of the first experiments in building something genuinely useful for daily use.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

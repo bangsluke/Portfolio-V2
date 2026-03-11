@@ -5,9 +5,9 @@ tags:
   - portfolio
   - project/completed
 created: 2026-03-07 10:28
-modified: 2026-03-09T08:21:39+00:00
+modified: 2026-03-11T17:05:23+00:00
 aliases:
-viewCount: 3
+viewCount: 4
 projectURL: n/a
 codeURL: https://github.com/bangsluke/Affordability-Snapshot-Tool
 codeMultipleRepos: false
@@ -36,8 +36,8 @@ topicTags:
   - MVP
 powerShellAlias: n/a
 version: 1
-portfolioOrder: 7
-shortDescription: "Developed an <span class=\"theme-link\">MVP</span> to investigate Open Banking <span class=\"theme-link\">API</span> data structures and mock up an affordability analysis pipeline to create a report."
+portfolioOrder: 4
+shortDescription: "An <span class=\"theme-link\">MVP</span> exploring Open Banking <span class=\"theme-link\">API</span> data structures, building an affordability analysis pipeline to assess income, spend and repayment capacity and generate a structured report."
 longDescription: "A <span class=\"theme-link\">Python</span> tool that pulls transaction data from two Open Banking sources and runs an affordability analysis pipeline on both, and renders a single side-by-side <span class=\"theme-link\">HTML</span> report. The report uses two data sources; <a href=\"https://console.truelayer.com/\">TrueLayer</a> (a free API for synthetic bank data) and also <span class=\"theme-link\">Monzo</span> (for me to see my actual data).<br><br>On the generated report, the data source being investigated (the tool allows either one source or both to be run at once) is analysed to extract income and categorise expenditure, allowing the tool to categorise the consumer data into an affordability band. It creates an income stability score, looks as disposable income, calculates a debt-to-income ratio and flags negative behaviours such as gambling transactions, overdraft usage or payday lenders - before placing the user into an affordability category.<br><br>At the bottom of the report is an <span class=\"theme-link\">API</span> explorer section, allowing the user to see the <span class=\"theme-link\">API</span> endpoints and data structure returned."
 lessonsLearned: "The key lesson learned here was the approach to which affordability lenders review a customer's financial data in order to evaluate and categorise them into an affordability band.<br><br>Whilst my analysis pipeline isn't perfectly tuned or aligned with market lenders' processes, the fundamentals are the same, with key factors such as flagging certain transactions, considering income stability and looking at disposable income being heavily involved in decisions.<br><br>The <span class=\"theme-link\">MVP</span> also gave me insight into the data structures retuned by open banking sources, showing transactions, account details and balances.<br><br>Finally, the project also introduced me to some new terms such as DTI (debt-to-income) ratio and concepts such as disposable buffer and income stability.<br><br>If I was to develop the <span class=\"theme-link\">MVP</span> further, I'd further tune the analysis pipeline to better identify active payday lenders (as my report had false flags) and improve the disposable buffer calculation to do a better job at discounting irregular income values across the data."
 name: "Affordability Snapshot Tool"
@@ -75,7 +75,7 @@ WHERE file = this.file
 
 ## Short Description
 
-Developed an [[MVP]] to investigate Open Banking [[API]] data structures and mock up an affordability analysis pipeline to create a report.
+An [[MVP]] exploring Open Banking [[API]] data structures, building an affordability analysis pipeline to assess income, spend and repayment capacity and generate a structured report.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

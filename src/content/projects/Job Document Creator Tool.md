@@ -6,9 +6,9 @@ tags:
   - work
   - project/completed
 created: 2026-02-18 08:48
-modified: 2026-02-22T19:29:29+00:00
+modified: 2026-03-11T17:31:30+00:00
 aliases:
-viewCount: 3
+viewCount: 4
 projectURL: n/a
 codeURL: https://github.com/bangsluke/Job-Document-Creator-Tool
 codeMultipleRepos: false
@@ -33,8 +33,8 @@ topicTags:
   - "[[Work]]"
 powerShellAlias: jobs, jobsearch
 version: 1
-portfolioOrder: 8
-shortDescription: "An automated process for generating a CV and a cover letter for applying to jobs, consuming my skills and experience as context for the application"
+portfolioOrder: 6
+shortDescription: "Automated process for generating tailored CVs and cover letters using my skills and experience as context, built with <span class=\"theme-link\">Python</span> and <span class=\"theme-link\">Streamlit</span> and powered by the <span class=\"theme-link\">Claude</span> <span class=\"theme-link\">API</span>."
 longDescription: "Developed job application content creation tool, taking a company name, job title and job description, feeding in a range of context by gathering the content used on my <a href=\"/projects/portfolio-site-v2\" class=\"theme-link\">Portfolio Site V2</a> and sending it to the <span class=\"theme-link\">Claude</span> <span class=\"theme-link\">LLM</span> to fill content spaces in a couple of <span class=\"theme-link\">Microsoft Word</span> documents.<br><br>Tailors the responses to the job descriptions and incorporates examples of my past work to indicate why I would be a good fit.<br><br>Run as a terminal command to open up a <span class=\"theme-link\">Python</span> built <span class=\"theme-link\">UI</span> using <span class=\"theme-link\">Streamlit</span>."
 lessonsLearned: "This project was my starting point for learning <span class=\"theme-link\">Claude Code</span> and for using the <span class=\"theme-link\">Claude</span> <span class=\"theme-link\">LLM</span> <span class=\"theme-link\">API</span>.<br><br>It was also an introduction to using <span class=\"theme-link\">Python</span> as both a frontend and a backend, utilising <span class=\"theme-link\">Streamlit</span> for the <span class=\"theme-link\">UI</span>."
 name: "Job Document Creator Tool"
@@ -72,7 +72,7 @@ WHERE file = this.file
 
 ## Short Description
 
-An automated process for generating a CV and a cover letter for applying to jobs, consuming my skills and experience as context for the application
+Automated process for generating tailored CVs and cover letters using my skills and experience as context, built with [[Python]] and [[Streamlit]] and powered by the [[Claude]] [[API]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
