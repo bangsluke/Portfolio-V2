@@ -16,8 +16,8 @@ interface Props {
 
 const { variant = 'default', size = 'md', techData } = Astro.props;
 
-// Get initial top 10 (most used)
-const initialTopTechs = techData.techs.slice(0, 10);
+// Get initial top 12 (most used)
+const initialTopTechs = techData.techs.slice(0, 12);
 
 // Base classes
 const baseClasses = 'flex flex-wrap gap-4 max-lg:gap-1 grid-auto-efe items-center content-center';

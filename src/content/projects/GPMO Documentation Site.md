@@ -7,7 +7,7 @@ tags:
   - coding
   - work
 created: 2025-05-30 09:57
-modified: 2026-03-04T14:51:01+00:00
+modified: 2026-03-11T17:17:49+00:00
 viewCount: 20
 aliases:
 projectURL: https://gpmo.rle.international/
@@ -40,7 +40,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 2
-shortDescription: "Reduced knowledge silos for the <span class=\"theme-link\">GPMO</span> team by documenting their <span class=\"theme-link\">DevOps</span> processes, backlog workflows, and toolset - producing engineer-maintained reference material embedded in the <span class=\"theme-link\">SDLC</span>."
+shortDescription: "Reduced knowledge silos for the <span class=\"theme-link\">RLE</span> <span class=\"theme-link\">GPMO</span> team by documenting <span class=\"theme-link\">DevOps</span> processes, backlog workflows and toolset in an engineer-maintained <span class=\"theme-link\">Docusaurus</span> site embedded in the <span class=\"theme-link\">SDLC</span>."
 longDescription: "The documentation behind all <span class=\"theme-link\">GPMO</span> processes and tools, helping users and future developers understand how to use and update data and the tools themselves.<br><br>Maintained by the tool developers, the site is built using <span class=\"theme-link\">Docusaurus</span> which collates the documentation written in <span class=\"theme-link\">Markdown</span>, with special components written in <span class=\"theme-link\">React</span> to provide extended functionality beyond the available <span class=\"theme-link\">Docusaurus</span> features.<br><br>I used this site to document my developed process for prioritising features, managing the backlog of features and building the tools that the team generated."
 lessonsLearned: "This project taught me how to integrate <span class=\"theme-link\">React</span> components into a <span class=\"theme-link\">Docusaurus</span> site - as previously I had only built sites using the core <span class=\"theme-link\">Docusaurus</span> functionality.<br><br>I also had to investigate into our company's <span class=\"theme-link\">Azure</span> set up to ensure the site was accessible by internal employees only and set up a custom domain to make the site easier to find for users.<br><br>We also utilised the blog feature of <span class=\"theme-link\">Docusaurus</span> to provide regular <span class=\"theme-link\">GPMO</span> updates to the company which was a new feature for me to work with."
 name: "GPMO Documentation Site"
@@ -78,7 +78,7 @@ WHERE file = this.file
 
 ## Short Description
 
-Reduced knowledge silos for the [[GPMO]] team by documenting their [[DevOps]] processes, backlog workflows, and toolset - producing engineer-maintained reference material embedded in the [[SDLC]].
+Reduced knowledge silos for the [[RLE International|RLE]] [[GPMO]] team by documenting [[DevOps]] processes, backlog workflows and toolset in an engineer-maintained [[Docusaurus]] site embedded in the [[SDLC]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

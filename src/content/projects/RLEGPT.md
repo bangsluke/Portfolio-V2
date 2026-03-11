@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-08-12T11:54:36+01:00
-viewCount: 10
+modified: 2026-03-11T17:22:39+00:00
+viewCount: 11
 aliases:
   - Sales Chatbot
 projectURL: https://rle-sales-details.netlify.app/
@@ -40,8 +40,8 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 7
-shortDescription: "A chat bot that takes on content such as an <span class=\"theme-link\">RFQ</span> block of text and then allows the user to query the text via chat."
-longDescription: "A simple website, demonstrating the power of integrating <span class=\"theme-link\">AI</span> into Automotive processes and day to day workflows, providing a simple interface for using a chat bot for quickly summarising the content of an <span class=\"theme-link\">RFQ</span> or querying information or extractions of logic from it."
+shortDescription: "Internal prototype exploring how <span class=\"theme-link\">LLM</span>s could be used to query <span class=\"theme-link\">RFQ</span> documents via a chat interface, built during the early wave of accessible GPT tooling in 2023."
+longDescription: "A simple website, demonstrating the power of integrating <span class=\"theme-link\">AI</span> <span class=\"theme-link\">LLM</span>s into Automotive processes and day to day workflows, providing a simple interface for using a chat bot for quickly summarising the content of an <span class=\"theme-link\">RFQ</span> or querying information or extractions of logic from it."
 lessonsLearned: "This project was a test of using <span class=\"theme-link\">OpenAI</span>'s <span class=\"theme-link\">API</span> and the setup process involving tokens and cost behind it.<br><br>It also was my first integration of a chat bot component into a project."
 name: "RLEGPT"
 ---
@@ -78,13 +78,13 @@ WHERE file = this.file
 
 ## Short Description
 
-A chat bot that takes on content such as an [[RFQ]] block of text and then allows the user to query the text via chat.
+Internal prototype exploring how [[LLM]]s could be used to query [[RFQ]] documents via a chat interface, built during the early wave of accessible GPT tooling in 2023.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-A simple website, demonstrating the power of integrating [[AI]] into Automotive processes and day to day workflows, providing a simple interface for using a chat bot for quickly summarising the content of an [[RFQ]] or querying information or extractions of logic from it. 
+A simple website, demonstrating the power of integrating [[AI]] [[LLM]]s into Automotive processes and day to day workflows, providing a simple interface for using a chat bot for quickly summarising the content of an [[RFQ]] or querying information or extractions of logic from it. 
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

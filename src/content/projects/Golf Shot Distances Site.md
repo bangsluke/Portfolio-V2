@@ -7,9 +7,9 @@ tags:
   - portfolio
   - golf
 created: 2025-07-13 16:48
-modified: 2026-01-28T17:14:52+00:00
+modified: 2026-03-11T17:36:07+00:00
 aliases:
-viewCount: 11
+viewCount: 12
 projectURL: https://golf-shot-distances.netlify.app/
 codeURL: https://github.com/bangsluke/golf-shot-distances
 codeMultipleRepos: false
@@ -42,7 +42,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 6
-shortDescription: "An investigation into how far I could get without writing any code, by using <span class=\"theme-link\">Cursor</span> <span class=\"theme-link\">AI</span> to generate the codebase."
+shortDescription: "A personal experiment in <span class=\"theme-link\">AI</span>-assisted development - built entirely using <span class=\"theme-link\">Cursor</span> without writing any code manually, to explore how far the tooling had come."
 longDescription: "I used this mini project as a small explorative test into how far <span class=\"theme-link\">AI</span> has developed inside <span class=\"theme-link\">Cursor</span> so far, aiming to build the site I had in mind only writing prompts and avoiding writing any code myself.<br><br>The site is a simple visualisation of golf club distances including flat carry and roll, taking into consideration conditions and displaying them in a graph, with a CRUD functionality with the <span class=\"theme-link\">Google Sheets</span> file behind it using their <span class=\"theme-link\">API</span>. It is also a <span class=\"theme-link\">PWA</span> to allow me to add it to my phone <span class=\"theme-link\">iOS</span> home screen."
 lessonsLearned: "Firstly I learned just how powerful the integrated <span class=\"theme-link\">AI</span> inside <span class=\"theme-link\">Cursor</span> is and how impressively fast it can generate code. But as I got deeper into the project, the <span class=\"theme-link\">AI</span> needed more and more specific prompts and often tried backtracking to re attempt fixes that were undesirable.<br><br>It also failed to cover many edge cases and tried to convince me it had them covered.<br><br>So overall it was a great experience but ultimately showed me that we still need people who understand coding to get good results out of prompting code."
 name: "Golf Shot Distances Site"
@@ -86,7 +86,7 @@ A visual site and [[PWA]] to display how far I hit each [[Golf|golf]] club.
 
 ## Short Description
 
-An investigation into how far I could get without writing any code, by using [[Cursor]] [[AI]] to generate the codebase.
+A personal experiment in [[AI]]-assisted development - built entirely using [[Cursor]] without writing any code manually, to explore how far the tooling had come.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

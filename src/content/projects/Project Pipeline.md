@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-10-08T18:00:21+01:00
-viewCount: 14
+modified: 2026-03-11T17:55:18+00:00
+viewCount: 15
 aliases:
   - Pipeline
 projectURL: https://apps.powerapps.com/play/e/9cb5bfc9-13df-e75e-98ff-a4782f9d0f48/a/c4b54ab2-1db0-4f44-8314-e1ca852d3f44?tenantId=6422ff1a-f3b5-4450-9230-ad4241884bf4&sourcetime=1701875569544&source=portal
@@ -36,7 +36,7 @@ topicTags:
 powerShellAlias: n/a
 version: 5.1
 portfolioOrder: 4
-shortDescription: "A tool for identifying the progress of global <span class=\"theme-link\">RLE International</span> projects from lead to in-play, through to completion."
+shortDescription: "<span class=\"theme-link\">Power Apps</span> tool for tracking the progress of global <span class=\"theme-link\">RLE International</span> projects from lead through to completion, giving management live visibility of the pipeline across regions."
 longDescription: "A <span class=\"theme-link\">Power Apps</span> tool that utilised a project process defined internally within <span class=\"theme-link\">RLE International</span> and allowed users to create and track projects through various phases and stages.<br><br>Each phase had a set of user sign offs to provide process control with each stage below it having a RAG status and documentation explaining what is required to get to green.<br><br>Tasks along with in app notifications were also included in the application to help users pick up their required next steps quickly."
 lessonsLearned: "The main lessons learned for this tool were ensuring the application was very user friendly as we had a very wide user base across the company. Adding features such as sidebar notifications to flag which pages needed attention and task counts on the main dashboard as well as weekly email summaries to users with outstanding tasks was key in keeping all users regularly updating the system."
 name: "Project Pipeline"
@@ -74,7 +74,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A tool for identifying the progress of global [[RLE International]] projects from lead to in-play, through to completion.
+[[Power Apps]] tool for tracking the progress of global [[RLE International]] projects from lead through to completion, giving management live visibility of the pipeline across regions.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

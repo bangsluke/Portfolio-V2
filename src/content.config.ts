@@ -1,8 +1,15 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
+import { glob, file } from 'astro/loaders';
 
-// Define the staticData collection schema
+// Static data: single JSON file exposed as one entry
 const staticDataCollection = defineCollection({
-	type: 'data',
+	loader: file('./src/content/staticData/allStaticData.json', {
+		parser: (text) => {
+			const data = JSON.parse(text) as Record<string, unknown>;
+			return [{ id: 'default', ...data }];
+		},
+	}),
 	schema: z.object({
 		profileImage: z.string(),
 		profileAlt: z.string(),
@@ -27,9 +34,12 @@ const staticDataCollection = defineCollection({
 	}),
 });
 
-// Define projects collection schema based on actual project files
 const projectsCollection = defineCollection({
-	type: 'content',
+	loader: glob({
+		base: './src/content/projects',
+		pattern: '**/*.md',
+		generateId: ({ entry }) => entry,
+	}),
 	schema: z.object({
 		name: z.string().optional(),
 		tags: z.array(z.string()).optional(),
@@ -49,16 +59,18 @@ const projectsCollection = defineCollection({
 		developers: z.array(z.string()).optional(),
 		topicTags: z.array(z.string()).optional(),
 		version: z.union([z.number(), z.null()]).optional(),
-		// Extracted section content
 		shortDescription: z.union([z.string(), z.null()]).optional(),
 		longDescription: z.union([z.string(), z.null()]).optional(),
 		lessonsLearned: z.union([z.string(), z.null()]).optional(),
 	}),
 });
 
-// Define skills collection schema based on actual skill files
 const skillsCollection = defineCollection({
-	type: 'content',
+	loader: glob({
+		base: './src/content/skills',
+		pattern: '**/*.md',
+		generateId: ({ entry }) => entry,
+	}),
 	schema: z.object({
 		name: z.string().optional(),
 		tags: z.array(z.string()).optional(),
@@ -68,24 +80,29 @@ const skillsCollection = defineCollection({
 	}),
 });
 
-// Define companies collection schema based on actual company files
 const companiesCollection = defineCollection({
-	type: 'content',
+	loader: glob({
+		base: './src/content/companies',
+		pattern: '**/*.md',
+		generateId: ({ entry }) => entry,
+	}),
 	schema: z.object({
 		tags: z.array(z.string()).optional(),
 		dateStart: z.union([z.string(), z.date(), z.null()]).optional(),
 		dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
 		logoURL: z.union([z.string(), z.null()]).optional(),
 		imageURL: z.union([z.string(), z.null()]).optional(),
-		// Extracted section content
 		companyDescription: z.string().optional(),
 		keyAchievement: z.string().optional(),
 	}),
 });
 
-// Define clients collection schema based on actual client files
 const clientsCollection = defineCollection({
-	type: 'content',
+	loader: glob({
+		base: './src/content/clients',
+		pattern: '**/*.md',
+		generateId: ({ entry }) => entry,
+	}),
 	schema: z.object({
 		name: z.string().optional(),
 		tags: z.array(z.string()).optional(),
@@ -99,41 +116,48 @@ const clientsCollection = defineCollection({
 	}),
 });
 
-// Define roles collection schema based on actual role files
 const rolesCollection = defineCollection({
-	type: 'content',
+	loader: glob({
+		base: './src/content/roles',
+		pattern: '**/*.md',
+		generateId: ({ entry }) => entry,
+	}),
 	schema: z.object({
 		name: z.string().optional(),
 		tags: z.array(z.string()).optional(),
 		dateStart: z.union([z.string(), z.date(), z.null()]).optional(),
 		dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
 		linkedCompany: z.array(z.string()).optional(),
-		// Extracted section content
 		shortRoleDescription: z.string().optional(),
 		fullRoleDescription: z.string().optional(),
-		roleDescription: z.string().optional(), // legacy, for migration
+		roleDescription: z.string().optional(),
 		keyAchievement: z.string().optional(),
 	}),
 });
 
-// Define educations collection schema based on actual education files
 const educationsCollection = defineCollection({
-	type: 'content',
+	loader: glob({
+		base: './src/content/educations',
+		pattern: '**/*.md',
+		generateId: ({ entry }) => entry,
+	}),
 	schema: z.object({
 		name: z.string().optional(),
 		tags: z.array(z.string()).optional(),
 		dateStart: z.union([z.string(), z.date(), z.null()]).optional(),
 		dateEnd: z.union([z.string(), z.date(), z.null()]).optional(),
 		logoURL: z.union([z.string(), z.null()]).optional(),
-		// Extracted section content
 		qualifications: z.string().optional(),
 		additionalDetails: z.string().optional(),
 	}),
 });
 
-// Define references collection schema based on actual reference files
 const referencesCollection = defineCollection({
-	type: 'content',
+	loader: glob({
+		base: './src/content/references',
+		pattern: '**/*.md',
+		generateId: ({ entry }) => entry,
+	}),
 	schema: z.object({
 		name: z.string().optional(),
 		tags: z.array(z.string()).optional(),

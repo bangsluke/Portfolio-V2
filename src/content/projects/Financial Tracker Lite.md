@@ -5,8 +5,8 @@ tags:
   - tool
   - project/completed/work
   - portfolio
-modified: 2025-09-08T10:23:11+01:00
-viewCount: 11
+modified: 2026-03-11T18:06:56+00:00
+viewCount: 12
 aliases:
   - Financial Tracking
   - FTL
@@ -39,7 +39,7 @@ topicTags:
 powerShellAlias: n/a
 version: 2.2
 portfolioOrder: 4
-shortDescription: "A simplified version of the <span class=\"theme-link\">Financial Tracker</span>."
+shortDescription: "A simplified version of the <span class=\"theme-link\">RLE</span> <span class=\"theme-link\">Financial Tracker</span>, providing a lightweight entry point for teams needing core financial visibility without the full suite of reporting functionality."
 longDescription: "A <span class=\"theme-link\">Power Apps</span> tool for users to input finances (both realised and predicted) on a project by project basis, enabling finance forecasting per region."
 lessonsLearned: "This project helped me work on <span class=\"theme-link\">Power Apps</span> gallery components and ensuring these are user friendly whilst staying maintainable.<br><br>It also involved integrating currency conversions within the tool to ensure that all regions could enter accurate information from their end for singular currency reporting at management level."
 name: "Financial Tracker Lite"
@@ -77,7 +77,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A simplified version of the [[Financial Tracker]].
+A simplified version of the [[RLE International|RLE]] [[Financial Tracker]], providing a lightweight entry point for teams needing core financial visibility without the full suite of reporting functionality.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -4,14 +4,14 @@ tags:
   - role
   - portfolio
 created: 2025-02-04 18:53
-modified: 2026-02-22T13:52:05+00:00
+modified: 2026-03-11T16:11:57+00:00
 viewCount: 8
 dateStart: 2014-03-03
 dateEnd: 2014-07-25
 linkedCompany:
   - "[[Opus 2 International]]"
-shortRoleDescription: "Bug testing the cloud software and reviewing the sites functionality for users and admins."
-fullRoleDescription: "For the final few months at <span class=\"theme-link\">Opus 2</span> I was involved in software bug testing, reviewing the applications functionality from both a users and admins perspectives and raising bug report documentation."
+shortRoleDescription: "Bug testing the cloud software and reviewing the sites functionality for users and admins, and developing a clear reporting structure to communicate findings to the development team."
+fullRoleDescription: "For the final few months at <span class=\"theme-link\">Opus 2</span> I was involved in software bug testing, reviewing the applications functionality from both a users and admins perspectives and raising bug report documentation. Developed internal processes to reduce time spent on repetitive workflows."
 keyAchievement: "Finding several front end bugs and developing a reporting structure for developers to understand easily."
 ---
 # Bug Tester
@@ -24,13 +24,13 @@ keyAchievement: "Finding several front end bugs and developing a reporting struc
 
 ## Short Role Description
 
-Bug testing the cloud software and reviewing the sites functionality for users and admins.
+Bug testing the cloud software and reviewing the sites functionality for users and admins, and developing a clear reporting structure to communicate findings to the development team.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Full Role Description
 
-For the final few months at [[01 Notes/02 Areas/Work Notes/Company Notes/Opus 2 International|Opus 2]] I was involved in software bug testing, reviewing the applications functionality from both a users and admins perspectives and raising bug report documentation.
+For the final few months at [[01 Notes/02 Areas/Work Notes/Company Notes/Opus 2 International|Opus 2]] I was involved in software bug testing, reviewing the applications functionality from both a users and admins perspectives and raising bug report documentation. Developed internal processes to reduce time spent on repetitive workflows.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

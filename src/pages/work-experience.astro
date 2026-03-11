@@ -91,7 +91,7 @@ const sortedRoles = nonVoluntaryRoles.sort((a, b) => {
 	}
 
 	// Fallback to alphabetical sorting by slug (filename)
-	return a.slug.localeCompare(b.slug);
+	return (a.slug ?? '').localeCompare(b.slug ?? '');
 });
 
 // Sort voluntary roles by dateStart date (newest first)
@@ -105,7 +105,7 @@ const sortedVoluntaryRoles = voluntaryRoles.sort((a, b) => {
 	}
 
 	// Fallback to alphabetical sorting by slug (filename)
-	return a.slug.localeCompare(b.slug);
+	return (a.slug ?? '').localeCompare(b.slug ?? '');
 });
 
 const pageTitle = 'Work Experience - bangsluke Portfolio';

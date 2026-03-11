@@ -6,9 +6,9 @@ tags:
   - project/completed
   - coding
 created: 2025-05-29 18:03
-modified: 2025-07-22T09:29:13+01:00
+modified: 2026-03-11T18:09:56+00:00
 aliases:
-viewCount: 8
+viewCount: 9
 projectURL: https://group-page.netlify.app/
 codeURL: https://github.com/bangsluke/Group-Page
 codeMultipleRepos: false
@@ -36,7 +36,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 7
-shortDescription: "An early site that I built as a laugh for my friends displaying statistics for each person to fuel our competitive nature."
+shortDescription: "An early personal project displaying stats and data for a group of friends, built to fuel some friendly competition. One of the first sites I built from scratch."
 longDescription: "My first real project with multiple pages and functionalities, the site was designed for a laugh amongst my friendship group given our high levels of competitiveness.<br><br>The data was stored in manageable <span class=\"theme-link\">Google Sheets</span> which I could update easily after any sports or competitions we did as a group and this would generate an overall ranking for the group.<br><br>The site also contained features such as a shared calendar embedded for us to send events to and help plan get togethers."
 lessonsLearned: "This site helped me start processing external data into a front end, which I did rather inefficiently using papa parse to gather the <span class=\"theme-link\">CSV</span> data.<br><br>It also taught me how to embed components like Google Calendar and widgets, and allowed me to understand theme switching for <span class=\"theme-link\">CSS</span>."
 name: "Group Page"
@@ -74,7 +74,7 @@ WHERE file = this.file
 
 ## Short Description
 
-An early site that I built as a laugh for my friends displaying statistics for each person to fuel our competitive nature.
+An early personal project displaying stats and data for a group of friends, built to fuel some friendly competition. One of the first sites I built from scratch.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

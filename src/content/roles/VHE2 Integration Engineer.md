@@ -4,14 +4,14 @@ tags:
   - role
   - portfolio
 created: 2025-09-01 11:37
-modified: 2026-02-22T18:52:35+00:00
+modified: 2026-03-11T15:45:38+00:00
 viewCount: 10
 dateStart: 2025-09-01
 dateEnd:
 linkedCompany:
   - "[[RLE International]]"
   - "[[Ford]]"
-shortRoleDescription: "Pivoted a vehicle integration role toward digital automation, developing numerous tracking documents and architecting an automated cross-program reporting process with <span class=\"theme-link\">Python</span> and <span class=\"theme-link\">Power BI</span> to develop dashboards with <span class=\"theme-link\">KPIs</span> for stakeholders."
+shortRoleDescription: "Pivoted a vehicle integration role at <span class=\"theme-link\">Ford</span> toward digital product delivery. Owned end-to-end delivery of an automated <span class=\"theme-link\">KPI</span> dashboard and <span class=\"theme-link\">Excel</span>-based tracker - consolidating multiple data sources into a single <span class=\"theme-link\">Power BI</span> view used in weekly program reviews at <span class=\"theme-link\">Ford</span>. Reduced reporting lag from days to minutes and removed the need for manual cross-system data collation by the team."
 fullRoleDescription: "V801 Vehicle Integration role for the Interiors team (VHE2), supporting various engineering issues and reporting to management.<br><br>Developed numerous tracking documents to support the team and optimised ongoing workflows to enhance day to day operations. Helped with cross VHE metrics reporting in a developed <span class=\"theme-link\">Excel</span> document supported with <span class=\"theme-link\">VBA</span> scripts and with data architecture planning for a new multi-program <span class=\"theme-link\">Power BI</span> report.<br><br>Supported teams in meeting <span class=\"theme-link\">CAD</span> <span class=\"theme-link\">MCI</span> completeness targets for UXV0 and then took on the role of tracking Recycling and Renewables content in ensuring suppliers met <span class=\"theme-link\">Ford</span>'s 20% renewables target for UXV1.<br><br>Developed a solution for extracting folders and files from <span class=\"theme-link\">SharePoint</span> using <span class=\"theme-link\">VBA</span> to extract the data into <span class=\"theme-link\">CSV</span> and then a <span class=\"theme-link\">Python</span> script to tag the files into categories using fuzzy matching ready for a searchable <span class=\"theme-link\">Power BI</span> report, allowing the combination of multiple sites into one searchable location."
 keyAchievement: "The architecting of the <span class=\"theme-link\">Python</span> data pipeline that automated reading in from several data sources into a filterable <span class=\"theme-link\">Power BI</span> dashboard used for weekly reviews."
 ---
@@ -27,7 +27,7 @@ keyAchievement: "The architecting of the <span class=\"theme-link\">Python</span
 
 ## Short Role Description
 
-Pivoted a vehicle integration role toward digital automation, developing numerous tracking documents and architecting an automated cross-program reporting process with [[Python]] and [[Power BI]] to develop dashboards with [[KPI|KPIs]] for stakeholders.
+Pivoted a vehicle integration role at [[Ford]] toward digital product delivery. Owned end-to-end delivery of an automated [[KPI]] dashboard and [[Excel]]-based tracker - consolidating multiple data sources into a single [[Power BI]] view used in weekly program reviews at [[Ford]]. Reduced reporting lag from days to minutes and removed the need for manual cross-system data collation by the team.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

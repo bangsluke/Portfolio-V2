@@ -7,8 +7,8 @@ tags:
   - portfolio
   - project/parked
 created: 2025-05-16T09:29:00
-modified: 2026-01-21T09:30:31+00:00
-viewCount: 39
+modified: 2026-03-11T17:47:11+00:00
+viewCount: 40
 aliases:
   - Travel Journal
   - mytraveljournal
@@ -54,8 +54,8 @@ topicTags:
 powerShellAlias: travel
 version: 2
 portfolioOrder: 4
-shortDescription: "A website to show details of my travels across the world."
-longDescription: "A visualisation and analysis of the travelling I have done, providing descriptions of my trips and a level of analysis on top of this such as most visited places, most common travel companions and other stats."
+shortDescription: "Site built to document and display notes and details from travels across 50+ countries. Used as a personal record and a test bed for graph database and authentication patterns."
+longDescription: "A visualisation and analysis of the travelling I have done, providing descriptions of my trips and a level of analysis on top of this such as most visited places, most common travel companions and other stats.<br><br>The site used <span class=\"theme-link\">Markdown</span> notes that I had written up about my travels within <span class=\"theme-link\">Obsidian</span>, pushed into a <span class=\"theme-link\">Neo4j</span> graph database, with data returned to the site via <span class=\"theme-link\">GraphQL</span>."
 lessonsLearned: "The biggest challenge for this project was setting up the <span class=\"theme-link\">Apollo</span> backend server and getting the connection to the front end.<br><br>I also learned a lot about the page routing in <span class=\"theme-link\">Next.js</span> to develop the various page types on the site."
 name: "Travel Website"
 ---
@@ -92,13 +92,15 @@ WHERE file = this.file
 
 ## Short Description
 
-A website to show details of my travels across the world.
+Site built to document and display notes and details from travels across 50+ countries. Used as a personal record and a test bed for graph database and authentication patterns.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
 A visualisation and analysis of the travelling I have done, providing descriptions of my trips and a level of analysis on top of this such as most visited places, most common travel companions and other stats.
+
+The site used [[Markdown]] notes that I had written up about my travels within [[Obsidian]], pushed into a [[Neo4j]] graph database, with data returned to the site via [[GraphQL]].
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

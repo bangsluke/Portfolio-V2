@@ -7,10 +7,10 @@ tags:
   - sport
   - coding
 created: 2025-05-29 17:44
-modified: 2026-01-21T09:10:20+00:00
+modified: 2026-03-11T17:34:52+00:00
 aliases:
   - Dorkinians Mobile Stats
-viewCount: 13
+viewCount: 14
 projectURL: https://dorkinians-mobile-stats.netlify.app/main
 codeURL: https://github.com/bangsluke/mobile-stats-dorkinians
 codeMultipleRepos: false
@@ -44,7 +44,7 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 6
-shortDescription: "A quick access, mobile friendly filterable stats site for <span class=\"theme-link\">Dorkinians FC</span> players."
+shortDescription: "A quick-access, mobile-friendly filterable stats site for <span class=\"theme-link\">Dorkinians FC</span> players - the precursor to the full V3 platform."
 longDescription: "After creating the initial <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>, I would regularly be asked by players \"But how many goals were just in cup games/not friendlies/just league?\" Etc etc.<br><br>I therefore decided to play around with creating a filterable site so that players could answer these questions themselves."
 lessonsLearned: "This project let me design my first filter <span class=\"theme-link\">UI</span> popup using <span class=\"theme-link\">React</span> and taught me methods of filtering the data received from the back end.<br><br>I also tried out a new <span class=\"theme-link\">API</span> method of retrieving data to the front end from <span class=\"theme-link\">Google Sheets</span>, using their available method instead of parsing generated <span class=\"theme-link\">CSV</span> data like I did on the <a href=\"/projects/dorkinians-website\" class=\"theme-link\">Dorkinians Website</a>."
 name: "Dorkinians Mobile Site"
@@ -82,7 +82,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A quick access, mobile friendly filterable stats site for [[Dorkinians FC]] players.
+A quick-access, mobile-friendly filterable stats site for [[Dorkinians FC]] players - the precursor to the full V3 platform.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -6,9 +6,9 @@ tags:
   - coding
   - project/completed
 created: 2025-05-30 10:00
-modified: 2026-01-21T09:22:45+00:00
+modified: 2026-03-11T17:40:22+00:00
 aliases:
-viewCount: 12
+viewCount: 13
 projectURL: https://js-stag.netlify.app/
 codeURL: https://github.com/bangsluke/JS-stag
 codeMultipleRepos: false
@@ -36,8 +36,8 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 8
-shortDescription: "A website detailing the itinerary for <span class=\"theme-link\">Jonny Sourris</span>'s stag do."
-longDescription: "This site provided the stag attendees with the full itinerary of the stag, with timings and <span class=\"theme-link\">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group."
+shortDescription: "Personal project built as itinerary sites for a friend's stag do - quickly built to share event details and schedules in a more engaging format than a group chat."
+longDescription: "This site provided the stag attendees with the full itinerary of <span class=\"theme-link\">Jonny Sourris</span>' stag, with timings and <span class=\"theme-link\">Google Maps</span> links to each activity, designed for late attendees (or drunk attendees) to re-locate the group."
 lessonsLearned: "There were a few lessons learned from this project;<br>- Learning how to use <span class=\"theme-link\">Vite.js</span> for the first time<br>- Writing a website using <span class=\"theme-link\">Typescript</span> for the first time<br>- Implementing a timeline component and targeting mobile screen size<br>- Correctly setting up hyperlinks from the users location to the next activity in <span class=\"theme-link\">Google Maps</span>"
 name: "JS Stag Website"
 ---
@@ -74,13 +74,13 @@ WHERE file = this.file
 
 ## Short Description
 
-A website detailing the itinerary for [[Jonny Sourris]]'s stag do.
+Personal project built as itinerary sites for a friend's stag do - quickly built to share event details and schedules in a more engaging format than a group chat.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-This site provided the stag attendees with the full itinerary of the stag, with timings and [[Google Maps]] links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
+This site provided the stag attendees with the full itinerary of [[Jonny Sourris]]' stag, with timings and [[Google Maps]] links to each activity, designed for late attendees (or drunk attendees) to re-locate the group.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

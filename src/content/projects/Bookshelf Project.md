@@ -6,9 +6,9 @@ tags:
   - portfolio
   - project/completed/work
 created: 2026-01-12 15:12
-modified: 2026-01-12T16:30:35+00:00
+modified: 2026-03-11T17:15:24+00:00
 aliases:
-viewCount: 3
+viewCount: 4
 projectURL: n/a
 codeURL: n/a
 codeMultipleRepos: false
@@ -37,7 +37,7 @@ topicTags:
 powerShellAlias: bookshelf
 version: 1
 portfolioOrder: 5
-shortDescription: "A gathering of files and folders from across various team <span class=\"theme-link\">SharePoint</span> sites into a combined <span class=\"theme-link\">Power BI</span> report enabling search and filtering."
+shortDescription: "Built for <span class=\"theme-link\">Ford</span> to eliminate manual file searches across distributed <span class=\"theme-link\">SharePoint</span> sites. Consolidated files and folders from multiple team sites into a single searchable, filterable <span class=\"theme-link\">Power BI</span> report."
 longDescription: "This project was built for a vehicle program that was paused where the customer wanted the progress and data saved for possible use again in the future.<br><br>My implemented solution used a <span class=\"theme-link\">VBA</span> script to loop through mapped <span class=\"theme-link\">SharePoint</span> sites and generate a <span class=\"theme-link\">CSV</span> of the sites structure, storing folder and file meta data.<br><br>The <span class=\"theme-link\">CSV</span>s were then passed through a <span class=\"theme-link\">Python</span> script, which used fuzzy matching to generate a set of tags for the files and clean any data ready for the <span class=\"theme-link\">Power BI</span> report.<br><br>A <span class=\"theme-link\">Power BI</span> report was then built to display the various <span class=\"theme-link\">SharePoint</span> data, using filters for site location, tags and file types to allow the user to sift through the data. Users could search the database of folders and files using their own search text and could follow the URL links to the specific item."
 lessonsLearned: "This project taught me how to use fuzzy matching with the correct fine tuning to extract usable tags from a list of data.<br><br>It also helped me improve my <span class=\"theme-link\">Power BI</span> skills, ensuring I set up the project from start to finish rather than modifying an existing report as had previously been the case."
 name: "Bookshelf Project"
@@ -75,7 +75,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A gathering of files and folders from across various team [[SharePoint]] sites into a combined [[Power BI]] report enabling search and filtering.
+Built for [[Ford]] to eliminate manual file searches across distributed [[SharePoint]] sites. Consolidated files and folders from multiple team sites into a single searchable, filterable [[Power BI]] report.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

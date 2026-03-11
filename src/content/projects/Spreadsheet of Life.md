@@ -6,10 +6,10 @@ tags:
   - project/completed
   - finances
 created: 2024-03-02T09:21:00
-modified: 2026-03-03T21:33:05+00:00
+modified: 2026-03-11T17:50:36+00:00
 aliases:
   - SoL
-viewCount: 16
+viewCount: 17
 projectURL: https://docs.google.com/spreadsheets/d/114gu85xbOJppMf3JIuHzoWIVsWAcy3ALmdv0owwyCQ0/edit?usp=sharing
 codeURL: https://script.google.com/home/projects/1e_U-ujneCBoYpGoZVAPtSYR9wI2StLhy4gLbL6t946wAJVTjDdAhn9xs/edit
 codeMultipleRepos: true
@@ -36,7 +36,7 @@ topicTags:
 powerShellAlias: n/a
 version: 3.2
 portfolioOrder: 6
-shortDescription: "A <span class=\"theme-link\">Google Sheets</span> file that I use to collate all my key details on which is mainly financial data but is also used as the data source for health data such as steps to produce my daily, weekly and monthly summary emails to myself using <span class=\"theme-link\">Google Apps Script</span>."
+shortDescription: "Personal <span class=\"theme-link\">Google Sheets</span> file tracking financial and health data, using <span class=\"theme-link\">Google Apps Script</span> to generate automated daily, weekly and monthly summary emails."
 longDescription: "The Spreadsheet of Life (or SoL for short) is the backbone of my finances, holding data for helping me with all my financial decisions.<br><br>It is an ever expanding <span class=\"theme-link\">Google Sheets</span> file that I use to take snapshots of my daily, weekly and monthly finances which is then summarised to me each day through automated emails, run through <span class=\"theme-link\">Google Apps Script</span>.<br><br>It has an integrated daily summary of my <span class=\"theme-link\">Google Calendar</span>, a summary learning section on a random topic created by <span class=\"theme-link\">Claude</span> and a summary of my <span class=\"theme-link\">Todoist</span> tasks.<br><br>SoL also contains health data such as distance traveled, steps and fluid intake which I send each evening from my phone to the file via <span class=\"theme-link\">Apple Shortcuts</span>."
 lessonsLearned: "The Spreadsheet of Life was my first real introduction to <span class=\"theme-link\">JavaScript</span>, via <span class=\"theme-link\">Google Apps Script</span>, allowing me to generate daily emails to myself. This also brought up several challenges such as storing snapshots of generated graphs within the file to be sent which I achieved using temporary storage in <span class=\"theme-link\">Google Drive</span>.<br><br>It also taught me the full power of <span class=\"theme-link\">API</span>s from an early stage, allowing me to populate the sheet remotely from using <span class=\"theme-link\">Apple Shortcuts</span> on my iPhone."
 name: "Spreadsheet of Life"
@@ -74,7 +74,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A [[Google Sheets]] file that I use to collate all my key details on which is mainly financial data but is also used as the data source for health data such as steps to produce my daily, weekly and monthly summary emails to myself using [[Google Apps Script]].
+Personal [[Google Sheets]] file tracking financial and health data, using [[Google Apps Script]] to generate automated daily, weekly and monthly summary emails.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

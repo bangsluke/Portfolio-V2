@@ -21,7 +21,8 @@ const skills = await getCollection('skills').then(skills =>
 		...skill,
 		data: {
 			...skill.data,
-			skillName: skill.id.replace(/\.md$/, ''),
+			// Use a canonical skillName based on the filename (no path, no extension)
+			skillName: extractNameFromFilename(skill.id || skill.slug),
 		},
 	}))
 );
@@ -49,6 +50,7 @@ projects.forEach(project => {
 	}
 	if (project.data.technologies) {
 		project.data.technologies.forEach((tech: string) => {
+			if (tech == null || typeof tech !== 'string') return;
 			// Clean the technology name by removing Obsidian brackets
 			const cleanTech = tech.replace(/\[\[|\]\]/g, '');
 
@@ -83,6 +85,8 @@ function getSkillGroup(tags: string[]): string {
 
 // Count technology usage across all projects and find matching skills
 allTechnologies.forEach(tech => {
+	const techLower = (tech ?? '').toLowerCase();
+
 	const count = getProjectCount(tech, tech, projects);
 	const projectsList = getProjectsUsingSkill(tech, tech, projects);
 
@@ -90,18 +94,18 @@ allTechnologies.forEach(tech => {
 	let skillData: (typeof skills)[0] | null = null;
 	let tags: string[] = [];
 
+	// Helper: safe skill display name (some entries may lack name/slug)
+	const getSkillLabel = (s: (typeof skills)[0]) =>
+		((s.data as any)?.skillName ?? s.data?.name ?? s.slug ?? '').toLowerCase();
+
 	// Try exact match first (case-insensitive)
-	skillData = skills.find(
-		s => (s.data.name || s.slug).toLowerCase() === tech.toLowerCase()
-	);
+	skillData = skills.find(s => getSkillLabel(s) === (tech ?? '').toLowerCase());
 
 	// If no exact match, try normalized matches (remove special characters)
 	if (!skillData) {
-		const normalizedTech = tech.toLowerCase().replace(/[^a-z0-9]/g, '');
+		const normalizedTech = (tech ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
 		skillData = skills.find(s => {
-			const skillName = (s.data.name || s.slug)
-				.toLowerCase()
-				.replace(/[^a-z0-9]/g, '');
+			const skillName = getSkillLabel(s).replace(/[^a-z0-9]/g, '');
 			return skillName === normalizedTech;
 		});
 	}
@@ -109,8 +113,7 @@ allTechnologies.forEach(tech => {
 	// If still no match, try partial matches
 	if (!skillData) {
 		skillData = skills.find(s => {
-			const skillName = (s.data.name || s.slug).toLowerCase();
-			const techLower = tech.toLowerCase();
+			const skillName = getSkillLabel(s);
 
 			// Check if skill name contains tech or vice versa
 			return skillName.includes(techLower) || techLower.includes(skillName);
@@ -120,12 +123,12 @@ allTechnologies.forEach(tech => {
 	// If still no match, try checking aliases
 	if (!skillData) {
 		skillData = skills.find(s => {
-			const aliases = (s.data as any).aliases;
+			const aliases = (s.data as any)?.aliases;
 			return (
 				aliases &&
 				Array.isArray(aliases) &&
 				aliases.some(
-					(alias: string) => alias.toLowerCase() === tech.toLowerCase()
+					(alias: string) => (alias ?? '').toLowerCase() === techLower
 				)
 			);
 		});
@@ -135,10 +138,19 @@ allTechnologies.forEach(tech => {
 		tags = skillData.data.tags || [];
 	}
 
-	// Filter out "Other" and "Hosting" group skills
-	const group = getSkillGroup(tags);
-	if (group === 'Other' || group === 'Hosting') {
-		return;
+	// Filter out techs whose matched skill is explicitly tagged as Hosting/Other,
+	// or whose group is classified as "Other".
+	if (skillData) {
+		const lowerTags = (tags || []).map(tag => tag.toLowerCase());
+		const group = getSkillGroup(lowerTags);
+
+		if (
+			lowerTags.includes('hosting') ||
+			lowerTags.includes('other') ||
+			group === 'Other'
+		) {
+			return;
+		}
 	}
 
 	// Add to techs array
@@ -387,11 +399,13 @@ const techData = {
 																</div>
 																<div class="font-medium">
 																	{(() => {
-																		const skillName = skill.data.skillName;
+																		const skillName =
+																			skill.data?.skillName ?? '';
 																		const projectCount = projects.filter(
 																			project =>
 																				project.data.technologies?.some(
 																					(tech: string) => {
+																						if (tech == null) return false;
 																						const cleanTech = tech.replace(
 																							/\[\[|\]\]/g,
 																							''

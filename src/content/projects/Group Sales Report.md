@@ -5,8 +5,8 @@ tags:
   - tool
   - portfolio
   - project/completed/work
-modified: 2025-09-08T10:39:27+01:00
-viewCount: 13
+modified: 2026-03-11T17:20:38+00:00
+viewCount: 14
 aliases:
 projectURL: https://app.powerbi.com/groups/me/apps/5c7de0e8-e59f-4c47-9a4a-5129c28e1c0f/reports/efd30e67-8ed4-4807-95cb-11f46a62d7d2/ReportSectiona3c344f318d21cde0ced?ctid=6422ff1a-f3b5-4450-9230-ad4241884bf4&experience=power-bi
 codeURL: n/a
@@ -37,8 +37,8 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 5
-shortDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing global <span class=\"theme-link\">RLE International</span> data."
-longDescription: "Financial data split out by region for all <span class=\"theme-link\">RLE International</span> entities, showing booked and opportunities. This <span class=\"theme-link\">Power BI</span> report was management level reporting, showing regions rolled together up to show the companies finances projections against target."
+shortDescription: "Global <span class=\"theme-link\">Power BI</span> report showing <span class=\"theme-link\">RLE International</span> sales and pipeline data, providing live <span class=\"theme-link\">KPI</span>s for senior management across regions."
+longDescription: "The report section for the <span class=\"theme-link\">Financial Tracker</span> showing global <span class=\"theme-link\">RLE International</span> data. Financial data split out by region for all <span class=\"theme-link\">RLE International</span> entities, showing booked and opportunities. This <span class=\"theme-link\">Power BI</span> report was management level reporting, showing regions rolled together up to show the companies finances projections against target."
 lessonsLearned: "The key functionality for the graphics was developed by <span class=\"theme-link\">Alex Sheers</span> on this report. My role was the navigation between pages and usability.<br><br>I learned how best to develop images for use as page and button backgrounds in <span class=\"theme-link\">Figma</span> to get pixel perfect images and help separate the content of each page into distinguishable sections to aid readability."
 name: "Group Sales Report"
 ---
@@ -75,13 +75,13 @@ WHERE file = this.file
 
 ## Short Description
 
-The report section for the [[Financial Tracker]] showing global [[RLE International]] data.
+Global [[Power BI]] report showing [[RLE International]] sales and pipeline data, providing live [[KPI]]s for senior management across regions.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-Financial data split out by region for all [[RLE International]] entities, showing booked and opportunities. This [[Power BI]] report was management level reporting, showing regions rolled together up to show the companies finances projections against target.
+The report section for the [[Financial Tracker]] showing global [[RLE International]] data. Financial data split out by region for all [[RLE International]] entities, showing booked and opportunities. This [[Power BI]] report was management level reporting, showing regions rolled together up to show the companies finances projections against target.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

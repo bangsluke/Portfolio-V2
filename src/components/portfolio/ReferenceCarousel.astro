@@ -25,7 +25,7 @@ const sortedReferences = references.sort((a, b) => {
 	}
 
 	// If portfolioOrder is the same or not set, sort alphabetically by slug
-	return a.slug.localeCompare(b.slug);
+	return (a.slug ?? '').localeCompare(b.slug ?? '');
 });
 
 // Process references to include company/client logos

@@ -6,11 +6,11 @@ tags:
   - coding
   - project/completed
 created: 2024-02-20T09:27:00
-modified: 2026-02-27T21:55:18+00:00
+modified: 2026-03-11T17:42:57+00:00
 aliases:
   - Documentation Site
   - bangsluke-documentation
-viewCount: 28
+viewCount: 29
 projectURL: https://bangsluke-documentation.netlify.app/
 codeURL: https://github.com/bangsluke/bangsluke-documentation
 codeMultipleRepos: false
@@ -43,7 +43,7 @@ topicTags:
 powerShellAlias: documentation, docusaurus
 version: 1
 portfolioOrder: 4
-shortDescription: "A <span class=\"theme-link\">PWA</span> personal documentation site that can be accessed offline, storing key links to the software I use, my project initiation to release process, articles I find useful, and a section on <span class=\"theme-link\">Dorkinians FC</span> stats and website."
+shortDescription: "Personal <span class=\"theme-link\">PWA</span> documentation site accessible offline, storing key links, my project initiation process, useful articles and <a href=\"/projects/dorkinians-website-v3\" class=\"theme-link\">Dorkinians Website V3</a>] reference material."
 longDescription: "Broken out into several sections, my documentation site provides me top level links to <span class=\"theme-link\">Product Management</span> techniques, the <span class=\"theme-link\">SDLC</span> and key software links. Within it is a development guide I've written myself, from planning, installation and set up to develop, testing and deployment.<br><br>It also holds details on the <span class=\"theme-link\">Dorkinians FC</span> stats and how to maintain them - for handover to others - and  a user guide for the <a href=\"/projects/dorkinians-website-v3\" class=\"theme-link\">Dorkinians Website V3</a>.<br><br>I regularly keep it updated with new links and processes I find so that it remains relevant to the work I am doing."
 lessonsLearned: "This project introduced me to the concept of documentation sites, the ease and brilliance of <span class=\"theme-link\">Markdown</span> and led me to notice how many different techs either use <span class=\"theme-link\">Docusaurus</span> or a very similar type static site builder for their documentation.<br><br>I also learned how to set up offline caching to enable me to access the <span class=\"theme-link\">PWA</span> without connection on my mobile device."
 name: "bangsluke Documentation"
@@ -84,7 +84,7 @@ WHERE file = this.file
 
 ## Short Description
 
-A [[PWA]] personal documentation site that can be accessed offline, storing key links to the software I use, my project initiation to release process, articles I find useful, and a section on [[Dorkinians FC]] stats and website.
+Personal [[PWA]] documentation site accessible offline, storing key links, my project initiation process, useful articles and [[Dorkinians Website V3]]] reference material.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
