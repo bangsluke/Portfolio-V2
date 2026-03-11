@@ -5,7 +5,10 @@ import {
 	getPortfolioConfigValue,
 	processObsidianLink,
 } from '../../utils/content-processor';
-import { extractNameFromFilename } from '../../utils/filename-utils';
+import {
+	extractNameFromFilename,
+	nameToSlug,
+} from '../../utils/filename-utils';
 import Heading from '../ui/Heading.astro';
 import ProjectCard from './ProjectCard.astro';
 
@@ -96,6 +99,7 @@ const processedProjects = sortedProjects.map(project => {
 
 	return {
 		...project,
+		slug: nameToSlug(extractNameFromFilename(project.id)),
 		shortDescription: project.data.shortDescription,
 		companyLogoURL,
 	};

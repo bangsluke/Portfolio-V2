@@ -5,7 +5,10 @@ import Heading from '../../components/ui/Heading.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { processObsidianLink } from '../../utils/content-processor';
-import { extractNameFromFilename } from '../../utils/filename-utils';
+import {
+	extractNameFromFilename,
+	nameToSlug,
+} from '../../utils/filename-utils';
 
 // Get all projects, companies, clients, and educations
 const projects = await getCollection('projects');
@@ -345,7 +348,7 @@ const ogimage = {
 										imageURL={project.data.imageURL}
 										technologies={project.data.technologies}
 										shortDescription={project.data.shortDescription}
-										slug={extractNameFromFilename(project.id)}
+										slug={nameToSlug(extractNameFromFilename(project.id))}
 										companyLogoURL={project.companyLogoURL}
 										linkedCompany={project.data.linkedCompany}
 										projects={projects}

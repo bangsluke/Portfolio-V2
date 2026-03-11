@@ -1,6 +1,7 @@
 import {
 	extractNameFromFilename,
 	extractNameFromFilenameString,
+	nameToSlug,
 } from '../../src/utils/filename-utils';
 
 describe('extractNameFromFilename', () => {
@@ -40,6 +41,21 @@ describe('extractNameFromFilename', () => {
 		expect(extractNameFromFilename('Cost Model Translation File.md')).toBe(
 			'Cost Model Translation File'
 		);
+	});
+});
+
+describe('nameToSlug', () => {
+	test('converts names to kebab-case slugs', () => {
+		expect(nameToSlug('Dorkinians Website V3')).toBe('dorkinians-website-v3');
+		expect(nameToSlug('Portfolio Site V2')).toBe('portfolio-site-v2');
+		expect(nameToSlug('My Project')).toBe('my-project');
+	});
+	test('strips leading and trailing hyphens', () => {
+		expect(nameToSlug('  spaces  ')).toBe('spaces');
+	});
+	test('handles empty and edge cases', () => {
+		expect(nameToSlug('')).toBe('');
+		expect(nameToSlug('already-kebab')).toBe('already-kebab');
 	});
 });
 
