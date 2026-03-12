@@ -354,6 +354,234 @@ test.describe('Projects Page Tests', () => {
 		}
 	});
 
+	test('2.3.5. Mobile filters should be collapsible and expanded on toggle', async ({
+		page,
+	}) => {
+		test.setTimeout(60000);
+
+		await page.setViewportSize({ width: 430, height: 932 });
+
+		await page.goto(testData.projectsPageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		const projectsPageObjects = new ProjectsPageObjects(page);
+
+		// Mobile toggle should be visible
+		await expect(projectsPageObjects.mobileFiltersToggle).toBeVisible();
+
+		// Content should be hidden by default
+		await expect(projectsPageObjects.mobileFiltersContent).toBeHidden();
+
+		// Toggle open
+		await projectsPageObjects.mobileFiltersToggle.click();
+		await expect(projectsPageObjects.mobileFiltersContent).toBeVisible();
+
+		// aria-expanded should reflect state
+		await expect(projectsPageObjects.mobileFiltersToggle).toHaveAttribute(
+			'aria-expanded',
+			'true'
+		);
+
+		// Toggle closed
+		await projectsPageObjects.mobileFiltersToggle.click();
+		await expect(projectsPageObjects.mobileFiltersContent).toBeHidden();
+		await expect(projectsPageObjects.mobileFiltersToggle).toHaveAttribute(
+			'aria-expanded',
+			'false'
+		);
+	});
+
+	test('2.3.6. Date inputs should show helper placeholders that disappear when filled', async ({
+		page,
+	}) => {
+		await page.goto(testData.projectsPageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		// Desktop placeholders
+		const startPlaceholderDesktop = page.locator('#startDatePlaceholder');
+		const endPlaceholderDesktop = page.locator('#endDatePlaceholder');
+
+		await expect(startPlaceholderDesktop).toBeVisible();
+		await expect(endPlaceholderDesktop).toBeVisible();
+
+		await page.fill('#startDateInput', '2010-01-01');
+		await expect(startPlaceholderDesktop).toBeHidden();
+
+		await page.fill('#endDateInput', '2100-12-31');
+		await expect(endPlaceholderDesktop).toBeHidden();
+
+		// Mobile placeholders
+		await page.setViewportSize({ width: 430, height: 932 });
+		await page.reload({ waitUntil: 'domcontentloaded' });
+		await waitForPageLoad(page);
+
+		// Expand mobile filters so placeholders are visible
+		const mobileToggle = page.locator('#mobileFiltersToggle');
+		if (await mobileToggle.isVisible().catch(() => false)) {
+			await mobileToggle.click();
+		}
+
+		const startPlaceholderMobile = page.locator('#startDatePlaceholderMobile');
+		const endPlaceholderMobile = page.locator('#endDatePlaceholderMobile');
+
+		await expect(startPlaceholderMobile).toBeVisible();
+		await expect(endPlaceholderMobile).toBeVisible();
+
+		await page.fill('#startDateInputMobile', '2010-01-01');
+		await expect(startPlaceholderMobile).toBeHidden();
+
+		await page.fill('#endDateInputMobile', '2100-12-31');
+		await expect(endPlaceholderMobile).toBeHidden();
+	});
+
+	test('2.3.7. Projects should be sortable by start date with direction toggle', async ({
+		page,
+	}) => {
+		await page.goto(testData.projectsPageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		const projectsPageObjects = new ProjectsPageObjects(page);
+
+		// Ensure desktop sort controls are visible
+		await expect(projectsPageObjects.sortModeDesktop).toBeVisible();
+		await expect(projectsPageObjects.sortDirectionDesktop).toBeVisible();
+
+		// Cycle sort mode until we reach "Sorted by Start Date"
+		const sortModeLabel = page.locator('#sortModeLabelDesktop');
+
+		for (let i = 0; i < 3; i++) {
+			const labelText = await sortModeLabel.textContent();
+			if (labelText && labelText.includes('Sorted by Start Date')) {
+				break;
+			}
+			await projectsPageObjects.sortModeDesktop.click();
+		}
+
+		await expect(sortModeLabel).toHaveText(/Sorted by Start Date/);
+
+		// Helper to get effective start dates for visible cards
+		const getVisibleStartDates = async () => {
+			return page.evaluate(() => {
+				const wrappers = Array.from(
+					document.querySelectorAll<HTMLElement>('#projectsGrid > div')
+				);
+
+				const visibleDates: number[] = [];
+
+				for (const el of wrappers) {
+					const style = window.getComputedStyle(el);
+					if (style.display === 'none' || style.visibility === 'hidden') {
+						continue;
+					}
+
+					const start = el.dataset.startDate
+						? new Date(el.dataset.startDate)
+						: el.dataset.endDate
+							? new Date(el.dataset.endDate)
+							: new Date(0);
+
+					if (!Number.isNaN(start.getTime())) {
+						visibleDates.push(start.getTime());
+					}
+				}
+
+				return visibleDates;
+			});
+		};
+
+		const datesDesc = await getVisibleStartDates();
+		expect(datesDesc.length).toBeGreaterThan(1);
+
+		for (let i = 1; i < datesDesc.length; i++) {
+			expect(datesDesc[i]).toBeLessThanOrEqual(datesDesc[i - 1]);
+		}
+
+		// Toggle sort direction to ascending
+		await projectsPageObjects.sortDirectionDesktop.click();
+
+		const datesAsc = await getVisibleStartDates();
+		expect(datesAsc.length).toBeGreaterThan(1);
+
+		for (let i = 1; i < datesAsc.length; i++) {
+			expect(datesAsc[i]).toBeGreaterThanOrEqual(datesAsc[i - 1]);
+		}
+	});
+
+	test('2.3.8. Priority sorting should respect sort direction', async ({
+		page,
+	}) => {
+		await page.goto(testData.projectsPageUrl, {
+			timeout: 30000,
+			waitUntil: 'domcontentloaded',
+		});
+		await waitForPageLoad(page);
+
+		const projectsPageObjects = new ProjectsPageObjects(page);
+
+		// Ensure desktop sort controls are visible
+		await expect(projectsPageObjects.sortModeDesktop).toBeVisible();
+		await expect(projectsPageObjects.sortDirectionDesktop).toBeVisible();
+
+		// Ensure we are in priority mode
+		const sortModeLabel = page.locator('#sortModeLabelDesktop');
+		await expect(sortModeLabel).toHaveText(/Sorted by Priority/);
+
+		const getVisiblePortfolioOrders = async () => {
+			return page.evaluate(() => {
+				const wrappers = Array.from(
+					document.querySelectorAll<HTMLElement>('#projectsGrid > div')
+				);
+
+				const orders: number[] = [];
+				for (const el of wrappers) {
+					const style = window.getComputedStyle(el);
+					if (style.display === 'none' || style.visibility === 'hidden') {
+						continue;
+					}
+
+					const orderValue = Number(el.dataset.portfolioOrder || '999');
+					orders.push(orderValue);
+				}
+
+				return orders;
+			});
+		};
+
+		// Descending by default
+		const ordersDesc = await getVisiblePortfolioOrders();
+		expect(ordersDesc.length).toBeGreaterThan(1);
+		for (let i = 1; i < ordersDesc.length; i++) {
+			expect(ordersDesc[i]).toBeLessThanOrEqual(ordersDesc[i - 1]);
+		}
+
+		// Toggle sort direction to ascending
+		await projectsPageObjects.sortDirectionDesktop.click();
+
+		const ordersAsc = await getVisiblePortfolioOrders();
+		expect(ordersAsc.length).toBeGreaterThan(1);
+
+		// The order should change when toggling direction
+		expect(ordersAsc).not.toEqual(ordersDesc);
+
+		const firstDesc = ordersDesc[0];
+		const lastDesc = ordersDesc[ordersDesc.length - 1];
+		const firstAsc = ordersAsc[0];
+		const lastAsc = ordersAsc[ordersAsc.length - 1];
+
+		// Ascending order should move smaller portfolioOrder values toward the front
+		expect(firstAsc).toBeLessThanOrEqual(firstDesc);
+		expect(lastAsc).toBeGreaterThanOrEqual(lastDesc);
+	});
+
 	test('2.3.4. URL category parameter should pre-select filters and show matching projects', async ({
 		page,
 	}) => {
