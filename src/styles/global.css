@@ -944,6 +944,51 @@ html:not(.dark) .global-clear-button {
 	cursor: pointer;
 }
 
+.projects-filter-input {
+	min-height: 1.75rem;
+	max-height: 1.75rem;
+}
+
+@media (max-width: 768px) {
+	.projects-filter-label-mobile {
+		font-size: 0.8rem;
+		font-weight: 500;
+	}
+
+	.projects-filter-count-mobile {
+		font-size: 0.8rem;
+		font-weight: 500;
+	}
+
+	.projects-filter-control-text-mobile {
+		font-size: 0.8rem;
+		line-height: 1.25rem;
+	}
+
+	select.projects-filter-control-text-mobile,
+	button.projects-filter-control-text-mobile {
+		font-size: 0.9rem !important;
+		line-height: 1.3rem !important;
+	}
+}
+
+/* Hide native date placeholder text until a value is set; rely on custom overlays */
+input[type='date']::-webkit-datetime-edit {
+	color: transparent;
+}
+
+input[type='date'].has-value::-webkit-datetime-edit {
+	color: inherit;
+}
+
+input[type='date']::-moz-datetime-text {
+	color: transparent;
+}
+
+input[type='date'].has-value::-moz-datetime-text {
+	color: inherit;
+}
+
 /* Date input placeholder: visible on iOS Chrome (light native control) and elsewhere */
 input[type='date']::placeholder,
 input[type='date']::-webkit-input-placeholder {
