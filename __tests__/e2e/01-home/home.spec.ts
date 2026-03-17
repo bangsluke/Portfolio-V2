@@ -51,8 +51,8 @@ test.describe('Home Page Tests', () => {
 	test('1.1.2. Header anchor links should work correctly', async ({ page }) => {
 		const navLinks = [
 			{ name: 'Home', path: testData.navigationPaths.home },
-			{ name: 'Skills', path: testData.navigationPaths.skills },
 			{ name: 'Projects', path: testData.navigationPaths.projects },
+			{ name: 'Skills', path: testData.navigationPaths.skills },
 			{ name: 'Experience', path: testData.navigationPaths.experience },
 			{ name: 'Clients', path: testData.navigationPaths.clients },
 			{ name: 'Education', path: testData.navigationPaths.education },
