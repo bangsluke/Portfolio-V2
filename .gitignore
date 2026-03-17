@@ -32,3 +32,6 @@ pnpm-debug.log*
 /__tests__/e2e/blob-report/
 /__tests__/e2e/playwright/.cache/
 /__tests__/e2e/playwright/.auth/
+
+# Cursor Logs
+.cursor/*.log
