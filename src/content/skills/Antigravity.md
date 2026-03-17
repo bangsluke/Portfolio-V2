@@ -6,8 +6,8 @@ tags:
   - AI
   - skill
   - portfolio
-modified: 2026-01-05T15:04:19+00:00
-viewCount: 5
+modified: 2026-03-12T14:35:53+00:00
+viewCount: 6
 aliases:
 skillRating: 40
 skillDescription: Used with a single project initially to establish the similarities and differences to Cursor and VS Code as an IDE.
@@ -23,6 +23,32 @@ logoFileName: antigravity.svg
 
 ```table-of-contents
 ```
+
+## Help/Guide
+
+### MCP integration
+
+Antigravity fully supports [[MCP]] and includes a **built-in MCP Store** — a marketplace where you can browse and one-click install servers for Firebase, Figma, Google Cloud services, and more.
+
+To configure custom MCP servers, navigate to the Agent pane → `...` menu → MCP Servers → Manage MCP Servers → View Raw Config. This opens `~/.gemini/antigravity/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "firebase": {
+      "command": "npx",
+      "args": ["-y", "firebase-mcp-server@latest", "mcp"]
+    },
+    "google-docs": {
+      "serverUrl": "https://developerknowledge.googleapis.com/mcp"
+    }
+  }
+}
+```
+
+The format mirrors the standard MCP configuration pattern used by Claude Desktop and Cursor. Per-workspace MCP configuration is not yet fully supported — it's a requested feature.
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 

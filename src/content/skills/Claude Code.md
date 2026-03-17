@@ -6,8 +6,8 @@ tags:
   - AI
   - skill
   - portfolio
-modified: 2026-02-25T14:37:24+00:00
-viewCount: 7
+modified: 2026-03-12T14:31:16+00:00
+viewCount: 8
 aliases:
 skillRating: 45
 skillDescription: Used for a couple of small automation projects to test out its capabilities with impressively good outcomes when utilised correctly.
@@ -24,9 +24,11 @@ logoFileName: claude_code.svg
 ```table-of-contents
 ```
 
-## Key Commands
+## Help/Guide
 
-### Best Practices
+### Key Commands
+
+#### Best Practices
 
 | Practice                                     | Why it matters                                                                     |
 | -------------------------------------------- | ---------------------------------------------------------------------------------- |
@@ -43,9 +45,9 @@ logoFileName: claude_code.svg
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
-### Slash Commands
+#### Slash Commands
 
-#### Session
+##### Session
 
 | Command | Description |
 |---|---|
@@ -56,7 +58,7 @@ logoFileName: claude_code.svg
 | `/rewind` | Restore code and conversation to a previous state |
 | `/exit` | Exit Claude Code |
 
-#### Visibility 
+##### Visibility 
 
 | Command | Description |
 |---|---|
@@ -66,7 +68,7 @@ logoFileName: claude_code.svg
 | `/todos` | Show current TODO items |
 | `/doctor` | Check Claude Code installation health |
 
-#### Configuration
+##### Configuration
 
 | Command | Description |
 |---|---|
@@ -77,7 +79,7 @@ logoFileName: claude_code.svg
 | `/init` | Bootstrap a project by creating a `CLAUDE.md` |
 | `/vim` | Toggle vim-style editing mode |
 
-### Utilities
+#### Utilities
 
 | Command | Description |
 |---|---|
@@ -86,7 +88,7 @@ logoFileName: claude_code.svg
 
 ---
 
-### Keyboard Shortcuts
+#### Keyboard Shortcuts
 
 | Shortcut | Description |
 |---|---|
@@ -101,7 +103,7 @@ logoFileName: claude_code.svg
 
 ---
 
-### In-Prompt Shortcuts
+#### In-Prompt Shortcuts
 
 | Syntax | Description |
 |---|---|
@@ -111,7 +113,7 @@ logoFileName: claude_code.svg
 
 ---
 
-### CLI Flags
+#### CLI Flags
 
 | Flag | Description |
 |---|---|
@@ -121,6 +123,44 @@ logoFileName: claude_code.svg
 | `--model <name>` | Set the model (`sonnet`, `opus`, `haiku`) |
 | `--permission-mode plan` | Start in Plan Mode |
 | `--output-format json` | Return JSON output (useful in scripts and CI/CD) |
+
+>[!top] [Back to top](#Table%20of%20Contents)
+
+### MCP setup in Claude Code
+
+[[Claude Code]] supports [[MCP]] servers at **three scopes** — local (just you, just this project), project (shared via git), and user/global (you, all projects):
+
+```bash
+# Add a GitHub MCP server globally
+claude mcp add --scope user --transport stdio github \
+  -- npx -y @modelcontextprotocol/server-github
+
+# Add a Notion server for the current project (shared with team)
+claude mcp add --scope project --transport http notion \
+  https://mcp.notion.com/mcp
+
+# List all configured servers
+claude mcp list
+
+# Remove a server
+claude mcp remove github
+```
+
+Alternatively, edit the config files directly. User-scoped servers go in `~/.claude.json`; project-scoped servers go in `.mcp.json` at the project root. The [[JSON]] format is identical to Claude Desktop's:
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_your_token" }
+    }
+  }
+}
+```
+
+Inside an active session, type `/mcp` to view the status of all connected servers.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -6,7 +6,7 @@ tags:
   - skill
   - LLM
   - portfolio
-modified: 2026-03-03T12:21:53+00:00
+modified: 2026-03-12T14:46:59+00:00
 viewCount: 4
 aliases:
 skillRating: 45
@@ -27,6 +27,7 @@ logoFileName: claude.svg
 ## Links
 
 - [Claude](https://claude.ai/login)
+- [Your CLAUDE.md Is Probably Wrong: 7 Mistakes Boris Cherny Never Makes](https://alirezarezvani.medium.com/your-claude-md-is-probably-wrong-7-mistakes-boris-cherny-never-makes-6d3e5e41f4b7)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
