@@ -328,7 +328,7 @@ const ogimage = {
 											stroke-width="2"
 											d="M7 11l5-5 5 5" />
 									</svg>
-									<span id="sortDirectionLabelDesktop">Ascending</span>
+										<span id="sortDirectionLabelDesktop">Descending</span>
 								</button>
 							</div>
 						</div>
@@ -450,7 +450,7 @@ const ogimage = {
 												stroke-width="2"
 												d="M7 11l5-5 5 5" />
 										</svg>
-										<span id="sortDirectionLabelMobile">Ascending</span>
+										<span id="sortDirectionLabelMobile">Descending</span>
 									</button>
 								</div>
 							</div>
@@ -642,7 +642,7 @@ const ogimage = {
 		type SortDirection = 'asc' | 'desc';
 
 		let currentSortMode: SortMode = 'priority';
-		let currentSortDirection: SortDirection = 'asc';
+		let currentSortDirection: SortDirection = 'desc';
 
 		function updateSortButtonLabels() {
 			const modeLabel =
@@ -760,12 +760,12 @@ const ogimage = {
 			currentSortMode = modes[(currentIndex + 1) % modes.length];
 
 			// When switching modes, default directions:
-			// - Priority: ascending
-			// - Date modes: descending
+			// - Priority: descending (higher-priority first)
+			// - Date modes: descending (newest first)
 			if (currentSortMode === 'startDate' || currentSortMode === 'endDate') {
 				currentSortDirection = 'desc';
 			} else {
-				currentSortDirection = 'asc';
+				currentSortDirection = 'desc';
 			}
 
 			updateSortButtonLabels();
@@ -905,15 +905,30 @@ const ogimage = {
 
 		// Mobile filter collapse toggle
 		if (mobileFiltersToggle && mobileFiltersContent) {
-			// Start collapsed on mobile
-			mobileFiltersContent.classList.add('hidden');
-			mobileFiltersToggle.setAttribute('aria-expanded', 'false');
+			const isMobileInitial = window.matchMedia('(max-width: 767px)').matches;
+
+			// Only start collapsed on small screens; keep expanded on desktop
+			if (isMobileInitial) {
+				mobileFiltersContent.classList.add('hidden');
+				mobileFiltersToggle.setAttribute('aria-expanded', 'false');
+			} else {
+				mobileFiltersContent.classList.remove('hidden');
+				mobileFiltersToggle.setAttribute('aria-expanded', 'true');
+			}
 			mobileFiltersToggle.setAttribute(
 				'aria-controls',
 				'mobileFiltersContent'
 			);
 
 			mobileFiltersToggle.addEventListener('click', () => {
+				const isMobileNow = window.matchMedia('(max-width: 767px)').matches;
+				if (!isMobileNow) {
+					// On desktop, keep content always visible and ignore toggle for layout stability
+					mobileFiltersContent.classList.remove('hidden');
+					mobileFiltersToggle.setAttribute('aria-expanded', 'true');
+					return;
+				}
+
 				const isExpanded =
 					mobileFiltersToggle.getAttribute('aria-expanded') === 'true';
 				const nextExpanded = !isExpanded;
