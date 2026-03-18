@@ -39,8 +39,9 @@
   - [Features](#features)
   - [Screenshots](#screenshots)
     - [Portfolio Introduction](#portfolio-introduction)
-    - [Skills](#skills)
     - [Projects](#projects)
+    - [How I Deliver](#how-i-deliver)
+    - [Skills](#skills)
     - [Work Experience](#work-experience)
     - [Clients](#clients)
     - [Education](#education)
@@ -150,16 +151,22 @@ Portfolio Site V2 is a modern, static portfolio website that combines the power 
   <img src="./public/screenshots/Portfolio.png" alt="Portfolio Screenshot" height="500"/>
 </p>
 
-#### Skills
-
-<p align="center">
-  <img src="./public/screenshots/Skills.png" alt="Skills Screenshot" height="500"/>
-</p>
-
 #### Projects
 
 <p align="center">
   <img src="./public/screenshots/Projects.png" alt="Projects Screenshot" height="500"/>
+</p>
+
+#### How I Deliver
+
+<p align="center">
+  <img src="./public/screenshots/How I Deliver.png" alt="How I Deliver Screenshot" height="500"/>
+</p>
+
+#### Skills
+
+<p align="center">
+  <img src="./public/screenshots/Skills.png" alt="Skills Screenshot" height="500"/>
 </p>
 
 #### Work Experience

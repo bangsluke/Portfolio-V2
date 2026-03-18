@@ -53,7 +53,7 @@ export const testData = {
 	exampleProjectLessonsLearnedText: 'To make the chat bot work',
 	exampleMostCommonTech: 'React',
 	deliveryIntro:
-		"I bridge the gap between business needs and technical execution - here's the toolkit I use to do it.",
+		"I bridge the gap between business needs and technical execution - here's the skills and toolkit I use to do it.",
 	deliveryCardTitles: [
 		'Discovery & Requirements',
 		'Planning & Delivery',
