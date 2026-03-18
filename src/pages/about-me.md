@@ -3,8 +3,8 @@ tags:
   - notes
   - portfolio
 created: 2025-07-21T19:17:10+01:00
-modified: 2026-03-11T16:26:04+00:00
-viewCount: 9
+modified: 2026-03-18T10:26:25+00:00
+viewCount: 10
 layout: /src/layouts/MarkdownAbout.astro
 title: Luke Bangs | My portfolio site | bangsluke
 author: Luke Bangs

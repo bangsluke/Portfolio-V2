@@ -5,9 +5,9 @@ tags:
   - coding
   - skill
   - portfolio
-modified: 2025-07-05T07:01:48+01:00
+modified: 2026-03-18T08:31:28+00:00
 viewCount: 6
-aliases: 
+aliases:
 skillRating: 70
 skillDescription: Proficient in building and maintaining sites using Docusaurus with many of their features explored and utilised.
 logoFileName: docusaurus.svg

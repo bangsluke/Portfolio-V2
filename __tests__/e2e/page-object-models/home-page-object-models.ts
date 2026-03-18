@@ -26,6 +26,10 @@ export class HomePageObjects {
 	public readonly mostCommonTechList: Locator;
 	public readonly projectsSection: Locator;
 	public readonly projectsList: Locator;
+	public readonly deliverySection: Locator;
+	public readonly deliveryIntro: Locator;
+	public readonly deliveryCardsGrid: Locator;
+	public readonly deliveryCards: Locator;
 	public readonly workExperienceSection: Locator;
 	public readonly workExperienceList: Locator;
 	public readonly clientsSection: Locator;
@@ -81,6 +85,10 @@ export class HomePageObjects {
 		this.mostCommonTechList = page.getByTestId('most-common-techs-list');
 		this.projectsSection = page.getByTestId('projects-section');
 		this.projectsList = page.getByTestId('projects-list');
+		this.deliverySection = page.getByTestId('delivery-section');
+		this.deliveryIntro = page.getByTestId('delivery-intro');
+		this.deliveryCardsGrid = page.getByTestId('delivery-cards-grid');
+		this.deliveryCards = page.locator('article[data-testid^="delivery-card-"]');
 		this.workExperienceSection = page.getByTestId('work-experience-section');
 		this.workExperienceList = page.getByTestId('work-experience-list');
 		this.clientsSection = page.getByTestId('clients-section');

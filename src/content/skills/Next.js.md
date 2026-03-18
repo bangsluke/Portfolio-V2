@@ -6,6 +6,7 @@ tags:
   - software
   - portfolio
   - skill
+  - portfolio/technicalBridge
 created: 2023-08-18T15:51:00
 modified: 2026-02-03T14:46:29+00:00
 viewCount: 8

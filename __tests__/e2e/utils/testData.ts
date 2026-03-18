@@ -20,8 +20,9 @@ export const testData = {
 	downloadCVUrl: `Luke-Bangs-CV.pdf`,
 	sectionIds: {
 		home: 'home',
-		skills: 'skills',
 		projects: 'projects',
+		delivery: 'delivery',
+		skills: 'skills',
 		experience: 'experience',
 		clients: 'clients',
 		education: 'education',
@@ -29,8 +30,9 @@ export const testData = {
 	},
 	navigationPaths: {
 		home: '/#home',
-		skills: '/#skills',
 		projects: '/#projects',
+		delivery: '/#delivery',
+		skills: '/#skills',
 		experience: '/#experience',
 		clients: '/#clients',
 		education: '/#education',
@@ -50,6 +52,14 @@ export const testData = {
 		'A stats and performance insights platform for a 600+ member football club',
 	exampleProjectLessonsLearnedText: 'To make the chat bot work',
 	exampleMostCommonTech: 'React',
+	deliveryIntro:
+		"I bridge the gap between business needs and technical execution - here's the toolkit I use to do it.",
+	deliveryCardTitles: [
+		'Discovery & Requirements',
+		'Planning & Delivery',
+		'Technical Bridge',
+		'Automation & Tooling',
+	],
 	exampleWorkExperienceName: 'VHE2 Integration Engineer',
 	exampleWorkExperienceDateRange: 'Sep 2025 - Jan 2026',
 	exampleWorkExperienceDescription: 'Owned end-to-end delivery of an automated',

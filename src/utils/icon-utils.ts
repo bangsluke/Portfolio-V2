@@ -219,6 +219,8 @@ export function isKnownIcon(iconName: string): boolean {
  */
 export function getSkillIconName(logoFileName: string | null): string | null {
 	if (!logoFileName) return null;
+	const normalized = String(logoFileName).trim().toLowerCase();
+	if (normalized === 'n/a' || normalized === 'na') return null;
 	// Remove .svg extension if present
 	return logoFileName.replace(/\.svg$/, '');
 }

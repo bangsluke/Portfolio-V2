@@ -7,10 +7,10 @@ tags:
   - project/completed/work
   - coding
 created: 2025-05-29 18:05
-modified: 2026-03-11T17:14:34+00:00
+modified: 2026-03-18T10:43:47+00:00
 aliases:
   - DVP Prototype
-viewCount: 22
+viewCount: 23
 projectURL: https://dvp-fe.icypebble-0bf96993.germanywestcentral
 codeURL: https://git.rle.de/DigitalEngineering/externalpocs/dvp
 codeMultipleRepos: false

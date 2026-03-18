@@ -9,9 +9,10 @@ tags:
   - notes
   - skill
   - library
+  - portfolio/technicalBridge
 created: 2025-05-17T15:40:00
 modified: 2026-02-03T14:48:02+00:00
-viewCount: 10
+viewCount: 11
 aliases:
 skillRating: 70
 skillDescription: Able to create more advanced React applications with wide functionality and scalability, utilising hooks and refactoring components down to useable functions

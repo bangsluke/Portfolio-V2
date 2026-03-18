@@ -4,9 +4,10 @@ tags:
   - software
   - skill
   - portfolio
+  - portfolio/automationTooling
 modified: 2025-07-02T14:37:35+01:00
 viewCount: 4
-aliases: 
+aliases:
 skillRating: 20
 skillDescription: Able to transform data via queries to extract useful data from basic data sets.
 logoFileName: power_automate.svg

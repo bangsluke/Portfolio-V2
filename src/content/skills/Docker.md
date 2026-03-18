@@ -7,8 +7,8 @@ tags:
   - software
   - portfolio
 created: 2025-05-16T15:38:00
-modified: 2026-02-05T17:32:41+00:00
-viewCount: 6
+modified: 2026-03-18T10:36:16+00:00
+viewCount: 7
 aliases:
 skillRating: 15
 skillDescription: Utilised on the SDP project, introducing me to the concept of images and containerisation.
@@ -25,7 +25,7 @@ logoFileName: docker.svg
 
 ## Description
 
-Docker is an open platform that enables developers to build, ship, and run applications inside lightweight, isolated containers. It standardizes environments by packaging code with all required dependencies, ensuring consistent behavior across development, testing, and production. Docker simplifies deployment, accelerates delivery cycles, and supports scalable microservices architectures. Its core engine manages container lifecycle operations, allowing teams to run multiple applications reliably on the same host. Docker has become a foundational technology in modern [[DevOps]] workflows, enabling reproducibility, portability, and efficient resource usage.
+Docker is an open platform that enables developers to build, ship, and run applications inside lightweight, isolated containers. It standardizes environments by packaging code with all required dependencies, ensuring consistent behaviour across development, testing, and production. Docker simplifies deployment, accelerates delivery cycles, and supports scalable microservices architectures. Its core engine manages container lifecycle operations, allowing teams to run multiple applications reliably on the same host. Docker has become a foundational technology in modern [[DevOps]] workflows, enabling reproducibility, portability, and efficient resource usage.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

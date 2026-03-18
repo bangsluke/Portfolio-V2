@@ -3,6 +3,11 @@ const globals = require('globals');
 const astro = require('eslint-plugin-astro');
 const tseslint = require('typescript-eslint');
 
+const E2E_GENERATED_OUTPUT_IGNORES = [
+  '__tests__/e2e/playwright-report/**',
+  '__tests__/e2e/test-results/**'
+];
+
 module.exports = [
   // Global ignores
   {
@@ -15,6 +20,8 @@ module.exports = [
       'eslint.config.cjs',
       'scripts/**',
       'public/**',
+      '__tests__/e2e/playwright-report/**',
+      '__tests__/e2e/test-results/**',
       '**/*.astro'
     ]
   },
@@ -28,6 +35,7 @@ module.exports = [
   // TypeScript files
   {
     files: ['**/*.ts', '**/*.tsx'],
+    ignores: [...E2E_GENERATED_OUTPUT_IGNORES],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -65,6 +73,7 @@ module.exports = [
   // JavaScript files
   {
     files: ['**/*.js', '**/*.mjs'],
+    ignores: [...E2E_GENERATED_OUTPUT_IGNORES],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -91,6 +100,7 @@ module.exports = [
   // React/Preact components
   {
     files: ['**/*.tsx', '**/*.jsx'],
+    ignores: [...E2E_GENERATED_OUTPUT_IGNORES],
     languageOptions: {
       globals: {
         ...globals.browser,

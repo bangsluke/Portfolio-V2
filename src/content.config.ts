@@ -74,6 +74,15 @@ const skillsCollection = defineCollection({
 	schema: z.object({
 		name: z.string().optional(),
 		tags: z.array(z.string()).optional(),
+		// Obsidian frontmatter `aliases:` can be a list, a string, or left blank.
+		aliases: z
+			.union([
+				z.array(z.string()),
+				z.string(),
+				z.record(z.string(), z.unknown()),
+				z.null(),
+			])
+			.optional(),
 		skillRating: z.number().optional(),
 		skillDescription: z.string().optional(),
 		logoFileName: z.union([z.string(), z.null()]).optional(),

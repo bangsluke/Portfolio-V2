@@ -29,20 +29,31 @@ async function testEmail() {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="x-apple-disable-message-reformatting">
   <title>Email Service Test</title>
+  <style>
+    /* Email-safe “fluid” layout helpers */
+    table { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+    .container { width: 100% !important; max-width: 640px; }
+    .px { padding-left: 28px; padding-right: 28px; }
+    @media screen and (max-width: 680px) {
+      .px { padding-left: 16px !important; padding-right: 16px !important; }
+    }
+  </style>
 </head>
 <body style="margin:0;padding:0;background-color:#f5f3ff;font-family:Montserrat,Arial,sans-serif;color:#171717;">
-  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f3ff;padding:24px 0;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;background-color:#f5f3ff;padding:24px 0;margin:0;">
     <tr>
       <td align="center">
-        <table width="640" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;background-color:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #ddd6fe;">
+        <table role="presentation" class="container" width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="width:100%;max-width:640px;margin:0 auto;background-color:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #ddd6fe;">
           <tr><td>
 
             <!-- HEADER -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:linear-gradient(135deg,#2e1065 0%,#4c1d95 40%,#6d28d9 100%);border-radius:8px 8px 0 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:linear-gradient(135deg,#2e1065 0%,#4c1d95 40%,#6d28d9 100%);border-radius:8px 8px 0 0;">
               <tr>
-                <td style="padding:24px 28px;">
-                  <table cellpadding="0" cellspacing="0" border="0">
+                <td class="px" style="padding:24px 28px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                     <tr>
                       <td style="vertical-align:middle;padding-right:16px;">
                         <img src="https://bangsluke-assets.netlify.app/images/project-logos/Portfolio-Site-V2.png" alt="Portfolio Site V2" width="48" height="48" style="display:block;border-radius:8px;" />
@@ -58,20 +69,20 @@ async function testEmail() {
             </table>
 
             <!-- STATUS BANNER -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#d1fae5;border-bottom:1px solid #ddd6fe;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#d1fae5;border-bottom:1px solid #ddd6fe;">
               <tr>
-                <td style="padding:14px 28px;font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:700;color:#065f46;">
+                <td class="px" style="padding:14px 28px;font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:700;color:#065f46;">
                   &#10003; Email Service is Working Correctly
                 </td>
               </tr>
             </table>
 
             <!-- TEST DETAILS SECTION -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding:24px 28px;">
+                <td class="px" style="padding:24px 28px;">
                   <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Test Details</div>
-                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
                       <td style="padding:6px 0;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;width:140px;">Service</td>
                       <td style="padding:6px 0;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:600;">Gmail SMTP via Nodemailer</td>
@@ -94,9 +105,9 @@ async function testEmail() {
             </table>
 
             <!-- FOOTER -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #ddd6fe;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #ddd6fe;">
               <tr>
-                <td style="padding:16px 28px;font-family:Montserrat,Arial,sans-serif;font-size:12px;color:#6b7280;line-height:1.5;">
+                <td class="px" style="padding:16px 28px;font-family:Montserrat,Arial,sans-serif;font-size:12px;color:#6b7280;line-height:1.5;">
                   <em>Automated test from your Obsidian sync email service.</em>
                 </td>
               </tr>

@@ -6,8 +6,9 @@ tags:
   - AI
   - skill
   - portfolio
+  - portfolio/automationTooling
 modified: 2026-03-12T14:32:49+00:00
-viewCount: 5
+viewCount: 8
 aliases:
 skillRating: 65
 skillDescription: Used daily as part of my workflow process, handing over basic tasks to the integrated AI agent, scoped to work within my defined rules and building out on the planning feature within the tool.

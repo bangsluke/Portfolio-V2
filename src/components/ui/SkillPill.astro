@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { getSkillIconName } from '../../utils/icon-utils';
+import { getSkillIconName, shouldShowIcon } from '../../utils/icon-utils';
 import { extractNameFromFilename } from '../../utils/filename-utils';
 import { getProjectCount } from '../../utils/project-count-utils';
 
@@ -62,9 +62,12 @@ function getOriginalFileName(skillName: string) {
 }
 
 // Get the icon name for the skill by looking up the skill in the skills collection
-async function findIconForSkill(skillName: string) {
+async function findIconForSkill(skillName: string): Promise<{
+	iconName: string | null;
+	hideIconSlot: boolean;
+}> {
 	// Clean the skill name and get lookup/display names
-	const { skillNameForLookup, displayName } = cleanSkillName(skillName);
+	const { skillNameForLookup } = cleanSkillName(skillName);
 
 	// Try to find the skill in the skills collection
 	try {
@@ -75,9 +78,21 @@ async function findIconForSkill(skillName: string) {
 			return skillNameFromData === skillNameForLookup;
 		});
 
-		if (skill && skill.data.logoFileName) {
-			// Use the logoFileName from the skill's frontmatter
-			return getSkillIconName(skill.data.logoFileName);
+		if (skill) {
+			const rawLogoFileName = (skill.data as { logoFileName?: string | null })
+				.logoFileName;
+			const normalizedLogo =
+				rawLogoFileName != null ? String(rawLogoFileName).trim().toLowerCase() : '';
+
+			// If the skill explicitly says there is no logo, render no logo at all.
+			if (normalizedLogo === 'n/a' || normalizedLogo === 'na') {
+				return { iconName: null, hideIconSlot: true };
+			}
+
+			if (rawLogoFileName) {
+				// Use the logoFileName from the skill's frontmatter
+				return { iconName: getSkillIconName(rawLogoFileName), hideIconSlot: false };
+			}
 		}
 
 		// If skill is not found in the collection, log a helpful error message
@@ -101,20 +116,20 @@ async function findIconForSkill(skillName: string) {
 	// Fallback: try exact match as icon name
 	let iconName = getSkillIconName(skillNameForLookup + '.svg');
 	if (iconName) {
-		return iconName;
+		return { iconName, hideIconSlot: false };
 	}
 
 	// Fallback: try lowercase as icon name
 	iconName = getSkillIconName(skillNameForLookup.toLowerCase() + '.svg');
 	if (iconName) {
-		return iconName;
+		return { iconName, hideIconSlot: false };
 	}
 
-	return null;
+	return { iconName: null, hideIconSlot: false };
 }
 
 const cleanedSkill = cleanSkillName(skillName);
-const iconName = await findIconForSkill(skillName);
+const iconResult = await findIconForSkill(skillName);
 const originalFileName = getOriginalFileName(skillName);
 
 // Calculate project count for tooltip
@@ -125,7 +140,11 @@ const projectCount =
 		: 0;
 
 // Ensure icon name is lowercase for the Icon component
-const finalIconName = iconName ? iconName.toLowerCase() : null;
+const finalIconName = iconResult.iconName ? iconResult.iconName.toLowerCase() : null;
+const shouldRenderIcon =
+	!iconResult.hideIconSlot &&
+	!!finalIconName &&
+	shouldShowIcon(finalIconName);
 
 // Size classes
 const sizeClasses = {
@@ -179,17 +198,20 @@ const iconFilterClassesForProject =
 				? `Used in ${projectCount} project${projectCount === 1 ? '' : 's'}`
 				: 'Not used in any projects'}>
 		{
-			finalIconName ? (
+			shouldRenderIcon ? (
 				<img
 					src={`/icons/${finalIconName}.svg`}
 					alt={`${cleanedSkill.displayName} icon`}
 					class={`${sizeClasses[size].icon} text-gray-600 ${iconFilterClassesForProject}`}
+					loading="lazy"
 				/>
 			) : (
-				<div
-					class={`${sizeClasses[size].icon} bg-gray-300 rounded-full flex items-center justify-center text-gray-500 text-xs min-h-full ${iconFilterClassesForProject}`}>
-					?
-				</div>
+				!iconResult.hideIconSlot && (
+					<div
+						class={`${sizeClasses[size].icon} bg-gray-300 rounded-full flex items-center justify-center text-gray-500 text-xs min-h-full ${iconFilterClassesForProject}`}>
+						?
+					</div>
+				)
 			)
 		}
 		<span class={`${sizeClasses[size].text} font-medium`}>
@@ -240,7 +262,7 @@ const iconFilterClassesForProject =
 						tooltipActive = true;
 					}
 				},
-				{ passive: true }
+				{ passive: false }
 			);
 
 			// Handle click outside to close tooltip

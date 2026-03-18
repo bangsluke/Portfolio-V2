@@ -52,6 +52,7 @@ test.describe('Home Page Tests', () => {
 		const navLinks = [
 			{ name: 'Home', path: testData.navigationPaths.home },
 			{ name: 'Projects', path: testData.navigationPaths.projects },
+			{ name: 'Delivery', path: testData.navigationPaths.delivery },
 			{ name: 'Skills', path: testData.navigationPaths.skills },
 			{ name: 'Experience', path: testData.navigationPaths.experience },
 			{ name: 'Clients', path: testData.navigationPaths.clients },
@@ -111,8 +112,9 @@ test.describe('Home Page Tests', () => {
 	}) => {
 		const sectionIds = [
 			testData.sectionIds.home,
-			testData.sectionIds.skills,
 			testData.sectionIds.projects,
+			testData.sectionIds.delivery,
+			testData.sectionIds.skills,
 			testData.sectionIds.experience,
 			testData.sectionIds.clients,
 			testData.sectionIds.education,
@@ -226,8 +228,9 @@ test.describe('Home Page Tests', () => {
 	test('1.3.1. All main sections should be visible', async ({ page }) => {
 		const sections = [
 			testData.sectionIds.home,
-			testData.sectionIds.skills,
 			testData.sectionIds.projects,
+			testData.sectionIds.delivery,
+			testData.sectionIds.skills,
 			testData.sectionIds.experience,
 			testData.sectionIds.clients,
 			testData.sectionIds.education,
@@ -406,6 +409,99 @@ test.describe('Home Page Tests', () => {
 			expect(text).toMatch(/Rating\s+(All|\d+)/);
 			expect(text).toMatch(/Projects\s+(All|\d+)/);
 		}
+	});
+
+	test('1.4.8. Delivery section should render heading, intro, cards, and mapped skills', async ({
+		page,
+	}) => {
+		const homePageObjects = new HomePageObjects(page);
+		await page
+			.locator(`#${testData.sectionIds.delivery}`)
+			.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
+
+		await expect(homePageObjects.deliverySection).toBeVisible();
+		await expect(homePageObjects.deliveryIntro).toHaveText(
+			testData.deliveryIntro
+		);
+		await expect(homePageObjects.deliveryCardsGrid).toBeVisible();
+		await expect(homePageObjects.deliveryCards).toHaveCount(4);
+
+		for (const title of testData.deliveryCardTitles) {
+			await expect(
+				homePageObjects.deliveryCardsGrid.getByText(title)
+			).toBeVisible();
+		}
+
+		// Spot-check key mapped pills from different cards
+		await expect(
+			homePageObjects.deliveryCardsGrid
+				.locator('.skill-pill', { hasText: 'Umami' })
+				.first()
+		).toBeVisible();
+		await expect(
+			homePageObjects.deliveryCardsGrid
+				.locator('.skill-pill', { hasText: 'Azure DevOps' })
+				.first()
+		).toBeVisible();
+		await expect(
+			homePageObjects.deliveryCardsGrid
+				.locator('.skill-pill', { hasText: 'GraphQL' })
+				.first()
+		).toBeVisible();
+		await expect(
+			homePageObjects.deliveryCardsGrid
+				.locator('.skill-pill', { hasText: 'Power Automate' })
+				.first()
+		).toBeVisible();
+	});
+
+	test('1.4.9. Delivery section should appear between Projects and Skills and be responsive', async ({
+		page,
+	}) => {
+		const homePageObjects = new HomePageObjects(page);
+
+		const projectsY = await page
+			.locator(`#${testData.sectionIds.projects}`)
+			.evaluate(el => el.getBoundingClientRect().top + window.scrollY);
+		const deliveryY = await page
+			.locator(`#${testData.sectionIds.delivery}`)
+			.evaluate(el => el.getBoundingClientRect().top + window.scrollY);
+		const skillsY = await page
+			.locator(`#${testData.sectionIds.skills}`)
+			.evaluate(el => el.getBoundingClientRect().top + window.scrollY);
+
+		expect(deliveryY).toBeGreaterThan(projectsY);
+		expect(deliveryY).toBeLessThan(skillsY);
+
+		// Mobile: single column
+		await page.setViewportSize({ width: 500, height: 900 });
+		await homePageObjects.deliverySection.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
+
+		const mobileBoxes = await homePageObjects.deliveryCards.evaluateAll(cards =>
+			cards.map(card => {
+				const rect = card.getBoundingClientRect();
+				return { x: Math.round(rect.x), y: Math.round(rect.y) };
+			})
+		);
+		const mobileDistinctX = new Set(mobileBoxes.map(box => box.x));
+		expect(mobileDistinctX.size).toBe(1);
+
+		// Desktop: 4 columns
+		await page.setViewportSize({ width: 1440, height: 900 });
+		await homePageObjects.deliverySection.scrollIntoViewIfNeeded();
+		await page.waitForTimeout(200);
+
+		const desktopBoxes = await homePageObjects.deliveryCards.evaluateAll(
+			cards =>
+				cards.map(card => {
+					const rect = card.getBoundingClientRect();
+					return { x: Math.round(rect.x), y: Math.round(rect.y) };
+				})
+		);
+		const desktopDistinctX = new Set(desktopBoxes.map(box => box.x));
+		expect(desktopDistinctX.size).toBe(4);
 	});
 
 	// Projects section tests

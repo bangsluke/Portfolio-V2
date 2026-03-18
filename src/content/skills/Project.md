@@ -4,11 +4,13 @@ tags:
   - software
   - skill
   - portfolio
+  - portfolio/planningDelivery
 modified: 2025-07-18T12:26:00+01:00
 created: 2025-06-02T17:51:00
-viewCount: 3
+viewCount: 4
 aliases:
   - Microsoft Project
+  - MS Project
 skillRating: 50
 skillDescription: Able to produce detailed timing plans within Project both manually and through automation.
 logoFileName: project.svg

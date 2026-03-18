@@ -8,8 +8,8 @@ tags:
   - skill
   - notes
 created: 2023-10-13T07:43:00
-modified: 2025-09-07T11:44:28+01:00
-viewCount: 8
+modified: 2026-03-18T08:42:49+00:00
+viewCount: 9
 aliases:
 skillRating: 30
 skillDescription: Able to write simple commands for navigating and interacting with folders and files.

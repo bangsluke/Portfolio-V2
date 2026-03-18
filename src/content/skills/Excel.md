@@ -4,7 +4,8 @@ tags:
   - software
   - skill
   - portfolio
-viewCount: 4
+  - portfolio/discoveryRequirements
+viewCount: 5
 aliases:
   - Microsoft Excel
 modified: 2025-07-18T12:16:41+01:00

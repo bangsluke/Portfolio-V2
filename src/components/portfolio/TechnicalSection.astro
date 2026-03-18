@@ -14,6 +14,7 @@ import {
 	getProjectsUsingSkill,
 } from '../../utils/project-count-utils';
 import { extractNameFromFilename } from '../../utils/filename-utils';
+import { getSkillIconName } from '../../utils/icon-utils';
 
 const [staticData] = await getCollection('staticData');
 const skills = await getCollection('skills').then(skills =>
@@ -373,7 +374,7 @@ const techData = {
 														</div>
 													</div>
 													{/* Logo */}
-													{skill.data.logoFileName && (
+													{getSkillIconName(skill.data.logoFileName ?? null) && (
 														<div class="flex-1 flex justify-start">
 															<img
 																src={`/icons/${skill.data.logoFileName}`}

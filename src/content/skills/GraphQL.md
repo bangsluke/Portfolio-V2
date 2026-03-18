@@ -7,10 +7,11 @@ tags:
   - portfolio
   - skill
   - notes
+  - portfolio/technicalBridge
 created: 2023-08-18T15:49:00
 modified: 2025-07-26T09:07:02+01:00
-viewCount: 5
-aliases: 
+viewCount: 6
+aliases:
 skillRating: 60
 skillDescription: Set up several projects using GraphQL queries and mutations to interact with a Neo4j graph and developed detailed queries for extracting data for the front end.
 logoFileName: graphql.svg
