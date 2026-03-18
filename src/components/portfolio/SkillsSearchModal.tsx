@@ -1,6 +1,7 @@
 import Fuse from 'fuse.js';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { extractNameFromFilename } from '../../utils/filename-utils';
+import { getSkillIconName } from '../../utils/icon-utils';
 
 interface Skill {
 	id: string;
@@ -294,7 +295,7 @@ const SkillsSearchModal = ({ skills, projects }: SkillsSearchModalProps) => {
 													{displayName}
 												</div>
 											</div>
-											{skill.data.logoFileName && (
+											{getSkillIconName(skill.data.logoFileName ?? null) && (
 												<div class="flex-1 flex justify-start">
 													<img
 														src={`/icons/${skill.data.logoFileName}`}

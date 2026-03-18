@@ -4,12 +4,13 @@ tags:
   - coding
   - language
   - software
-  - notes
   - skill
   - portfolio
+  - portfolio/automationTooling
+  - notes
 created: 2023-08-18T15:45:00
 modified: 2025-07-02T14:22:00+01:00
-viewCount: 6
+viewCount: 7
 aliases:
   - Visual Basic Application
   - Visual Basic

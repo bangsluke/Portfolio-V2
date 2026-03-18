@@ -26,7 +26,7 @@ logoFileName: linear.svg
 
 ## Description
 
-Linear is a **fast, minimal, opinionated tool for software product development**. It combines **issue tracking, project management, and product roadmapping** into one streamlined system. It's built specifically for **engineering and product teams** who want speed, clarity, and low‑friction workflows.
+Linear is a **fast, minimal, opinionated tool for software product development**. It combines **issue tracking, project management, and product [[roadmapping]]** into one streamlined system. It's built specifically for **engineering and product teams** who want speed, clarity, and low‑friction workflows.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

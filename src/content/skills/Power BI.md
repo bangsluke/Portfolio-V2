@@ -4,8 +4,9 @@ tags:
   - software
   - skill
   - portfolio
+  - portfolio/discoveryRequirements
 modified: 2026-01-05T08:43:45+00:00
-viewCount: 4
+viewCount: 5
 aliases:
   - Microsoft Power BI
 skillRating: 60

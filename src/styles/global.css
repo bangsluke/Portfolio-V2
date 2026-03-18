@@ -1309,6 +1309,36 @@ html:not(.dark) .carousel-item {
 		z-index: 1;
 	}
 
+	/* Delivery section: always stack cards on mobile, avoid horizontal panning */
+	section#delivery [data-testid='delivery-cards-grid'] {
+		grid-template-columns: 1fr !important;
+		overflow: visible !important;
+		overflow-y: visible !important;
+		max-height: none !important;
+	}
+
+	section#delivery {
+		overflow-x: hidden !important;
+		overflow-y: visible !important;
+		max-height: none !important;
+		height: auto !important;
+		min-height: unset !important;
+		overscroll-behavior-x: none;
+		touch-action: pan-y;
+	}
+
+	section#delivery > div {
+		height: auto !important;
+		min-height: unset !important;
+		max-height: none !important;
+	}
+
+	/* If any nested container accidentally becomes scrollable, disable it on mobile */
+	section#delivery * {
+		overflow-y: visible !important;
+		max-height: none !important;
+	}
+
 	table {
 		max-width: 100%;
 		overflow-x: auto;
@@ -1598,4 +1628,87 @@ html:not(.dark) .carousel-item {
 
 footer .footer-logo {
 	display: inline-flex;
+}
+
+/* Delivery section: prevent nested vertical scrolling */
+section#delivery {
+	overflow-y: visible;
+}
+
+section#delivery [data-testid='delivery-cards-grid'],
+section#delivery [data-testid^='delivery-card-'],
+section#delivery .delivery-card-inner {
+	overflow-y: visible !important;
+	max-height: none !important;
+}
+
+/* Delivery cards mask hover effect */
+
+.delivery-card {
+	position: relative;
+	overflow: visible;
+}
+
+.delivery-card-inner {
+	position: relative;
+	overflow: visible;
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.delivery-card-mask {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		--mask-position-x: 50%;
+		--mask-position-y: 50%;
+		--mask-radius: 80vh;
+
+		-webkit-mask-size: 100% 100%;
+		mask-size: 100% 100%;
+		-webkit-mask-image: radial-gradient(
+			var(--mask-radius) at var(--mask-position-x) var(--mask-position-y),
+			black 0%,
+			transparent 100%
+		);
+		mask-image: radial-gradient(
+			var(--mask-radius) at var(--mask-position-x) var(--mask-position-y),
+			black 0%,
+			transparent 100%
+		);
+
+		transition:
+			opacity 200ms ease-out,
+			-webkit-mask-position 150ms ease-out,
+			mask-position 150ms ease-out;
+		opacity: 0;
+	}
+
+	.delivery-card:hover .delivery-card-mask {
+		opacity: 1;
+	}
+
+	.delivery-card-mask-gradient,
+	.delivery-card-mask-dots {
+		position: absolute;
+		inset: -20%;
+	}
+
+	.delivery-card-mask-gradient {
+		background:
+			radial-gradient(
+				circle at 20% 0%,
+				rgba(112, 150, 184, 0.15),
+				transparent 75%
+			),
+			radial-gradient(
+				circle at 80% 100%,
+				rgba(74, 122, 155, 0.35),
+				transparent 80%
+			);
+		mix-blend-mode: screen;
+	}
+
+	.delivery-card-mask-dots {
+		display: none;
+	}
 }

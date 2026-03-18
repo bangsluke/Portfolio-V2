@@ -11,7 +11,7 @@ dateEnd: 2019-07-01
 linkedCompany:
   - "[[RLE International]]"
 shortRoleDescription: "Internal project tracking and delivery process improvements through tools built with <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span>."
-fullRoleDescription: "Internally I have been responsible for the creation of numerous project tracking documents for the organisation and a range of customers through <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> coding. Projects included timesheet & holiday management, cost & resource estimating, warehouse storage tracking and a technical documentation library."
+fullRoleDescription: "Internally I have been responsible for the creation of numerous project tracking documents for the organisation and a range of customers through <span class=\"theme-link\">Excel</span> and <span class=\"theme-link\">VBA</span> coding. Projects included timesheet & holiday management, cost & resource estimating, warehouse storage tracking and a <span class=\"theme-link\">technical documentation</span> library."
 keyAchievement: "Updating and maintaining the main cost and quoting model used within the <span class=\"theme-link\">RLE UK</span> business."
 ---
 # Process Development
@@ -30,7 +30,7 @@ Internal project tracking and delivery process improvements through tools built 
 
 ## Full Role Description
 
-Internally I have been responsible for the creation of numerous project tracking documents for the organisation and a range of customers through [[Excel]] and [[VBA]] coding. Projects included timesheet & holiday management, cost & resource estimating, warehouse storage tracking and a technical documentation library.
+Internally I have been responsible for the creation of numerous project tracking documents for the organisation and a range of customers through [[Excel]] and [[VBA]] coding. Projects included timesheet & holiday management, cost & resource estimating, warehouse storage tracking and a [[technical documentation]] library.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

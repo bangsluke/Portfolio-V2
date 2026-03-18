@@ -8,8 +8,8 @@ tags:
   - portfolio
   - analysis
 created: 2026-02-11
-modified: 2026-02-11T15:09:42+00:00
-viewCount: 2
+modified: 2026-03-18T10:38:03+00:00
+viewCount: 4
 aliases:
 skillRating: 5
 skillDescription: Aware of the concept of the tool for analysing productivity.

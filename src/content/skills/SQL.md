@@ -7,9 +7,10 @@ tags:
   - skill
   - portfolio
   - notes
+  - portfolio/discoveryRequirements
 created: 2023-10-13T07:42:00
 modified: 2026-03-03T09:33:03+00:00
-viewCount: 10
+viewCount: 12
 aliases:
 skillRating: 75
 skillDescription: Able to write complex queries to extract, analyse, and manipulate data from various sources. Built and maintained a relatively complex SQL database using MySQL writing schema modification statements and automating the population of data.

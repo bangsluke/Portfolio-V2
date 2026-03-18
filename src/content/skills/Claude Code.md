@@ -6,8 +6,9 @@ tags:
   - AI
   - skill
   - portfolio
-modified: 2026-03-12T14:31:16+00:00
-viewCount: 8
+  - portfolio/automationTooling
+modified: 2026-03-17T17:47:05+00:00
+viewCount: 11
 aliases:
 skillRating: 45
 skillDescription: Used for a couple of small automation projects to test out its capabilities with impressively good outcomes when utilised correctly.

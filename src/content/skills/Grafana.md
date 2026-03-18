@@ -7,8 +7,8 @@ tags:
   - software
   - portfolio
 created: 2026-02-05
-modified: 2026-02-05T17:51:13+00:00
-viewCount: 2
+modified: 2026-03-18T10:36:04+00:00
+viewCount: 4
 aliases:
 skillRating: 5
 skillDescription: Familiar with the concept without yet trying the software myself.

@@ -5,9 +5,9 @@ tags:
   - portfolio
   - project/completed
 created: 2026-03-07 10:28
-modified: 2026-03-11T17:05:23+00:00
+modified: 2026-03-18T10:34:12+00:00
 aliases:
-viewCount: 4
+viewCount: 5
 projectURL: n/a
 codeURL: https://github.com/bangsluke/Affordability-Snapshot-Tool
 codeMultipleRepos: false

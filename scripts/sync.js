@@ -744,21 +744,39 @@ function checkMissingSvgFiles() {
 			// Extract logoFileName from frontmatter
 			const logoFileNameMatch = content.match(/logoFileName:\s*(.+)/);
 			if (logoFileNameMatch) {
-				const logoFileName = logoFileNameMatch[1].trim();
+				const skillName = extractNameFromFilename(skillFile);
+				const logoFileName = logoFileNameMatch[1]
+					.trim()
+					.replace(/^['"]|['"]$/g, '');
+				const normalised = logoFileName.trim();
 
-				// Check if the SVG file exists
-				const svgPath = path.join(iconsPath, logoFileName);
-				if (!fs.existsSync(svgPath)) {
-					const skillName = extractNameFromFilename(skillFile);
+				// Don't warn for explicit "n/a" placeholders
+				if (normalised.toLowerCase() === 'n/a') return;
+
+				// Warn for blank values
+				if (normalised.length === 0) {
 					missingSvgFiles.push({
 						skill: skillName,
-						logoFileName: logoFileName,
+						logoFileName: '(blank)',
 						file: skillFile,
 					});
+					if (DEBUG_MODE) {
+						console.log(`⚠️  Blank logoFileName for skill ${skillName}`);
+					}
+					return;
+				}
 
+				// Warn only when a non-"n/a" value doesn't have a correlated SVG file
+				const svgPath = path.join(iconsPath, normalised);
+				if (!fs.existsSync(svgPath)) {
+					missingSvgFiles.push({
+						skill: skillName,
+						logoFileName: normalised,
+						file: skillFile,
+					});
 					if (DEBUG_MODE) {
 						console.log(
-							`⚠️  Missing SVG file for skill ${skillName}: ${logoFileName}`
+							`⚠️  Missing SVG file for skill ${skillName}: ${normalised}`
 						);
 					}
 				}
@@ -819,9 +837,15 @@ function createSkillIconMapping() {
 			// Extract logoFileName from frontmatter
 			const logoFileNameMatch = content.match(/logoFileName:\s*(.+)/);
 			if (logoFileNameMatch) {
-				const logoFileName = logoFileNameMatch[1].trim();
+				const logoFileName = logoFileNameMatch[1]
+					.trim()
+					.replace(/^['"]|['"]$/g, '');
+				const normalised = logoFileName.trim();
+
+				// Skip entries that explicitly have no icon
+				if (normalised.length === 0 || normalised.toLowerCase() === 'n/a') return;
 				// Remove .svg extension if present
-				const iconName = logoFileName.replace(/\.svg$/, '');
+				const iconName = normalised.replace(/\.svg$/, '');
 				skillIconMapping[skillName] = iconName;
 			}
 		});
@@ -1095,20 +1119,31 @@ async function sendEmailNotification() {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="x-apple-disable-message-reformatting">
   <title>Portfolio Sync Report</title>
+  <style>
+    /* Email-safe “fluid” layout helpers */
+    table { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+    .container { width: 100% !important; max-width: 640px; }
+    .px { padding-left: 28px; padding-right: 28px; }
+    @media screen and (max-width: 680px) {
+      .px { padding-left: 16px !important; padding-right: 16px !important; }
+    }
+  </style>
 </head>
 <body style="margin:0;padding:0;background-color:#f5f3ff;font-family:Montserrat,Arial,sans-serif;color:#171717;">
-  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f3ff;padding:24px 0;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;background-color:#f5f3ff;padding:24px 0;margin:0;">
     <tr>
       <td align="center">
-        <table width="640" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;background-color:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #ddd6fe;">
+        <table role="presentation" class="container" width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="width:100%;max-width:640px;margin:0 auto;background-color:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #ddd6fe;">
           <tr><td>
 
             <!-- HEADER -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:linear-gradient(135deg,#2e1065 0%,#4c1d95 40%,#6d28d9 100%);border-radius:8px 8px 0 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:linear-gradient(135deg,#2e1065 0%,#4c1d95 40%,#6d28d9 100%);border-radius:8px 8px 0 0;">
               <tr>
-                <td style="padding:24px 28px;">
-                  <table cellpadding="0" cellspacing="0" border="0">
+                <td class="px" style="padding:24px 28px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                     <tr>
                       <td style="vertical-align:middle;padding-right:16px;">
                         <img src="https://bangsluke-assets.netlify.app/images/project-logos/Portfolio-Site-V2.png" alt="Portfolio Site V2" width="48" height="48" style="display:block;border-radius:8px;" />
@@ -1124,20 +1159,20 @@ async function sendEmailNotification() {
             </table>
 
             <!-- STATUS BANNER -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${statusBg};border-bottom:1px solid #ddd6fe;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${statusBg};border-bottom:1px solid #ddd6fe;">
               <tr>
-                <td style="padding:14px 28px;font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:700;color:${statusColor};">
+                <td class="px" style="padding:14px 28px;font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:700;color:${statusColor};">
                   ${statusText}
                 </td>
               </tr>
             </table>
 
             <!-- SYNC DETAILS SECTION -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding:24px 28px 8px;">
+                <td class="px" style="padding:24px 28px 8px;">
                   <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Sync Details</div>
-                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
                       <td style="padding:6px 0;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;width:140px;">Mode</td>
                       <td style="padding:6px 0;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:600;">${SYNC_MODE}</td>
@@ -1156,11 +1191,11 @@ async function sendEmailNotification() {
             </table>
 
             <!-- FILE SUMMARY SECTION -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding:16px 28px 24px;">
+                <td class="px" style="padding:16px 28px 24px;">
                   <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">File Summary</div>
-                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
                     <tr style="background-color:#f5f3ff;">
                       <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;width:60%;">Total Files</td>
                       <td style="padding:10px 16px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${syncErrors.summary.totalFiles}</td>
@@ -1194,11 +1229,11 @@ async function sendEmailNotification() {
 							errors.length > 0
 								? `
             <!-- ERRORS SECTION -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding:0 28px 24px;">
+                <td class="px" style="padding:0 28px 24px;">
                   <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#991b1b;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #fee2e2;">Errors</div>
-                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #fca5a5;border-radius:6px;border-collapse:collapse;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #fca5a5;border-radius:6px;border-collapse:collapse;">
                     ${errors
 											.map(
 												(error, i) => `
@@ -1221,11 +1256,11 @@ async function sendEmailNotification() {
 							warnings.length > 0
 								? `
             <!-- WARNINGS SECTION -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding:0 28px 24px;">
+                <td class="px" style="padding:0 28px 24px;">
                   <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#92400e;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #fde68a;">Warnings</div>
-                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #fcd34d;border-radius:6px;border-collapse:collapse;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #fcd34d;border-radius:6px;border-collapse:collapse;">
                     ${warnings
 											.map(
 												(warning, i) => `
@@ -1245,9 +1280,9 @@ async function sendEmailNotification() {
 						}
 
             <!-- FOOTER -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #ddd6fe;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #ddd6fe;">
               <tr>
-                <td style="padding:16px 28px;font-family:Montserrat,Arial,sans-serif;font-size:12px;color:#6b7280;line-height:1.5;">
+                <td class="px" style="padding:16px 28px;font-family:Montserrat,Arial,sans-serif;font-size:12px;color:#6b7280;line-height:1.5;">
                   <em>Automated notification from Portfolio-V2 sync script.</em>
                 </td>
               </tr>
