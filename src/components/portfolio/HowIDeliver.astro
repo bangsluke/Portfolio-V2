@@ -47,7 +47,7 @@ const cardsWithSkills = howIDeliverConfig.cards.map(card => {
 			.map(alias => String(alias).trim())
 			.filter(Boolean);
 
-		const MAX_PILL_LABEL_LENGTH = 22;
+		const MAX_PILL_LABEL_LENGTH = 23;
 		let pillLabel = skillName;
 		if (
 			pillLabel.length > MAX_PILL_LABEL_LENGTH &&
@@ -90,10 +90,10 @@ const cardsWithSkills = howIDeliverConfig.cards.map(card => {
 ---
 
 <section
-	class="main-section pt-8 pb-6 md:pt-12 md:pb-12 overflow-x-hidden overflow-y-hidden"
+	class="main-section pt-8 pb-6 md:pt-12 md:pb-12 overflow-x-hidden"
 	id="delivery"
 	data-testid="delivery-section">
-	<div class="max-w-7xl mx-auto overflow-hidden">
+	<div class="max-w-7xl mx-auto overflow-x-hidden overflow-y-hidden">
 		<div class="flex gap-4 items-center justify-center mb-4 md:mb-3">
 			<Icon
 				class="text-3xl dark:text-white text-blacktext rotate-[-45deg] overflow-visible"
@@ -116,7 +116,7 @@ const cardsWithSkills = howIDeliverConfig.cards.map(card => {
 					<article
 						class="delivery-card rounded-2xl bg-linear-to-r from-theme-300 dark:from-theme-600 to-theme-200 dark:to-theme-200/8 p-[.2rem] shadow-lg transition-all hover:shadow-[0_20px_50px_var(--color-theme-500-rgba-04)]"
 						data-testid={`delivery-card-${card.key}`}>
-						<div class="delivery-card-inner h-full rounded-2xl bg-linear-to-tr from-theme-300 to-theme-100 dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 p-5 flex flex-col relative overflow-hidden">
+						<div class="delivery-card-inner h-full rounded-2xl bg-linear-to-tr from-theme-300 to-theme-100 dark:bg-linear-to-r dark:from-theme-900 dark:to-theme-950 p-5 flex flex-col relative overflow-visible">
 							<div class="delivery-card-mask pointer-events-none">
 								<div class="delivery-card-mask-gradient" />
 							</div>
@@ -140,7 +140,11 @@ const cardsWithSkills = howIDeliverConfig.cards.map(card => {
 								class="flex flex-wrap gap-2"
 								data-testid={`delivery-card-skills-${card.key}`}>
 								{card.visibleSkills.map((skill, index) => (
-									<div class="relative group/tech">
+									<div
+										class="relative delivery-skill-trigger"
+										data-skill-name={skill.displayName}
+										data-skill-description={skill.description}
+										data-skill-count={skill.count}>
 										<SkillPill
 											skillName={`${skill.displayName}|${skill.pillLabel}`}
 											size="sm"
@@ -149,28 +153,6 @@ const cardsWithSkills = howIDeliverConfig.cards.map(card => {
 											projects={projects}
 											disableTooltip={true}
 										/>
-
-										<div
-											class={`absolute left-1/2 transform -translate-x-1/2 opacity-0 pointer-events-none group-hover/tech:opacity-100 group-hover/tech:pointer-events-auto group-active/tech:opacity-100 group-active/tech:pointer-events-auto transition-opacity duration-300 z-10 ${
-												index < 3 ? 'top-full mt-2' : 'bottom-full mb-2'
-											}`}>
-											<div class="global-tooltip max-w-[40rem] min-w-[20rem] pointer-events-auto">
-												<div class="global-tooltip-content text-left break-words">
-													<div class="text-xs text-theme-400 font-medium mb-2">
-														{skill.displayName}
-													</div>
-													{skill.description && (
-														<div class="text-xs mb-2">{skill.description}</div>
-													)}
-													{skill.count > 0 && (
-														<div class="text-xs font-medium">
-															Used in {skill.count} project
-															{skill.count === 1 ? '' : 's'}
-														</div>
-													)}
-												</div>
-											</div>
-										</div>
 									</div>
 								))}
 								{card.hiddenSkills.length > 0 && (
@@ -188,7 +170,11 @@ const cardsWithSkills = howIDeliverConfig.cards.map(card => {
 													</div>
 													<div class="flex flex-wrap gap-2">
 														{card.hiddenSkills.map((skill, index) => (
-															<div class="relative group/tech">
+															<div
+																class="relative delivery-skill-trigger"
+																data-skill-name={skill.displayName}
+																data-skill-description={skill.description}
+																data-skill-count={skill.count}>
 																<SkillPill
 																	skillName={`${skill.displayName}|${skill.pillLabel}`}
 																	size="sm"
@@ -197,27 +183,6 @@ const cardsWithSkills = howIDeliverConfig.cards.map(card => {
 																	projects={projects}
 																	disableTooltip={true}
 																/>
-
-																<div class="absolute left-1/2 transform -translate-x-1/2 opacity-0 pointer-events-none group-hover/tech:opacity-100 group-hover/tech:pointer-events-auto group-active/tech:opacity-100 group-active/tech:pointer-events-auto transition-opacity duration-300 z-10 top-full mt-2">
-																	<div class="global-tooltip max-w-[40rem] min-w-[20rem] pointer-events-auto">
-																		<div class="global-tooltip-content text-left break-words">
-																			<div class="text-xs text-theme-400 font-medium mb-2">
-																				{skill.displayName}
-																			</div>
-																			{skill.description && (
-																				<div class="text-xs mb-2">
-																					{skill.description}
-																				</div>
-																			)}
-																			{skill.count > 0 && (
-																				<div class="text-xs font-medium">
-																					Used in {skill.count} project
-																					{skill.count === 1 ? '' : 's'}
-																				</div>
-																			)}
-																		</div>
-																	</div>
-																</div>
 															</div>
 														))}
 													</div>
@@ -241,6 +206,136 @@ const cardsWithSkills = howIDeliverConfig.cards.map(card => {
 
 		if (mediaQuery.matches) {
 			window.addEventListener('DOMContentLoaded', () => {
+				// Delivery skill tooltip portal (prevents clipping by overflow-hidden ancestors)
+				const ensureTooltip = () => {
+					let root = document.getElementById('delivery-skill-tooltip');
+					if (root) return root;
+
+					root = document.createElement('div');
+					root.id = 'delivery-skill-tooltip';
+					root.style.position = 'fixed';
+					root.style.left = '0';
+					root.style.top = '0';
+					root.style.zIndex = '9999';
+					root.style.pointerEvents = 'none';
+					root.style.opacity = '0';
+					root.style.transition = 'opacity 150ms ease';
+
+					const tooltip = document.createElement('div');
+					tooltip.className = 'global-tooltip max-w-[40rem] min-w-[20rem]';
+					tooltip.style.pointerEvents = 'none';
+
+					const content = document.createElement('div');
+					content.className = 'global-tooltip-content text-left break-words';
+					tooltip.appendChild(content);
+
+					root.appendChild(tooltip);
+					document.body.appendChild(root);
+					return root;
+				};
+
+				const tooltipRoot = ensureTooltip();
+				const tooltipContent = tooltipRoot.querySelector(
+					'.global-tooltip-content'
+				);
+				const tooltipBox = tooltipRoot.querySelector('.global-tooltip');
+
+				const setTooltipContent = (name, desc, count) => {
+					if (!tooltipContent) return;
+					tooltipContent.innerHTML = '';
+
+					const title = document.createElement('div');
+					title.className = 'text-xs text-theme-400 font-medium mb-2';
+					title.textContent = name;
+					tooltipContent.appendChild(title);
+
+					if (desc) {
+						const d = document.createElement('div');
+						d.className = 'text-xs mb-2';
+						d.textContent = desc;
+						tooltipContent.appendChild(d);
+					}
+
+					if (Number.isFinite(count) && count > 0) {
+						const c = document.createElement('div');
+						c.className = 'text-xs font-medium';
+						c.textContent = `Used in ${count} project${count === 1 ? '' : 's'}`;
+						tooltipContent.appendChild(c);
+					}
+				};
+
+				const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+
+				const positionTooltipNear = target => {
+					if (!tooltipBox) return;
+					const rect = target.getBoundingClientRect();
+
+					// Measure after content set
+					const boxRect = tooltipBox.getBoundingClientRect();
+
+					const gap = 10;
+					const viewportPad = 12;
+
+					const centerX = rect.left + rect.width / 2;
+					let left = centerX - boxRect.width / 2;
+					left = clamp(
+						left,
+						viewportPad,
+						window.innerWidth - boxRect.width - viewportPad
+					);
+
+					const spaceBelow = window.innerHeight - rect.bottom;
+					const spaceAbove = rect.top;
+					const preferBelow =
+						spaceBelow >= boxRect.height + gap || spaceBelow >= spaceAbove;
+
+					let top = preferBelow
+						? rect.bottom + gap
+						: rect.top - boxRect.height - gap;
+					top = clamp(
+						top,
+						viewportPad,
+						window.innerHeight - boxRect.height - viewportPad
+					);
+
+					tooltipRoot.style.transform = `translate(${Math.round(left)}px, ${Math.round(top)}px)`;
+				};
+
+				let activeTarget = null;
+				const showTooltip = target => {
+					const name = target.getAttribute('data-skill-name') ?? '';
+					const desc = target.getAttribute('data-skill-description') ?? '';
+					const countRaw = target.getAttribute('data-skill-count') ?? '0';
+					const count = Number.parseInt(countRaw, 10) || 0;
+
+					setTooltipContent(name, desc, count);
+					tooltipRoot.style.opacity = '1';
+					positionTooltipNear(target);
+				};
+
+				const hideTooltip = () => {
+					tooltipRoot.style.opacity = '0';
+					activeTarget = null;
+				};
+
+				const triggers = Array.from(
+					document.querySelectorAll('.delivery-skill-trigger')
+				);
+				triggers.forEach(el => {
+					el.addEventListener('mouseenter', () => {
+						activeTarget = el;
+						showTooltip(el);
+					});
+					el.addEventListener('mouseleave', hideTooltip);
+				});
+
+				window.addEventListener('scroll', () => {
+					if (activeTarget) positionTooltipNear(activeTarget);
+				});
+				window.addEventListener('resize', () => {
+					if (activeTarget) positionTooltipNear(activeTarget);
+				});
+
 				const grid = document.querySelector(
 					'[data-testid="delivery-cards-grid"]'
 				);

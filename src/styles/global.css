@@ -1312,14 +1312,14 @@ html:not(.dark) .carousel-item {
 	/* Delivery section: always stack cards on mobile, avoid horizontal panning */
 	section#delivery [data-testid='delivery-cards-grid'] {
 		grid-template-columns: 1fr !important;
-		overflow: visible !important;
-		overflow-y: visible !important;
+		/* overflow: visible !important; */
+		/* overflow-y: visible !important; */
 		max-height: none !important;
 	}
 
 	section#delivery {
 		overflow-x: hidden !important;
-		overflow-y: visible !important;
+		/* overflow-y: visible !important; */
 		max-height: none !important;
 		height: auto !important;
 		min-height: unset !important;
@@ -1335,7 +1335,7 @@ html:not(.dark) .carousel-item {
 
 	/* If any nested container accidentally becomes scrollable, disable it on mobile */
 	section#delivery * {
-		overflow-y: visible !important;
+		/* overflow-y: visible !important; */
 		max-height: none !important;
 	}
 
@@ -1638,7 +1638,7 @@ section#delivery {
 section#delivery [data-testid='delivery-cards-grid'],
 section#delivery [data-testid^='delivery-card-'],
 section#delivery .delivery-card-inner {
-	overflow-y: visible !important;
+	/* overflow-y: visible !important; */
 	max-height: none !important;
 }
 

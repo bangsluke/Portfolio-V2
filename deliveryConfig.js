@@ -1,6 +1,6 @@
 export const howIDeliverConfig = {
 	introText:
-		"I bridge the gap between business needs and technical execution - here's the toolkit I use to do it.",
+		"I bridge the gap between business needs and technical execution - here's the skills and toolkit I use to do it.",
 	cards: [
 		{
 			key: 'discoveryRequirements',

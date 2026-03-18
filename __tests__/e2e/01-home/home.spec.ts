@@ -435,16 +435,24 @@ test.describe('Home Page Tests', () => {
 
 		// Spot-check key mapped pills from different cards
 		await expect(
-			homePageObjects.deliveryCardsGrid.getByText('Umami')
+			homePageObjects.deliveryCardsGrid
+				.locator('.skill-pill', { hasText: 'Umami' })
+				.first()
 		).toBeVisible();
 		await expect(
-			homePageObjects.deliveryCardsGrid.getByText('Azure DevOps')
+			homePageObjects.deliveryCardsGrid
+				.locator('.skill-pill', { hasText: 'Azure DevOps' })
+				.first()
 		).toBeVisible();
 		await expect(
-			homePageObjects.deliveryCardsGrid.getByText('GraphQL')
+			homePageObjects.deliveryCardsGrid
+				.locator('.skill-pill', { hasText: 'GraphQL' })
+				.first()
 		).toBeVisible();
 		await expect(
-			homePageObjects.deliveryCardsGrid.getByText('Power Automate')
+			homePageObjects.deliveryCardsGrid
+				.locator('.skill-pill', { hasText: 'Power Automate' })
+				.first()
 		).toBeVisible();
 	});
 
