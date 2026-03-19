@@ -1,0 +1,73 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import BlogPost from '../../../components/blog/BlogPost.astro';
+import Heading from '../../../components/ui/Heading.astro';
+
+export async function getStaticPaths() {
+	const allPosts = await import.meta.glob('../posts/*.md', { eager: true });
+	const posts = Object.values(allPosts);
+
+	const uniqueTopics: string[] = [
+		...new Set(
+			posts
+				.map((post: any) => {
+					const fm = post.frontmatter;
+					return [
+						...(fm.topics ?? []),
+						...(fm.tags ?? []),
+						...(fm.languages ?? []),
+					];
+				})
+				.flat()
+		),
+	];
+
+	return uniqueTopics.map(topic => {
+		const filteredPosts = posts.filter((post: any) => {
+			const fm = post.frontmatter;
+			const postTopics = [
+				...(fm.topics ?? []),
+				...(fm.tags ?? []),
+				...(fm.languages ?? []),
+			];
+			return postTopics.includes(topic);
+		});
+		return {
+			params: { topic },
+			props: { posts: filteredPosts },
+		};
+	});
+}
+
+const { topic } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Layout pageTitle={topic}>
+	<section class="py-8">
+		<div class="flex flex-col gap-8 max-w-4xl mx-auto">
+			<Heading text="Posts about" textGradient={topic} />
+			{
+				posts.map((post: any) => {
+					const fm = post.frontmatter;
+					const topics = [
+						...new Set([
+							...(fm.topics ?? []),
+							...(fm.tags ?? []),
+							...(fm.languages ?? []),
+						]),
+					];
+					return (
+						<BlogPost
+							url={post.url}
+							title={fm.title}
+							date={fm.pubDate}
+							topics={topics}
+							image={fm.image}
+						/>
+					);
+				})
+			}
+		</div>
+	</section>
+</Layout>

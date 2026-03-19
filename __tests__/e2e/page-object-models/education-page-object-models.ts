@@ -7,7 +7,7 @@ export class EducationPageObjects {
 
 	constructor(public readonly page: Page) {
 		this.seeMoreItemsButton = page.getByRole('link', {
-			name: 'See more items',
+			name: 'See more Education items',
 		});
 		this.educationItems = page.locator('article, [role="article"]');
 		this.pageHeading = page.getByRole('heading', { level: 1 });

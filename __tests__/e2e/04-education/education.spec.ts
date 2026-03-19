@@ -4,7 +4,7 @@ import { testData } from '../utils/testData';
 import { waitForPageLoad } from '../utils/testHelpers';
 
 test.describe('Education Tests', () => {
-	test('4.1."See more items" button for Education should navigate to /education', async ({
+	test('4.1."See more Education items" button for Education should navigate to /education', async ({
 		page,
 	}) => {
 		await page.goto(testData.mainPageUrl, {
@@ -18,14 +18,14 @@ test.describe('Education Tests', () => {
 		await educationSection.scrollIntoViewIfNeeded();
 		await page.waitForTimeout(500);
 
-		// Find the "See more items" button in the education section
+		// Find the "See more Education items" button in the education section
 		const seeMoreButton = educationSection.getByRole('link', {
-			name: 'See more items',
+			name: 'See more Education items',
 		});
 
 		await expect(
 			seeMoreButton,
-			'See more items button should be visible'
+			'See more Education items button should be visible'
 		).toBeVisible();
 
 		// Click the button and wait for navigation

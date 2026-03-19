@@ -4,7 +4,7 @@ import { testData } from '../utils/testData';
 import { waitForPageLoad } from '../utils/testHelpers';
 
 test.describe('Projects Page Tests', () => {
-	test('"2.1. See more projects" button should navigate to /projects', async ({
+	test('"2.1. See more Projects" button should navigate to /projects', async ({
 		page,
 	}) => {
 		await page.goto(testData.mainPageUrl, {

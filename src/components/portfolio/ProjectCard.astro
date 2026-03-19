@@ -3,6 +3,9 @@ import {
 	processContent,
 	processObsidianLink,
 } from '../../utils/content-processor';
+import { getCollection } from 'astro:content';
+import { extractNameFromFilename } from '../../utils/filename-utils';
+import { getProjectCount } from '../../utils/project-count-utils';
 import SkillPill from '../ui/SkillPill.astro';
 
 const {
@@ -17,6 +20,30 @@ const {
 	dateStart,
 	dateEnd,
 } = Astro.props;
+
+const skills = await getCollection('skills');
+
+function getSkillMeta(techName: string) {
+	const cleanTech = techName.replace(/\[\[|\]\]/g, '');
+	const lookupName = cleanTech.includes('|')
+		? (cleanTech.split('|')[0].split('/').pop() || cleanTech)
+		: cleanTech;
+
+	const skill = skills.find(s => {
+		const sName = s.data.name || extractNameFromFilename(s.id);
+		return sName.toLowerCase() === lookupName.toLowerCase();
+	});
+
+	const skillName = skill
+		? skill.data.name || extractNameFromFilename(skill.id)
+		: lookupName;
+	const description =
+		(skill?.data as { skillDescription?: string })?.skillDescription ?? '';
+	const filename = skill ? extractNameFromFilename(skill.id) : lookupName;
+	const count = skill ? getProjectCount(skillName, filename, projects) : 0;
+
+	return { skillName, description, count };
+}
 
 // Prepare a plain-text short description for controlled truncation on cards
 const rawShortDescription = shortDescription || '';
@@ -183,13 +210,21 @@ if (dateStart || dateEnd) {
 					visibleTechnologies.length > 0 &&
 					visibleTechnologies.map((tech: string) => {
 						const cleanTech = tech.replace(/\[|\]/g, '');
+						const meta = getSkillMeta(tech);
 						return (
-							<SkillPill
-								skillName={cleanTech}
-								variant="project"
-								size="sm"
-								projects={projects}
-							/>
+							<div
+								class="relative skill-tooltip-trigger"
+								data-skill-name={meta.skillName}
+								data-skill-description={meta.description}
+								data-skill-count={meta.count}>
+								<SkillPill
+									skillName={cleanTech}
+									variant="project"
+									size="sm"
+									projects={projects}
+									disableTooltip={true}
+								/>
+							</div>
 						);
 					})
 			}
@@ -218,6 +253,7 @@ if (dateStart || dateEnd) {
 														variant="project"
 														size="sm"
 														projects={projects}
+														disableTooltip={true}
 													/>
 												);
 											})}

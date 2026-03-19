@@ -69,6 +69,11 @@ async function findIconForSkill(skillName: string): Promise<{
 	// Clean the skill name and get lookup/display names
 	const { skillNameForLookup } = cleanSkillName(skillName);
 
+	// Treat hash-prefixed topics (e.g. #welcome) as text-only pills with no icon.
+	if (skillNameForLookup.trim().startsWith('#')) {
+		return { iconName: null, hideIconSlot: true };
+	}
+
 	// Try to find the skill in the skills collection
 	try {
 		const skills = await getCollection('skills');
@@ -95,18 +100,8 @@ async function findIconForSkill(skillName: string): Promise<{
 			}
 		}
 
-		// If skill is not found in the collection, log a helpful error message
-		if (!skill) {
-			console.error(`❌ Missing skill markdown file: "${skillNameForLookup}"`);
-			console.error(
-				`   Create a file at: src/content/skills/${skillNameForLookup}.md`
-			);
-			console.error(
-				`   This skill is referenced in projects but the corresponding skill file is missing.`
-			);
-			console.error(
-				`   The skill file should include a 'logoFileName' property in its frontmatter.`
-			);
+		if (!skill && projects.length > 0 && !skillNameForLookup.trim().startsWith('#')) {
+			console.warn(`⚠️ No skill file found for: "${skillNameForLookup}"`);
 		}
 	} catch (error) {
 		// If skills collection is not available, continue to fallback methods
@@ -125,7 +120,7 @@ async function findIconForSkill(skillName: string): Promise<{
 		return { iconName, hideIconSlot: false };
 	}
 
-	return { iconName: null, hideIconSlot: false };
+	return { iconName: null, hideIconSlot: true };
 }
 
 const cleanedSkill = cleanSkillName(skillName);

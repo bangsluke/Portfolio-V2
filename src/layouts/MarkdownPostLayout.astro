@@ -1,19 +1,39 @@
 ---
 import Layout from './Layout.astro';
-import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import { extractNameFromFilename } from '../utils/filename-utils';
+import { getProjectCount } from '../utils/project-count-utils';
+import SkillPill from '../components/ui/SkillPill.astro';
 import DatePub from '../components/blog/DatePub.astro';
-import Tag from '../components/ui/Tag.astro';
-import Capsule from '../components/ui/Capsule.astro';
 import NavArticle from '../components/layout/NavArticle.astro';
 import ListPosts from '../components/blog/ListPosts.astro';
 import NavigationArticles from '../components/layout/NavigationArticles.astro';
 import Share from '../components/ui/Share.astro';
+import Heading from '../components/ui/Heading.astro';
+
 const { frontmatter } = Astro.props;
 const currentUrl = `${Astro.site}${Astro.url.pathname}`;
 const tweetText = encodeURIComponent(
 	`"${frontmatter.title}" - by ${frontmatter.author} | bangsluke`
 );
-import Heading from '../components/ui/Heading.astro';
+
+const skills = await getCollection('skills');
+const projects = await getCollection('projects');
+
+const topics: string[] = [
+	...new Set([
+		...(frontmatter.topics ?? []),
+		...(frontmatter.tags ?? []),
+		...(frontmatter.languages ?? []),
+	]),
+];
+
+function findSkill(topicName: string) {
+	return skills.find(s => {
+		const sName = s.data.name || extractNameFromFilename(s.id);
+		return sName.toLowerCase() === topicName.toLowerCase();
+	});
+}
 ---
 
 <script>
@@ -74,16 +94,38 @@ import Heading from '../components/ui/Heading.astro';
 			<header class="flex flex-col gap-4" id="start">
 				<div class="flex gap-2 flex-wrap">
 					{
-						frontmatter.languages?.map((language: string) => (
-							<Capsule lang={language} />
-						)) || []
-					}
-				</div>
-				<div class="gap-3 flex flex-wrap justify-start items-center">
-					{
-						frontmatter.tags?.map((tag: string) => (
-							<Tag tag={tag}>{tag}</Tag>
-						)) || []
+						topics.map(topic => {
+							const skill = findSkill(topic);
+							const skillName = skill
+								? skill.data.name || extractNameFromFilename(skill.id)
+								: topic;
+							const description =
+								(skill?.data as { skillDescription?: string })
+									?.skillDescription ?? '';
+							const filename = skill
+								? extractNameFromFilename(skill.id)
+								: topic;
+							const count = skill
+								? getProjectCount(skillName, filename, projects)
+								: 0;
+
+							return (
+								<div
+									class="relative skill-tooltip-trigger"
+									data-skill-name={skillName}
+									data-skill-description={description}
+									data-skill-count={count}>
+									<SkillPill
+										skillName={topic}
+										size="sm"
+										variant="theme"
+										className="cursor-default"
+										projects={projects}
+										disableTooltip={true}
+									/>
+								</div>
+							);
+						})
 					}
 				</div>
 				<DatePub date={frontmatter.pubDate} />

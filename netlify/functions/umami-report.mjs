@@ -121,10 +121,16 @@ export default async () => {
 		);
 		const skillsToggle = getEventCount(events, 'Skills view toggle');
 		const projectClick = getEventCount(events, 'Project click');
-		const seeMoreProjects = getEventCount(events, 'See more projects');
-		const seeMoreItems = getEventCount(events, 'See more items');
+		const seeMoreProjects = getEventCount(events, 'See more Projects');
+		const seeMoreExperienceItems = getEventCount(
+			events,
+			'See more Experience items'
+		);
+		const seeMoreEducationItems = getEventCount(
+			events,
+			'See more Education items'
+		);
 		const visitSite = getEventCount(events, 'Visit Site');
-		const viewCode = getEventCount(events, 'View Code');
 
 		const aboutMeRow = paths.find(p => p.x && p.x.includes('/about-me'));
 		const aboutMeViews = aboutMeRow ? aboutMeRow.y : 0;
@@ -143,10 +149,16 @@ export default async () => {
 		);
 		const skillsTogglePrev = getEventCount(eventsPrev, 'Skills view toggle');
 		const projectClickPrev = getEventCount(eventsPrev, 'Project click');
-		const seeMoreProjectsPrev = getEventCount(eventsPrev, 'See more projects');
-		const seeMoreItemsPrev = getEventCount(eventsPrev, 'See more items');
+		const seeMoreProjectsPrev = getEventCount(eventsPrev, 'See more Projects');
+		const seeMoreExperienceItemsPrev = getEventCount(
+			eventsPrev,
+			'See more Experience items'
+		);
+		const seeMoreEducationItemsPrev = getEventCount(
+			eventsPrev,
+			'See more Education items'
+		);
 		const visitSitePrev = getEventCount(eventsPrev, 'Visit Site');
-		const viewCodePrev = getEventCount(eventsPrev, 'View Code');
 
 		const projectPaths = paths
 			.filter(p => p.x && p.x.includes('/projects/'))
@@ -353,28 +365,28 @@ export default async () => {
                         <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(projectClick, projectClickPrev)}</td>
                       </tr>
                       <tr style="background-color:#f5f3ff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">"See more projects" click</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">"See more Projects" click</td>
                         <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreProjects}</td>
                         <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreProjectsPrev}</td>
                         <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(seeMoreProjects, seeMoreProjectsPrev)}</td>
                       </tr>
                       <tr style="background-color:#ffffff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">"See more items" (experience/education)</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreItems}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreItemsPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(seeMoreItems, seeMoreItemsPrev)}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">"See more Experience items" click</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreExperienceItems}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreExperienceItemsPrev}</td>
+                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(seeMoreExperienceItems, seeMoreExperienceItemsPrev)}</td>
+                      </tr>
+                      <tr style="background-color:#f5f3ff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">"See more Education items" click</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreEducationItems}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreEducationItemsPrev}</td>
+                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(seeMoreEducationItems, seeMoreEducationItemsPrev)}</td>
                       </tr>
                       <tr style="background-color:#f5f3ff;">
                         <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Visit Site button clicks (from individual project page)</td>
                         <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${visitSite}</td>
                         <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${visitSitePrev}</td>
                         <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(visitSite, visitSitePrev)}</td>
-                      </tr>
-                      <tr style="background-color:#ffffff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;">View Code button clicks (from individual project page)</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;text-align:right;">${viewCode}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:right;">${viewCodePrev}</td>
-                        <td style="padding:9px 14px;text-align:center;">${trend(viewCode, viewCodePrev)}</td>
                       </tr>
                     </tbody>
                   </table>

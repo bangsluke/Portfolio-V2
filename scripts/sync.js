@@ -186,9 +186,17 @@ async function extractSectionsToFrontmatter(content, contentType) {
 	const { processContent } = await import('./content-processor.js');
 
 	// Extract content from each section defined in config
-	sectionsToExtract.forEach(({ name, property }) => {
-		const sectionContent = extractSectionContent(content, name, endMarker);
+	sectionsToExtract.forEach(({ name, property, postProcess }) => {
+		let sectionContent = extractSectionContent(content, name, endMarker);
 		if (sectionContent) {
+			if (postProcess === 'blockquote') {
+				sectionContent = sectionContent
+					.split('\n')
+					.filter(line => /^>\s/.test(line) && !/^>\[!/.test(line))
+					.map(line => line.replace(/^>\s/, ''))
+					.join('\n')
+					.trim();
+			}
 			// Process the extracted section content using the new content processor
 			const processedSectionContent = processContent(sectionContent);
 			extractedData[property] = processedSectionContent;

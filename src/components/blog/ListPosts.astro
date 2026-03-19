@@ -1,0 +1,85 @@
+---
+import Heading from '../ui/Heading.astro';
+import BlogPost from './BlogPost.astro';
+
+export interface Props {
+	excludeLatest?: boolean;
+	currentPostUrl?: string;
+	all?: boolean;
+}
+
+const { excludeLatest = false, currentPostUrl = '', all = false } = Astro.props;
+
+const allPosts = await import.meta.glob('../../pages/blog/posts/*.md', {
+	eager: true,
+});
+const posts = Object.values(allPosts);
+posts.sort((a: any, b: any) => {
+	const dateA = new Date(a.frontmatter.pubDate).getTime();
+	const dateB = new Date(b.frontmatter.pubDate).getTime();
+	return dateB - dateA;
+});
+
+let postsToShow = posts;
+
+if (currentPostUrl) {
+	postsToShow = postsToShow.filter((post: any) => {
+		if (!post.url) return false;
+		const normalizedPostUrl = post.url.replace(/\/$/, '');
+		const normalizedCurrentUrl = currentPostUrl.replace(/\/$/, '');
+		return normalizedPostUrl !== normalizedCurrentUrl;
+	});
+} else if (excludeLatest) {
+	postsToShow = postsToShow.slice(1);
+}
+
+if (!all) {
+	postsToShow = postsToShow.slice(0, 4);
+}
+---
+
+<section
+	class="py-8 max-lg:px-4 max-md:px-8 max-sm:px-0 max-md:py-4 max-w-4xl mx-auto">
+	{
+		all && (
+			<div class="flex gap-4 pb-6 items-center text-center justify-center">
+				<Heading text="All" textGradient="Posts" level={2} />
+			</div>
+		)
+	}
+
+	<div class="flex flex-col gap-8 w-full mx-auto">
+		{
+			postsToShow.map((post: any) => {
+				const fm = post.frontmatter;
+				const topics = [
+					...new Set([
+						...(fm.topics ?? []),
+						...(fm.tags ?? []),
+						...(fm.languages ?? []),
+					]),
+				];
+				return (
+					<BlogPost
+						url={post.url}
+						title={fm.title}
+						date={fm.pubDate}
+						topics={topics}
+						image={fm.image}
+					/>
+				);
+			})
+		}
+	</div>
+	{
+		!all && (
+			<div id="morePosts" class="w-full flex justify-center text-center my-12">
+				<a
+					href="/blog/"
+					class="font-bold cursor-pointer text-theme-400 dark:text-theme-100 hover:text-theme-500 dark:hover:text-theme-300 transition-all">
+					View all posts...
+				</a>
+			</div>
+		)
+	}
+</section>

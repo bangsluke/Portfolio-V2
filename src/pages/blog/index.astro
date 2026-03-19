@@ -1,0 +1,149 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ListPosts from '../../components/blog/ListPosts.astro';
+import Heading from '../../components/ui/Heading.astro';
+import Share from '../../components/ui/Share.astro';
+import Topics from '../../components/blog/Topics.astro';
+
+const pageTitle = 'All Posts | bangsluke';
+const description =
+	'Welcome to my blog, where I share my passion for frontend development, web design, and the latest technology trends.';
+const ogimage = {
+	url: '/images/siteImage.webp',
+	alt: 'Luke Bangs Portfolio blog.',
+};
+const currentUrl = `${Astro.site}${Astro.url.pathname}`;
+const tweetText = encodeURIComponent(`"${pageTitle}"`);
+---
+
+<Layout pageTitle={pageTitle} description={description} ogimage={ogimage}>
+	<div class="relative mx-auto max-w-7xl px-8 max-sm:px-4 gap-6">
+		<div
+			class="grid my-8 grid-cols-3 grid-rows-1 max-lg:grid-cols-1 max-lg:grid-rows-[1fr_auto] gap-12 max-md:gap-4">
+			<div class="lg:col-span-2">
+				<ListPosts all={true} />
+			</div>
+
+			<div class="lg:col-start-3">
+				<div
+					class="bg-white dark:bg-transparent w-full mt-0 rounded-2xl dark:border-0 border border-neutral-100 top-14 px-6 pt-8 pb-12">
+					<div class="flex flex-col gap-4 pl-0">
+						<Heading textGradient="Topics" />
+						<button
+							id="clearTopicFiltersBtn"
+							type="button"
+							class="hidden self-start text-xs font-semibold rounded-full border border-theme-300 dark:border-theme-600 px-3 py-1 text-blacktext dark:text-theme-50 hover:bg-theme-100 dark:hover:bg-zinc-800 transition-colors">
+							Clear Topic Filters
+						</button>
+						<Topics variant="compact" />
+					</div>
+				</div>
+				<div class="my-8 flex justify-end">
+					<Share currentUrl={currentUrl} tweetText={tweetText} />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script is:inline>
+		if (typeof window !== 'undefined') {
+			const initBlogFilters = () => {
+				const selectedTopics = new Set();
+				const clearBtn = document.getElementById('clearTopicFiltersBtn');
+
+				function getArticleTopics(article) {
+					const raw = article.dataset.topics || '';
+					return raw
+						.split('|')
+						.map(t => t.trim())
+						.filter(Boolean);
+				}
+
+				function updateFilters() {
+					const articles = document.querySelectorAll('article.blog-card');
+					const activeTopics = Array.from(selectedTopics);
+
+					articles.forEach(article => {
+						const topics = getArticleTopics(article);
+						const shouldShow =
+							activeTopics.length === 0 ||
+							activeTopics.every(t => topics.includes(t));
+
+						article.style.display = shouldShow ? '' : 'none';
+					});
+
+					if (!clearBtn) return;
+					if (activeTopics.length > 0) {
+						clearBtn.classList.remove('hidden');
+					} else {
+						clearBtn.classList.add('hidden');
+					}
+				}
+
+				function toggleTopic(element) {
+					const topic =
+						element.dataset.skillName ||
+						(element.textContent || '').trim();
+
+					if (!topic) return;
+
+					if (selectedTopics.has(topic)) {
+						selectedTopics.delete(topic);
+						element.classList.remove('blog-topic-selected');
+					} else {
+						selectedTopics.add(topic);
+						element.classList.add('blog-topic-selected');
+					}
+
+					updateFilters();
+				}
+
+				const topicTriggers = document.querySelectorAll(
+					'#topics .skill-tooltip-trigger, article .skill-tooltip-trigger'
+				);
+
+				topicTriggers.forEach(trigger => {
+					trigger.addEventListener('click', event => {
+						event.preventDefault();
+						event.stopPropagation();
+						toggleTopic(trigger);
+					});
+				});
+
+				if (clearBtn) {
+					clearBtn.addEventListener('click', () => {
+						selectedTopics.clear();
+						topicTriggers.forEach(trigger =>
+							trigger.classList.remove('blog-topic-selected')
+						);
+						updateFilters();
+					});
+				}
+
+				// Make entire blog card clickable (except when clicking explicit links)
+				const cards = document.querySelectorAll('article.blog-card');
+				cards.forEach(card => {
+					card.addEventListener('click', event => {
+						const target = event.target;
+						if (target && target.closest('a')) {
+							return;
+						}
+
+						const url = card.dataset.url;
+						if (url) {
+							window.location.href = url;
+						}
+					});
+				});
+
+				updateFilters();
+			};
+
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', initBlogFilters);
+			} else {
+				initBlogFilters();
+			}
+		}
+	</script>
+</Layout>

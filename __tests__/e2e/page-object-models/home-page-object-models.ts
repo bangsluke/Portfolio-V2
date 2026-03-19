@@ -38,7 +38,7 @@ export class HomePageObjects {
 	public readonly educationTimeline: Locator;
 	public readonly referencesSection: Locator;
 	public readonly referencesCarousel: Locator;
-	public readonly downloadCVButton: Locator;
+	public readonly viewCVButton: Locator;
 	public readonly scrollToTopButton: Locator;
 	public readonly scrollToTopContainer: Locator;
 	public readonly footerEmailIcon: Locator;
@@ -95,8 +95,8 @@ export class HomePageObjects {
 		this.clientsList = page.getByTestId('clients-list');
 		this.educationSection = page.getByTestId('education-section');
 		this.educationTimeline = page.getByTestId('education-timeline');
-		this.downloadCVButton = page.getByRole('button', {
-			name: 'Download CV',
+		this.viewCVButton = page.getByRole('button', {
+			name: 'View CV',
 		});
 		this.referencesSection = page.getByTestId('references-section');
 		this.referencesCarousel = page.getByTestId('references-carousel');

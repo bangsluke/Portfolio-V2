@@ -4,7 +4,7 @@ import { testData } from '../utils/testData';
 import { waitForPageLoad } from '../utils/testHelpers';
 
 test.describe('Work Experience Tests', () => {
-	test('3.1. "See more items" button for Experience should navigate to /work-experience', async ({
+	test('3.1. "See more Experience items" button for Experience should navigate to /work-experience', async ({
 		page,
 	}) => {
 		await page.goto(testData.mainPageUrl, {
@@ -20,14 +20,14 @@ test.describe('Work Experience Tests', () => {
 		await experienceSection.scrollIntoViewIfNeeded();
 		await page.waitForTimeout(500);
 
-		// Find the "See more items" button in the experience section
+		// Find the "See more Experience items" button in the experience section
 		const seeMoreButton = experienceSection.getByRole('link', {
-			name: 'See more items',
+			name: 'See more Experience items',
 		});
 
 		await expect(
 			seeMoreButton,
-			'See more items button should be visible'
+			'See more Experience items button should be visible'
 		).toBeVisible();
 
 		// Click the button and wait for navigation

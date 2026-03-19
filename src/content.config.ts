@@ -62,6 +62,7 @@ const projectsCollection = defineCollection({
 		shortDescription: z.union([z.string(), z.null()]).optional(),
 		longDescription: z.union([z.string(), z.null()]).optional(),
 		lessonsLearned: z.union([z.string(), z.null()]).optional(),
+		northStarMetric: z.union([z.string(), z.null()]).optional(),
 	}),
 });
 

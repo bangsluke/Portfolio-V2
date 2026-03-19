@@ -5,9 +5,9 @@ tags:
   - project/active
   - portfolio
 created: 2026-03-12 15:16
-modified: 2026-03-13T08:53:29+00:00
+modified: 2026-03-18T17:55:54+00:00
 aliases:
-viewCount: 3
+viewCount: 4
 projectURL: https://bangeroo-music-website.netlify.app/
 codeURL: https://github.com/bangsluke/Bangeroo-Music-Website
 codeMultipleRepos: false
@@ -24,6 +24,7 @@ technologies:
   - "[[JavaScript]]"
   - "[[Netlify]]"
   - "[[GitHub]]"
+  - "[[Supabase]]"
 projectCategory: MVP
 linkedCompany:
   - n/a
@@ -38,7 +39,7 @@ version: 1
 portfolioOrder: 6
 shortDescription: "Tested out several visual designs for a client via A/B testing in an <span class=\"theme-link\">MVP</span>.<br><br>TBC"
 longDescription: "An <span class=\"theme-link\">SPA</span> for displaying my father's musical interests, embedding his <span class=\"theme-link\">Spotify</span> songs into an edgy modern and chaotic design.<br><br>Given a lack of initial design direction, I initially built an <span class=\"theme-link\">MVP</span> of four varying designs of the same content as a form of A/B testing (or A/B/C/D if you will), deciding that seeing visual ideas would help align him to a style rather than via verbal communication.<br><br>TBC"
-lessonsLearned: "TBC"
+lessonsLearned: "<span class=\"theme-link\">Supabase</span><br><br>TBC"
 name: "Bangeroo Music Website"
 ---
 # Bangeroo Music Website
@@ -93,7 +94,7 @@ TBC
 ## Architecture and Technologies
 
 - Front end: [[Vite.js]], [[HTML]], [[CSS]], [[JavaScript]]
-- Back end/Datasource: n/a
+- Back end/Datasource: [[Supabase]]
 - Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
 - Security: TBC
 - Authentication: TBC
@@ -128,6 +129,8 @@ To launch the repo, use the [[PowerShell]] alias
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Lessons Learned
+
+[[Supabase]]
 
 TBC
 
