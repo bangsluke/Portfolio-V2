@@ -121,6 +121,7 @@ export default async () => {
 		);
 		const skillsToggle = getEventCount(events, 'Skills view toggle');
 		const projectClick = getEventCount(events, 'Project click');
+		const blogNavClick = getEventCount(events, 'Blog nav click');
 		const seeMoreProjects = getEventCount(events, 'See more Projects');
 		const seeMoreExperienceItems = getEventCount(
 			events,
@@ -149,6 +150,7 @@ export default async () => {
 		);
 		const skillsTogglePrev = getEventCount(eventsPrev, 'Skills view toggle');
 		const projectClickPrev = getEventCount(eventsPrev, 'Project click');
+		const blogNavClickPrev = getEventCount(eventsPrev, 'Blog nav click');
 		const seeMoreProjectsPrev = getEventCount(eventsPrev, 'See more Projects');
 		const seeMoreExperienceItemsPrev = getEventCount(
 			eventsPrev,
@@ -162,6 +164,10 @@ export default async () => {
 
 		const projectPaths = paths
 			.filter(p => p.x && p.x.includes('/projects/'))
+			.sort((a, b) => (b.y || 0) - (a.y || 0))
+			.slice(0, 10);
+		const blogPostPaths = paths
+			.filter(p => p.x && p.x.includes('/blog/posts/'))
 			.sort((a, b) => (b.y || 0) - (a.y || 0))
 			.slice(0, 10);
 		const topProjectClicks = [...projectClicks]
@@ -335,6 +341,12 @@ export default async () => {
                         <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(aboutMeViews, aboutMeViewsPrev)}</td>
                       </tr>
                       <tr style="background-color:#ffffff;">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Blog section nav clicks</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${blogNavClick}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${blogNavClickPrev}</td>
+                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(blogNavClick, blogNavClickPrev)}</td>
+                      </tr>
+                      <tr style="background-color:#ffffff;">
                         <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Skills search opened</td>
                         <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${skillsOpened}</td>
                         <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${skillsOpenedPrev}</td>
@@ -450,6 +462,39 @@ export default async () => {
 															.map(
 																(p, i) =>
 																	`<tr style="background-color:${i % 2 === 0 ? '#f5f3ff' : '#ffffff'};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${p.x || '-'}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${p.y ?? 0}</td></tr>`
+															)
+															.join('')
+													: '<tr><td colspan="2" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>'
+											}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- MOST VISITED BLOG POSTS SECTION -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding:4px 28px 0;">
+                  <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Most Visited Blog Posts (by path)</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:0 28px 20px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
+                    <thead>
+                      <tr>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.5px;">Post</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:right;letter-spacing:0.5px;">Visitors</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${
+												blogPostPaths.length
+													? blogPostPaths
+															.map(
+																(p, i) =>
+																	`<tr style="background-color:${i % 2 === 0 ? '#f5f3ff' : '#ffffff'};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${p.x ? p.x.replace('/blog/posts/', '').replace(/\/$/, '') : '-'}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${p.y ?? 0}</td></tr>`
 															)
 															.join('')
 													: '<tr><td colspan="2" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>'

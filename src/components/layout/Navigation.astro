@@ -138,8 +138,8 @@ const baseClasses = {
 					aria-label={item.name}
 					aria-current={item.path === Astro.url.pathname ? 'page' : undefined}
 					data-testid={`nav-link-${item.name.toLowerCase().replace(/ /g, '-')}`}
-					data-umami-event="Nav click"
-					data-umami-event-section={key}>
+						data-umami-event={key === 'blog' ? 'Blog nav click' : 'Nav click'}
+						data-umami-event-section={key}>
 					{item.name}
 				</a>
 			);
