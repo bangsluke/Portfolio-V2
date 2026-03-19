@@ -28,7 +28,7 @@ const normalizedUrl =
 ---
 
 <article
-	class="blog-card relative cursor-pointer border-2 border-theme-300 dark:border-theme-600 bg-linear-to-br from-theme-300 to-white dark:from-theme-950 dark:to-zinc-950 rounded-2xl shadow-lg p-8 max-md:p-6 w-full flex justify-between items-start gap-8 max-md:gap-4 max-md:flex-col-reverse transition-transform hover:scale-105 duration-300"
+	class="blog-card relative cursor-pointer border-2 border-theme-300 dark:border-theme-600 bg-linear-to-br from-theme-300 to-white dark:from-theme-950 dark:to-zinc-950 rounded-2xl shadow-lg p-8 max-md:p-3 w-full flex justify-between items-start gap-8 max-md:gap-1 max-md:flex-col-reverse transition-transform hover:scale-105 duration-300"
 	data-url={normalizedUrl}
 	data-topics={topicsAttr}>
 	<a
@@ -49,7 +49,7 @@ const normalizedUrl =
 				{title}
 			</h2>
 		</a>
-		<div class="flex flex-wrap gap-2 mt-3 flex-1">
+		<div class="flex flex-wrap gap-2 mt-3 max-md:mt-2 flex-1">
 			{
 				topics.length > 0 &&
 					topics.map((topic: string) => {
@@ -93,7 +93,7 @@ const normalizedUrl =
 			<a
 				href={normalizedUrl}
 				style={{ backgroundImage: `url(${image.url})` }}
-				class="shrink-0 rounded-2xl bg-center bg-cover aspect-video max-md:aspect-video w-2/6 max-md:w-full"
+				class="shrink-0 rounded-2xl bg-center bg-cover aspect-video max-md:aspect-[16/5] w-2/6 max-md:w-full"
 			/>
 		)
 	}

@@ -7,7 +7,7 @@ tags:
   - portfolio
   - project/active
 created: 2025-02-02T19:03:00
-modified: 2026-03-18T10:39:46+00:00
+modified: 2026-03-19T15:42:26+00:00
 viewCount: 1
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
@@ -116,7 +116,8 @@ Things to track:
 - Project Card visit
 - "See more Projects" click
 - "See more Experience items" click
-- "Download CV
+- "See more Education items" click
+- "Download CV" click
 
 > Increase the number of users clicking to learn more about me
 
@@ -454,6 +455,7 @@ Software developer with a passion for building web applications and automating p
 
 ## Other Links
 
+- [[Portfolio Blog Notes]]
 - [[Portfolio Site]]
 - [Portfolio Site V2 - Canva](https://www.canva.com/design/DAGwOxW7u4E/LWIzan4Iz-ywjKlt-wyYSQ/edit?utm_content=DAGwOxW7u4E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - [[Portfolio About Me]]

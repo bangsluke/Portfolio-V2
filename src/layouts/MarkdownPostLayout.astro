@@ -87,10 +87,19 @@ function findSkill(topicName: string) {
 	description={frontmatter.description}
 	ogimage={frontmatter.image}>
 	<section
-		class="relative mx-auto px-8 max-sm:px-4 flex flex-row justify-center gap-6">
-		<div class="w-64 max-xl:hidden"></div>
+		class="relative mx-auto px-8 max-sm:px-4 flex flex-col xl:flex-row justify-center gap-1 xl:gap-6">
+		<a
+			href="/blog/"
+			class="xl:hidden text-white font-semibold w-full text-center mt-2 mb-1 hover:opacity-80">
+			&lt; Back to blog
+		</a>
+		<div class="w-64 hidden xl:flex flex-col pt-8">
+			<a href="/blog/" class="text-white font-semibold hover:opacity-80">
+				&lt; Back to blog
+			</a>
+		</div>
 		<article
-			class="flex flex-col gap-8 max-w-3xl max-md:w-full pb-10 pt-8 mt-8 px-14 max-md:px-10 max-sm:px-4 dark:bg-transparent bg-white dark:border-0 border border-neutral-100 rounded-2xl">
+			class="flex flex-col gap-8 max-w-3xl max-md:w-full pb-10 pt-8 mt-4 xl:mt-8 px-14 max-md:px-10 max-sm:px-4 dark:bg-transparent bg-white dark:border-0 border border-neutral-100 rounded-2xl">
 			<header class="flex flex-col gap-4" id="start">
 				<div class="flex gap-2 flex-wrap">
 					{

@@ -9,7 +9,7 @@ created: 2026-02-12
 modified: 2026-03-12T18:52:46+00:00
 aliases:
   - New Tab
-viewCount: 7
+viewCount: 8
 projectURL: https://bangsluke-new-tab.netlify.app/
 codeURL: https://github.com/bangsluke/New-Tab-V2
 codeMultipleRepos: false

@@ -2,17 +2,17 @@
 layout: /src/layouts/MarkdownPostLayout.astro
 title: "Welcome to My Blog"
 author: "Luke Bangs"
-description: "Welcome to my blog where I share thoughts on software engineering, product development, and technology."
+description: "Welcome to my blog where I share my transition into Product."
 image:
-  url: "/images/siteImage.webp"
-  alt: "Luke Bangs Portfolio site image"
-pubDate: 2026-03-19
-topics: ["#welcome", "#portfolio", "JavaScript", "Astro"]
+  url: "https://bangsluke-assets.netlify.app/images/blog-images/10032026 Welcome.png"
+  alt: "Blog Launch"
+pubDate: 2026-03-10
+topics: ["#welcome", "#portfolio", "Astro"]
 ---
 
 Welcome to my blog! This is where I'll be sharing my thoughts and experiences on software engineering, product development, and the technology landscape.
 
-## What to Expect
+## What to Expect New
 
 I plan to cover topics including:
 
@@ -21,7 +21,7 @@ I plan to cover topics including:
 - **Technical Tutorials** -- Hands-on guides for tools and technologies I work with
 - **Career Reflections** -- Lessons learned from my journey in tech
 
-## About This Site
+## New About This Site
 
 This portfolio site is built with [Astro](https://astro.build/), using Preact for interactive components and Tailwind CSS for styling. It pulls content from Obsidian markdown notes via a custom sync pipeline.
 

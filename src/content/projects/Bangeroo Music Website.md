@@ -5,9 +5,9 @@ tags:
   - project/active
   - portfolio
 created: 2026-03-12 15:16
-modified: 2026-03-18T17:55:54+00:00
+modified: 2026-03-19T12:34:24+00:00
 aliases:
-viewCount: 4
+viewCount: 3
 projectURL: https://bangeroo-music-website.netlify.app/
 codeURL: https://github.com/bangsluke/Bangeroo-Music-Website
 codeMultipleRepos: false
@@ -39,7 +39,7 @@ version: 1
 portfolioOrder: 6
 shortDescription: "Tested out several visual designs for a client via A/B testing in an <span class=\"theme-link\">MVP</span>.<br><br>TBC"
 longDescription: "An <span class=\"theme-link\">SPA</span> for displaying my father's musical interests, embedding his <span class=\"theme-link\">Spotify</span> songs into an edgy modern and chaotic design.<br><br>Given a lack of initial design direction, I initially built an <span class=\"theme-link\">MVP</span> of four varying designs of the same content as a form of A/B testing (or A/B/C/D if you will), deciding that seeing visual ideas would help align him to a style rather than via verbal communication.<br><br>TBC"
-lessonsLearned: "<span class=\"theme-link\">Supabase</span><br><br>TBC"
+lessonsLearned: "From a product viewpoint, this project allowed me to conduct some initial A/B testing on various page designs, creating 4 variants for the client to review and select from.<br><br>From a technical standpoint, it taught me how to connect up a simple <span class=\"theme-link\">Supabase</span> backend, creating the tables in the <span class=\"theme-link\">SQL</span> editor and sorting out row level security. It was also my first time using the <span class=\"theme-link\">Spotify</span> developer <span class=\"theme-link\">API</span>, using it to display a 30 second refreshing status of if the client was online or offline and what they were listening to.<br><br>TBC"
 name: "Bangeroo Music Website"
 ---
 # Bangeroo Music Website
@@ -65,6 +65,8 @@ WHERE file = this.file
 
 >[!details]  `=this.file.name`
 >`=choice(this.folderURL = null | this.folderURL = "" | this.folderURL = "n/a","","<br>Folder URL: " + link(this.folderURL,"Link")) + choice(this.dateStart = null | this.dateStart = "","","<br>Date Start: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>Date End: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "", "", choice(this.dateEnd = "", "<br>Development Duration: " + string(date(today) - date(this.dateStart)), "<br>Development Duration: " + string(date(this.dateEnd) - date(this.dateStart)))) + choice(this.projectCategory = null | this.projectCategory = "","","<br>Category: " + this.projectCategory) + choice(this.linkedCompany = null | this.linkedCompany = "" | contains(this.linkedCompany, "n/a"),"","<br>Project for: " + this.linkedCompany) + choice(this.toolOwner = null | this.toolOwner = "","","<br>Tool Owner: " + this.toolOwner) + choice(this.developers = null | this.developers = "","","<br>Developers: " + this.developers) + choice(this.technologies = null | this.technologies = "","","<br>Technologies: " + this.technologies) + choice(this.topicTags = null | this.topicTags = "","","<br>Topics: " + this.topicTags) + choice(this.powerShellAlias = null | this.powerShellAlias = "" | this.powerShellAlias = "n/a","","<br>PowerShell Alias: " + this.powerShellAlias) + choice(this.version = null | this.version = "","","<br>Version: " + this.version)`
+
+> [[Supabase]] Database: <https://supabase.com/dashboard/project/jqsjvsakcfxewylwattk>
 
 ## Table of Contents
 
@@ -130,7 +132,9 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-[[Supabase]]
+From a product viewpoint, this project allowed me to conduct some initial A/B testing on various page designs, creating 4 variants for the client to review and select from.
+
+From a technical standpoint, it taught me how to connect up a simple [[Supabase]] backend, creating the tables in the [[SQL]] editor and sorting out row level security. It was also my first time using the [[Spotify]] developer [[API]], using it to display a 30 second refreshing status of if the client was online or offline and what they were listening to.
 
 TBC
 
