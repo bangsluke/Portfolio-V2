@@ -48,6 +48,7 @@ const allProjects = await getCollection('projects');
 
 // Process content to handle Obsidian links and markdown
 const processedLongDescription = processContent(data.longDescription);
+const processedNorthStarMetric = processContent(data.northStarMetric);
 const processedLessonsLearned = processContent(data.lessonsLearned);
 
 // Get linked companies, clients, and educations
@@ -266,6 +267,24 @@ const ogimage = {
 								class="text-lg text-colour leading-relaxed processed-content"
 								set:html={processedLongDescription}
 								id="project-page-description"
+							/>
+						</div>
+					</div>
+				</section>
+			)
+		}
+
+		<!-- North Star Metric Section -->
+		{
+			data.northStarMetric && (
+				<section class="px-8 mb-6 md:mb-12 pb-6 md:pb-0">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold mb-6 text-amber-400">North Star Metric</h2>
+						<div class="bg-theme-400/10 dark:bg-theme-400/5 border border-theme-400/30 rounded-2xl p-8 shadow-lg">
+							<div
+								class="text-lg text-colour leading-relaxed processed-content font-medium"
+								set:html={processedNorthStarMetric}
+								id="project-page-north-star-metric"
 							/>
 						</div>
 					</div>

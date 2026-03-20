@@ -42,12 +42,17 @@ export const CONTENT_TYPE_MAPPINGS = {
 				name: 'Long Description',
 				property: 'longDescription',
 			},
-			{
-				name: 'Lessons Learned',
-				property: 'lessonsLearned',
-			},
-		],
-	},
+		{
+			name: 'Lessons Learned',
+			property: 'lessonsLearned',
+		},
+		{
+			name: 'North Star Metric',
+			property: 'northStarMetric',
+			postProcess: 'blockquote',
+		},
+	],
+},
 	companies: {
 		sections: [
 			{

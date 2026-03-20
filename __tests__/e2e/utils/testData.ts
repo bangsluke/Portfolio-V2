@@ -43,6 +43,8 @@ export const testData = {
 	workExperiencePageUrl: `${baseUrl}/work-experience`,
 	educationPageUrl: `${baseUrl}/education`,
 	aboutMePageUrl: `${baseUrl}/about-me`,
+	blogPageUrl: `${baseUrl}/blog`,
+	blogPostsPageUrl: `${baseUrl}/blog`,
 	sampleProjectSlug: 'dorkinians-website-v3',
 	exampleProjectName: 'Dorkinians Website V3',
 	exampleProjectDateRange: 'Aug 2025 - Jan 2026',

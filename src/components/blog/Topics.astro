@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import { extractNameFromFilename } from '../../utils/filename-utils';
+import {
+	getProjectCount,
+	getProjectsUsingSkill,
+} from '../../utils/project-count-utils';
+import SkillPill from '../ui/SkillPill.astro';
+
+const allPosts = await import.meta.glob('../../pages/blog/posts/*.md', {
+	eager: true,
+});
+const posts = Object.values(allPosts);
+
+const allTopics = posts
+	.map((post: any) => {
+		const topics = post.frontmatter?.topics || [];
+		const tags = post.frontmatter?.tags || [];
+		const languages = post.frontmatter?.languages || [];
+		return [...topics, ...tags, ...languages];
+	})
+	.flat()
+	.filter((t: any) => t && typeof t === 'string');
+const topics = [...new Set(allTopics)];
+
+const skills = await getCollection('skills');
+const projects = await getCollection('projects');
+
+type VariantType = 'default' | 'vertical' | 'compact';
+const { variant = 'default' } = Astro.props as { variant?: VariantType };
+
+const baseClasses = 'max-w-7xl';
+
+const variantClasses: Record<VariantType, string> = {
+	default:
+		'max-lg:px-8 py-8 max-md:py-4 flex-wrap mx-auto gap-2 max-sm:gap-2 justify-center items-center flex flex-row',
+	vertical: 'gap-4 justify-start items-start flex flex-col',
+	compact: 'flex-wrap mx-auto gap-2 max-sm:gap-2 justify-start flex flex-row',
+};
+
+const classes = `${baseClasses} ${variantClasses[variant]}`;
+
+function findSkill(topicName: string) {
+	return skills.find(s => {
+		const skillName = s.data.name || extractNameFromFilename(s.id);
+		return skillName.toLowerCase() === topicName.toLowerCase();
+	});
+}
+---
+
+<div id="topics" class={classes}>
+	{
+		topics.map(topic => {
+			const skill = findSkill(topic);
+			const skillName = skill
+				? skill.data.name || extractNameFromFilename(skill.id)
+				: topic;
+			const description =
+				(skill?.data as { skillDescription?: string })?.skillDescription ?? '';
+			const filename = skill ? extractNameFromFilename(skill.id) : topic;
+			const count = skill
+				? getProjectCount(skillName, filename, projects)
+				: 0;
+			const isHashTopic = topic.trim().startsWith('#');
+
+			return (
+				<div
+					class="relative skill-tooltip-trigger"
+					data-skill-name={skillName}
+					data-skill-description={isHashTopic ? '' : description}
+					data-skill-count={isHashTopic ? 0 : count}>
+					<SkillPill
+						skillName={topic}
+						size="sm"
+						variant="theme"
+						className="cursor-default"
+						projects={projects}
+						disableTooltip={true}
+					/>
+				</div>
+			);
+		})
+	}
+</div>

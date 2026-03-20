@@ -43,12 +43,14 @@ const classes = `${baseClasses} ${variantClasses[variant]}`;
 					disableTooltip={true}
 				/>
 
-				<!-- Enhanced tooltip showing usage count and projects -->
-				<div
-					class={`absolute left-1/2 transform -translate-x-1/2 opacity-0 group-hover/tech:opacity-100 group-active/tech:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 ${
-						index < 5 ? 'top-full mt-2' : 'bottom-full mb-2'
-					}`}>
-					<div class="global-tooltip max-w-xs">
+			<!-- Enhanced tooltip showing usage count and projects -->
+			<div
+				class={`absolute opacity-0 group-hover/tech:opacity-100 group-active/tech:opacity-100 transition-opacity duration-300 pointer-events-none z-10 ${
+					index < 5 ? 'top-full mt-2' : 'bottom-full mb-2'
+				} ${
+					index % 4 === 0 ? 'left-0' : index % 4 === 3 ? 'right-0' : 'left-1/2 -translate-x-1/2'
+				}`}>
+				<div class="global-tooltip max-w-sm w-max">
 						<div class="global-tooltip-content">
 							<div class="text-sm font-medium mb-1">
 								Used in {tech.count} project{tech.count > 1 ? 's' : ''}

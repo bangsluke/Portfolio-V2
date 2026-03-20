@@ -141,7 +141,7 @@ const cardsWithSkills = howIDeliverConfig.cards.map(card => {
 								data-testid={`delivery-card-skills-${card.key}`}>
 								{card.visibleSkills.map((skill, index) => (
 									<div
-										class="relative delivery-skill-trigger"
+										class="relative skill-tooltip-trigger"
 										data-skill-name={skill.displayName}
 										data-skill-description={skill.description}
 										data-skill-count={skill.count}>
@@ -162,7 +162,7 @@ const cardsWithSkills = howIDeliverConfig.cards.map(card => {
 												+{card.hiddenSkills.length}
 											</span>
 										</div>
-										<div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 pointer-events-none group-hover/tooltip:opacity-100 group-hover/tooltip:pointer-events-auto group-active/tooltip:opacity-100 group-active/tooltip:pointer-events-auto transition-opacity duration-200 z-50 w-[500px] max-w-[90vw]">
+										<div class="absolute bottom-full left-0 md:left-1/2 md:-translate-x-1/2 mb-2 opacity-0 pointer-events-none group-hover/tooltip:opacity-100 group-hover/tooltip:pointer-events-auto group-active/tooltip:opacity-100 group-active/tooltip:pointer-events-auto transition-opacity duration-200 z-50 w-[500px] max-w-[85vw]">
 											<div class="global-tooltip w-full min-w-[20rem] pointer-events-auto">
 												<div class="global-tooltip-content">
 													<div class="text-xs text-theme-400 font-medium mb-2">
@@ -171,7 +171,7 @@ const cardsWithSkills = howIDeliverConfig.cards.map(card => {
 													<div class="flex flex-wrap gap-2">
 														{card.hiddenSkills.map((skill, index) => (
 															<div
-																class="relative delivery-skill-trigger"
+																class="relative skill-tooltip-trigger"
 																data-skill-name={skill.displayName}
 																data-skill-description={skill.description}
 																data-skill-count={skill.count}>
@@ -206,136 +206,6 @@ const cardsWithSkills = howIDeliverConfig.cards.map(card => {
 
 		if (mediaQuery.matches) {
 			window.addEventListener('DOMContentLoaded', () => {
-				// Delivery skill tooltip portal (prevents clipping by overflow-hidden ancestors)
-				const ensureTooltip = () => {
-					let root = document.getElementById('delivery-skill-tooltip');
-					if (root) return root;
-
-					root = document.createElement('div');
-					root.id = 'delivery-skill-tooltip';
-					root.style.position = 'fixed';
-					root.style.left = '0';
-					root.style.top = '0';
-					root.style.zIndex = '9999';
-					root.style.pointerEvents = 'none';
-					root.style.opacity = '0';
-					root.style.transition = 'opacity 150ms ease';
-
-					const tooltip = document.createElement('div');
-					tooltip.className = 'global-tooltip max-w-[40rem] min-w-[20rem]';
-					tooltip.style.pointerEvents = 'none';
-
-					const content = document.createElement('div');
-					content.className = 'global-tooltip-content text-left break-words';
-					tooltip.appendChild(content);
-
-					root.appendChild(tooltip);
-					document.body.appendChild(root);
-					return root;
-				};
-
-				const tooltipRoot = ensureTooltip();
-				const tooltipContent = tooltipRoot.querySelector(
-					'.global-tooltip-content'
-				);
-				const tooltipBox = tooltipRoot.querySelector('.global-tooltip');
-
-				const setTooltipContent = (name, desc, count) => {
-					if (!tooltipContent) return;
-					tooltipContent.innerHTML = '';
-
-					const title = document.createElement('div');
-					title.className = 'text-xs text-theme-400 font-medium mb-2';
-					title.textContent = name;
-					tooltipContent.appendChild(title);
-
-					if (desc) {
-						const d = document.createElement('div');
-						d.className = 'text-xs mb-2';
-						d.textContent = desc;
-						tooltipContent.appendChild(d);
-					}
-
-					if (Number.isFinite(count) && count > 0) {
-						const c = document.createElement('div');
-						c.className = 'text-xs font-medium';
-						c.textContent = `Used in ${count} project${count === 1 ? '' : 's'}`;
-						tooltipContent.appendChild(c);
-					}
-				};
-
-				const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
-
-				const positionTooltipNear = target => {
-					if (!tooltipBox) return;
-					const rect = target.getBoundingClientRect();
-
-					// Measure after content set
-					const boxRect = tooltipBox.getBoundingClientRect();
-
-					const gap = 10;
-					const viewportPad = 12;
-
-					const centerX = rect.left + rect.width / 2;
-					let left = centerX - boxRect.width / 2;
-					left = clamp(
-						left,
-						viewportPad,
-						window.innerWidth - boxRect.width - viewportPad
-					);
-
-					const spaceBelow = window.innerHeight - rect.bottom;
-					const spaceAbove = rect.top;
-					const preferBelow =
-						spaceBelow >= boxRect.height + gap || spaceBelow >= spaceAbove;
-
-					let top = preferBelow
-						? rect.bottom + gap
-						: rect.top - boxRect.height - gap;
-					top = clamp(
-						top,
-						viewportPad,
-						window.innerHeight - boxRect.height - viewportPad
-					);
-
-					tooltipRoot.style.transform = `translate(${Math.round(left)}px, ${Math.round(top)}px)`;
-				};
-
-				let activeTarget = null;
-				const showTooltip = target => {
-					const name = target.getAttribute('data-skill-name') ?? '';
-					const desc = target.getAttribute('data-skill-description') ?? '';
-					const countRaw = target.getAttribute('data-skill-count') ?? '0';
-					const count = Number.parseInt(countRaw, 10) || 0;
-
-					setTooltipContent(name, desc, count);
-					tooltipRoot.style.opacity = '1';
-					positionTooltipNear(target);
-				};
-
-				const hideTooltip = () => {
-					tooltipRoot.style.opacity = '0';
-					activeTarget = null;
-				};
-
-				const triggers = Array.from(
-					document.querySelectorAll('.delivery-skill-trigger')
-				);
-				triggers.forEach(el => {
-					el.addEventListener('mouseenter', () => {
-						activeTarget = el;
-						showTooltip(el);
-					});
-					el.addEventListener('mouseleave', hideTooltip);
-				});
-
-				window.addEventListener('scroll', () => {
-					if (activeTarget) positionTooltipNear(activeTarget);
-				});
-				window.addEventListener('resize', () => {
-					if (activeTarget) positionTooltipNear(activeTarget);
-				});
-
 				const grid = document.querySelector(
 					'[data-testid="delivery-cards-grid"]'
 				);

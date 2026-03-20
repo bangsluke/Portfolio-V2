@@ -24,9 +24,9 @@ All of these events appear under your website’s **Events** in Umami. Custom pr
 | Skills search used | Skills search opened, Skills search query, Skills search result click | query, skill, etc. | `SkillsSearchModal.tsx` |
 | Skills view toggle | Skills view toggle | view = grid \| list | `TechnicalSection.astro` |
 | Most clicked project (card) | Project click | slug = project slug | `ProjectCard.astro` |
-| “See more projects” | See more projects | — | `ProjectsGallery.astro` |
-| “See more items” (experience) | See more items | section = `experience` | `WorkExperienceTimeline.astro` |
-| “See more items” (education) | See more items | section = `education` | `EducationTimeline.astro` |
+| “See more Projects” | See more Projects | — | `ProjectsGallery.astro` |
+| “See more Experience items” | See more Experience items | section = `experience` | `WorkExperienceTimeline.astro` |
+| “See more Education items” | See more Education items | section = `education` | `EducationTimeline.astro` |
 | Download CV | Download CV | — | `Contact.astro` |
 | Visit Site (on project page) | Visit Site | slug = project slug | `[slug].astro` |
 | View Code (on project page) | View Code | slug = project slug | `[slug].astro` |
@@ -54,8 +54,9 @@ Filtering by **event name** gives you counts per action; filtering or grouping b
 - **Skills search usage:** Events → **“Skills search opened”** (opens), **“Skills search query”** (searches), **“Skills search result click”** (result clicks). Use Properties for query/skill if needed.
 - **Skills toggle:** Events → **“Skills view toggle”** → Properties tab for `view` (grid/list).
 - **Most clicked project (from cards):** Events → **“Project click”** → Properties tab → group or sort by `slug` to see which project slugs got the most clicks.
-- **“See more projects”:** Events → **“See more projects”** → total count.
-- **“See more items” (experience vs education):** Events → **“See more items”** → Properties tab → filter by `section` = `experience` or `section` = `education`.
+- **“See more Projects”:** Events → **“See more Projects”** → total count.
+- **“See more Experience items”:** Events → **“See more Experience items”** → Properties tab → filter by `section` = `experience`.
+- **“See more Education items”:** Events → **“See more Education items”** → Properties tab → filter by `section` = `education`.
 - **Download CV:** Events → **“Download CV”** → total count.
 - **Visit Site / View Code (from project page):** Events → **“Visit Site”** or **“View Code”** → total count; use Properties tab and `slug` to see which project pages generated the clicks.
 

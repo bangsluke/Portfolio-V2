@@ -15,10 +15,20 @@ import {
 	SPACING_LEVEL_2,
 	SPACING_LEVEL_3,
 } from './repoConfig.js';
+import blogPostTransform from './blog-post-sync-transform.cjs';
+
+const {
+	transformObsidianBlogMarkdown,
+	deriveBlogBaseSlugFromFilename,
+	resolveUniqueSlug,
+} = blogPostTransform;
 // Utility function for extracting name from filename
 function extractNameFromFilename(filename) {
 	return filename.replace(/\.md$/, '');
 }
+
+// Track collisions within a single sync run.
+const blogSlugCounts = new Map();
 
 // Add name property to project frontmatter
 function addProjectNameToFrontmatter(content, fileName) {
@@ -186,9 +196,17 @@ async function extractSectionsToFrontmatter(content, contentType) {
 	const { processContent } = await import('./content-processor.js');
 
 	// Extract content from each section defined in config
-	sectionsToExtract.forEach(({ name, property }) => {
-		const sectionContent = extractSectionContent(content, name, endMarker);
+	sectionsToExtract.forEach(({ name, property, postProcess }) => {
+		let sectionContent = extractSectionContent(content, name, endMarker);
 		if (sectionContent) {
+			if (postProcess === 'blockquote') {
+				sectionContent = sectionContent
+					.split('\n')
+					.filter(line => /^>\s/.test(line) && !/^>\[!/.test(line))
+					.map(line => line.replace(/^>\s/, ''))
+					.join('\n')
+					.trim();
+			}
 			// Process the extracted section content using the new content processor
 			const processedSectionContent = processContent(sectionContent);
 			extractedData[property] = processedSectionContent;
@@ -362,6 +380,46 @@ function getContentType(targetFolder) {
 	return targetFolder || null;
 }
 
+function removeProblematicMarkdownImages(content) {
+	// Filter out image references that could cause build errors
+	let updatedContent = content;
+
+	// Obsidian image references using `![](#image-id)`
+	updatedContent = updatedContent.replace(
+		/!\[([^\]]*)\]\(#([^)]+)\)/g,
+		(match, altText, imageName) => {
+			return `<!-- Image removed during sync: ${altText} (${imageName}) -->`;
+		}
+	);
+
+	// Standard markdown images that might reference non-existent files
+	updatedContent = updatedContent.replace(
+		/!\[([^\]]*)\]\(([^)]+)\)/g,
+		(match, altText, imagePath) => {
+			// If it's an Obsidian-style reference (starts with #), convert to comment
+			if (imagePath.startsWith('#')) {
+				return `<!-- Image removed during sync: ${altText} (${imagePath}) -->`;
+			}
+
+			// If it's a relative path that might not exist, also convert to comment
+			if (
+				imagePath.startsWith('./') ||
+				imagePath.startsWith('../') ||
+				(!imagePath.startsWith('http') &&
+					!imagePath.startsWith('/') &&
+					!imagePath.startsWith('data:'))
+			) {
+				return `<!-- Image removed during sync: ${altText} (${imagePath}) -->`;
+			}
+
+			// Keep external URLs (http/https), absolute paths, and data URLs
+			return match;
+		}
+	);
+
+	return updatedContent;
+}
+
 async function processMarkdownFile(filePath, relativePath) {
 	try {
 		syncErrors.summary.totalFiles++;
@@ -392,6 +450,67 @@ async function processMarkdownFile(filePath, relativePath) {
 			);
 		}
 
+		const fileName = path.basename(filePath);
+		const isBlogPost = tags.includes('blog') || tags.includes('#blog');
+
+		// Blog posts live in `src/pages/blog/posts` and are derived from `blog-*` frontmatter keys.
+		if (isBlogPost) {
+			const blogPostsPath = path.join(__dirname, '../src/pages/blog/posts');
+			if (!fs.existsSync(blogPostsPath)) {
+				fs.mkdirSync(blogPostsPath, { recursive: true });
+			}
+
+			if (DEBUG_MODE) {
+				console.log(
+					SPACING_LEVEL_2 +
+						`🔍 3: Blog post detected. Checking if file is protected...`
+				);
+			}
+			if (isProtected(fileName)) {
+				syncErrors.summary.skippedFiles++;
+				return;
+			}
+
+			if (DEBUG_MODE) {
+				console.log(
+					SPACING_LEVEL_2 +
+						`🔍 4: Removing Obsidian/problematical markdown image references...`
+				);
+			}
+			content = removeProblematicMarkdownImages(content);
+
+			if (DEBUG_MODE) {
+				console.log(SPACING_LEVEL_3 + `✅ 5. Markdown images processed`);
+			}
+
+			// Preserve original source filename (keeps date ordering intact).
+			const destFileName = fileName;
+			const targetPath = path.join(blogPostsPath, destFileName);
+
+			// Canonical route slug: remove date prefix (if present) then kebab-case,
+			// with collision suffixes (`-2`, `-3`, ...).
+			const baseSlug = deriveBlogBaseSlugFromFilename(fileName);
+			const resolvedSlug = resolveUniqueSlug(baseSlug, blogSlugCounts);
+
+			const transformedMarkdown = transformObsidianBlogMarkdown(
+				content,
+				resolvedSlug
+			);
+
+			if (DEBUG_MODE) {
+				console.log(
+					SPACING_LEVEL_2 + `🔍 Writing blog post to: ${targetPath}`
+				);
+			}
+
+			fs.writeFileSync(targetPath, transformedMarkdown, 'utf8');
+
+			syncErrors.summary.copiedFiles++;
+			syncErrors.summary.processedFiles++;
+
+			return;
+		}
+
 		if (DEBUG_MODE) {
 			console.log(
 				SPACING_LEVEL_2 +
@@ -410,7 +529,6 @@ async function processMarkdownFile(filePath, relativePath) {
 			);
 		}
 
-		const fileName = path.basename(filePath);
 		const targetPath = path.join(ASTRO_CONTENT_PATH, targetFolder, fileName);
 
 		if (DEBUG_MODE) {
@@ -431,47 +549,7 @@ async function processMarkdownFile(filePath, relativePath) {
 					`🔍 5: Removing Obsidian image references and skipping if not found...`
 			);
 		}
-		// Filter out image references that could cause build errors
-		content = content.replace(
-			/!\[([^\]]*)\]\(#([^)]+)\)/g,
-			(match, altText, imageName) => {
-				return `<!-- Image removed during sync: ${altText} (${imageName}) -->`;
-			}
-		);
-		if (DEBUG_MODE) {
-			console.log(
-				SPACING_LEVEL_3 + `✅ 5. Obsidian image references processed`
-			);
-		}
-
-		if (DEBUG_MODE) {
-			console.log(
-				SPACING_LEVEL_2 +
-					`🔍 6: Processing problematic markdown images and skipping if not found...`
-			);
-		}
-		// Also handle standard markdown images that might reference non-existent files
-		content = content.replace(
-			/!\[([^\]]*)\]\(([^)]+)\)/g,
-			(match, altText, imagePath) => {
-				// If it's an Obsidian-style reference (starts with #), convert to comment
-				if (imagePath.startsWith('#')) {
-					return `<!-- Image removed during sync: ${altText} (${imagePath}) -->`;
-				}
-				// If it's a relative path that might not exist, also convert to comment
-				if (
-					imagePath.startsWith('./') ||
-					imagePath.startsWith('../') ||
-					(!imagePath.startsWith('http') &&
-						!imagePath.startsWith('/') &&
-						!imagePath.startsWith('data:'))
-				) {
-					return `<!-- Image removed during sync: ${altText} (${imagePath}) -->`;
-				}
-				// Keep external URLs (http/https), absolute paths, and data URLs
-				return match;
-			}
-		);
+		content = removeProblematicMarkdownImages(content);
 		if (DEBUG_MODE) {
 			console.log(SPACING_LEVEL_3 + `✅ 6. Markdown images processed`);
 		}

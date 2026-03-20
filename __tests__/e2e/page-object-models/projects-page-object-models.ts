@@ -16,7 +16,7 @@ export class ProjectsPageObjects {
 
 	constructor(public readonly page: Page) {
 		this.seeMoreProjectsButton = page.getByRole('link', {
-			name: 'See more projects',
+			name: 'See more Projects',
 		});
 		this.projectsGrid = page.locator('#projectsGrid');
 		this.categoryFilter = page.locator('#categoryFilter');

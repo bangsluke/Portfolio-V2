@@ -1,19 +1,55 @@
 ---
 import Layout from './Layout.astro';
-import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import { extractNameFromFilename, nameToSlug } from '../utils/filename-utils';
+import { getProjectCount } from '../utils/project-count-utils';
+import SkillPill from '../components/ui/SkillPill.astro';
 import DatePub from '../components/blog/DatePub.astro';
-import Tag from '../components/ui/Tag.astro';
-import Capsule from '../components/ui/Capsule.astro';
 import NavArticle from '../components/layout/NavArticle.astro';
 import ListPosts from '../components/blog/ListPosts.astro';
 import NavigationArticles from '../components/layout/NavigationArticles.astro';
 import Share from '../components/ui/Share.astro';
+import Heading from '../components/ui/Heading.astro';
+import { estimateReadingTimeLabelForPostModule } from '../utils/reading-time-utils';
+
 const { frontmatter } = Astro.props;
 const currentUrl = `${Astro.site}${Astro.url.pathname}`;
 const tweetText = encodeURIComponent(
 	`"${frontmatter.title}" - by ${frontmatter.author} | bangsluke`
 );
-import Heading from '../components/ui/Heading.astro';
+
+const skills = await getCollection('skills');
+const projects = await getCollection('projects');
+const allPosts = await import.meta.glob('../pages/blog/posts/*.md', { eager: true });
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+
+const currentSlug = currentPath.split('/').filter(Boolean).pop();
+// Match by stable frontmatter fields instead of URL/slug variations.
+const currentPostModule = Object.values(allPosts).find((post: any) => {
+	const pf = post?.frontmatter;
+	return (
+		pf?.title === frontmatter.title &&
+		String(pf?.pubDate ?? '') === String(frontmatter.pubDate ?? '')
+	);
+});
+const readingTimeLabel = currentPostModule
+	? await estimateReadingTimeLabelForPostModule(currentPostModule)
+	: null;
+
+const topics: string[] = [
+	...new Set([
+		...(frontmatter.topics ?? []),
+		...(frontmatter.tags ?? []),
+		...(frontmatter.languages ?? []),
+	]),
+];
+
+function findSkill(topicName: string) {
+	return skills.find(s => {
+		const sName = s.data.name || extractNameFromFilename(s.id);
+		return sName.toLowerCase() === topicName.toLowerCase();
+	});
+}
 ---
 
 <script>
@@ -67,26 +103,64 @@ import Heading from '../components/ui/Heading.astro';
 	description={frontmatter.description}
 	ogimage={frontmatter.image}>
 	<section
-		class="relative mx-auto px-8 max-sm:px-4 flex flex-row justify-center gap-6">
-		<div class="w-64 max-xl:hidden"></div>
+		class="relative mx-auto px-8 max-sm:px-4 flex flex-col xl:flex-row justify-center gap-1 xl:gap-6">
+		<a
+			href="/blog/"
+			class="xl:hidden text-white font-semibold w-full text-center mt-2 mb-1 hover:opacity-80">
+			&lt; Back to blog
+		</a>
+		<div class="w-64 hidden xl:flex flex-col pt-8">
+			<a href="/blog/" class="text-white font-semibold hover:opacity-80">
+				&lt; Back to blog
+			</a>
+		</div>
 		<article
-			class="flex flex-col gap-8 max-w-3xl max-md:w-full pb-10 pt-8 mt-8 px-14 max-md:px-10 max-sm:px-4 dark:bg-transparent bg-white dark:border-0 border border-neutral-100 rounded-2xl">
+			class="flex flex-col gap-8 max-w-3xl max-md:w-full pb-10 pt-8 mt-4 xl:mt-8 px-14 max-md:px-10 max-sm:px-4 dark:bg-transparent bg-white dark:border-0 border border-neutral-100 rounded-2xl">
 			<header class="flex flex-col gap-4" id="start">
 				<div class="flex gap-2 flex-wrap">
 					{
-						frontmatter.languages?.map((language: string) => (
-							<Capsule lang={language} />
-						)) || []
+						topics.map(topic => {
+							const skill = findSkill(topic);
+							const skillName = skill
+								? skill.data.name || extractNameFromFilename(skill.id)
+								: topic;
+							const description =
+								(skill?.data as { skillDescription?: string })
+									?.skillDescription ?? '';
+							const filename = skill
+								? extractNameFromFilename(skill.id)
+								: topic;
+							const count = skill
+								? getProjectCount(skillName, filename, projects)
+								: 0;
+
+							return (
+								<div
+									class="relative skill-tooltip-trigger"
+									data-skill-name={skillName}
+									data-skill-description={description}
+									data-skill-count={count}>
+									<SkillPill
+										skillName={topic}
+										size="sm"
+										variant="theme"
+										className="cursor-default"
+										projects={projects}
+										disableTooltip={true}
+									/>
+								</div>
+							);
+						})
 					}
 				</div>
-				<div class="gap-3 flex flex-wrap justify-start items-center">
-					{
-						frontmatter.tags?.map((tag: string) => (
-							<Tag tag={tag}>{tag}</Tag>
-						)) || []
-					}
+				<div class="flex items-center gap-4 flex-wrap">
+					<DatePub date={frontmatter.pubDate} />
+					{readingTimeLabel && (
+						<span class="text-sm font-medium tracking-wider text-blacktext dark:text-theme-50">
+							{readingTimeLabel}
+						</span>
+					)}
 				</div>
-				<DatePub date={frontmatter.pubDate} />
 
 				<Heading text={frontmatter.title} />
 
@@ -111,7 +185,23 @@ import Heading from '../components/ui/Heading.astro';
 
 			<figure>
 				{
-					frontmatter.image?.url && (
+					(() => {
+						const url = frontmatter.image?.url;
+						if (!url) return false;
+
+						const imageUrl = String(url).trim();
+						const normalized = imageUrl.toLowerCase();
+
+						// Some posts end up with placeholder/invalid values in `image.url`.
+						// Only render when it looks like a real URL/path.
+						const looksLikeRealUrl =
+							/^(https?:\/\/|\/|data:)/i.test(imageUrl) &&
+							normalized !== 'tbc' &&
+							normalized !== 'tbd' &&
+							normalized !== 'n/a';
+
+						return looksLikeRealUrl;
+					})() && (
 						<img
 							class="w-full rounded-xl"
 							src={frontmatter.image.url}

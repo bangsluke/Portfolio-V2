@@ -7,7 +7,7 @@ export class WorkExperiencePageObjects {
 
 	constructor(public readonly page: Page) {
 		this.seeMoreItemsButton = page.getByRole('link', {
-			name: 'See more items',
+			name: 'See more Experience items',
 		});
 		this.workExperienceItems = page.locator('article, [role="article"]');
 		this.pageHeading = page.getByRole('heading', { level: 1 });

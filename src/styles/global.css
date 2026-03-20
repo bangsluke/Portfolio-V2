@@ -1504,9 +1504,9 @@ html:not(.dark) .carousel-item {
 		max-height: 80vh !important;
 	}
 
-	/* Make SkillPill mobile tooltips 30% larger */
+	/* Make SkillPill mobile tooltips larger for readability */
 	.global-tooltip {
-		min-width: 30vw;
+		min-width: 45vw;
 	}
 
 	.footer-logo {
@@ -1640,6 +1640,18 @@ section#delivery [data-testid^='delivery-card-'],
 section#delivery .delivery-card-inner {
 	/* overflow-y: visible !important; */
 	max-height: none !important;
+}
+
+/* Blog topic filter selected state */
+.blog-topic-selected .skill-pill > span {
+	background-color: rgb(148 163 184) !important; /* slate-400 */
+	color: #ffffff !important; /* invert selected text to light */
+}
+
+.dark .blog-topic-selected .skill-pill > span {
+	background-color: rgba(148, 163, 184, 0.35) !important;
+	border-color: rgba(148, 163, 184, 0.8) !important;
+	color: #ffffff !important;
 }
 
 /* Delivery cards mask hover effect */

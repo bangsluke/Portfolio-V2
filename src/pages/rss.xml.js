@@ -6,7 +6,7 @@ export async function GET(context) {
 		description:
 			'Welcome to my blog, where I share my passion for frontend development, web design, and the latest technology trends.',
 		site: context.site,
-		items: await pagesGlobToRssItems(import.meta.glob('./**/*.md')),
-		customData: `<language>es</language>`,
+		items: await pagesGlobToRssItems(import.meta.glob('./blog/posts/*.md')),
+		customData: `<language>en</language>`,
 	});
 }

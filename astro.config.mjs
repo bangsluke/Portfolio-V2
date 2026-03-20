@@ -34,11 +34,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 4321,
   },
-  integrations: [preact(), icon(), sitemap({
-    filter: (page) =>
-      !page.includes("/blog/tags") &&
-      !page.includes("/blog/techs"),
-  })],
+  integrations: [preact(), icon(), sitemap()],
 
   vite: {
     plugins: [

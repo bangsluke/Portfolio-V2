@@ -1,0 +1,147 @@
+<!--
+  Shared portal-based tooltip for any element with class "skill-tooltip-trigger"
+  and data attributes: data-skill-name, data-skill-description, data-skill-count.
+  Include this component once in the Layout to enable tooltips site-wide.
+-->
+<script is:inline>
+	if (typeof window !== 'undefined') {
+		const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+		if (mediaQuery.matches) {
+			const initSkillTooltips = () => {
+				let root = document.getElementById('skill-tooltip-portal');
+				if (root) return;
+
+				root = document.createElement('div');
+				root.id = 'skill-tooltip-portal';
+				root.style.position = 'fixed';
+				root.style.left = '0';
+				root.style.top = '0';
+				root.style.zIndex = '9999';
+				root.style.pointerEvents = 'none';
+				root.style.opacity = '0';
+				root.style.transition = 'opacity 150ms ease';
+
+				const tooltip = document.createElement('div');
+				tooltip.className = 'global-tooltip max-w-[40rem] min-w-[20rem]';
+				tooltip.style.pointerEvents = 'none';
+
+				const content = document.createElement('div');
+				content.className = 'global-tooltip-content text-left break-words';
+				tooltip.appendChild(content);
+
+				root.appendChild(tooltip);
+				document.body.appendChild(root);
+
+				const tooltipContent = content;
+				const tooltipBox = tooltip;
+
+				const setContent = (name, desc, count) => {
+					tooltipContent.innerHTML = '';
+
+					const title = document.createElement('div');
+					title.className = 'text-xs text-theme-400 font-medium mb-2';
+					title.textContent = name;
+					tooltipContent.appendChild(title);
+
+					if (desc) {
+						const d = document.createElement('div');
+						d.className = 'text-xs mb-2';
+						d.textContent = desc;
+						tooltipContent.appendChild(d);
+					}
+
+					if (Number.isFinite(count) && count > 0) {
+						const c = document.createElement('div');
+						c.className = 'text-xs font-medium';
+						c.textContent =
+							'Used in ' + count + ' project' + (count === 1 ? '' : 's');
+						tooltipContent.appendChild(c);
+					}
+				};
+
+				const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+
+				const positionNear = target => {
+					const rect = target.getBoundingClientRect();
+					const boxRect = tooltipBox.getBoundingClientRect();
+					const gap = 10;
+					const pad = 12;
+
+					const centerX = rect.left + rect.width / 2;
+					let left = centerX - boxRect.width / 2;
+					left = clamp(left, pad, window.innerWidth - boxRect.width - pad);
+
+					const spaceBelow = window.innerHeight - rect.bottom;
+					const spaceAbove = rect.top;
+					const preferBelow =
+						spaceBelow >= boxRect.height + gap || spaceBelow >= spaceAbove;
+
+					let top = preferBelow
+						? rect.bottom + gap
+						: rect.top - boxRect.height - gap;
+					top = clamp(top, pad, window.innerHeight - boxRect.height - pad);
+
+					root.style.transform =
+						'translate(' +
+						Math.round(left) +
+						'px, ' +
+						Math.round(top) +
+						'px)';
+				};
+
+				let activeTarget = null;
+
+				const show = target => {
+					const name = target.getAttribute('data-skill-name') || '';
+					const desc = target.getAttribute('data-skill-description') || '';
+					const countRaw = target.getAttribute('data-skill-count') || '0';
+					const count = parseInt(countRaw, 10) || 0;
+
+					setContent(name, desc, count);
+					root.style.opacity = '1';
+					positionNear(target);
+				};
+
+				const hide = () => {
+					root.style.opacity = '0';
+					activeTarget = null;
+				};
+
+				const bindTriggers = () => {
+					const triggers = document.querySelectorAll('.skill-tooltip-trigger');
+					triggers.forEach(el => {
+						const skillName = (el.getAttribute('data-skill-name') || '').trim();
+						if (skillName.startsWith('#')) return;
+						if (el.hasAttribute('data-tooltip-bound')) return;
+						el.setAttribute('data-tooltip-bound', 'true');
+
+						el.addEventListener('mouseenter', () => {
+							activeTarget = el;
+							show(el);
+						});
+						el.addEventListener('mouseleave', hide);
+					});
+				};
+
+				bindTriggers();
+
+				const observer = new MutationObserver(bindTriggers);
+				observer.observe(document.body, { childList: true, subtree: true });
+
+				window.addEventListener('scroll', () => {
+					if (activeTarget) positionNear(activeTarget);
+				});
+				window.addEventListener('resize', () => {
+					if (activeTarget) positionNear(activeTarget);
+				});
+			};
+
+			if (document.readyState === 'loading') {
+				window.addEventListener('DOMContentLoaded', initSkillTooltips);
+			} else {
+				initSkillTooltips();
+			}
+		}
+	}
+</script>

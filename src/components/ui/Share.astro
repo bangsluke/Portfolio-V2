@@ -32,11 +32,16 @@ const shareLinks = [
 			<div class="relative group/tooltip">
 				<a
 					href={link.href}
-					class="bg-blacktext rounded-full p-2"
+					class="bg-blacktext inline-flex items-center justify-center rounded-full w-10 h-10 text-white"
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label={`Share on ${link.name}`}>
-					<Icon name={link.icon} />
+					<Icon
+						name={link.icon}
+						aria-hidden="true"
+						class="text-white w-5 h-5 flex-shrink-0"
+						style={{ fill: 'currentColor', stroke: 'currentColor' }}
+					/>
 				</a>
 				<div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
 					<div class="global-tooltip">

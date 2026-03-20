@@ -1,4 +1,6 @@
 ---
+import { extractNameFromFilename, nameToSlug } from '../../utils/filename-utils';
+
 const allPosts = await import.meta.glob('../../pages/blog/posts/*.md', {
 	eager: true,
 });
@@ -14,14 +16,35 @@ const sortedPosts = posts
 	);
 
 const currentSlug = Astro.url.pathname.split('/').filter(Boolean).pop();
-const currentIndex = sortedPosts.findIndex(
-	(post: any) => post.url && post.url.includes(currentSlug || '')
-);
-const nextPost: any = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
-const prevPost: any =
-	currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
 
-console.log({ prevPost, nextPost });
+function deriveBlogSlugFromPostModule(post: any): string {
+	const fmSlug = post?.frontmatter?.slug;
+	if (typeof fmSlug === 'string' && fmSlug.trim().length > 0) return fmSlug;
+
+	const name = extractNameFromFilename(post?.id ?? '');
+	const remainder = /^\d{8}\s+/.test(name) ? name.slice(9) : name;
+	return nameToSlug(remainder);
+}
+
+const sortedPostsWithCanonicalUrls = sortedPosts.map((post: any) => {
+	const slug = deriveBlogSlugFromPostModule(post);
+	return {
+		...post,
+		slug,
+		url: `/blog/posts/${slug}`,
+	};
+});
+
+const currentIndex = sortedPostsWithCanonicalUrls.findIndex(
+	(post: any) => post.slug === currentSlug
+);
+
+const nextPost: any =
+	currentIndex > 0 ? sortedPostsWithCanonicalUrls[currentIndex - 1] : null;
+const prevPost: any =
+	currentIndex < sortedPostsWithCanonicalUrls.length - 1
+		? sortedPostsWithCanonicalUrls[currentIndex + 1]
+		: null;
 ---
 
 <nav class="mt-8 flex flex-row gap-2 w-full p-6 max-xl:p-3 max-lg:p-2">

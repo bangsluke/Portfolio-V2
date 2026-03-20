@@ -1,0 +1,96 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import BlogPost from '../../../components/blog/BlogPost.astro';
+import Heading from '../../../components/ui/Heading.astro';
+import { estimateReadingTimeLabelForPostModule } from '../../../utils/reading-time-utils';
+import {
+	extractNameFromFilename,
+	nameToSlug,
+} from '../../../utils/filename-utils';
+
+export async function getStaticPaths() {
+	const allPosts = await import.meta.glob('../posts/*.md', { eager: true });
+	const posts = Object.values(allPosts);
+	const postsWithReadingTime = await Promise.all(
+		posts.map(async (post: any) => ({
+			...post,
+			readingTime: await estimateReadingTimeLabelForPostModule(post),
+		}))
+	);
+
+	const uniqueTopics: string[] = [
+		...new Set(
+			postsWithReadingTime
+				.map((post: any) => {
+					const fm = post.frontmatter;
+					return [
+						...(fm.topics ?? []),
+						...(fm.tags ?? []),
+						...(fm.languages ?? []),
+					];
+				})
+				.flat()
+		),
+	];
+
+	return uniqueTopics.map(topic => {
+		const filteredPosts = postsWithReadingTime.filter((post: any) => {
+			const fm = post.frontmatter;
+			const postTopics = [
+				...(fm.topics ?? []),
+				...(fm.tags ?? []),
+				...(fm.languages ?? []),
+			];
+			return postTopics.includes(topic);
+		});
+		return {
+			params: { topic },
+			props: { posts: filteredPosts },
+		};
+	});
+}
+
+const { topic } = Astro.params;
+const { posts } = Astro.props;
+
+function getCanonicalBlogPostUrl(post: any): string {
+	const fmSlug = post?.frontmatter?.slug;
+	if (typeof fmSlug === 'string' && fmSlug.trim().length > 0) {
+		return `/blog/posts/${fmSlug}`;
+	}
+
+	const name = extractNameFromFilename(post?.id ?? '');
+	const remainder = /^\d{8}\s+/.test(name) ? name.slice(9) : name;
+	return `/blog/posts/${nameToSlug(remainder)}`;
+}
+---
+
+<Layout pageTitle={topic}>
+	<section class="py-8">
+		<div class="flex flex-col gap-8 max-w-4xl mx-auto">
+			<Heading text="Posts about" textGradient={topic} />
+			{
+				posts.map((post: any) => {
+					const fm = post.frontmatter;
+					const topics = [
+						...new Set([
+							...(fm.topics ?? []),
+							...(fm.tags ?? []),
+							...(fm.languages ?? []),
+						]),
+					];
+					return (
+						<BlogPost
+							url={getCanonicalBlogPostUrl(post)}
+							title={fm.title}
+							date={fm.pubDate}
+							topics={topics}
+							image={fm.image}
+							readingTime={post.readingTime}
+						/>
+					);
+				})
+			}
+		</div>
+	</section>
+</Layout>

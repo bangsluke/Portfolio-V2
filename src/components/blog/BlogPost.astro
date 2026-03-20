@@ -1,0 +1,107 @@
+---
+import { getCollection } from 'astro:content';
+import { extractNameFromFilename } from '../../utils/filename-utils';
+import {
+	getProjectCount,
+} from '../../utils/project-count-utils';
+import SkillPill from '../ui/SkillPill.astro';
+import ReadMore from '../ui/ReadMore.astro';
+import DatePub from './DatePub.astro';
+
+const { title, url, date, image, topics = [], readingTime } = Astro.props;
+
+const skills = await getCollection('skills');
+const projects = await getCollection('projects');
+
+function findSkill(topicName: string) {
+	return skills.find(s => {
+		const sName = s.data.name || extractNameFromFilename(s.id);
+		return sName.toLowerCase() === topicName.toLowerCase();
+	});
+}
+
+const topicsAttr = topics.join('|');
+const normalizedUrl =
+	typeof url === 'string' && url.length > 0 && !url.endsWith('/')
+		? `${url}/`
+		: url;
+---
+
+<article
+	class="blog-card relative cursor-pointer border-2 border-theme-300 dark:border-theme-600 bg-linear-to-br from-theme-300 to-white dark:from-theme-950 dark:to-zinc-950 rounded-2xl shadow-lg p-8 max-md:p-3 w-full flex justify-between items-start gap-8 max-md:gap-1 max-md:flex-col-reverse transition-transform hover:scale-105 duration-300"
+	data-url={normalizedUrl}
+	data-topics={topicsAttr}>
+	<a
+		href={normalizedUrl}
+		class="absolute right-8 top-8 max-md:right-6 max-md:top-6 inline-flex items-center z-10"
+	>
+		<ReadMore />
+	</a>
+
+	{readingTime && (
+		<span
+			class="absolute right-8 bottom-8 max-md:right-6 max-md:bottom-6 text-sm font-medium tracking-wider text-white dark:text-theme-50 z-10">
+			{readingTime}
+		</span>
+	)}
+	<div class="flex flex-col flex-1 min-h-full">
+		<div class="relative w-full min-h-6">
+			<a href={normalizedUrl} class="inline-flex items-center">
+				<DatePub date={date} />
+			</a>
+		</div>
+		<a href={normalizedUrl} class="flex flex-col gap-4 w-full mt-3">
+			<h2
+				class="dark:text-theme-50 text-blacktext text-3xl font-bold text-pretty">
+				{title}
+			</h2>
+		</a>
+		<div class="flex flex-wrap gap-2 mt-3 max-md:mt-2 flex-1">
+			{
+				topics.length > 0 &&
+					topics.map((topic: string) => {
+						const skill = findSkill(topic);
+						const skillName = skill
+							? skill.data.name || extractNameFromFilename(skill.id)
+							: topic;
+						const description =
+							(skill?.data as { skillDescription?: string })
+								?.skillDescription ?? '';
+						const filename = skill
+							? extractNameFromFilename(skill.id)
+							: topic;
+						const count = skill
+							? getProjectCount(skillName, filename, projects)
+							: 0;
+						const isHashTopic = topic.trim().startsWith('#');
+
+						return (
+							<div
+								class="relative skill-tooltip-trigger"
+								data-skill-name={skillName}
+								data-skill-description={isHashTopic ? '' : description}
+								data-skill-count={isHashTopic ? 0 : count}>
+								<SkillPill
+									skillName={topic}
+									size="sm"
+									variant="theme"
+									className="cursor-default"
+									projects={projects}
+									disableTooltip={true}
+								/>
+							</div>
+						);
+					})
+			}
+		</div>
+	</div>
+	{
+		image?.url && (
+			<a
+				href={normalizedUrl}
+				style={{ backgroundImage: `url(${image.url})` }}
+				class="shrink-0 rounded-2xl bg-center bg-cover aspect-video max-md:aspect-[16/5] w-2/6 max-md:w-full"
+			/>
+		)
+	}
+</article>

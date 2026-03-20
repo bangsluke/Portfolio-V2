@@ -655,7 +655,7 @@ test.describe('Home Page Tests', () => {
 		);
 	});
 
-	test('1.6.2. Work Experience section, "See more items" button should navigate to /work-experience', async ({
+	test('1.6.2. Work Experience section, "See more Experience items" button should navigate to /work-experience', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
@@ -665,13 +665,15 @@ test.describe('Home Page Tests', () => {
 		await page.waitForTimeout(200);
 		await expect(homePageObjects.workExperienceSection).toBeVisible();
 		await expect(homePageObjects.workExperienceList).toBeVisible();
-		// Check that the "See more items" button is visible
+		// Check that the "See more Experience items" button is visible
 		await expect(
-			homePageObjects.workExperienceSection.getByText('See more items')
+			homePageObjects.workExperienceSection.getByText(
+				'See more Experience items'
+			)
 		).toBeVisible();
-		// Click on the "See more items" button and expect to see the work experience page
+		// Click on the "See more Experience items" button and expect to see the work experience page
 		await homePageObjects.workExperienceSection
-			.getByText('See more items')
+			.getByText('See more Experience items')
 			.click();
 		// Expect to see the work experience page
 		await expect(page.url()).toContain(testData.workExperiencePageUrl);
@@ -777,7 +779,7 @@ test.describe('Home Page Tests', () => {
 		);
 	});
 
-	test('1.8.2. Education section, "See more items" button should navigate to /education', async ({
+	test('1.8.2. Education section, "See more Education items" button should navigate to /education', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
@@ -787,12 +789,14 @@ test.describe('Home Page Tests', () => {
 		await page.waitForTimeout(200);
 		await expect(homePageObjects.educationSection).toBeVisible();
 		await expect(homePageObjects.educationTimeline).toBeVisible();
-		// Check that the "See more items" button is visible
+		// Check that the "See more Education items" button is visible
 		await expect(
-			homePageObjects.educationSection.getByText('See more items')
+			homePageObjects.educationSection.getByText('See more Education items')
 		).toBeVisible();
-		// Click on the "See more items" button and expect to see the education page
-		await homePageObjects.educationSection.getByText('See more items').click();
+		// Click on the "See more Education items" button and expect to see the education page
+		await homePageObjects.educationSection
+			.getByText('See more Education items')
+			.click();
 		// Expect to see the education page
 		await expect(page.url()).toContain(testData.educationPageUrl);
 	});
@@ -930,26 +934,24 @@ test.describe('Home Page Tests', () => {
 		expect(contactMeButtonHref).toContain(testData.email);
 	});
 
-	test('1.10.3. Home page should show "Download CV" button', async ({
-		page,
-	}) => {
+	test('1.10.3. Home page should show "View CV" button', async ({ page }) => {
 		const homePageObjects = new HomePageObjects(page);
-		await homePageObjects.downloadCVButton.scrollIntoViewIfNeeded();
+		await homePageObjects.viewCVButton.scrollIntoViewIfNeeded();
 		await page.waitForTimeout(200);
-		await expect(homePageObjects.downloadCVButton).toBeVisible();
+		await expect(homePageObjects.viewCVButton).toBeVisible();
 	});
 
-	test('1.10.4. "Download CV" button should download the correct CV', async ({
+	test('1.10.4. "View CV" button should link to the correct CV', async ({
 		page,
 	}) => {
 		const homePageObjects = new HomePageObjects(page);
-		await homePageObjects.downloadCVButton.scrollIntoViewIfNeeded();
+		await homePageObjects.viewCVButton.scrollIntoViewIfNeeded();
 		await page.waitForTimeout(200);
-		await expect(homePageObjects.downloadCVButton).toBeVisible();
-		const downloadCVButtonHref =
-			await homePageObjects.downloadCVButton.getAttribute('href');
-		expect(downloadCVButtonHref).toBeTruthy();
-		expect(downloadCVButtonHref).toContain(testData.downloadCVUrl);
+		await expect(homePageObjects.viewCVButton).toBeVisible();
+		const viewCVButtonHref =
+			await homePageObjects.viewCVButton.getAttribute('href');
+		expect(viewCVButtonHref).toBeTruthy();
+		expect(viewCVButtonHref).toContain(testData.downloadCVUrl);
 	});
 
 	test('1.11.3. Mobile menu should open, close, and restore scrolling correctly', async ({
