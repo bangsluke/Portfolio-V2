@@ -1,6 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import { extractNameFromFilename } from '../../utils/filename-utils';
+import {
+	extractNameFromFilename,
+	nameToSlug,
+} from '../../utils/filename-utils';
 import { getProjectCount } from '../../utils/project-count-utils';
 import SkillPill from '../ui/SkillPill.astro';
 import ReadMore from '../ui/ReadMore.astro';
@@ -30,6 +33,19 @@ const topics: string[] = [
 ];
 const image = fm.image.url;
 const imageAlt = fm.image.alt || fm.title;
+
+function deriveBlogSlugFromPostModule(post: any): string {
+	const fmSlug = post?.frontmatter?.slug;
+	if (typeof fmSlug === 'string' && fmSlug.trim().length > 0) return fmSlug;
+
+	const name = extractNameFromFilename(post?.id ?? '');
+	const remainder = /^\d{8}\s+/.test(name) ? name.slice(9) : name;
+	return nameToSlug(remainder);
+}
+
+function getCanonicalBlogPostUrl(post: any): string {
+	return `/blog/posts/${deriveBlogSlugFromPostModule(post)}`;
+}
 
 function findSkill(topicName: string) {
 	return skills.find(s => {
@@ -97,7 +113,7 @@ function findSkill(topicName: string) {
 				</div>
 
 				<a
-					href={latestPost.url}
+					href={getCanonicalBlogPostUrl(latestPost)}
 					class="text-theme-50 gap-3 h-full flex items-end max-sm:px-6 rounded-lg transition-all"
 					aria-label={`Read article: ${latestPost.frontmatter.title}`}>
 					<div class="gap-3 flex flex-col justify-end drop-shadow-[1px_6px_1px_rgba(0,0,0,0.3)]">
@@ -114,7 +130,7 @@ function findSkill(topicName: string) {
 				</a>
 
 				<div class="flex items-end justify-end max-sm:px-6 max-sm:pb-6 mt-3">
-					<a href={latestPost.url} class="shrink-0">
+					<a href={getCanonicalBlogPostUrl(latestPost)} class="shrink-0">
 						<ReadMore class="text-theme-50" />
 					</a>
 				</div>

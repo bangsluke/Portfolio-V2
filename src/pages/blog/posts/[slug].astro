@@ -1,0 +1,87 @@
+---
+// @ts-expect-error - AstroError typing isn't resolved under current moduleResolution
+import { AstroError } from 'astro/errors';
+import MarkdownPostLayout from '../../../layouts/MarkdownPostLayout.astro';
+import { extractNameFromFilename, nameToSlug } from '../../../utils/filename-utils';
+
+function deriveBlogBaseSlugFromFilenameId(id: string) {
+	// Astro module `id` may contain backslashes on Windows; normalize.
+	const normalizedId = String(id).replace(/\\/g, '/');
+	const name = extractNameFromFilename(normalizedId);
+	const remainder = /^\d{8}\s+/.test(name) ? name.slice(9) : name;
+	return nameToSlug(remainder);
+}
+
+function getCanonicalSlugFromPostModule(postModule: any): string {
+	const fmSlug = postModule?.frontmatter?.slug;
+	if (typeof fmSlug === 'string' && fmSlug.trim().length > 0) return fmSlug;
+	return deriveBlogBaseSlugFromFilenameId(postModule?.id ?? '');
+}
+
+export async function getStaticPaths() {
+	const allPostModules = import.meta.glob('./*.md', { eager: true });
+	const posts = Object.values(allPostModules) as any[];
+
+	return posts.map((post: any, idx: number) => {
+		const fmSlug = post?.frontmatter?.slug;
+		if (typeof fmSlug === 'string' && fmSlug.trim().length > 0) {
+			return { params: { slug: fmSlug } };
+		}
+
+		// Derive from the filename/module file path in a way that is stable on Windows.
+		// Astro Markdown modules commonly expose `file` and `url` (but not always `id`).
+		const normalizedSource = String(
+			post?.file ?? post?.id ?? post?.url ?? '',
+		).replace(/\\/g, '/');
+		const name = extractNameFromFilename(normalizedSource);
+		const remainder = /^\d{8}\s+/.test(name) ? name.slice(9) : name;
+		const derived = nameToSlug(remainder);
+		const slug = derived || `post-${idx}`;
+
+		return { params: { slug } };
+	});
+}
+
+const { slug } = Astro.params as { slug: string };
+const allPostModules = import.meta.glob('./*.md', { eager: true });
+const posts = Object.values(allPostModules) as any[];
+const postModule = posts.find((post: any, idx: number) => {
+	const fmSlug = post?.frontmatter?.slug;
+	if (typeof fmSlug === 'string' && fmSlug.trim().length > 0) return fmSlug === slug;
+
+	const normalizedSource = String(
+		post?.file ?? post?.id ?? post?.url ?? '',
+	).replace(/\\/g, '/');
+	const name = extractNameFromFilename(normalizedSource);
+	const remainder = /^\d{8}\s+/.test(name) ? name.slice(9) : name;
+	const derived = nameToSlug(remainder);
+	const derivedSlug = derived || `post-${idx}`;
+	return derivedSlug === slug;
+}) as any;
+
+if (!postModule) {
+	throw new AstroError(`Blog post not found for slug: ${slug}`);
+}
+
+const frontmatter = postModule.frontmatter;
+const PostContent = postModule.default ?? postModule.Content;
+const isMarkdownPostLayoutInFrontmatter = String(
+	frontmatter?.layout ?? ''
+).includes('MarkdownPostLayout.astro');
+const shouldWrapInMarkdownPostLayout = !isMarkdownPostLayoutInFrontmatter;
+
+if (!PostContent) {
+	throw new AstroError(`Blog post component missing for slug: ${slug}`);
+}
+---
+
+{
+	shouldWrapInMarkdownPostLayout ? (
+		<MarkdownPostLayout frontmatter={frontmatter}>
+			<PostContent />
+		</MarkdownPostLayout>
+	) : (
+		<PostContent />
+	)
+}
+

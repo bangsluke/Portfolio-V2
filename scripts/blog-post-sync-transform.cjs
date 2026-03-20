@@ -4,6 +4,108 @@
  * Implemented as CommonJS so Jest can load it in this repo's test setup.
  */
 
+const fs = require('fs');
+const path = require('path');
+
+let existingProjectNamesCache = null;
+
+function getExistingProjectNames() {
+	if (existingProjectNamesCache) return existingProjectNamesCache;
+
+	try {
+		const projectsDir = path.join(__dirname, '../src/content/projects');
+		const files = fs.readdirSync(projectsDir);
+		const names = files
+			.filter(file => file.endsWith('.md'))
+			.map(file => file.replace('.md', ''));
+
+		existingProjectNamesCache = names;
+		return names;
+	} catch (error) {
+		// eslint-disable-next-line no-console
+		console.error('Error reading project names:', error);
+		existingProjectNamesCache = [];
+		return existingProjectNamesCache;
+	}
+}
+
+function convertProjectNameToSlug(projectName) {
+	return String(projectName)
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/(^-|-$)/g, '');
+}
+
+function maskCodeBlocksAndInlineCode(content) {
+	const placeholders = [];
+
+	// Mask fenced code blocks first so inline-code masking doesn't touch them.
+	let masked = content.replace(/```[\s\S]*?```/g, match => {
+		const key = `@@CODE_BLOCK_${placeholders.length}@@`;
+		placeholders.push(match);
+		return key;
+	});
+
+	// Then mask inline code (single backticks).
+	masked = masked.replace(/`[^`\n]+`/g, match => {
+		const key = `@@INLINE_CODE_${placeholders.length}@@`;
+		placeholders.push(match);
+		return key;
+	});
+
+	return { masked, placeholders };
+}
+
+function restoreMaskedCode(content, placeholders) {
+	let restored = content;
+
+	for (let i = 0; i < placeholders.length; i++) {
+		// Restore both block and inline keys generated sequentially.
+		const blockKey = `@@CODE_BLOCK_${i}@@`;
+		const inlineKey = `@@INLINE_CODE_${i}@@`;
+		restored = restored.replace(new RegExp(blockKey, 'g'), placeholders[i]);
+		restored = restored.replace(
+			new RegExp(inlineKey, 'g'),
+			placeholders[i]
+		);
+	}
+
+	return restored;
+}
+
+function processProjectsWikilinksInBody(destBody) {
+	const existingProjects = getExistingProjectNames();
+	const existingProjectSet = new Set(existingProjects);
+
+	// Mask code so we don't convert wikilinks intended to be shown as text.
+	const { masked, placeholders } = maskCodeBlocksAndInlineCode(destBody);
+
+	let processed = masked;
+
+	// Process `[[ProjectName|AltText]]` before `[[ProjectName]]`.
+	processed = processed.replace(
+		/\[\[([^|\]]+)\|([^\]]+)\]\]/g,
+		(match, projectName, altText) => {
+			if (existingProjectSet.has(projectName)) {
+				const slug = convertProjectNameToSlug(projectName);
+				return `<a href="/projects/${slug}" class="theme-link">${altText}</a>`;
+			}
+			return `<span class="theme-link">${altText}</span>`;
+		}
+	);
+
+	// Process `[[ProjectName]]` after the alias form.
+	processed = processed.replace(/\[\[([^\]]+)\]\]/g, (match, projectName) => {
+		if (existingProjectSet.has(projectName)) {
+			const slug = convertProjectNameToSlug(projectName);
+			return `<a href="/projects/${slug}" class="theme-link">${projectName}</a>`;
+		}
+		return `<span class="theme-link">${projectName}</span>`;
+	});
+
+	return restoreMaskedCode(processed, placeholders);
+}
+
 function extractFrontmatterAndBody(markdown) {
 	const match = markdown.match(/^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/);
 	if (!match) {
@@ -122,6 +224,7 @@ function buildFrontmatterMarkdownOnly({
 	image,
 	pubDate,
 	topics,
+	slug,
 }) {
 	const frontmatterLines = [];
 	frontmatterLines.push(`layout: ${layout}`);
@@ -148,6 +251,10 @@ function buildFrontmatterMarkdownOnly({
 			.join(', ')}]`
 	);
 
+	if (slug) {
+		frontmatterLines.push(`slug: "${escapeYamlDoubleQuotes(slug)}"`);
+	}
+
 	return frontmatterLines.join('\n');
 }
 
@@ -156,6 +263,39 @@ function getBlogDestinationFilename(sourceFilename) {
 	if (!sourceFilename) return '';
 	if (sourceFilename.length <= 9) return sourceFilename;
 	return sourceFilename.slice(9);
+}
+
+function kebabCaseFromName(name) {
+	return String(name)
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/(^-|-$)/g, '');
+}
+
+function deriveBlogBaseSlugFromFilename(fileName) {
+	if (!fileName) return '';
+
+	const nameWithoutExt = fileName.replace(/\.md$/i, '');
+
+	// Expect filenames like `YYYYMMDD <Title>.md`. If it matches, remove date prefix.
+	const remainder = /^\d{8}\s+/.test(nameWithoutExt)
+		? nameWithoutExt.slice(9)
+		: nameWithoutExt;
+
+	return kebabCaseFromName(remainder);
+}
+
+function resolveUniqueSlug(baseSlug, slugCounts) {
+	const safeBase = baseSlug && baseSlug.trim().length > 0 ? baseSlug : 'untitled';
+	const usedCount = slugCounts.get(safeBase) ?? 0;
+
+	// First occurrence: `baseSlug`
+	// Second occurrence: `baseSlug-2`, third: `baseSlug-3`, ...
+	const resolved =
+		usedCount === 0 ? safeBase : `${safeBase}-${usedCount + 1}`;
+
+	slugCounts.set(safeBase, usedCount + 1);
+	return resolved;
 }
 
 /**
@@ -173,6 +313,7 @@ function transformObsidianBlogMarkdown(sourceMarkdown) {
 	// after the H1. It's not needed on the rendered site.
 	// Example: `> [!back] Link back to [[Portfolio Blog Notes]]`
 	destBody = destBody.replace(/^>\s*\[!back\][^\r\n]*\r?\n?/, '').trimStart();
+	destBody = processProjectsWikilinksInBody(destBody);
 
 	const layout = getScalarFromFrontmatter(frontmatter, 'blog-layout') ?? '';
 	const authorRaw =
@@ -206,6 +347,7 @@ function transformObsidianBlogMarkdown(sourceMarkdown) {
 		image: destImage,
 		pubDate,
 		topics,
+		slug: undefined,
 	});
 
 	return `---\n${frontmatterMarkdown}\n---\n\n${destBody}`;
@@ -213,6 +355,60 @@ function transformObsidianBlogMarkdown(sourceMarkdown) {
 
 module.exports = {
 	getBlogDestinationFilename,
-	transformObsidianBlogMarkdown,
+	deriveBlogBaseSlugFromFilename,
+	resolveUniqueSlug,
+	transformObsidianBlogMarkdown: (sourceMarkdown, slug) => {
+		const { frontmatter, body } = extractFrontmatterAndBody(sourceMarkdown ?? '');
+
+		const rawTitle = findFirstH1(body) ?? '';
+		const destTitle = stripObsidianDoubleBrackets(rawTitle).trim();
+		let destBody = removeFirstH1FromBody(body ?? '');
+
+		// Every blog note includes a standardized Obsidian "back" callout immediately
+		// after the H1. It's not needed on the rendered site.
+		// Example: `> [!back] Link back to [[Portfolio Blog Notes]]`
+		destBody = destBody
+			.replace(/^>\s*\[!back\][^\r\n]*\r?\n?/, '')
+			.trimStart();
+		destBody = processProjectsWikilinksInBody(destBody);
+
+		const layout = getScalarFromFrontmatter(frontmatter, 'blog-layout') ?? '';
+		const authorRaw =
+			getScalarFromFrontmatter(frontmatter, 'blog-author') ?? '';
+		const descriptionRaw =
+			getScalarFromFrontmatter(frontmatter, 'blog-description') ?? '';
+		const imageUrl =
+			getScalarFromFrontmatter(frontmatter, 'blog-image-url') ?? '';
+		const imageAlt =
+			getScalarFromFrontmatter(frontmatter, 'blog-image-alt') ?? '';
+		const pubDate =
+			getScalarFromFrontmatter(frontmatter, 'blog-pubDate') ?? '';
+
+		const rawTopics = getYamlListFromFrontmatter(frontmatter, 'blog-topics');
+
+		const author = stripObsidianDoubleBrackets(authorRaw);
+		const description = stripObsidianDoubleBrackets(descriptionRaw);
+		const topics = rawTopics.map(t => stripObsidianDoubleBrackets(t));
+
+		const destImage =
+			imageUrl && imageAlt
+				? { url: imageUrl, alt: imageAlt }
+				: imageUrl
+					? { url: imageUrl, alt: imageAlt }
+					: null;
+
+		const frontmatterMarkdown = buildFrontmatterMarkdownOnly({
+			layout,
+			destTitle,
+			author,
+			description,
+			image: destImage,
+			pubDate,
+			topics,
+			slug,
+		});
+
+		return `---\n${frontmatterMarkdown}\n---\n\n${destBody}`;
+	},
 };
 

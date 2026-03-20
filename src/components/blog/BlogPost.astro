@@ -8,7 +8,7 @@ import SkillPill from '../ui/SkillPill.astro';
 import ReadMore from '../ui/ReadMore.astro';
 import DatePub from './DatePub.astro';
 
-const { title, url, date, image, topics = [] } = Astro.props;
+const { title, url, date, image, topics = [], readingTime } = Astro.props;
 
 const skills = await getCollection('skills');
 const projects = await getCollection('projects');
@@ -37,6 +37,13 @@ const normalizedUrl =
 	>
 		<ReadMore />
 	</a>
+
+	{readingTime && (
+		<span
+			class="absolute right-8 bottom-8 max-md:right-6 max-md:bottom-6 text-sm font-medium tracking-wider text-white dark:text-theme-50 z-10">
+			{readingTime}
+		</span>
+	)}
 	<div class="flex flex-col flex-1 min-h-full">
 		<div class="relative w-full min-h-6">
 			<a href={normalizedUrl} class="inline-flex items-center">

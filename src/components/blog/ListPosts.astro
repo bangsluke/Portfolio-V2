@@ -1,6 +1,8 @@
 ---
 import Heading from '../ui/Heading.astro';
 import BlogPost from './BlogPost.astro';
+import { estimateReadingTimeLabelForPostModule } from '../../utils/reading-time-utils';
+import { extractNameFromFilename, nameToSlug } from '../../utils/filename-utils';
 
 export interface Props {
 	excludeLatest?: boolean;
@@ -14,6 +16,20 @@ const allPosts = await import.meta.glob('../../pages/blog/posts/*.md', {
 	eager: true,
 });
 const posts = Object.values(allPosts);
+
+function deriveBlogSlugFromPostModule(post: any): string {
+	const fmSlug = post?.frontmatter?.slug;
+	if (typeof fmSlug === 'string' && fmSlug.trim().length > 0) return fmSlug;
+
+	// Fallback: derive slug from module filename.
+	const name = extractNameFromFilename(post?.id ?? '');
+	const remainder = /^\d{8}\s+/.test(name) ? name.slice(9) : name;
+	return nameToSlug(remainder);
+}
+
+function getCanonicalBlogPostUrl(post: any): string {
+	return `/blog/posts/${deriveBlogSlugFromPostModule(post)}`;
+}
 posts.sort((a: any, b: any) => {
 	const dateA = new Date(a.frontmatter.pubDate).getTime();
 	const dateB = new Date(b.frontmatter.pubDate).getTime();
@@ -24,8 +40,10 @@ let postsToShow = posts;
 
 if (currentPostUrl) {
 	postsToShow = postsToShow.filter((post: any) => {
-		if (!post.url) return false;
-		const normalizedPostUrl = post.url.replace(/\/$/, '');
+		const normalizedPostUrl = getCanonicalBlogPostUrl(post).replace(
+			/\/$/,
+			''
+		);
 		const normalizedCurrentUrl = currentPostUrl.replace(/\/$/, '');
 		return normalizedPostUrl !== normalizedCurrentUrl;
 	});
@@ -36,6 +54,14 @@ if (currentPostUrl) {
 if (!all) {
 	postsToShow = postsToShow.slice(0, 4);
 }
+
+// Compute reading time only for the posts we actually render in this section.
+const postsToShowWithReadingTime = await Promise.all(
+	postsToShow.map(async (post: any) => ({
+		...post,
+		readingTime: await estimateReadingTimeLabelForPostModule(post),
+	}))
+);
 ---
 
 <section
@@ -50,7 +76,7 @@ if (!all) {
 
 	<div class="flex flex-col gap-8 w-full mx-auto">
 		{
-			postsToShow.map((post: any) => {
+			postsToShowWithReadingTime.map((post: any) => {
 				const fm = post.frontmatter;
 				const topics = [
 					...new Set([
@@ -61,11 +87,12 @@ if (!all) {
 				];
 				return (
 					<BlogPost
-						url={post.url}
+						url={getCanonicalBlogPostUrl(post)}
 						title={fm.title}
 						date={fm.pubDate}
 						topics={topics}
 						image={fm.image}
+						readingTime={post.readingTime}
 					/>
 				);
 			})

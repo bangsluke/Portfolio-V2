@@ -1,7 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import { getCollection } from 'astro:content';
-import { extractNameFromFilename } from '../utils/filename-utils';
+import { extractNameFromFilename, nameToSlug } from '../utils/filename-utils';
 import { getProjectCount } from '../utils/project-count-utils';
 import SkillPill from '../components/ui/SkillPill.astro';
 import DatePub from '../components/blog/DatePub.astro';
@@ -10,6 +10,7 @@ import ListPosts from '../components/blog/ListPosts.astro';
 import NavigationArticles from '../components/layout/NavigationArticles.astro';
 import Share from '../components/ui/Share.astro';
 import Heading from '../components/ui/Heading.astro';
+import { estimateReadingTimeLabelForPostModule } from '../utils/reading-time-utils';
 
 const { frontmatter } = Astro.props;
 const currentUrl = `${Astro.site}${Astro.url.pathname}`;
@@ -19,6 +20,21 @@ const tweetText = encodeURIComponent(
 
 const skills = await getCollection('skills');
 const projects = await getCollection('projects');
+const allPosts = await import.meta.glob('../pages/blog/posts/*.md', { eager: true });
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+
+const currentSlug = currentPath.split('/').filter(Boolean).pop();
+// Match by stable frontmatter fields instead of URL/slug variations.
+const currentPostModule = Object.values(allPosts).find((post: any) => {
+	const pf = post?.frontmatter;
+	return (
+		pf?.title === frontmatter.title &&
+		String(pf?.pubDate ?? '') === String(frontmatter.pubDate ?? '')
+	);
+});
+const readingTimeLabel = currentPostModule
+	? await estimateReadingTimeLabelForPostModule(currentPostModule)
+	: null;
 
 const topics: string[] = [
 	...new Set([
@@ -137,7 +153,14 @@ function findSkill(topicName: string) {
 						})
 					}
 				</div>
-				<DatePub date={frontmatter.pubDate} />
+				<div class="flex items-center gap-4 flex-wrap">
+					<DatePub date={frontmatter.pubDate} />
+					{readingTimeLabel && (
+						<span class="text-sm font-medium tracking-wider text-blacktext dark:text-theme-50">
+							{readingTimeLabel}
+						</span>
+					)}
+				</div>
 
 				<Heading text={frontmatter.title} />
 

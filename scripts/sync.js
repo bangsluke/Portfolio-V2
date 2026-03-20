@@ -17,12 +17,18 @@ import {
 } from './repoConfig.js';
 import blogPostTransform from './blog-post-sync-transform.cjs';
 
-const { getBlogDestinationFilename, transformObsidianBlogMarkdown } =
-	blogPostTransform;
+const {
+	transformObsidianBlogMarkdown,
+	deriveBlogBaseSlugFromFilename,
+	resolveUniqueSlug,
+} = blogPostTransform;
 // Utility function for extracting name from filename
 function extractNameFromFilename(filename) {
 	return filename.replace(/\.md$/, '');
 }
+
+// Track collisions within a single sync run.
+const blogSlugCounts = new Map();
 
 // Add name property to project frontmatter
 function addProjectNameToFrontmatter(content, fileName) {
@@ -477,9 +483,19 @@ async function processMarkdownFile(filePath, relativePath) {
 				console.log(SPACING_LEVEL_3 + `✅ 5. Markdown images processed`);
 			}
 
-			const destFileName = getBlogDestinationFilename(fileName);
+			// Preserve original source filename (keeps date ordering intact).
+			const destFileName = fileName;
 			const targetPath = path.join(blogPostsPath, destFileName);
-			const transformedMarkdown = transformObsidianBlogMarkdown(content);
+
+			// Canonical route slug: remove date prefix (if present) then kebab-case,
+			// with collision suffixes (`-2`, `-3`, ...).
+			const baseSlug = deriveBlogBaseSlugFromFilename(fileName);
+			const resolvedSlug = resolveUniqueSlug(baseSlug, blogSlugCounts);
+
+			const transformedMarkdown = transformObsidianBlogMarkdown(
+				content,
+				resolvedSlug
+			);
 
 			if (DEBUG_MODE) {
 				console.log(

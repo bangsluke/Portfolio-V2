@@ -33,7 +33,7 @@ test.describe('Blog Tests', () => {
 	test('7.3. Individual blog post page should load and display content', async ({
 		page,
 	}) => {
-		await page.goto(`${testData.mainPageUrl}/blog/posts/welcome/`, {
+		await page.goto(`${testData.mainPageUrl}/blog/posts/blog-welcome/`, {
 			timeout: 30000,
 			waitUntil: 'domcontentloaded',
 		});
@@ -44,6 +44,31 @@ test.describe('Blog Tests', () => {
 
 		const content = page.locator('#content');
 		await expect(content).toBeVisible();
+
+		// Prevent the "layout inside layout" regression from the markdown layout
+		// duplication. The page should have exactly one #start anchor.
+		await expect(page.locator('#start')).toHaveCount(1);
+	});
+
+	test('7.8. Starting transition post should not render placeholders', async ({
+		page,
+	}) => {
+		await page.goto(
+			`${testData.mainPageUrl}/blog/posts/starting-my-transition-to-product/`,
+			{
+				timeout: 30000,
+				waitUntil: 'domcontentloaded',
+			}
+		);
+		await waitForPageLoad(page);
+
+		await expect(page.locator('#start')).toHaveCount(1);
+
+		// SkillPill should not show the literal "?" placeholder for missing icons.
+		await expect(page.locator('article .skill-pill', { hasText: '?' })).toHaveCount(0);
+
+		// Reading time should still render (regression check for the content/layout changes).
+		await expect(page.getByText('1 minute read')).toBeVisible();
 	});
 
 	test('7.4. Navigation should include Blog link', async ({ page }) => {

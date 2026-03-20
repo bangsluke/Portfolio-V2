@@ -2,14 +2,25 @@
 import Layout from '../../../layouts/Layout.astro';
 import BlogPost from '../../../components/blog/BlogPost.astro';
 import Heading from '../../../components/ui/Heading.astro';
+import { estimateReadingTimeLabelForPostModule } from '../../../utils/reading-time-utils';
+import {
+	extractNameFromFilename,
+	nameToSlug,
+} from '../../../utils/filename-utils';
 
 export async function getStaticPaths() {
 	const allPosts = await import.meta.glob('../posts/*.md', { eager: true });
 	const posts = Object.values(allPosts);
+	const postsWithReadingTime = await Promise.all(
+		posts.map(async (post: any) => ({
+			...post,
+			readingTime: await estimateReadingTimeLabelForPostModule(post),
+		}))
+	);
 
 	const uniqueTopics: string[] = [
 		...new Set(
-			posts
+			postsWithReadingTime
 				.map((post: any) => {
 					const fm = post.frontmatter;
 					return [
@@ -23,7 +34,7 @@ export async function getStaticPaths() {
 	];
 
 	return uniqueTopics.map(topic => {
-		const filteredPosts = posts.filter((post: any) => {
+		const filteredPosts = postsWithReadingTime.filter((post: any) => {
 			const fm = post.frontmatter;
 			const postTopics = [
 				...(fm.topics ?? []),
@@ -41,6 +52,17 @@ export async function getStaticPaths() {
 
 const { topic } = Astro.params;
 const { posts } = Astro.props;
+
+function getCanonicalBlogPostUrl(post: any): string {
+	const fmSlug = post?.frontmatter?.slug;
+	if (typeof fmSlug === 'string' && fmSlug.trim().length > 0) {
+		return `/blog/posts/${fmSlug}`;
+	}
+
+	const name = extractNameFromFilename(post?.id ?? '');
+	const remainder = /^\d{8}\s+/.test(name) ? name.slice(9) : name;
+	return `/blog/posts/${nameToSlug(remainder)}`;
+}
 ---
 
 <Layout pageTitle={topic}>
@@ -59,11 +81,12 @@ const { posts } = Astro.props;
 					];
 					return (
 						<BlogPost
-							url={post.url}
+							url={getCanonicalBlogPostUrl(post)}
 							title={fm.title}
 							date={fm.pubDate}
 							topics={topics}
 							image={fm.image}
+							readingTime={post.readingTime}
 						/>
 					);
 				})

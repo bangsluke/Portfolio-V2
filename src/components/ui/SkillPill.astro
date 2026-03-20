@@ -200,14 +200,7 @@ const iconFilterClassesForProject =
 					class={`${sizeClasses[size].icon} text-gray-600 ${iconFilterClassesForProject}`}
 					loading="lazy"
 				/>
-			) : (
-				!iconResult.hideIconSlot && (
-					<div
-						class={`${sizeClasses[size].icon} bg-gray-300 rounded-full flex items-center justify-center text-gray-500 text-xs min-h-full ${iconFilterClassesForProject}`}>
-						?
-					</div>
-				)
-			)
+			) : null
 		}
 		<span class={`${sizeClasses[size].text} font-medium`}>
 			{cleanedSkill.displayName}
