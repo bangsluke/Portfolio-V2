@@ -68,7 +68,8 @@ test.describe('Blog Tests', () => {
 		await expect(page.locator('article .skill-pill', { hasText: '?' })).toHaveCount(0);
 
 		// Reading time should still render (regression check for the content/layout changes).
-		await expect(page.getByText('1 minute read')).toBeVisible();
+		// Scope to the current post header to avoid strict-mode violations from other post cards.
+		await expect(page.locator('#start').getByText('1 minute read')).toBeVisible();
 	});
 
 	test('7.4. Navigation should include Blog link', async ({ page }) => {
