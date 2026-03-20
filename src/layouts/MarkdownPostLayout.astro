@@ -185,7 +185,23 @@ function findSkill(topicName: string) {
 
 			<figure>
 				{
-					frontmatter.image?.url && (
+					(() => {
+						const url = frontmatter.image?.url;
+						if (!url) return false;
+
+						const imageUrl = String(url).trim();
+						const normalized = imageUrl.toLowerCase();
+
+						// Some posts end up with placeholder/invalid values in `image.url`.
+						// Only render when it looks like a real URL/path.
+						const looksLikeRealUrl =
+							/^(https?:\/\/|\/|data:)/i.test(imageUrl) &&
+							normalized !== 'tbc' &&
+							normalized !== 'tbd' &&
+							normalized !== 'n/a';
+
+						return looksLikeRealUrl;
+					})() && (
 						<img
 							class="w-full rounded-xl"
 							src={frontmatter.image.url}

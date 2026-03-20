@@ -4,8 +4,8 @@ title: "Starting My Transition to Product"
 author: "Luke Bangs"
 description: "A description of my transition into a product orientated role."
 image:
-  url: "TBC"
-  alt: "TBC"
+  url: "blog-image-alt:"
+  alt: "blog-pubDate: 2026-03-20"
 pubDate: 2026-03-20
 topics: ["Product Management|Product", "#career", "#discovery"]
 slug: "starting-my-transition-to-product"
