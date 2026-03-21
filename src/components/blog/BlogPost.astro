@@ -31,19 +31,27 @@ const normalizedUrl =
 	class="blog-card relative cursor-pointer border-2 border-theme-300 dark:border-theme-600 bg-linear-to-br from-theme-300 to-white dark:from-theme-950 dark:to-zinc-950 rounded-2xl shadow-lg p-8 max-md:p-3 w-full flex justify-between items-start gap-8 max-md:gap-1 max-md:flex-col-reverse transition-transform hover:scale-105 duration-300"
 	data-url={normalizedUrl}
 	data-topics={topicsAttr}>
-	<a
-		href={normalizedUrl}
-		class="absolute right-8 top-8 max-md:right-6 max-md:top-6 inline-flex items-center z-10"
-	>
-		<ReadMore />
-	</a>
+	<div
+		class="absolute right-8 top-8 max-md:right-6 max-md:top-6 z-10 flex flex-col items-end gap-1">
+		<a href={normalizedUrl} class="inline-flex items-center">
+			<ReadMore />
+		</a>
+		{
+			readingTime && (
+				<span class="md:hidden text-sm font-medium tracking-wider text-white dark:text-theme-50">
+					{readingTime}
+				</span>
+			)
+		}
+	</div>
 
-	{readingTime && (
-		<span
-			class="absolute right-8 bottom-8 max-md:right-6 max-md:bottom-6 text-sm font-medium tracking-wider text-white dark:text-theme-50 z-10">
-			{readingTime}
-		</span>
-	)}
+	{
+		readingTime && (
+			<span class="hidden md:block absolute right-8 bottom-8 text-sm font-medium tracking-wider text-white dark:text-theme-50 z-10">
+				{readingTime}
+			</span>
+		)
+	}
 	<div class="flex flex-col flex-1 min-h-full">
 		<div class="relative w-full min-h-6">
 			<a href={normalizedUrl} class="inline-flex items-center">
