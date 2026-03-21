@@ -7,7 +7,7 @@ image:
   url: "blog-image-alt:"
   alt: "blog-pubDate: 2026-03-20"
 pubDate: 2026-03-20
-topics: ["Product Management|Product", "#career", "#discovery"]
+topics: ["#career", "#discovery", "#product"]
 slug: "starting-my-transition-to-product"
 ---
 

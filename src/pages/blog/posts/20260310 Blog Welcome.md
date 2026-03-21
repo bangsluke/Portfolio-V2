@@ -7,7 +7,7 @@ image:
   url: "https://bangsluke-assets.netlify.app/images/blog-images/20260310 Blog Welcome.png"
   alt: "Blog Launch"
 pubDate: 2026-03-10
-topics: ["#welcome", "#portfolio", "Astro", "Product Management|Product"]
+topics: ["#welcome", "#portfolio", "Astro", "#product"]
 slug: "blog-welcome"
 ---
 
