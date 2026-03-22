@@ -117,7 +117,7 @@ Things to track:
 - "See more Projects" click
 - "See more Experience items" click
 - "See more Education items" click
-- "Download CV" click
+- "View CV" click
 
 > Increase the number of users clicking to learn more about me
 

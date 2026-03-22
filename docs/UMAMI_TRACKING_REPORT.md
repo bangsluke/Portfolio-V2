@@ -27,7 +27,7 @@ All of these events appear under your website’s **Events** in Umami. Custom pr
 | “See more Projects” | See more Projects | — | `ProjectsGallery.astro` |
 | “See more Experience items” | See more Experience items | section = `experience` | `WorkExperienceTimeline.astro` |
 | “See more Education items” | See more Education items | section = `education` | `EducationTimeline.astro` |
-| Download CV | Download CV | — | `Contact.astro` |
+| View CV | View CV | — | `Contact.astro` |
 | Visit Site (on project page) | Visit Site | slug = project slug | `[slug].astro` |
 | View Code (on project page) | View Code | slug = project slug | `[slug].astro` |
 
@@ -57,7 +57,7 @@ Filtering by **event name** gives you counts per action; filtering or grouping b
 - **“See more Projects”:** Events → **“See more Projects”** → total count.
 - **“See more Experience items”:** Events → **“See more Experience items”** → Properties tab → filter by `section` = `experience`.
 - **“See more Education items”:** Events → **“See more Education items”** → Properties tab → filter by `section` = `education`.
-- **Download CV:** Events → **“Download CV”** → total count.
+- **View CV:** Events → **“View CV”** → total count.
 - **Visit Site / View Code (from project page):** Events → **“Visit Site”** or **“View Code”** → total count; use Properties tab and `slug` to see which project pages generated the clicks.
 
 ### Report: Most visited projects
@@ -368,7 +368,7 @@ These are the same as in [.env.example](.env.example) for local/scripts; the fun
 ### Implementation
 
 - **File:** `netlify/functions/umami-report.mjs` in the repo. It exports a handler and `config = { schedule: "@weekly" }`.
-- **Logic:** On each run, the function requests Umami stats and event metrics for the last 7 days, builds an HTML email (traffic, LinkedIn/GitHub clicks, Contact Me, Download CV, About Me, skills, project clicks, See more, Visit Site/View Code, most visited projects), and sends it with nodemailer (Gmail).
+- **Logic:** On each run, the function requests Umami stats and event metrics for the last 7 days, builds an HTML email (traffic, LinkedIn/GitHub clicks, Contact Me, View CV, About Me, skills, project clicks, See more, Visit Site/View Code, most visited projects), and sends it with nodemailer (Gmail).
 - **Schedule:** You can change the schedule in the function (`schedule: "@weekly"`) or in `netlify.toml` under `[functions."umami-report"] schedule = "@weekly"`. Times are UTC.
 
 ### How to test

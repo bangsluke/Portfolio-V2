@@ -253,7 +253,11 @@ export default async () => {
 				curr: aboutMeButtonClick,
 				prev: aboutMeButtonClickPrev,
 			},
-			{ label: 'Project Card clicks', curr: projectClick, prev: projectClickPrev },
+			{
+				label: 'Project Card clicks',
+				curr: projectClick,
+				prev: projectClickPrev,
+			},
 			{
 				label: '&quot;See more Projects&quot; button clicks',
 				curr: seeMoreProjects,
@@ -270,7 +274,7 @@ export default async () => {
 				prev: seeMoreEducationItemsPrev,
 			},
 			{
-				label: '&quot;Download CV&quot; button clicks',
+				label: '&quot;View CV&quot; button clicks',
 				curr: viewCv,
 				prev: viewCvPrev,
 			},
@@ -300,13 +304,10 @@ export default async () => {
 
 		const northStarDetailRows = northStarDefs
 			.map((r, i) =>
-				metricRow(
-					r.label,
-					r.curr,
-					r.prev,
-					i,
-					{ trendHtml: trend(r.curr, r.prev), last: i === northStarDefs.length - 1 }
-				)
+				metricRow(r.label, r.curr, r.prev, i, {
+					trendHtml: trend(r.curr, r.prev),
+					last: i === northStarDefs.length - 1,
+				})
 			)
 			.join('');
 
@@ -319,7 +320,7 @@ export default async () => {
 				prev: contactClickPrev,
 			},
 			{
-				label: 'Download CV button clicks',
+				label: 'View CV button clicks',
 				curr: viewCv,
 				prev: viewCvPrev,
 			},
@@ -410,9 +411,7 @@ export default async () => {
 								? p.x.replace('/blog/posts/', '').replace(/\/$/, '')
 								: '';
 							const title = postSlug || '-';
-							const pubRaw = postSlug
-								? blogSlugToPubDate[postSlug]
-								: null;
+							const pubRaw = postSlug ? blogSlugToPubDate[postSlug] : null;
 							const pub = pubRaw ? formatPubDate(pubRaw) : '—';
 							return `<tr style="background-color:${stripeBg(i)};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${title}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;">${pub}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${p.y ?? 0}</td></tr>`;
 						})
@@ -444,7 +443,7 @@ export default async () => {
                         <img src="https://bangsluke-assets.netlify.app/images/project-logos/Portfolio-Site-V2.png" alt="Portfolio Site" width="48" height="48" style="display:block;border-radius:8px;" />
                       </td>
                       <td style="vertical-align:middle;width:100%;">
-                        <div style="font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4b5fd;margin-bottom:4px;">Portfolio Site</div>
+                        <div style="font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4b5fd;margin-bottom:4px;">Portfolio Site V2</div>
                         <div style="font-family:Montserrat,Arial,sans-serif;font-size:20px;font-weight:700;color:#ffffff;line-height:1.2;">Umami Weekly Report</div>
                       </td>
                     </tr>

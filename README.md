@@ -62,6 +62,7 @@
     - [Default Paths](#default-paths)
   - [Tag System](#tag-system)
     - [Tagging Your Notes](#tagging-your-notes)
+    - [Blog Posts (`#blog`)](#blog-posts-blog)
   - [Usage Examples](#usage-examples)
     - [Local Development](#local-development)
     - [Production Deployment](#production-deployment)
@@ -380,17 +381,17 @@ The script automatically detects common Obsidian vault locations:
 
 The sync system organizes your notes into folders based on tags:
 
-| Tag          | Folder        | Description             |
-| ------------ | ------------- | ----------------------- |
-| `#portfolio` | _(required)_  | Main filter tag         |
+| Tag          | Folder                  | Description                                         |
+| ------------ | ----------------------- | --------------------------------------------------- |
+| `#portfolio` | _(required)_            | Main filter tag                                     |
 | `#blog`      | `src/pages/blog/posts/` | Blog post files (derived from `blog-*` frontmatter) |
-| `#project`   | `projects/`   | Project showcases       |
-| `#client`    | `clients/`    | Client work             |
-| `#company`   | `companies/`  | Company experiences     |
-| `#education` | `educations/` | Educational background  |
-| `#reference` | `references/` | Reference materials     |
-| `#role`      | `roles/`      | Job roles               |
-| `#skill`     | `skills/`     | Skills and competencies |
+| `#project`   | `projects/`             | Project showcases                                   |
+| `#client`    | `clients/`              | Client work                                         |
+| `#company`   | `companies/`            | Company experiences                                 |
+| `#education` | `educations/`           | Educational background                              |
+| `#reference` | `references/`           | Reference materials                                 |
+| `#role`      | `roles/`                | Job roles                                           |
+| `#skill`     | `skills/`               | Skills and competencies                             |
 
 #### Tagging Your Notes
 
@@ -785,7 +786,7 @@ The site uses [Umami](https://umami.is) for privacy-friendly analytics. Tracking
 **What’s tracked**
 
 - **Traffic**: Pageviews, visitors, and visits (built-in).
-- **Engagement**: Clicks to LinkedIn/GitHub, “Contact Me”, Download CV, About Me page views, skills search and toggle, project card clicks, “See more projects” / “See more items” (experience & education), and “Visit Site” / “View Code” on project pages.
+- **Engagement**: Clicks to LinkedIn/GitHub, “Contact Me”, "View CV", About Me page views, skills search and toggle, project card clicks, “See more projects” / “See more items” (experience & education), and “Visit Site” / “View Code” on project pages.
 
 **Setup**
 
