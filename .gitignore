@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# generated for Netlify umami-report function
+netlify/functions/umami-report-content.json
+
 # vscode settings
 .vscode/
 
