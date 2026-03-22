@@ -4,9 +4,25 @@
  * UMAMI_WEBSITE_ID, UMAMI_API_KEY, GMAIL_USER, GMAIL_APP_PASSWORD, EMAIL_RECIPIENT, EMAIL_SENDER (optional).
  */
 
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import nodemailer from 'nodemailer';
 
 const UMAMI_BASE = 'https://api.umami.is/v1';
+
+function loadReportContent() {
+	try {
+		const dir = path.dirname(fileURLToPath(import.meta.url));
+		const raw = readFileSync(
+			path.join(dir, 'umami-report-content.json'),
+			'utf8'
+		);
+		return JSON.parse(raw);
+	} catch {
+		return { projectSlugToOrder: {}, blogSlugToPubDate: {} };
+	}
+}
 
 function getOpts(apiKey) {
 	return { headers: { Accept: 'application/json', 'x-umami-api-key': apiKey } };
@@ -15,6 +31,31 @@ function getOpts(apiKey) {
 function getEventCount(events, name) {
 	const row = events.find(e => e.x === name);
 	return row ? row.y : 0;
+}
+
+function stripeBg(i) {
+	return i % 2 === 0 ? '#f5f3ff' : '#ffffff';
+}
+
+function formatPubDate(iso) {
+	if (!iso) return '—';
+	const d = new Date(/T/.test(iso) ? iso : `${iso}T12:00:00Z`);
+	if (Number.isNaN(d.getTime())) return String(iso);
+	const weekday = d.toLocaleDateString('en-GB', { weekday: 'short' });
+	const day = String(d.getUTCDate()).padStart(2, '0');
+	const month = d.toLocaleDateString('en-GB', { month: 'short' });
+	const year = d.getUTCFullYear();
+	return `${weekday} ${day} ${month} ${year}`;
+}
+
+function metricRow(label, curr, prev, i, opts = {}) {
+	const border = opts.last ? '' : 'border-bottom:1px solid #ede9fe;';
+	return `<tr style="background-color:${stripeBg(i)};">
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;${border}">${label}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;${border}text-align:right;">${curr}</td>
+                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;${border}text-align:right;">${prev}</td>
+                        <td style="padding:9px 14px;${border}text-align:center;">${opts.trendHtml ?? ''}</td>
+                      </tr>`;
 }
 
 export default async () => {
@@ -33,6 +74,10 @@ export default async () => {
 			status: 500,
 		});
 	}
+
+	const reportContent = loadReportContent();
+	const slugToOrder = reportContent.projectSlugToOrder || {};
+	const blogSlugToPubDate = reportContent.blogSlugToPubDate || {};
 
 	const endAt = Date.now();
 	const startAt = endAt - 7 * 24 * 60 * 60 * 1000;
@@ -112,7 +157,7 @@ export default async () => {
 			socialClicksPrev.find(r => r.value === 'github')?.total ?? 0;
 
 		const contactClick = getEventCount(events, 'Contact email click');
-		const downloadCv = getEventCount(events, 'Download CV');
+		const viewCv = getEventCount(events, 'View CV');
 		const skillsOpened = getEventCount(events, 'Skills search opened');
 		const skillsQuery = getEventCount(events, 'Skills search query');
 		const skillsResultClick = getEventCount(
@@ -132,6 +177,7 @@ export default async () => {
 			'See more Education items'
 		);
 		const visitSite = getEventCount(events, 'Visit Site');
+		const aboutMeButtonClick = getEventCount(events, 'About Me button click');
 
 		const aboutMeRow = paths.find(p => p.x && p.x.includes('/about-me'));
 		const aboutMeViews = aboutMeRow ? aboutMeRow.y : 0;
@@ -141,7 +187,7 @@ export default async () => {
 		const aboutMeViewsPrev = aboutMeRowPrev ? aboutMeRowPrev.y : 0;
 
 		const contactClickPrev = getEventCount(eventsPrev, 'Contact email click');
-		const downloadCvPrev = getEventCount(eventsPrev, 'Download CV');
+		const viewCvPrev = getEventCount(eventsPrev, 'View CV');
 		const skillsOpenedPrev = getEventCount(eventsPrev, 'Skills search opened');
 		const skillsQueryPrev = getEventCount(eventsPrev, 'Skills search query');
 		const skillsResultClickPrev = getEventCount(
@@ -161,6 +207,10 @@ export default async () => {
 			'See more Education items'
 		);
 		const visitSitePrev = getEventCount(eventsPrev, 'Visit Site');
+		const aboutMeButtonClickPrev = getEventCount(
+			eventsPrev,
+			'About Me button click'
+		);
 
 		const projectPaths = paths
 			.filter(p => p.x && p.x.includes('/projects/'))
@@ -192,32 +242,209 @@ export default async () => {
 			return '<span style="color:#9ca3af;">&#8212;</span>';
 		};
 
+		const tableWrapStyle =
+			'width:100%;border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;';
+
+		const northStarDefs = [
+			{ label: 'GitHub Logo clicks', curr: github, prev: githubPrev },
+			{ label: 'LinkedIn Logo clicks', curr: linkedin, prev: linkedinPrev },
+			{
+				label: 'About Me button clicks',
+				curr: aboutMeButtonClick,
+				prev: aboutMeButtonClickPrev,
+			},
+			{ label: 'Project Card clicks', curr: projectClick, prev: projectClickPrev },
+			{
+				label: '&quot;See more Projects&quot; button clicks',
+				curr: seeMoreProjects,
+				prev: seeMoreProjectsPrev,
+			},
+			{
+				label: '&quot;See more Experience items&quot; button clicks',
+				curr: seeMoreExperienceItems,
+				prev: seeMoreExperienceItemsPrev,
+			},
+			{
+				label: '&quot;See more Education items&quot; button clicks',
+				curr: seeMoreEducationItems,
+				prev: seeMoreEducationItemsPrev,
+			},
+			{
+				label: '&quot;Download CV&quot; button clicks',
+				curr: viewCv,
+				prev: viewCvPrev,
+			},
+		];
+
+		const northStarSumCurr = northStarDefs.reduce((s, r) => s + r.curr, 0);
+		const northStarSumPrev = northStarDefs.reduce((s, r) => s + r.prev, 0);
+
+		const northStarTotalTable = `<table width="100%" cellpadding="0" cellspacing="0" border="0" style="${tableWrapStyle}">
+                    <thead>
+                      <tr>
+                        <th style="background-color:#6d28d9;color:#fff;padding:8px 14px;font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:700;text-align:left;letter-spacing:0.5px;">Summary</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:8px 14px;font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:700;text-align:right;letter-spacing:0.5px;">This Week</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:8px 14px;font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:700;text-align:right;letter-spacing:0.5px;">Prev. Week</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:8px 14px;font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:700;text-align:center;letter-spacing:0.5px;width:48px;">Trend</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="background-color:#ede9fe;">
+                        <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;color:#171717;">Total</td>
+                        <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;color:#171717;text-align:right;">${northStarSumCurr}</td>
+                        <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;color:#6b7280;text-align:right;">${northStarSumPrev}</td>
+                        <td style="padding:10px 14px;text-align:center;">${trend(northStarSumCurr, northStarSumPrev)}</td>
+                      </tr>
+                    </tbody>
+                  </table>`;
+
+		const northStarDetailRows = northStarDefs
+			.map((r, i) =>
+				metricRow(
+					r.label,
+					r.curr,
+					r.prev,
+					i,
+					{ trendHtml: trend(r.curr, r.prev), last: i === northStarDefs.length - 1 }
+				)
+			)
+			.join('');
+
+		const engagementDefs = [
+			{ label: 'LinkedIn Logo clicks', curr: linkedin, prev: linkedinPrev },
+			{ label: 'GitHub Logo clicks', curr: github, prev: githubPrev },
+			{
+				label: 'Contact Me (email) button clicks',
+				curr: contactClick,
+				prev: contactClickPrev,
+			},
+			{
+				label: 'Download CV button clicks',
+				curr: viewCv,
+				prev: viewCvPrev,
+			},
+			{
+				label: 'About Me page views',
+				curr: aboutMeViews,
+				prev: aboutMeViewsPrev,
+			},
+			{
+				label: 'Blog section nav clicks',
+				curr: blogNavClick,
+				prev: blogNavClickPrev,
+			},
+			{
+				label: 'Skills search opened',
+				curr: skillsOpened,
+				prev: skillsOpenedPrev,
+			},
+			{
+				label: 'Skills search queries submitted',
+				curr: skillsQuery,
+				prev: skillsQueryPrev,
+			},
+			{
+				label: 'Skills search result click',
+				curr: skillsResultClick,
+				prev: skillsResultClickPrev,
+			},
+			{
+				label: 'Skills view toggle',
+				curr: skillsToggle,
+				prev: skillsTogglePrev,
+			},
+			{
+				label: 'Project click (cards)',
+				curr: projectClick,
+				prev: projectClickPrev,
+			},
+			{
+				label: '&quot;See more Projects&quot; click',
+				curr: seeMoreProjects,
+				prev: seeMoreProjectsPrev,
+			},
+			{
+				label: '&quot;See more Experience items&quot; click',
+				curr: seeMoreExperienceItems,
+				prev: seeMoreExperienceItemsPrev,
+			},
+			{
+				label: '&quot;See more Education items&quot; click',
+				curr: seeMoreEducationItems,
+				prev: seeMoreEducationItemsPrev,
+			},
+			{
+				label: 'Visit Site button clicks (from individual project page)',
+				curr: visitSite,
+				prev: visitSitePrev,
+			},
+		];
+
+		const engagementRowsHtml = engagementDefs
+			.map((r, i) =>
+				metricRow(r.label, r.curr, r.prev, i, {
+					trendHtml: trend(r.curr, r.prev),
+					last: i === engagementDefs.length - 1,
+				})
+			)
+			.join('');
+
+		const projectClicksRows =
+			topProjectClicks.length > 0
+				? topProjectClicks
+						.map((r, i) => {
+							const slug = r.value || '-';
+							const ord = slugToOrder[slug];
+							const orderCell =
+								ord === null || ord === undefined ? '—' : String(ord);
+							return `<tr style="background-color:${stripeBg(i)};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${slug}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;text-align:center;">${orderCell}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${r.total ?? 0}</td></tr>`;
+						})
+						.join('')
+				: '<tr><td colspan="3" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>';
+
+		const blogRows =
+			blogPostPaths.length > 0
+				? blogPostPaths
+						.map((p, i) => {
+							const postSlug = p.x
+								? p.x.replace('/blog/posts/', '').replace(/\/$/, '')
+								: '';
+							const title = postSlug || '-';
+							const pubRaw = postSlug
+								? blogSlugToPubDate[postSlug]
+								: null;
+							const pub = pubRaw ? formatPubDate(pubRaw) : '—';
+							return `<tr style="background-color:${stripeBg(i)};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${title}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;">${pub}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${p.y ?? 0}</td></tr>`;
+						})
+						.join('')
+				: '<tr><td colspan="3" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>';
+
 		const html = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Site V2 - Umami Weekly Report</title>
+  <title>Portfolio Site - Umami Weekly Report</title>
 </head>
 <body style="margin:0;padding:0;background-color:#f5f3ff;font-family:Montserrat,Arial,sans-serif;color:#171717;">
   <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f3ff;padding:24px 0;">
     <tr>
-      <td align="center">
-        <table width="640" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;background-color:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #ddd6fe;">
-          <tr><td>
+      <td align="center" style="padding:0 12px;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;width:100%;background-color:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #ddd6fe;">
+          <tr><td style="width:100%;padding:0;">
 
             <!-- HEADER -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:linear-gradient(135deg,#2e1065 0%,#4c1d95 40%,#6d28d9 100%);border-radius:8px 8px 0 0;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;background:linear-gradient(135deg,#2e1065 0%,#4c1d95 40%,#6d28d9 100%);border-radius:8px 8px 0 0;">
               <tr>
-                <td style="padding:24px 28px;">
-                  <table cellpadding="0" cellspacing="0" border="0">
+                <td style="padding:24px 28px;width:100%;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
                     <tr>
-                      <td style="vertical-align:middle;padding-right:16px;">
-                        <img src="https://bangsluke-assets.netlify.app/images/project-logos/Portfolio-Site-V2.png" alt="Portfolio Site V2" width="48" height="48" style="display:block;border-radius:8px;" />
+                      <td style="vertical-align:middle;padding-right:16px;width:64px;">
+                        <img src="https://bangsluke-assets.netlify.app/images/project-logos/Portfolio-Site-V2.png" alt="Portfolio Site" width="48" height="48" style="display:block;border-radius:8px;" />
                       </td>
-                      <td style="vertical-align:middle;">
-                        <div style="font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4b5fd;margin-bottom:4px;">Portfolio Site V2</div>
+                      <td style="vertical-align:middle;width:100%;">
+                        <div style="font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4b5fd;margin-bottom:4px;">Portfolio Site</div>
                         <div style="font-family:Montserrat,Arial,sans-serif;font-size:20px;font-weight:700;color:#ffffff;line-height:1.2;">Umami Weekly Report</div>
                       </td>
                     </tr>
@@ -227,20 +454,16 @@ export default async () => {
             </table>
 
             <!-- NAV BAR -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#2e1065;border-bottom:3px solid #6d28d9;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;background-color:#2e1065;border-bottom:3px solid #6d28d9;">
               <tr>
-                <td style="padding:10px 28px;text-align:center;">
-                  <a href="https://cloud.umami.is/analytics/eu/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488" style="font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:600;color:#ddd6fe;text-decoration:none;letter-spacing:0.5px;">Umami Overview</a>
-                  <span style="color:#6d28d9;padding:0 12px;font-size:14px;">|</span>
-                  <a href="https://cloud.umami.is/analytics/eu/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488/events" style="font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:600;color:#ddd6fe;text-decoration:none;letter-spacing:0.5px;">Umami Events</a>
-                  <span style="color:#6d28d9;padding:0 12px;font-size:14px;">|</span>
-                  <a href="https://cloud.umami.is/analytics/eu/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488/goals" style="font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:600;color:#ddd6fe;text-decoration:none;letter-spacing:0.5px;">Umami Goals</a>
+                <td style="padding:10px 12px;text-align:center;white-space:nowrap;">
+                  <a href="https://cloud.umami.is/analytics/eu/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488" style="font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;color:#e9d5ff;text-decoration:underline;letter-spacing:0.2px;">Umami Overview</a><span style="color:#6d28d9;padding:0 4px;font-size:12px;">|</span><a href="https://cloud.umami.is/analytics/eu/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488/events" style="font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;color:#e9d5ff;text-decoration:underline;letter-spacing:0.2px;">Umami Events</a><span style="color:#6d28d9;padding:0 4px;font-size:12px;">|</span><a href="https://cloud.umami.is/analytics/eu/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488/goals" style="font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;color:#e9d5ff;text-decoration:underline;letter-spacing:0.2px;">Umami Goals</a>
                 </td>
               </tr>
             </table>
 
             <!-- PERIOD META -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
               <tr>
                 <td style="padding:14px 28px 0;font-family:Montserrat,Arial,sans-serif;font-size:12px;color:#6b7280;">
                   Period: <strong>${periodStart}</strong> to <strong>${periodEnd}</strong> (last 7 days). Generated ${new Date().toISOString()}.
@@ -249,7 +472,7 @@ export default async () => {
             </table>
 
             <!-- TRAFFIC SECTION -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
               <tr>
                 <td style="padding:20px 28px 0;">
                   <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Traffic</div>
@@ -257,7 +480,7 @@ export default async () => {
               </tr>
               <tr>
                 <td style="padding:0 28px 20px;">
-                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="${tableWrapStyle}">
                     <thead>
                       <tr>
                         <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.5px;">Metric</th>
@@ -291,16 +514,26 @@ export default async () => {
               </tr>
             </table>
 
-            <!-- ENGAGEMENT SECTION -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <!-- NORTH STAR METRIC -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
               <tr>
                 <td style="padding:4px 28px 0;">
-                  <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Engagement</div>
+                  <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">North Star Metric</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:0 28px 10px;">
+                  ${northStarTotalTable}
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:0 28px 12px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#4b5563;line-height:1.5;font-style:italic;">
+                  &quot;Increase the number of users clicking to learn more information about me and my work&quot;
                 </td>
               </tr>
               <tr>
                 <td style="padding:0 28px 20px;">
-                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="${tableWrapStyle}">
                     <thead>
                       <tr>
                         <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.5px;">Action</th>
@@ -310,96 +543,33 @@ export default async () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr style="background-color:#f5f3ff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">LinkedIn Logo clicks</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${linkedin}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${linkedinPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(linkedin, linkedinPrev)}</td>
+                      ${northStarDetailRows}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- FULL ENGAGEMENT DATA -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+              <tr>
+                <td style="padding:4px 28px 0;">
+                  <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Full Engagement Data</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:0 28px 20px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="${tableWrapStyle}">
+                    <thead>
+                      <tr>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.5px;">Action</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:right;letter-spacing:0.5px;">This Week</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:right;letter-spacing:0.5px;">Prev. Week</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:center;letter-spacing:0.5px;width:48px;">Trend</th>
                       </tr>
-                      <tr style="background-color:#ffffff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">GitHub Logo clicks</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${github}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${githubPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(github, githubPrev)}</td>
-                      </tr>
-                      <tr style="background-color:#f5f3ff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Contact Me (email) button clicks</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${contactClick}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${contactClickPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(contactClick, contactClickPrev)}</td>
-                      </tr>
-                      <tr style="background-color:#ffffff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Download CV button clicks</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${downloadCv}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${downloadCvPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(downloadCv, downloadCvPrev)}</td>
-                      </tr>
-                      <tr style="background-color:#f5f3ff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">About Me page views</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${aboutMeViews}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${aboutMeViewsPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(aboutMeViews, aboutMeViewsPrev)}</td>
-                      </tr>
-                      <tr style="background-color:#ffffff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Blog section nav clicks</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${blogNavClick}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${blogNavClickPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(blogNavClick, blogNavClickPrev)}</td>
-                      </tr>
-                      <tr style="background-color:#ffffff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Skills search opened</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${skillsOpened}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${skillsOpenedPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(skillsOpened, skillsOpenedPrev)}</td>
-                      </tr>
-                      <tr style="background-color:#f5f3ff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Skills search queries submitted</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${skillsQuery}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${skillsQueryPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(skillsQuery, skillsQueryPrev)}</td>
-                      </tr>
-                      <tr style="background-color:#ffffff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Skills search result click</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${skillsResultClick}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${skillsResultClickPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(skillsResultClick, skillsResultClickPrev)}</td>
-                      </tr>
-                      <tr style="background-color:#f5f3ff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Skills view toggle</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${skillsToggle}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${skillsTogglePrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(skillsToggle, skillsTogglePrev)}</td>
-                      </tr>
-                      <tr style="background-color:#ffffff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Project click (cards)</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${projectClick}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${projectClickPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(projectClick, projectClickPrev)}</td>
-                      </tr>
-                      <tr style="background-color:#f5f3ff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">"See more Projects" click</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreProjects}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreProjectsPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(seeMoreProjects, seeMoreProjectsPrev)}</td>
-                      </tr>
-                      <tr style="background-color:#ffffff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">"See more Experience items" click</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreExperienceItems}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreExperienceItemsPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(seeMoreExperienceItems, seeMoreExperienceItemsPrev)}</td>
-                      </tr>
-                      <tr style="background-color:#f5f3ff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">"See more Education items" click</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreEducationItems}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${seeMoreEducationItemsPrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(seeMoreEducationItems, seeMoreEducationItemsPrev)}</td>
-                      </tr>
-                      <tr style="background-color:#f5f3ff;">
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">Visit Site button clicks (from individual project page)</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${visitSite}</td>
-                        <td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;border-bottom:1px solid #ede9fe;text-align:right;">${visitSitePrev}</td>
-                        <td style="padding:9px 14px;border-bottom:1px solid #ede9fe;text-align:center;">${trend(visitSite, visitSitePrev)}</td>
-                      </tr>
+                    </thead>
+                    <tbody>
+                      ${engagementRowsHtml}
                     </tbody>
                   </table>
                 </td>
@@ -407,7 +577,7 @@ export default async () => {
             </table>
 
             <!-- MOST CLICKED PROJECTS SECTION -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
               <tr>
                 <td style="padding:4px 28px 0;">
                   <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Most Clicked Projects (by card)</div>
@@ -415,24 +585,16 @@ export default async () => {
               </tr>
               <tr>
                 <td style="padding:0 28px 20px;">
-                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="${tableWrapStyle}">
                     <thead>
                       <tr>
                         <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.5px;">Slug</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:center;letter-spacing:0.5px;">portfolioOrder</th>
                         <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:right;letter-spacing:0.5px;">Clicks</th>
                       </tr>
                     </thead>
                     <tbody>
-                      ${
-												topProjectClicks.length
-													? topProjectClicks
-															.map(
-																(r, i) =>
-																	`<tr style="background-color:${i % 2 === 0 ? '#f5f3ff' : '#ffffff'};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${r.value || '-'}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${r.total ?? 0}</td></tr>`
-															)
-															.join('')
-													: '<tr><td colspan="2" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>'
-											}
+                      ${projectClicksRows}
                     </tbody>
                   </table>
                 </td>
@@ -440,7 +602,7 @@ export default async () => {
             </table>
 
             <!-- MOST VISITED PROJECT PAGES SECTION -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
               <tr>
                 <td style="padding:4px 28px 0;">
                   <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Most Visited Project Pages (by path)</div>
@@ -448,7 +610,7 @@ export default async () => {
               </tr>
               <tr>
                 <td style="padding:0 28px 20px;">
-                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="${tableWrapStyle}">
                     <thead>
                       <tr>
                         <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.5px;">Path</th>
@@ -461,7 +623,7 @@ export default async () => {
 													? projectPaths
 															.map(
 																(p, i) =>
-																	`<tr style="background-color:${i % 2 === 0 ? '#f5f3ff' : '#ffffff'};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${p.x || '-'}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${p.y ?? 0}</td></tr>`
+																	`<tr style="background-color:${stripeBg(i)};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${p.x || '-'}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${p.y ?? 0}</td></tr>`
 															)
 															.join('')
 													: '<tr><td colspan="2" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>'
@@ -473,7 +635,7 @@ export default async () => {
             </table>
 
             <!-- MOST VISITED BLOG POSTS SECTION -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
               <tr>
                 <td style="padding:4px 28px 0;">
                   <div style="font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6d28d9;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;">Most Visited Blog Posts (by path)</div>
@@ -481,24 +643,16 @@ export default async () => {
               </tr>
               <tr>
                 <td style="padding:0 28px 20px;">
-                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #ddd6fe;border-radius:6px;overflow:hidden;border-collapse:collapse;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="${tableWrapStyle}">
                     <thead>
                       <tr>
                         <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.5px;">Post</th>
+                        <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.5px;">Published</th>
                         <th style="background-color:#6d28d9;color:#fff;padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;text-align:right;letter-spacing:0.5px;">Visitors</th>
                       </tr>
                     </thead>
                     <tbody>
-                      ${
-												blogPostPaths.length
-													? blogPostPaths
-															.map(
-																(p, i) =>
-																	`<tr style="background-color:${i % 2 === 0 ? '#f5f3ff' : '#ffffff'};"><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;border-bottom:1px solid #ede9fe;">${p.x ? p.x.replace('/blog/posts/', '').replace(/\/$/, '') : '-'}</td><td style="padding:9px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#171717;font-weight:700;border-bottom:1px solid #ede9fe;text-align:right;">${p.y ?? 0}</td></tr>`
-															)
-															.join('')
-													: '<tr><td colspan="2" style="padding:12px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;color:#6b7280;text-align:center;">No data</td></tr>'
-											}
+                      ${blogRows}
                     </tbody>
                   </table>
                 </td>
@@ -506,7 +660,7 @@ export default async () => {
             </table>
 
             <!-- FOOTER -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #ddd6fe;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-top:1px solid #ddd6fe;">
               <tr>
                 <td style="padding:16px 28px;font-family:Montserrat,Arial,sans-serif;font-size:12px;color:#6b7280;line-height:1.5;">
                   <em>Automated by Netlify Scheduled Function (umami-report).</em>
@@ -530,7 +684,7 @@ export default async () => {
 		await transporter.sendMail({
 			from,
 			to,
-			subject: `Portfolio Site V2 - Umami Weekly Report (${periodStart} to ${periodEnd})`,
+			subject: `Portfolio Site - Umami Weekly Report (${periodStart} to ${periodEnd})`,
 			html,
 		});
 	} catch (err) {
