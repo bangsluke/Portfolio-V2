@@ -7,8 +7,8 @@ tags:
   - portfolio
   - project/active
 created: 2025-02-02T19:03:00
-modified: 2026-03-20T10:42:35+00:00
-viewCount: 3
+modified: 2026-03-22T08:38:26+00:00
+viewCount: 4
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -50,7 +50,7 @@ portfolioOrder: 3
 shortDescription: "Personal portfolio built on <span class=\"theme-link\">Astro.js</span> using <span class=\"theme-link\">Obsidian</span> notes as the data source, with <span class=\"theme-link\">Umami</span> analytics to track feature value and inform ongoing improvements."
 longDescription: "An updated personal portfolio website for displaying my skills and past projects, building on my previous site with my newly learned skills.<br><br>Every project, skill, role, company, education and reference is stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> notes, processed by <span class=\"theme-link\">Node.js</span> scripts and loaded into the <span class=\"theme-link\">Astro</span> site for display. This system centralised my previously scattered notes about my career.<br><br>After writing the backend <span class=\"theme-link\">Node</span> setup for gathering the data from the notes, I built the framework from a template, extending the design to include special sections that I wished to display such as the skills bubble graphic, the timeline and carousel components.<br><br>I've added a set of custom <span class=\"theme-link\">Umami</span> events throughout the code and automated emails to myself weekly reviewing user behaviour on the site to understand the value of features."
 lessonsLearned: "Initially I set the project up with an <span class=\"theme-link\">Astro</span> front end and started doing <span class=\"theme-link\">GraphQL</span> calls to my <a href=\"/projects/backend-server\" class=\"theme-link\">Backend Server</a> project to collect the portfolio data I had stored in the <span class=\"theme-link\">Neo4j</span> graph. However I soon realized that I was undoing the speed of <span class=\"theme-link\">Astro</span> and switched to a script that loads the required portfolio data (stored in <span class=\"theme-link\">Obsidian</span> <span class=\"theme-link\">Markdown</span> files) into the portfolio repo and used <span class=\"theme-link\">Astro</span> collections to gather and display the data that way.<br><br>The project taught me about defining <span class=\"theme-link\">npm</span> functions in the `package.json` file and how to pass variables through to these scripts using the `cross-env` package.<br><br>It was also my first taste of <span class=\"theme-link\">Tailwind CSS</span> and although I began to grasp the utility class names towards the end of development, I found it easier in a lot of situations to extract a class and define it in the main <span class=\"theme-link\">CSS</span> file. I see it's benefits for fast prototyping, but I'm not a big fan from what I've seen.<br><br>This was the project I first learnt to use <span class=\"theme-link\">Umami</span> analytics on, apply custom events across the code to analyse the user behaviour and find understand the value in features added."
-northStarMetric: "Increase the number of users clicking to learn more about me"
+northStarMetric: "Increase the number of users clicking to learn more information about me and my work"
 name: "Portfolio Site V2"
 ---
 # Portfolio Site V2
@@ -110,16 +110,16 @@ I've added a set of custom [[Umami]] events throughout the code and automated em
 The defined [[North Star Metric]] for the project. Decided to use the metric that people are actively engaging with my Portfolio site, following internal links within it to learn more.
 
 Things to track:
-- [[GitHub]] icon click
-- [[LinkedIn]] icon click
+- [[GitHub]] logo click
+- [[LinkedIn]] logo click
 - "About Me" button click
-- Project Card visit
+- Project Card clicks
 - "See more Projects" click
 - "See more Experience items" click
 - "See more Education items" click
-- "Download CV" click
+- "View CV" click
 
-> Increase the number of users clicking to learn more about me
+> Increase the number of users clicking to learn more information about me and my work
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

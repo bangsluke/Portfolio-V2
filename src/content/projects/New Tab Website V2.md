@@ -6,10 +6,10 @@ tags:
   - coding
   - project/completed
 created: 2026-02-12
-modified: 2026-03-20T07:32:21+00:00
+modified: 2026-03-22T16:05:37+00:00
 aliases:
   - New Tab
-viewCount: 9
+viewCount: 10
 projectURL: https://bangsluke-new-tab.netlify.app/
 codeURL: https://github.com/bangsluke/New-Tab-V2
 codeMultipleRepos: false
@@ -27,6 +27,7 @@ technologies:
   - "[[JavaScript]]"
   - "[[Netlify]]"
   - "[[Obsidian]]"
+  - "[[Supabase]]"
 projectCategory: Personal Design
 linkedCompany:
   - n/a
@@ -93,7 +94,7 @@ The site also has a couple of useful widgets such as a weather forecast and The 
 ## Architecture and Technologies
 
 - Front end: [[HTML]], [[CSS]], [[JavaScript]]
-- Back end/Datasource: [[Node.js]], [[Obsidian]]
+- Back end/Datasource: [[Node.js]], [[Obsidian]], [[Supabase]]
 - Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
 - Security: [[Snyk]]
 - Authentication: n/a
@@ -182,8 +183,9 @@ As part of your plan, also ideate any cool additional features that the site cou
 | 3     | Heroku                             | <https://dashboard.heroku.com/apps>                                                                                                                                                                                                            | Coding/Hosting/DB             |                     | <https://www.nicepng.com/png/detail/223-2233246_heroku-logo-salesforce-heroku.png>                                                                                                                                   |                                         |                                                                                     |
 | 4     | Neo4j Aura                         | <https://console.neo4j.io/tools/query>                                                                                                                                                                                                         | Coding/Hosting/DB             |                     | <https://neo4j.com/favicon.ico>                                                                                                                                                                                      |                                         |                                                                                     |
 | 5     | Snyk                               | <https://app.snyk.io/org/bangsluke/>                                                                                                                                                                                                           | Coding/Hosting/DB             |                     | <https://encrypted-tbn0.gstatic.com/images?q=tbn>:ANd9GcTi7_aJfIZ_3m53kEvJsPsPPWITp42NSZJX3Q&s                                                                                                                       |                                         |                                                                                     |
-| 6     | Umami                              | <https://cloud.umami.is/analytics/eu/websites>                                                                                                                                                                                                   | Coding/Hosting/DB             |                     | <https://avatars.githubusercontent.com/u/105618662?s=200&v=4>                                                                                                                                                          |                                         |                                                                                     |
+| 6     | Umami                              | <https://cloud.umami.is/analytics/eu/websites>                                                                                                                                                                                                 | Coding/Hosting/DB             |                     | <https://avatars.githubusercontent.com/u/105618662?s=200&v=4>                                                                                                                                                        |                                         |                                                                                     |
 | 7     | Cron Job                           | <https://cron-job.org/en/>                                                                                                                                                                                                                     | Coding/Hosting/DB             |                     | <https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2F502lyg12hwqjjpymtr5g.png>                                          |                                         |                                                                                     |
+| 8     | Supabase                           | <https://supabase.com/dashboard/org/nuvwkikghtegrjohultj>                                                                                                                                                                                        | Coding/Hosting/DB             |                     | <https://encrypted-tbn0.gstatic.com/images?q=tbn>:ANd9GcQNfSt0xBDTUkGqyLPvZa5PBHYNVg-WJ2OWPQ&s                                                                                                                         |                                         |                                                                                     |
 | 1     | SQLZoo                             | <https://sqlzoo.net/wiki/SQL_Tutorial>                                                                                                                                                                                                         | Coding Learning               |                     | <https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png>                                                                                                                                    |                                         |                                                                                     |
 | 2     | Code Learning Page                 | <https://code-learning-and-test-site.netlify.app/>                                                                                                                                                                                             | Coding Learning               |                     | <https://app.netlify.com/favicon.ico>                                                                                                                                                                                |                                         |                                                                                     |
 | 3     | Code Learning And Test Site ReadMe | <https://github.com/bangsluke/Code-Learning-And-Test-Site#readme>                                                                                                                                                                              | Coding Learning               |                     | <https://github.com/favicon.ico>                                                                                                                                                                                     |                                         |                                                                                     |
