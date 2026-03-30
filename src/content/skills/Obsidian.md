@@ -8,7 +8,7 @@ created: 2023-08-18T15:45:00
 modified: 2025-07-05T08:04:52+01:00
 viewCount: 9
 aliases:
-skillRating: 80
+skillRating: 85
 skillDescription: Absolutely obsessed with Obsidian as my PKM and use it frequently daily, even using it as my data source for my Portfolio Site and Travel Site data.
 logoFileName: obsidian.svg
 ---

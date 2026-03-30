@@ -10,7 +10,7 @@ modified: 2026-03-18T08:57:53+00:00
 viewCount: 2
 aliases:
   - backlog management
-skillRating: 85
+skillRating: 80
 skillDescription: Owned and maintained product backlogs across multiple concurrent projects, prioritising based on user value, stakeholder input, and technical dependencies. Skilled at keeping backlogs lean and actionable rather than aspirational.
 logoFileName: n/a
 ---

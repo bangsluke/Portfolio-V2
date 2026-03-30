@@ -6,7 +6,7 @@ tags:
   - portfolio
 modified: 2025-07-23T22:40:11+01:00
 viewCount: 7
-skillRating: 80
+skillRating: 85
 skillDescription: Able to develop expansive and complex spreadsheets for use as databases in some instances and automate the manipulation of data through Google Apps Script.
 logoFileName: google_sheets.svg
 ---

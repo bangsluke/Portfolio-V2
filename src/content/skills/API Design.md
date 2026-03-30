@@ -7,8 +7,8 @@ tags:
   - portfolio/technicalBridge
   - software
 created: 2026-03-18
-modified: 2026-03-18T09:13:31+00:00
-viewCount: 2
+modified: 2026-03-24T09:08:22+00:00
+viewCount: 3
 aliases:
   - API design
 skillRating: 45
@@ -34,7 +34,8 @@ Used with software/tools like [[Postman]].
 
 ## Links
 
-- TBC
+- [[REST]]
+- [[GraphQL]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

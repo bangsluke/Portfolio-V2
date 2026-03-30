@@ -5,16 +5,16 @@ tags:
   - project/active
   - portfolio
 created: 2026-03-12 15:16
-modified: 2026-03-22T15:38:53+00:00
+modified: 2026-03-24T09:38:45+00:00
 aliases:
-viewCount: 8
+viewCount: 9
 projectURL: https://bangeroo-music-website.netlify.app/
 codeURL: https://github.com/bangsluke/Bangeroo-Music-Website
 codeMultipleRepos: false
 deploymentServiceURL: https://app.netlify.com/projects/bangeroo-music-website/overview
 folderURL: n/a
 logoURL: https://bangsluke-assets.netlify.app/images/project-logos/Bangeroo-Site-Logo.png
-imageURL:
+imageURL: https://bangsluke-assets.netlify.app/images/projects/Bangeroo-Music-Website.png
 dateStart: 2026-03-12
 dateEnd: ""
 technologies:
@@ -25,6 +25,7 @@ technologies:
   - "[[Netlify]]"
   - "[[GitHub]]"
   - "[[Supabase]]"
+  - "[[Snyk]]"
 projectCategory: MVP
 linkedCompany:
   - n/a
@@ -37,9 +38,9 @@ topicTags:
 powerShellAlias: n/a
 version: 1
 portfolioOrder: 6
-shortDescription: "Tested out several visual designs for a client via A/B testing in an <span class=\"theme-link\">MVP</span>.<br><br>TBC"
-longDescription: "An <span class=\"theme-link\">SPA</span> for displaying my father's musical interests, embedding his <span class=\"theme-link\">Spotify</span> songs into an edgy modern and chaotic design.<br><br>Given a lack of initial design direction, I initially built an <span class=\"theme-link\">MVP</span> of four varying designs of the same content as a form of A/B testing (or A/B/C/D if you will), deciding that seeing visual ideas would help align him to a style rather than via verbal communication.<br><br>TBC"
-lessonsLearned: "From a product viewpoint, this project allowed me to conduct some initial A/B testing on various page designs, creating 4 variants for the client to review and select from.<br><br>From a technical standpoint, it taught me how to connect up a simple <span class=\"theme-link\">Supabase</span> backend, creating the tables in the <span class=\"theme-link\">SQL</span> editor and sorting out row level security. It was also my first time using the <span class=\"theme-link\">Spotify</span> developer <span class=\"theme-link\">API</span>, using it to display a 30 second refreshing status of if the client was online or offline and what they were listening to.<br><br>TBC"
+shortDescription: "Tested out several visual designs for a client via <span class=\"theme-link\">A/B testing</span> in an <span class=\"theme-link\">MVP</span> en route to developing an <span class=\"theme-link\">SPA</span> site delivering music to the client's fans."
+longDescription: "An <span class=\"theme-link\">SPA</span> for displaying my father's musical interests, embedding his songs into an edgy modern and chaotic design.<br><br>Given a lack of initial design direction, I initially built an <span class=\"theme-link\">MVP</span> of four varying designs of the same content as a form of <span class=\"theme-link\">A/B testing</span> (or A/B/C/D if you will), deciding that seeing visual ideas would help align him to a style rather than via verbal communication.<br><br>This helped him decide on a theme and narrow down the requirements of the build."
+lessonsLearned: "From a product viewpoint, this project allowed me to conduct some initial <span class=\"theme-link\">A/B testing</span> on various page designs, creating 4 variants for the client to review and select from.<br><br>From a technical standpoint, it taught me how to connect up a simple <span class=\"theme-link\">Supabase</span> backend, creating the tables in the <span class=\"theme-link\">SQL</span> editor and sorting out row level security. It was also my first time using the <span class=\"theme-link\">Spotify</span> developer <span class=\"theme-link\">API</span>, using it to display a 30 second refreshing status of if the client was online or offline and what they were listening to."
 name: "Bangeroo Music Website"
 ---
 # Bangeroo Music Website
@@ -77,19 +78,17 @@ WHERE file = this.file
 
 ## Short Description
 
-Tested out several visual designs for a client via A/B testing in an [[MVP]].
-
-TBC
+Tested out several visual designs for a client via [[AB Testing|A/B testing]] in an [[MVP]] en route to developing an [[02 Tags/Acronyms and Tool Categories/SPA|SPA]] site delivering music to the client's fans.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-An [[02 Tags/Acronyms and Tool Categories/SPA|SPA]] for displaying my father's musical interests, embedding his [[Spotify]] songs into an edgy modern and chaotic design.
+An [[02 Tags/Acronyms and Tool Categories/SPA|SPA]] for displaying my father's musical interests, embedding his songs into an edgy modern and chaotic design.
 
-Given a lack of initial design direction, I initially built an [[MVP]] of four varying designs of the same content as a form of A/B testing (or A/B/C/D if you will), deciding that seeing visual ideas would help align him to a style rather than via verbal communication.
+Given a lack of initial design direction, I initially built an [[MVP]] of four varying designs of the same content as a form of [[AB Testing|A/B testing]] (or A/B/C/D if you will), deciding that seeing visual ideas would help align him to a style rather than via verbal communication.
 
-TBC
+This helped him decide on a theme and narrow down the requirements of the build.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -98,8 +97,8 @@ TBC
 - Front end: [[Vite.js]], [[HTML]], [[CSS]], [[JavaScript]]
 - Back end/Datasource: [[Supabase]]
 - Hosting: [[GitHub]] (see [Repositories](#repositories)), [[Netlify]]
-- Security: TBC
-- Authentication: TBC
+- Security: [[Snyk]]
+- Authentication: n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -132,11 +131,9 @@ To launch the repo, use the [[PowerShell]] alias
 
 ## Lessons Learned
 
-From a product viewpoint, this project allowed me to conduct some initial A/B testing on various page designs, creating 4 variants for the client to review and select from.
+From a product viewpoint, this project allowed me to conduct some initial [[AB Testing|A/B testing]] on various page designs, creating 4 variants for the client to review and select from.
 
 From a technical standpoint, it taught me how to connect up a simple [[Supabase]] backend, creating the tables in the [[SQL]] editor and sorting out row level security. It was also my first time using the [[Spotify]] developer [[API]], using it to display a 30 second refreshing status of if the client was online or offline and what they were listening to.
-
-TBC
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

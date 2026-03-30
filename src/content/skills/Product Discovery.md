@@ -2,19 +2,19 @@
 tags:
   - tag
   - skill
-  - concept
-  - product
   - portfolio
-  - portfolio/planningDelivery
-created: 2026-03-05
-modified: 2026-03-19T07:47:20+00:00
-viewCount: 5
+  - product
+  - portfolio/discoveryRequirements
+created: 2026-03-18
+modified: 2026-03-25T14:40:35+00:00
+viewCount: 1
 aliases:
-skillRating: 20
-skillDescription: Set up across a couple of projects to help me identify the key value to pursue.
+  - product discovery
+skillRating: 50
+skillDescription: Experienced in continuous discovery practices, using analytics data and user behaviour to inform product decisions. Applied Umami event tracking on a couple of keys sites to identify which features drove engagement and prioritise the roadmap.
 logoFileName: n/a
 ---
-# North Star Metric
+# Product Discovery
 
 > [!back] Link back to [[Skills Notes]]
 
@@ -25,15 +25,15 @@ logoFileName: n/a
 
 ## Description
 
-The North Star Metric is a **single, guiding measure** that captures the core value your product delivers to customers. It aligns teams around a shared definition of success and helps ensure that day‑to‑day decisions contribute to long‑term growth. It's often paired with supporting inputs (like activation or retention) but remains the primary indicator of whether the product is truly creating value.
+The ongoing process of determining what to build and why - validating that a problem is real, that users want a solution, and that a proposed solution will actually work before committing to full development. Distinct from delivery; it runs continuously rather than as a one-off phase.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 
-- [Every Product Needs a North Star Metric: Here's How to Find Yours - Amplitude](https://amplitude.com/blog/product-north-star-metric)
-- [North Star Metric Resources - Amplitude](https://amplitude.com/north-star-hub)
-- [The North Star Playbook - Amplitude](https://drive.google.com/file/d/1sxetG7xkNnPPZhKRKT4co-Qj6zG2Xj7X/view?usp=drivesdk)
+- [Product Discovery Basics: Everything You Need to Know](https://www.producttalk.org/product-discovery/)
+- [[Continuous Discovery Habits]]
+- [Product Discovery](https://bangsluke-documentation.netlify.app/docs/product-management/product-discovery) - [[bangsluke Documentation]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

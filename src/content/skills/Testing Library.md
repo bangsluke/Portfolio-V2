@@ -1,41 +1,30 @@
 ---
 tags:
-  - tag
+  - synced
+  - coding
   - skill
-  - concept
-  - product
+  - notes
+  - tag
+  - software
+  - testing
   - portfolio
-  - portfolio/planningDelivery
-created: 2026-03-05
-modified: 2026-03-19T07:47:20+00:00
-viewCount: 5
+created: 2026-03-30
+modified: 2026-03-30T20:14:01+01:00
+viewCount: 2
 aliases:
+  - React Testing Library
 skillRating: 20
-skillDescription: Set up across a couple of projects to help me identify the key value to pursue.
-logoFileName: n/a
+skillDescription: Can set up basic tests and automate the running during development or during deployment checks.
+logoFileName: testing-library.svg
 ---
-# North Star Metric
+# Testing Library
 
 > [!back] Link back to [[Skills Notes]]
 
-## Table of Contents
+## Table of Contents 
 
 ```table-of-contents
 ```
-
-## Description
-
-The North Star Metric is a **single, guiding measure** that captures the core value your product delivers to customers. It aligns teams around a shared definition of success and helps ensure that day‑to‑day decisions contribute to long‑term growth. It's often paired with supporting inputs (like activation or retention) but remains the primary indicator of whether the product is truly creating value.
-
->[!top] [Back to top](#Table%20of%20Contents)
-
-## Links
-
-- [Every Product Needs a North Star Metric: Here's How to Find Yours - Amplitude](https://amplitude.com/blog/product-north-star-metric)
-- [North Star Metric Resources - Amplitude](https://amplitude.com/north-star-hub)
-- [The North Star Playbook - Amplitude](https://drive.google.com/file/d/1sxetG7xkNnPPZhKRKT4co-Qj6zG2Xj7X/view?usp=drivesdk)
-
->[!top] [Back to top](#Table%20of%20Contents)
 
 ## Skill
 

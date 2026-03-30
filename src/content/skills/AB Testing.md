@@ -2,19 +2,22 @@
 tags:
   - tag
   - skill
-  - concept
-  - product
   - portfolio
-  - portfolio/planningDelivery
-created: 2026-03-05
-modified: 2026-03-19T07:47:20+00:00
-viewCount: 5
+  - product
+  - portfolio/discoveryRequirements
+created: 2026-03-18
+modified: 2026-03-25T14:40:04+00:00
+viewCount: 1
 aliases:
-skillRating: 20
-skillDescription: Set up across a couple of projects to help me identify the key value to pursue.
+  - A/B Testing
+  - A/B testing
+  - A/B Tests
+  - A/B tests
+skillRating: 30
+skillDescription: Practical experience running A/B tests to inform product and design decisions. Used variant testing on an MVP to evaluate visual designs with real users before committing to a final direction.
 logoFileName: n/a
 ---
-# North Star Metric
+# A/B Testing
 
 > [!back] Link back to [[Skills Notes]]
 
@@ -25,15 +28,13 @@ logoFileName: n/a
 
 ## Description
 
-The North Star Metric is a **single, guiding measure** that captures the core value your product delivers to customers. It aligns teams around a shared definition of success and helps ensure that day‑to‑day decisions contribute to long‑term growth. It's often paired with supporting inputs (like activation or retention) but remains the primary indicator of whether the product is truly creating value.
+A method of comparing two versions of a product, feature, or piece of content by exposing different user groups to each variant and measuring which performs better against a defined metric. Used to make evidence-based decisions rather than relying on opinion or assumption.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 
-- [Every Product Needs a North Star Metric: Here's How to Find Yours - Amplitude](https://amplitude.com/blog/product-north-star-metric)
-- [North Star Metric Resources - Amplitude](https://amplitude.com/north-star-hub)
-- [The North Star Playbook - Amplitude](https://drive.google.com/file/d/1sxetG7xkNnPPZhKRKT4co-Qj6zG2Xj7X/view?usp=drivesdk)
+- [A/B tests guide for Product Management - GoPractice](https://gopractice.io/product/ab-tests-guide-for-product-managers/)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -11,7 +11,7 @@ modified: 2025-07-26T08:33:13+01:00
 viewCount: 7
 aliases:
   - Amazon Web Services
-skillRating: 1
+skillRating: 5
 skillDescription: Aware of AWS services without trying them out yet.
 logoFileName: aws.svg
 ---

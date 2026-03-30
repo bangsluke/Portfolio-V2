@@ -12,7 +12,7 @@ created: 2025-05-16T15:38:00
 modified: 2025-07-22T09:47:54+01:00
 viewCount: 8
 aliases:
-skillRating: 10
+skillRating: 40
 skillDescription: Can set up basic unit tests and automate the running during development or during deployment checks.
 logoFileName: jest.svg
 ---

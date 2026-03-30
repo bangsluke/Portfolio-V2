@@ -7,8 +7,8 @@ tags:
   - portfolio/technicalBridge
   - software
 created: 2026-03-18
-modified: 2026-03-18T08:59:00+00:00
-viewCount: 2
+modified: 2026-03-24T09:08:34+00:00
+viewCount: 3
 aliases:
   - architecture review
 skillRating: 50
@@ -32,7 +32,7 @@ The process of evaluating a system's technical design to ensure it meets current
 
 ## Links
 
-- TBC
+- n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

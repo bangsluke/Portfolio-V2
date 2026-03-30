@@ -6,8 +6,8 @@ tags:
   - product
   - portfolio/discoveryRequirements
 created: 2026-03-18
-modified: 2026-03-18T08:49:41+00:00
-viewCount: 2
+modified: 2026-03-24T09:12:07+00:00
+viewCount: 3
 aliases:
   - data analysis
 skillRating: 75
@@ -33,7 +33,7 @@ Uses software and tools like [[SQL]], [[Excel]] and [[Power BI]].
 
 ## Links
 
-- TBC
+- n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

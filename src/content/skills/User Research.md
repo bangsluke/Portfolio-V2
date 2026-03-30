@@ -6,8 +6,8 @@ tags:
   - portfolio
   - product
 created: 2026-03-18
-modified: 2026-03-18T08:47:02+00:00
-viewCount: 2
+modified: 2026-03-24T09:18:29+00:00
+viewCount: 3
 aliases:
   - user research
 skillRating: 65
@@ -25,13 +25,13 @@ logoFileName: n/a
 
 ## Description
 
-Methods for understanding how real users behave, what they need, and where they struggle. Ranges from quantitative approaches like analytics and A/B testing to qualitative methods like interviews, surveys, and usability testing.
+Methods for understanding how real users behave, what they need, and where they struggle. Ranges from quantitative approaches like analytics and [[AB Testing|A/B testing]] to qualitative methods like interviews, surveys, and usability testing.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 
-- TBC
+- n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

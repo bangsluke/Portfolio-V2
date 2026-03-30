@@ -9,8 +9,8 @@ tags:
   - notes
   - portfolio/discoveryRequirements
 created: 2023-10-13T07:42:00
-modified: 2026-03-03T09:33:03+00:00
-viewCount: 12
+modified: 2026-03-25T09:01:13+00:00
+viewCount: 13
 aliases:
 skillRating: 75
 skillDescription: Able to write complex queries to extract, analyse, and manipulate data from various sources. Built and maintained a relatively complex SQL database using MySQL writing schema modification statements and automating the population of data.
@@ -148,6 +148,8 @@ logoFileName: sql.svg
 
 - [Link to Documentation site](https://bangsluke-documentation.netlify.app/docs/Project%20Set%20Up%20to%20Release/4Development#react)
 - [SQLZoo.net](https://sqlzoo.net/wiki/SQL_Tutorial)
+- [StrataScratch](https://www.stratascratch.com/)
+- [Data Lemur](https://datalemur.com/)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

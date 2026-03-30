@@ -10,7 +10,7 @@ created: 2026-02-20
 modified: 2026-02-20T09:38:47+00:00
 aliases:
 viewCount: 1
-skillRating: 15
+skillRating: 20
 logoFileName: streamlit.svg
 skillDescription: Used on a single project for building a simple UI interface for a Python app.
 ---

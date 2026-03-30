@@ -8,7 +8,7 @@ created: 2025-07-02
 modified: 2025-07-02T14:28:25+01:00
 viewCount: 6
 aliases:
-skillRating: 15
+skillRating: 20
 skillDescription: Used the API on a single project to track the geolocations of locations visited.
 logoFileName: googlemaps.svg
 ---

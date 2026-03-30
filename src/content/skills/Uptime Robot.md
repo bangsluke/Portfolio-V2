@@ -1,39 +1,41 @@
 ---
 tags:
-  - tag
+  - coding
   - skill
-  - concept
-  - product
+  - notes
+  - tag
+  - software
   - portfolio
-  - portfolio/planningDelivery
-created: 2026-03-05
-modified: 2026-03-19T07:47:20+00:00
-viewCount: 5
+  - monitoring
+created: 2026-03-27
+modified: 2026-03-27T18:58:45+00:00
+viewCount: 2
 aliases:
-skillRating: 20
-skillDescription: Set up across a couple of projects to help me identify the key value to pursue.
-logoFileName: n/a
+  - UptimeRobot
+  - Uptime
+skillRating: 15
+skillDescription: Applied to a few projects to give me visibility to sites going down allowing fast response.
+logoFileName: uptimerobot.svg
 ---
-# North Star Metric
+# Uptime Robot
 
 > [!back] Link back to [[Skills Notes]]
 
-## Table of Contents
+## Table of Contents 
 
 ```table-of-contents
 ```
 
 ## Description
 
-The North Star Metric is a **single, guiding measure** that captures the core value your product delivers to customers. It aligns teams around a shared definition of success and helps ensure that day‑to‑day decisions contribute to long‑term growth. It's often paired with supporting inputs (like activation or retention) but remains the primary indicator of whether the product is truly creating value.
+Uptime Robot is a popular cloud-based service that monitors websites, servers, APIs, and ports in real-time, alerting users via email, SMS, or apps if their site goes down. It offers a free tier with 50 monitors checking every 5 minutes and paid plans for faster, more frequent, and detailed monitoring.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 
-- [Every Product Needs a North Star Metric: Here's How to Find Yours - Amplitude](https://amplitude.com/blog/product-north-star-metric)
-- [North Star Metric Resources - Amplitude](https://amplitude.com/north-star-hub)
-- [The North Star Playbook - Amplitude](https://drive.google.com/file/d/1sxetG7xkNnPPZhKRKT4co-Qj6zG2Xj7X/view?usp=drivesdk)
+- [UptimeRobot Monitors](https://dashboard.uptimerobot.com/monitors)
+- [UptimeRobot Status page](https://stats.uptimerobot.com/ENAXkwlGcY)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
@@ -95,8 +97,6 @@ FROM [[]]
 GROUP BY "Links"
 ```
 
->[!top] [Back to top](#Table%20of%20Contents)
-
 ### Last Mentioned
 
 ```dataview
@@ -105,8 +105,6 @@ FROM [[]]
 SORT file.ctime DESC
 LIMIT 5
 ```
-
->[!top] [Back to top](#Table%20of%20Contents)
 
 ### All Mentions
 
