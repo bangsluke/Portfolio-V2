@@ -6,12 +6,12 @@ tags:
   - product
   - portfolio/discoveryRequirements
 created: 2026-03-18
-modified: 2026-03-18T08:42:42+00:00
-viewCount: 2
+modified: 2026-03-24T09:13:36+00:00
+viewCount: 3
 aliases:
   - stakeholder interviews
   - stakeholder interview
-skillRating: 70
+skillRating: 65
 skillDescription: Experienced in running structured discovery sessions with stakeholders at all levels, from end users through to senior leadership. Skilled at drawing out underlying needs behind surface-level requests and synthesising findings into actionable requirements.
 logoFileName: n/a
 ---
@@ -32,7 +32,7 @@ A structured approach to gathering insights directly from the people who use, fu
 
 ## Links
 
-- TBC
+- n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

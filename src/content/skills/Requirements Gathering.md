@@ -6,8 +6,8 @@ tags:
   - product
   - portfolio/discoveryRequirements
 created: 2026-03-18
-modified: 2026-03-18T08:46:38+00:00
-viewCount: 2
+modified: 2026-03-24T09:13:12+00:00
+viewCount: 3
 aliases:
   - requirements gathering
   - requirement gathering
@@ -33,7 +33,7 @@ The process of identifying, documenting, and validating what a product or featur
 
 ## Links
 
-- TBC
+- n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

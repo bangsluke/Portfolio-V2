@@ -9,8 +9,8 @@ tags:
 modified: 2026-03-12T14:46:59+00:00
 viewCount: 4
 aliases:
-skillRating: 45
-skillDescription: Used for chatting to and planning various updates to projects, usually then switching to Claude Code for actual implementation once the project is initiated.
+skillRating: 65
+skillDescription: Used for chatting to and planning various updates to projects, usually then switching to Cursor or Claude Code for actual implementation once the project is initiated.
 logoFileName: claude.svg
 ---
 # Claude

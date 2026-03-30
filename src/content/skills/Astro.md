@@ -12,7 +12,7 @@ modified: 2025-07-16T12:18:20+01:00
 viewCount: 8
 aliases:
   - Astro.js
-skillRating: 50
+skillRating: 60
 skillDescription: Able to generate lightning fast sites using Astro with a good understanding of the frameworks performant features.
 logoFileName: astro.svg
 ---

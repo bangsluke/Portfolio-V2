@@ -7,8 +7,8 @@ tags:
   - portfolio
 modified: 2025-07-05T07:55:45+01:00
 viewCount: 7
-aliases: 
-skillRating: 70
+aliases:
+skillRating: 75
 skillDescription: Able to read Cypher query language and write various queries to return data via graph connections as well as create and maintain graphs from the CLI.
 logoFileName: neo4j.svg
 ---

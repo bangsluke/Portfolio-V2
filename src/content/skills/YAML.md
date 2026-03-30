@@ -12,7 +12,7 @@ modified: 2025-08-12T12:10:40+01:00
 viewCount: 7
 aliases:
   - Yet Another Markup Language
-skillRating: 15
+skillRating: 25
 skillDescription: Able to create simple YAML files for use in processes like GitHub actions and for CI/CD.
 logoFileName: yaml.svg
 ---

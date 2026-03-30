@@ -12,7 +12,7 @@ viewCount: 7
 aliases:
   - Apps Script
   - GAS
-skillRating: 50
+skillRating: 60
 skillDescription: Written several scripts to automate the manipulation of data in a Google Sheets file to generate data and charts for use in Automated daily emails.
 logoFileName: google_apps_script.svg
 ---

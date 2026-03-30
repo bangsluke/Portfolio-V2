@@ -7,8 +7,8 @@ tags:
   - portfolio
   - project/active
 created: 2025-02-02T19:03:00
-modified: 2026-03-22T08:38:26+00:00
-viewCount: 4
+modified: 2026-03-27T20:55:10+00:00
+viewCount: 8
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -37,6 +37,7 @@ technologies:
   - "[[Preact]]"
   - "[[Node.js]]"
   - "[[Claude Code]]"
+  - "[[Uptime Robot]]"
 projectCategory: Portfolio
 linkedCompany:
   - n/a
@@ -131,7 +132,7 @@ Things to track:
 - Security: [[Snyk]]
 - Authentication: n/a
 - Testing: [[Jest]]
-- Analytics: [[Umami]]
+- Analytics/Monitoring: [[Umami]]/[[Uptime Robot]]
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

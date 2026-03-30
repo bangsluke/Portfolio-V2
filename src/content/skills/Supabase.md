@@ -7,11 +7,11 @@ tags:
   - skill
   - portfolio
 modified: 2025-07-05T08:08:16+01:00
-viewCount: 6
+viewCount: 7
 aliases:
-skillRating: 10
-skillDescription: Used on a single site as a basic backend for storing comments and visitor counts.
-logoFileName:
+skillRating: 25
+skillDescription: Used on a couple of sites as a basic backend for storing click counts, comments and visitor counts.
+logoFileName: supabase.svg
 ---
 # Supabase
 
