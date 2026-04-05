@@ -63,7 +63,7 @@ export const testData = {
 		'Automation & Tooling',
 	],
 	exampleWorkExperienceName: 'VHE2 Integration Engineer',
-	exampleWorkExperienceDateRange: 'Sep 2025 - Jan 2026',
+	exampleWorkExperienceDateRange: 'Sep 2025 - Mar 2026',
 	exampleWorkExperienceDescription: 'Owned end-to-end delivery of an automated',
 	exampleClientName: 'Aston Martin',
 	exampleClientDateRange: 'Mar 2016 - Apr 2016',
