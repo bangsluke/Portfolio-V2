@@ -5,9 +5,9 @@ tags:
   - project/active
   - portfolio
 created: 2026-03-12 15:16
-modified: 2026-03-24T09:38:45+00:00
+modified: 2026-03-31T16:19:42+01:00
 aliases:
-viewCount: 9
+viewCount: 10
 projectURL: https://bangeroo-music-website.netlify.app/
 codeURL: https://github.com/bangsluke/Bangeroo-Music-Website
 codeMultipleRepos: false
@@ -40,7 +40,7 @@ version: 1
 portfolioOrder: 6
 shortDescription: "Tested out several visual designs for a client via <span class=\"theme-link\">A/B testing</span> in an <span class=\"theme-link\">MVP</span> en route to developing an <span class=\"theme-link\">SPA</span> site delivering music to the client's fans."
 longDescription: "An <span class=\"theme-link\">SPA</span> for displaying my father's musical interests, embedding his songs into an edgy modern and chaotic design.<br><br>Given a lack of initial design direction, I initially built an <span class=\"theme-link\">MVP</span> of four varying designs of the same content as a form of <span class=\"theme-link\">A/B testing</span> (or A/B/C/D if you will), deciding that seeing visual ideas would help align him to a style rather than via verbal communication.<br><br>This helped him decide on a theme and narrow down the requirements of the build."
-lessonsLearned: "From a product viewpoint, this project allowed me to conduct some initial <span class=\"theme-link\">A/B testing</span> on various page designs, creating 4 variants for the client to review and select from.<br><br>From a technical standpoint, it taught me how to connect up a simple <span class=\"theme-link\">Supabase</span> backend, creating the tables in the <span class=\"theme-link\">SQL</span> editor and sorting out row level security. It was also my first time using the <span class=\"theme-link\">Spotify</span> developer <span class=\"theme-link\">API</span>, using it to display a 30 second refreshing status of if the client was online or offline and what they were listening to."
+lessonsLearned: "From a product viewpoint, this project allowed me to conduct some initial <span class=\"theme-link\">A/B testing</span> on various page designs, creating 4 variants for the client to review and select from.<br><br>From a technical standpoint, it taught me how to connect up a simple <span class=\"theme-link\">Supabase</span> backend, creating the tables in the <span class=\"theme-link\">SQL</span> editor and sorting out row level security. It was also my first time using the <span class=\"theme-link\">Spotify</span> developer <span class=\"theme-link\">API</span>, using it to display a 30 second refreshing status of if the client was online or offline and what they were listening to.<br><br>I also set up a <span class=\"theme-link\">GitHub</span> scheduled ping to the <span class=\"theme-link\">Supabase</span> database to avoid it going offline each week on the free plan."
 name: "Bangeroo Music Website"
 ---
 # Bangeroo Music Website
@@ -134,6 +134,8 @@ To launch the repo, use the [[PowerShell]] alias
 From a product viewpoint, this project allowed me to conduct some initial [[AB Testing|A/B testing]] on various page designs, creating 4 variants for the client to review and select from.
 
 From a technical standpoint, it taught me how to connect up a simple [[Supabase]] backend, creating the tables in the [[SQL]] editor and sorting out row level security. It was also my first time using the [[Spotify]] developer [[API]], using it to display a 30 second refreshing status of if the client was online or offline and what they were listening to.
+
+I also set up a [[GitHub]] scheduled ping to the [[Supabase]] database to avoid it going offline each week on the free plan.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
