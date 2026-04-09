@@ -1542,6 +1542,24 @@ function removeAboutMeFromFrontmatter(content) {
 // Main sync function
 async function main() {
 	try {
+		const { extractStarStoriesToContext } = await import(
+			'./extract-star-stories.mjs'
+		);
+		const starResult = await extractStarStoriesToContext({
+			vaultPath: OBSIDIAN_VAULT_PATH,
+			repoRoot: path.join(__dirname, '..'),
+		});
+		if (!starResult.ok) {
+			console.error(
+				'❌ STAR stories extraction failed:\n' + starResult.errors.join('\n')
+			);
+			process.exit(1);
+		}
+		console.log(
+			SPACING_LEVEL_1 +
+				`⭐ STAR stories: ${starResult.sectionCount} sections → src/content/star-stories/star-stories.md`
+		);
+
 		console.log('🔄 Starting sync process...');
 		console.log('📋 SYNC PROCESS ORDER:');
 		console.log(SPACING_LEVEL_1 + '1. Validate paths and create directories');
