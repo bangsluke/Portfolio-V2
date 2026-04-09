@@ -32,6 +32,7 @@
 		"sync:prod:deploy-email": "cross-env SYNC_MODE=production AUTO_DEPLOY=true EMAIL_NOTIFICATIONS=true node scripts/sync.js",
 		"sync:mobile": "cross-env SYNC_MODE=mobile node scripts/sync.js",
 		"sync:mobile:debug": "cross-env SYNC_MODE=mobile DEBUG=true node scripts/sync.js",
+		"extract:star-stories": "node scripts/extract-star-stories.mjs",
 		"process-markdown": "node scripts/process-obsidian-markdown.js",
 		"test-email": "cross-env EMAIL_NOTIFICATIONS=true node scripts/test-email.js",
 		"update-icons": "node scripts/update-icons.cjs",
