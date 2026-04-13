@@ -27,7 +27,7 @@ logoFileName: neon.svg
 
 ## Links
 
-- [Neon Serverless Postgres — Ship faster](https://neon.com/)
+- [Neon Serverless Postgres - Ship faster](https://neon.com/)
 - n/a
 
 >[!top] [Back to top](#Table%20of%20Contents)

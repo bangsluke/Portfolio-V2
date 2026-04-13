@@ -26,7 +26,7 @@ logoFileName: linearb.svg
 
 ## Description
 
-LinearB is an **AI‑powered engineering productivity platform** designed for **engineering leaders, DevEx teams, and platform teams**. Its purpose is to give visibility into how software delivery actually works in practice—where work gets stuck, how long things take, and how to improve flow.
+LinearB is an **AI‑powered engineering productivity platform** designed for **engineering leaders, DevEx teams, and platform teams**. Its purpose is to give visibility into how software delivery actually works in practice-where work gets stuck, how long things take, and how to improve flow.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

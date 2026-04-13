@@ -10,7 +10,7 @@ tags:
   - testing
 created: 2026-02-11
 modified: 2026-02-11T15:18:38+00:00
-viewCount: 2
+viewCount: 1
 aliases:
 skillRating: 5
 skillDescription: Aware of the tool for A/B testing but not yet used.
@@ -29,7 +29,7 @@ logoFileName: heap.svg
 
 Heap is a **digital product analytics platform** designed to give companies a **complete, automatic view of user behavior** across their websites and apps. Its core promise is simple:
 
-**Heap captures every user interaction automatically — no manual event tracking required.**
+**Heap captures every user interaction automatically - no manual event tracking required.**
 
 This makes it very different from tools like Google Analytics, [[Amplitude]], or [[Mixpanel]], which require manual instrumentation.
 

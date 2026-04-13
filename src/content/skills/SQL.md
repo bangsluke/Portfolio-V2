@@ -10,7 +10,7 @@ tags:
   - portfolio/discoveryRequirements
 created: 2023-10-13T07:42:00
 modified: 2026-03-25T09:01:13+00:00
-viewCount: 13
+viewCount: 1
 aliases:
 skillRating: 75
 skillDescription: Able to write complex queries to extract, analyse, and manipulate data from various sources. Built and maintained a relatively complex SQL database using MySQL writing schema modification statements and automating the population of data.
@@ -106,7 +106,7 @@ logoFileName: sql.svg
 | Syntax | Description |
 |---|---|
 | `WITH cte AS (...)` | Define a named temporary result set (CTE) |
-| `WITH RECURSIVE cte AS (...)` | CTE that references itself — useful for hierarchical data |
+| `WITH RECURSIVE cte AS (...)` | CTE that references itself - useful for hierarchical data |
 | `(SELECT ...) AS subquery` | Inline subquery used as a derived table |
 | `WHERE col IN (SELECT ...)` | Filter using a subquery result set |
 | `WHERE EXISTS (SELECT ...)` | Filter if a correlated subquery returns any rows |

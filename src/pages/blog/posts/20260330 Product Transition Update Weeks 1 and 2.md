@@ -1,14 +1,14 @@
 ---
 layout: /src/layouts/MarkdownPostLayout.astro
-title: "Product Transition Update Week 1"
+title: "Product Transition Update Weeks 1 & 2"
 author: "Luke Bangs"
-description: "An update from week 1 of my transition into a product orientated role."
+description: "An update from weeks 1 and 2 of my transition into a product orientated role."
 image:
   url: "blog-image-alt:"
   alt: "blog-pubDate: 2026-03-30"
 pubDate: 2026-03-30
 topics: ["#career", "#product", "#bi-weekly-update"]
-slug: "product-transition-update-week-1"
+slug: "product-transition-update-weeks-1-and-2"
 ---
 
 Two weeks into actively pursuing the transition to product, and it's been a busy start. Here's where things stand.
