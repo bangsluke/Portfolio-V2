@@ -7,7 +7,7 @@ tags:
   - skill
   - portfolio
   - portfolio/automationTooling
-modified: 2026-03-17T17:47:05+00:00
+modified: 2026-04-10T10:04:57+01:00
 viewCount: 11
 aliases:
 skillRating: 45
@@ -52,7 +52,7 @@ logoFileName: claude_code.svg
 
 | Command | Description |
 |---|---|
-| `/clear` | Reset context window — use between unrelated tasks |
+| `/clear` | Reset context window - use between unrelated tasks |
 | `/compact [focus]` | Compress the conversation to free up context |
 | `/resume [session]` | Resume a previous session by name or ID |
 | `/rename <name>` | Name the current session for easy future reference |
@@ -74,7 +74,7 @@ logoFileName: claude_code.svg
 | Command | Description |
 |---|---|
 | `/model` | Switch model (Sonnet / Opus / Haiku) |
-| `/plan` | Enter Plan Mode — read-only exploration before making changes |
+| `/plan` | Enter Plan Mode - read-only exploration before making changes |
 | `/permissions` | Configure which tools run without prompting |
 | `/memory` | Edit `CLAUDE.md` files |
 | `/init` | Bootstrap a project by creating a `CLAUDE.md` |
@@ -108,7 +108,7 @@ logoFileName: claude_code.svg
 
 | Syntax | Description |
 |---|---|
-| `@filename` | Reference a file — Claude reads it automatically |
+| `@filename` | Reference a file - Claude reads it automatically |
 | `!command` | Run a shell command directly, bypassing Claude |
 | `/` at start | Browse and filter slash commands |
 
@@ -118,7 +118,7 @@ logoFileName: claude_code.svg
 
 | Flag | Description |
 |---|---|
-| `-p "prompt"` | Non-interactive (print) mode — run one prompt and exit |
+| `-p "prompt"` | Non-interactive (print) mode - run one prompt and exit |
 | `-c` | Continue the most recent conversation |
 | `-r "name"` | Resume a specific session by name or ID |
 | `--model <name>` | Set the model (`sonnet`, `opus`, `haiku`) |
@@ -129,7 +129,7 @@ logoFileName: claude_code.svg
 
 ### MCP setup in Claude Code
 
-[[Claude Code]] supports [[MCP]] servers at **three scopes** — local (just you, just this project), project (shared via git), and user/global (you, all projects):
+[[Claude Code]] supports [[MCP]] servers at **three scopes** - local (just you, just this project), project (shared via git), and user/global (you, all projects):
 
 ```bash
 # Add a GitHub MCP server globally

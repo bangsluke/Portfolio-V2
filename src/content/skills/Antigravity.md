@@ -6,7 +6,7 @@ tags:
   - AI
   - skill
   - portfolio
-modified: 2026-03-12T14:35:53+00:00
+modified: 2026-04-10T10:04:47+01:00
 viewCount: 6
 aliases:
 skillRating: 40
@@ -28,7 +28,7 @@ logoFileName: antigravity.svg
 
 ### MCP integration
 
-Antigravity fully supports [[MCP]] and includes a **built-in MCP Store** — a marketplace where you can browse and one-click install servers for Firebase, Figma, Google Cloud services, and more.
+Antigravity fully supports [[MCP]] and includes a **built-in MCP Store** - a marketplace where you can browse and one-click install servers for Firebase, Figma, Google Cloud services, and more.
 
 To configure custom MCP servers, navigate to the Agent pane → `...` menu → MCP Servers → Manage MCP Servers → View Raw Config. This opens `~/.gemini/antigravity/mcp_config.json`:
 
@@ -46,7 +46,7 @@ To configure custom MCP servers, navigate to the Agent pane → `...` menu → M
 }
 ```
 
-The format mirrors the standard MCP configuration pattern used by Claude Desktop and Cursor. Per-workspace MCP configuration is not yet fully supported — it's a requested feature.
+The format mirrors the standard MCP configuration pattern used by Claude Desktop and Cursor. Per-workspace MCP configuration is not yet fully supported - it's a requested feature.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

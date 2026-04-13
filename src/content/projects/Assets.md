@@ -8,7 +8,7 @@ created: 2026-02-27 13:26
 modified: 2026-03-11T17:34:28+00:00
 aliases:
   - Images
-viewCount: 2
+viewCount: 1
 projectURL: https://bangsluke-assets.netlify.app/
 codeURL: https://github.com/bangsluke/Assets
 codeMultipleRepos: false
@@ -120,7 +120,7 @@ To launch the repo, use the [[PowerShell]] alias
 ## Other Links
 
 - [Imgur image hosting](https://imgur.com/) - stopped being available in the UK
-- [Postimages — free image hosting / image upload](https://postimages.org/) - randomly started deleting my images
+- [Postimages - free image hosting / image upload](https://postimages.org/) - randomly started deleting my images
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

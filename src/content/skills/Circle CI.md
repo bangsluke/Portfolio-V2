@@ -9,7 +9,7 @@ tags:
   - validation
 created: 2026-02-11
 modified: 2026-02-11T15:29:29+00:00
-viewCount: 2
+viewCount: 1
 aliases:
   - circleci
 skillRating: 5
@@ -27,7 +27,7 @@ logoFileName: circleci.svg
 
 ## Description
 
-CircleCI is a **continuous integration and continuous delivery (CI/CD) platform** that helps engineering teams **build, test, and deploy code automatically and reliably**. It’s one of the most widely used CI/CD services in modern DevOps.
+CircleCI is a **continuous integration and continuous delivery (CI/CD) platform** that helps engineering teams **build, test, and deploy code automatically and reliably**. It's one of the most widely used CI/CD services in modern DevOps.
 
 It has fast, scalable pipelines and isn't tied to an ecosystem like [[GitHub]] or [[GitLab]] so it can be used for tools like BitBucket.
 
