@@ -78,6 +78,20 @@ function metricRow(label, curr, prev, i, opts = {}) {
                       </tr>`;
 }
 
+function formatCountryLabel(value) {
+	if (!value) return 'Unknown';
+	const code = String(value).trim();
+	// Keep Umami full country names as-is.
+	if (!/^[A-Za-z]{2}$/.test(code)) return code;
+	try {
+		const displayNames = new Intl.DisplayNames(['en'], { type: 'region' });
+		const fullName = displayNames.of(code.toUpperCase());
+		return fullName ? `${code.toUpperCase()} - ${fullName}` : code.toUpperCase();
+	} catch {
+		return code.toUpperCase();
+	}
+}
+
 export default async () => {
 	const websiteId = process.env.UMAMI_WEBSITE_ID;
 	const apiKey = process.env.UMAMI_API_KEY;
@@ -369,9 +383,10 @@ export default async () => {
 			topCountries.length > 0
 				? topCountries
 						.map((country, i) => {
-							const name = country.x || 'Unknown';
+							const rawName = country.x || 'Unknown';
+							const name = formatCountryLabel(rawName);
 							const curr = country.y || 0;
-							const prev = countryPrevLookup.get(name) ?? 0;
+							const prev = countryPrevLookup.get(rawName) ?? 0;
 							const rowBorder =
 								i === topCountries.length - 1
 									? ''
@@ -423,6 +438,20 @@ export default async () => {
 
 		const northStarSumCurr = northStarDefs.reduce((s, r) => s + r.curr, 0);
 		const northStarSumPrev = northStarDefs.reduce((s, r) => s + r.prev, 0);
+		const recent4Weeks = weekBuckets.slice(-4).map(week => week.total);
+		const prior4Weeks = weekBuckets.slice(-8, -4).map(week => week.total);
+		const rolling4WeekAvgCurr = recent4Weeks.length
+			? Math.round(
+					recent4Weeks.reduce((sum, value) => sum + value, 0) /
+						recent4Weeks.length
+				)
+			: 0;
+		const rolling4WeekAvgPrev = prior4Weeks.length
+			? Math.round(
+					prior4Weeks.reduce((sum, value) => sum + value, 0) /
+						prior4Weeks.length
+				)
+			: 0;
 
 		const northStarTotalTable = `<table width="100%" cellpadding="0" cellspacing="0" border="0" style="${tableWrapStyle}">
                     <thead>
@@ -435,10 +464,16 @@ export default async () => {
                     </thead>
                     <tbody>
                       <tr style="background-color:${EMAIL_COLORS.rowAlt};">
-                        <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;color:${EMAIL_COLORS.text};">Total</td>
-                        <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;color:${EMAIL_COLORS.text};text-align:right;">${northStarSumCurr}</td>
-                        <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;color:${EMAIL_COLORS.textMuted};text-align:right;">${northStarSumPrev}</td>
-                        <td style="padding:10px 14px;text-align:center;">${trend(northStarSumCurr, northStarSumPrev)}</td>
+                        <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;color:${EMAIL_COLORS.text};border-bottom:1px solid ${EMAIL_COLORS.border};">Total</td>
+                        <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;color:${EMAIL_COLORS.text};text-align:right;border-bottom:1px solid ${EMAIL_COLORS.border};">${northStarSumCurr}</td>
+                        <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;color:${EMAIL_COLORS.textMuted};text-align:right;border-bottom:1px solid ${EMAIL_COLORS.border};">${northStarSumPrev}</td>
+                        <td style="padding:10px 14px;text-align:center;border-bottom:1px solid ${EMAIL_COLORS.border};">${trend(northStarSumCurr, northStarSumPrev)}</td>
+                      </tr>
+                      <tr style="background-color:${EMAIL_COLORS.rowBase};">
+                        <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;color:${EMAIL_COLORS.text};">Rolling 4 Week Average</td>
+                        <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;color:${EMAIL_COLORS.text};text-align:right;">${rolling4WeekAvgCurr}</td>
+                        <td style="padding:10px 14px;font-family:Montserrat,Arial,sans-serif;font-size:13px;font-weight:700;color:${EMAIL_COLORS.textMuted};text-align:right;">${rolling4WeekAvgPrev}</td>
+                        <td style="padding:10px 14px;text-align:center;">${trend(rolling4WeekAvgCurr, rolling4WeekAvgPrev)}</td>
                       </tr>
                     </tbody>
                   </table>`;
