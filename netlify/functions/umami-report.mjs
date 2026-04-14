@@ -361,10 +361,10 @@ export default async () => {
 				return `<tr style="background-color:${stripeBg(i)};">
                         <td style="padding:8px 12px;font-family:Montserrat,Arial,sans-serif;font-size:12px;color:${EMAIL_COLORS.text};white-space:nowrap;${rowBorder}">${rangeLabel}</td>
                         <td style="padding:8px 12px;${rowBorder}">
-                          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;height:10px;background:${EMAIL_COLORS.pageBg};border:1px solid ${EMAIL_COLORS.border};border-radius:999px;">
+                          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;height:10px;background:${EMAIL_COLORS.pageBg};border:1px solid ${EMAIL_COLORS.border};border-radius:999px;table-layout:fixed;">
                             <tr>
-                              <td style="width:${widthPct}%;background:${EMAIL_COLORS.navyAccent};border-radius:999px;"></td>
-                              <td></td>
+                              <td width="${widthPct}%" style="width:${widthPct}%;background:${EMAIL_COLORS.navyAccent};border-radius:999px;font-size:0;line-height:0;">&nbsp;</td>
+                              <td style="font-size:0;line-height:0;">&nbsp;</td>
                             </tr>
                           </table>
                         </td>
