@@ -556,30 +556,24 @@ test.describe('Projects Page Tests', () => {
 			});
 		};
 
-		// Descending by default
+		// Ascending by default
+		const ordersAsc = await getVisiblePortfolioOrders();
+		expect(ordersAsc.length).toBeGreaterThan(1);
+		for (let i = 1; i < ordersAsc.length; i++) {
+			expect(ordersAsc[i]).toBeGreaterThanOrEqual(ordersAsc[i - 1]);
+		}
+
+		// Toggle sort direction to descending
+		await projectsPageObjects.sortDirectionDesktop.click();
+
 		const ordersDesc = await getVisiblePortfolioOrders();
 		expect(ordersDesc.length).toBeGreaterThan(1);
 		for (let i = 1; i < ordersDesc.length; i++) {
 			expect(ordersDesc[i]).toBeLessThanOrEqual(ordersDesc[i - 1]);
 		}
 
-		// Toggle sort direction to ascending
-		await projectsPageObjects.sortDirectionDesktop.click();
-
-		const ordersAsc = await getVisiblePortfolioOrders();
-		expect(ordersAsc.length).toBeGreaterThan(1);
-
 		// The order should change when toggling direction
-		expect(ordersAsc).not.toEqual(ordersDesc);
-
-		const firstDesc = ordersDesc[0];
-		const lastDesc = ordersDesc[ordersDesc.length - 1];
-		const firstAsc = ordersAsc[0];
-		const lastAsc = ordersAsc[ordersAsc.length - 1];
-
-		// Ascending order should move smaller portfolioOrder values toward the front
-		expect(firstAsc).toBeLessThanOrEqual(firstDesc);
-		expect(lastAsc).toBeGreaterThanOrEqual(lastDesc);
+		expect(ordersDesc).not.toEqual(ordersAsc);
 	});
 
 	test('2.3.4. URL category parameter should pre-select filters and show matching projects', async ({
