@@ -533,6 +533,7 @@ test.describe('Projects Page Tests', () => {
 
 		// Ensure we are in priority mode
 		const sortModeLabel = page.locator('#sortModeLabelDesktop');
+		const sortDirectionLabel = page.locator('#sortDirectionLabelDesktop');
 		await expect(sortModeLabel).toHaveText(/Sorted by Priority/);
 
 		const getVisiblePortfolioOrders = async () => {
@@ -556,21 +557,40 @@ test.describe('Projects Page Tests', () => {
 			});
 		};
 
-		// Ascending by default
+		const isNonDecreasing = (values: number[]) => {
+			for (let i = 1; i < values.length; i++) {
+				if (values[i] < values[i - 1]) return false;
+			}
+			return true;
+		};
+
+		const isNonIncreasing = (values: number[]) => {
+			for (let i = 1; i < values.length; i++) {
+				if (values[i] > values[i - 1]) return false;
+			}
+			return true;
+		};
+
+		// Ensure a deterministic starting direction before assertions.
+		if ((await sortDirectionLabel.textContent())?.trim() !== 'Ascending') {
+			await projectsPageObjects.sortDirectionDesktop.click();
+			await expect(sortDirectionLabel).toHaveText('Ascending');
+		}
+
 		const ordersAsc = await getVisiblePortfolioOrders();
 		expect(ordersAsc.length).toBeGreaterThan(1);
-		for (let i = 1; i < ordersAsc.length; i++) {
-			expect(ordersAsc[i]).toBeGreaterThanOrEqual(ordersAsc[i - 1]);
-		}
+		expect(isNonDecreasing(ordersAsc)).toBeTruthy();
 
 		// Toggle sort direction to descending
 		await projectsPageObjects.sortDirectionDesktop.click();
+		await expect(sortDirectionLabel).toHaveText('Descending');
+		await expect
+			.poll(async () => isNonIncreasing(await getVisiblePortfolioOrders()))
+			.toBeTruthy();
 
 		const ordersDesc = await getVisiblePortfolioOrders();
 		expect(ordersDesc.length).toBeGreaterThan(1);
-		for (let i = 1; i < ordersDesc.length; i++) {
-			expect(ordersDesc[i]).toBeLessThanOrEqual(ordersDesc[i - 1]);
-		}
+		expect(isNonIncreasing(ordersDesc)).toBeTruthy();
 
 		// The order should change when toggling direction
 		expect(ordersDesc).not.toEqual(ordersAsc);
