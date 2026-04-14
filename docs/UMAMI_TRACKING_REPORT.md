@@ -368,7 +368,8 @@ These are the same as in [.env.example](.env.example) for local/scripts; the fun
 ### Implementation
 
 - **File:** `netlify/functions/umami-report.mjs` in the repo. It exports a handler and `config = { schedule: "@weekly" }`.
-- **Logic:** On each run, the function requests Umami stats and event metrics for the last 7 days, builds an HTML email (traffic, LinkedIn/GitHub clicks, Contact Me, View CV, About Me, skills, project clicks, See more, Visit Site/View Code, most visited projects), and sends it with nodemailer (Gmail).
+- **Logic:** On each run, the function requests Umami stats and event metrics for the last 7 days, builds an HTML email (traffic, country breakdown by visitors, LinkedIn/GitHub clicks, Contact Me, View CV, About Me, skills, project clicks, See more, Visit Site/View Code, most visited projects), and sends it with nodemailer (Gmail).
+- **North Star trend:** The report also includes a 16-week North Star trend section, generated from Umami `events/series` data and rendered in an email-safe chart/table format.
 - **Schedule:** You can change the schedule in the function (`schedule: "@weekly"`) or in `netlify.toml` under `[functions."umami-report"] schedule = "@weekly"`. Times are UTC.
 
 ### How to test

@@ -328,7 +328,7 @@ const ogimage = {
 											stroke-width="2"
 											d="M7 11l5-5 5 5" />
 									</svg>
-										<span id="sortDirectionLabelDesktop">Descending</span>
+										<span id="sortDirectionLabelDesktop">Ascending</span>
 								</button>
 							</div>
 						</div>
@@ -450,7 +450,7 @@ const ogimage = {
 												stroke-width="2"
 												d="M7 11l5-5 5 5" />
 										</svg>
-										<span id="sortDirectionLabelMobile">Descending</span>
+										<span id="sortDirectionLabelMobile">Ascending</span>
 									</button>
 								</div>
 							</div>
@@ -492,6 +492,7 @@ const ogimage = {
 										imageURL={project.data.imageURL}
 										technologies={project.data.technologies}
 										shortDescription={project.data.shortDescription}
+										northStarMetric={project.data.northStarMetric}
 										slug={nameToSlug(extractNameFromFilename(project.id))}
 										companyLogoURL={project.companyLogoURL}
 										linkedCompany={project.data.linkedCompany}
@@ -642,7 +643,7 @@ const ogimage = {
 		type SortDirection = 'asc' | 'desc';
 
 		let currentSortMode: SortMode = 'priority';
-		let currentSortDirection: SortDirection = 'desc';
+		let currentSortDirection: SortDirection = 'asc';
 
 		function updateSortButtonLabels() {
 			const modeLabel =
