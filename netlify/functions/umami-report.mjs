@@ -430,7 +430,7 @@ export default async () => {
 				prev: seeMoreEducationItemsPrev,
 			},
 			{
-				label: '&quot;View CV&quot; button clicks',
+				label: '&quot;View CV&quot; page navigations',
 				curr: viewCv,
 				prev: viewCvPrev,
 			},
@@ -496,7 +496,7 @@ export default async () => {
 				prev: contactClickPrev,
 			},
 			{
-				label: 'View CV button clicks',
+				label: 'View CV page navigations',
 				curr: viewCv,
 				prev: viewCvPrev,
 			},

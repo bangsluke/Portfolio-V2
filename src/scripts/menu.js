@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+	const CV_PATH = '/Luke-Bangs-CV.pdf';
 	const hamburger = document.querySelector('.hamburger');
 	const navLinks = document.querySelector('.nav-links');
 
@@ -50,6 +51,24 @@ document.addEventListener('DOMContentLoaded', () => {
 	navLinks.addEventListener('click', e => {
 		if (e.target.tagName === 'A') {
 			closeMobileMenu();
+		}
+	});
+
+	// Track CV views by destination path so both header + button clicks
+	// emit the same `View CV` event before navigation occurs.
+	document.addEventListener('click', event => {
+		const anchor = event.target.closest('a[href]');
+		if (!anchor) return;
+
+		let destinationPath = '';
+		try {
+			destinationPath = new URL(anchor.href, window.location.origin).pathname;
+		} catch {
+			return;
+		}
+
+		if (destinationPath === CV_PATH) {
+			window.umami?.track?.('View CV');
 		}
 	});
 
