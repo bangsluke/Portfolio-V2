@@ -37,6 +37,7 @@ export const testData = {
 		clients: '/#clients',
 		education: '/#education',
 		references: '/#references',
+		cv: '/Luke-Bangs-CV.pdf',
 		about: '/about-me',
 	},
 	projectsPageUrl: `${baseUrl}/projects`,

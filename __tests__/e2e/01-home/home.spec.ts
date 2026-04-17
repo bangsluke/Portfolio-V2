@@ -58,6 +58,7 @@ test.describe('Home Page Tests', () => {
 			{ name: 'Clients', path: testData.navigationPaths.clients },
 			{ name: 'Education', path: testData.navigationPaths.education },
 			{ name: 'References', path: testData.navigationPaths.references },
+			{ name: 'CV', path: testData.navigationPaths.cv },
 			{ name: 'About Me', path: testData.navigationPaths.about },
 		];
 
@@ -952,6 +953,52 @@ test.describe('Home Page Tests', () => {
 			await homePageObjects.viewCVButton.getAttribute('href');
 		expect(viewCVButtonHref).toBeTruthy();
 		expect(viewCVButtonHref).toContain(testData.downloadCVUrl);
+	});
+
+	test('1.10.5. CV navigation should trigger the "View CV" analytics event for both entry points', async ({
+		page,
+	}) => {
+		const homePageObjects = new HomePageObjects(page);
+		const cvNavLink = page.getByTestId('nav-link-cv');
+
+		await page.evaluate(() => {
+			type UmamiTestWindow = Window & {
+				__umamiEvents?: string[];
+				umami?: { track?: (eventName: string) => void };
+			};
+
+			const windowWithEvents = window as UmamiTestWindow;
+			windowWithEvents.__umamiEvents = [];
+			windowWithEvents.umami = {
+				track: (eventName: string) => {
+					windowWithEvents.__umamiEvents?.push(eventName);
+				},
+			};
+
+			document.querySelectorAll('a[href]').forEach(link => {
+				const anchor = link as HTMLAnchorElement;
+				if (anchor.pathname === '/Luke-Bangs-CV.pdf') {
+					anchor.addEventListener('click', event => event.preventDefault());
+				}
+			});
+		});
+
+		await expect(cvNavLink).toBeVisible();
+		await cvNavLink.click();
+
+		await homePageObjects.viewCVButton.scrollIntoViewIfNeeded();
+		await expect(homePageObjects.viewCVButton).toBeVisible();
+		await homePageObjects.viewCVButton.click();
+
+		const trackedViewCvEvents = await page.evaluate(() => {
+			type UmamiTestWindow = Window & { __umamiEvents?: string[] };
+			const windowWithEvents = window as UmamiTestWindow;
+			return (windowWithEvents.__umamiEvents ?? []).filter(
+				eventName => eventName === 'View CV'
+			);
+		});
+
+		expect(trackedViewCvEvents).toHaveLength(2);
 	});
 
 	test('1.11.3. Mobile menu should open, close, and restore scrolling correctly', async ({
