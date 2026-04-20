@@ -2,12 +2,12 @@
 tags:
   - project
   - notes
-  - project/active
   - portfolio
+  - project/parked
 created: 2026-03-12 15:16
-modified: 2026-03-31T16:19:42+01:00
+modified: 2026-04-14T14:28:24+01:00
 aliases:
-viewCount: 10
+viewCount: 1
 projectURL: https://bangeroo-music-website.netlify.app/
 codeURL: https://github.com/bangsluke/Bangeroo-Music-Website
 codeMultipleRepos: false

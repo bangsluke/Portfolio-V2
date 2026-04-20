@@ -7,9 +7,9 @@ tags:
   - analytics
   - portfolio/discoveryRequirements
 created: 2025-11-09 18:47
-modified: 2026-03-17T17:36:09+00:00
+modified: 2026-04-14T17:47:21+01:00
 aliases:
-viewCount: 3
+viewCount: 1
 skillRating: 65
 skillDescription: Utilised on a couple of projects, setting up and monitoring custom events to understand user usage for further ideation discovery.
 logoFileName: umami.svg
@@ -22,6 +22,41 @@ logoFileName: umami.svg
 
 ```table-of-contents
 ```
+
+## Locally Enabling/Disabling Umami
+
+### Desktop
+
+Use this if you just want your own browser visits excluded.
+
+1. Open your website in the browser you use for testing.
+2. Open Developer Tools (`F12` or right-click → Inspect).
+3. Go to the Console tab.
+4. Run: `localStorage.setItem('umami.disabled', 1);`
+5. Refresh your site once.
+6. Verify in Umami: browse your site for 1–2 minutes and confirm no new visits from your session are recorded.
+
+To check that Umami is disabled, use `localStorage.getItem('umami.disabled')` and if it returns a 1, you have successfully turned off Umami.
+
+To re-enable later: `localStorage.removeItem('umami.disabled');`
+
+### Mobile
+
+**Easiest mobile approach: bookmarklet**
+
+1. On your phone, open any page and create a bookmark.
+2. Edit that bookmark's URL to this: `javascript:localStorage.setItem('umami.disabled',1);alert('Umami disabled on this site');`
+3. Go to your website in the same mobile browser.
+4. Tap that bookmark once.
+5. Refresh the page.
+
+That browser on that phone is now excluded for that site.
+
+To check that Umami is disabled, create and click a bookmark using `javascript:alert('Umami disabled on this site? ' + (localStorage.getItem('umami.disabled') === '1'));`. Click this to get a true/false about if Umami is tracking.
+
+To re-enable later, use a second bookmarklet: `javascript:localStorage.removeItem('umami.disabled');alert('Umami enabled again');`
+
+>[!top] [Back to top](#Table%20of%20Contents)
 
 ## Links
 
