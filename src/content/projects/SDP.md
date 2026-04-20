@@ -5,10 +5,10 @@ tags:
   - notes
   - SDP
 created: 2025-06-27 10:45
-modified: 2026-03-11T17:48:39+00:00
+modified: 2026-04-15T09:55:58+01:00
 aliases:
   - Scalable Development Plan
-viewCount: 25
+viewCount: 2
 projectURL: https://sdp.labs.rle.de/sdpweb/
 codeURL: https://git.rle.de/sdp/sdp-3
 codeMultipleRepos: false
@@ -52,7 +52,7 @@ version: 3
 portfolioOrder: 3
 shortDescription: "Scalable web-based timing platform for automotive project management, used across multiple customers. Reduced programme planning time from months to days using <span class=\"theme-link\">Neo4j</span> graph technology."
 longDescription: "SDP - Scalable Development Plan - was an internal tool developed within <span class=\"theme-link\">RLE International</span> that brought together the various automotive process knowledge that the company had gathered over years of work with various <span class=\"theme-link\">OEMs</span>.<br><br>It was a web application that gathered project inputs from users and could then calculate a full project timing plan, split across various swimlanes for the given project details. After this, users could further update the plan within the tool to fully align it to their own expectations or export the data for using in external tools such as <span class=\"theme-link\">Microsoft Project</span>.<br><br>I was involved in collating the data and architecting a method of storing it. I gathered the data by conducting  interviews with technical specialists and mapping their defined process into whiteboard drawings which I later exported into <span class=\"theme-link\">Excel</span> in a custom built file with <span class=\"theme-link\">VBA</span> scripts to support the large datasets. The scripts also processed the data into an <span class=\"theme-link\">SQL</span> database, ready to be consumed by the <span class=\"theme-link\">Java</span> code into <span class=\"theme-link\">Neo4j</span> for the calculation algorithms."
-lessonsLearned: "I was fully in charge of the <span class=\"theme-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"theme-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"theme-link\">Excel</span> and then writing a <span class=\"theme-link\">VBA</span> script to automate creating the <span class=\"theme-link\">SQL</span> queries to update the database quickly.<br><br>This lead to a complete rebuild when our company migrated from <span class=\"theme-link\">Microsoft</span> to <span class=\"theme-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"theme-link\">Google Sheets</span> and use <span class=\"theme-link\">Google Apps Script</span>.<br><br>There was a brief period where we began consider rebuilding the frontend in <span class=\"theme-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.<br><br>As well as the main app, we also developed several <span class=\"theme-link\">NeoDash</span> dashboards off of the <span class=\"theme-link\">Neo4j</span> data for ongoing maintenance to check on the data, teaching me about this tool and getting me further involved with writing <span class=\"theme-link\">Cypher</span> queries."
+lessonsLearned: "I was fully in charge of the <span class=\"theme-link\">SQL</span> backend database, meaning I had to learn how to write <span class=\"theme-link\">SQL</span> queries. I optimised this by storing the data that we collected day to day in <span class=\"theme-link\">Excel</span> and then writing a <span class=\"theme-link\">VBA</span> script to automate creating the <span class=\"theme-link\">SQL</span> queries to update the database quickly.<br><br>This lead to a complete rebuild when our company migrated from <span class=\"theme-link\">Microsoft</span> to <span class=\"theme-link\">Google</span>, meaning I had to migrate the data and automations into <span class=\"theme-link\">Google Sheets</span> and use <span class=\"theme-link\">Google Apps Script</span>.<br><br>There was a brief period where we began consider rebuilding the frontend in <span class=\"theme-link\">React</span> and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.<br><br>As well as the main app, we also developed several <span class=\"theme-link\">NeoDash</span> dashboards off of the <span class=\"theme-link\">Neo4j</span> data for ongoing maintenance to check on the data, teaching me about this tool and getting me further involved with writing <span class=\"theme-link\">Cypher</span> queries.<br><br>We also managed a <span class=\"theme-link\">GitLab</span> Kanban board for feature ideas and tickets, giving me my first insight into User Stories and bug ticketing."
 name: "SDP"
 ---
 # SDP
@@ -150,6 +150,8 @@ This lead to a complete rebuild when our company migrated from [[Microsoft]] to 
 There was a brief period where we began consider rebuilding the frontend in [[React]] and as such, I was involved in discussing the requirements and helping with the interview process, although the development of this stopped relatively quickly when the whole project was scaled back.
 
 As well as the main app, we also developed several [[NeoDash]] dashboards off of the [[Neo4j]] data for ongoing maintenance to check on the data, teaching me about this tool and getting me further involved with writing [[Cypher]] queries.
+
+We also managed a [[GitLab]] Kanban board for feature ideas and tickets, giving me my first insight into User Stories and bug ticketing.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
