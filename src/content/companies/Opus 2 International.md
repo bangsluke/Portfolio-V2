@@ -5,14 +5,15 @@ tags:
   - notes
   - tag
 created: 2025-02-04 18:53
-modified: 2025-07-07T20:55:15+01:00
-viewCount: 16
+modified: 2026-04-24T09:07:34+01:00
+viewCount: 2
 aliases:
   - Opus 2
   - Opus
 dateStart: 2011-03-06
 dateEnd: 2014-07-25
 logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Opus-2.jpg
+websiteURL: https://www.opus2.com/
 ---
 # Opus 2 International
 
@@ -30,7 +31,7 @@ WHERE file = this.file
 ## Details
 
 >[!details]  `=this.file.name`
->`=choice(this.dateStart = null | this.dateStart = "","","<br>Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + (date(this.dateEnd) - date(this.dateStart)))`
+>`=choice(this.dateStart = null | this.dateStart = "","","<br>Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + (date(this.dateEnd) - date(this.dateStart))) + choice(this.websiteURL = null | this.websiteURL = "","","<br>Website: " + this.websiteURL)`
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

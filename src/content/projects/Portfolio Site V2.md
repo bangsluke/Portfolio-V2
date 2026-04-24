@@ -8,7 +8,7 @@ tags:
   - project/active
 created: 2025-02-02T19:03:00
 modified: 2026-04-05T08:04:13+01:00
-viewCount: 3
+viewCount: 5
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
