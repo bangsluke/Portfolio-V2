@@ -40,7 +40,7 @@
 	},
 	"dependencies": {
 		"@astrojs/preact": "^5.0.0",
-		"@astrojs/rss": "^4.0.17",
+		"@astrojs/rss": "^4.0.18",
 		"@astrojs/sitemap": "^3.7.1",
 		"@egjs/flicking-plugins": "^4.7.1",
 		"@egjs/preact-flicking": "^4.14.1",
