@@ -4,10 +4,10 @@ tags:
   - coding
   - notes
   - portfolio
-  - project/active
+  - project/completed/work
 created: 2026-04-15
-modified: 2026-04-20T10:58:20+01:00
-viewCount: 7
+modified: 2026-04-24T08:56:01+01:00
+viewCount: 3
 aliases:
   - Acre Task
 projectURL: n/a
@@ -33,7 +33,7 @@ technologies:
   - "[[Claude]]"
 projectCategory: MVP
 linkedCompany:
-  - Acre Software
+  - "[[Acre Software]]"
 toolOwner: "[[Luke Bangs]]"
 developers:
   - "[[Luke Bangs]]"
@@ -41,8 +41,8 @@ topicTags:
   - "[[Work]]"
 version: 2
 portfolioOrder: 5
-shortDescription: "A take home task for an interview process with Acre Software, developing two dashboards from some mortgage CSV data to provide insight to internal users and lender customers."
-longDescription: "As part of the interview process for Acre Software, I was given a anonymised CSV of mortgage data and tasked with developing two dashboard designs; one for internal Acre employees to use and the other for Lender clients on the Acre platform to use.<br><br>I produced the two dashboards from the data and extended the functionality to include additional insights for both the internal and external users and presented it in person in their London office."
+shortDescription: "A take home task for an interview process with <span class=\"theme-link\">Acre Software</span>, developing two dashboards from some mortgage CSV data to provide insight to internal users and lender customers."
+longDescription: "As part of the interview process for <span class=\"theme-link\">Acre Software</span>, I was given a anonymised CSV of mortgage data and tasked with developing two dashboard designs; one for internal Acre employees to use and the other for Lender clients on the Acre platform to use.<br><br>I produced the two dashboards from the data and extended the functionality to include additional insights for both the internal and external users and presented it in person in their London office."
 lessonsLearned: "I wrote user stories for the application from the outset to drive the development direction and aid <span class=\"theme-link\">Cursor</span> in meeting its requirements. I learned a lot about the mortgage process by reviewing and understanding the data to get a sense of the process and steps needed throughout a case's lifetime.<br><br>My main lesson was that I engaged <span class=\"theme-link\">AI</span> too early in the process, letting it lead the content of the site rather than using my initial plan before extending with the logic suggested by <span class=\"theme-link\">Claude</span>. This cost me some time in development in bringing the content back into scope."
 name: "Acre Customer Solutions Engineering Exercise"
 ---
@@ -70,6 +70,8 @@ WHERE file = this.file
 >[!details]  `=this.file.name`
 >`=choice(this.folderURL = null | this.folderURL = "" | this.folderURL = "n/a","","<br>Folder URL: " + link(this.folderURL,"Link")) + choice(this.dateStart = null | this.dateStart = "","","<br>Date Start: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>Date End: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "", "", choice(this.dateEnd = "", "<br>Development Duration: " + string(date(today) - date(this.dateStart)), "<br>Development Duration: " + string(date(this.dateEnd) - date(this.dateStart)))) + choice(this.projectCategory = null | this.projectCategory = "","","<br>Category: " + this.projectCategory) + choice(this.linkedCompany = null | this.linkedCompany = "" | contains(this.linkedCompany, "n/a"),"","<br>Project for: " + this.linkedCompany) + choice(this.toolOwner = null | this.toolOwner = "","","<br>Tool Owner: " + this.toolOwner) + choice(this.developers = null | this.developers = "","","<br>Developers: " + this.developers) + choice(this.technologies = null | this.technologies = "","","<br>Technologies: " + this.technologies) + choice(this.topicTags = null | this.topicTags = "","","<br>Topics: " + this.topicTags) + choice(this.powerShellAlias = null | this.powerShellAlias = "" | this.powerShellAlias = "n/a","","<br>PowerShell Alias: " + this.powerShellAlias) + choice(this.version = null | this.version = "","","<br>Version: " + this.version)`
 
+> [Google Drive Folder link](https://drive.google.com/drive/folders/15hyoqkuVysvpGOiX5g4ilh1OeE8BgtTJ?usp=drive_link)
+
 ## Table of Contents
 
 ```table-of-contents
@@ -79,13 +81,13 @@ WHERE file = this.file
 
 ## Short Description
 
-A take home task for an interview process with Acre Software, developing two dashboards from some mortgage CSV data to provide insight to internal users and lender customers.
+A take home task for an interview process with [[Acre Software]], developing two dashboards from some mortgage CSV data to provide insight to internal users and lender customers.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ## Long Description
 
-As part of the interview process for Acre Software, I was given a anonymised CSV of mortgage data and tasked with developing two dashboard designs; one for internal Acre employees to use and the other for Lender clients on the Acre platform to use.
+As part of the interview process for [[Acre Software]], I was given a anonymised CSV of mortgage data and tasked with developing two dashboard designs; one for internal Acre employees to use and the other for Lender clients on the Acre platform to use.
 
 I produced the two dashboards from the data and extended the functionality to include additional insights for both the internal and external users and presented it in person in their London office.
 
@@ -163,6 +165,7 @@ Update the Implementation Plan and mock ups as necessary
 ## Other Links
 
 - [[20260330 Acre Interview Preparation]]
+- Documentation: [bangsluke Documentation - Acre Dashboard Explanation](https://bangsluke-documentation.netlify.app/docs/projects/acre-software-task)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

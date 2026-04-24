@@ -5,13 +5,14 @@ tags:
   - tag
   - portfolio
 created: 2025-05-30T09:49:00
-modified: 2026-04-05T08:04:53+01:00
-viewCount: 2
+modified: 2026-04-24T09:06:44+01:00
+viewCount: 4
 aliases:
   - RLE
 dateStart: 2014-09-01
 dateEnd: 2026-03-27
 logoURL: https://bangsluke-assets.netlify.app/images/company-logos/RLE-International.png
+websiteURL: https://rle.international/
 ---
 # RLE International
 
@@ -48,7 +49,7 @@ WHERE file = this.file
 ## Details
 
 >[!details]  `=this.file.name`
->`=choice(this.dateStart = null | this.dateStart = "","","<br>Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + (date(this.dateEnd) - date(this.dateStart)))`
+>`=choice(this.dateStart = null | this.dateStart = "","","<br>Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + (date(this.dateEnd) - date(this.dateStart))) + choice(this.websiteURL = null | this.websiteURL = "","","<br>Website: " + this.websiteURL)`
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
