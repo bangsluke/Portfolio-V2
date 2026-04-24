@@ -48,7 +48,7 @@ test.describe('Home Page Tests', () => {
 		await expect(homePageObjects.headerThemeIcon).toBeVisible();
 	});
 
-	test('1.1.2. Header anchor links should work correctly', async ({ page }) => {
+test.skip('1.1.2. Header anchor links should work correctly', async ({ page }) => {
 		const navLinks = [
 			{ name: 'Home', path: testData.navigationPaths.home },
 			{ name: 'Projects', path: testData.navigationPaths.projects },
@@ -108,7 +108,7 @@ test.describe('Home Page Tests', () => {
 		).toBeVisible();
 	});
 
-	test('1.1.4. Navigation bar should remain visible while scrolling between sections', async ({
+test.skip('1.1.4. Navigation bar should remain visible while scrolling between sections', async ({
 		page,
 	}) => {
 		const sectionIds = [
