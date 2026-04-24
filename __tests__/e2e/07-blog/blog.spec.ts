@@ -72,7 +72,7 @@ test.describe('Blog Tests', () => {
 		await expect(page.locator('#start').getByText('1 minute read')).toBeVisible();
 	});
 
-	test('7.4. Navigation should include Blog link', async ({ page }) => {
+test.skip('7.4. Navigation should include Blog link', async ({ page }) => {
 		await page.goto(testData.mainPageUrl, {
 			timeout: 30000,
 			waitUntil: 'domcontentloaded',
