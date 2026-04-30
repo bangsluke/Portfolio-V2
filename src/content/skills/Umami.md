@@ -9,7 +9,7 @@ tags:
 created: 2025-11-09 18:47
 modified: 2026-04-14T17:47:21+01:00
 aliases:
-viewCount: 1
+viewCount: 3
 skillRating: 65
 skillDescription: Utilised on a couple of projects, setting up and monitoring custom events to understand user usage for further ideation discovery.
 logoFileName: umami.svg

@@ -7,8 +7,8 @@ tags:
   - portfolio
   - project/active
 created: 2025-02-02T19:03:00
-modified: 2026-04-05T08:04:13+01:00
-viewCount: 5
+modified: 2026-04-30T19:02:28+01:00
+viewCount: 7
 aliases:
 projectURL: https://bangsluke-portfolio.netlify.app/
 codeURL: https://github.com/bangsluke/Portfolio-V2
@@ -78,6 +78,7 @@ WHERE file = this.file
 >[!details]  `=this.file.name`
 >`=choice(this.folderURL = null | this.folderURL = "" | this.folderURL = "n/a","","<br>Folder URL: " + link(this.folderURL,"Link")) + choice(this.dateStart = null | this.dateStart = "","","<br>Date Start: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>Date End: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "", "", choice(this.dateEnd = "", "<br>Development Duration: " + string(date(today) - date(this.dateStart)), "<br>Development Duration: " + string(date(this.dateEnd) - date(this.dateStart)))) + choice(this.projectCategory = null | this.projectCategory = "","","<br>Category: " + this.projectCategory) + choice(this.linkedCompany = null | this.linkedCompany = "" | contains(this.linkedCompany, "n/a"),"","<br>Project for: " + this.linkedCompany) + choice(this.toolOwner = null | this.toolOwner = "","","<br>Tool Owner: " + this.toolOwner) + choice(this.developers = null | this.developers = "","","<br>Developers: " + this.developers) + choice(this.technologies = null | this.technologies = "","","<br>Technologies: " + this.technologies) + choice(this.topicTags = null | this.topicTags = "","","<br>Topics: " + this.topicTags) + choice(this.powerShellAlias = null | this.powerShellAlias = "" | this.powerShellAlias = "n/a","","<br>PowerShell Alias: " + this.powerShellAlias) + choice(this.version = null | this.version = "","","<br>Version: " + this.version)`
 
+>[!info] Quick Links
 > - [Analytics Tracking - Umami](https://eu.umami.is/websites/fad6adfb-2b8b-4868-a0a9-59d4fd860488)
 > - [Neo4j Aura Database](https://console-preview.neo4j.io/projects/7a5b41a0-6373-5c3c-9fcf-48b80d5d38f2/instances)
 
@@ -406,18 +407,22 @@ SORT dateStart ASC
 
 > Configuration options that control various features and display settings on the portfolio site. These settings are automatically read from this markdown file and applied to the site.
 
-- lookingForWork: true - Controls whether the "Available for work" indicator is displayed in the hero section. Set to `false` to hide this indicator.
+- lookingForWork: false - Controls whether the "Available for work" indicator is displayed in the hero section. Set to `false` to hide this indicator.
 - maxProjectsDisplay: 6 - Maximum number of projects to display in the main projects gallery on the homepage. Projects beyond this limit will show a "See more projects" button.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 #### About Me Short
 
-Product-minded engineer. 11 years delivering complex systems, 3 owning software products end-to-end. I take products from discovery through to live operations - building MVPs, APIs and data pipelines, and staying accountable for what happens after launch. Actively seeking Product Associate, Analyst or Delivery Lead roles.
+Product-minded engineer. 11 years delivering complex systems, 3 owning software products end-to-end. I take products from discovery through to live operations - building MVPs, APIs and data pipelines, and staying accountable for what happens after launch.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
 ##### Archived About Me Short
+
+**5th Draft**
+
+> Product-minded engineer. 11 years delivering complex systems, 3 owning software products end-to-end. I take products from discovery through to live operations - building MVPs, APIs and data pipelines, and staying accountable for what happens after launch. Actively seeking Product Associate, Analyst or Delivery Lead roles.
 
 **4th Draft**
 
