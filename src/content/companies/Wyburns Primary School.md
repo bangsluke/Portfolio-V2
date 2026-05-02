@@ -7,11 +7,11 @@ tags:
   - client
 created: 2026-03-22
 modified: 2026-03-22T16:10:57+00:00
-viewCount: 3
+viewCount: 1
 aliases:
   - Wyburns
 dateStart: 2025-09-30
-dateEnd:
+dateEnd: 2026-03-26
 logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Wyburns.png
 linkedCompany:
   - n/a
