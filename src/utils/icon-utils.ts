@@ -3,6 +3,7 @@
 
 // Fallback list of known icons (will be replaced at build time)
 let knownIconsCache: string[] = [
+	'DBeaver',
 	'access',
 	'algolia',
 	'amplitude',
@@ -44,6 +45,7 @@ let knownIconsCache: string[] = [
 	'github',
 	'github-svg',
 	'gitlab',
+	'go',
 	'google_apps_script',
 	'google_cloud',
 	'google_sheets',
@@ -103,12 +105,14 @@ let knownIconsCache: string[] = [
 	'react',
 	'sass',
 	'sharepoint',
+	'slack',
 	'sleuth',
 	'snyk',
 	'sql',
 	'storybook',
 	'streamlit',
 	'supabase',
+	'swagger',
 	'tailwind',
 	'terraform',
 	'testing-library',
@@ -122,6 +126,7 @@ let knownIconsCache: string[] = [
 	'vs_code',
 	'yaml',
 	'yarn',
+	'zapier',
 	'zod',
 	'zustand',
 ];

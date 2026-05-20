@@ -2,22 +2,23 @@
 tags:
   - tag
   - software
+  - coding
   - skill
   - portfolio
-viewCount: 1
-modified: 2025-07-24T07:28:30+01:00
+  - database
+created: 2026-05-13
+modified: 2026-05-13T21:07:36+01:00
+viewCount: 3
 aliases:
-  - Microsoft PowerShell
-  - Powershell
-skillRating: 60
-skillDescription: My starting point for project activation and able to write simple alias scripts for automating chained commands.
-logoFileName: powershell.svg
+skillRating: 20
+skillDescription: Used at work for visualising and querying a PostgreSQL database.
+logoFileName: DBeaver.svg
 ---
-# PowerShell
+# DBeaver
 
 > [!back] Link back to [[Skills Notes]]
 
-> [[Microsoft]] PowerShell
+> Database tool for a wide range of software such as [[SQL]] and [[PostgreSQL]]
 
 ## Table of Contents
 

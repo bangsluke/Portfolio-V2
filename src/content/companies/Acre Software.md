@@ -4,12 +4,12 @@ tags:
   - company
   - notes
   - tag
-created: 2025-02-04 18:53
-modified: 2026-04-24T09:08:45+01:00
-viewCount: 1
+created: 2026-04-23
+modified: 2026-05-03T17:49:01+01:00
+viewCount: 3
 aliases:
   - Acre
-dateStart:
+dateStart: 2026-05-01
 dateEnd:
 logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Acre.png
 websiteURL: https://www.acresoftware.com/
@@ -30,7 +30,11 @@ WHERE file = this.file
 ## Details
 
 >[!details]  `=this.file.name`
->`=choice(this.dateStart = null | this.dateStart = "","","<br>Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + (date(this.dateEnd) - date(this.dateStart))) + choice(this.websiteURL = null | this.websiteURL = "","","<br>Website: " + this.websiteURL)`
+>`=choice(this.dateStart = null | this.dateStart = "","","Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + choice(this.dateEnd = null | this.dateEnd = "", (date(today) - date(this.dateStart)), (date(this.dateEnd) - date(this.dateStart)))) + choice(this.websiteURL = null | this.websiteURL = "","","<br>Website: " + this.websiteURL)`
+
+> My email accounts:
+> - luke.bangs@acresoftware.com
+> - luke.bangs@clearscore.com
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

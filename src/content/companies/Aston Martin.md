@@ -6,8 +6,8 @@ tags:
   - OEM
   - client
   - portfolio
-modified: 2025-07-18T08:43:17+01:00
-viewCount: 9
+modified: 2026-05-03T17:50:22+01:00
+viewCount: 1
 aliases:
   - AML
   - Aston Martin Limited
@@ -33,7 +33,7 @@ WHERE file = this.file
 ## Details
 
 >[!details]  `=this.file.name`
->`=choice(this.dateStart = null | this.dateStart = "","","<br>Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + (date(this.dateEnd) - date(this.dateStart)))`
+>`=choice(this.dateStart = null | this.dateStart = "","","Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + choice(this.dateEnd = null | this.dateEnd = "", (date(today) - date(this.dateStart)), (date(this.dateEnd) - date(this.dateStart)))) + choice(this.websiteURL = null | this.websiteURL = "","","<br>Website: " + this.websiteURL)`
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

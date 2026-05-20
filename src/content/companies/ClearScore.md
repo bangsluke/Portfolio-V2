@@ -4,18 +4,17 @@ tags:
   - company
   - notes
   - tag
-created: 2025-02-04 18:53
-modified: 2026-05-03T17:49:21+01:00
-viewCount: 3
+created: 2026-05-04
+modified: 2026-05-06T18:31:36+01:00
+viewCount: 1
 aliases:
-  - Opus 2
-  - Opus
-dateStart: 2011-03-06
-dateEnd: 2014-07-25
-logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Opus-2.jpg
-websiteURL: https://www.opus2.com/
+  - The ClearScore Group
+dateStart: 2026-05-01
+dateEnd:
+logoURL: https://bangsluke-assets.netlify.app/images/company-logos/Clearscore.png
+websiteURL: https://www.clearscore.com
 ---
-# Opus 2 International
+# ClearScore
 
 > [!back] Link back to [[Company Notes]]
 
@@ -32,6 +31,10 @@ WHERE file = this.file
 
 >[!details]  `=this.file.name`
 >`=choice(this.dateStart = null | this.dateStart = "","","Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + choice(this.dateEnd = null | this.dateEnd = "", (date(today) - date(this.dateStart)), (date(this.dateEnd) - date(this.dateStart)))) + choice(this.websiteURL = null | this.websiteURL = "","","<br>Website: " + this.websiteURL)`
+
+> My email accounts:
+> - luke.bangs@acresoftware.com
+> - luke.bangs@clearscore.com
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

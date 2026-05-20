@@ -9,15 +9,15 @@ tags:
   - planning
   - tracking
 created: 2026-02-11
-modified: 2026-03-18T10:38:11+00:00
-viewCount: 4
+modified: 2026-05-08T07:54:42+01:00
+viewCount: 1
 aliases:
-  - Jira
-skillRating: 5
-skillDescription: Aware of the tool for project and issue tracking but have only used Azure DevOps so far.
+  - JIRA
+skillRating: 25
+skillDescription: Used within my role at Acre for defining and progressing improvements to the software.
 logoFileName: jira.svg
 ---
-# JIRA
+# Jira
 
 > [!back] Link back to [[Skills Notes]]
 

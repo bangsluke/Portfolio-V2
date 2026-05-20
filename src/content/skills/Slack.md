@@ -2,22 +2,20 @@
 tags:
   - tag
   - software
+  - coding
   - skill
   - portfolio
+created: 2026-05-06
+modified: 2026-05-06T18:48:42+01:00
 viewCount: 1
-modified: 2025-07-24T07:28:30+01:00
 aliases:
-  - Microsoft PowerShell
-  - Powershell
-skillRating: 60
-skillDescription: My starting point for project activation and able to write simple alias scripts for automating chained commands.
-logoFileName: powershell.svg
+skillRating: 40
+skillDescription: Work with daily for communication with ability to customise for optimal productivity.
+logoFileName: slack.svg
 ---
-# PowerShell
+# Slack
 
 > [!back] Link back to [[Skills Notes]]
-
-> [[Microsoft]] PowerShell
 
 ## Table of Contents
 
