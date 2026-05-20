@@ -1,23 +1,26 @@
 ---
 tags:
   - tag
+  - coding
+  - language
   - software
   - skill
   - portfolio
+  - notes
+created: 2026-05-06
+modified: 2026-05-07T07:55:54+01:00
 viewCount: 1
-modified: 2025-07-24T07:28:30+01:00
 aliases:
-  - Microsoft PowerShell
-  - Powershell
-skillRating: 60
-skillDescription: My starting point for project activation and able to write simple alias scripts for automating chained commands.
-logoFileName: powershell.svg
+  - Golang
+skillRating: 20
+skillDescription: Have begun writing in Go as it used in my current role.
+logoFileName: go.svg
 ---
-# PowerShell
+# Go
 
 > [!back] Link back to [[Skills Notes]]
 
-> [[Microsoft]] PowerShell
+> Go is an open-source, statically typed compiled programming language developed at [[Google]], designed for simplicity, fast compilation, and excellent built-in concurrency support. It’s commonly used for backend services, command-line tools, and cloud infrastructure ([[Docker]] and [[Kubernetes]] are written in Go).
 
 ## Table of Contents
 

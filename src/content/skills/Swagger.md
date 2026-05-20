@@ -4,20 +4,19 @@ tags:
   - software
   - skill
   - portfolio
-viewCount: 1
-modified: 2025-07-24T07:28:30+01:00
+created: 2026-05-06
+modified: 2026-05-20T18:27:03+01:00
 aliases:
-  - Microsoft PowerShell
-  - Powershell
-skillRating: 60
-skillDescription: My starting point for project activation and able to write simple alias scripts for automating chained commands.
-logoFileName: powershell.svg
+viewCount: 1
+skillRating: 15
+skillDescription: Have used within my role to understand API endpoints.
+logoFileName: swagger.svg
 ---
-# PowerShell
+# Swagger
 
 > [!back] Link back to [[Skills Notes]]
 
-> [[Microsoft]] PowerShell
+> **Swagger is an open‑source framework used to design, document, and interact with [[REST]] [[API]]s using the OpenAPI Specification.** It provides tools like Swagger UI, which lets developers visualise endpoints and test API operations directly from the browser, making API behaviour easier to understand and consume.
 
 ## Table of Contents
 

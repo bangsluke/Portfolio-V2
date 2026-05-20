@@ -6,7 +6,7 @@ tags:
   - tag
   - client
 created: 2026-03-22
-modified: 2026-03-22T16:10:57+00:00
+modified: 2026-05-03T17:52:09+01:00
 viewCount: 1
 aliases:
   - Wyburns
@@ -32,7 +32,7 @@ WHERE file = this.file
 ## Details
 
 >[!details]  `=this.file.name`
->`=choice(this.dateStart = null | this.dateStart = "","","<br>Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + (date(this.dateEnd) - date(this.dateStart)))`
+>`=choice(this.dateStart = null | this.dateStart = "","","Start date: " + this.dateStart) + choice(this.dateEnd = null | this.dateEnd = "","","<br>End date: " + this.dateEnd) + choice(this.dateStart = null | this.dateStart = "","","<br>Employment duration: " + choice(this.dateEnd = null | this.dateEnd = "", (date(today) - date(this.dateStart)), (date(this.dateEnd) - date(this.dateStart)))) + choice(this.websiteURL = null | this.websiteURL = "","","<br>Website: " + this.websiteURL)`
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

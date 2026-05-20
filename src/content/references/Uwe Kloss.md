@@ -7,15 +7,15 @@ tags:
   - reference
   - portfolio
 modified: 2025-07-16T09:47:51+01:00
-viewCount: 8
+viewCount: 1
 aliases:
   - Uwe
-birthday: 
-died: 
-partneredWith: 
-marriageDate: 
-relatedTo: 
-friendOf: 
+birthday:
+died:
+partneredWith:
+marriageDate:
+relatedTo:
+friendOf:
 education:
   - "[[Loughborough University]]"
 linkedCompany:
@@ -40,7 +40,7 @@ portfolioOrder: 2
 ## Details
 
 >[!details]  `=this.file.name`
->`=choice(this.birthday = null | this.birthday = "","","<br>Birthday: " + this.birthday) + choice(this.died = null | this.died = "","","<br>Died: " + this.died) + choice(this.birthday = null | this.birthday = "", "", choice(this.died = "", "<br>Age: " + string(date(today) - date(this.birthday)), "<br>Age: " + string(date(this.died) - date(this.birthday)))) + choice(this.partneredWith = null | this.partneredWith = "","","<br>Partner: " + this.partneredWith) + choice(this.togetherDate = null | this.togetherDate = "","","<br>Got together: " + this.togetherDate) + choice(this.togetherDate = "" | this.togetherDate = null, "", choice(this.died = "" | this.died = null, "<br>Time together: " + choice(this.togetherDate = "" | this.togetherDate = null, "", date(today) - date(this.togetherDate)), "")) + choice(this.marriageDate = null | this.marriageDate = "","","<br>Married date: " + this.marriageDate) + choice(this.marriageDate = "" | this.marriageDate = null, "", choice(this.died = "" | this.died = null, "<br>Time married: " + choice(this.marriageDate = "" | this.marriageDate = null, "", date(today) - date(this.marriageDate)), "")) + choice(this.relatedTo = null | this.relatedTo = "","","<br>Related to: " + this.relatedTo) + choice((length(this.friendOf) > 0), "<br>Friend of: " + join(this.friendOf, ", "), "") + choice((length(this.education) > 0), "<br>Education: " + join(this.education, ", "), "") + choice(this.linkedCompany = null | this.linkedCompany = "","","<br>Companies: " + this.linkedCompany)`
+>`=choice(this.birthday = null | this.birthday = "","","Birthday: " + this.birthday) + choice(this.died = null | this.died = "","","<br>Died: " + this.died) + choice(this.birthday = null | this.birthday = "", "", choice(this.died = "", "<br>Age: " + string(date(today) - date(this.birthday)), "<br>Age: " + string(date(this.died) - date(this.birthday)))) + choice(this.partneredWith = null | this.partneredWith = "","","<br>Partner: " + this.partneredWith) + choice(this.togetherDate = null | this.togetherDate = "","","<br>Got together: " + this.togetherDate) + choice(this.togetherDate = "" | this.togetherDate = null, "", choice(this.died = "" | this.died = null, "<br>Time together: " + choice(this.togetherDate = "" | this.togetherDate = null, "", date(today) - date(this.togetherDate)), "")) + choice(this.marriageDate = null | this.marriageDate = "","","<br>Married date: " + this.marriageDate) + choice(this.marriageDate = "" | this.marriageDate = null, "", choice(this.died = "" | this.died = null, "<br>Time married: " + choice(this.marriageDate = "" | this.marriageDate = null, "", date(today) - date(this.marriageDate)), "")) + choice(this.relatedTo = null | this.relatedTo = "","","<br>Related to: " + this.relatedTo) + choice((length(this.friendOf) > 0), "<br>Friend of: " + join(this.friendOf, ", "), "") + choice((length(this.education) > 0), "<br>Education: " + join(this.education, ", "), "") + choice(this.linkedCompany = null | this.linkedCompany = "","","<br>Companies: " + this.linkedCompany)`
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

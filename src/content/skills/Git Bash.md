@@ -5,8 +5,8 @@ tags:
   - coding
   - skill
   - portfolio
-modified: 2026-05-02T08:52:18+01:00
-viewCount: 2
+modified: 2026-05-07T07:58:21+01:00
+viewCount: 1
 aliases:
 skillRating: 15
 skillDescription: Able to run simple commands through the terminal such as installing packages.
@@ -25,7 +25,7 @@ logoFileName: git_bash.svg
 
 ## Description
 
-Git Bash is a [[Windows]] application that provides a Unix‑like terminal so you can run [[Git]] commands and standard Bash utilities on a Windows system. It emulates the Bash shell and includes tools like `ssh`, `scp`, and common Unix commands, giving Windows users the same command‑line Git experience found on Linux and macOS.
+Git Bash is a [[Windows]] application that provides a Unix‑like terminal so you can run [[Git]] commands and standard Bash utilities on a Windows system. It emulates the Bash shell and includes tools like [[SSH|ssh]], `scp`, and common Unix commands, giving Windows users the same command‑line Git experience found on Linux and macOS.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 

@@ -4,12 +4,13 @@ tags:
   - role
   - portfolio
 created: 2026-04-30
-modified: 2026-04-30T19:13:35+01:00
-viewCount: 2
+modified: 2026-05-06T18:36:01+01:00
+viewCount: 1
 dateStart: 2026-05-01
 dateEnd:
 linkedCompany:
   - "[[Acre Software]]"
+  - "[[ClearScore]]"
 shortRoleDescription: "Customer-facing role at <span class=\"theme-link\">Acre</span>, a UK fintech rebuilding the mortgage market, helping broker firms get the most out of the platform through hands-on support, training and product feedback."
 fullRoleDescription: "I sit in the Customer Success team at Acre, a fintech building an end-to-end management system for the UK's £1.4 trillion mortgage market."
 keyAchievement: "Developing a <span class=\"theme-link\">React</span> internal and lender dashboard highlighting insights into mortgage data."
