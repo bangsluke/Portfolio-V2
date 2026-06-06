@@ -5,12 +5,12 @@ tags:
   - skill
   - portfolio
   - portfolio/discoveryRequirements
-modified: 2026-01-05T08:43:45+00:00
-viewCount: 5
+modified: 2026-05-31T16:43:46+02:00
+viewCount: 1
 aliases:
   - Microsoft Power BI
-skillRating: 60
-skillDescription: Led the design and development of several Power BI reports for internal management review.
+skillRating: 50
+skillDescription: Led the design and development of several Power BI reports for internal management review from existing data models.
 logoFileName: power_bi.svg
 ---
 # Power BI
@@ -26,7 +26,12 @@ logoFileName: power_bi.svg
 
 ## Links
 
-- [Getting Started with Power BI - Guy in a Cube - YouTube](https://youtube.com/playlist?list=PLv2BtOtLblH13vCbf99BptWWk-EWx7QQG&si=7axwmQ7KZTPX25Ex)
+- <https://app.powerbi.com>
+- [Microsoft Learn - Training for Power BI](https://learn.microsoft.com/en-us/training/powerplatform/power-bi) - official, free, structured role-based paths from fundamentals to data modelling - best starting point for systematic learning.
+- [Microsoft Learn - Guidance documentation - Power BI](https://learn.microsoft.com/en-us/power-bi/guidance/) - authoritative best-practice articles - best for the “right way” to model and optimise.
+- [Guy in a Cube - YouTube](https://www.youtube.com/@GuyInACube) - short practical videos - best for troubleshooting refresh, gateways, and service questions. - [[YouTube]]
+	- [Getting Started with Power BI - Guy in a Cube - YouTube](https://youtube.com/playlist?list=PLv2BtOtLblH13vCbf99BptWWk-EWx7QQG&si=7axwmQ7KZTPX25Ex)
+- [Articles - SQLBI](https://www.sqlbi.com/articles/) - deep, rigorous free articles and videos on DAX and modelling - best for understanding star schemas and DAX correctly.
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
