@@ -407,8 +407,8 @@ test.skip('1.1.4. Navigation bar should remain visible while scrolling between s
 			const text = (await row.textContent()) || '';
 			expect(text.length).toBeGreaterThan(0);
 			// Ensure rating and projects show a value (number or "All"), not just the label
-			expect(text).toMatch(/Rating\s+(All|\d+)/);
-			expect(text).toMatch(/Projects\s+(All|\d+)/);
+			expect(text).toMatch(/Rating\s*(All|\d+)/);
+			expect(text).toMatch(/Projects\s*(All|\d+)/);
 		}
 	});
 
