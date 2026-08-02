@@ -3,22 +3,22 @@ tags:
   - tag
   - software
   - coding
-  - testing
+  - AI
   - skill
   - portfolio
-modified: 2026-08-02T11:15:10+01:00
-viewCount: 1
+created: 2026-03-03
+modified: 2026-08-02T11:24:00+01:00
+viewCount: 4
 aliases:
-  - dependabot
-skillRating: 60
-skillDescription: Set up as one of my default actions when initialising a project.
-logoFileName: dependabot.svg
+skillRating: 10
+skillDescription: Used for a Claudathon event to rapidly design some implementations.
+logoFileName: claude_design.svg
 ---
-# Dependabot
+# Claude Design
 
 > [!back] Link back to [[Skills Notes]]
 
-> [[GitHub]] security plugin
+> [[Anthropic]]'s agentic design tool using [[Claude]]
 
 ## Table of Contents
 

@@ -19,6 +19,8 @@ let knownIconsCache: string[] = [
 	'circleci',
 	'claude',
 	'claude_code',
+	'claude_cowork',
+	'claude_design',
 	'codeium',
 	'copilot',
 	'cplusplus',

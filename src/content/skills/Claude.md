@@ -6,8 +6,8 @@ tags:
   - skill
   - LLM
   - portfolio
-modified: 2026-03-12T14:46:59+00:00
-viewCount: 4
+modified: 2026-08-02T11:23:38+01:00
+viewCount: 1
 aliases:
 skillRating: 65
 skillDescription: Used for chatting to and planning various updates to projects, usually then switching to Cursor or Claude Code for actual implementation once the project is initiated.
