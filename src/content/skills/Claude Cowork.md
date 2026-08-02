@@ -3,22 +3,22 @@ tags:
   - tag
   - software
   - coding
-  - testing
+  - AI
   - skill
   - portfolio
-modified: 2026-08-02T11:15:10+01:00
-viewCount: 1
+created: 2026-03-03
+modified: 2026-08-02T11:22:46+01:00
+viewCount: 3
 aliases:
-  - dependabot
-skillRating: 60
-skillDescription: Set up as one of my default actions when initialising a project.
-logoFileName: dependabot.svg
+skillRating: 15
+skillDescription: Briefly explored it for a coding task, syncing rules between an Excel template and a VBA enabled workbook.
+logoFileName: claude_cowork.svg
 ---
-# Dependabot
+# Claude Cowork
 
 > [!back] Link back to [[Skills Notes]]
 
-> [[GitHub]] security plugin
+> [[Anthropic]]'s agentic coworking tool using [[Claude]]
 
 ## Table of Contents
 
@@ -27,7 +27,7 @@ logoFileName: dependabot.svg
 
 ## Links
 
-- n/a
+- [Introducing Cowork](https://claude.com/blog/cowork-research-preview)
 
 >[!top] [Back to top](#Table%20of%20Contents)
 
