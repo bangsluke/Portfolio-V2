@@ -27,6 +27,9 @@
   <img src="https://img.shields.io/badge/Zod-red?logo=zod" alt="Zod" />
 </p>
 
+> Also see the projects used to populate this data;
+> - bangsluke-backend-server repo <https://github.com/bangsluke/bangsluke-backend-server>
+
 <p align="center">
   <img src="./public/screenshots/Portfolio.png" alt="Portfolio Site V2 Screenshot" height="550"/>
 </p>
