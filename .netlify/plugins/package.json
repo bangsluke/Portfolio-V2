@@ -6,14 +6,17 @@
 	"author": "Netlify",
 	"license": "MIT",
 	"dependencies": {
-		"@netlify/plugin-lighthouse": "6.0.1"
+		"@netlify/plugin-lighthouse": "6.0.4"
 	},
 	"overrides": {
 		"cookie": ">=0.7.0",
 		"ws": ">=8.21.0",
 		"html-minifier": "npm:html-minifier-terser@^7.2.0",
 		"tar-fs": ">=2.1.4",
-		"minimatch": ">=10.2.1"
+		"minimatch": ">=10.2.1",
+		"qs": ">=6.16.0",
+		"@puppeteer/browsers": "3.2.2",
+		"puppeteer-core": "24.8.2"
 	},
 	"scripts": {
 		"postinstall": "node -e \"const fs=require('fs');const path=require('path');const pkgPath=path.join(__dirname,'node_modules','html-minifier','package.json');if(fs.existsSync(pkgPath)){const pkg=JSON.parse(fs.readFileSync(pkgPath,'utf8'));if(pkg.version==='4.0.0'){console.warn('WARNING: Vulnerable html-minifier 4.0.0 detected. Override should replace with html-minifier-terser.');}}\""
