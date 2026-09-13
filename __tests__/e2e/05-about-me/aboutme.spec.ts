@@ -91,38 +91,35 @@ test.describe('About Me Tests', () => {
 
 		const fab = page.locator('#toc-fab');
 		const modal = page.locator('#toc-modal');
+		const tocList = page.locator('#mobile-toc-list');
+
+		/**
+		 * True when the standalone Tailwind `hidden` class is present (not `lg:hidden`).
+		 */
+		const hasHiddenClass = () =>
+			modal.evaluate(el => el.classList.contains('hidden'));
 
 		await expect(fab).toBeVisible();
-		const initiallyHidden = await modal.evaluate(
-			el => window.getComputedStyle(el).display === 'none'
-		);
-		expect(initiallyHidden).toBeTruthy();
+		// TOC list is populated on DOMContentLoaded; wait until interactive before clicking
+		await expect(tocList.getByText('Top of Page')).toBeAttached({
+			timeout: 10000,
+		});
+		expect(await hasHiddenClass()).toBeTruthy();
 
 		// Open modal
 		await fab.click();
-		await page.waitForTimeout(200);
-		const visibleAfterOpen = await modal.evaluate(
-			el => window.getComputedStyle(el).display !== 'none'
-		);
-		expect(visibleAfterOpen).toBeTruthy();
+		await expect.poll(hasHiddenClass).toBeFalsy();
+		await expect(modal).toBeVisible();
 
 		// Close via close button
 		const closeButton = page.locator('#toc-close');
 		await expect(closeButton).toBeVisible();
 		await closeButton.click();
-		await page.waitForTimeout(200);
-		const hiddenAfterClose = await modal.evaluate(
-			el => window.getComputedStyle(el).display === 'none'
-		);
-		expect(hiddenAfterClose).toBeTruthy();
+		await expect.poll(hasHiddenClass).toBeTruthy();
 
 		// Open again and close by clicking outside
 		await fab.click();
-		await page.waitForTimeout(200);
-		const visibleAfterSecondOpen = await modal.evaluate(
-			el => window.getComputedStyle(el).display !== 'none'
-		);
-		expect(visibleAfterSecondOpen).toBeTruthy();
+		await expect.poll(hasHiddenClass).toBeFalsy();
 
 		// Click backdrop in viewport center so sticky header (z-110) does not intercept
 		const viewport = page.viewportSize();
@@ -132,11 +129,7 @@ test.describe('About Me Tests', () => {
 				y: (viewport?.height ?? 900) / 2,
 			},
 		});
-		await page.waitForTimeout(200);
-		const hiddenAfterOutsideClick = await modal.evaluate(
-			el => window.getComputedStyle(el).display === 'none'
-		);
-		expect(hiddenAfterOutsideClick).toBeTruthy();
+		await expect.poll(hasHiddenClass).toBeTruthy();
 	});
 
 	test('5.5. Mobile TOC modal should list headings and scroll to selected section', async ({
@@ -148,19 +141,19 @@ test.describe('About Me Tests', () => {
 			waitUntil: 'domcontentloaded',
 		});
 		await waitForPageLoad(page);
-		// Mobile TOC is populated on window load (hoisted script); wait so section links exist
-		await page.waitForLoadState('load', { timeout: 15000 });
+		// Mobile TOC is populated on DOMContentLoaded; wait until list is ready
+		await expect(page.locator('#mobile-toc-list').getByText('Top of Page')).toBeAttached({
+			timeout: 10000,
+		});
 
 		const fab = page.locator('#toc-fab');
 		const modal = page.locator('#toc-modal');
 		const tocList = page.locator('#mobile-toc-list');
+		const hasHiddenClass = () =>
+			modal.evaluate(el => el.classList.contains('hidden'));
 
 		await fab.click();
-		await page.waitForTimeout(200);
-		const visibleAfterOpen = await modal.evaluate(
-			el => window.getComputedStyle(el).display !== 'none'
-		);
-		expect(visibleAfterOpen).toBeTruthy();
+		await expect.poll(hasHiddenClass).toBeFalsy();
 		await expect(tocList).toBeVisible();
 
 		// Ensure "Top of Page" item exists
@@ -174,7 +167,7 @@ test.describe('About Me Tests', () => {
 			const beforePosition = await page.evaluate(() => window.scrollY);
 			await firstSectionLink.click();
 			await page.waitForTimeout(500);
-			await expect(modal).toHaveClass(/hidden/);
+			await expect.poll(hasHiddenClass).toBeTruthy();
 			const afterPosition = await page.evaluate(() => window.scrollY);
 			expect(afterPosition).toBeGreaterThanOrEqual(beforePosition);
 		}

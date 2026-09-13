@@ -139,8 +139,15 @@ const { frontmatter } = Astro.props;
 </Layout>
 
 <script>
+	let mobileTocInitialized = false;
+
+	/**
+	 * Sets up the mobile TOC FAB, modal toggles, and heading list.
+	 * Runs on DOM ready (not window.load) so external images cannot delay interactivity.
+	 */
 	function initMobileToc() {
-		// Mobile TOC functionality
+		if (mobileTocInitialized) return;
+
 		const tocFab = document.getElementById('toc-fab');
 		const tocModal = document.getElementById('toc-modal');
 		const tocClose = document.getElementById('toc-close');
@@ -148,38 +155,39 @@ const { frontmatter } = Astro.props;
 		const content = document.getElementById('content');
 
 		if (!tocFab || !tocModal || !tocClose || !mobileTocList || !content) return;
-		// If already fully populated, skip (e.g. re-run from load handler)
-		if (mobileTocList.children.length > 2) return;
-		// Clear placeholder/partial list so we can repopulate
+
+		mobileTocInitialized = true;
+
 		while (mobileTocList.firstChild)
 			mobileTocList.removeChild(mobileTocList.firstChild);
 
-		// Toggle modal visibility
+		/**
+		 * Toggles the mobile TOC modal visibility and body scroll lock.
+		 */
 		function toggleModal() {
 			if (!tocModal) return;
 
-			const isHidden = tocModal!.classList.contains('hidden');
+			const isHidden = tocModal.classList.contains('hidden');
 			if (isHidden) {
-				tocModal!.classList.remove('hidden');
+				tocModal.classList.remove('hidden');
+				tocModal.setAttribute('aria-hidden', 'false');
 				document.body.style.overflow = 'hidden';
 			} else {
-				tocModal!.classList.add('hidden');
+				tocModal.classList.add('hidden');
+				tocModal.setAttribute('aria-hidden', 'true');
 				document.body.style.overflow = '';
 			}
 		}
 
-		// Event listeners
 		tocFab.addEventListener('click', toggleModal);
 		tocClose.addEventListener('click', toggleModal);
 
-		// Close modal when clicking outside
 		tocModal.addEventListener('click', function (e) {
 			if (e.target === tocModal) {
 				toggleModal();
 			}
 		});
 
-		// Close modal on escape key
 		document.addEventListener('keydown', function (e) {
 			if (
 				e.key === 'Escape' &&
@@ -190,22 +198,17 @@ const { frontmatter } = Astro.props;
 			}
 		});
 
-		// Get all headers but exclude H1 and "Table of Contents"
 		const allHeaders = content.querySelectorAll('h1, h2, h3');
 		const headers = Array.from(allHeaders).filter(header => {
-			// Exclude H1 headers
 			if (header.tagName === 'H1') return false;
 
-			// Exclude headers with "Table of Contents" text
 			const headerText = header.textContent?.trim() || '';
 			if (headerText.toLowerCase().includes('table of contents')) return false;
-
 			if (headerText.toLowerCase().includes('My portfolio site')) return false;
 
 			return true;
 		});
 
-		// Add "Top of Page" option first
 		const topOfPageLi = document.createElement('li');
 		const topOfPageLink = document.createElement('a');
 		topOfPageLink.href = '#';
@@ -228,7 +231,6 @@ const { frontmatter } = Astro.props;
 		topOfPageLi.appendChild(topOfPageLink);
 		mobileTocList.appendChild(topOfPageLi);
 
-		// Add separator after Top of Page
 		const separatorLi = document.createElement('li');
 		separatorLi.classList.add(
 			'border-t',
@@ -265,7 +267,6 @@ const { frontmatter } = Astro.props;
 				'w-full'
 			);
 
-			// Add indentation for H3 headers
 			if (header.tagName === 'H3') {
 				link.classList.add('ml-4');
 			}
@@ -273,34 +274,26 @@ const { frontmatter } = Astro.props;
 			li.appendChild(link);
 			mobileTocList.appendChild(li);
 
-			// Smooth scroll when clicking on a link and close modal
 			link.addEventListener('click', function (e) {
 				e.preventDefault();
 				document
 					.getElementById(header.id)
 					?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-				toggleModal(); // Close modal after clicking a link
+				toggleModal();
 			});
 		});
 
-		// Top of Page click handler
 		topOfPageLink.addEventListener('click', function (e) {
 			e.preventDefault();
 			window.scrollTo({ top: 0, behavior: 'smooth' });
-			toggleModal(); // Close modal after scrolling to top
+			toggleModal();
 		});
 	}
-	// Run on load so #content and headings are definitely in DOM (hoisted script runs before body)
-	function runWhenReady() {
-		if (document.readyState === 'complete') {
-			initMobileToc();
-		} else {
-			window.addEventListener('load', initMobileToc);
-		}
-	}
+
+	// Headings are in static HTML; init on DOM ready so images cannot block the FAB.
 	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', runWhenReady);
+		document.addEventListener('DOMContentLoaded', initMobileToc);
 	} else {
-		runWhenReady();
+		initMobileToc();
 	}
 </script>
